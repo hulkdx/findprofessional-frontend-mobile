@@ -1,8 +1,6 @@
-name: Android CI
+name: build and test the project
 
 on:
-  push:
-    branches: [ main ]
   pull_request:
     branches: [ main ]
 

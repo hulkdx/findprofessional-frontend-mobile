@@ -1,0 +1,48 @@
+name: Deploy the project to the PlayStore
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    name: Distribute app bundle to Play Store
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up JDK
+      uses: actions/setup-java@v1
+      with:
+        java-version: 11
+
+    - name: Version bump
+      uses: chkfung/android-version-actions@v1.1
+      with:
+        gradlePath: app/build.gradle.kts
+        versionCode: ${{ github.run_number }}
+
+    - name: Build release bundle
+      run: ./gradlew bundleRelease
+
+    - name: Sign release bundle
+      uses: r0adkll/sign-android-release@v1
+      with:
+        releaseDirectory: app/build/outputs/bundle/release
+        signingKeyBase64: ${{ secrets.KEYSTORE }}
+        alias: ${{ secrets.KEYSTORE_ALIAS }}
+        keyStorePassword: ${{ secrets.KEYSTORE_PASSWORD }}
+        keyPassword: ${{ secrets.KEYSTORE_PASSWORD }}
+
+    - name: Setup authorization with GooglePlay Store
+      run: echo '${{ secrets.GOOGLE_SERVICES_API }}' > service_account.json
+
+    - name: Deploy to alpha
+      uses: r0adkll/upload-google-play@v1
+      with:
+        serviceAccountJson: service_account.json
+        packageName: com.hulkdx.findprofessional
+        releaseFiles: app/build/outputs/bundle/release/app-release.aab
+        track: internal
+        whatsNewDirectory: .github/whatsNewDirectory
