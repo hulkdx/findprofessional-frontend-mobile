@@ -8,7 +8,7 @@ android {
     buildToolsVersion("30.0.3")
 
     defaultConfig {
-        applicationId = "com.example.foursquaresearch"
+        applicationId = "com.hulkdx.findprofessional"
         minSdkVersion(24)
         targetSdkVersion(30)
         versionCode = 1
