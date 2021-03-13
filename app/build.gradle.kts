@@ -11,7 +11,7 @@ android {
         applicationId = "com.hulkdx.findprofessional"
         minSdkVersion(24)
         targetSdkVersion(30)
-        versionCode = 1
+        versionCode = 3
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
