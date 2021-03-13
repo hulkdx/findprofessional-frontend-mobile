@@ -34,15 +34,11 @@ android {
     buildFeatures {
         compose = true
     }
-    composeOptions {
-        kotlinCompilerExtensionVersion = Dependencies.COMPOSE_VERSION
-    }
 }
 
 dependencies {
 
     implementation(Dependencies.CORE_KTX)
-    implementation(Dependencies.APP_COMPAT)
     implementation(Dependencies.RETROFIT)
     implementation(Dependencies.RETROFIT_CONVERTER_GSON)
     implementation(Dependencies.COROUTINES)
@@ -50,9 +46,10 @@ dependencies {
     implementation(Dependencies.COMPOSE_UI_TOOLING)
     implementation(Dependencies.COMPOSE_MATERIAL)
     implementation(Dependencies.COMPOSE_ACTIVITY)
-    implementation(Dependencies.MATERIAL)
 
-    testImplementation(Dependencies.JUNIT)
+    testImplementation(Dependencies.JUNIT_API)
+    testRuntimeOnly(Dependencies.JUNIT_ENGINE)
+    testImplementation(Dependencies.JUNIT_PARAM)
     testImplementation(Dependencies.MOCKITO)
     testImplementation(Dependencies.COROUTINES_TEST)
 

@@ -1,4 +1,4 @@
-package com.hulkdx.unknown.ui.theme
+package com.hulkdx.findprofessional.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
