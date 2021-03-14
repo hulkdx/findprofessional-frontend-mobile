@@ -43,6 +43,12 @@ android {
         resources.excludes.add("META-INF/AL2.0")
         resources.excludes.add("META-INF/LGPL2.1")
     }
+
+    testOptions.unitTests.all {
+        it.testLogging {
+            events("passed", "failed", "skipped", "standardOut", "standardError")
+        }
+    }
 }
 
 dependencies {
