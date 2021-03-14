@@ -54,6 +54,9 @@ jobs:
       with:
         java-version: 11
 
+    - name: Echo version bump
+      run: echo ${{ github.run_id }}
+
     - name: Version bump
       uses: chkfung/android-version-actions@v1.1
       with:
