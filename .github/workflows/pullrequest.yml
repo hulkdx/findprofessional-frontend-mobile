@@ -5,44 +5,15 @@ on:
     branches: [ main ]
 
 jobs:
-  build-and-unit-tests:
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v2
-
-    - name: set up JDK
-      uses: actions/setup-java@v1
-      with:
-        java-version: 11
-
-    - uses: actions/cache@v1
-      with:
-        path: ~/.gradle/caches
-        key: ${{ runner.os }}-${{ hashFiles('**/build.gradle') }}-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
-
-    - name: Run unit tests
-      run: ./gradlew assembleDebug testDebug
-
-    - name: Upload APK
-      uses: actions/upload-artifact@v2
-      with:
-        name: build-outputs
-        path: app/build/outputs
-
-  integration-tests:
-    needs: build-and-unit-tests
+  tests:
     runs-on: macOS-latest
     timeout-minutes: 30
-    strategy:
-      matrix:
-        api-level: [ 24, 26, 29 ]
 
     steps:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Set up JDK 11
+      - name: Set up JDK
         uses: actions/setup-java@v1
         with:
           java-version: 11
@@ -52,10 +23,13 @@ jobs:
           path: ~/.gradle/caches
           key: ${{ runner.os }}-${{ hashFiles('**/build.gradle') }}-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
 
+      - name: Run unit tests
+        run: ./gradlew assembleDebug testDebug
+
       - name: Run instrumentation tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: ${{ matrix.api-level }}
+          api-level: 29
           arch: x86
           disable-animations: true
           script: ./gradlew connectedCheck
