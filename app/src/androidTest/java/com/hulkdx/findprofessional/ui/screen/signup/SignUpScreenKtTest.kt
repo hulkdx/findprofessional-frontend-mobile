@@ -1,11 +1,11 @@
-package com.hulkdx.findprofessional.ui.screens.signup
+package com.hulkdx.findprofessional.ui.screen.signup
 
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
-import com.hulkdx.findprofessional.MainActivity
+import com.hulkdx.findprofessional.ui.MainActivity
 import org.junit.Rule
 import org.junit.Test
 
-class SignUpTest {
+class SignUpScreenKtTest {
 
     @get:Rule
     val composeRule = createAndroidComposeRule<MainActivity>()
