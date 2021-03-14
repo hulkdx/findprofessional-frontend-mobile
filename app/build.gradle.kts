@@ -37,6 +37,12 @@ android {
     buildFeatures {
         compose = true
     }
+
+    packagingOptions {
+        // Required for Dependencies.COMPOSE_TEST
+        resources.excludes.add("META-INF/AL2.0")
+        resources.excludes.add("META-INF/LGPL2.1")
+    }
 }
 
 dependencies {
@@ -55,5 +61,7 @@ dependencies {
     testImplementation(Dependencies.JUNIT_PARAM)
     testImplementation(Dependencies.MOCKITO)
     testImplementation(Dependencies.COROUTINES_TEST)
+
+    androidTestImplementation(Dependencies.COMPOSE_TEST)
 
 }
