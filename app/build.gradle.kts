@@ -44,6 +44,10 @@ android {
         resources.excludes.add("META-INF/LGPL2.1")
     }
 
+    tasks.withType<Test> {
+        useJUnitPlatform()
+    }
+
     testOptions.unitTests.all {
         it.testLogging {
             events("passed", "failed", "skipped", "standardOut", "standardError")

@@ -5,7 +5,44 @@ on:
     branches: [ main ]
 
 jobs:
+  integration-tests:
+    runs-on: macOS-latest
+    timeout-minutes: 30
+    strategy:
+      matrix:
+        api-level: [ 24, 25, 26, 27, 28, 29 ]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Set up JDK
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+
+      - uses: actions/cache@v1
+        with:
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-${{ hashFiles('**/build.gradle') }}-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
+
+      - name: Run instrumentation tests
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: ${{ matrix.api-level }}
+          arch: x86
+          disable-animations: true
+          script: ./gradlew connectedCheck
+
+      - name: Upload test reports
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-reports
+          path: app/build/reports
+
   deploy:
+    needs: integration-tests
     name: Distribute app bundle to Play Store
     runs-on: ubuntu-latest
 
