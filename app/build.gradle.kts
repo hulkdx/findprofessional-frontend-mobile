@@ -46,10 +46,8 @@ android {
 
     tasks.withType<Test> {
         useJUnitPlatform()
-    }
 
-    testOptions.unitTests.all {
-        it.testLogging {
+        testLogging {
             events("passed", "failed", "skipped", "standardOut", "standardError")
         }
     }
