@@ -5,8 +5,8 @@
  */
 object Dependencies {
     private const val KOTLIN_VERSION = "1.4.30"
-    private const val COMPOSE_VERSION = "1.0.0-beta02"
-    private const val BUILD_GRADLE_PLUGIN_VERSION = "7.0.0-alpha09"
+    private const val COMPOSE_VERSION = "1.0.0-beta05"
+    private const val BUILD_GRADLE_PLUGIN_VERSION = "7.0.0-alpha15"
 
     private const val CORE_KTX_VERSION = "1.3.2"
     private const val RETROFIT_VERSION = "2.6.2"
