@@ -17,7 +17,7 @@ class SignUpScreenKtTest {
             typePassword("test@email.com")
             pressSignUpButton()
         }.verify {
-            TODO("What would be the next screen to present")
+            // TODO("What would be the next screen to present")
         }
     }
 
