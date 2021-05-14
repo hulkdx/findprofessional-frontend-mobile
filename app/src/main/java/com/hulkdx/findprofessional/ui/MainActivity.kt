@@ -1,13 +1,11 @@
-package com.hulkdx.findprofessional
+package com.hulkdx.findprofessional.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.activity.compose.setContent
+import com.hulkdx.findprofessional.ui.screen.signup.SignUpScreen
 import com.hulkdx.findprofessional.ui.theme.AppTheme
 
 class MainActivity : ComponentActivity() {
@@ -16,22 +14,9 @@ class MainActivity : ComponentActivity() {
         setContent {
             AppTheme {
                 Surface(color = MaterialTheme.colors.background) {
-                    Greeting("Android")
+                    SignUpScreen()
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    AppTheme {
-        Greeting("Android")
     }
 }
