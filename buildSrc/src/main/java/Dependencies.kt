@@ -5,7 +5,8 @@
  */
 object Dependencies {
     private const val KOTLIN_VERSION = "1.4.30"
-    private const val COMPOSE_VERSION = "1.0.0-beta05"
+    private const val COMPOSE_VERSION = "1.0.0-beta06"
+    private const val COMPOSE_ACTIVITY_VERSION = "1.3.0-alpha05"
     private const val BUILD_GRADLE_PLUGIN_VERSION = "7.0.0-alpha15"
 
     private const val CORE_KTX_VERSION = "1.3.2"
@@ -27,7 +28,7 @@ object Dependencies {
     const val COMPOSE_UI = "androidx.compose.ui:ui:$COMPOSE_VERSION"
     const val COMPOSE_UI_TOOLING = "androidx.compose.material:material:$COMPOSE_VERSION"
     const val COMPOSE_MATERIAL = "androidx.compose.ui:ui-tooling:$COMPOSE_VERSION"
-    const val COMPOSE_ACTIVITY = "androidx.activity:activity-compose:1.3.0-alpha04"
+    const val COMPOSE_ACTIVITY = "androidx.activity:activity-compose:$COMPOSE_ACTIVITY_VERSION"
 
     // test dependencies
     const val JUNIT_API = "org.junit.jupiter:junit-jupiter-api:$JUNIT_VERSION"
