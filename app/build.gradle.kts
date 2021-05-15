@@ -4,13 +4,13 @@ plugins {
 }
 
 android {
-    compileSdkVersion(30)
-    buildToolsVersion("30.0.3")
+    compileSdk = Dependencies.COMPILE_SDK_VERSION
+    buildToolsVersion = Dependencies.BUILD_TOOLS_VERSION
 
     defaultConfig {
         applicationId = "com.hulkdx.findprofessional"
-        minSdkVersion(24)
-        targetSdkVersion(30)
+        minSdk = Dependencies.MIN_SDK_VERSION
+        targetSdk = Dependencies.COMPILE_SDK_VERSION
         versionCode = 3
         versionName = "1.0"
 
@@ -18,9 +18,12 @@ android {
     }
 
     buildTypes {
-        getByName("release") {
+        release {
             isMinifyEnabled = true
-            proguardFiles("proguard-android-optimize.txt", "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
 
@@ -43,32 +46,18 @@ android {
         resources.excludes.add("META-INF/AL2.0")
         resources.excludes.add("META-INF/LGPL2.1")
     }
-
-    tasks.withType<Test> {
-        useJUnitPlatform()
-
-        testLogging {
-            events("passed", "failed", "skipped", "standardOut", "standardError")
-        }
-    }
 }
 
 dependencies {
 
+    implementation(project(":core"))
+    implementation(project(":feature:authentication"))
+
     implementation(Dependencies.CORE_KTX)
-    implementation(Dependencies.RETROFIT)
-    implementation(Dependencies.RETROFIT_CONVERTER_GSON)
-    implementation(Dependencies.COROUTINES)
     implementation(Dependencies.COMPOSE_UI)
     implementation(Dependencies.COMPOSE_UI_TOOLING)
     implementation(Dependencies.COMPOSE_MATERIAL)
     implementation(Dependencies.COMPOSE_ACTIVITY)
-
-    testImplementation(Dependencies.JUNIT_API)
-    testRuntimeOnly(Dependencies.JUNIT_ENGINE)
-    testImplementation(Dependencies.JUNIT_PARAM)
-    testImplementation(Dependencies.MOCKITO)
-    testImplementation(Dependencies.COROUTINES_TEST)
 
     androidTestImplementation(Dependencies.COMPOSE_TEST)
 

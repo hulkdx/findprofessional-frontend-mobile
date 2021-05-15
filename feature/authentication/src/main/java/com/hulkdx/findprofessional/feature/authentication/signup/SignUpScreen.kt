@@ -1,10 +1,8 @@
-package com.hulkdx.findprofessional.ui.screen.signup
+package com.hulkdx.findprofessional.feature.authentication.signup
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Button
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.runtime.*

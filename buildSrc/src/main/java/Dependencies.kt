@@ -4,6 +4,10 @@
  * https://developer.android.com/jetpack/androidx/versions
  */
 object Dependencies {
+    const val MIN_SDK_VERSION = 24
+    const val COMPILE_SDK_VERSION = 30
+    const val BUILD_TOOLS_VERSION = "30.0.3"
+
     private const val KOTLIN_VERSION = "1.4.30"
     private const val COMPOSE_VERSION = "1.0.0-beta06"
     private const val COMPOSE_ACTIVITY_VERSION = "1.3.0-alpha05"
