@@ -30,7 +30,7 @@ object Dependencies {
     const val RETROFIT_CONVERTER_GSON = "com.squareup.retrofit2:converter-gson:$RETROFIT_VERSION"
     const val COROUTINES = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$COROUTINES_VERSION"
     const val COMPOSE_UI = "androidx.compose.ui:ui:$COMPOSE_VERSION"
-    const val COMPOSE_UI_TOOLING = "androidx.compose.material:material:$COMPOSE_VERSION"
+    const val COMPOSE_UI_TOOLING = "androidx.compose.ui:ui-tooling:$COMPOSE_VERSION"
     const val COMPOSE_ACTIVITY = "androidx.activity:activity-compose:$COMPOSE_ACTIVITY_VERSION"
 
     // test dependencies
