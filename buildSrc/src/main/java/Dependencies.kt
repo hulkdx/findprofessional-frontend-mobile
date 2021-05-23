@@ -31,7 +31,6 @@ object Dependencies {
     const val COROUTINES = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$COROUTINES_VERSION"
     const val COMPOSE_UI = "androidx.compose.ui:ui:$COMPOSE_VERSION"
     const val COMPOSE_UI_TOOLING = "androidx.compose.material:material:$COMPOSE_VERSION"
-    const val COMPOSE_MATERIAL = "androidx.compose.ui:ui-tooling:$COMPOSE_VERSION"
     const val COMPOSE_ACTIVITY = "androidx.activity:activity-compose:$COMPOSE_ACTIVITY_VERSION"
 
     // test dependencies

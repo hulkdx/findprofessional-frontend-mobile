@@ -56,7 +56,6 @@ dependencies {
     implementation(Dependencies.CORE_KTX)
     implementation(Dependencies.COMPOSE_UI)
     implementation(Dependencies.COMPOSE_UI_TOOLING)
-    implementation(Dependencies.COMPOSE_MATERIAL)
     implementation(Dependencies.COMPOSE_ACTIVITY)
 
     androidTestImplementation(Dependencies.COMPOSE_TEST)
