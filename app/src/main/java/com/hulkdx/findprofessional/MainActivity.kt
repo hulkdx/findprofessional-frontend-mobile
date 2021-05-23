@@ -1,21 +1,22 @@
-package com.hulkdx.findprofessional.ui
+package com.hulkdx.findprofessional
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.activity.compose.setContent
-import com.hulkdx.findprofessional.feature.authentication.signup.SignUpScreen
-import com.hulkdx.findprofessional.ui.theme.AppTheme
+import androidx.core.view.WindowCompat
+import com.hulkdx.findprofessional.feature.authentication.login.LoginScreen
+import com.hulkdx.findprofessional.theme.AppTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+
         setContent {
             AppTheme {
-                Surface(color = MaterialTheme.colors.background) {
-                    SignUpScreen()
-                }
+                LoginScreen()
             }
         }
     }

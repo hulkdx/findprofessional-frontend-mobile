@@ -8,10 +8,10 @@ object Dependencies {
     const val COMPILE_SDK_VERSION = 30
     const val BUILD_TOOLS_VERSION = "30.0.3"
 
-    private const val KOTLIN_VERSION = "1.4.30"
-    private const val COMPOSE_VERSION = "1.0.0-beta06"
-    private const val COMPOSE_ACTIVITY_VERSION = "1.3.0-alpha05"
-    private const val BUILD_GRADLE_PLUGIN_VERSION = "7.0.0-alpha15"
+    private const val KOTLIN_VERSION = "1.4.32"
+    private const val COMPOSE_VERSION = "1.0.0-beta07"
+    private const val COMPOSE_ACTIVITY_VERSION = "1.3.0-alpha08"
+    private const val BUILD_GRADLE_PLUGIN_VERSION = "7.0.0-beta01"
 
     private const val CORE_KTX_VERSION = "1.3.2"
     private const val RETROFIT_VERSION = "2.6.2"
