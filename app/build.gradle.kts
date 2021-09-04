@@ -5,7 +5,6 @@ plugins {
 
 android {
     compileSdk = Dependencies.COMPILE_SDK_VERSION
-    buildToolsVersion = Dependencies.BUILD_TOOLS_VERSION
 
     defaultConfig {
         applicationId = "com.hulkdx.findprofessional"
@@ -39,6 +38,10 @@ android {
 
     buildFeatures {
         compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = Dependencies.COMPOSE_VERSION
     }
 
     packagingOptions {

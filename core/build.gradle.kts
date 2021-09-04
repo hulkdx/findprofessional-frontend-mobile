@@ -26,9 +26,14 @@ android {
     buildFeatures {
         compose = true
     }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = Dependencies.COMPOSE_VERSION
+    }
 }
 
 dependencies {
     implementation(Dependencies.COMPOSE_UI)
     implementation(Dependencies.COMPOSE_UI_TOOLING)
+    implementation(Dependencies.COMPOSE_MATERIAL)
 }

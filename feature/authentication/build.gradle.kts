@@ -29,6 +29,9 @@ android {
     buildFeatures {
         compose = true
     }
+    composeOptions {
+        kotlinCompilerExtensionVersion = Dependencies.COMPOSE_VERSION
+    }
 
     tasks.withType<Test> {
         useJUnitPlatform()
@@ -45,6 +48,7 @@ dependencies {
     implementation(Dependencies.COMPOSE_UI)
     implementation(Dependencies.COMPOSE_UI_TOOLING)
     implementation(Dependencies.COMPOSE_ACTIVITY)
+    implementation(Dependencies.COMPOSE_MATERIAL)
 
     testImplementation(Dependencies.JUNIT_API)
     testRuntimeOnly(Dependencies.JUNIT_ENGINE)
