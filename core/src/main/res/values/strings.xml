@@ -6,4 +6,7 @@
     <string name="letsGetStarted">Let’s get started</string>
     <string name="weAreHappy">We are happy to have you back, sign in to continue your journey.</string>
 
+    <string name="signIn">Sign in</string>
+    <string name="dontHaveAnAccount">Don’t have an account?</string>
+
 </resources>

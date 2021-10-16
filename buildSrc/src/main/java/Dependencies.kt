@@ -20,6 +20,8 @@ object Dependencies {
     private const val RETROFIT_VERSION = "2.9.0"
     // https://github.com/Kotlin/kotlinx.coroutines
     private const val COROUTINES_VERSION = "1.5.30"
+    // https://github.com/Kotlin/kotlinx.coroutines/tree/master/kotlinx-coroutines-test
+    private const val COROUTINES_TEST_VERSION = "1.5.2"
     // https://github.com/junit-team/junit5
     private const val JUNIT_VERSION = "5.7.2"
     // https://github.com/mockito/mockito
@@ -44,7 +46,7 @@ object Dependencies {
     const val JUNIT_ENGINE = "org.junit.jupiter:junit-jupiter-engine:$JUNIT_VERSION"
     const val JUNIT_PARAM = "org.junit.jupiter:junit-jupiter-params:$JUNIT_VERSION"
     const val MOCKITO = "org.mockito:mockito-core:$MOCKITO_VERSION"
-    const val COROUTINES_TEST = "org.jetbrains.kotlinx:kotlinx-coroutines-test:$COROUTINES_VERSION"
+    const val COROUTINES_TEST = "org.jetbrains.kotlinx:kotlinx-coroutines-test:$COROUTINES_TEST_VERSION"
 
     // ui test dependencies
     const val COMPOSE_TEST = "androidx.compose.ui:ui-test-junit4:$COMPOSE_VERSION"
