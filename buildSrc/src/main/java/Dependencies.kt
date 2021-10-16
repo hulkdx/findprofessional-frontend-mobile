@@ -27,6 +27,8 @@ object Dependencies {
     // https://github.com/mockito/mockito
     private const val MOCKITO_VERSION = "2.23.0"
 
+    private const val EXT_JUNIT_TEST_VERSION = "1.1.3"
+
     // plugins
     const val KOTLIN_GRADLE_PLUGIN = "org.jetbrains.kotlin:kotlin-gradle-plugin:${KOTLIN_VERSION}"
     const val BUILD_GRADLE_PLUGIN = "com.android.tools.build:gradle:${BUILD_GRADLE_PLUGIN_VERSION}"
@@ -50,4 +52,5 @@ object Dependencies {
 
     // ui test dependencies
     const val COMPOSE_TEST = "androidx.compose.ui:ui-test-junit4:$COMPOSE_VERSION"
+    const val EXT_JUNIT_TEST = "androidx.test.ext:junit:$EXT_JUNIT_TEST_VERSION"
 }

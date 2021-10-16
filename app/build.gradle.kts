@@ -62,5 +62,6 @@ dependencies {
     implementation(Dependencies.COMPOSE_ACTIVITY)
 
     androidTestImplementation(Dependencies.COMPOSE_TEST)
+    androidTestImplementation(Dependencies.EXT_JUNIT_TEST)
 
 }
