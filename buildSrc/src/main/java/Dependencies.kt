@@ -7,11 +7,11 @@ object Dependencies {
     const val MIN_SDK_VERSION = 24
     const val COMPILE_SDK_VERSION = 31
 
-    private const val KOTLIN_VERSION = "1.5.21"
+    private const val KOTLIN_VERSION = "1.5.31"
     private const val BUILD_GRADLE_PLUGIN_VERSION = "7.0.2"
 
     // https://developer.android.com/jetpack/androidx/releases/compose
-    const val COMPOSE_VERSION = "1.0.2"
+    const val COMPOSE_VERSION = "1.0.4"
     // https://developer.android.com/jetpack/androidx/releases/activity
     private const val COMPOSE_ACTIVITY_VERSION = "1.3.1"
     // https://developer.android.com/jetpack/androidx/releases/core
