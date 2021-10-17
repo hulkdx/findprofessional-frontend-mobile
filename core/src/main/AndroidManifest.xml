@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.hulkdx.findprofessional">
+
+    <!-- Bug with androidx.compose.ui:ui-tooling on UI tests -->
+    <uses-sdk
+        android:minSdkVersion="21"
+        tools:overrideLibrary="androidx.compose.ui.tooling" />
+
+</manifest>
