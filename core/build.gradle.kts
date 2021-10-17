@@ -6,6 +6,10 @@ plugins {
 android {
     compileSdk = Dependencies.COMPILE_SDK_VERSION
 
+    defaultConfig {
+        minSdk = Dependencies.MIN_SDK_VERSION
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = true

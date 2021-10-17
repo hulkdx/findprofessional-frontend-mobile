@@ -3,6 +3,7 @@
 build/
 .idea/
 app/release
+.project
 
 # Local configuration file (sdk path, etc)
 local.properties
