@@ -5,7 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.core.view.WindowCompat
 import com.hulkdx.findprofessional.feature.authentication.login.LoginScreen
-import com.hulkdx.findprofessional.theme.AppTheme
+import com.hulkdx.findprofessional.core.theme.AppTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

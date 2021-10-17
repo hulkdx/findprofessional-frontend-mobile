@@ -9,7 +9,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import com.hulkdx.findprofessional.R
+import com.hulkdx.findprofessional.core.R
 
 @Composable
 @Preview

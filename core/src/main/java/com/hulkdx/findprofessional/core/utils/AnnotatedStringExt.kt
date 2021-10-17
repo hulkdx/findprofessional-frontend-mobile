@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.utils
+package com.hulkdx.findprofessional.core.utils
 
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle

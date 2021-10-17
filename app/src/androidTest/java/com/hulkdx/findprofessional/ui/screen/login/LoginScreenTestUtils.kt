@@ -1,7 +1,6 @@
-package com.hulkdx.findprofessional.ui.screen.signup
+package com.hulkdx.findprofessional.ui.screen.login
 
 import androidx.compose.ui.test.junit4.AndroidComposeTestRule
-import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performTextInput
 import androidx.test.ext.junit.rules.ActivityScenarioRule

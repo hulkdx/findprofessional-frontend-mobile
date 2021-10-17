@@ -1,11 +1,11 @@
-package com.hulkdx.findprofessional.theme
+package com.hulkdx.findprofessional.core.theme
 
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
-import com.hulkdx.findprofessional.R
+import com.hulkdx.findprofessional.core.R
 
 // region Fonts
 
