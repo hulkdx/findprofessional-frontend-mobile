@@ -1,15 +1,17 @@
 package com.hulkdx.findprofessional.ui.screen.signup
 
 import androidx.compose.ui.test.junit4.AndroidComposeTestRule
+import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performTextInput
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import com.hulkdx.findprofessional.MainActivity
 import com.hulkdx.findprofessional.R
+import com.hulkdx.findprofessional.utils.onNodeWithTagRes
 import com.hulkdx.findprofessional.utils.onNodeWithTextRes
 
 
-fun launchSignUpScreen(
+fun launchLoginScreen(
     rule: AndroidComposeTestRule<ActivityScenarioRule<MainActivity>, MainActivity>,
     block: SignUpDsl.() -> Unit,
 ) = SignUpDsl(rule).apply(block)
@@ -29,7 +31,12 @@ class SignUpDsl(
     }
 
     fun pressSignUpButton() {
-        rule.onNodeWithTextRes(R.string.signUp)
+        rule.onNodeWithTagRes(R.string.signUp)
+            .performClick()
+    }
+
+    fun pressSignInButton() {
+        rule.onNodeWithTextRes(R.string.signIn)
             .performClick()
     }
 
