@@ -30,18 +30,21 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.hulkdx.findprofessional.feature.authentication.R
+import com.hulkdx.findprofessional.core.navigation.Navigator
 import com.hulkdx.findprofessional.core.theme.body1
 import com.hulkdx.findprofessional.core.theme.body2
 import com.hulkdx.findprofessional.core.theme.h1
 import com.hulkdx.findprofessional.core.theme.h3
 import com.hulkdx.findprofessional.core.utils.bold
+import com.hulkdx.findprofessional.feature.authentication.R
+import com.hulkdx.findprofessional.feature.authentication.signup.SignUpNavigationScreen
+import org.koin.androidx.compose.get
 
 @Composable
-@Preview
-fun LoginScreen() {
+fun LoginScreen(
+    navigator: Navigator = get()
+) {
     val username = remember { mutableStateOf("") }
     val password = remember { mutableStateOf("") }
 
@@ -72,6 +75,7 @@ fun LoginScreen() {
             }
 
             SignUpButton {
+                navigator.navigate(SignUpNavigationScreen())
             }
         }
     }
