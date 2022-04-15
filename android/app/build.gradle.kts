@@ -53,8 +53,8 @@ android {
 
 dependencies {
 
-    implementation(project(":core"))
-    implementation(project(":feature:authentication"))
+    implementation(project(":android:core"))
+    implementation(project(":android:feature:authentication"))
 
     implementation(Dependencies.CORE_KTX)
     implementation(Dependencies.COMPOSE_UI)

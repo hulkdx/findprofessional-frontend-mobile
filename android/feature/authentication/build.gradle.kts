@@ -43,7 +43,7 @@ android {
 }
 
 dependencies {
-    implementation(project(":core"))
+    implementation(project(":android:core"))
 
     implementation(Dependencies.COMPOSE_UI)
     implementation(Dependencies.COMPOSE_UI_TOOLING)
