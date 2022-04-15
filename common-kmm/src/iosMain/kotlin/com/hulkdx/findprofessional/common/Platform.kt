@@ -1,4 +1,4 @@
-package com.example.myapplicationkmm
+package com.hulkdx.findprofessional.common
 
 import platform.UIKit.UIDevice
 

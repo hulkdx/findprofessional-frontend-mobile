@@ -1,4 +1,4 @@
-package com.example.myapplicationkmm
+package com.hulkdx.findprofessional.common
 
 actual class Platform actual constructor() {
     actual val platform: String = "Android ${android.os.Build.VERSION.SDK_INT}"
