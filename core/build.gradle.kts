@@ -37,6 +37,8 @@ android {
 }
 
 dependencies {
+    api(Dependencies.COMPOSE_NAVIGATION)
+
     implementation(Dependencies.COMPOSE_UI)
     implementation(Dependencies.COMPOSE_UI_TOOLING)
     implementation(Dependencies.COMPOSE_MATERIAL)

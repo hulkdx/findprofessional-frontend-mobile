@@ -60,6 +60,10 @@ dependencies {
     implementation(Dependencies.COMPOSE_UI)
     implementation(Dependencies.COMPOSE_UI_TOOLING)
     implementation(Dependencies.COMPOSE_ACTIVITY)
+    implementation(Dependencies.COMPOSE_NAVIGATION)
+    implementation(Dependencies.KOIN_CORE)
+    implementation(Dependencies.KOIN_ANDROID)
+    implementation(Dependencies.KOIN_COMPOSE)
 
     androidTestImplementation(Dependencies.COMPOSE_TEST)
     androidTestImplementation(Dependencies.EXT_JUNIT_TEST)

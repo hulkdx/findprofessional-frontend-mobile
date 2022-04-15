@@ -14,6 +14,8 @@ object Dependencies {
     const val COMPOSE_VERSION = "1.0.4"
     // https://developer.android.com/jetpack/androidx/releases/activity
     private const val COMPOSE_ACTIVITY_VERSION = "1.3.1"
+    // https://developer.android.com/jetpack/androidx/releases/navigation
+    private const val COMPOSE_NAVIGATION_VERSION = "2.4.2"
     // https://developer.android.com/jetpack/androidx/releases/core
     private const val CORE_KTX_VERSION = "1.6.0"
     // https://github.com/square/retrofit
@@ -26,8 +28,9 @@ object Dependencies {
     private const val JUNIT_VERSION = "5.7.2"
     // https://github.com/mockito/mockito
     private const val MOCKITO_VERSION = "2.23.0"
-
     private const val EXT_JUNIT_TEST_VERSION = "1.1.3"
+    // Koin
+    private const val KOIN_VERSION = "3.1.6"
 
     // plugins
     const val KOTLIN_GRADLE_PLUGIN = "org.jetbrains.kotlin:kotlin-gradle-plugin:${KOTLIN_VERSION}"
@@ -42,6 +45,11 @@ object Dependencies {
     const val COMPOSE_UI_TOOLING = "androidx.compose.ui:ui-tooling:$COMPOSE_VERSION"
     const val COMPOSE_MATERIAL = "androidx.compose.material:material:$COMPOSE_VERSION"
     const val COMPOSE_ACTIVITY = "androidx.activity:activity-compose:$COMPOSE_ACTIVITY_VERSION"
+    const val COMPOSE_NAVIGATION = "androidx.navigation:navigation-compose:$COMPOSE_NAVIGATION_VERSION"
+
+    const val KOIN_CORE = "io.insert-koin:koin-core:${KOIN_VERSION}"
+    const val KOIN_ANDROID = "io.insert-koin:koin-android:${KOIN_VERSION}"
+    const val KOIN_COMPOSE = "io.insert-koin:koin-androidx-compose:${KOIN_VERSION}"
 
     // test dependencies
     const val JUNIT_API = "org.junit.jupiter:junit-jupiter-api:$JUNIT_VERSION"
