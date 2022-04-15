@@ -1,5 +1,5 @@
 include ':android:app'
 include ':android:feature:authentication'
 include ':android:core'
-include ':common-kmm'
 include ':ios'
+include ':common-kmm'
