@@ -3,7 +3,7 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="signUp">Sign Up</string>
-    <string name="letsGetStarted">Let’s get started</string>
+    <string name="letsGetStarted">Let’s get\nstarted</string>
     <string name="weAreHappy">We are happy to have you back, sign in to continue your journey.</string>
 
     <string name="signIn">Sign in</string>

@@ -1,5 +1,6 @@
 package com.hulkdx.findprofessional.ui.screen.login
 
+import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.AndroidComposeTestRule
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performTextInput
@@ -9,14 +10,15 @@ import com.hulkdx.findprofessional.R
 import com.hulkdx.findprofessional.utils.onNodeWithTagRes
 import com.hulkdx.findprofessional.utils.onNodeWithTextRes
 
+typealias Rule = AndroidComposeTestRule<ActivityScenarioRule<MainActivity>, MainActivity>
 
 fun launchLoginScreen(
-    rule: AndroidComposeTestRule<ActivityScenarioRule<MainActivity>, MainActivity>,
+    rule: Rule,
     block: SignUpDsl.() -> Unit,
 ) = SignUpDsl(rule).apply(block)
 
 class SignUpDsl(
-    private val rule: AndroidComposeTestRule<ActivityScenarioRule<MainActivity>, MainActivity>
+    private val rule: Rule
 ) {
 
     fun typeEmail(email: String) {
@@ -43,7 +45,10 @@ class SignUpDsl(
 }
 
 class SignUpVerify(
-    rule: AndroidComposeTestRule<ActivityScenarioRule<MainActivity>, MainActivity>
+    private val rule: Rule
 ) {
-
+    fun signupScreenIsShown() {
+        rule.onNodeWithTextRes(R.string.signUp)
+            .assertIsDisplayed()
+    }
 }

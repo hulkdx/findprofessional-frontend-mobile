@@ -6,12 +6,15 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Button
 import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
@@ -25,6 +28,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.layout.Layout
+import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -51,80 +57,39 @@ fun LoginScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(MaterialTheme.colors.onPrimary)
+            .background(MaterialTheme.colors.onPrimary),
+        verticalArrangement = Arrangement.Center
     ) {
-        LoginHeader()
+        EmailTextField(
+            value = username.value,
+            onValueChanged = { username.value = it }
+        )
 
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(bottom = 8.dp),
-            verticalArrangement = Arrangement.Center,
+        PasswordTextField(
+            modifier = Modifier.padding(top = 8.dp),
+            value = password.value,
+            onValueChanged = { password.value = it }
+        )
+
+        SignInButton(
+            modifier = Modifier.padding(top = 16.dp),
         ) {
-            EmailTextField(
-                value = username.value,
-                onValueChanged = { username.value = it }
-            )
+        }
 
-            PasswordTextField(
-                value = password.value,
-                onValueChanged = { password.value = it }
-            )
-
-            SignInButton {
-            }
-
-            SignUpButton {
-                navigator.navigate(SignUpNavigationScreen())
-            }
+        SignUpButton(
+            modifier = Modifier.padding(top = 32.dp),
+        ) {
+            navigator.navigate(SignUpNavigationScreen())
         }
     }
 }
 
 @Composable
-private fun LoginHeader() {
-    Box(Modifier.fillMaxWidth()) {
-        LoginHeaderBackgroundImage()
-        Column {
-            LoginHeaderTitle()
-            LoginHeaderDivider()
-            LoginHeaderDescription()
-        }
-    }
-}
-
-@Composable
-private fun BoxScope.LoginHeaderBackgroundImage() {
-    Image(
-        modifier = Modifier.matchParentSize(),
-        contentScale = ContentScale.FillBounds,
-        painter = painterResource(R.drawable.login_background),
-        contentDescription = null,
-    )
-}
-
-@Composable
-private fun LoginHeaderTitle() {
-    Text(
-        modifier = Modifier.padding(
-            top = 60.dp,
-            start = 18.dp,
-            end = 38.dp,
-        ),
-        maxLines = 2,
-        text = stringResource(id = R.string.letsGetStarted),
-        color = MaterialTheme.colors.onPrimary,
-        style = h1,
-    )
-}
-
-@Composable
-private fun LoginHeaderDivider() {
+private fun LoginHeaderDivider(modifier: Modifier) {
     Divider(
-        modifier = Modifier.padding(
+        modifier = modifier.padding(
             start = 19.dp,
             end = 46.dp,
-            top = 8.dp,
         ),
         color = MaterialTheme.colors.onPrimary
             .copy(alpha = 0.25f),
@@ -133,13 +98,11 @@ private fun LoginHeaderDivider() {
 }
 
 @Composable
-private fun LoginHeaderDescription() {
+private fun LoginHeaderDescription(modifier: Modifier = Modifier) {
     Text(
-        modifier = Modifier.padding(
-            top = 24.dp,
+        modifier = modifier.padding(
             start = 18.dp,
             end = 80.dp,
-            bottom = 24.dp,
         ),
         maxLines = 2,
         text = stringResource(id = R.string.weAreHappy),
@@ -150,11 +113,12 @@ private fun LoginHeaderDescription() {
 
 @Composable
 private fun EmailTextField(
+    modifier: Modifier = Modifier,
     value: String,
     onValueChanged: (String) -> (Unit),
 ) {
     CommonTextField(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .padding(
                 start = 16.dp,
@@ -171,14 +135,14 @@ private fun EmailTextField(
 
 @Composable
 private fun PasswordTextField(
+    modifier: Modifier = Modifier,
     value: String,
     onValueChanged: (String) -> (Unit),
 ) {
     CommonTextField(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .padding(
-                top = 16.dp,
                 start = 16.dp,
                 end = 16.dp,
             )
@@ -226,15 +190,15 @@ private fun CommonTextField(
 
 @Composable
 private fun SignInButton(
+    modifier: Modifier,
     onClick: () -> Unit,
 ) {
     Button(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .padding(
                 start = 16.dp,
                 end = 16.dp,
-                top = 36.dp,
             ),
         onClick = onClick,
         shape = RoundedCornerShape(8.dp),
@@ -248,14 +212,12 @@ private fun SignInButton(
 
 @Composable
 private fun SignUpButton(
+    modifier: Modifier,
     onClick: () -> Unit,
 ) {
     Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(
-                top = 62.dp,
-            ),
+        modifier = modifier
+            .fillMaxWidth(),
         contentAlignment = Alignment.TopCenter,
     ) {
         TextButton(

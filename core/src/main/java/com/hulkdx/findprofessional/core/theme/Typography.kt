@@ -21,8 +21,8 @@ val interFamily = FontFamily(
 val h1 = TextStyle(
     fontFamily = interFamily,
     fontWeight = FontWeight.Bold,
-    fontSize = 48.sp,
-    lineHeight = 58.sp,
+    fontSize = 38.sp,
+    lineHeight = 42.sp,
 )
 
 val h3 = TextStyle(
