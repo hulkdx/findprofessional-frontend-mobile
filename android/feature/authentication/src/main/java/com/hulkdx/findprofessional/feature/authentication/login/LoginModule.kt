@@ -10,6 +10,6 @@ val loginModule: Module
     get() = module {
         factory { LoginNavigationScreen() } bind NavigationScreen::class
 
-        viewModel { LoginViewModel() }
+        viewModel { LoginViewModel(get()) }
     }
 
