@@ -14,8 +14,6 @@ import com.hulkdx.findprofessional.navigation.NavigationComposable
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        WindowInsetsControllerCompat(window, window.decorView)
-            .hide(WindowInsetsCompat.Type.statusBars())
 
         setContent {
             AppTheme {
