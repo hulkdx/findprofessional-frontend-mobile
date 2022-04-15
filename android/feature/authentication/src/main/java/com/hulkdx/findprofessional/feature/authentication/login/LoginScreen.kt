@@ -1,5 +1,6 @@
 package com.hulkdx.findprofessional.feature.authentication.login
 
+import android.widget.TextView
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -19,6 +20,7 @@ import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.material.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -47,6 +49,8 @@ fun LoginScreen(
     val username = remember { mutableStateOf("") }
     val password = remember { mutableStateOf("") }
 
+    val z = viewModel.state.collectAsState().value
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -74,6 +78,13 @@ fun LoginScreen(
         ) {
             navigator.navigate(SignUpNavigationScreen())
         }
+
+        Text(
+            maxLines = 2,
+            text = z,
+            color = MaterialTheme.colors.primary,
+            style = body1,
+        )
     }
 }
 

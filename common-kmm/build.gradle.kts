@@ -20,6 +20,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(Dependencies.KOIN_CORE)
+                implementation(Dependencies.COROUTINES)
             }
         }
         val androidMain by getting

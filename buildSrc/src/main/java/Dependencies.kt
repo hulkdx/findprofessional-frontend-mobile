@@ -19,7 +19,7 @@ object Dependencies {
     // https://developer.android.com/jetpack/androidx/releases/core
     private const val CORE_KTX_VERSION = "1.7.0"
     // https://github.com/Kotlin/kotlinx.coroutines
-    private const val COROUTINES_VERSION = "1.5.30"
+    private const val COROUTINES_VERSION = "1.6.0"
     // https://github.com/InsertKoinIO/koin
     private const val KOIN_VERSION = "3.1.6"
 
