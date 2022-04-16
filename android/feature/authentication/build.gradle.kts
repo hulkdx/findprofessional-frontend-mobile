@@ -44,6 +44,7 @@ android {
 
 dependencies {
     implementation(project(":android:core"))
+    implementation(project(":common-kmm"))
 
     implementation(Dependencies.COMPOSE_UI)
     implementation(Dependencies.COMPOSE_UI_TOOLING)

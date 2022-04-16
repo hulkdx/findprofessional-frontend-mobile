@@ -54,6 +54,7 @@ dependencies {
 
     implementation(project(":android:core"))
     implementation(project(":android:feature:authentication"))
+    implementation(project(":common-kmm"))
 
     implementation(Dependencies.CORE_KTX)
     implementation(Dependencies.COMPOSE_UI)
