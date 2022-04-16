@@ -32,6 +32,7 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.hulkdx.findprofessional.core.navigation.Navigator
+import com.hulkdx.findprofessional.core.theme.LightGrey
 import com.hulkdx.findprofessional.core.theme.body1
 import com.hulkdx.findprofessional.core.theme.body2
 import com.hulkdx.findprofessional.core.theme.h3
@@ -48,8 +49,6 @@ fun LoginScreen(
 ) {
     val username = remember { mutableStateOf("") }
     val password = remember { mutableStateOf("") }
-
-    val z = viewModel.state.collectAsState().value
 
     Column(
         modifier = Modifier
@@ -78,13 +77,6 @@ fun LoginScreen(
         ) {
             navigator.navigate(SignUpNavigationScreen())
         }
-
-        Text(
-            maxLines = 2,
-            text = z,
-            color = MaterialTheme.colors.primary,
-            style = body1,
-        )
     }
 }
 
@@ -127,8 +119,7 @@ private fun EmailTextField(
             .padding(
                 start = 16.dp,
                 end = 16.dp,
-            )
-            .height(50.dp),
+            ),
         hint = stringResource(id = R.string.email),
         leadingIconDrawable = R.drawable.ic_password,
         leadingIconContentDescription = stringResource(id = R.string.email),
@@ -187,7 +178,7 @@ private fun CommonTextField(
             )
         },
         colors = TextFieldDefaults.textFieldColors(
-//            backgroundColor = LightGrey,
+            backgroundColor = LightGrey,
         ),
     )
 }
