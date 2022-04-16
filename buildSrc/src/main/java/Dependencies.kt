@@ -22,6 +22,8 @@ object Dependencies {
     private const val COROUTINES_VERSION = "1.6.0"
     // https://github.com/InsertKoinIO/koin
     private const val KOIN_VERSION = "3.1.6"
+    // https://github.com/rickclephas/KMP-NativeCoroutines
+    const val IOS_KMP_NATIVE_VERSION = "0.11.4-new-mm"
 
     // https://github.com/Kotlin/kotlinx.coroutines/tree/master/kotlinx-coroutines-test
     private const val COROUTINES_TEST_VERSION = "1.5.2"
@@ -34,6 +36,7 @@ object Dependencies {
     // plugins
     const val KOTLIN_GRADLE_PLUGIN = "org.jetbrains.kotlin:kotlin-gradle-plugin:${KOTLIN_VERSION}"
     const val BUILD_GRADLE_PLUGIN = "com.android.tools.build:gradle:${BUILD_GRADLE_PLUGIN_VERSION}"
+    const val IOS_KMP_NATIVE = "com.rickclephas.kmp.nativecoroutines"
 
     // main dependencies
     const val CORE_KTX = "androidx.core:core-ktx:${CORE_KTX_VERSION}"

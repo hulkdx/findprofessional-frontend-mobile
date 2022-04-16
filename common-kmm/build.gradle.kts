@@ -1,6 +1,8 @@
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
+
+    id(Dependencies.IOS_KMP_NATIVE) version Dependencies.IOS_KMP_NATIVE_VERSION
 }
 
 kotlin {
