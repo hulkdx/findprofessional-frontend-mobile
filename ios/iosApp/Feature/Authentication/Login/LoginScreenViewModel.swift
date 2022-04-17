@@ -3,23 +3,8 @@ import Combine
 import shared
 import KMPNativeCoroutinesAsync
 
-struct ContentView: View {
-    @StateObject
-    var viewModel = ViewModel(repository: LoginRepository())
-
-	var body: some View {
-        Text(viewModel.data)
-	}
-}
-
-struct ContentView_Previews: PreviewProvider {
-	static var previews: some View {
-		ContentView()
-	}
-}
-
 @MainActor
-class ViewModel: ObservableObject {
+class LoginScreenViewModel: ObservableObject {
     
     private let repository: LoginRepository
     

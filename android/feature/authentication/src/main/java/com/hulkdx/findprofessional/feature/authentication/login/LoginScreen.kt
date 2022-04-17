@@ -1,6 +1,5 @@
 package com.hulkdx.findprofessional.feature.authentication.login
 
-import android.widget.TextView
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -13,7 +12,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
-import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
@@ -29,6 +27,8 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.hulkdx.findprofessional.core.navigation.Navigator
@@ -81,33 +81,6 @@ fun LoginScreen(
 }
 
 @Composable
-private fun LoginHeaderDivider(modifier: Modifier) {
-    Divider(
-        modifier = modifier.padding(
-            start = 19.dp,
-            end = 46.dp,
-        ),
-        color = MaterialTheme.colors.onPrimary
-            .copy(alpha = 0.25f),
-        thickness = 2.dp,
-    )
-}
-
-@Composable
-private fun LoginHeaderDescription(modifier: Modifier = Modifier) {
-    Text(
-        modifier = modifier.padding(
-            start = 18.dp,
-            end = 80.dp,
-        ),
-        maxLines = 2,
-        text = stringResource(id = R.string.weAreHappy),
-        color = MaterialTheme.colors.onSecondary,
-        style = body1,
-    )
-}
-
-@Composable
 private fun EmailTextField(
     modifier: Modifier = Modifier,
     value: String,
@@ -121,10 +94,10 @@ private fun EmailTextField(
                 end = 16.dp,
             ),
         hint = stringResource(id = R.string.email),
-        leadingIconDrawable = R.drawable.ic_password,
+        leadingIconDrawable = R.drawable.ic_email,
         leadingIconContentDescription = stringResource(id = R.string.email),
         value = value,
-        onValueChanged = onValueChanged
+        onValueChanged = onValueChanged,
     )
 }
 
@@ -140,13 +113,13 @@ private fun PasswordTextField(
             .padding(
                 start = 16.dp,
                 end = 16.dp,
-            )
-            .height(50.dp),
+            ),
         hint = stringResource(id = R.string.password),
-        leadingIconDrawable = R.drawable.ic_email,
+        leadingIconDrawable = R.drawable.ic_password,
         leadingIconContentDescription = stringResource(id = R.string.password),
+        visualTransformation = PasswordVisualTransformation(),
         value = value,
-        onValueChanged = onValueChanged
+        onValueChanged = onValueChanged,
     )
 }
 
@@ -156,6 +129,7 @@ private fun CommonTextField(
     hint: String,
     @DrawableRes leadingIconDrawable: Int,
     leadingIconContentDescription: String,
+    visualTransformation: VisualTransformation = VisualTransformation.None,
     value: String,
     onValueChanged: (String) -> (Unit),
 ) {
@@ -180,6 +154,7 @@ private fun CommonTextField(
         colors = TextFieldDefaults.textFieldColors(
             backgroundColor = LightGrey,
         ),
+        visualTransformation = visualTransformation,
     )
 }
 
