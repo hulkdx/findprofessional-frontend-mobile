@@ -17,9 +17,18 @@ struct LoginScreen: View {
     @State var password: String = ""
     
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             EmailTextField(value: username)
             PasswordTextField(value: password)
+                .padding(.top, 16)
+            SignInButton() {
+                
+            }
+                .padding(.top, 16)
+            SignUpButton() {
+                
+            }
+                .padding(.top, 32)
         }
         .padding(.horizontal, 16)
     }
@@ -115,4 +124,38 @@ private extension View {
                 self
             }
         }
+}
+
+private struct SignInButton: View {
+    
+    let action: () -> Void
+
+    var body: some View {
+        
+        Button(action: action, label: {
+            Text("Sign in")
+                .frame(maxWidth: .infinity)
+                .font(AppFont.h3)
+                .padding()
+                .background(
+                    RoundedRectangle(cornerRadius: 8)
+                        .fill(AppColor.Green)
+                )
+                .foregroundColor(Color.white)
+        })
+    }
+}
+
+private struct SignUpButton: View {
+    
+    let action: () -> Void
+    
+    var body: some View {
+        Button(action: action, label: {
+            Text("Don’t have an account? **Sign Up**")
+                .font(AppFont.body1)
+                .padding()
+                .foregroundColor(AppColor.Green)
+        })
+    }
 }

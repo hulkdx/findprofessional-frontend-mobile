@@ -17,4 +17,8 @@ final class AppColor {
     static var LightGreenBorder: Color {
         Color(red: 48 / 255, green: 104 / 255, blue: 52 / 255)
     }
+
+    static var Green: Color {
+        Color(red: 15 / 255, green: 106 / 255, blue: 44 / 255).opacity(1)
+    }
 }

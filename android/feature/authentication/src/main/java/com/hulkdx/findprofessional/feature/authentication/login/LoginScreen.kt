@@ -1,6 +1,5 @@
 package com.hulkdx.findprofessional.feature.authentication.login
 
-import android.widget.TextView
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -13,7 +12,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
-import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
@@ -51,8 +49,6 @@ fun LoginScreen(
     val username = remember { mutableStateOf("") }
     val password = remember { mutableStateOf("") }
 
-    val z = viewModel.state.collectAsState().value
-
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -80,41 +76,7 @@ fun LoginScreen(
         ) {
             navigator.navigate(SignUpNavigationScreen())
         }
-
-        Text(
-            maxLines = 2,
-            text = z,
-            color = MaterialTheme.colors.primary,
-            style = body1,
-        )
     }
-}
-
-@Composable
-private fun LoginHeaderDivider(modifier: Modifier) {
-    Divider(
-        modifier = modifier.padding(
-            start = 19.dp,
-            end = 46.dp,
-        ),
-        color = MaterialTheme.colors.onPrimary
-            .copy(alpha = 0.25f),
-        thickness = 2.dp,
-    )
-}
-
-@Composable
-private fun LoginHeaderDescription(modifier: Modifier = Modifier) {
-    Text(
-        modifier = modifier.padding(
-            start = 18.dp,
-            end = 80.dp,
-        ),
-        maxLines = 2,
-        text = stringResource(id = R.string.weAreHappy),
-        color = MaterialTheme.colors.onSecondary,
-        style = body1,
-    )
 }
 
 @Composable
