@@ -44,5 +44,12 @@
 	</array>
 	<key>UILaunchScreen</key>
 	<dict/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>inter_bold.ttf</string>
+		<string>inter_light.ttf</string>
+		<string>inter_medium.ttf</string>
+		<string>inter_regular.ttf</string>
+	</array>
 </dict>
 </plist>

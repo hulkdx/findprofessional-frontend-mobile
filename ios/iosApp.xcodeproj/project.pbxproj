@@ -10,8 +10,15 @@
 		058557BB273AAA24004C7B11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557BA273AAA24004C7B11 /* Assets.xcassets */; };
 		058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */; };
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
+		463B8DF6280B014C0016B0BD /* AppFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463B8DF5280B014C0016B0BD /* AppFont.swift */; };
 		467BCA01280AD21B009EE97E /* KMPNativeCoroutinesAsync in Frameworks */ = {isa = PBXBuildFile; productRef = 467BCA00280AD21B009EE97E /* KMPNativeCoroutinesAsync */; };
-		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
+		46E01EBB280AE3B40023A293 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E01EBA280AE3B40023A293 /* LoginScreen.swift */; };
+		46E01EBD280AE3FD0023A293 /* LoginScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E01EBC280AE3FD0023A293 /* LoginScreenViewModel.swift */; };
+		46E01EC0280AF4400023A293 /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E01EBF280AF4400023A293 /* AppColor.swift */; };
+		46EBF93C280C41AB001D635A /* inter_bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46EBF93B280C41AB001D635A /* inter_bold.ttf */; };
+		46EBF940280C41D0001D635A /* inter_regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46EBF93D280C41D0001D635A /* inter_regular.ttf */; };
+		46EBF941280C41D0001D635A /* inter_medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46EBF93E280C41D0001D635A /* inter_medium.ttf */; };
+		46EBF942280C41D0001D635A /* inter_light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46EBF93F280C41D0001D635A /* inter_light.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,8 +38,15 @@
 		058557BA273AAA24004C7B11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2152FB032600AC8F00CF470E /* iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSApp.swift; sourceTree = "<group>"; };
+		463B8DF5280B014C0016B0BD /* AppFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFont.swift; sourceTree = "<group>"; };
+		46E01EBA280AE3B40023A293 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
+		46E01EBC280AE3FD0023A293 /* LoginScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenViewModel.swift; sourceTree = "<group>"; };
+		46E01EBF280AF4400023A293 /* AppColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
+		46EBF93B280C41AB001D635A /* inter_bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = inter_bold.ttf; sourceTree = "<group>"; };
+		46EBF93D280C41D0001D635A /* inter_regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = inter_regular.ttf; sourceTree = "<group>"; };
+		46EBF93E280C41D0001D635A /* inter_medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = inter_medium.ttf; sourceTree = "<group>"; };
+		46EBF93F280C41D0001D635A /* inter_light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = inter_light.ttf; sourceTree = "<group>"; };
 		7555FF7B242A565900829871 /* iosApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		7555FF82242A565900829871 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -56,6 +70,60 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		46E01EB7280AE34C0023A293 /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+				46E01EB8280AE38E0023A293 /* Authentication */,
+			);
+			path = Feature;
+			sourceTree = "<group>";
+		};
+		46E01EB8280AE38E0023A293 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				46E01EB9280AE3A80023A293 /* Login */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		46E01EB9280AE3A80023A293 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				46E01EBA280AE3B40023A293 /* LoginScreen.swift */,
+				46E01EBC280AE3FD0023A293 /* LoginScreenViewModel.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		46E01EBE280AF4300023A293 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				46E01EBF280AF4400023A293 /* AppColor.swift */,
+				463B8DF5280B014C0016B0BD /* AppFont.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		46E01ECB280B000C0023A293 /* Res */ = {
+			isa = PBXGroup;
+			children = (
+				46EBF92C280C400B001D635A /* Font */,
+				058557BA273AAA24004C7B11 /* Assets.xcassets */,
+			);
+			path = Res;
+			sourceTree = "<group>";
+		};
+		46EBF92C280C400B001D635A /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				46EBF93B280C41AB001D635A /* inter_bold.ttf */,
+				46EBF93F280C41D0001D635A /* inter_light.ttf */,
+				46EBF93E280C41D0001D635A /* inter_medium.ttf */,
+				46EBF93D280C41D0001D635A /* inter_regular.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
 		7555FF72242A565900829871 = {
 			isa = PBXGroup;
 			children = (
@@ -76,11 +144,12 @@
 		7555FF7D242A565900829871 /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
-				058557BA273AAA24004C7B11 /* Assets.xcassets */,
-				7555FF82242A565900829871 /* ContentView.swift */,
-				7555FF8C242A565B00829871 /* Info.plist */,
 				2152FB032600AC8F00CF470E /* iOSApp.swift */,
+				7555FF8C242A565B00829871 /* Info.plist */,
+				46E01EB7280AE34C0023A293 /* Feature */,
 				058557D7273AAEEB004C7B11 /* Preview Content */,
+				46E01ECB280B000C0023A293 /* Res */,
+				46E01EBE280AF4300023A293 /* Theme */,
 			);
 			path = iosApp;
 			sourceTree = "<group>";
@@ -158,8 +227,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46EBF940280C41D0001D635A /* inter_regular.ttf in Resources */,
 				058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */,
+				46EBF942280C41D0001D635A /* inter_light.ttf in Resources */,
+				46EBF93C280C41AB001D635A /* inter_bold.ttf in Resources */,
 				058557BB273AAA24004C7B11 /* Assets.xcassets in Resources */,
+				46EBF941280C41D0001D635A /* inter_medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,7 +264,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
-				7555FF83242A565900829871 /* ContentView.swift in Sources */,
+				46E01EC0280AF4400023A293 /* AppColor.swift in Sources */,
+				463B8DF6280B014C0016B0BD /* AppFont.swift in Sources */,
+				46E01EBB280AE3B40023A293 /* LoginScreen.swift in Sources */,
+				46E01EBD280AE3FD0023A293 /* LoginScreenViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,6 +399,7 @@
 				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../common-kmm/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)";
 				INFOPLIST_FILE = iosApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -348,6 +425,7 @@
 				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../common-kmm/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)";
 				INFOPLIST_FILE = iosApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
