@@ -29,6 +29,8 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.hulkdx.findprofessional.core.navigation.Navigator
@@ -130,10 +132,10 @@ private fun EmailTextField(
             )
             .height(50.dp),
         hint = stringResource(id = R.string.email),
-        leadingIconDrawable = R.drawable.ic_password,
+        leadingIconDrawable = R.drawable.ic_email,
         leadingIconContentDescription = stringResource(id = R.string.email),
         value = value,
-        onValueChanged = onValueChanged
+        onValueChanged = onValueChanged,
     )
 }
 
@@ -149,13 +151,13 @@ private fun PasswordTextField(
             .padding(
                 start = 16.dp,
                 end = 16.dp,
-            )
-            .height(50.dp),
+            ),
         hint = stringResource(id = R.string.password),
-        leadingIconDrawable = R.drawable.ic_email,
+        leadingIconDrawable = R.drawable.ic_password,
         leadingIconContentDescription = stringResource(id = R.string.password),
+        visualTransformation = PasswordVisualTransformation(),
         value = value,
-        onValueChanged = onValueChanged
+        onValueChanged = onValueChanged,
     )
 }
 
@@ -165,6 +167,7 @@ private fun CommonTextField(
     hint: String,
     @DrawableRes leadingIconDrawable: Int,
     leadingIconContentDescription: String,
+    visualTransformation: VisualTransformation = VisualTransformation.None,
     value: String,
     onValueChanged: (String) -> (Unit),
 ) {
@@ -189,6 +192,7 @@ private fun CommonTextField(
         colors = TextFieldDefaults.textFieldColors(
 //            backgroundColor = LightGrey,
         ),
+        visualTransformation = visualTransformation,
     )
 }
 
