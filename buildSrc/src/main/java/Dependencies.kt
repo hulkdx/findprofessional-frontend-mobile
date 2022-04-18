@@ -24,6 +24,7 @@ object Dependencies {
     private const val KOIN_VERSION = "3.1.6"
     // https://github.com/rickclephas/KMP-NativeCoroutines
     const val IOS_KMP_NATIVE_VERSION = "0.11.4-new-mm"
+    private const val LEAK_CANARY_VERSION = "2.8.1"
 
     // https://github.com/Kotlin/kotlinx.coroutines/tree/master/kotlinx-coroutines-test
     private const val COROUTINES_TEST_VERSION = "1.5.2"
@@ -53,7 +54,7 @@ object Dependencies {
     const val KOIN_COMPOSE = "io.insert-koin:koin-androidx-compose:${KOIN_VERSION}"
 
     // debug dependencies
-    const val LEAK_CANARY = "com.squareup.leakcanary:leakcanary-android:2.8.1"
+    const val LEAK_CANARY = "com.squareup.leakcanary:leakcanary-android:$LEAK_CANARY_VERSION"
 
     // test dependencies
     const val JUNIT_API = "org.junit.jupiter:junit-jupiter-api:$JUNIT_VERSION"
