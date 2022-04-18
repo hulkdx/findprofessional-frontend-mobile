@@ -8,8 +8,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
@@ -24,10 +22,10 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.hulkdx.findprofessional.core.theme.body1
-import com.hulkdx.findprofessional.core.theme.h3
 import com.hulkdx.findprofessional.core.utils.bold
 import com.hulkdx.findprofessional.feature.authentication.R
 import com.hulkdx.findprofessional.feature.authentication.ui.EmailTextField
+import com.hulkdx.findprofessional.feature.authentication.ui.FilledButton
 import com.hulkdx.findprofessional.feature.authentication.ui.PasswordTextField
 import org.koin.androidx.compose.getViewModel
 
@@ -73,21 +71,11 @@ private fun SignInButton(
     modifier: Modifier,
     onClick: () -> Unit,
 ) {
-    Button(
-        modifier = modifier
-            .fillMaxWidth()
-            .padding(
-                start = 16.dp,
-                end = 16.dp,
-            ),
-        onClick = onClick,
-        shape = RoundedCornerShape(8.dp),
-    ) {
-        Text(
-            text = stringResource(id = R.string.signIn),
-            style = h3,
-        )
-    }
+    FilledButton(
+        modifier,
+        text = stringResource(id = R.string.signIn),
+        onClick,
+    )
 }
 
 @Composable
