@@ -30,7 +30,8 @@ object Dependencies {
     // https://github.com/junit-team/junit5
     private const val JUNIT_VERSION = "5.7.2"
     // https://github.com/mockito/mockito
-    private const val MOCKITO_VERSION = "2.23.0"
+    private const val MOCKITO_VERSION = "3.10.0"
+    private const val MOCKITO_JUNIT5_VERSION = "2.23.0"
     private const val EXT_JUNIT_TEST_VERSION = "1.1.3"
 
     // plugins
@@ -56,6 +57,7 @@ object Dependencies {
     const val JUNIT_ENGINE = "org.junit.jupiter:junit-jupiter-engine:$JUNIT_VERSION"
     const val JUNIT_PARAM = "org.junit.jupiter:junit-jupiter-params:$JUNIT_VERSION"
     const val MOCKITO = "org.mockito:mockito-core:$MOCKITO_VERSION"
+    const val MOCKITO_JUNIT5 = "org.mockito:mockito-junit-jupiter:$MOCKITO_JUNIT5_VERSION"
     const val COROUTINES_TEST = "org.jetbrains.kotlinx:kotlinx-coroutines-test:$COROUTINES_TEST_VERSION"
 
     // ui test dependencies
