@@ -2,15 +2,15 @@ import SwiftUI
 import Combine
 import shared
 
-struct LoginScreen_Previews: PreviewProvider {
+struct SignUpScreen_Previews: PreviewProvider {
     static var previews: some View {
-        LoginScreen()
+        SignUpScreen()
     }
 }
 
-struct LoginScreen: View {
+struct SignUpScreen: View {
     @StateObject
-    var viewModel = LoginViewModel(repository: LoginRepository())
+    var viewModel = SignUpViewModel()
     
     @State var username: String = ""
     @State var password: String = ""
@@ -24,10 +24,6 @@ struct LoginScreen: View {
                 
             }
                 .padding(.top, 16)
-            SignUpButton() {
-                
-            }
-                .padding(.top, 32)
         }
         .padding(.horizontal, 16)
     }
@@ -38,7 +34,7 @@ private struct SignInButton: View {
     let action: () -> Void
 
     var body: some View {
-        FilledButton(text: "Sign in", action: action)
+        FilledButton(text: "Sign up", action: action)
     }
 }
 
