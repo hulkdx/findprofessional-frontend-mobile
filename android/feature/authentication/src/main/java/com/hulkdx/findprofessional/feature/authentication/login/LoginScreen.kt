@@ -10,6 +10,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
@@ -56,6 +58,7 @@ fun LoginScreen(
         verticalArrangement = Arrangement.Center
     ) {
         EmailTextField(
+            modifier = Modifier.statusBarsPadding(),
             value = username.value,
             onValueChanged = { username.value = it }
         )
@@ -197,8 +200,9 @@ private fun SignUpButton(
                 text = buildAnnotatedString {
                     append(stringResource(id = R.string.dontHaveAnAccount))
                     append(" ")
+                    val bold = stringResource(id = R.string.signUp)
                     bold {
-                        append(stringResource(id = R.string.signUp))
+                        append(bold)
                     }
                 },
                 style = body1,

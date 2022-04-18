@@ -11,7 +11,7 @@ object Dependencies {
     private const val BUILD_GRADLE_PLUGIN_VERSION = "7.1.3"
 
     // https://developer.android.com/jetpack/androidx/releases/compose
-    const val COMPOSE_VERSION = "1.1.1"
+    const val COMPOSE_VERSION = "1.2.0-alpha07"
     // https://developer.android.com/jetpack/androidx/releases/activity
     private const val COMPOSE_ACTIVITY_VERSION = "1.4.0"
     // https://developer.android.com/jetpack/androidx/releases/navigation
