@@ -10,10 +10,16 @@
 		058557BB273AAA24004C7B11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557BA273AAA24004C7B11 /* Assets.xcassets */; };
 		058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */; };
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
+		460CE52D280D902D007E758C /* SignUpScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460CE52C280D902D007E758C /* SignUpScreen.swift */; };
+		460CE52F280D903A007E758C /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460CE52E280D903A007E758C /* SignUpViewModel.swift */; };
+		460CE532280D9183007E758C /* CommonTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460CE531280D9183007E758C /* CommonTextField.swift */; };
+		460CE534280D91FE007E758C /* EmailTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460CE533280D91FE007E758C /* EmailTextField.swift */; };
+		460CE536280D923F007E758C /* FilledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460CE535280D923F007E758C /* FilledButton.swift */; };
+		460CE538280D9300007E758C /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460CE537280D9300007E758C /* PasswordTextField.swift */; };
 		463B8DF6280B014C0016B0BD /* AppFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463B8DF5280B014C0016B0BD /* AppFont.swift */; };
 		467BCA01280AD21B009EE97E /* KMPNativeCoroutinesAsync in Frameworks */ = {isa = PBXBuildFile; productRef = 467BCA00280AD21B009EE97E /* KMPNativeCoroutinesAsync */; };
 		46E01EBB280AE3B40023A293 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E01EBA280AE3B40023A293 /* LoginScreen.swift */; };
-		46E01EBD280AE3FD0023A293 /* LoginScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E01EBC280AE3FD0023A293 /* LoginScreenViewModel.swift */; };
+		46E01EBD280AE3FD0023A293 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E01EBC280AE3FD0023A293 /* LoginViewModel.swift */; };
 		46E01EC0280AF4400023A293 /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E01EBF280AF4400023A293 /* AppColor.swift */; };
 		46EBF93C280C41AB001D635A /* inter_bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46EBF93B280C41AB001D635A /* inter_bold.ttf */; };
 		46EBF940280C41D0001D635A /* inter_regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46EBF93D280C41D0001D635A /* inter_regular.ttf */; };
@@ -38,9 +44,15 @@
 		058557BA273AAA24004C7B11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2152FB032600AC8F00CF470E /* iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSApp.swift; sourceTree = "<group>"; };
+		460CE52C280D902D007E758C /* SignUpScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpScreen.swift; sourceTree = "<group>"; };
+		460CE52E280D903A007E758C /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		460CE531280D9183007E758C /* CommonTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonTextField.swift; sourceTree = "<group>"; };
+		460CE533280D91FE007E758C /* EmailTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailTextField.swift; sourceTree = "<group>"; };
+		460CE535280D923F007E758C /* FilledButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilledButton.swift; sourceTree = "<group>"; };
+		460CE537280D9300007E758C /* PasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
 		463B8DF5280B014C0016B0BD /* AppFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFont.swift; sourceTree = "<group>"; };
 		46E01EBA280AE3B40023A293 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
-		46E01EBC280AE3FD0023A293 /* LoginScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenViewModel.swift; sourceTree = "<group>"; };
+		46E01EBC280AE3FD0023A293 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		46E01EBF280AF4400023A293 /* AppColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
 		46EBF93B280C41AB001D635A /* inter_bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = inter_bold.ttf; sourceTree = "<group>"; };
 		46EBF93D280C41D0001D635A /* inter_regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = inter_regular.ttf; sourceTree = "<group>"; };
@@ -70,6 +82,26 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		460CE52B280D8FEE007E758C /* Signup */ = {
+			isa = PBXGroup;
+			children = (
+				460CE52C280D902D007E758C /* SignUpScreen.swift */,
+				460CE52E280D903A007E758C /* SignUpViewModel.swift */,
+			);
+			path = Signup;
+			sourceTree = "<group>";
+		};
+		460CE530280D90C0007E758C /* Ui */ = {
+			isa = PBXGroup;
+			children = (
+				460CE531280D9183007E758C /* CommonTextField.swift */,
+				460CE533280D91FE007E758C /* EmailTextField.swift */,
+				460CE535280D923F007E758C /* FilledButton.swift */,
+				460CE537280D9300007E758C /* PasswordTextField.swift */,
+			);
+			path = Ui;
+			sourceTree = "<group>";
+		};
 		46E01EB7280AE34C0023A293 /* Feature */ = {
 			isa = PBXGroup;
 			children = (
@@ -82,6 +114,8 @@
 			isa = PBXGroup;
 			children = (
 				46E01EB9280AE3A80023A293 /* Login */,
+				460CE52B280D8FEE007E758C /* Signup */,
+				460CE530280D90C0007E758C /* Ui */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -90,7 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				46E01EBA280AE3B40023A293 /* LoginScreen.swift */,
-				46E01EBC280AE3FD0023A293 /* LoginScreenViewModel.swift */,
+				46E01EBC280AE3FD0023A293 /* LoginViewModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -144,8 +178,8 @@
 		7555FF7D242A565900829871 /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
-				2152FB032600AC8F00CF470E /* iOSApp.swift */,
 				7555FF8C242A565B00829871 /* Info.plist */,
+				2152FB032600AC8F00CF470E /* iOSApp.swift */,
 				46E01EB7280AE34C0023A293 /* Feature */,
 				058557D7273AAEEB004C7B11 /* Preview Content */,
 				46E01ECB280B000C0023A293 /* Res */,
@@ -264,10 +298,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
+				460CE536280D923F007E758C /* FilledButton.swift in Sources */,
 				46E01EC0280AF4400023A293 /* AppColor.swift in Sources */,
+				460CE532280D9183007E758C /* CommonTextField.swift in Sources */,
 				463B8DF6280B014C0016B0BD /* AppFont.swift in Sources */,
 				46E01EBB280AE3B40023A293 /* LoginScreen.swift in Sources */,
-				46E01EBD280AE3FD0023A293 /* LoginScreenViewModel.swift in Sources */,
+				460CE534280D91FE007E758C /* EmailTextField.swift in Sources */,
+				46E01EBD280AE3FD0023A293 /* LoginViewModel.swift in Sources */,
+				460CE52D280D902D007E758C /* SignUpScreen.swift in Sources */,
+				460CE538280D9300007E758C /* PasswordTextField.swift in Sources */,
+				460CE52F280D903A007E758C /* SignUpViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -4,7 +4,7 @@ import shared
 import KMPNativeCoroutinesAsync
 
 @MainActor
-class LoginScreenViewModel: ObservableObject {
+class LoginViewModel: ObservableObject {
     
     private let repository: LoginRepository
     
