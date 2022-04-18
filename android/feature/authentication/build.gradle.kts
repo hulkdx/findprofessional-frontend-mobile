@@ -56,6 +56,7 @@ dependencies {
     testRuntimeOnly(Dependencies.JUNIT_ENGINE)
     testImplementation(Dependencies.JUNIT_PARAM)
     testImplementation(Dependencies.MOCKITO)
+    testImplementation(Dependencies.MOCKITO_JUNIT5)
     testImplementation(Dependencies.COROUTINES_TEST)
 
 }

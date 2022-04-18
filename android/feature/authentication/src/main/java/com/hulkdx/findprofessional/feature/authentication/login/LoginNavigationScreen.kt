@@ -6,7 +6,7 @@ import androidx.navigation.NavBackStackEntry
 import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 
 
-class LoginNavigationScreen: NavigationScreen {
+class LoginNavigationScreen: NavigationScreen() {
     override val route: String
         get() = this.javaClass.name
     override val arguments: List<NamedNavArgument>
