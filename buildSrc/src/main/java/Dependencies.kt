@@ -52,6 +52,9 @@ object Dependencies {
     const val KOIN_ANDROID = "io.insert-koin:koin-android:${KOIN_VERSION}"
     const val KOIN_COMPOSE = "io.insert-koin:koin-androidx-compose:${KOIN_VERSION}"
 
+    // debug dependencies
+    const val LEAK_CANARY = "com.squareup.leakcanary:leakcanary-android:2.8.1"
+
     // test dependencies
     const val JUNIT_API = "org.junit.jupiter:junit-jupiter-api:$JUNIT_VERSION"
     const val JUNIT_ENGINE = "org.junit.jupiter:junit-jupiter-engine:$JUNIT_VERSION"

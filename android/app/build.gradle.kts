@@ -68,4 +68,6 @@ dependencies {
     androidTestImplementation(Dependencies.COMPOSE_TEST)
     androidTestImplementation(Dependencies.EXT_JUNIT_TEST)
 
+    debugImplementation(Dependencies.LEAK_CANARY)
+
 }
