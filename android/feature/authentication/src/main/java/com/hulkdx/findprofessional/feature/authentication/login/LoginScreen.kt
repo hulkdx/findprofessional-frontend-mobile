@@ -71,8 +71,8 @@ fun LoginScreen(
 
         SignInButton(
             modifier = Modifier.padding(top = 16.dp),
-        ) {
-        }
+            onClick = viewModel::onSignInClicked
+        )
 
         SignUpButton(
             modifier = Modifier.padding(top = 32.dp),
