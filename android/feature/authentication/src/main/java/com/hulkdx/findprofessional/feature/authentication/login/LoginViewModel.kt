@@ -16,5 +16,6 @@ class LoginViewModel(
 ): ViewModel() {
 
     fun onSignUpClicked() {
+        navigator.navigate(SignUpNavigationScreen())
     }
 }
