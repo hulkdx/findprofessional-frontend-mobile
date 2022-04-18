@@ -44,7 +44,6 @@ import org.koin.androidx.compose.getViewModel
 
 @Composable
 fun LoginScreen(
-    navigator: Navigator = get(),
     viewModel: LoginViewModel = getViewModel(),
 ) {
     val username = remember { mutableStateOf("") }
@@ -74,9 +73,8 @@ fun LoginScreen(
 
         SignUpButton(
             modifier = Modifier.padding(top = 32.dp),
-        ) {
-            navigator.navigate(SignUpNavigationScreen())
-        }
+            onClick = viewModel::onSignUpClicked
+        )
     }
 }
 
