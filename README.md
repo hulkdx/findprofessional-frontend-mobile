@@ -2,7 +2,6 @@
 ![push](https://github.com/hulkdx/FindProfessional/actions/workflows/push.yml/badge.svg)
 
 # Find Professional
-**Alpha**: https://play.google.com/store/apps/details?id=com.hulkdx.findprofessional
 
 ## Design
 https://www.figma.com/file/59wAYmh2zv94mUeA7udBzc/Login-Screen?node-id=0%3A1
@@ -10,9 +9,13 @@ https://www.figma.com/file/59wAYmh2zv94mUeA7udBzc/Login-Screen?node-id=0%3A1
 ## Android
 
 ### CI
-Pushing to the `main` branch, would deploy to alpha release of Google Play.
+Push to the `main` branch, would release to Google Play:
+**Alpha**: https://play.google.com/store/apps/details?id=com.hulkdx.findprofessional
 
 ## iOS
+
+### CI
+Under development
 
 ## TODO
 - iOS: design basic navigation
