@@ -1,7 +1,6 @@
 import SwiftUI
 import Combine
 import shared
-import KMPNativeCoroutinesAsync
 
 struct LoginScreen_Previews: PreviewProvider {
     static var previews: some View {
