@@ -18,5 +18,4 @@ Push to the `main` branch, would release to Google Play:
 Under development
 
 ## TODO
-- iOS: design basic navigation
 - Backend: design basic service for registration
