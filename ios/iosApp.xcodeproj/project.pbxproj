@@ -17,6 +17,7 @@
 		460CE536280D923F007E758C /* FilledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460CE535280D923F007E758C /* FilledButton.swift */; };
 		460CE538280D9300007E758C /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460CE537280D9300007E758C /* PasswordTextField.swift */; };
 		463B8DF6280B014C0016B0BD /* AppFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463B8DF5280B014C0016B0BD /* AppFont.swift */; };
+		464406D128157E6400A88A46 /* ViewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464406D028157E6400A88A46 /* ViewUtils.swift */; };
 		467BCA01280AD21B009EE97E /* KMPNativeCoroutinesAsync in Frameworks */ = {isa = PBXBuildFile; productRef = 467BCA00280AD21B009EE97E /* KMPNativeCoroutinesAsync */; };
 		46E01EBB280AE3B40023A293 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E01EBA280AE3B40023A293 /* LoginScreen.swift */; };
 		46E01EBD280AE3FD0023A293 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E01EBC280AE3FD0023A293 /* LoginViewModel.swift */; };
@@ -51,6 +52,7 @@
 		460CE535280D923F007E758C /* FilledButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilledButton.swift; sourceTree = "<group>"; };
 		460CE537280D9300007E758C /* PasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
 		463B8DF5280B014C0016B0BD /* AppFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFont.swift; sourceTree = "<group>"; };
+		464406D028157E6400A88A46 /* ViewUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewUtils.swift; sourceTree = "<group>"; };
 		46E01EBA280AE3B40023A293 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		46E01EBC280AE3FD0023A293 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		46E01EBF280AF4400023A293 /* AppColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
@@ -100,6 +102,14 @@
 				460CE537280D9300007E758C /* PasswordTextField.swift */,
 			);
 			path = Ui;
+			sourceTree = "<group>";
+		};
+		464406CF28157E4F00A88A46 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				464406D028157E6400A88A46 /* ViewUtils.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		46E01EB7280AE34C0023A293 /* Feature */ = {
@@ -178,12 +188,13 @@
 		7555FF7D242A565900829871 /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
+				46E01EB7280AE34C0023A293 /* Feature */,
 				7555FF8C242A565B00829871 /* Info.plist */,
 				2152FB032600AC8F00CF470E /* iOSApp.swift */,
-				46E01EB7280AE34C0023A293 /* Feature */,
 				058557D7273AAEEB004C7B11 /* Preview Content */,
 				46E01ECB280B000C0023A293 /* Res */,
 				46E01EBE280AF4300023A293 /* Theme */,
+				464406CF28157E4F00A88A46 /* Utils */,
 			);
 			path = iosApp;
 			sourceTree = "<group>";
@@ -299,6 +310,7 @@
 			files = (
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				460CE536280D923F007E758C /* FilledButton.swift in Sources */,
+				464406D128157E6400A88A46 /* ViewUtils.swift in Sources */,
 				46E01EC0280AF4400023A293 /* AppColor.swift in Sources */,
 				460CE532280D9183007E758C /* CommonTextField.swift in Sources */,
 				463B8DF6280B014C0016B0BD /* AppFont.swift in Sources */,

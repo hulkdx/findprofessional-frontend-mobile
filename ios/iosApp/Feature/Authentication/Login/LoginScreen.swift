@@ -16,20 +16,23 @@ struct LoginScreen: View {
     @State var password: String = ""
     
     var body: some View {
-        VStack(spacing: 0) {
-            EmailTextField(value: username)
-            PasswordTextField(value: password)
-                .padding(.top, 16)
-            SignInButton() {
-                
+        NavigationView {
+            VStack(spacing: 0) {
+                EmailTextField(value: username)
+                PasswordTextField(value: password)
+                    .padding(.top, 16)
+                SignInButton() {
+                    viewModel.signUpButtonClicked()
+                }
+                    .padding(.top, 16)
+                SignUpButton() {
+                    viewModel.signUpButtonClicked()
+                }
+                    .padding(.top, 32)
+                    .navigateTo(isActive: $viewModel.showSignUp, destination: SignUpScreen())
             }
-                .padding(.top, 16)
-            SignUpButton() {
-                
-            }
-                .padding(.top, 32)
+            .padding(.horizontal, 16)
         }
-        .padding(.horizontal, 16)
     }
 }
 
