@@ -11,6 +11,10 @@ class LoginViewModel: ObservableObject {
     @Published
     var data = ""
     
+    
+    @Published
+    var showSignUp = false
+    
     init(repository: LoginRepository) {
         self.repository = repository
         
@@ -21,5 +25,13 @@ class LoginViewModel: ObservableObject {
                 print("Failed with error: \(error)")
             }
         }
+    }
+    
+    func signInButtonClicked() {
+        
+    }
+    
+    func signUpButtonClicked() {
+        showSignUp = true
     }
 }
