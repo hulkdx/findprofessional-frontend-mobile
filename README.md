@@ -1,5 +1,5 @@
-[![Kotlin](https://img.shields.io/badge/kotlin-1.6.10-blue.svg?logo=kotlin)](http://kotlinlang.org)
-![push](https://github.com/hulkdx/FindProfessional/actions/workflows/push.yml/badge.svg)
+[![kotlin](https://img.shields.io/badge/kotlin-1.6.10-blue.svg?logo=kotlin&style=for-the-badge)](http://kotlinlang.org)
+[![deploy](https://img.shields.io/github/workflow/status/hulkdx/findprofessional-frontend-mobile/deploy%20to%20playstore?style=for-the-badge)](https://github.com/hulkdx/findprofessional-frontend-mobile/actions/workflows/push.yml)
 
 # Find Professional
 
@@ -17,5 +17,3 @@ Push to the `main` branch, would release to Google Play:
 ### CI
 Under development
 
-## TODO
-- Backend: design basic service for registration
