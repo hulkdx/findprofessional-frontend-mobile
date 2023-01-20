@@ -44,10 +44,17 @@ jobs:
       run: echo '${{ secrets.GOOGLE_SERVICES_API }}' > service_account.json
 
     - name: Deploy
-      uses: r0adkll/upload-google-play@v1.0.15
+      uses: r0adkll/upload-google-play@v1.0.19
       with:
         serviceAccountJson: service_account.json
         packageName: com.hulkdx.findprofessional
         releaseFiles: android/app/build/outputs/bundle/release/app-release.aab
         track: internal
         whatsNewDirectory: .github/whatsNewDirectory
+
+    - name: Store apk
+      uses: actions/upload-artifact@v3
+      with:
+        name: dist-without-markdown
+        path: |
+          android/app/build/outputs/bundle/release
