@@ -22,7 +22,9 @@ object BuildDep {
     // https://github.com/Kotlin/kotlinx.coroutines
     const val COROUTINES_VERSION = "1.6.0"
     // https://github.com/InsertKoinIO/koin
-    const val KOIN_VERSION = "3.1.6"
+    const val KOIN_VERSION = "3.3.2"
+    // https://github.com/InsertKoinIO/koin
+    const val KOIN_COMPOSE_VERSION = "3.4.1"
     // https://github.com/rickclephas/KMP-NativeCoroutines
     const val IOS_KMP_NATIVE_VERSION = "0.11.4-new-mm"
     const val LEAK_CANARY_VERSION = "2.8.1"
