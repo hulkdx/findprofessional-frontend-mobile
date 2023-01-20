@@ -40,6 +40,13 @@ jobs:
         keyStorePassword: ${{ secrets.KEYSTORE_PASSWORD }}
         keyPassword: ${{ secrets.KEYSTORE_PASSWORD }}
 
+    - name: Store apk artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: dist-without-markdown
+        path: |
+          android/app/build/outputs/bundle/release
+
     - name: Setup authorization with GooglePlay Store
       run: echo '${{ secrets.GOOGLE_SERVICES_API }}' > service_account.json
 
@@ -51,10 +58,3 @@ jobs:
         releaseFiles: android/app/build/outputs/bundle/release/app-release.aab
         track: internal
         whatsNewDirectory: .github/whatsNewDirectory
-
-    - name: Store apk
-      uses: actions/upload-artifact@v3
-      with:
-        name: dist-without-markdown
-        path: |
-          android/app/build/outputs/bundle/release
