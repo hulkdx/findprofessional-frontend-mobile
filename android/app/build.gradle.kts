@@ -56,10 +56,7 @@ dependencies {
     implementation(project(":android:feature:authentication"))
     implementation(project(":common-kmm"))
 
-    implementation(BuildDep.CORE_KTX)
-    implementation(BuildDep.COMPOSE_UI)
-    implementation(BuildDep.COMPOSE_ACTIVITY)
-    implementation(BuildDep.COMPOSE_NAVIGATION)
+    implementation(platform("androidx.compose:compose-bom:${BuildDep.COMPOSE_BOM}"))
     implementation(BuildDep.KOIN_CORE)
     implementation(BuildDep.KOIN_ANDROID)
     implementation(BuildDep.KOIN_COMPOSE)

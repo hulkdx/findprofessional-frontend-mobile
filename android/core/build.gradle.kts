@@ -39,6 +39,6 @@ android {
 dependencies {
     api(BuildDep.COMPOSE_NAVIGATION)
 
-    implementation(BuildDep.COMPOSE_UI)
+    implementation(platform("androidx.compose:compose-bom:${BuildDep.COMPOSE_BOM}"))
     implementation(BuildDep.COMPOSE_MATERIAL)
 }

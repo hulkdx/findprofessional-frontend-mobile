@@ -46,9 +46,7 @@ dependencies {
     implementation(project(":android:core"))
     implementation(project(":common-kmm"))
 
-    implementation(BuildDep.COMPOSE_UI)
-    implementation(BuildDep.COMPOSE_UI_TOOLING)
-    implementation(BuildDep.COMPOSE_ACTIVITY)
+    implementation(platform("androidx.compose:compose-bom:${BuildDep.COMPOSE_BOM}"))
     implementation(BuildDep.COMPOSE_MATERIAL)
     implementation(BuildDep.KOIN_COMPOSE)
 

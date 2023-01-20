@@ -13,13 +13,10 @@ object BuildDep {
 
     // https://developer.android.com/jetpack/androidx/releases/compose
     const val COMPOSE_VERSION = "1.4.0"
-    // https://developer.android.com/jetpack/androidx/releases/activity
-    // TODO: update
-    private const val COMPOSE_ACTIVITY_VERSION = "1.4.0"
+    // https://developer.android.com/jetpack/androidx/releases/compose
+    const val COMPOSE_BOM = "2023.01.00"
     // https://developer.android.com/jetpack/androidx/releases/navigation
     private const val COMPOSE_NAVIGATION_VERSION = "2.5.3"
-    // https://developer.android.com/jetpack/androidx/releases/core
-    private const val CORE_KTX_VERSION = "1.7.0"
     // https://github.com/Kotlin/kotlinx.coroutines
     private const val COROUTINES_VERSION = "1.6.0"
     // https://github.com/InsertKoinIO/koin
@@ -38,12 +35,8 @@ object BuildDep {
     private const val EXT_JUNIT_TEST_VERSION = "1.1.3"
 
     // main dependencies
-    const val CORE_KTX = "androidx.core:core-ktx:${CORE_KTX_VERSION}"
     const val COROUTINES = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$COROUTINES_VERSION"
-    const val COMPOSE_UI = "androidx.compose.ui:ui:1.3.3"
-    const val COMPOSE_UI_TOOLING = "androidx.compose.ui:ui-tooling-preview:1.3.3"
     const val COMPOSE_MATERIAL = "androidx.compose.material3:material3:1.0.1"
-    const val COMPOSE_ACTIVITY = "androidx.activity:activity-compose:$COMPOSE_ACTIVITY_VERSION"
     const val COMPOSE_NAVIGATION = "androidx.navigation:navigation-compose:$COMPOSE_NAVIGATION_VERSION"
 
     const val KOIN_CORE = "io.insert-koin:koin-core:${KOIN_VERSION}"
