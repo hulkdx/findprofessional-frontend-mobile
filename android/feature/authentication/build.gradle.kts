@@ -4,10 +4,10 @@ plugins {
 }
 
 android {
-    compileSdk = Dependencies.COMPILE_SDK_VERSION
+    compileSdk = BuildDep.COMPILE_SDK_VERSION
 
     defaultConfig {
-        minSdk = Dependencies.MIN_SDK_VERSION
+        minSdk = BuildDep.MIN_SDK_VERSION
     }
 
     buildTypes {
@@ -30,7 +30,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = Dependencies.COMPOSE_VERSION
+        kotlinCompilerExtensionVersion = BuildDep.COMPOSE_VERSION
     }
 
     tasks.withType<Test> {
@@ -46,17 +46,17 @@ dependencies {
     implementation(project(":android:core"))
     implementation(project(":common-kmm"))
 
-    implementation(Dependencies.COMPOSE_UI)
-    implementation(Dependencies.COMPOSE_UI_TOOLING)
-    implementation(Dependencies.COMPOSE_ACTIVITY)
-    implementation(Dependencies.COMPOSE_MATERIAL)
-    implementation(Dependencies.KOIN_COMPOSE)
+    implementation(BuildDep.COMPOSE_UI)
+    implementation(BuildDep.COMPOSE_UI_TOOLING)
+    implementation(BuildDep.COMPOSE_ACTIVITY)
+    implementation(BuildDep.COMPOSE_MATERIAL)
+    implementation(BuildDep.KOIN_COMPOSE)
 
-    testImplementation(Dependencies.JUNIT_API)
-    testRuntimeOnly(Dependencies.JUNIT_ENGINE)
-    testImplementation(Dependencies.JUNIT_PARAM)
-    testImplementation(Dependencies.MOCKITO)
-    testImplementation(Dependencies.MOCKITO_JUNIT5)
-    testImplementation(Dependencies.COROUTINES_TEST)
+    testImplementation(BuildDep.JUNIT_API)
+    testRuntimeOnly(BuildDep.JUNIT_ENGINE)
+    testImplementation(BuildDep.JUNIT_PARAM)
+    testImplementation(BuildDep.MOCKITO)
+    testImplementation(BuildDep.MOCKITO_JUNIT5)
+    testImplementation(BuildDep.COROUTINES_TEST)
 
 }

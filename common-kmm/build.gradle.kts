@@ -2,7 +2,7 @@ plugins {
     kotlin("multiplatform")
     id("com.android.library")
 
-    id(Dependencies.IOS_KMP_NATIVE) version Dependencies.IOS_KMP_NATIVE_VERSION
+    id(BuildDep.IOS_KMP_NATIVE) version BuildDep.IOS_KMP_NATIVE_VERSION
 }
 
 kotlin {
@@ -21,8 +21,8 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(Dependencies.KOIN_CORE)
-                implementation(Dependencies.COROUTINES)
+                implementation(BuildDep.KOIN_CORE)
+                implementation(BuildDep.COROUTINES)
             }
         }
         val androidMain by getting
@@ -39,10 +39,10 @@ kotlin {
 }
 
 android {
-    compileSdk = Dependencies.COMPILE_SDK_VERSION
+    compileSdk = BuildDep.COMPILE_SDK_VERSION
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     defaultConfig {
-        minSdk = Dependencies.MIN_SDK_VERSION
-        targetSdk = Dependencies.COMPILE_SDK_VERSION
+        minSdk = BuildDep.MIN_SDK_VERSION
+        targetSdk = BuildDep.COMPILE_SDK_VERSION
     }
 }

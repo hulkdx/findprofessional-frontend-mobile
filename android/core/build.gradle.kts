@@ -4,10 +4,10 @@ plugins {
 }
 
 android {
-    compileSdk = Dependencies.COMPILE_SDK_VERSION
+    compileSdk = BuildDep.COMPILE_SDK_VERSION
 
     defaultConfig {
-        minSdk = Dependencies.MIN_SDK_VERSION
+        minSdk = BuildDep.MIN_SDK_VERSION
     }
 
     buildTypes {
@@ -32,14 +32,14 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = Dependencies.COMPOSE_VERSION
+        kotlinCompilerExtensionVersion = BuildDep.COMPOSE_VERSION
     }
 }
 
 dependencies {
-    api(Dependencies.COMPOSE_NAVIGATION)
+    api(BuildDep.COMPOSE_NAVIGATION)
 
-    implementation(Dependencies.COMPOSE_UI)
-    implementation(Dependencies.COMPOSE_UI_TOOLING)
-    implementation(Dependencies.COMPOSE_MATERIAL)
+    implementation(BuildDep.COMPOSE_UI)
+    implementation(BuildDep.COMPOSE_UI_TOOLING)
+    implementation(BuildDep.COMPOSE_MATERIAL)
 }

@@ -5,7 +5,7 @@
  *
  * https://developer.android.com/jetpack/androidx/versions
  */
-object Dependencies {
+object BuildDep {
     const val MIN_SDK_VERSION = 24
     const val COMPILE_SDK_VERSION = 31
 

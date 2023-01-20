@@ -4,12 +4,12 @@ plugins {
 }
 
 android {
-    compileSdk = Dependencies.COMPILE_SDK_VERSION
+    compileSdk = BuildDep.COMPILE_SDK_VERSION
 
     defaultConfig {
         applicationId = "com.hulkdx.findprofessional"
-        minSdk = Dependencies.MIN_SDK_VERSION
-        targetSdk = Dependencies.COMPILE_SDK_VERSION
+        minSdk = BuildDep.MIN_SDK_VERSION
+        targetSdk = BuildDep.COMPILE_SDK_VERSION
         versionCode = 3
         versionName = "1.0"
 
@@ -40,7 +40,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = Dependencies.COMPOSE_VERSION
+        kotlinCompilerExtensionVersion = BuildDep.COMPOSE_VERSION
     }
 
     packagingOptions {
@@ -56,18 +56,18 @@ dependencies {
     implementation(project(":android:feature:authentication"))
     implementation(project(":common-kmm"))
 
-    implementation(Dependencies.CORE_KTX)
-    implementation(Dependencies.COMPOSE_UI)
+    implementation(BuildDep.CORE_KTX)
+    implementation(BuildDep.COMPOSE_UI)
 //    implementation(Dependencies.COMPOSE_UI_TOOLING)
-    implementation(Dependencies.COMPOSE_ACTIVITY)
-    implementation(Dependencies.COMPOSE_NAVIGATION)
-    implementation(Dependencies.KOIN_CORE)
-    implementation(Dependencies.KOIN_ANDROID)
-    implementation(Dependencies.KOIN_COMPOSE)
+    implementation(BuildDep.COMPOSE_ACTIVITY)
+    implementation(BuildDep.COMPOSE_NAVIGATION)
+    implementation(BuildDep.KOIN_CORE)
+    implementation(BuildDep.KOIN_ANDROID)
+    implementation(BuildDep.KOIN_COMPOSE)
 
-    androidTestImplementation(Dependencies.COMPOSE_TEST)
-    androidTestImplementation(Dependencies.EXT_JUNIT_TEST)
+    androidTestImplementation(BuildDep.COMPOSE_TEST)
+    androidTestImplementation(BuildDep.EXT_JUNIT_TEST)
 
-    debugImplementation(Dependencies.LEAK_CANARY)
+    debugImplementation(BuildDep.LEAK_CANARY)
 
 }
