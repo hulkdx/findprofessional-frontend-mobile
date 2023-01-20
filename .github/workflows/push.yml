@@ -40,18 +40,18 @@ jobs:
         keyStorePassword: ${{ secrets.KEYSTORE_PASSWORD }}
         keyPassword: ${{ secrets.KEYSTORE_PASSWORD }}
 
-#    - name: Store apk artifact
-#      uses: actions/upload-artifact@v3
-#      with:
-#        name: artifacts
-#        path: |
-#          android/app/build/outputs/bundle/release/app-release.aab
+    - name: Store apk artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: artifacts
+        path: |
+          android/app/build/outputs/bundle/release/app-release.aab
 
     - name: Setup authorization with GooglePlay Store
       run: echo '${{ secrets.GOOGLE_SERVICES_API }}' > service_account.json
 
     - name: Deploy
-      uses: r0adkll/upload-google-play@v1.0.19
+      uses: r0adkll/upload-google-play@v1.0.15
       with:
         serviceAccountJson: service_account.json
         packageName: com.hulkdx.findprofessional
