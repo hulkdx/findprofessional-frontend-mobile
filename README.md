@@ -1,5 +1,5 @@
 [![kotlin](https://img.shields.io/badge/kotlin-1.6.10-blue.svg?logo=kotlin&style=for-the-badge)](http://kotlinlang.org)
-[![deploy](https://img.shields.io/github/workflow/status/hulkdx/findprofessional-frontend-mobile/deploy%20to%20playstore?style=for-the-badge)](https://github.com/hulkdx/findprofessional-frontend-mobile/actions/workflows/push.yml)
+[![deploy](https://img.shields.io/github/actions/workflow/status/hulkdx/findprofessional-frontend-mobile/push.yml?style=for-the-badge)](https://github.com/hulkdx/findprofessional-frontend-mobile/actions/workflows/push.yml)
 
 # Find Professional
 
