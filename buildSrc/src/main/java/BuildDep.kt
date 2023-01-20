@@ -1,5 +1,3 @@
-@file:Suppress("MemberVisibilityCanBePrivate", "unused")
-
 /**
  * Dependencies that are used in the application
  *
@@ -9,16 +7,17 @@ object BuildDep {
     const val MIN_SDK_VERSION = 24
     const val COMPILE_SDK_VERSION = 33
 
-    private const val KOTLIN_VERSION = "1.6.10"
+    const val KOTLIN_VERSION = "1.8.0"
     // https://developer.android.com/studio/releases/gradle-plugin
-    private const val BUILD_GRADLE_PLUGIN_VERSION = "7.4.0"
+    const val AGP_VERSION = "7.4.0"
 
     // https://developer.android.com/jetpack/androidx/releases/compose
-    const val COMPOSE_VERSION = "1.2.0-alpha07"
+    const val COMPOSE_VERSION = "1.4.0"
     // https://developer.android.com/jetpack/androidx/releases/activity
+    // TODO: update
     private const val COMPOSE_ACTIVITY_VERSION = "1.4.0"
     // https://developer.android.com/jetpack/androidx/releases/navigation
-    private const val COMPOSE_NAVIGATION_VERSION = "2.4.2"
+    private const val COMPOSE_NAVIGATION_VERSION = "2.5.3"
     // https://developer.android.com/jetpack/androidx/releases/core
     private const val CORE_KTX_VERSION = "1.7.0"
     // https://github.com/Kotlin/kotlinx.coroutines
@@ -38,17 +37,12 @@ object BuildDep {
     private const val MOCKITO_JUNIT5_VERSION = "2.23.0"
     private const val EXT_JUNIT_TEST_VERSION = "1.1.3"
 
-    // plugins
-    const val KOTLIN_GRADLE_PLUGIN = "org.jetbrains.kotlin:kotlin-gradle-plugin:${KOTLIN_VERSION}"
-    const val BUILD_GRADLE_PLUGIN = "com.android.tools.build:gradle:${BUILD_GRADLE_PLUGIN_VERSION}"
-    const val IOS_KMP_NATIVE = "com.rickclephas.kmp.nativecoroutines"
-
     // main dependencies
     const val CORE_KTX = "androidx.core:core-ktx:${CORE_KTX_VERSION}"
     const val COROUTINES = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$COROUTINES_VERSION"
-    const val COMPOSE_UI = "androidx.compose.ui:ui:$COMPOSE_VERSION"
-    const val COMPOSE_UI_TOOLING = "androidx.compose.ui:ui-tooling:$COMPOSE_VERSION"
-    const val COMPOSE_MATERIAL = "androidx.compose.material:material:$COMPOSE_VERSION"
+    const val COMPOSE_UI = "androidx.compose.ui:ui:1.3.3"
+    const val COMPOSE_UI_TOOLING = "androidx.compose.ui:ui-tooling-preview:1.3.3"
+    const val COMPOSE_MATERIAL = "androidx.compose.material3:material3:1.0.1"
     const val COMPOSE_ACTIVITY = "androidx.activity:activity-compose:$COMPOSE_ACTIVITY_VERSION"
     const val COMPOSE_NAVIGATION = "androidx.navigation:navigation-compose:$COMPOSE_NAVIGATION_VERSION"
 

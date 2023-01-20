@@ -40,6 +40,5 @@ dependencies {
     api(BuildDep.COMPOSE_NAVIGATION)
 
     implementation(BuildDep.COMPOSE_UI)
-    implementation(BuildDep.COMPOSE_UI_TOOLING)
     implementation(BuildDep.COMPOSE_MATERIAL)
 }

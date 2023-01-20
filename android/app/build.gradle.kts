@@ -58,7 +58,6 @@ dependencies {
 
     implementation(BuildDep.CORE_KTX)
     implementation(BuildDep.COMPOSE_UI)
-//    implementation(Dependencies.COMPOSE_UI_TOOLING)
     implementation(BuildDep.COMPOSE_ACTIVITY)
     implementation(BuildDep.COMPOSE_NAVIGATION)
     implementation(BuildDep.KOIN_CORE)

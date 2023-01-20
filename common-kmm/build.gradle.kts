@@ -2,7 +2,7 @@ plugins {
     kotlin("multiplatform")
     id("com.android.library")
 
-    id(BuildDep.IOS_KMP_NATIVE) version BuildDep.IOS_KMP_NATIVE_VERSION
+    id("com.rickclephas.kmp.nativecoroutines") version BuildDep.IOS_KMP_NATIVE_VERSION
 }
 
 kotlin {

@@ -3,9 +3,10 @@ package com.hulkdx.findprofessional.feature.authentication.ui
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.OutlinedTextField
-import androidx.compose.material.Text
-import androidx.compose.material.TextFieldDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -14,6 +15,7 @@ import androidx.compose.ui.unit.dp
 import com.hulkdx.findprofessional.core.theme.LightGrey
 import com.hulkdx.findprofessional.core.theme.body2
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CommonTextField(
     modifier: Modifier,
@@ -43,7 +45,7 @@ fun CommonTextField(
             )
         },
         colors = TextFieldDefaults.textFieldColors(
-            backgroundColor = LightGrey,
+            containerColor = LightGrey,
         ),
         visualTransformation = visualTransformation,
     )

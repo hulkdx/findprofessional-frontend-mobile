@@ -1,11 +1,11 @@
 package com.hulkdx.findprofessional.core.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.lightColors
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 
-private val LightColorPalette = lightColors(
+private val LightColorPalette = lightColorScheme(
     primary = Green,
     onPrimary = White,
     onSecondary = LightBlue,
@@ -25,7 +25,7 @@ fun AppTheme(
     }
 
     MaterialTheme(
-        colors = colors,
+        colorScheme = colors,
         content = content
     )
 }
