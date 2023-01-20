@@ -10,7 +10,7 @@ object BuildDep {
     const val COMPILE_SDK_VERSION = 31
 
     private const val KOTLIN_VERSION = "1.6.10"
-    private const val BUILD_GRADLE_PLUGIN_VERSION = "7.1.3"
+    private const val BUILD_GRADLE_PLUGIN_VERSION = "7.4.0"
 
     // https://developer.android.com/jetpack/androidx/releases/compose
     const val COMPOSE_VERSION = "1.2.0-alpha07"
