@@ -21,8 +21,8 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(BuildDep.KOIN_CORE)
-                implementation(BuildDep.COROUTINES)
+                implementation("io.insert-koin:koin-core:${BuildDep.KOIN_VERSION}")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${BuildDep.COROUTINES_VERSION}")
             }
         }
         val androidMain by getting
@@ -43,6 +43,6 @@ android {
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     defaultConfig {
         minSdk = BuildDep.MIN_SDK_VERSION
-        compileSdk = BuildDep.COMPILE_SDK_VERSION
+        targetSdk = BuildDep.COMPILE_SDK_VERSION
     }
 }

@@ -37,8 +37,8 @@ android {
 }
 
 dependencies {
-    api(BuildDep.COMPOSE_NAVIGATION)
+    api("androidx.navigation:navigation-compose:${BuildDep.COMPOSE_NAVIGATION_VERSION}")
 
     implementation(platform("androidx.compose:compose-bom:${BuildDep.COMPOSE_BOM}"))
-    implementation(BuildDep.COMPOSE_MATERIAL)
+    implementation("androidx.compose.material3:material3:${BuildDep.COMPOSE_MATERIAL3_VERSION}")
 }

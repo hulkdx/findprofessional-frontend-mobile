@@ -47,14 +47,14 @@ dependencies {
     implementation(project(":common-kmm"))
 
     implementation(platform("androidx.compose:compose-bom:${BuildDep.COMPOSE_BOM}"))
-    implementation(BuildDep.COMPOSE_MATERIAL)
-    implementation(BuildDep.KOIN_COMPOSE)
+    implementation("androidx.compose.material3:material3:${BuildDep.COMPOSE_MATERIAL3_VERSION}")
+    implementation("io.insert-koin:koin-androidx-compose:${BuildDep.KOIN_VERSION}")
 
-    testImplementation(BuildDep.JUNIT_API)
-    testRuntimeOnly(BuildDep.JUNIT_ENGINE)
-    testImplementation(BuildDep.JUNIT_PARAM)
-    testImplementation(BuildDep.MOCKITO)
-    testImplementation(BuildDep.MOCKITO_JUNIT5)
-    testImplementation(BuildDep.COROUTINES_TEST)
+    testImplementation("org.junit.jupiter:junit-jupiter-api:${BuildDep.JUNIT_VERSION}")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${BuildDep.JUNIT_VERSION}")
+    testImplementation("org.junit.jupiter:junit-jupiter-params:${BuildDep.JUNIT_VERSION}")
+    testImplementation("org.mockito:mockito-core:${BuildDep.MOCKITO_VERSION}")
+    testImplementation("org.mockito:mockito-junit-jupiter:${BuildDep.MOCKITO_JUNIT5_VERSION}")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:${BuildDep.COROUTINES_TEST_VERSION}")
 
 }
