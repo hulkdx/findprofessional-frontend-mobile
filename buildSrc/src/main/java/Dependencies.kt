@@ -46,6 +46,7 @@ object Dependencies {
     const val CORE_KTX = "androidx.core:core-ktx:${CORE_KTX_VERSION}"
     const val COROUTINES = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$COROUTINES_VERSION"
     const val COMPOSE_UI = "androidx.compose.ui:ui:$COMPOSE_VERSION"
+    const val COMPOSE_UI_TOOLING = "androidx.compose.ui:ui-tooling:$COMPOSE_VERSION"
     const val COMPOSE_MATERIAL = "androidx.compose.material:material:$COMPOSE_VERSION"
     const val COMPOSE_ACTIVITY = "androidx.activity:activity-compose:$COMPOSE_ACTIVITY_VERSION"
     const val COMPOSE_NAVIGATION = "androidx.navigation:navigation-compose:$COMPOSE_NAVIGATION_VERSION"

@@ -47,6 +47,7 @@ dependencies {
     implementation(project(":common-kmm"))
 
     implementation(Dependencies.COMPOSE_UI)
+    implementation(Dependencies.COMPOSE_UI_TOOLING)
     implementation(Dependencies.COMPOSE_ACTIVITY)
     implementation(Dependencies.COMPOSE_MATERIAL)
     implementation(Dependencies.KOIN_COMPOSE)
