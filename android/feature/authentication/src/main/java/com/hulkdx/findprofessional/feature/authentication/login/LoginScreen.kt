@@ -12,8 +12,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
@@ -33,8 +35,8 @@ import org.koin.androidx.compose.getViewModel
 fun LoginScreen(
     viewModel: LoginViewModel = getViewModel(),
 ) {
-    val username = remember { mutableStateOf("") }
-    val password = remember { mutableStateOf("") }
+    var username by remember { mutableStateOf("") }
+    var password by remember { mutableStateOf("") }
 
     Column(
         modifier = Modifier
@@ -44,14 +46,14 @@ fun LoginScreen(
     ) {
         EmailTextField(
             modifier = Modifier.statusBarsPadding(),
-            value = username.value,
-            onValueChanged = { username.value = it }
+            value = username,
+            onValueChanged = { username = it }
         )
 
         PasswordTextField(
             modifier = Modifier.padding(top = 8.dp),
-            value = password.value,
-            onValueChanged = { password.value = it }
+            value = password,
+            onValueChanged = { password = it }
         )
 
         SignInButton(
