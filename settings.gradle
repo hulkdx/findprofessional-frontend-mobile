@@ -1,4 +1,10 @@
 pluginManagement {
+    resolutionStrategy {
+        plugins {
+            id("org.jetbrains.kotlin.multiplatform").version("1.8.0")
+        }
+    }
+
     repositories {
         google()
         mavenCentral()

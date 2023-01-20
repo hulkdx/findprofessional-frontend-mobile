@@ -43,6 +43,6 @@ android {
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     defaultConfig {
         minSdk = BuildDep.MIN_SDK_VERSION
-        targetSdk = BuildDep.COMPILE_SDK_VERSION
+        compileSdk = BuildDep.COMPILE_SDK_VERSION
     }
 }
