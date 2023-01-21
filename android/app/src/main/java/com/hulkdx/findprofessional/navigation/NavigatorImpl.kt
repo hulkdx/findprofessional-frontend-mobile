@@ -1,20 +1,16 @@
 package com.hulkdx.findprofessional.navigation
 
-import androidx.navigation.NavController
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.neverEqualPolicy
 import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import com.hulkdx.findprofessional.core.navigation.Navigator
-import java.lang.ref.WeakReference
 
 
 class NavigatorImpl: Navigator {
 
-    private var navController: WeakReference<NavController>? = null
+    val screenState = mutableStateOf<NavigationScreen?>(null, neverEqualPolicy())
 
     override fun navigate(screen: NavigationScreen) {
-        navController?.get()?.navigate(screen.route)
-    }
-
-    fun setNavController(navController: NavController) {
-        this.navController = WeakReference(navController)
+        screenState.value = screen
     }
 }
