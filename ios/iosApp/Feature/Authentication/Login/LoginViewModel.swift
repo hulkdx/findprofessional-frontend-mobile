@@ -18,13 +18,13 @@ class LoginViewModel: ObservableObject {
     init(repository: LoginRepository) {
         self.repository = repository
         
-        Task {
-            do {
-                for try await data in asyncStream(for: repository.getFlowNative()) { self.data = data }
-            } catch {
-                print("Failed with error: \(error)")
-            }
-        }
+//        Task {
+//            do {
+//                for try await data in asyncStream(for: repository.getFlowNative()) { self.data = data }
+//            } catch {
+//                print("Failed with error: \(error)")
+//            }
+//        }
     }
     
     func signInButtonClicked() {
