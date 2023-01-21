@@ -62,7 +62,8 @@ dependencies {
     implementation("io.insert-koin:koin-android:${BuildDep.KOIN_VERSION}")
     implementation("io.insert-koin:koin-androidx-compose:${BuildDep.KOIN_COMPOSE_VERSION}")
 
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4:${BuildDep.COMPOSE_VERSION}")
+    androidTestImplementation(platform("androidx.compose:compose-bom:${BuildDep.COMPOSE_BOM}"))
+    androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     androidTestImplementation("androidx.test.ext:junit:${BuildDep.EXT_JUNIT_TEST_VERSION}")
 
     debugImplementation("com.squareup.leakcanary:leakcanary-android:${BuildDep.LEAK_CANARY_VERSION}")
