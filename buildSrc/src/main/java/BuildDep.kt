@@ -7,6 +7,12 @@ object BuildDep {
     const val MIN_SDK_VERSION = 24
     const val COMPILE_SDK_VERSION = 33
 
+    // https://github.com/rickclephas/KMP-NativeCoroutines
+    // NOTE:
+    // KOTLIN_VERSION     depends on this
+    // COROUTINES_VERSION depends on this
+    const val IOS_KMP_NATIVE_VERSION = "0.13.2-kotlin-1.8.0-RC"
+
     const val KOTLIN_VERSION = "1.8.0"
     // https://developer.android.com/studio/releases/gradle-plugin
     const val AGP_VERSION = "7.4.0"
@@ -20,7 +26,7 @@ object BuildDep {
     // https://developer.android.com/jetpack/androidx/releases/navigation
     const val COMPOSE_NAVIGATION_VERSION = "2.5.3"
     // https://github.com/Kotlin/kotlinx.coroutines
-    const val COROUTINES_VERSION = "1.6.0"
+    const val COROUTINES_VERSION = "1.6.4"
     // https://github.com/InsertKoinIO/koin
     const val KOIN_VERSION = "3.3.2"
     // https://github.com/InsertKoinIO/koin
@@ -35,7 +41,4 @@ object BuildDep {
     // https://github.com/mockito/mockito
     const val MOCKITO_VERSION = "3.10.0"
     const val MOCKITO_JUNIT5_VERSION = "2.23.0"
-
-    // https://github.com/rickclephas/KMP-NativeCoroutines
-    const val IOS_KMP_NATIVE_VERSION = "0.11.4-new-mm"
 }
