@@ -14,14 +14,14 @@ import org.mockito.junit.jupiter.MockitoExtension
 @ExtendWith(MockitoExtension::class)
 class LoginViewModelTest {
 
-    private lateinit var viewModel: LoginViewModel
+    private lateinit var sut: LoginViewModel
 
     @Mock lateinit var loginRepository: LoginRepository
     @Mock lateinit var navigator: Navigator
 
     @BeforeEach
     fun setUp() {
-        viewModel = LoginViewModel(
+        sut = LoginViewModel(
             loginRepository,
             navigator,
         )
@@ -29,8 +29,10 @@ class LoginViewModelTest {
 
     @Test
     fun `onSignUpClicked should navigate to signup`() {
-        viewModel.onSignUpClicked()
-
+        // Arrange
+        // Act
+        sut.onSignUpClicked()
+        // Assert
         verify(navigator).navigate(SignUpNavigationScreen())
     }
 }
