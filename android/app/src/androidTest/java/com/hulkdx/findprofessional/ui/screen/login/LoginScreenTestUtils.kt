@@ -37,10 +37,10 @@ class LoginDsl(
             .performClick()
     }
 
-    fun verify(block: SignUpVerify.() -> Unit) = SignUpVerify(rule).apply(block)
+    fun verify(block: LoginVerify.() -> Unit) = LoginVerify(rule).apply(block)
 }
 
-class SignUpVerify(
+class LoginVerify(
     private val rule: Rule
 ) {
     fun signupScreenIsShown() {

@@ -10,6 +10,7 @@ fun launchSignUpScreen(
 class SignUpDsl(
     private val rule: Rule
 ) {
+    fun verify(block: SignUpVerify.() -> Unit) = SignUpVerify(rule).apply(block)
 }
 
 class SignUpVerify(
