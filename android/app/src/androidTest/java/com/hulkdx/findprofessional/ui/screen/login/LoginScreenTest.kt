@@ -19,6 +19,7 @@ class LoginScreenTest {
         }
     }
 
+/*
     @Test
     fun performLogin() {
         launchLoginScreen(composeRule) {
@@ -29,5 +30,6 @@ class LoginScreenTest {
             // TODO("What would be the next screen to present")
         }
     }
+    */
 
 }

@@ -35,7 +35,6 @@ object BuildDep {
     // https://github.com/mockito/mockito
     const val MOCKITO_VERSION = "3.10.0"
     const val MOCKITO_JUNIT5_VERSION = "2.23.0"
-    const val EXT_JUNIT_TEST_VERSION = "1.1.3"
 
     // https://github.com/rickclephas/KMP-NativeCoroutines
     const val IOS_KMP_NATIVE_VERSION = "0.11.4-new-mm"

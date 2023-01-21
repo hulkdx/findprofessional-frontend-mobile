@@ -12,6 +12,11 @@ https://www.figma.com/file/59wAYmh2zv94mUeA7udBzc/Login-Screen?node-id=0%3A1
 Push to the `main` branch, would release to Google Play:
 **Alpha**: https://play.google.com/store/apps/details?id=com.hulkdx.findprofessional
 
+### Dependency Check
+```sh
+./gradlew dependencyUpdates
+```
+
 ## iOS
 
 ### CI
