@@ -1,26 +1,22 @@
 package com.hulkdx.findprofessional.ui.screen.login
 
 import androidx.compose.ui.test.assertIsDisplayed
-import androidx.compose.ui.test.junit4.AndroidComposeTestRule
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performTextInput
-import androidx.test.ext.junit.rules.ActivityScenarioRule
-import com.hulkdx.findprofessional.MainActivity
 import com.hulkdx.findprofessional.R
+import com.hulkdx.findprofessional.utils.Rule
 import com.hulkdx.findprofessional.utils.onNodeWithTagRes
 import com.hulkdx.findprofessional.utils.onNodeWithTextRes
 
-typealias Rule = AndroidComposeTestRule<ActivityScenarioRule<MainActivity>, MainActivity>
 
 fun launchLoginScreen(
     rule: Rule,
-    block: SignUpDsl.() -> Unit,
-) = SignUpDsl(rule).apply(block)
+    block: LoginDsl.() -> Unit,
+) = LoginDsl(rule).apply(block)
 
-class SignUpDsl(
+class LoginDsl(
     private val rule: Rule
 ) {
-
     fun typeEmail(email: String) {
         rule.onNodeWithTextRes(R.string.email)
             .performTextInput(email)
