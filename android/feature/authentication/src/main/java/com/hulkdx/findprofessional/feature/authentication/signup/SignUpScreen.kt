@@ -24,8 +24,7 @@ import org.koin.androidx.compose.getViewModel
 @Composable
 fun SignUpScreen(
     viewModel: SignUpViewModel = getViewModel(),
-
-    ) {
+) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
 
