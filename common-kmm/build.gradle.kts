@@ -23,6 +23,7 @@ kotlin {
             dependencies {
                 implementation("io.insert-koin:koin-core:${BuildDep.KOIN_VERSION}")
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${BuildDep.COROUTINES_VERSION}")
+                implementation("io.ktor:ktor-client-core:${BuildDep.KTOR_VERSION}")
             }
         }
         val androidMain by getting

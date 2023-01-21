@@ -12,6 +12,8 @@ object BuildDep {
     // KOTLIN_VERSION     depends on this
     // COROUTINES_VERSION depends on this
     const val IOS_KMP_NATIVE_VERSION = "0.13.2-kotlin-1.8.0-RC"
+    // https://ktor.io/docs/getting-started-ktor-client-multiplatform-mobile.html#ktor-dependencies
+    const val KTOR_VERSION = "2.2.2"
 
     const val KOTLIN_VERSION = "1.8.0"
     // https://developer.android.com/studio/releases/gradle-plugin
