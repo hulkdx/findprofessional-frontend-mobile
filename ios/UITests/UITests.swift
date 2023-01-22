@@ -10,13 +10,17 @@ import XCTest
 
 class UITests: XCTestCase {
     
-    override func setUp() {
+    private var app: XCUIApplication!
+    
+    override func setUpWithError() throws {
         continueAfterFailure = false
+        app = XCUIApplication()
+        app.launch()
     }
 
     func testExample() throws {
-        let app = XCUIApplication()
-        app.launch()
+        XCTAssertTrue(false)
+        //app.descendants(matching: .any)[""]
     }
 
 }

@@ -1,14 +1,14 @@
-name: build and test
+name: tests
 
 on:
   pull_request:
     branches: [ main ]
 
 jobs:
-  tests:
-    runs-on: macOS-latest
+  android-tests:
+    name: Android tests
+    runs-on: macos-12
     timeout-minutes: 30
-
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -46,3 +46,20 @@ jobs:
           path: |
             **/build/reports/tests
             **/build/reports/androidTests/connected
+
+  ios-tests:
+    name: iOS tests
+    runs-on: macos-12
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Select Xcode
+        run: sudo xcode-select -switch /Applications/Xcode_14.1.app
+      - name: Build and Test
+        run: 	xcodebuild
+          -workspace ios/iosApp.xcodeproj/project.xcworkspace
+          -scheme iosApp
+          -sdk iphonesimulator
+          -destination 'platform=iOS Simulator,name=iPhone 14'
+          build test
