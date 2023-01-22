@@ -10,7 +10,7 @@ struct SignUpScreen_Previews: PreviewProvider {
 
 struct SignUpScreen: View {
     @StateObject
-    var viewModel = SignUpViewModel(repository: SignUpRepository())
+    var viewModel = SignUpViewModel(repository: KoinHelper().signUpRepository)
     
     @State var username: String = ""
     @State var password: String = ""
