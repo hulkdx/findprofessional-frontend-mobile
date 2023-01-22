@@ -18,7 +18,7 @@ class SignUpViewModelTest {
     @BeforeEach
     fun setUp() {
         sut = SignUpViewModel(
-            SignUpUseCase(api)
+            SignUpUseCase(api),
         )
     }
 }
