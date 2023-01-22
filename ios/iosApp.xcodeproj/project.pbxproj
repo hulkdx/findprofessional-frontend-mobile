@@ -19,6 +19,7 @@
 		463B8DF6280B014C0016B0BD /* AppFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463B8DF5280B014C0016B0BD /* AppFont.swift */; };
 		464406D128157E6400A88A46 /* ViewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464406D028157E6400A88A46 /* ViewUtils.swift */; };
 		467BCA01280AD21B009EE97E /* KMPNativeCoroutinesAsync in Frameworks */ = {isa = PBXBuildFile; productRef = 467BCA00280AD21B009EE97E /* KMPNativeCoroutinesAsync */; };
+		46CE2300297D7BB60002EBE5 /* UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CE22FF297D7BB60002EBE5 /* UITests.swift */; };
 		46E01EBB280AE3B40023A293 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E01EBA280AE3B40023A293 /* LoginScreen.swift */; };
 		46E01EBD280AE3FD0023A293 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E01EBC280AE3FD0023A293 /* LoginViewModel.swift */; };
 		46E01EC0280AF4400023A293 /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E01EBF280AF4400023A293 /* AppColor.swift */; };
@@ -27,6 +28,16 @@
 		46EBF941280C41D0001D635A /* inter_medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46EBF93E280C41D0001D635A /* inter_medium.ttf */; };
 		46EBF942280C41D0001D635A /* inter_light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46EBF93F280C41D0001D635A /* inter_light.ttf */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		46CE2303297D7BB60002EBE5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7555FF73242A565900829871 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7555FF7A242A565900829871;
+			remoteInfo = FindProfessional;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		7555FFB4242A642300829871 /* Embed Frameworks */ = {
@@ -53,6 +64,8 @@
 		460CE537280D9300007E758C /* PasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
 		463B8DF5280B014C0016B0BD /* AppFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFont.swift; sourceTree = "<group>"; };
 		464406D028157E6400A88A46 /* ViewUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewUtils.swift; sourceTree = "<group>"; };
+		46CE22FD297D7BB60002EBE5 /* UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		46CE22FF297D7BB60002EBE5 /* UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITests.swift; sourceTree = "<group>"; };
 		46E01EBA280AE3B40023A293 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		46E01EBC280AE3FD0023A293 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		46E01EBF280AF4400023A293 /* AppColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
@@ -65,6 +78,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		46CE22FA297D7BB60002EBE5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7555FF78242A565900829871 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -110,6 +130,14 @@
 				464406D028157E6400A88A46 /* ViewUtils.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		46CE22FE297D7BB60002EBE5 /* UITests */ = {
+			isa = PBXGroup;
+			children = (
+				46CE22FF297D7BB60002EBE5 /* UITests.swift */,
+			);
+			path = UITests;
 			sourceTree = "<group>";
 		};
 		46E01EB7280AE34C0023A293 /* Feature */ = {
@@ -172,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				7555FF7D242A565900829871 /* iosApp */,
+				46CE22FE297D7BB60002EBE5 /* UITests */,
 				7555FF7C242A565900829871 /* Products */,
 				7555FFB0242A642200829871 /* Frameworks */,
 			);
@@ -181,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				7555FF7B242A565900829871 /* FindProfessional.app */,
+				46CE22FD297D7BB60002EBE5 /* UITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -209,6 +239,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		46CE22FC297D7BB60002EBE5 /* UITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 46CE2307297D7BB60002EBE5 /* Build configuration list for PBXNativeTarget "UITests" */;
+			buildPhases = (
+				46CE22F9297D7BB60002EBE5 /* Sources */,
+				46CE22FA297D7BB60002EBE5 /* Frameworks */,
+				46CE22FB297D7BB60002EBE5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				46CE2304297D7BB60002EBE5 /* PBXTargetDependency */,
+			);
+			name = UITests;
+			productName = UITests;
+			productReference = 46CE22FD297D7BB60002EBE5 /* UITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		7555FF7A242A565900829871 /* FindProfessional */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7555FFA5242A565B00829871 /* Build configuration list for PBXNativeTarget "FindProfessional" */;
@@ -237,10 +285,14 @@
 		7555FF73242A565900829871 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1130;
+				LastSwiftUpdateCheck = 1420;
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = orgName;
 				TargetAttributes = {
+					46CE22FC297D7BB60002EBE5 = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = 7555FF7A242A565900829871;
+					};
 					7555FF7A242A565900829871 = {
 						CreatedOnToolsVersion = 11.3.1;
 					};
@@ -263,11 +315,19 @@
 			projectRoot = "";
 			targets = (
 				7555FF7A242A565900829871 /* FindProfessional */,
+				46CE22FC297D7BB60002EBE5 /* UITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		46CE22FB297D7BB60002EBE5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7555FF79242A565900829871 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -304,6 +364,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		46CE22F9297D7BB60002EBE5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46CE2300297D7BB60002EBE5 /* UITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7555FF77242A565900829871 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -325,7 +393,52 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		46CE2304297D7BB60002EBE5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7555FF7A242A565900829871 /* FindProfessional */;
+			targetProxy = 46CE2303297D7BB60002EBE5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		46CE2305297D7BB60002EBE5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hulkdx.findprofessional.UITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = FindProfessional;
+			};
+			name = Debug;
+		};
+		46CE2306297D7BB60002EBE5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hulkdx.findprofessional.UITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = FindProfessional;
+			};
+			name = Release;
+		};
 		7555FFA3242A565B00829871 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -503,6 +616,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		46CE2307297D7BB60002EBE5 /* Build configuration list for PBXNativeTarget "UITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				46CE2305297D7BB60002EBE5 /* Debug */,
+				46CE2306297D7BB60002EBE5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		7555FF76242A565900829871 /* Build configuration list for PBXProject "iosApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
