@@ -23,6 +23,10 @@ jobs:
           path: |
             ~/.gradle/caches
             ~/.gradle/wrapper
+            ~/.konan/cache
+            ~/.konan/dependencies
+            ~/.konan/kotlin-native-macos*
+            ~/.konan/kotlin-native-prebuilt-macos*
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
