@@ -54,8 +54,24 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      
       - name: Select Xcode
         run: sudo xcode-select -switch /Applications/Xcode_14.2.app
+      
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'
+          java-version: 11
+      
+      - uses: actions/cache@v3
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+      
       - name: Build and Test
         run: 	xcodebuild
           -workspace ios/iosApp.xcodeproj/project.xcworkspace
