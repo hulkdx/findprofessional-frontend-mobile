@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 
-class LoginRepository {
+class LoginUseCase {
     fun getFlow(): Flow<String> = flow {
         emit("1")
         delay(2000)

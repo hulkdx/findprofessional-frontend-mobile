@@ -10,7 +10,7 @@ struct LoginScreen_Previews: PreviewProvider {
 
 struct LoginScreen: View {
     @StateObject
-    var viewModel = LoginViewModel(repository: LoginRepository())
+    var viewModel = LoginViewModel(KoinHelper().loginUseCase)
     
     @State var username: String = ""
     @State var password: String = ""

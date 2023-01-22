@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.hulkdx.findprofessional">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".MainApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:name=".MainApplication"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true">
 
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name"
             android:exported="true"
+            android:label="@string/app_name"
             android:theme="@style/Theme.FindProfessional">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,10 +23,5 @@
         </activity>
 
     </application>
-
-    <!-- Bug with androidx.compose.ui:ui-tooling on UI tests -->
-    <uses-sdk
-        android:minSdkVersion="21"
-        tools:overrideLibrary="androidx.compose.ui.tooling" />
 
 </manifest>

@@ -6,7 +6,7 @@ import KMPNativeCoroutinesAsync
 @MainActor
 class LoginViewModel: ObservableObject {
     
-    private let repository: LoginRepository
+    private let useCase: LoginUseCase
     
     @Published
     var data = ""
@@ -14,12 +14,12 @@ class LoginViewModel: ObservableObject {
     @Published
     var showSignUp = false
     
-    init(repository: LoginRepository) {
-        self.repository = repository
+    init(_ useCase: LoginUseCase) {
+        self.useCase = useCase
         
         Task {
             do {
-                for try await data in asyncStream(for: repository.getFlowNative()) { self.data = data }
+                for try await data in asyncStream(for: useCase.getFlowNative()) { self.data = data }
             } catch {
                 print("Failed with error: \(error)")
             }
