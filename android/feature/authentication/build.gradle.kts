@@ -32,6 +32,7 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = BuildDep.COMPOSE_VERSION
     }
+    namespace = "com.hulkdx.findprofessional.feature.authentication"
 
     tasks.withType<Test> {
         useJUnitPlatform()

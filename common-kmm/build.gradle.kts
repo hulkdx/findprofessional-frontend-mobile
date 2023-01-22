@@ -53,4 +53,5 @@ android {
         minSdk = BuildDep.MIN_SDK_VERSION
         targetSdk = BuildDep.COMPILE_SDK_VERSION
     }
+    namespace = "com.hulkdx.findprofessional.common"
 }

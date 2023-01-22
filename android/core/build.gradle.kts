@@ -34,6 +34,7 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = BuildDep.COMPOSE_VERSION
     }
+    namespace = "com.hulkdx.findprofessional.core"
 }
 
 dependencies {
