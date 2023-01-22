@@ -6,7 +6,7 @@ import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
 
-// Used by iOS app
+// Used by iOS app to inject koin
 @Suppress("unused")
 class KoinHelper : KoinComponent {
     val loginUseCase: LoginUseCase by inject()
