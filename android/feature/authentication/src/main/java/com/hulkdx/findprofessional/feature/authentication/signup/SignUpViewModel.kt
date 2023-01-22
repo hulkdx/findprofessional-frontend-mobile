@@ -11,5 +11,9 @@ class SignUpViewModel(
 ) : ViewModel() {
 
     fun onSubmitClicked() {
+        viewModelScope.launch {
+            val response = repository.greeting()
+            println(response)
+        }
     }
 }
