@@ -5,7 +5,7 @@ import io.ktor.client.request.*
 import io.ktor.client.statement.*
 
 
-class SignUpRepository(
+class SignUpUseCase(
     private val client: HttpClient,
 ) {
 

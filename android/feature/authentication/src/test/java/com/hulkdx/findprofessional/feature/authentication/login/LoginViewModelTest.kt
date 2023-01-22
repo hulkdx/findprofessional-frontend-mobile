@@ -1,6 +1,6 @@
 package com.hulkdx.findprofessional.feature.authentication.login
 
-import com.hulkdx.findprofessional.common.feature.authentication.login.LoginRepository
+import com.hulkdx.findprofessional.common.feature.authentication.login.LoginUseCase
 import com.hulkdx.findprofessional.core.navigation.Navigator
 import com.hulkdx.findprofessional.feature.authentication.signup.SignUpNavigationScreen
 import org.junit.jupiter.api.Assertions.*
@@ -16,13 +16,13 @@ class LoginViewModelTest {
 
     private lateinit var sut: LoginViewModel
 
-    @Mock lateinit var loginRepository: LoginRepository
+    @Mock lateinit var loginUseCase: LoginUseCase
     @Mock lateinit var navigator: Navigator
 
     @BeforeEach
     fun setUp() {
         sut = LoginViewModel(
-            loginRepository,
+            loginUseCase,
             navigator,
         )
     }

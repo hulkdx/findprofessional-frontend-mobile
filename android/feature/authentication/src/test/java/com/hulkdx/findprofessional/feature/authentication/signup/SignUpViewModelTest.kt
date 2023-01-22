@@ -1,7 +1,6 @@
 package com.hulkdx.findprofessional.feature.authentication.signup
 
-import com.hulkdx.findprofessional.common.feature.authentication.signup.SignUpRepository
-import com.hulkdx.findprofessional.feature.authentication.login.LoginViewModel
+import com.hulkdx.findprofessional.common.feature.authentication.signup.SignUpUseCase
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.extension.ExtendWith
@@ -14,7 +13,7 @@ class SignUpViewModelTest {
     @BeforeEach
     fun setUp() {
         sut = SignUpViewModel(
-            SignUpRepository()
+            SignUpUseCase()
         )
     }
 }
