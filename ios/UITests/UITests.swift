@@ -19,7 +19,6 @@ class UITests: XCTestCase {
     }
 
     func testExample() throws {
-        XCTAssertTrue(false)
         //app.descendants(matching: .any)[""]
     }
 

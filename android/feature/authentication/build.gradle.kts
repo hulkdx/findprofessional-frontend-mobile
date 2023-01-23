@@ -48,7 +48,6 @@ dependencies {
     implementation(project(":common-kmm"))
 
     implementation(platform("androidx.compose:compose-bom:${BuildDep.COMPOSE_BOM}"))
-    implementation("androidx.compose.material3:material3:${BuildDep.COMPOSE_MATERIAL3_VERSION}")
     implementation("io.insert-koin:koin-androidx-compose:${BuildDep.KOIN_COMPOSE_VERSION}")
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:${BuildDep.JUNIT_VERSION}")
