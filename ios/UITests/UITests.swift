@@ -18,8 +18,18 @@ class UITests: XCTestCase {
         app.launch()
     }
 
-    func testExample() throws {
-        //app.descendants(matching: .any)[""]
+    func testPerformSignUp() throws {
+        pressSignUpButton()
+        signupScreenIsShown()
+    }
+    
+    private func pressSignUpButton() {
+        app.buttons["Don’t have an account? Sign Up"].tap()
+    }
+
+    private func signupScreenIsShown() {
+        let element = app.buttons["Sign up"]
+        XCTAssertTrue(element.exists)
     }
 
 }
