@@ -1,21 +1,20 @@
-name: build and test
+name: Tests
 
 on:
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
-  tests:
-    runs-on: macOS-latest
+  android-tests:
+    runs-on: macos-12
     timeout-minutes: 30
-
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
       - uses: actions/setup-java@v3
         with:
-          distribution: 'zulu'
+          distribution: "zulu"
           java-version: 11
 
       - uses: actions/cache@v3
@@ -23,10 +22,6 @@ jobs:
           path: |
             ~/.gradle/caches
             ~/.gradle/wrapper
-            ~/.konan/cache
-            ~/.konan/dependencies
-            ~/.konan/kotlin-native-macos*
-            ~/.konan/kotlin-native-prebuilt-macos*
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
@@ -46,7 +41,52 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v3
         with:
-          name: test-reports
+          name: android-test-reports
           path: |
             **/build/reports/tests
             **/build/reports/androidTests/connected
+
+  ios-tests:
+    name: iOS tests
+    runs-on: macos-12
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Select Xcode
+        run: sudo xcode-select -switch /Applications/Xcode_14.2.app
+
+      - uses: actions/setup-java@v3
+        with:
+          distribution: "zulu"
+          java-version: 11
+
+      - uses: actions/cache@v3
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Get cached Swift Packages managed by Xcode
+        uses: actions/cache@v3
+        with:
+          path: ~/Library/Developer/Xcode/DerivedData/**/SourcePackages/
+          key: ${{ runner.os }}-spm-${{ hashFiles('**/Package.resolved') }}
+          restore-keys: |
+            ${{ runner.os }}-spm-
+
+      - name: Build and Test
+        run: xcodebuild
+          -workspace ios/iosApp.xcodeproj/project.xcworkspace
+          -scheme FindProfessional
+          -configuration Debug
+          -sdk iphonesimulator
+          -destination 'platform=iOS Simulator,name=iPhone 14'
+          build test
+          ONLY_ACTIVE_ARCH=YES
+          CODE_SIGNING_REQUIRED=NO
+          CODE_SIGN_IDENTITY=""

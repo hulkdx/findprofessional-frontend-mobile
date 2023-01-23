@@ -23,8 +23,6 @@ object BuildDep {
     const val COMPOSE_VERSION = "1.4.0"
     // https://developer.android.com/jetpack/androidx/releases/compose
     const val COMPOSE_BOM = "2023.01.00"
-    // https://developer.android.com/jetpack/androidx/releases/compose-material3
-    const val COMPOSE_MATERIAL3_VERSION = "1.0.1"
     // https://developer.android.com/jetpack/androidx/releases/navigation
     const val COMPOSE_NAVIGATION_VERSION = "2.5.3"
     // https://github.com/Kotlin/kotlinx.coroutines

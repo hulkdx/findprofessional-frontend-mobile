@@ -1,60 +1,60 @@
-name: deploy to playstore
+name: Deploy to Google Play
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-      # Is required for version bump
-      with:
-        fetch-depth: 0
+      - uses: actions/checkout@v3
+        # Is required for version bump
+        with:
+          fetch-depth: 0
 
-    - uses: actions/setup-java@v3
-      with:
-        distribution: 'zulu'
-        java-version: 11
+      - uses: actions/setup-java@v3
+        with:
+          distribution: "zulu"
+          java-version: 11
 
-    - name: Version bump setup
-      run: echo "RELEASE_VERSION=$(git rev-list --count origin/main)" >> $GITHUB_ENV
+      - name: Version bump setup
+        run: echo "RELEASE_VERSION=$(git rev-list --count origin/main)" >> $GITHUB_ENV
 
-    - name: Version bump
-      uses: chkfung/android-version-actions@v1.1
-      with:
-        gradlePath: android/app/build.gradle.kts
-        versionCode: ${{ env.RELEASE_VERSION }}
+      - name: Version bump
+        uses: chkfung/android-version-actions@v1.1
+        with:
+          gradlePath: android/app/build.gradle.kts
+          versionCode: ${{ env.RELEASE_VERSION }}
 
-    - name: Build release bundle
-      run: ./gradlew bundleRelease
+      - name: Build release bundle
+        run: ./gradlew bundleRelease
 
-    - name: Sign release bundle
-      uses: r0adkll/sign-android-release@v1
-      with:
-        releaseDirectory: android/app/build/outputs/bundle/release
-        signingKeyBase64: ${{ secrets.KEYSTORE }}
-        alias: ${{ secrets.KEYSTORE_ALIAS }}
-        keyStorePassword: ${{ secrets.KEYSTORE_PASSWORD }}
-        keyPassword: ${{ secrets.KEYSTORE_PASSWORD }}
+      - name: Sign release bundle
+        uses: r0adkll/sign-android-release@v1
+        with:
+          releaseDirectory: android/app/build/outputs/bundle/release
+          signingKeyBase64: ${{ secrets.KEYSTORE }}
+          alias: ${{ secrets.KEYSTORE_ALIAS }}
+          keyStorePassword: ${{ secrets.KEYSTORE_PASSWORD }}
+          keyPassword: ${{ secrets.KEYSTORE_PASSWORD }}
 
-#    - name: Store apk artifact
-#      uses: actions/upload-artifact@v3
-#      with:
-#        name: artifacts
-#        path: |
-#          android/app/build/outputs/bundle/release/app-release.aab
+      #    - name: Store apk artifact
+      #      uses: actions/upload-artifact@v3
+      #      with:
+      #        name: artifacts
+      #        path: |
+      #          android/app/build/outputs/bundle/release/app-release.aab
 
-    - name: Setup authorization with GooglePlay Store
-      run: echo '${{ secrets.GOOGLE_SERVICES_API }}' > service_account.json
+      - name: Setup authorization with GooglePlay Store
+        run: echo '${{ secrets.GOOGLE_SERVICES_API }}' > service_account.json
 
-    - name: Deploy
-      uses: r0adkll/upload-google-play@v1.0.15
-      with:
-        serviceAccountJson: service_account.json
-        packageName: com.hulkdx.findprofessional
-        releaseFiles: android/app/build/outputs/bundle/release/app-release.aab
-        track: internal
-        whatsNewDirectory: .github/whatsNewDirectory
+      - name: Deploy
+        uses: r0adkll/upload-google-play@v1.0.15
+        with:
+          serviceAccountJson: service_account.json
+          packageName: com.hulkdx.findprofessional
+          releaseFiles: android/app/build/outputs/bundle/release/app-release.aab
+          track: internal
+          whatsNewDirectory: .github/whatsNewDirectory

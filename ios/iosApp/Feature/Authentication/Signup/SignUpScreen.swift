@@ -20,8 +20,8 @@ struct SignUpScreen: View {
             EmailTextField(value: username)
             PasswordTextField(value: password)
                 .padding(.top, 16)
-            SignInButton() {
-                
+            SignUpButton() {
+                // TODO:
             }
                 .padding(.top, 16)
         }
@@ -29,25 +29,11 @@ struct SignUpScreen: View {
     }
 }
 
-private struct SignInButton: View {
+private struct SignUpButton: View {
     
     let action: () -> Void
 
     var body: some View {
         FilledButton(text: "Sign up", action: action)
-    }
-}
-
-private struct SignUpButton: View {
-    
-    let action: () -> Void
-    
-    var body: some View {
-        Button(action: action, label: {
-            Text("Don’t have an account? **Sign Up**")
-                .font(AppFont.body1)
-                .padding()
-                .foregroundColor(AppColor.Green)
-        })
     }
 }
