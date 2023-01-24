@@ -12,16 +12,18 @@ import androidx.navigation.NamedNavArgument
 import androidx.navigation.NavBackStackEntry
 
 typealias Content = @Composable AnimatedVisibilityScope.(NavBackStackEntry) -> Unit
+typealias EnterTransitionType = AnimatedContentScope<NavBackStackEntry>.() -> EnterTransition?
+typealias ExitTransitionType = AnimatedContentScope<NavBackStackEntry>.() -> ExitTransition?
 
 interface NavigationScreen {
     val route: String
     val arguments: List<NamedNavArgument>
     val content: Content
 
-    val enterTransition: (AnimatedContentScope<NavBackStackEntry>.() -> EnterTransition?)?
-    val exitTransition: (AnimatedContentScope<NavBackStackEntry>.() -> ExitTransition?)?
-    val popEnterTransition: (AnimatedContentScope<NavBackStackEntry>.() -> EnterTransition?)?
-    val popExitTransition: (AnimatedContentScope<NavBackStackEntry>.() -> ExitTransition?)?
+    val enterTransition: EnterTransitionType?
+    val exitTransition: ExitTransitionType?
+    val popEnterTransition: EnterTransitionType?
+    val popExitTransition: ExitTransitionType?
 }
 
 abstract class BasicNavigationScreen: NavigationScreen {
@@ -29,10 +31,10 @@ abstract class BasicNavigationScreen: NavigationScreen {
         get() = this.javaClass.name
     override val arguments: List<NamedNavArgument> = listOf()
 
-    override val enterTransition: (AnimatedContentScope<NavBackStackEntry>.() -> EnterTransition?)? = null
-    override val exitTransition: (AnimatedContentScope<NavBackStackEntry>.() -> ExitTransition?)? = null
-    override val popEnterTransition: (AnimatedContentScope<NavBackStackEntry>.() -> EnterTransition?)? = null
-    override val popExitTransition: (AnimatedContentScope<NavBackStackEntry>.() -> ExitTransition?)? = null
+    override val enterTransition: EnterTransitionType? = null
+    override val exitTransition: ExitTransitionType? = null
+    override val popEnterTransition: EnterTransitionType? = null
+    override val popExitTransition: ExitTransitionType? = null
 
     override fun hashCode(): Int {
         return route.hashCode()
