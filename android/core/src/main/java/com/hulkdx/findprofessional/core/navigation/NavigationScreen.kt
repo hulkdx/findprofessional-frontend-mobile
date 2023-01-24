@@ -3,10 +3,12 @@
 package com.hulkdx.findprofessional.core.navigation
 
 import androidx.compose.animation.AnimatedContentScope
+import androidx.compose.animation.AnimatedContentScope.SlideDirection
 import androidx.compose.animation.AnimatedVisibilityScope
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
 import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.animation.core.tween
 import androidx.compose.runtime.Composable
 import androidx.navigation.NamedNavArgument
 import androidx.navigation.NavBackStackEntry
@@ -27,8 +29,7 @@ interface NavigationScreen {
 }
 
 abstract class BasicNavigationScreen: NavigationScreen {
-    override val route: String
-        get() = this.javaClass.name
+    override val route: String = this.javaClass.name
     override val arguments: List<NamedNavArgument> = listOf()
 
     override val enterTransition: EnterTransitionType? = null
@@ -45,5 +46,14 @@ abstract class BasicNavigationScreen: NavigationScreen {
             return route == other.route
         }
         return super.equals(other)
+    }
+}
+
+abstract class SlideNavigationScreen: BasicNavigationScreen() {
+    override val enterTransition: EnterTransitionType = {
+        slideIntoContainer(SlideDirection.Left, tween(300))
+    }
+    override val popExitTransition: ExitTransitionType = {
+        slideOutOfContainer(SlideDirection.Right, tween(300))
     }
 }
