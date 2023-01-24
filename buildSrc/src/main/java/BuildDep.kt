@@ -30,8 +30,6 @@ object BuildDep {
     const val COMPOSE_VERSION = "1.4.0"
     // https://developer.android.com/jetpack/androidx/releases/compose
     const val COMPOSE_BOM = "2023.01.00"
-    // https://developer.android.com/jetpack/androidx/releases/navigation
-    const val COMPOSE_NAVIGATION_VERSION = "2.5.3"
     // https://github.com/Kotlin/kotlinx.coroutines
     const val COROUTINES_VERSION = "1.6.4"
     // https://github.com/InsertKoinIO/koin
