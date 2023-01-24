@@ -4,10 +4,18 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NamedNavArgument
 import androidx.navigation.NavBackStackEntry
 
-abstract class NavigationScreen {
-    abstract val route: String
-    abstract val arguments: List<NamedNavArgument>
-    abstract val content: @Composable (NavBackStackEntry) -> Unit
+interface NavigationScreen {
+    val route: String
+    val arguments: List<NamedNavArgument>
+    val content: @Composable (NavBackStackEntry) -> Unit
+}
+
+abstract class BasicNavigationScreen(
+    override val content: @Composable (NavBackStackEntry) -> Unit,
+) : NavigationScreen {
+    override val route: String
+        get() = this.javaClass.name
+    override val arguments: List<NamedNavArgument> = listOf()
 
     override fun hashCode(): Int {
         return route.hashCode()
