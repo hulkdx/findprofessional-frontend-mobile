@@ -42,6 +42,8 @@ object BuildDep {
     const val LEAK_CANARY_VERSION = "2.8.1"
     // https://ktor.io/docs/getting-started-ktor-client-multiplatform-mobile.html#ktor-dependencies
     const val KTOR_VERSION = "2.2.2"
+    // https://github.com/google/accompanist
+    const val ACCOMPANIST_VERSION = "0.28.0"
 
     // --------------------------------------------------------------------------------
     // Android Test
