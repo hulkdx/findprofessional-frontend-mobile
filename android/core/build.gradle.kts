@@ -38,8 +38,8 @@ android {
 }
 
 dependencies {
-    api("androidx.navigation:navigation-compose:${BuildDep.COMPOSE_NAVIGATION_VERSION}")
-
     implementation(platform("androidx.compose:compose-bom:${BuildDep.COMPOSE_BOM}"))
     api("androidx.compose.material3:material3")
+
+    implementation("com.google.accompanist:accompanist-navigation-animation:${BuildDep.ACCOMPANIST_VERSION}")
 }
