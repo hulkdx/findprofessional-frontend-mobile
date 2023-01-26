@@ -25,6 +25,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.hulkdx.findprofessional.core.theme.body1
 import com.hulkdx.findprofessional.core.utils.bold
+import com.hulkdx.findprofessional.core.utils.singleClick
 import com.hulkdx.findprofessional.feature.authentication.R
 import com.hulkdx.findprofessional.feature.authentication.ui.EmailTextField
 import com.hulkdx.findprofessional.feature.authentication.ui.FilledButton
@@ -91,7 +92,7 @@ private fun SignUpButton(
         contentAlignment = Alignment.TopCenter,
     ) {
         TextButton(
-            onClick = onClick,
+            onClick = singleClick(onClick),
             Modifier.testTag(stringResource(id = R.string.signUp))
         ) {
             Text(

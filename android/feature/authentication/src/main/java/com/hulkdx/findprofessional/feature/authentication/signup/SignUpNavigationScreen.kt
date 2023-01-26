@@ -1,6 +1,5 @@
 package com.hulkdx.findprofessional.feature.authentication.signup
 
-import com.hulkdx.findprofessional.core.navigation.BasicNavigationScreen
 import com.hulkdx.findprofessional.core.navigation.Content
 import com.hulkdx.findprofessional.core.navigation.SlideNavigationScreen
 
