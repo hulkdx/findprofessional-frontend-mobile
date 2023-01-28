@@ -9,12 +9,10 @@ import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.hulkdx.findprofessional.core.R
 import com.hulkdx.findprofessional.feature.authentication.ui.EmailTextField
 import com.hulkdx.findprofessional.feature.authentication.ui.FilledButton
@@ -25,8 +23,8 @@ import org.koin.androidx.compose.getViewModel
 fun SignUpScreen(
     viewModel: SignUpViewModel = getViewModel(),
 ) {
-    var email by remember { mutableStateOf("") }
-    var password by remember { mutableStateOf("") }
+    val email by viewModel.email.collectAsStateWithLifecycle()
+    val password by viewModel.password.collectAsStateWithLifecycle()
 
     Column(
         modifier = Modifier
@@ -38,13 +36,13 @@ fun SignUpScreen(
             modifier = Modifier
                 .statusBarsPadding(),
             value = email,
-            onValueChanged = { email = it },
+            onValueChanged = { viewModel.email.value = it },
         )
         PasswordTextField(
             modifier = Modifier
                 .padding(top = 8.dp),
             value = password,
-            onValueChanged = { password = it },
+            onValueChanged = { viewModel.password.value = it },
         )
         SubmitButton(
             modifier = Modifier

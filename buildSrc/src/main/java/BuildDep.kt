@@ -42,6 +42,8 @@ object BuildDep {
     const val KTOR_VERSION = "2.2.2"
     // https://github.com/google/accompanist
     const val ACCOMPANIST_VERSION = "0.28.0"
+    // https://developer.android.com/jetpack/androidx/releases/lifecycle
+    const val ANDROIDX_LIFECYCLE = "2.6.0-alpha05"
 
     // --------------------------------------------------------------------------------
     // Android Test
