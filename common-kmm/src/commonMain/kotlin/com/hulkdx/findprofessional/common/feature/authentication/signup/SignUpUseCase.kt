@@ -5,6 +5,6 @@ class SignUpUseCase(
     private val signUpApi: SignUpApi,
 ) {
     suspend fun greeting(): String {
-        return signUpApi.greeting()
+        return signUpApi.register()
     }
 }
