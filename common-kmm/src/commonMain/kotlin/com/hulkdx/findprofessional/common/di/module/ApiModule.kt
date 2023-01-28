@@ -14,6 +14,7 @@ val apiModule: Module
                 install(ContentNegotiation) {
                     json()
                 }
+                expectSuccess = true
             }
         }
     }
