@@ -1,5 +1,6 @@
 plugins {
     kotlin("multiplatform")
+    kotlin("plugin.serialization") version BuildDep.KOTLIN_VERSION
     id("com.android.library")
 
     id("com.rickclephas.kmp.nativecoroutines") version BuildDep.IOS_KMP_NATIVE_VERSION
@@ -24,6 +25,8 @@ kotlin {
                 implementation("io.insert-koin:koin-core:${BuildDep.KOIN_VERSION}")
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${BuildDep.COROUTINES_VERSION}")
                 implementation("io.ktor:ktor-client-core:${BuildDep.KTOR_VERSION}")
+                implementation("io.ktor:ktor-client-content-negotiation:${BuildDep.KTOR_VERSION}")
+                implementation("io.ktor:ktor-serialization-kotlinx-json:${BuildDep.KTOR_VERSION}")
             }
         }
         val androidMain by getting {
