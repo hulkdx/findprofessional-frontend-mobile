@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 
 class SignUpViewModel(
-    private val repository: SignUpUseCase,
+    private val useCase: SignUpUseCase,
 ) : ViewModel() {
 
     val email = MutableStateFlow("")
@@ -16,7 +16,7 @@ class SignUpViewModel(
 
     fun onSubmitClicked() = viewModelScope.launch {
         try {
-            repository.register(RegisterRequest(email.value, password.value))
+            useCase.register(RegisterRequest(email.value, password.value))
             // TODO: navigate to main screen
             println("onSuccess")
         } catch (e: Exception) {

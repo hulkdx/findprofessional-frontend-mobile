@@ -1,5 +1,4 @@
 import SwiftUI
-import Combine
 import shared
 import KMPNativeCoroutinesAsync
 
@@ -9,5 +8,8 @@ class SignUpViewModel: ObservableObject {
 
     init(_ useCase: SignUpUseCase) {
         self.useCase = useCase
+    }
+
+    func onSubmitClicked() {
     }
 }
