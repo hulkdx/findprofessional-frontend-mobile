@@ -1,8 +1,7 @@
 import SwiftUI
 
 struct EmailTextField: View {
-    @State
-    var value: String
+    let value: Binding<String>
     
     var body: some View {
         CommonTextField(
