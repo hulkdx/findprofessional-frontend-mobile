@@ -19,7 +19,7 @@
 		463B8DF6280B014C0016B0BD /* AppFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463B8DF5280B014C0016B0BD /* AppFont.swift */; };
 		464406D128157E6400A88A46 /* ViewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464406D028157E6400A88A46 /* ViewUtils.swift */; };
 		467BCA01280AD21B009EE97E /* KMPNativeCoroutinesAsync in Frameworks */ = {isa = PBXBuildFile; productRef = 467BCA00280AD21B009EE97E /* KMPNativeCoroutinesAsync */; };
-		46CE2300297D7BB60002EBE5 /* UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CE22FF297D7BB60002EBE5 /* UITests.swift */; };
+		46CE2300297D7BB60002EBE5 /* LoginScreenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CE22FF297D7BB60002EBE5 /* LoginScreenUITests.swift */; };
 		46E01EBB280AE3B40023A293 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E01EBA280AE3B40023A293 /* LoginScreen.swift */; };
 		46E01EBD280AE3FD0023A293 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E01EBC280AE3FD0023A293 /* LoginViewModel.swift */; };
 		46E01EC0280AF4400023A293 /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E01EBF280AF4400023A293 /* AppColor.swift */; };
@@ -65,7 +65,7 @@
 		463B8DF5280B014C0016B0BD /* AppFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFont.swift; sourceTree = "<group>"; };
 		464406D028157E6400A88A46 /* ViewUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewUtils.swift; sourceTree = "<group>"; };
 		46CE22FD297D7BB60002EBE5 /* UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		46CE22FF297D7BB60002EBE5 /* UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITests.swift; sourceTree = "<group>"; };
+		46CE22FF297D7BB60002EBE5 /* LoginScreenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenUITests.swift; sourceTree = "<group>"; };
 		46E01EBA280AE3B40023A293 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		46E01EBC280AE3FD0023A293 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		46E01EBF280AF4400023A293 /* AppColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
@@ -135,7 +135,7 @@
 		46CE22FE297D7BB60002EBE5 /* UITests */ = {
 			isa = PBXGroup;
 			children = (
-				46CE22FF297D7BB60002EBE5 /* UITests.swift */,
+				46CE22FF297D7BB60002EBE5 /* LoginScreenUITests.swift */,
 			);
 			path = UITests;
 			sourceTree = "<group>";
@@ -368,7 +368,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				46CE2300297D7BB60002EBE5 /* UITests.swift in Sources */,
+				46CE2300297D7BB60002EBE5 /* LoginScreenUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
