@@ -7,12 +7,17 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.hulkdx.findprofessional.common.feature.authentication.signup.exception.EmailExistsException
 import com.hulkdx.findprofessional.core.R
 import com.hulkdx.findprofessional.feature.authentication.ui.EmailTextField
 import com.hulkdx.findprofessional.feature.authentication.ui.FilledButton
@@ -23,8 +28,9 @@ import org.koin.androidx.compose.getViewModel
 fun SignUpScreen(
     viewModel: SignUpViewModel = getViewModel(),
 ) {
-    val email by viewModel.email.collectAsStateWithLifecycle()
-    val password by viewModel.password.collectAsStateWithLifecycle()
+    val email by viewModel.getEmail().collectAsStateWithLifecycle()
+    val password by viewModel.getPassword().collectAsStateWithLifecycle()
+    val error by viewModel.getError().collectAsStateWithLifecycle()
 
     Column(
         modifier = Modifier
@@ -36,19 +42,20 @@ fun SignUpScreen(
             modifier = Modifier
                 .statusBarsPadding(),
             value = email,
-            onValueChanged = { viewModel.email.value = it },
+            onValueChanged = viewModel::setEmail,
         )
         PasswordTextField(
             modifier = Modifier
                 .padding(top = 8.dp),
             value = password,
-            onValueChanged = { viewModel.password.value = it },
+            onValueChanged = viewModel::setPassword,
         )
         SubmitButton(
             modifier = Modifier
                 .padding(top = 16.dp),
             onClick = viewModel::onSubmitClicked
         )
+        SignUpError(error)
     }
 }
 
@@ -62,4 +69,21 @@ private fun SubmitButton(
         text = stringResource(R.string.signUp),
         onClick = onClick,
     )
+}
+
+@Composable
+private fun SignUpError(error: Throwable?) {
+    if (error == null) {
+        return
+    }
+
+    val hostState = remember { SnackbarHostState() }
+    val msg = when (error) {
+        is EmailExistsException -> stringResource(R.string.emailExists)
+        else -> stringResource(R.string.generalError)
+    }
+    LaunchedEffect(error) {
+        hostState.showSnackbar(msg)
+    }
+    SnackbarHost(hostState = hostState)
 }

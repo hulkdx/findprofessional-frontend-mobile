@@ -8,4 +8,7 @@
     <string name="signIn">Sign in</string>
     <string name="dontHaveAnAccount">Don’t have an account?</string>
 
+    <string name="emailExists">Email already exists!</string>
+    <string name="generalError">Error please try again</string>
+
 </resources>
