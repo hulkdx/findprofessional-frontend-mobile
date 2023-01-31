@@ -20,6 +20,7 @@ class SignUpUseCase(
             if (e.response.status == HttpStatusCode.Conflict) {
                 throw EmailExistsException()
             }
+            throw e
         }
     }
 }
