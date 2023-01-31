@@ -28,9 +28,9 @@ import org.koin.androidx.compose.getViewModel
 fun SignUpScreen(
     viewModel: SignUpViewModel = getViewModel(),
 ) {
-    val email by viewModel.getEmail().collectAsStateWithLifecycle()
-    val password by viewModel.getPassword().collectAsStateWithLifecycle()
-    val error by viewModel.getError().collectAsStateWithLifecycle()
+    val email by viewModel.email.collectAsStateWithLifecycle()
+    val password by viewModel.password.collectAsStateWithLifecycle()
+    val error by viewModel.error.collectAsStateWithLifecycle()
 
     Column(
         modifier = Modifier

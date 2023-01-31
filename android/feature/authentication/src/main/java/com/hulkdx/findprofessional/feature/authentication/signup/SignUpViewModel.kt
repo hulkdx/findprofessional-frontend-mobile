@@ -1,21 +1,33 @@
 package com.hulkdx.findprofessional.feature.authentication.signup
 
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hulkdx.findprofessional.common.feature.authentication.signup.SignUpUseCase
-import com.hulkdx.findprofessional.common.feature.authentication.signup.exception.EmailExistsException
 import com.hulkdx.findprofessional.common.feature.authentication.signup.model.RegisterRequest
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class SignUpViewModel(
+    private val savedStateHandle: SavedStateHandle,
     private val useCase: SignUpUseCase,
 ) : ViewModel() {
 
-    private val email = MutableStateFlow("")
-    private val password = MutableStateFlow("")
-    private val error = MutableStateFlow<Throwable?>(null)
+    val email = savedStateHandle.getStateFlow("email", "")
+    val password = savedStateHandle.getStateFlow("password", "")
+    val error = savedStateHandle.getStateFlow<Throwable?>("error", null)
+
+    fun setEmail(value: String) {
+        savedStateHandle["email"] = value
+    }
+
+    fun setPassword(value: String) {
+        savedStateHandle["password"] = value
+    }
+
+    private fun setError(value: Throwable) {
+        savedStateHandle["error"] = value
+    }
 
     fun onSubmitClicked() = viewModelScope.launch {
         try {
@@ -23,13 +35,8 @@ class SignUpViewModel(
             // TODO: navigate to main screen
             println("onSuccess")
         } catch (e: Exception) {
-            error.value = e
+            setError(e)
         }
     }
 
-    fun getEmail() = email.asStateFlow()
-    fun setEmail(value: String) { email.value = value }
-    fun getPassword() = password.asStateFlow()
-    fun setPassword(value: String) { password.value = value }
-    fun getError() = error.asStateFlow()
 }
