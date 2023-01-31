@@ -11,5 +11,6 @@ val signUpModule: Module
     get() = module {
         factoryOf(::SignUpNavigationScreen) bind NavigationScreen::class
         viewModelOf(::SignUpViewModel)
+        factoryOf(::MainNavigationScreen) bind NavigationScreen::class
     }
 
