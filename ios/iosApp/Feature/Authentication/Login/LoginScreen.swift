@@ -10,10 +10,10 @@ struct LoginScreen_Previews: PreviewProvider {
 
 struct LoginScreen: View {
     @StateObject
-    var viewModel = LoginViewModel(KoinHelper().loginUseCase)
+    private var viewModel = LoginViewModel(KoinHelper().loginUseCase)
     
-    @State var email: String = ""
-    @State var password: String = ""
+    @State private var email: String = ""
+    @State private var password: String = ""
     
     var body: some View {
         VStack(spacing: 0) {

@@ -10,7 +10,7 @@ struct SignUpScreen_Previews: PreviewProvider {
 
 struct SignUpScreen: View {
     @StateObject
-    var viewModel = SignUpViewModel(KoinHelper().signUpUseCase)
+    private var viewModel = SignUpViewModel(KoinHelper().signUpUseCase)
     
     var body: some View {
         VStack(spacing: 0) {
