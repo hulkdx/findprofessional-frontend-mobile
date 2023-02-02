@@ -19,6 +19,8 @@
 		463B8DF6280B014C0016B0BD /* AppFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463B8DF5280B014C0016B0BD /* AppFont.swift */; };
 		464406D128157E6400A88A46 /* ViewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464406D028157E6400A88A46 /* ViewUtils.swift */; };
 		467BCA01280AD21B009EE97E /* KMPNativeCoroutinesAsync in Frameworks */ = {isa = PBXBuildFile; productRef = 467BCA00280AD21B009EE97E /* KMPNativeCoroutinesAsync */; };
+		46905BA7298BD9BB005D4292 /* FFNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46905BA6298BD9BB005D4292 /* FFNavigation.swift */; };
+		46905BA8298BD9BB005D4292 /* FFNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46905BA6298BD9BB005D4292 /* FFNavigation.swift */; };
 		46CE2300297D7BB60002EBE5 /* LoginScreenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CE22FF297D7BB60002EBE5 /* LoginScreenUITests.swift */; };
 		46E01EBB280AE3B40023A293 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E01EBA280AE3B40023A293 /* LoginScreen.swift */; };
 		46E01EBD280AE3FD0023A293 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E01EBC280AE3FD0023A293 /* LoginViewModel.swift */; };
@@ -64,6 +66,7 @@
 		460CE537280D9300007E758C /* PasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
 		463B8DF5280B014C0016B0BD /* AppFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFont.swift; sourceTree = "<group>"; };
 		464406D028157E6400A88A46 /* ViewUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewUtils.swift; sourceTree = "<group>"; };
+		46905BA6298BD9BB005D4292 /* FFNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFNavigation.swift; sourceTree = "<group>"; };
 		46CE22FD297D7BB60002EBE5 /* UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		46CE22FF297D7BB60002EBE5 /* LoginScreenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenUITests.swift; sourceTree = "<group>"; };
 		46E01EBA280AE3B40023A293 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
@@ -96,14 +99,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		058557D7273AAEEB004C7B11 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
-			sourceTree = "<group>";
-		};
 		460CE52B280D8FEE007E758C /* Signup */ = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +125,32 @@
 				464406D028157E6400A88A46 /* ViewUtils.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		46905BA4298BD986005D4292 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				46905BA5298BD9A1005D4292 /* Navigation */,
+				46E01EBE280AF4300023A293 /* Theme */,
+				464406CF28157E4F00A88A46 /* Utils */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		46905BA5298BD9A1005D4292 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				46905BA6298BD9BB005D4292 /* FFNavigation.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		46905BA9298BDA6B005D4292 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		46CE22FE297D7BB60002EBE5 /* UITests */ = {
@@ -179,6 +200,7 @@
 		46E01ECB280B000C0023A293 /* Res */ = {
 			isa = PBXGroup;
 			children = (
+				46905BA9298BDA6B005D4292 /* Preview Content */,
 				46EBF92C280C400B001D635A /* Font */,
 				058557BA273AAA24004C7B11 /* Assets.xcassets */,
 			);
@@ -218,11 +240,9 @@
 		7555FF7D242A565900829871 /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
+				46905BA4298BD986005D4292 /* Core */,
 				46E01EB7280AE34C0023A293 /* Feature */,
-				058557D7273AAEEB004C7B11 /* Preview Content */,
 				46E01ECB280B000C0023A293 /* Res */,
-				46E01EBE280AF4300023A293 /* Theme */,
-				464406CF28157E4F00A88A46 /* Utils */,
 				7555FF8C242A565B00829871 /* Info.plist */,
 				2152FB032600AC8F00CF470E /* iOSApp.swift */,
 			);
@@ -369,6 +389,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				46CE2300297D7BB60002EBE5 /* LoginScreenUITests.swift in Sources */,
+				46905BA8298BD9BB005D4292 /* FFNavigation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,6 +398,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
+				46905BA7298BD9BB005D4292 /* FFNavigation.swift in Sources */,
 				460CE536280D923F007E758C /* FilledButton.swift in Sources */,
 				464406D128157E6400A88A46 /* ViewUtils.swift in Sources */,
 				46E01EC0280AF4400023A293 /* AppColor.swift in Sources */,
@@ -561,7 +583,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"iosApp/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"iosApp/Res/Preview Content\"";
 				DEVELOPMENT_TEAM = FJ4Q769T4D;
 				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../common-kmm/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)";
@@ -590,7 +612,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"iosApp/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"iosApp/Res/Preview Content\"";
 				DEVELOPMENT_TEAM = FJ4Q769T4D;
 				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../common-kmm/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)";
