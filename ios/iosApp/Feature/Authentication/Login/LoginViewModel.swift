@@ -10,9 +10,6 @@ class LoginViewModel: ObservableObject {
     @Published
     var data = ""
     
-    @Published
-    var showSignUp = false
-    
     init(_ useCase: LoginUseCase) {
         self.useCase = useCase
         
@@ -30,6 +27,5 @@ class LoginViewModel: ObservableObject {
     }
     
     func signUpButtonClicked() {
-        showSignUp = true
     }
 }
