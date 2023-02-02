@@ -12,14 +12,14 @@ struct LoginScreen: View {
     @StateObject
     var viewModel = LoginViewModel(KoinHelper().loginUseCase)
     
-    @State var username: String = ""
+    @State var email: String = ""
     @State var password: String = ""
     
     var body: some View {
         NavigationView {
             VStack(spacing: 0) {
-                EmailTextField(value: username)
-                PasswordTextField(value: password)
+                EmailTextField(value: $email)
+                PasswordTextField(value: $password)
                     .padding(.top, 16)
                 SignInButton() {
                     viewModel.signUpButtonClicked()

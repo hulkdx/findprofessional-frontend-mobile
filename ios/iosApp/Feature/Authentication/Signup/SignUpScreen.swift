@@ -12,16 +12,13 @@ struct SignUpScreen: View {
     @StateObject
     var viewModel = SignUpViewModel(KoinHelper().signUpUseCase)
     
-    @State var username: String = ""
-    @State var password: String = ""
-    
     var body: some View {
         VStack(spacing: 0) {
-            EmailTextField(value: username)
-            PasswordTextField(value: password)
+            EmailTextField(value: $viewModel.email)
+            PasswordTextField(value: $viewModel.password)
                 .padding(.top, 16)
             SignUpButton() {
-                // TODO:
+                viewModel.onSubmitClicked()
             }
                 .padding(.top, 16)
         }

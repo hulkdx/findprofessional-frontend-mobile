@@ -1,20 +1,26 @@
 import SwiftUI
-import Combine
 import shared
 import KMPNativeCoroutinesAsync
 
 @MainActor
 class SignUpViewModel: ObservableObject {
+    
+    @Published var email: String = ""
+    @Published var password: String = ""
+    
     private let useCase: SignUpUseCase
 
     init(_ useCase: SignUpUseCase) {
         self.useCase = useCase
-        
-        Task {
+    }
+
+    func onSubmitClicked() {
+        let task = Task {
             do {
-                for try await data in asyncStream(for: useCase.greetingNative()) { print(data) }
+                try await asyncFunction(for: useCase.registerNative(request: RegisterRequest(email: email, password: password)))
+                print("onSubmitClicked: Success")
             } catch {
-                print("Failed with error: \(error)")
+                print("onSubmitClicked: Failed with error: \(error)")
             }
         }
     }

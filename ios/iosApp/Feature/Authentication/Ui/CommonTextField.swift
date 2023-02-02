@@ -2,8 +2,7 @@ import SwiftUI
 
 struct CommonTextField: View {
     
-    @State
-    var value: String
+    @Binding var value: String
     let leadingIcon: String
     let hint: String
     let isSecure: Bool
