@@ -1,4 +1,5 @@
 import SwiftUI
+import shared
 
 struct FFNavigation_Previews: PreviewProvider {
     static var previews: some View {
@@ -8,11 +9,22 @@ struct FFNavigation_Previews: PreviewProvider {
 
 struct FFNavigation: View {
     
-    @State var path = NavigationPath()
+    @StateObject
+    var viewModel = NavigationViewModel()
     
     var body: some View {
-        NavigationStack(path: $path) {
-            LoginScreen()
+        NavigationStack(path: $viewModel.path) {
+            LoginScreen(
+                viewModel: LoginViewModel(KoinHelper().loginUseCase, viewModel: viewModel)
+            )
+            .navigationDestination(for: String.self, destination: { s in
+                SignUpScreen()
+            })
         }
     }
+}
+
+@MainActor
+class NavigationViewModel: ObservableObject {
+    @Published var path = NavigationPath()
 }

@@ -5,21 +5,21 @@ import KMPNativeCoroutinesAsync
 @MainActor
 class LoginViewModel: ObservableObject {
     
-    private let useCase: LoginUseCase
-    
+    let useCase: LoginUseCase
+    let viewModel: NavigationViewModel
+
     @Published
     var data = ""
     
-    init(_ useCase: LoginUseCase) {
+//    var path = NavigationPath()
+    
+    init(_ useCase: LoginUseCase,
+         viewModel: NavigationViewModel
+//         , @Binding path: NavigationPath
+    ) {
         self.useCase = useCase
-        
-        Task {
-            do {
-                for try await data in asyncStream(for: useCase.getFlowNative()) { self.data = data }
-            } catch {
-                print("Failed with error: \(error)")
-            }
-        }
+        self.viewModel = viewModel
+//        self.path = path
     }
     
     func signInButtonClicked() {
@@ -27,5 +27,6 @@ class LoginViewModel: ObservableObject {
     }
     
     func signUpButtonClicked() {
+        viewModel.path.append("")
     }
 }
