@@ -219,12 +219,12 @@
 			isa = PBXGroup;
 			children = (
 				46E01EB7280AE34C0023A293 /* Feature */,
-				7555FF8C242A565B00829871 /* Info.plist */,
-				2152FB032600AC8F00CF470E /* iOSApp.swift */,
 				058557D7273AAEEB004C7B11 /* Preview Content */,
 				46E01ECB280B000C0023A293 /* Res */,
 				46E01EBE280AF4300023A293 /* Theme */,
 				464406CF28157E4F00A88A46 /* Utils */,
+				7555FF8C242A565B00829871 /* Info.plist */,
+				2152FB032600AC8F00CF470E /* iOSApp.swift */,
 			);
 			path = iosApp;
 			sourceTree = "<group>";
