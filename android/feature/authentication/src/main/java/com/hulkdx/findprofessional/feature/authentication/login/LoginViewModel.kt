@@ -2,8 +2,8 @@ package com.hulkdx.findprofessional.feature.authentication.login
 
 import androidx.lifecycle.ViewModel
 import com.hulkdx.findprofessional.common.feature.authentication.login.LoginUseCase
-import com.hulkdx.findprofessional.core.navigation.Navigator
-import com.hulkdx.findprofessional.feature.authentication.signup.SignUpNavigationScreen
+import com.hulkdx.findprofessional.common.navigation.NavigationScreen
+import com.hulkdx.findprofessional.common.navigation.Navigator
 
 class LoginViewModel(
     private val loginUseCase: LoginUseCase,
@@ -11,7 +11,7 @@ class LoginViewModel(
 ): ViewModel() {
 
     fun onSignUpClicked() {
-        navigator.navigate(SignUpNavigationScreen())
+        navigator.navigate(NavigationScreen.SignUp)
     }
 
     fun onSignInClicked() {

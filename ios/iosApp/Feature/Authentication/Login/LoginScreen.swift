@@ -1,38 +1,33 @@
 import SwiftUI
-import Combine
-import shared
 
 struct LoginScreen_Previews: PreviewProvider {
     static var previews: some View {
-        LoginScreen()
+        AppNavigationView().loginScreen()
     }
 }
 
 struct LoginScreen: View {
     @StateObject
-    var viewModel = LoginViewModel(KoinHelper().loginUseCase)
+    var viewModel: LoginViewModel
     
-    @State var email: String = ""
-    @State var password: String = ""
+    @State private var email: String = ""
+    @State private var password: String = ""
     
     var body: some View {
-        NavigationView {
-            VStack(spacing: 0) {
-                EmailTextField(value: $email)
-                PasswordTextField(value: $password)
-                    .padding(.top, 16)
-                SignInButton() {
-                    viewModel.signUpButtonClicked()
-                }
-                    .padding(.top, 16)
-                SignUpButton() {
-                    viewModel.signUpButtonClicked()
-                }
-                    .padding(.top, 32)
-                    .navigateTo(isActive: $viewModel.showSignUp, destination: SignUpScreen())
+        VStack(spacing: 0) {
+            EmailTextField(value: $email)
+            PasswordTextField(value: $password)
+                .padding(.top, 16)
+            SignInButton() {
+                viewModel.signUpButtonClicked()
             }
-            .padding(.horizontal, 16)
+                .padding(.top, 16)
+            SignUpButton() {
+                viewModel.signUpButtonClicked()
+            }
+                .padding(.top, 32)
         }
+        .padding(.horizontal, 16)
     }
 }
 

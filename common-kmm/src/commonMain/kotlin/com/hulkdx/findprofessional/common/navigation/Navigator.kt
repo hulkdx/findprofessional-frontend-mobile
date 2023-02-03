@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.core.navigation
+package com.hulkdx.findprofessional.common.navigation
 
 
 interface Navigator {
