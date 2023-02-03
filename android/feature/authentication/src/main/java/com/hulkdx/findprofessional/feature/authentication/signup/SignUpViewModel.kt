@@ -5,7 +5,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hulkdx.findprofessional.common.feature.authentication.signup.SignUpUseCase
 import com.hulkdx.findprofessional.common.feature.authentication.signup.model.RegisterRequest
-import com.hulkdx.findprofessional.core.navigation.Navigator
+import com.hulkdx.findprofessional.common.navigation.NavigationScreen
+import com.hulkdx.findprofessional.common.navigation.Navigator
 import kotlinx.coroutines.launch
 
 class SignUpViewModel(
@@ -33,7 +34,7 @@ class SignUpViewModel(
     fun onSubmitClicked() = viewModelScope.launch {
         try {
             useCase.register(RegisterRequest(email.value, password.value))
-            navigator.navigate(MainNavigationScreen())
+            navigator.navigate(NavigationScreen.Main)
         } catch (e: Exception) {
             setError(e)
         }
