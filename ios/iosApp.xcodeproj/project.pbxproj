@@ -18,8 +18,8 @@
 		460CE538280D9300007E758C /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460CE537280D9300007E758C /* PasswordTextField.swift */; };
 		463B8DF6280B014C0016B0BD /* AppFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463B8DF5280B014C0016B0BD /* AppFont.swift */; };
 		467BCA01280AD21B009EE97E /* KMPNativeCoroutinesAsync in Frameworks */ = {isa = PBXBuildFile; productRef = 467BCA00280AD21B009EE97E /* KMPNativeCoroutinesAsync */; };
-		46905BA7298BD9BB005D4292 /* FFNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46905BA6298BD9BB005D4292 /* FFNavigation.swift */; };
-		46905BA8298BD9BB005D4292 /* FFNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46905BA6298BD9BB005D4292 /* FFNavigation.swift */; };
+		46905BA7298BD9BB005D4292 /* AppNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46905BA6298BD9BB005D4292 /* AppNavigationView.swift */; };
+		46905BA8298BD9BB005D4292 /* AppNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46905BA6298BD9BB005D4292 /* AppNavigationView.swift */; };
 		46CE2300297D7BB60002EBE5 /* LoginScreenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CE22FF297D7BB60002EBE5 /* LoginScreenUITests.swift */; };
 		46E01EBB280AE3B40023A293 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E01EBA280AE3B40023A293 /* LoginScreen.swift */; };
 		46E01EBD280AE3FD0023A293 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E01EBC280AE3FD0023A293 /* LoginViewModel.swift */; };
@@ -64,7 +64,7 @@
 		460CE535280D923F007E758C /* FilledButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilledButton.swift; sourceTree = "<group>"; };
 		460CE537280D9300007E758C /* PasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
 		463B8DF5280B014C0016B0BD /* AppFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFont.swift; sourceTree = "<group>"; };
-		46905BA6298BD9BB005D4292 /* FFNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFNavigation.swift; sourceTree = "<group>"; };
+		46905BA6298BD9BB005D4292 /* AppNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigationView.swift; sourceTree = "<group>"; };
 		46CE22FD297D7BB60002EBE5 /* UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		46CE22FF297D7BB60002EBE5 /* LoginScreenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenUITests.swift; sourceTree = "<group>"; };
 		46E01EBA280AE3B40023A293 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
@@ -137,7 +137,7 @@
 		46905BA5298BD9A1005D4292 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
-				46905BA6298BD9BB005D4292 /* FFNavigation.swift */,
+				46905BA6298BD9BB005D4292 /* AppNavigationView.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -386,7 +386,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				46CE2300297D7BB60002EBE5 /* LoginScreenUITests.swift in Sources */,
-				46905BA8298BD9BB005D4292 /* FFNavigation.swift in Sources */,
+				46905BA8298BD9BB005D4292 /* AppNavigationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,7 +395,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
-				46905BA7298BD9BB005D4292 /* FFNavigation.swift in Sources */,
+				46905BA7298BD9BB005D4292 /* AppNavigationView.swift in Sources */,
 				460CE536280D923F007E758C /* FilledButton.swift in Sources */,
 				46E01EC0280AF4400023A293 /* AppColor.swift in Sources */,
 				460CE532280D9183007E758C /* CommonTextField.swift in Sources */,

@@ -5,14 +5,14 @@ import KMPNativeCoroutinesAsync
 @MainActor
 class LoginViewModel: ObservableObject {
     
-    let useCase: LoginUseCase
-    let viewModel: NavigationViewModel
+    private let useCase: LoginUseCase
+    private let navigator: Navigator
 
     init(_ useCase: LoginUseCase,
-         viewModel: NavigationViewModel
+         _ navigator: Navigator
     ) {
         self.useCase = useCase
-        self.viewModel = viewModel
+        self.navigator = navigator
     }
     
     func signInButtonClicked() {
@@ -20,6 +20,6 @@ class LoginViewModel: ObservableObject {
     }
     
     func signUpButtonClicked() {
-        viewModel.path.append("")
+         navigator.navigate(screen: NavigationScreen.SignUp())
     }
 }
