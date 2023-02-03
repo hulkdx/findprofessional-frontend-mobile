@@ -1,16 +1,14 @@
 import SwiftUI
-import Combine
-import shared
 
 struct SignUpScreen_Previews: PreviewProvider {
     static var previews: some View {
-        SignUpScreen()
+        AppNavigationView().signUpScreen()
     }
 }
 
 struct SignUpScreen: View {
     @StateObject
-    private var viewModel = SignUpViewModel(KoinHelper().signUpUseCase)
+    var viewModel: SignUpViewModel
     
     var body: some View {
         VStack(spacing: 0) {

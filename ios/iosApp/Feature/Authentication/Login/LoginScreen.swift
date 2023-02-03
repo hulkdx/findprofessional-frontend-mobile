@@ -1,5 +1,11 @@
 import SwiftUI
 
+struct LoginScreen_Previews: PreviewProvider {
+    static var previews: some View {
+        AppNavigationView().loginScreen()
+    }
+}
+
 struct LoginScreen: View {
     @StateObject
     var viewModel: LoginViewModel

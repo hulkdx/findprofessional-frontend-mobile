@@ -8,9 +8,7 @@ class LoginViewModel: ObservableObject {
     private let useCase: LoginUseCase
     private let navigator: Navigator
 
-    init(_ useCase: LoginUseCase,
-         _ navigator: Navigator
-    ) {
+    init(_ useCase: LoginUseCase, _ navigator: Navigator) {
         self.useCase = useCase
         self.navigator = navigator
     }
@@ -20,6 +18,6 @@ class LoginViewModel: ObservableObject {
     }
     
     func signUpButtonClicked() {
-         navigator.navigate(screen: NavigationScreen.SignUp())
+        navigator.navigate(screen: NavigationScreen.SignUp())
     }
 }
