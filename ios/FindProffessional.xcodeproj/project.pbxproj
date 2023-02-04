@@ -105,7 +105,7 @@
 			path = Signup;
 			sourceTree = "<group>";
 		};
-		460CE530280D90C0007E758C /* Ui */ = {
+		460CE530280D90C0007E758C /* Components */ = {
 			isa = PBXGroup;
 			children = (
 				460CE531280D9183007E758C /* CommonTextField.swift */,
@@ -113,7 +113,7 @@
 				460CE535280D923F007E758C /* FilledButton.swift */,
 				460CE537280D9300007E758C /* PasswordTextField.swift */,
 			);
-			path = Ui;
+			path = Components;
 			sourceTree = "<group>";
 		};
 		46905BA4298BD986005D4292 /* Core */ = {
@@ -162,7 +162,7 @@
 			children = (
 				46E01EB9280AE3A80023A293 /* Login */,
 				460CE52B280D8FEE007E758C /* Signup */,
-				460CE530280D90C0007E758C /* Ui */,
+				460CE530280D90C0007E758C /* Components */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
