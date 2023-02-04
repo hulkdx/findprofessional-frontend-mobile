@@ -9,11 +9,9 @@ class SignUpViewModel: ObservableObject {
     @Published var password: String = ""
     
     private let useCase: SignUpUseCase
-    private let navigator: Navigator
 
-    init(_ useCase: SignUpUseCase, _ navigator: Navigator) {
+    init(_ useCase: SignUpUseCase) {
         self.useCase = useCase
-        self.navigator = navigator
     }
 
     func onSubmitClicked() {

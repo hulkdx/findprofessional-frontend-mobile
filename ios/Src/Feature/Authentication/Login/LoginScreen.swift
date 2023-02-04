@@ -1,14 +1,15 @@
 import SwiftUI
+import shared
 
 struct LoginScreen_Previews: PreviewProvider {
     static var previews: some View {
-        AppNavigationView().loginScreen()
+        LoginScreen()
     }
 }
 
 struct LoginScreen: View {
     @StateObject
-    var viewModel: LoginViewModel
+    private var viewModel: LoginViewModel = LoginViewModel(KoinHelper().loginUseCase)
     
     @State private var email: String = ""
     @State private var password: String = ""

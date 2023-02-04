@@ -1,14 +1,16 @@
 package com.hulkdx.findprofessional.common.feature.authentication.login
 
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
+import com.hulkdx.findprofessional.common.navigation.NavigationScreen
+import com.hulkdx.findprofessional.common.navigation.Navigator
 
 
-class LoginUseCase {
-    fun getFlow(): Flow<String> = flow {
-        emit("1")
-        delay(2000)
-        emit("2")
+class LoginUseCase(
+    private val navigator: Navigator,
+) {
+    fun onSignUpClicked() {
+        navigator.navigate(NavigationScreen.SignUp)
+    }
+
+    fun onSignInClicked() {
     }
 }

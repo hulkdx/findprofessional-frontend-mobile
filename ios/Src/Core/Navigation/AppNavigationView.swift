@@ -4,7 +4,7 @@ import shared
 struct AppNavigationView: View {
     
     @StateObject
-    private var navigator = NavigatorImpl()
+    private var navigator: NavigatorImpl = KoinHelper().navigator as! NavigatorImpl
     
     var body: some View {
         NavigationStack(path: $navigator.path) {
@@ -14,26 +14,18 @@ struct AppNavigationView: View {
     }
 
     func initialScreen() -> some View {
-        return loginScreen()
+        return LoginScreen()
     }
     
     @ViewBuilder
     func createScreens(screen: NavigationScreen) -> some View {
         if screen is NavigationScreen.Login {
-            loginScreen()
+            LoginScreen()
         } else if screen is NavigationScreen.SignUp {
-            signUpScreen()
+            SignUpScreen()
         } else {
             fatalError("Not implemented")
         }
-    }
-
-    func loginScreen() -> some View {
-        return LoginScreen(viewModel: LoginViewModel(KoinHelper().loginUseCase, navigator))
-    }
-
-    func signUpScreen() -> some View {
-        return SignUpScreen(viewModel: SignUpViewModel(KoinHelper().signUpUseCase, navigator))
     }
 }
 
