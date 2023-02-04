@@ -116,19 +116,11 @@
 			path = Ui;
 			sourceTree = "<group>";
 		};
-		464406CF28157E4F00A88A46 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
 		46905BA4298BD986005D4292 /* Core */ = {
 			isa = PBXGroup;
 			children = (
 				46905BA5298BD9A1005D4292 /* Navigation */,
 				46E01EBE280AF4300023A293 /* Theme */,
-				464406CF28157E4F00A88A46 /* Utils */,
 			);
 			path = Core;
 			sourceTree = "<group>";
