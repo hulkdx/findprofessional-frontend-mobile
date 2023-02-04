@@ -45,7 +45,7 @@ android {
 
 dependencies {
     implementation(project(":android:core"))
-    implementation(project(":common-kmm"))
+    implementation(project(":common"))
 
     implementation(platform("androidx.compose:compose-bom:${BuildDep.COMPOSE_BOM}"))
     implementation("io.insert-koin:koin-androidx-compose:${BuildDep.KOIN_COMPOSE_VERSION}")

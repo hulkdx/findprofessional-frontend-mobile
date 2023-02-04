@@ -56,7 +56,7 @@ dependencies {
 
     implementation(project(":android:core"))
     implementation(project(":android:feature:authentication"))
-    implementation(project(":common-kmm"))
+    implementation(project(":common"))
 
     implementation(platform("androidx.compose:compose-bom:${BuildDep.COMPOSE_BOM}"))
     implementation("com.google.accompanist:accompanist-navigation-animation:${BuildDep.ACCOMPANIST_VERSION}")
