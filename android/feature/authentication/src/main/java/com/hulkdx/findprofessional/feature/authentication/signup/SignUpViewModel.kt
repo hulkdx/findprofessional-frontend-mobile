@@ -12,7 +12,6 @@ import kotlinx.coroutines.launch
 class SignUpViewModel(
     private val savedStateHandle: SavedStateHandle,
     private val useCase: SignUpUseCase,
-    private val navigator: Navigator,
 ) : ViewModel() {
 
     val email = savedStateHandle.getStateFlow("email", "")
@@ -34,7 +33,6 @@ class SignUpViewModel(
     fun onSubmitClicked() = viewModelScope.launch {
         try {
             useCase.register(RegisterRequest(email.value, password.value))
-            navigator.navigate(NavigationScreen.Main)
         } catch (e: Exception) {
             setError(e)
         }
