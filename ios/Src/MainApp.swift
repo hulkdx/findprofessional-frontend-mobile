@@ -2,7 +2,7 @@ import SwiftUI
 import shared
 
 @main
-struct iOSApp: App {
+struct MainApp: App {
     
     init() {
         InitKoinKt.doInitKoin { koinApp in
