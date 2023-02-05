@@ -16,8 +16,8 @@
 		460CE534280D91FE007E758C /* EmailTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460CE533280D91FE007E758C /* EmailTextField.swift */; };
 		460CE536280D923F007E758C /* FilledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460CE535280D923F007E758C /* FilledButton.swift */; };
 		460CE538280D9300007E758C /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460CE537280D9300007E758C /* PasswordTextField.swift */; };
+		462B9288298FC97200109347 /* KMPNativeCoroutinesAsync in Frameworks */ = {isa = PBXBuildFile; productRef = 462B9287298FC97200109347 /* KMPNativeCoroutinesAsync */; };
 		463B8DF6280B014C0016B0BD /* AppFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463B8DF5280B014C0016B0BD /* AppFont.swift */; };
-		467BCA01280AD21B009EE97E /* KMPNativeCoroutinesAsync in Frameworks */ = {isa = PBXBuildFile; productRef = 467BCA00280AD21B009EE97E /* KMPNativeCoroutinesAsync */; };
 		46905BA7298BD9BB005D4292 /* AppNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46905BA6298BD9BB005D4292 /* AppNavigationView.swift */; };
 		46CE2300297D7BB60002EBE5 /* LoginScreenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CE22FF297D7BB60002EBE5 /* LoginScreenUITests.swift */; };
 		46E01EBB280AE3B40023A293 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E01EBA280AE3B40023A293 /* LoginScreen.swift */; };
@@ -89,7 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				467BCA01280AD21B009EE97E /* KMPNativeCoroutinesAsync in Frameworks */,
+				462B9288298FC97200109347 /* KMPNativeCoroutinesAsync in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,7 +281,7 @@
 			);
 			name = FindProfessional;
 			packageProductDependencies = (
-				467BCA00280AD21B009EE97E /* KMPNativeCoroutinesAsync */,
+				462B9287298FC97200109347 /* KMPNativeCoroutinesAsync */,
 			);
 			productName = iosApp;
 			productReference = 7555FF7B242A565900829871 /* FindProfessional.app */;
@@ -316,7 +316,7 @@
 			);
 			mainGroup = 7555FF72242A565900829871;
 			packageReferences = (
-				467BC9FF280AD21B009EE97E /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */,
+				462B9286298FC97200109347 /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */,
 			);
 			productRefGroup = 7555FF7C242A565900829871 /* Products */;
 			projectDirPath = "";
@@ -654,20 +654,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		467BC9FF280AD21B009EE97E /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */ = {
+		462B9286298FC97200109347 /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/rickclephas/KMP-NativeCoroutines";
 			requirement = {
-				branch = master;
-				kind = branch;
+				kind = exactVersion;
+				version = 0.13.3;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		467BCA00280AD21B009EE97E /* KMPNativeCoroutinesAsync */ = {
+		462B9287298FC97200109347 /* KMPNativeCoroutinesAsync */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 467BC9FF280AD21B009EE97E /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */;
+			package = 462B9286298FC97200109347 /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */;
 			productName = KMPNativeCoroutinesAsync;
 		};
 /* End XCSwiftPackageProductDependency section */

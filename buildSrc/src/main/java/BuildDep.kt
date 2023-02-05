@@ -20,7 +20,7 @@ object BuildDep {
     // --------------------------------------------------------------------------------
 
     // https://github.com/rickclephas/KMP-NativeCoroutines
-    const val IOS_KMP_NATIVE_VERSION = "0.13.2-kotlin-1.8.0-RC"
+    const val IOS_KMP_NATIVE_VERSION = "0.13.3"
 
     // --------------------------------------------------------------------------------
     // Android Main
