@@ -2,11 +2,10 @@ import SwiftUI
 
 #if DEBUG
 struct Snackbar_Previews: PreviewProvider {
-    
+    @State static var state: String? = "Error"
     static var previews: some View {
-        Snackbar(title: "Error")
+        Snackbar(message: $state)
     }
-    
 }
 #endif
 
@@ -18,14 +17,12 @@ struct Snackbar_Previews: PreviewProvider {
  */
 struct Snackbar: View {
     
-    let title: String
-    
-    @State var showBanner: Bool = false
+    @Binding var message: String?
     
     var body: some View {
-        if (showBanner) {
+        if (message != nil) {
             Group {
-                Text(title)
+                Text(message ?? "")
                     .font(AppFont.body1)
                     .foregroundColor(AppColor.inverseOnSurface)
                     .padding(.vertical, 6)
@@ -41,7 +38,7 @@ struct Snackbar: View {
                 DragGesture()
                     .onChanged { _ in
                         withAnimation {
-                            showBanner = false
+                            message = nil
                         }
                     }
             )
@@ -50,3 +47,15 @@ struct Snackbar: View {
         }
     }
 }
+
+public extension View {
+    func snackbar(message: Binding<String?>) -> some View {
+        ZStack(alignment: .bottom) {
+            self
+                .frame(maxHeight: .infinity)
+            
+            Snackbar(message: message)
+        }
+    }
+}
+

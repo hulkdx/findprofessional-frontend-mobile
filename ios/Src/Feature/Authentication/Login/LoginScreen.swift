@@ -15,27 +15,24 @@ struct LoginScreen: View {
     
     @State private var email: String = ""
     @State private var password: String = ""
+    @State private var errorMessage: String? = nil
     
     var body: some View {
-        ZStack(alignment: .bottom) {
-            VStack(spacing: 0) {
-                EmailTextField(value: $email)
-                PasswordTextField(value: $password)
-                    .padding(.top, 16)
-                SignInButton() {
-                    viewModel.signUpButtonClicked()
-                }
+        VStack(spacing: 0) {
+            EmailTextField(value: $email)
+            PasswordTextField(value: $password)
                 .padding(.top, 16)
-                SignUpButton() {
-                    viewModel.signUpButtonClicked()
-                }
-                .padding(.top, 32)
+            SignInButton() {
+                viewModel.signUpButtonClicked()
             }
-            .padding(.horizontal, 16)
-            .frame(maxHeight: .infinity)
-            
-            Snackbar(title: "Error")
+            .padding(.top, 16)
+            SignUpButton() {
+                viewModel.signUpButtonClicked()
+            }
+            .padding(.top, 32)
         }
+        .padding(.horizontal, 16)
+        .snackbar(message: $errorMessage)
     }
 }
 
