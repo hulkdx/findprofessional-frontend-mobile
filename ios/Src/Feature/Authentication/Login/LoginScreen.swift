@@ -32,6 +32,7 @@ struct LoginScreen: View {
             .padding(.top, 32)
         }
         .padding(.horizontal, 16)
+        .onDisappear { viewModel.onCleared() }
         .snackbar(message: $errorMessage)
     }
 }
