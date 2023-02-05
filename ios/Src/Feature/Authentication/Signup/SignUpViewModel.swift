@@ -11,14 +11,10 @@ class SignUpViewModel: ObservableObject {
     
     private let useCase: SignUpUseCase
 
-    private var registerTask: Task? = nil
+    private var registerTask: Task<(), Never>? = nil
 
     init(_ useCase: SignUpUseCase) {
         self.useCase = useCase
-    }
-
-    deinit {
-        onCleared()
     }
 
     func onCleared() {
