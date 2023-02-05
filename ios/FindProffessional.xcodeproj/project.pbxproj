@@ -119,6 +119,7 @@
 		46905BA4298BD986005D4292 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				460CE530280D90C0007E758C /* Components */,
 				46905BA5298BD9A1005D4292 /* Navigation */,
 				46E01EBE280AF4300023A293 /* Theme */,
 			);
@@ -162,7 +163,6 @@
 			children = (
 				46E01EB9280AE3A80023A293 /* Login */,
 				460CE52B280D8FEE007E758C /* Signup */,
-				460CE530280D90C0007E758C /* Components */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
