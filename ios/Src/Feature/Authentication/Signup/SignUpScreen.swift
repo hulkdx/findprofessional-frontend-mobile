@@ -25,6 +25,7 @@ struct SignUpScreen: View {
         }
         .padding(.horizontal, 16)
         .onDisappear { viewModel.onCleared() }
+        .snackbar(message: viewModel.$errorMessage)
     }
 }
 

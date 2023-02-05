@@ -7,7 +7,7 @@ class SignUpViewModel: ObservableObject {
     
     @Published var email: String = ""
     @Published var password: String = ""
-    @Published var error: Error? = nil
+    @Published var error: String? = nil
     
     private let useCase: SignUpUseCase
 
@@ -30,7 +30,8 @@ class SignUpViewModel: ObservableObject {
             do {
                 try await asyncFunction(for: useCase.registerNative(request: RegisterRequest(email: email, password: password)))
             } catch {
-                self.error = error
+                // TODO: convert error to string
+                self.error = "Error"
             }
         }
     }
