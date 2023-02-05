@@ -1,11 +1,13 @@
 import SwiftUI
 import shared
 
+#if DEBUG
 struct SignUpScreen_Previews: PreviewProvider {
    static var previews: some View {
        SignUpScreen()
    }
 }
+#endif
 
 struct SignUpScreen: View {
     @StateObject

@@ -1,11 +1,13 @@
 import SwiftUI
 import shared
 
+#if DEBUG
 struct LoginScreen_Previews: PreviewProvider {
     static var previews: some View {
         LoginScreen()
     }
 }
+#endif
 
 struct LoginScreen: View {
     @StateObject
@@ -15,27 +17,32 @@ struct LoginScreen: View {
     @State private var password: String = ""
     
     var body: some View {
-        VStack(spacing: 0) {
-            EmailTextField(value: $email)
-            PasswordTextField(value: $password)
+        ZStack(alignment: .bottom) {
+            VStack(spacing: 0) {
+                EmailTextField(value: $email)
+                PasswordTextField(value: $password)
+                    .padding(.top, 16)
+                SignInButton() {
+                    viewModel.signUpButtonClicked()
+                }
                 .padding(.top, 16)
-            SignInButton() {
-                viewModel.signUpButtonClicked()
-            }
-                .padding(.top, 16)
-            SignUpButton() {
-                viewModel.signUpButtonClicked()
-            }
+                SignUpButton() {
+                    viewModel.signUpButtonClicked()
+                }
                 .padding(.top, 32)
+            }
+            .padding(.horizontal, 16)
+            .frame(maxHeight: .infinity)
+            
+            Snackbar(title: "Error")
         }
-        .padding(.horizontal, 16)
     }
 }
 
 private struct SignInButton: View {
     
     let action: () -> Void
-
+    
     var body: some View {
         FilledButton(text: "Sign in", action: action)
     }
