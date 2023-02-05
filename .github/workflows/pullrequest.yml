@@ -81,7 +81,7 @@ jobs:
 
       - name: Build and Test
         run: xcodebuild
-          -workspace ios/iosApp.xcodeproj/project.xcworkspace
+          -workspace ios/FindProffessional.xcodeproj/project.xcworkspace
           -scheme FindProfessional
           -configuration Debug
           -sdk iphonesimulator

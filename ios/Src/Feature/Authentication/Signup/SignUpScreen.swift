@@ -24,6 +24,7 @@ struct SignUpScreen: View {
                 .padding(.top, 16)
         }
         .padding(.horizontal, 16)
+        .onDisappear { viewModel.onCleared() }
     }
 }
 
