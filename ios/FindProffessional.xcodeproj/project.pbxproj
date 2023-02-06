@@ -16,6 +16,7 @@
 		460CE534280D91FE007E758C /* EmailTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460CE533280D91FE007E758C /* EmailTextField.swift */; };
 		460CE536280D923F007E758C /* FilledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460CE535280D923F007E758C /* FilledButton.swift */; };
 		460CE538280D9300007E758C /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460CE537280D9300007E758C /* PasswordTextField.swift */; };
+		461021EF299137EF00E09F3F /* TaskExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461021EE299137EF00E09F3F /* TaskExt.swift */; };
 		462B9288298FC97200109347 /* KMPNativeCoroutinesAsync in Frameworks */ = {isa = PBXBuildFile; productRef = 462B9287298FC97200109347 /* KMPNativeCoroutinesAsync */; };
 		463B8DF6280B014C0016B0BD /* AppFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463B8DF5280B014C0016B0BD /* AppFont.swift */; };
 		4646BB6A298FCD5600F16CBF /* Snackbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4646BB69298FCD5600F16CBF /* Snackbar.swift */; };
@@ -63,6 +64,7 @@
 		460CE533280D91FE007E758C /* EmailTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailTextField.swift; sourceTree = "<group>"; };
 		460CE535280D923F007E758C /* FilledButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilledButton.swift; sourceTree = "<group>"; };
 		460CE537280D9300007E758C /* PasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
+		461021EE299137EF00E09F3F /* TaskExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskExt.swift; sourceTree = "<group>"; };
 		463B8DF5280B014C0016B0BD /* AppFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFont.swift; sourceTree = "<group>"; };
 		4646BB69298FCD5600F16CBF /* Snackbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Snackbar.swift; sourceTree = "<group>"; };
 		46905BA6298BD9BB005D4292 /* AppNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigationView.swift; sourceTree = "<group>"; };
@@ -119,12 +121,21 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		461021ED299137D500E09F3F /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				461021EE299137EF00E09F3F /* TaskExt.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		46905BA4298BD986005D4292 /* Core */ = {
 			isa = PBXGroup;
 			children = (
 				460CE530280D90C0007E758C /* Components */,
 				46905BA5298BD9A1005D4292 /* Navigation */,
 				46E01EBE280AF4300023A293 /* Theme */,
+				461021ED299137D500E09F3F /* Utils */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -391,6 +402,7 @@
 				46905BA7298BD9BB005D4292 /* AppNavigationView.swift in Sources */,
 				460CE536280D923F007E758C /* FilledButton.swift in Sources */,
 				46E01EC0280AF4400023A293 /* AppColor.swift in Sources */,
+				461021EF299137EF00E09F3F /* TaskExt.swift in Sources */,
 				4646BB6A298FCD5600F16CBF /* Snackbar.swift in Sources */,
 				460CE532280D9183007E758C /* CommonTextField.swift in Sources */,
 				463B8DF6280B014C0016B0BD /* AppFont.swift in Sources */,
