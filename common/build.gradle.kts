@@ -16,6 +16,8 @@ kotlin {
         iosSimulatorArm64()
     ).forEach {
         it.binaries.framework {
+            export("dev.icerock.moko:resources:0.20.1")
+            export("dev.icerock.moko:graphics:0.9.0")
             baseName = "shared"
         }
     }
@@ -28,7 +30,7 @@ kotlin {
                 implementation("io.ktor:ktor-client-core:${BuildDep.KTOR_VERSION}")
                 implementation("io.ktor:ktor-client-content-negotiation:${BuildDep.KTOR_VERSION}")
                 implementation("io.ktor:ktor-serialization-kotlinx-json:${BuildDep.KTOR_VERSION}")
-                implementation("dev.icerock.moko:resources:${BuildDep.MOKO_RESOURCES_VERSION}")
+                api("dev.icerock.moko:resources:${BuildDep.MOKO_RESOURCES_VERSION}")
             }
         }
         val androidMain by getting {

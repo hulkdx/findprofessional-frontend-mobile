@@ -7,6 +7,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.hulkdx.findprofessional.feature.authentication.R
+import com.hulkdx.findprofessional.resources.MR
 
 @Composable
 fun EmailTextField(
@@ -21,9 +22,9 @@ fun EmailTextField(
                 start = 16.dp,
                 end = 16.dp,
             ),
-        hint = stringResource(id = R.string.email),
+        hint = stringResource(id = MR.strings.email.resourceId),
         leadingIconDrawable = R.drawable.ic_email,
-        leadingIconContentDescription = stringResource(id = R.string.email),
+        leadingIconContentDescription = stringResource(id = MR.strings.email.resourceId),
         value = value,
         onValueChanged = onValueChanged,
     )

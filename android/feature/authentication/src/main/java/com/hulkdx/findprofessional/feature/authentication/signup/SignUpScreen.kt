@@ -20,10 +20,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.hulkdx.findprofessional.common.feature.authentication.signup.exception.EmailExistsException
-import com.hulkdx.findprofessional.core.R
 import com.hulkdx.findprofessional.feature.authentication.ui.EmailTextField
 import com.hulkdx.findprofessional.feature.authentication.ui.FilledButton
 import com.hulkdx.findprofessional.feature.authentication.ui.PasswordTextField
+import com.hulkdx.findprofessional.resources.MR
 import org.koin.androidx.compose.getViewModel
 
 @Composable
@@ -73,7 +73,7 @@ private fun SubmitButton(
 ) {
     FilledButton(
         modifier = modifier,
-        text = stringResource(R.string.signUp),
+        text = stringResource(MR.strings.signUp.resourceId),
         onClick = onClick,
     )
 }
@@ -89,8 +89,8 @@ private fun SignUpError(
 
     val hostState = remember { SnackbarHostState() }
     val msg = when (error) {
-        is EmailExistsException -> stringResource(R.string.emailExists)
-        else -> stringResource(R.string.generalError)
+        is EmailExistsException -> stringResource(MR.strings.emailExists.resourceId)
+        else -> stringResource(MR.strings.generalError.resourceId)
     }
     LaunchedEffect(error) {
         hostState.showSnackbar(msg)
