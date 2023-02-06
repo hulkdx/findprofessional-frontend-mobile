@@ -24,6 +24,7 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.hulkdx.findprofessional.core.theme.body1
+import com.hulkdx.findprofessional.core.utils.append
 import com.hulkdx.findprofessional.core.utils.bold
 import com.hulkdx.findprofessional.core.utils.singleClick
 import com.hulkdx.findprofessional.feature.authentication.ui.EmailTextField
@@ -98,12 +99,9 @@ private fun SignUpButton(
             Text(
                 textAlign = TextAlign.Center,
                 text = buildAnnotatedString {
-                    append(stringResource(id = MR.strings.dontHaveAnAccount.resourceId))
+                    append(MR.strings.dontHaveAnAccount.resourceId)
                     append(" ")
-                    val boldText = stringResource(id = MR.strings.signUp.resourceId)
-                    bold {
-                        append(boldText)
-                    }
+                    bold { append(id = MR.strings.signUp.resourceId) }
                 },
                 style = body1,
                 color = MaterialTheme.colorScheme.primary,
