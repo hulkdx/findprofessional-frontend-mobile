@@ -8,6 +8,7 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.koin.core.context.loadKoinModules
+import org.koin.core.context.unloadKoinModules
 
 class SignUpScreenTest {
 
@@ -21,6 +22,7 @@ class SignUpScreenTest {
 
     @After
     fun tearDown() {
+        unloadKoinModules(inMemoryModule)
     }
 
     @Test
