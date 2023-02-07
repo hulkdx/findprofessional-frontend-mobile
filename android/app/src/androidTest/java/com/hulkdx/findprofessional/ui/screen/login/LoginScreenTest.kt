@@ -15,7 +15,7 @@ class LoginScreenTest {
         launchLoginScreen(composeRule) {
             pressSignUpButton()
         }.verify {
-            signupScreenIsShown()
+            signupScreenShown()
         }
     }
 

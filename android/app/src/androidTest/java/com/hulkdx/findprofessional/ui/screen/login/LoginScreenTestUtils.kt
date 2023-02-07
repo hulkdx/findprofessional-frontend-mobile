@@ -43,7 +43,7 @@ class LoginDsl(
 class LoginVerify(
     private val rule: Rule
 ) {
-    fun signupScreenIsShown() {
+    fun signupScreenShown() {
         rule.onNodeWithTag("SignUpScreen")
             .assertIsDisplayed()
     }
