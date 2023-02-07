@@ -5,10 +5,16 @@ import com.hulkdx.findprofessional.common.utils.post
 import io.ktor.client.*
 
 
-class SignUpApi(
+interface SignUpApi {
+    suspend fun register(request: RegisterRequest)
+}
+
+class SignUpApiImpl (
     private val client: HttpClient,
-) {
-    suspend fun register(request: RegisterRequest) {
+): SignUpApi {
+
+    override suspend fun register(request: RegisterRequest) {
         return client.post("auth/register", request)
     }
+
 }
