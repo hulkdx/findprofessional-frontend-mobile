@@ -7,6 +7,7 @@ import com.hulkdx.findprofessional.common.feature.authentication.signup.SignUpUs
 import com.hulkdx.findprofessional.common.feature.authentication.signup.model.RegisterRequest
 import com.hulkdx.findprofessional.common.navigation.NavigationScreen
 import com.hulkdx.findprofessional.common.navigation.Navigator
+import dev.icerock.moko.resources.desc.StringDesc
 import kotlinx.coroutines.launch
 
 class SignUpViewModel(
@@ -16,7 +17,7 @@ class SignUpViewModel(
 
     val email = savedStateHandle.getStateFlow("email", "")
     val password = savedStateHandle.getStateFlow("password", "")
-    val error = savedStateHandle.getStateFlow<Throwable?>("error", null)
+    val error = savedStateHandle.getStateFlow<StringDesc?>("error", null)
 
     fun setEmail(value: String) {
         savedStateHandle["email"] = value
@@ -26,15 +27,14 @@ class SignUpViewModel(
         savedStateHandle["password"] = value
     }
 
-    private fun setError(value: Throwable) {
+    private fun setError(value: StringDesc) {
         savedStateHandle["error"] = value
     }
 
     fun onSubmitClicked() = viewModelScope.launch {
-        try {
-            useCase.register(RegisterRequest(email.value, password.value))
-        } catch (e: Exception) {
-            setError(e)
+        val error = useCase.register(RegisterRequest(email.value, password.value))
+        if (error != null) {
+            setError(error)
         }
     }
 

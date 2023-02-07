@@ -36,6 +36,7 @@ kotlin {
         val androidMain by getting {
             dependencies {
                 implementation("io.ktor:ktor-client-okhttp:${BuildDep.KTOR_VERSION}")
+                api("dev.icerock.moko:resources-compose:${BuildDep.MOKO_RESOURCES_VERSION}")
             }
         }
         val iosX64Main by getting

@@ -19,11 +19,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.hulkdx.findprofessional.common.feature.authentication.signup.exception.EmailExistsException
 import com.hulkdx.findprofessional.feature.authentication.ui.EmailTextField
 import com.hulkdx.findprofessional.feature.authentication.ui.FilledButton
 import com.hulkdx.findprofessional.feature.authentication.ui.PasswordTextField
 import com.hulkdx.findprofessional.resources.MR
+import dev.icerock.moko.resources.compose.localized
 import org.koin.androidx.compose.getViewModel
 
 @Composable
@@ -61,7 +61,7 @@ fun SignUpScreen(
         }
         SignUpError(
             modifier = Modifier.align(Alignment.BottomCenter),
-            error = error,
+            message = error?.localized(),
         )
     }
 }
@@ -81,19 +81,15 @@ private fun SubmitButton(
 @Composable
 private fun SignUpError(
     modifier: Modifier = Modifier,
-    error: Throwable?,
+    message: String?,
 ) {
-    if (error == null) {
+    if (message == null) {
         return
     }
 
     val hostState = remember { SnackbarHostState() }
-    val msg = when (error) {
-        is EmailExistsException -> stringResource(MR.strings.emailExists.resourceId)
-        else -> stringResource(MR.strings.generalError.resourceId)
-    }
-    LaunchedEffect(error) {
-        hostState.showSnackbar(msg)
+    LaunchedEffect(message) {
+        hostState.showSnackbar(message)
     }
     SnackbarHost(
         hostState = hostState,
