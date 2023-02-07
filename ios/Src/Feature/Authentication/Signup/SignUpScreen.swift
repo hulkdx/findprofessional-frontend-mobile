@@ -34,6 +34,6 @@ private struct SignUpButton: View {
     let action: () -> Void
 
     var body: some View {
-        FilledButton(text: "Sign up", action: action)
+        FilledButton(text: MR.strings().signUp.desc().localized(), action: action)
     }
 }

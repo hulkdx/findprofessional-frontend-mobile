@@ -42,7 +42,7 @@ private struct SignInButton: View {
     let action: () -> Void
     
     var body: some View {
-        FilledButton(text: "Sign in", action: action)
+        FilledButton(text: MR.strings().signIn.desc().localized(), action: action)
     }
 }
 
@@ -52,7 +52,7 @@ private struct SignUpButton: View {
     
     var body: some View {
         Button(action: action, label: {
-            Text("Don’t have an account? **Sign Up**")
+            Text("\(MR.strings().dontHaveAnAccount.desc().localized()) **\(MR.strings().signUp.desc().localized())**")
                 .font(AppFont.body1)
                 .padding()
                 .foregroundColor(AppColor.Green)
