@@ -9,5 +9,9 @@ class SignUpScreenUITests: XCTestCase {
     }
 
     func testPerformSignUp() throws {
+        launchSignUpScreen(app)
+            .pressSignUpButton()
+            .verify()
+            .mainScreenShown()
     }
 }

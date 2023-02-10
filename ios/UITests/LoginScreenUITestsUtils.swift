@@ -10,7 +10,7 @@ struct LoginBuilder {
     
     func pressSignUpButton() -> LoginBuilder {
         app.buttons["Don’t have an account? Sign Up"].tap()
-        return LoginBuilder(app: app)
+        return self
     }
     
     func verify() -> LoginVerifyBuilder {
