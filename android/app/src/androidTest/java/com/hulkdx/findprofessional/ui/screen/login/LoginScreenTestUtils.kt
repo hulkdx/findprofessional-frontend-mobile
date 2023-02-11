@@ -29,7 +29,7 @@ class LoginDsl(
     }
 
     fun pressSignUpButton() {
-        rule.onNodeWithTextRes(MR.strings.signUp.resourceId, substring = true)
+        rule.onNodeWithTag("LoginScreen.SignUpButton")
             .performClick()
     }
 

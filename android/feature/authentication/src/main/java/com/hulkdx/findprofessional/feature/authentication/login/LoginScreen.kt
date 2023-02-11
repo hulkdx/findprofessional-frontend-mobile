@@ -94,7 +94,7 @@ private fun SignUpButton(
     ) {
         TextButton(
             onClick = singleClick(onClick),
-            Modifier.testTag(stringResource(id = MR.strings.signUp.resourceId))
+            Modifier.testTag("LoginScreen.SignUpButton")
         ) {
             Text(
                 textAlign = TextAlign.Center,
