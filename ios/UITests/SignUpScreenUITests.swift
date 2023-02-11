@@ -6,6 +6,7 @@ class SignUpScreenUITests: XCTestCase {
     
     override func setUpWithError() throws {
         continueAfterFailure = false
+        app.launchArguments = ["in-memory-api"]
     }
 
     func testPerformSignUp() throws {
