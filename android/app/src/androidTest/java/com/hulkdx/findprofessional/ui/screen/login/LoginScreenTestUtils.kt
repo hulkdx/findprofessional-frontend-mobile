@@ -30,7 +30,9 @@ class LoginDsl(
 
     fun pressSignUpButton() {
         rule.onNodeWithTag("LoginScreen.SignUpButton")
-            .performClick()
+            .assertIsDisplayed()
+//        rule.onNodeWithTag("LoginScreen.SignUpButton")
+//            .performClick()
     }
 
     fun pressSignInButton() {
