@@ -10,8 +10,13 @@ import com.hulkdx.findprofessional.MainActivity
 
 typealias Rule = AndroidComposeTestRule<ActivityScenarioRule<MainActivity>, MainActivity>
 
-fun AndroidComposeTestRule<*, *>.onNodeWithTextRes(@StringRes res: Int): SemanticsNodeInteraction {
-    return onNodeWithText(activity.getString(res))
+fun AndroidComposeTestRule<*, *>.onNodeWithTextRes(
+    @StringRes res: Int,
+    substring: Boolean = false,
+    ignoreCase: Boolean = false,
+    useUnmergedTree: Boolean = false,
+): SemanticsNodeInteraction {
+    return onNodeWithText(activity.getString(res), substring, ignoreCase, useUnmergedTree)
 }
 
 fun AndroidComposeTestRule<*, *>.onNodeWithTagRes(@StringRes res: Int): SemanticsNodeInteraction {
