@@ -8,6 +8,7 @@ func launchLoginScreen(_ app: XCUIApplication) -> LoginBuilder {
 struct LoginBuilder {
     let app: XCUIApplication
     
+    @discardableResult
     func pressSignUpButton() -> LoginBuilder {
         app.buttons["Don’t have an account? Sign Up"].tap()
         return self
