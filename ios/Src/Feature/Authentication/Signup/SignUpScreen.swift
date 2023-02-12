@@ -1,14 +1,17 @@
 import SwiftUI
+import shared
 
+#if DEBUG
 struct SignUpScreen_Previews: PreviewProvider {
-    static var previews: some View {
-        AppNavigationView().signUpScreen()
-    }
+   static var previews: some View {
+       SignUpScreen()
+   }
 }
+#endif
 
 struct SignUpScreen: View {
     @StateObject
-    var viewModel: SignUpViewModel
+    private var viewModel: SignUpViewModel = SignUpViewModel(KoinHelper().signUpUseCase)
     
     var body: some View {
         VStack(spacing: 0) {
@@ -21,6 +24,8 @@ struct SignUpScreen: View {
                 .padding(.top, 16)
         }
         .padding(.horizontal, 16)
+        .onDisappear { viewModel.onDisappear() }
+        .snackbar(message: $viewModel.error)
     }
 }
 
@@ -29,6 +34,6 @@ private struct SignUpButton: View {
     let action: () -> Void
 
     var body: some View {
-        FilledButton(text: "Sign up", action: action)
+        FilledButton(text: MR.strings().signUp.desc().localized(), action: action)
     }
 }

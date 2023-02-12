@@ -1,4 +1,5 @@
 import SwiftUI
+import shared
 
 struct EmailTextField: View {
     let value: Binding<String>
@@ -7,7 +8,7 @@ struct EmailTextField: View {
         CommonTextField(
             value: value,
             leadingIcon: "Email",
-            hint: "Email",
+            hint: MR.strings().email.desc().localized(),
             isSecure: false
         )
     }

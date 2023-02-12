@@ -1,4 +1,5 @@
 import SwiftUI
+import shared
 
 struct PasswordTextField: View {
     let value: Binding<String>
@@ -7,7 +8,7 @@ struct PasswordTextField: View {
         CommonTextField(
             value: value,
             leadingIcon: "Password",
-            hint: "Password",
+            hint: MR.strings().password.desc().localized(),
             isSecure: true
         )
     }

@@ -35,7 +35,7 @@ jobs:
           api-level: 29
           arch: x86
           disable-animations: true
-          script: ./gradlew connectedCheck
+          script: ./gradlew connectedDebugAndroidTest
 
       - name: Upload test reports
         if: always()
@@ -49,7 +49,7 @@ jobs:
   ios-tests:
     name: iOS tests
     runs-on: macos-12
-    timeout-minutes: 30
+    timeout-minutes: 50
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -81,7 +81,7 @@ jobs:
 
       - name: Build and Test
         run: xcodebuild
-          -workspace ios/iosApp.xcodeproj/project.xcworkspace
+          -workspace ios/FindProffessional.xcodeproj/project.xcworkspace
           -scheme FindProfessional
           -configuration Debug
           -sdk iphonesimulator

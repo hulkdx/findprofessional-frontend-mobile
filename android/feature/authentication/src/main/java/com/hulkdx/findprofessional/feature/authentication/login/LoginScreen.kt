@@ -24,12 +24,13 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.hulkdx.findprofessional.core.theme.body1
+import com.hulkdx.findprofessional.core.utils.append
 import com.hulkdx.findprofessional.core.utils.bold
 import com.hulkdx.findprofessional.core.utils.singleClick
-import com.hulkdx.findprofessional.feature.authentication.R
 import com.hulkdx.findprofessional.feature.authentication.ui.EmailTextField
 import com.hulkdx.findprofessional.feature.authentication.ui.FilledButton
 import com.hulkdx.findprofessional.feature.authentication.ui.PasswordTextField
+import com.hulkdx.findprofessional.resources.MR
 import org.koin.androidx.compose.getViewModel
 
 @Composable
@@ -76,7 +77,7 @@ private fun SignInButton(
 ) {
     FilledButton(
         modifier,
-        text = stringResource(id = R.string.signIn),
+        text = stringResource(id = MR.strings.signIn.resourceId),
         onClick,
     )
 }
@@ -93,17 +94,14 @@ private fun SignUpButton(
     ) {
         TextButton(
             onClick = singleClick(onClick),
-            Modifier.testTag(stringResource(id = R.string.signUp))
+            Modifier.testTag(stringResource(id = MR.strings.signUp.resourceId)),
         ) {
             Text(
                 textAlign = TextAlign.Center,
                 text = buildAnnotatedString {
-                    append(stringResource(id = R.string.dontHaveAnAccount))
+                    append(MR.strings.dontHaveAnAccount.resourceId)
                     append(" ")
-                    val bold = stringResource(id = R.string.signUp)
-                    bold {
-                        append(bold)
-                    }
+                    bold { append(id = MR.strings.signUp.resourceId) }
                 },
                 style = body1,
                 color = MaterialTheme.colorScheme.primary,

@@ -8,6 +8,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import com.hulkdx.findprofessional.feature.authentication.R
+import com.hulkdx.findprofessional.resources.MR
 
 @Composable
 fun PasswordTextField(
@@ -22,9 +23,9 @@ fun PasswordTextField(
                 start = 16.dp,
                 end = 16.dp,
             ),
-        hint = stringResource(id = R.string.password),
+        hint = stringResource(id = MR.strings.password.resourceId),
         leadingIconDrawable = R.drawable.ic_password,
-        leadingIconContentDescription = stringResource(id = R.string.password),
+        leadingIconContentDescription = stringResource(id = MR.strings.password.resourceId),
         visualTransformation = PasswordVisualTransformation(),
         value = value,
         onValueChanged = onValueChanged,

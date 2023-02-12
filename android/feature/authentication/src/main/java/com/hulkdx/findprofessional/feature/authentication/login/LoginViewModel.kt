@@ -7,14 +7,13 @@ import com.hulkdx.findprofessional.common.navigation.Navigator
 
 class LoginViewModel(
     private val loginUseCase: LoginUseCase,
-    private val navigator: Navigator,
 ): ViewModel() {
 
     fun onSignUpClicked() {
-        navigator.navigate(NavigationScreen.SignUp)
+        loginUseCase.onSignUpClicked()
     }
 
     fun onSignInClicked() {
-
+        loginUseCase.onSignInClicked()
     }
 }

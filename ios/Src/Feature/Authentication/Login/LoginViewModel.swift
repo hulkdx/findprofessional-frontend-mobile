@@ -6,18 +6,19 @@ import KMPNativeCoroutinesAsync
 class LoginViewModel: ObservableObject {
     
     private let useCase: LoginUseCase
-    private let navigator: Navigator
 
-    init(_ useCase: LoginUseCase, _ navigator: Navigator) {
+    init(_ useCase: LoginUseCase) {
         self.useCase = useCase
-        self.navigator = navigator
     }
     
-    func signInButtonClicked() {
-        
+    func onDisappear() {
     }
     
     func signUpButtonClicked() {
-        navigator.navigate(screen: NavigationScreen.SignUp())
+        useCase.onSignUpClicked()
+    }
+    
+    func signInButtonClicked() {
+        useCase.onSignInClicked()
     }
 }

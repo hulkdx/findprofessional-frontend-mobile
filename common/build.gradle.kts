@@ -4,17 +4,20 @@ plugins {
     id("com.android.library")
 
     id("com.rickclephas.kmp.nativecoroutines") version BuildDep.IOS_KMP_NATIVE_VERSION
+    id("dev.icerock.mobile.multiplatform-resources") version BuildDep.MOKO_RESOURCES_VERSION
 }
 
 kotlin {
     android()
-    
+
     listOf(
         iosX64(),
         iosArm64(),
         iosSimulatorArm64()
     ).forEach {
         it.binaries.framework {
+            export("dev.icerock.moko:resources:0.20.1")
+            export("dev.icerock.moko:graphics:0.9.0")
             baseName = "shared"
         }
     }
@@ -27,11 +30,13 @@ kotlin {
                 implementation("io.ktor:ktor-client-core:${BuildDep.KTOR_VERSION}")
                 implementation("io.ktor:ktor-client-content-negotiation:${BuildDep.KTOR_VERSION}")
                 implementation("io.ktor:ktor-serialization-kotlinx-json:${BuildDep.KTOR_VERSION}")
+                api("dev.icerock.moko:resources:${BuildDep.MOKO_RESOURCES_VERSION}")
             }
         }
         val androidMain by getting {
             dependencies {
                 implementation("io.ktor:ktor-client-okhttp:${BuildDep.KTOR_VERSION}")
+                api("dev.icerock.moko:resources-compose:${BuildDep.MOKO_RESOURCES_VERSION}")
             }
         }
         val iosX64Main by getting
@@ -52,9 +57,14 @@ kotlin {
 android {
     compileSdk = BuildDep.COMPILE_SDK_VERSION
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
+    sourceSets["main"].res.srcDir(File(buildDir, "generated/moko/androidMain/res"))
     defaultConfig {
         minSdk = BuildDep.MIN_SDK_VERSION
         targetSdk = BuildDep.COMPILE_SDK_VERSION
     }
     namespace = "com.hulkdx.findprofessional.common"
+}
+
+multiplatformResources {
+    multiplatformResourcesPackage = "com.hulkdx.findprofessional.resources"
 }

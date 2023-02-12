@@ -1,13 +1,16 @@
 package com.hulkdx.findprofessional.core.utils
 
-import androidx.compose.ui.text.AnnotatedString
+import androidx.annotation.StringRes
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.AnnotatedString.Builder
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 
 
-inline fun <R : Any> AnnotatedString.Builder.bold(
-    crossinline block: AnnotatedString.Builder.() -> R
-): R {
-    return withStyle(SpanStyle(fontWeight = FontWeight.Bold), block)
-}
+inline fun <R : Any> Builder.bold(block: Builder.() -> R) =
+    withStyle(SpanStyle(fontWeight = FontWeight.Bold), block)
+
+@Composable
+fun Builder.append(@StringRes id: Int) = append(stringResource(id = id))

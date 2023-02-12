@@ -1,13 +1,14 @@
 package com.hulkdx.findprofessional.ui.screen.login
 
 import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.onNodeWithTag
+import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performTextInput
-import com.hulkdx.findprofessional.R
+import com.hulkdx.findprofessional.resources.MR
 import com.hulkdx.findprofessional.utils.Rule
 import com.hulkdx.findprofessional.utils.onNodeWithTagRes
 import com.hulkdx.findprofessional.utils.onNodeWithTextRes
-
 
 fun launchLoginScreen(
     rule: Rule,
@@ -18,22 +19,22 @@ class LoginDsl(
     private val rule: Rule
 ) {
     fun typeEmail(email: String) {
-        rule.onNodeWithTextRes(R.string.email)
+        rule.onNodeWithTextRes(MR.strings.email.resourceId)
             .performTextInput(email)
     }
 
     fun typePassword(password: String) {
-        rule.onNodeWithTextRes(R.string.password)
+        rule.onNodeWithTextRes(MR.strings.password.resourceId)
             .performTextInput(password)
     }
 
     fun pressSignUpButton() {
-        rule.onNodeWithTagRes(R.string.signUp)
+        rule.onNodeWithTagRes(MR.strings.signUp.resourceId)
             .performClick()
     }
 
     fun pressSignInButton() {
-        rule.onNodeWithTextRes(R.string.signIn)
+        rule.onNodeWithTextRes(MR.strings.signIn.resourceId)
             .performClick()
     }
 
@@ -43,8 +44,8 @@ class LoginDsl(
 class LoginVerify(
     private val rule: Rule
 ) {
-    fun signupScreenIsShown() {
-        rule.onNodeWithTextRes(R.string.signUp)
+    fun signupScreenShown() {
+        rule.onNodeWithTag("SignUpScreen")
             .assertIsDisplayed()
     }
 }

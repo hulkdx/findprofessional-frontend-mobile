@@ -9,17 +9,21 @@
 /* Begin PBXBuildFile section */
 		058557BB273AAA24004C7B11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557BA273AAA24004C7B11 /* Assets.xcassets */; };
 		058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */; };
-		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
+		2152FB042600AC8F00CF470E /* MainApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* MainApp.swift */; };
 		460CE52D280D902D007E758C /* SignUpScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460CE52C280D902D007E758C /* SignUpScreen.swift */; };
 		460CE52F280D903A007E758C /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460CE52E280D903A007E758C /* SignUpViewModel.swift */; };
 		460CE532280D9183007E758C /* CommonTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460CE531280D9183007E758C /* CommonTextField.swift */; };
 		460CE534280D91FE007E758C /* EmailTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460CE533280D91FE007E758C /* EmailTextField.swift */; };
 		460CE536280D923F007E758C /* FilledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460CE535280D923F007E758C /* FilledButton.swift */; };
 		460CE538280D9300007E758C /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460CE537280D9300007E758C /* PasswordTextField.swift */; };
+		462B9288298FC97200109347 /* KMPNativeCoroutinesAsync in Frameworks */ = {isa = PBXBuildFile; productRef = 462B9287298FC97200109347 /* KMPNativeCoroutinesAsync */; };
 		463B8DF6280B014C0016B0BD /* AppFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463B8DF5280B014C0016B0BD /* AppFont.swift */; };
-		467BCA01280AD21B009EE97E /* KMPNativeCoroutinesAsync in Frameworks */ = {isa = PBXBuildFile; productRef = 467BCA00280AD21B009EE97E /* KMPNativeCoroutinesAsync */; };
+		4646BB6A298FCD5600F16CBF /* Snackbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4646BB69298FCD5600F16CBF /* Snackbar.swift */; };
 		46905BA7298BD9BB005D4292 /* AppNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46905BA6298BD9BB005D4292 /* AppNavigationView.swift */; };
 		46CE2300297D7BB60002EBE5 /* LoginScreenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CE22FF297D7BB60002EBE5 /* LoginScreenUITests.swift */; };
+		46D2116E2993D08B00654431 /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D2116D2993D08B00654431 /* MainScreen.swift */; };
+		46D211702993DCCD00654431 /* LoginScreenUITestsUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D2116F2993DCCD00654431 /* LoginScreenUITestsUtils.swift */; };
+		46D211722993DD0200654431 /* SignUpScreenUITestsUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D211712993DD0200654431 /* SignUpScreenUITestsUtils.swift */; };
 		46E01EBB280AE3B40023A293 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E01EBA280AE3B40023A293 /* LoginScreen.swift */; };
 		46E01EBD280AE3FD0023A293 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E01EBC280AE3FD0023A293 /* LoginViewModel.swift */; };
 		46E01EC0280AF4400023A293 /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E01EBF280AF4400023A293 /* AppColor.swift */; };
@@ -27,6 +31,7 @@
 		46EBF940280C41D0001D635A /* inter_regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46EBF93D280C41D0001D635A /* inter_regular.ttf */; };
 		46EBF941280C41D0001D635A /* inter_medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46EBF93E280C41D0001D635A /* inter_medium.ttf */; };
 		46EBF942280C41D0001D635A /* inter_light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46EBF93F280C41D0001D635A /* inter_light.ttf */; };
+		46FB268F2992DE5900FD41AA /* SignUpScreenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FB268E2992DE5900FD41AA /* SignUpScreenUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,7 +60,7 @@
 /* Begin PBXFileReference section */
 		058557BA273AAA24004C7B11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		2152FB032600AC8F00CF470E /* iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSApp.swift; sourceTree = "<group>"; };
+		2152FB032600AC8F00CF470E /* MainApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainApp.swift; sourceTree = "<group>"; };
 		460CE52C280D902D007E758C /* SignUpScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpScreen.swift; sourceTree = "<group>"; };
 		460CE52E280D903A007E758C /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		460CE531280D9183007E758C /* CommonTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonTextField.swift; sourceTree = "<group>"; };
@@ -63,9 +68,13 @@
 		460CE535280D923F007E758C /* FilledButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilledButton.swift; sourceTree = "<group>"; };
 		460CE537280D9300007E758C /* PasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
 		463B8DF5280B014C0016B0BD /* AppFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFont.swift; sourceTree = "<group>"; };
+		4646BB69298FCD5600F16CBF /* Snackbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Snackbar.swift; sourceTree = "<group>"; };
 		46905BA6298BD9BB005D4292 /* AppNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigationView.swift; sourceTree = "<group>"; };
 		46CE22FD297D7BB60002EBE5 /* UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		46CE22FF297D7BB60002EBE5 /* LoginScreenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenUITests.swift; sourceTree = "<group>"; };
+		46D2116D2993D08B00654431 /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
+		46D2116F2993DCCD00654431 /* LoginScreenUITestsUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenUITestsUtils.swift; sourceTree = "<group>"; };
+		46D211712993DD0200654431 /* SignUpScreenUITestsUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpScreenUITestsUtils.swift; sourceTree = "<group>"; };
 		46E01EBA280AE3B40023A293 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		46E01EBC280AE3FD0023A293 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		46E01EBF280AF4400023A293 /* AppColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
@@ -73,6 +82,7 @@
 		46EBF93D280C41D0001D635A /* inter_regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = inter_regular.ttf; sourceTree = "<group>"; };
 		46EBF93E280C41D0001D635A /* inter_medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = inter_medium.ttf; sourceTree = "<group>"; };
 		46EBF93F280C41D0001D635A /* inter_light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = inter_light.ttf; sourceTree = "<group>"; };
+		46FB268E2992DE5900FD41AA /* SignUpScreenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpScreenUITests.swift; sourceTree = "<group>"; };
 		7555FF7B242A565900829871 /* FindProfessional.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindProfessional.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -89,7 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				467BCA01280AD21B009EE97E /* KMPNativeCoroutinesAsync in Frameworks */,
+				462B9288298FC97200109347 /* KMPNativeCoroutinesAsync in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,18 +115,19 @@
 			path = Signup;
 			sourceTree = "<group>";
 		};
-		460CE530280D90C0007E758C /* Ui */ = {
+		460CE530280D90C0007E758C /* Components */ = {
 			isa = PBXGroup;
 			children = (
 				460CE531280D9183007E758C /* CommonTextField.swift */,
 				460CE533280D91FE007E758C /* EmailTextField.swift */,
 				460CE535280D923F007E758C /* FilledButton.swift */,
 				460CE537280D9300007E758C /* PasswordTextField.swift */,
+				4646BB69298FCD5600F16CBF /* Snackbar.swift */,
 			);
-			path = Ui;
+			path = Components;
 			sourceTree = "<group>";
 		};
-		464406CF28157E4F00A88A46 /* Utils */ = {
+		461021ED299137D500E09F3F /* Utils */ = {
 			isa = PBXGroup;
 			children = (
 			);
@@ -126,9 +137,10 @@
 		46905BA4298BD986005D4292 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				460CE530280D90C0007E758C /* Components */,
 				46905BA5298BD9A1005D4292 /* Navigation */,
 				46E01EBE280AF4300023A293 /* Theme */,
-				464406CF28157E4F00A88A46 /* Utils */,
+				461021ED299137D500E09F3F /* Utils */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -153,6 +165,9 @@
 			isa = PBXGroup;
 			children = (
 				46CE22FF297D7BB60002EBE5 /* LoginScreenUITests.swift */,
+				46D2116F2993DCCD00654431 /* LoginScreenUITestsUtils.swift */,
+				46FB268E2992DE5900FD41AA /* SignUpScreenUITests.swift */,
+				46D211712993DD0200654431 /* SignUpScreenUITestsUtils.swift */,
 			);
 			path = UITests;
 			sourceTree = "<group>";
@@ -161,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				46E01EB8280AE38E0023A293 /* Authentication */,
+				46D2116D2993D08B00654431 /* MainScreen.swift */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -170,7 +186,6 @@
 			children = (
 				46E01EB9280AE3A80023A293 /* Login */,
 				460CE52B280D8FEE007E758C /* Signup */,
-				460CE530280D90C0007E758C /* Ui */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -240,7 +255,7 @@
 				46E01EB7280AE34C0023A293 /* Feature */,
 				46E01ECB280B000C0023A293 /* Res */,
 				7555FF8C242A565B00829871 /* Info.plist */,
-				2152FB032600AC8F00CF470E /* iOSApp.swift */,
+				2152FB032600AC8F00CF470E /* MainApp.swift */,
 			);
 			path = Src;
 			sourceTree = "<group>";
@@ -289,7 +304,7 @@
 			);
 			name = FindProfessional;
 			packageProductDependencies = (
-				467BCA00280AD21B009EE97E /* KMPNativeCoroutinesAsync */,
+				462B9287298FC97200109347 /* KMPNativeCoroutinesAsync */,
 			);
 			productName = iosApp;
 			productReference = 7555FF7B242A565900829871 /* FindProfessional.app */;
@@ -324,7 +339,7 @@
 			);
 			mainGroup = 7555FF72242A565900829871;
 			packageReferences = (
-				467BC9FF280AD21B009EE97E /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */,
+				462B9286298FC97200109347 /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */,
 			);
 			productRefGroup = 7555FF7C242A565900829871 /* Products */;
 			projectDirPath = "";
@@ -375,7 +390,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd \"$SRCROOT/..\"\n./gradlew :common-kmm:embedAndSignAppleFrameworkForXcode\n";
+			shellScript = "cd \"$SRCROOT/..\"\n./gradlew :common:embedAndSignAppleFrameworkForXcode\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -385,6 +400,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				46CE2300297D7BB60002EBE5 /* LoginScreenUITests.swift in Sources */,
+				46D211722993DD0200654431 /* SignUpScreenUITestsUtils.swift in Sources */,
+				46FB268F2992DE5900FD41AA /* SignUpScreenUITests.swift in Sources */,
+				46D211702993DCCD00654431 /* LoginScreenUITestsUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,13 +410,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
+				2152FB042600AC8F00CF470E /* MainApp.swift in Sources */,
 				46905BA7298BD9BB005D4292 /* AppNavigationView.swift in Sources */,
 				460CE536280D923F007E758C /* FilledButton.swift in Sources */,
 				46E01EC0280AF4400023A293 /* AppColor.swift in Sources */,
+				4646BB6A298FCD5600F16CBF /* Snackbar.swift in Sources */,
 				460CE532280D9183007E758C /* CommonTextField.swift in Sources */,
 				463B8DF6280B014C0016B0BD /* AppFont.swift in Sources */,
 				46E01EBB280AE3B40023A293 /* LoginScreen.swift in Sources */,
+				46D2116E2993D08B00654431 /* MainScreen.swift in Sources */,
 				460CE534280D91FE007E758C /* EmailTextField.swift in Sources */,
 				46E01EBD280AE3FD0023A293 /* LoginViewModel.swift in Sources */,
 				460CE52D280D902D007E758C /* SignUpScreen.swift in Sources */,
@@ -580,7 +600,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Src/Res/Preview Content\"";
 				DEVELOPMENT_TEAM = FJ4Q769T4D;
 				ENABLE_PREVIEWS = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../common-kmm/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)";
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../common/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)";
 				INFOPLIST_FILE = Src/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -609,7 +629,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Src/Res/Preview Content\"";
 				DEVELOPMENT_TEAM = FJ4Q769T4D;
 				ENABLE_PREVIEWS = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../common-kmm/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)";
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../common/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)";
 				INFOPLIST_FILE = Src/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -662,20 +682,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		467BC9FF280AD21B009EE97E /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */ = {
+		462B9286298FC97200109347 /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/rickclephas/KMP-NativeCoroutines";
 			requirement = {
-				branch = master;
-				kind = branch;
+				kind = exactVersion;
+				version = 0.13.3;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		467BCA00280AD21B009EE97E /* KMPNativeCoroutinesAsync */ = {
+		462B9287298FC97200109347 /* KMPNativeCoroutinesAsync */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 467BC9FF280AD21B009EE97E /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */;
+			package = 462B9286298FC97200109347 /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */;
 			productName = KMPNativeCoroutinesAsync;
 		};
 /* End XCSwiftPackageProductDependency section */

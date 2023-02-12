@@ -21,4 +21,12 @@ final class AppColor {
     static var Green: Color {
         Color(red: 15 / 255, green: 106 / 255, blue: 44 / 255).opacity(1)
     }
+    
+    static var inverseSurface: Color {
+        Color(red: 49 / 255, green: 48 / 255, blue: 51 / 255)
+    }
+    
+    static var inverseOnSurface: Color {
+        Color(red: 244 / 255, green: 239 / 255, blue: 244 / 255)
+    }
 }

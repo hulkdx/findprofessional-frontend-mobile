@@ -1,18 +1,18 @@
 import XCTest
 
-class LoginScreenUITests: XCTestCase {
+class SignUpScreenUITests: XCTestCase {
     
-    private let app: XCUIApplication = XCUIApplication()
+    private let app = XCUIApplication()
     
     override func setUpWithError() throws {
         continueAfterFailure = false
+        app.launchArguments = ["in-memory-api"]
     }
 
     func testPerformSignUp() throws {
-        launchLoginScreen(app)
+        launchSignUpScreen(app)
             .pressSignUpButton()
-        
             .verify()
-            .signupScreenShown()
+            .mainScreenShown()
     }
 }
