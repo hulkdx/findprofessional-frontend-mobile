@@ -19,7 +19,7 @@ struct SignUpScreen: View {
             PasswordTextField(value: $viewModel.password)
                 .padding(.top, 16)
             SignUpButton() {
-                viewModel.onSubmitClicked()
+                await viewModel.onSubmitClicked()
             }
                 .padding(.top, 16)
         }
@@ -31,7 +31,7 @@ struct SignUpScreen: View {
 
 private struct SignUpButton: View {
     
-    let action: () -> Void
+    let action: () async -> Void
 
     var body: some View {
         FilledButton(text: MR.strings().signUp.desc().localized(), action: action)

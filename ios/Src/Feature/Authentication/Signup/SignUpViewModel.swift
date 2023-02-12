@@ -11,22 +11,21 @@ class SignUpViewModel: ObservableObject {
     
     private let useCase: SignUpUseCase
 
-    private var registerTask: Task<Void, Error>?
-
     init(_ useCase: SignUpUseCase) {
         self.useCase = useCase
     }
 
     func onDisappear() {
-        registerTask?.cancel()
     }
 
-    func onSubmitClicked() {
-        registerTask = Task {
+    func onSubmitClicked() async {
+        do {
             let error = try await asyncFunction(for: useCase.registerNative(request: RegisterRequest(email: email, password: password)))
             if (error != nil) {
                 self.error = error?.localized()
             }
+        } catch {
+            // no-op: usecase already handling exceptions
         }
     }
 }

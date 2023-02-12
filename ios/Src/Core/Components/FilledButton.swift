@@ -3,11 +3,10 @@ import SwiftUI
 struct FilledButton: View {
     
     let text: String
-    let action: () -> Void
-
+    let action: () async -> Void
+    
     var body: some View {
-        
-        Button(action: action, label: {
+        AsyncButton(action: action, label: {
             Text(text)
                 .frame(maxWidth: .infinity)
                 .font(AppFont.h3)
