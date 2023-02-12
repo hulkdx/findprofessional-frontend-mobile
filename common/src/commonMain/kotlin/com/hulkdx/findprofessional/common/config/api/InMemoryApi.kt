@@ -5,7 +5,6 @@ import com.hulkdx.findprofessional.common.feature.authentication.signup.model.Re
 import org.koin.core.context.loadKoinModules
 import org.koin.core.context.unloadKoinModules
 import org.koin.dsl.module
-import kotlin.jvm.JvmStatic
 import kotlin.native.concurrent.ThreadLocal
 
 @ThreadLocal
@@ -16,18 +15,16 @@ object InMemoryApi {
 
     var user: RegisterRequest? = null
 
-    object Signup: SignUpApi {
+    object Signup : SignUpApi {
         override suspend fun register(request: RegisterRequest) {
             user = request
         }
     }
 
-    @JvmStatic
     fun loadKoinModules() {
         loadKoinModules(module)
     }
 
-    @JvmStatic
     fun unloadKoinModules() {
         unloadKoinModules(module)
     }

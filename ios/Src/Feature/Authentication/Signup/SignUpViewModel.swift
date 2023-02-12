@@ -17,7 +17,7 @@ class SignUpViewModel: ObservableObject {
         self.useCase = useCase
     }
 
-    func onCleared() {
+    func onDisappear() {
         registerTask?.cancel()
     }
 

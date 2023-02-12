@@ -11,7 +11,7 @@ class LoginViewModel: ObservableObject {
         self.useCase = useCase
     }
     
-    func onCleared() {
+    func onDisappear() {
     }
     
     func signUpButtonClicked() {
