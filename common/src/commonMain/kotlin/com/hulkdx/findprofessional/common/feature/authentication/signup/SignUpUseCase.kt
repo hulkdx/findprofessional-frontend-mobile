@@ -1,6 +1,6 @@
 package com.hulkdx.findprofessional.common.feature.authentication.signup
 
-import com.hulkdx.findprofessional.common.feature.authentication.signup.model.RegisterRequest
+import com.hulkdx.findprofessional.common.feature.authentication.signup.model.AuthRequest
 import com.hulkdx.findprofessional.common.navigation.NavigationScreen
 import com.hulkdx.findprofessional.common.navigation.Navigator
 import com.hulkdx.findprofessional.resources.MR
@@ -13,7 +13,7 @@ class SignUpUseCase(
     private val navigator: Navigator,
 ) {
 
-    suspend fun register(request: RegisterRequest) = try {
+    suspend fun register(request: AuthRequest) = try {
         signUpApi.register(request)
         navigator.navigate(NavigationScreen.Main)
         null

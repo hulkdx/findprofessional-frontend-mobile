@@ -48,4 +48,9 @@ class LoginVerify(
         rule.onNodeWithTag("SignUpScreen")
             .assertIsDisplayed()
     }
+
+    fun mainScreenShown() {
+        rule.onNodeWithTag("MainScreen")
+            .assertIsDisplayed()
+    }
 }
