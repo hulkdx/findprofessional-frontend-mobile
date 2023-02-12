@@ -35,7 +35,7 @@ jobs:
           api-level: 29
           arch: x86
           disable-animations: true
-          script: ./gradlew connectedCheck
+          script: ./gradlew connectedDebugAndroidTest
 
       - name: Upload test reports
         if: always()
