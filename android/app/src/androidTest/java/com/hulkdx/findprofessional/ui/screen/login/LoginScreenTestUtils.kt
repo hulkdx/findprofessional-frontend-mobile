@@ -29,10 +29,8 @@ class LoginDsl(
     }
 
     fun pressSignUpButton() {
-        rule.onNodeWithTag("LoginScreen.SignUpButton")
-            .assertIsDisplayed()
-//        rule.onNodeWithTag("LoginScreen.SignUpButton")
-//            .performClick()
+        rule.onNodeWithTagRes(MR.strings.signUp.resourceId)
+            .performClick()
     }
 
     fun pressSignInButton() {

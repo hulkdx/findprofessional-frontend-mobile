@@ -26,11 +26,9 @@ class SignUpScreenTest {
     @Test
     fun performSignUp() {
         launchSignUpScreen(composeRule) {
+            pressSignUpButton()
+        }.verify {
+            mainScreenShown()
         }
-//        launchSignUpScreen(composeRule) {
-//            pressSignUpButton()
-//        }.verify {
-//            mainScreenShown()
-//        }
     }
 }
