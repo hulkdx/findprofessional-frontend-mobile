@@ -17,6 +17,7 @@ class KoinHelper : KoinComponent {
     val navigator: Navigator by inject()
 }
 
+@Suppress("unused")
 fun KoinApplication.addNavigatorAsSingle(definition: Definition<Navigator>) {
     modules(
         module {

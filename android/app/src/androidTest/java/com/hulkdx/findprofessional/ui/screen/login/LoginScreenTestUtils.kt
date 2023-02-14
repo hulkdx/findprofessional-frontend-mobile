@@ -2,7 +2,6 @@ package com.hulkdx.findprofessional.ui.screen.login
 
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.onNodeWithTag
-import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performTextInput
 import com.hulkdx.findprofessional.resources.MR

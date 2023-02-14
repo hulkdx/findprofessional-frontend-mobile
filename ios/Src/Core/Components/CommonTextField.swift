@@ -13,7 +13,7 @@ struct CommonTextField: View {
         HStack {
             Image(leadingIcon)
             if isSecure {
-                createSeacure()
+                createSecure()
             } else {
                 createNormal()
             }
@@ -27,7 +27,7 @@ struct CommonTextField: View {
         .background(AppColor.LightGrey)
     }
     
-    private func createSeacure() -> some View {
+    private func createSecure() -> some View {
         return SecureField("", text: $value)
             .focused($focused)
             .placeholder(when: value.isEmpty) {

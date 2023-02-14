@@ -5,8 +5,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hulkdx.findprofessional.common.feature.authentication.login.LoginUseCase
 import com.hulkdx.findprofessional.common.feature.authentication.signup.model.AuthRequest
-import com.hulkdx.findprofessional.common.navigation.NavigationScreen
-import com.hulkdx.findprofessional.common.navigation.Navigator
 import dev.icerock.moko.resources.desc.StringDesc
 import kotlinx.coroutines.launch
 
@@ -35,6 +33,9 @@ class LoginViewModel(
     }
 
     fun onSignInClicked() = viewModelScope.launch {
-        loginUseCase.onSignInClicked(AuthRequest(email.value, password.value))
+        val error = loginUseCase.onSignInClicked(AuthRequest(email.value, password.value))
+        if (error != null) {
+            setError(error)
+        }
     }
 }
