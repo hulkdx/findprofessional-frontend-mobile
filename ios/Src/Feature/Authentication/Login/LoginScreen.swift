@@ -13,17 +13,13 @@ struct LoginScreen: View {
     @StateObject
     private var viewModel: LoginViewModel = LoginViewModel(KoinHelper().loginUseCase)
     
-    @State private var email: String = ""
-    @State private var password: String = ""
-    @State private var errorMessage: String? = nil
-    
     var body: some View {
         VStack(spacing: 0) {
-            EmailTextField(value: $email)
-            PasswordTextField(value: $password)
+            EmailTextField(value: $viewModel.email)
+            PasswordTextField(value: $viewModel.password)
                 .padding(.top, 16)
             SignInButton() {
-                viewModel.signUpButtonClicked()
+                await viewModel.signInButtonClicked()
             }
             .padding(.top, 16)
             SignUpButton() {
@@ -33,13 +29,13 @@ struct LoginScreen: View {
         }
         .padding(.horizontal, 16)
         .onDisappear { viewModel.onDisappear() }
-        .snackbar(message: $errorMessage)
+        .snackbar(message: $viewModel.error)
     }
 }
 
 private struct SignInButton: View {
     
-    let action: () -> Void
+    let action: () async -> Void
     
     var body: some View {
         FilledButton(text: MR.strings().signIn.desc().localized(), action: action)

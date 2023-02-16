@@ -13,9 +13,6 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
@@ -23,49 +20,59 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.hulkdx.findprofessional.core.theme.body1
 import com.hulkdx.findprofessional.core.utils.append
 import com.hulkdx.findprofessional.core.utils.bold
 import com.hulkdx.findprofessional.core.utils.singleClick
+import com.hulkdx.findprofessional.feature.authentication.ui.AppSnackBar
 import com.hulkdx.findprofessional.feature.authentication.ui.EmailTextField
 import com.hulkdx.findprofessional.feature.authentication.ui.FilledButton
 import com.hulkdx.findprofessional.feature.authentication.ui.PasswordTextField
 import com.hulkdx.findprofessional.resources.MR
+import dev.icerock.moko.resources.compose.localized
 import org.koin.androidx.compose.getViewModel
 
 @Composable
 fun LoginScreen(
     viewModel: LoginViewModel = getViewModel(),
 ) {
-    var username by remember { mutableStateOf("") }
-    var password by remember { mutableStateOf("") }
+    val email by viewModel.email.collectAsStateWithLifecycle()
+    val password by viewModel.password.collectAsStateWithLifecycle()
+    val error by viewModel.error.collectAsStateWithLifecycle()
 
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(MaterialTheme.colorScheme.onPrimary),
-        verticalArrangement = Arrangement.Center
-    ) {
-        EmailTextField(
-            modifier = Modifier.statusBarsPadding(),
-            value = username,
-            onValueChanged = { username = it }
-        )
+    Box {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(MaterialTheme.colorScheme.onPrimary),
+            verticalArrangement = Arrangement.Center
+        ) {
+            EmailTextField(
+                modifier = Modifier.statusBarsPadding(),
+                value = email,
+                onValueChanged = viewModel::setEmail
+            )
 
-        PasswordTextField(
-            modifier = Modifier.padding(top = 8.dp),
-            value = password,
-            onValueChanged = { password = it }
-        )
+            PasswordTextField(
+                modifier = Modifier.padding(top = 8.dp),
+                value = password,
+                onValueChanged = viewModel::setPassword
+            )
 
-        SignInButton(
-            modifier = Modifier.padding(top = 16.dp),
-            onClick = viewModel::onSignInClicked
-        )
+            SignInButton(
+                modifier = Modifier.padding(top = 16.dp),
+                onClick = viewModel::onSignInClicked
+            )
 
-        SignUpButton(
-            modifier = Modifier.padding(top = 32.dp),
-            onClick = viewModel::onSignUpClicked
+            SignUpButton(
+                modifier = Modifier.padding(top = 32.dp),
+                onClick = viewModel::onSignUpClicked
+            )
+        }
+        AppSnackBar(
+            modifier = Modifier.align(Alignment.BottomCenter),
+            message = error?.localized(),
         )
     }
 }

@@ -1,6 +1,5 @@
 import SwiftUI
 import shared
-import KMPNativeCoroutinesAsync
 
 @MainActor
 class SignUpViewModel: ObservableObject {
@@ -20,7 +19,7 @@ class SignUpViewModel: ObservableObject {
 
     func onSubmitClicked() async {
         do {
-            let error = try await asyncFunction(for: useCase.registerNative(request: RegisterRequest(email: email, password: password)))
+            let error = try await useCase.register(request: AuthRequest(email: email, password: password))
             if (error != nil) {
                 self.error = error?.localized()
             }
