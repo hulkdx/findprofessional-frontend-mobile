@@ -6,6 +6,8 @@ class LoginScreenUITests: XCTestCase {
     
     override func setUpWithError() throws {
         continueAfterFailure = false
+        
+        app.launchArguments = ["in-memory-api"]
     }
 
     func testPerformSignUp() throws {
@@ -14,5 +16,15 @@ class LoginScreenUITests: XCTestCase {
         
             .verify()
             .signupScreenShown()
+    }
+    
+    func testPerformLogin() {
+        launchLoginScreen(app)
+            .typeEmail("test@email.com")
+            .typePassword("test@email.com")
+            .pressSignInButton()
+            
+            .verify()
+            .mainScreenShown()
     }
 }

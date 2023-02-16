@@ -3,7 +3,6 @@ plugins {
     kotlin("plugin.serialization") version BuildDep.KOTLIN_VERSION
     id("com.android.library")
 
-    id("com.rickclephas.kmp.nativecoroutines") version BuildDep.IOS_KMP_NATIVE_VERSION
     id("dev.icerock.mobile.multiplatform-resources") version BuildDep.MOKO_RESOURCES_VERSION
 }
 

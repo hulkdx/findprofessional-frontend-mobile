@@ -6,7 +6,6 @@
 object BuildDep {
     // --------------------------------------------------------------------------------
     // General
-    // NOTE: IOS_KMP_NATIVE_VERSION, KOTLIN_VERSION, COROUTINES_VERSION depends on each other
     // --------------------------------------------------------------------------------
     const val MIN_SDK_VERSION = 24
     const val COMPILE_SDK_VERSION = 33
@@ -19,13 +18,6 @@ object BuildDep {
     // KMM
     // --------------------------------------------------------------------------------
     const val MOKO_RESOURCES_VERSION = "0.20.1"
-
-    // --------------------------------------------------------------------------------
-    // iOS
-    // --------------------------------------------------------------------------------
-
-    // https://github.com/rickclephas/KMP-NativeCoroutines
-    const val IOS_KMP_NATIVE_VERSION = "0.13.3"
 
     // --------------------------------------------------------------------------------
     // Android Main

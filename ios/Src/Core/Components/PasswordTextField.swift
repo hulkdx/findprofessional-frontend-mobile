@@ -9,7 +9,8 @@ struct PasswordTextField: View {
             value: value,
             leadingIcon: "Password",
             hint: MR.strings().password.desc().localized(),
-            isSecure: true
+            isSecure: true,
+            accessibilityIdentifier: "Password"
         )
     }
 }
