@@ -9,7 +9,8 @@ struct EmailTextField: View {
             value: value,
             leadingIcon: "Email",
             hint: MR.strings().email.desc().localized(),
-            isSecure: false
+            isSecure: false,
+            accessibilityIdentifier: "Email"
         )
     }
 }

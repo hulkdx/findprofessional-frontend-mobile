@@ -8,9 +8,28 @@ func launchLoginScreen(_ app: XCUIApplication) -> LoginBuilder {
 struct LoginBuilder {
     let app: XCUIApplication
     
+    func typeEmail(_ email: String) -> LoginBuilder {
+        let element = app.textFields["Email"]
+        element.tap()
+        element.typeText(email)
+        return self
+    }
+
+    func typePassword(_ password: String) -> LoginBuilder {
+        let element = app.secureTextFields["Password"]
+        element.tap()
+        element.typeText(password)
+        return self
+    }
+    
     @discardableResult
     func pressSignUpButton() -> LoginBuilder {
         app.buttons["Don’t have an account? Sign Up"].tap()
+        return self
+    }
+    
+    func pressSignInButton() -> LoginBuilder {
+        app.buttons["Sign in"].tap()
         return self
     }
     
@@ -24,6 +43,11 @@ struct LoginVerifyBuilder {
     
     func signupScreenShown() {
         let element = app.buttons["Sign Up"]
+        XCTAssertTrue(element.exists)
+    }
+    
+    func mainScreenShown() {
+        let element = app.staticTexts["MainScreen"]
         XCTAssertTrue(element.exists)
     }
 }

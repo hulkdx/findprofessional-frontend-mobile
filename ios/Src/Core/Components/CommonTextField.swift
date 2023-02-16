@@ -6,6 +6,7 @@ struct CommonTextField: View {
     let leadingIcon: String
     let hint: String
     let isSecure: Bool
+    let accessibilityIdentifier: String
     
     @FocusState private var focused: Bool
     
@@ -36,6 +37,7 @@ struct CommonTextField: View {
                     .foregroundColor(AppColor.TextColor)
             }
             .font(AppFont.body2)
+            .accessibilityIdentifier(accessibilityIdentifier)
     }
     
     private func createNormal() -> some View {
@@ -47,6 +49,7 @@ struct CommonTextField: View {
                     .foregroundColor(AppColor.TextColor)
             }
             .font(AppFont.body2)
+            .accessibilityIdentifier(accessibilityIdentifier)
     }
 }
 
