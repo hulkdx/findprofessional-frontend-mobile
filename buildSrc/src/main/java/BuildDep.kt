@@ -12,7 +12,7 @@ object BuildDep {
 
     const val KOTLIN_VERSION = "1.8.0"
     // https://developer.android.com/studio/releases/gradle-plugin
-    const val AGP_VERSION = "7.4.0"
+    const val AGP_VERSION = "7.4.1"
 
     // --------------------------------------------------------------------------------
     // KMM
