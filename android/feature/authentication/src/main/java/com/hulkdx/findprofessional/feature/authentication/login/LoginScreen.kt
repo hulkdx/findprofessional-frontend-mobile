@@ -72,6 +72,7 @@ fun LoginScreen(
         AppSnackBar(
             modifier = Modifier.align(Alignment.BottomCenter),
             message = error?.localized(),
+            onDismiss = { viewModel.error.set(null) },
         )
     }
 }
