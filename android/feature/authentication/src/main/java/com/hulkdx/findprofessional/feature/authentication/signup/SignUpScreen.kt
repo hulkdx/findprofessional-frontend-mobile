@@ -15,7 +15,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.hulkdx.findprofessional.feature.authentication.ui.AppSnackBar
 import com.hulkdx.findprofessional.feature.authentication.ui.EmailTextField
 import com.hulkdx.findprofessional.feature.authentication.ui.FilledButton
@@ -46,13 +45,13 @@ fun SignUpScreen(
                 modifier = Modifier
                     .statusBarsPadding(),
                 value = email,
-                onValueChanged = viewModel::setEmail,
+                onValueChanged = viewModel.email::set,
             )
             PasswordTextField(
                 modifier = Modifier
                     .padding(top = 8.dp),
                 value = password,
-                onValueChanged = viewModel::setPassword,
+                onValueChanged = viewModel.password::set,
             )
             SubmitButton(
                 modifier = Modifier

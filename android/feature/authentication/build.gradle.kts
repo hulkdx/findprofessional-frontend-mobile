@@ -49,7 +49,6 @@ dependencies {
 
     implementation(platform("androidx.compose:compose-bom:${BuildDep.COMPOSE_BOM}"))
     implementation("io.insert-koin:koin-androidx-compose:${BuildDep.KOIN_COMPOSE_VERSION}")
-    implementation("androidx.lifecycle:lifecycle-runtime-compose:${BuildDep.ANDROIDX_LIFECYCLE}")
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:${BuildDep.JUNIT_VERSION}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${BuildDep.JUNIT_VERSION}")

@@ -20,7 +20,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.hulkdx.findprofessional.core.theme.body1
 import com.hulkdx.findprofessional.core.utils.append
 import com.hulkdx.findprofessional.core.utils.bold
@@ -51,13 +50,13 @@ fun LoginScreen(
             EmailTextField(
                 modifier = Modifier.statusBarsPadding(),
                 value = email,
-                onValueChanged = viewModel::setEmail
+                onValueChanged = viewModel.email::set
             )
 
             PasswordTextField(
                 modifier = Modifier.padding(top = 8.dp),
                 value = password,
-                onValueChanged = viewModel::setPassword
+                onValueChanged = viewModel.password::set
             )
 
             SignInButton(
