@@ -1,4 +1,5 @@
 import XCTest
+import shared
 
 class LoginScreenUITests: XCTestCase {
     
@@ -6,8 +7,6 @@ class LoginScreenUITests: XCTestCase {
     
     override func setUpWithError() throws {
         continueAfterFailure = false
-        
-        app.launchArguments = ["in-memory-api"]
     }
 
     func testPerformSignUp() throws {
@@ -19,9 +18,11 @@ class LoginScreenUITests: XCTestCase {
     }
     
     func testPerformLogin() {
+        app.inMemoryApiUser(AuthRequest(email: "test@email.com", password: "some-pass"))
+        
         launchLoginScreen(app)
             .typeEmail("test@email.com")
-            .typePassword("test@email.com")
+            .typePassword("some-pass")
             .pressSignInButton()
             
             .verify()

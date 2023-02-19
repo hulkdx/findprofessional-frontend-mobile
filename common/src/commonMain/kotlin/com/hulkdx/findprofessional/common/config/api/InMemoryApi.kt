@@ -26,7 +26,10 @@ object InMemoryApi {
 
     object Login: LoginApi {
         override suspend fun login(request: AuthRequest): LoginResponse {
-            return LoginResponse("uiTestAccessToken", "uiTestRefreshToken")
+            if (request == user) {
+                return LoginResponse("uiTestAccessToken", "uiTestRefreshToken")
+            }
+            throw RuntimeException("user not found")
         }
     }
 

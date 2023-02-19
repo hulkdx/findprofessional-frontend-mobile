@@ -9,11 +9,8 @@ struct MainApp: App {
             koinApp.addNavigatorAsSingle { _, _ in NavigatorImpl() }
         }
 
-        // ui tests
 #if DEBUG
-        if CommandLine.arguments.contains("in-memory-api") {
-            InMemoryApi.shared.loadKoinModules()
-        }
+        handleUiTestArguments()
 #endif
     }
     
