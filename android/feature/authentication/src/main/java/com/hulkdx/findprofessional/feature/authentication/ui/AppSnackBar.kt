@@ -45,14 +45,14 @@ private fun delayDuration(hostState: SnackbarHostState): Long {
     }
     return currentSnackbarData.visuals.duration.toMillis(
         currentSnackbarData.visuals.actionLabel != null,
-        accessibilityManager
+        accessibilityManager,
     )
 }
 
 // copy pasted from the source code
 private fun SnackbarDuration.toMillis(
     hasAction: Boolean,
-    accessibilityManager: AccessibilityManager?
+    accessibilityManager: AccessibilityManager?,
 ): Long {
     val original = when (this) {
         SnackbarDuration.Indefinite -> Long.MAX_VALUE
@@ -66,6 +66,6 @@ private fun SnackbarDuration.toMillis(
         original,
         containsIcons = true,
         containsText = true,
-        containsControls = hasAction
+        containsControls = hasAction,
     )
 }

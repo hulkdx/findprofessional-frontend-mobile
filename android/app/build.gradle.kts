@@ -22,7 +22,7 @@ android {
             isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
         }
     }
@@ -71,5 +71,4 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
 
     debugImplementation("com.squareup.leakcanary:leakcanary-android:${BuildDep.LEAK_CANARY_VERSION}")
-
 }

@@ -19,7 +19,7 @@ fun launchSignUpScreen(
 }
 
 class SignUpDsl(
-    private val rule: Rule
+    private val rule: Rule,
 ) {
     fun pressSignUpButton() {
         rule.onNodeWithTextRes(MR.strings.signUp.resourceId)
@@ -30,7 +30,7 @@ class SignUpDsl(
 }
 
 class SignUpVerify(
-    private val rule: Rule
+    private val rule: Rule,
 ) {
     fun mainScreenShown() {
         rule.onNodeWithTag("MainScreen")

@@ -15,7 +15,7 @@ fun launchLoginScreen(
 ) = LoginDsl(rule).apply(block)
 
 class LoginDsl(
-    private val rule: Rule
+    private val rule: Rule,
 ) {
     fun typeEmail(email: String) {
         rule.onNodeWithTextRes(MR.strings.email.resourceId)
@@ -41,7 +41,7 @@ class LoginDsl(
 }
 
 class LoginVerify(
-    private val rule: Rule
+    private val rule: Rule,
 ) {
     fun signupScreenShown() {
         rule.onNodeWithTag("SignUpScreen")

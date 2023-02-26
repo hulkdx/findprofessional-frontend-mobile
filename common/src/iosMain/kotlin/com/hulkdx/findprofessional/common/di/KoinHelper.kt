@@ -22,6 +22,6 @@ fun KoinApplication.addNavigatorAsSingle(definition: Definition<Navigator>) {
     modules(
         module {
             single(definition = definition)
-        }
+        },
     )
 }

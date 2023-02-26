@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 class LoginViewModel(
     savedStateHandle: SavedStateHandle,
     private val loginUseCase: LoginUseCase,
-): ViewModel() {
+) : ViewModel() {
     val email by savedStateHandle.getStateFlowWrapper("")
     val password by savedStateHandle.getStateFlowWrapper("")
     val error by savedStateHandle.getStateFlowWrapper<StringDesc?>(null)

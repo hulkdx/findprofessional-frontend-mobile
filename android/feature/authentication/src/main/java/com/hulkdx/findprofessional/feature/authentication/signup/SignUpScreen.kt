@@ -36,7 +36,7 @@ fun SignUpScreen(
 
     Box(
         modifier = Modifier.imePadding()
-            .testTag("SignUpScreen")
+            .testTag("SignUpScreen"),
     ) {
         Column(
             modifier = Modifier
@@ -60,7 +60,7 @@ fun SignUpScreen(
             SubmitButton(
                 modifier = Modifier
                     .padding(top = 16.dp),
-                onClick = viewModel::onSubmitClicked
+                onClick = viewModel::onSubmitClicked,
             )
         }
         AppSnackBar(
@@ -74,7 +74,7 @@ fun SignUpScreen(
 @Composable
 private fun SubmitButton(
     modifier: Modifier = Modifier,
-    onClick: () -> Unit
+    onClick: () -> Unit,
 ) {
     FilledButton(
         modifier = modifier,

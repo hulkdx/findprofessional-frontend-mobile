@@ -34,7 +34,7 @@ fun CommonTextField(
         leadingIcon = {
             Image(
                 painter = painterResource(leadingIconDrawable),
-                contentDescription = leadingIconContentDescription
+                contentDescription = leadingIconContentDescription,
             )
         },
         shape = RoundedCornerShape(8.dp),

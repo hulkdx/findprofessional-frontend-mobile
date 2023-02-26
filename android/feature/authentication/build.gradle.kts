@@ -15,7 +15,7 @@ android {
             isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
         }
     }
@@ -56,5 +56,4 @@ dependencies {
     testImplementation("org.mockito:mockito-core:${BuildDep.MOCKITO_VERSION}")
     testImplementation("org.mockito:mockito-junit-jupiter:${BuildDep.MOCKITO_JUNIT5_VERSION}")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:${BuildDep.COROUTINES_TEST_VERSION}")
-
 }

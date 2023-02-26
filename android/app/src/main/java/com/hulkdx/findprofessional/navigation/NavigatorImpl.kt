@@ -9,8 +9,7 @@ import com.hulkdx.findprofessional.feature.authentication.login.LoginNavigationS
 import com.hulkdx.findprofessional.feature.authentication.signup.MainNavigationScreen
 import com.hulkdx.findprofessional.feature.authentication.signup.SignUpNavigationScreen
 
-
-class NavigatorImpl: Navigator {
+class NavigatorImpl : Navigator {
 
     val screenState = mutableStateOf<AndroidNavigationScreen?>(null, neverEqualPolicy())
 

@@ -24,7 +24,7 @@ object InMemoryApi {
         }
     }
 
-    object Login: LoginApi {
+    object Login : LoginApi {
         override suspend fun login(request: AuthRequest): LoginResponse {
             if (request == user) {
                 return LoginResponse("uiTestAccessToken", "uiTestRefreshToken")

@@ -12,4 +12,3 @@ val loginModule: Module
         factoryOf(::LoginNavigationScreen) bind AndroidNavigationScreen::class
         viewModelOf(::LoginViewModel)
     }
-

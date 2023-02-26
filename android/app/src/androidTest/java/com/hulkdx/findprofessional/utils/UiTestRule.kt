@@ -6,12 +6,12 @@ import org.junit.runner.Description
 import org.junit.runners.model.Statement
 import org.koin.java.KoinJavaComponent
 
-class UiTestRule: TestRule {
+class UiTestRule : TestRule {
 
     private val navigator by KoinJavaComponent.inject<NavigatorImpl>(NavigatorImpl::class.java)
 
     override fun apply(base: Statement, description: Description): Statement {
-        return object: Statement() {
+        return object : Statement() {
             override fun evaluate() {
                 try {
                     base.evaluate()

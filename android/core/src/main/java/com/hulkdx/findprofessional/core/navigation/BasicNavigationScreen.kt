@@ -5,7 +5,7 @@ package com.hulkdx.findprofessional.core.navigation
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.navigation.NamedNavArgument
 
-abstract class BasicNavigationScreen: AndroidNavigationScreen {
+abstract class BasicNavigationScreen : AndroidNavigationScreen {
     override val route: String = this.javaClass.name
     override val arguments: List<NamedNavArgument> = listOf()
 

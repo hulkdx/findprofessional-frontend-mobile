@@ -27,5 +27,4 @@ class SignUpUseCase(
             else -> e.generalError()
         }
     }
-
 }

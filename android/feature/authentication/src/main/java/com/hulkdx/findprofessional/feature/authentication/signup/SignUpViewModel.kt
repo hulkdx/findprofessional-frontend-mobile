@@ -23,5 +23,4 @@ class SignUpViewModel(
             error.set(err)
         }
     }
-
 }

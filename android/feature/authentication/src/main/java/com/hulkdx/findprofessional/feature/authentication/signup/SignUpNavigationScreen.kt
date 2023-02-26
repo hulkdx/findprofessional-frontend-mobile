@@ -11,6 +11,6 @@ class SignUpNavigationScreen : SlideNavigationScreen() {
 }
 
 // TODO: create a new feature / move this
-class MainNavigationScreen: SlideNavigationScreen() {
+class MainNavigationScreen : SlideNavigationScreen() {
     override val content: Content = { Text(modifier = Modifier.testTag("MainScreen"), text = "MainScreen") }
 }

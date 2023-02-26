@@ -6,7 +6,6 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import kotlinx.coroutines.flow.StateFlow
 import kotlin.properties.ReadOnlyProperty
 
-
 fun <T> SavedStateHandle.getStateFlowWrapper(initialValue: T) =
     ReadOnlyProperty<Any?, GetStateFlowWrapper<T>> { _, property ->
         GetStateFlowWrapper(this, property.name, initialValue)
@@ -31,5 +30,4 @@ class GetStateFlowWrapper<T>(
 
     @Composable
     fun collectAsStateWithLifecycle() = flow.collectAsStateWithLifecycle()
-
 }

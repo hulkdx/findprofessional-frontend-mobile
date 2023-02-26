@@ -5,7 +5,6 @@ import org.koin.core.module.dsl.factoryOf
 import org.koin.dsl.bind
 import org.koin.dsl.module
 
-
 val signUpModule: Module
     get() = module {
         factoryOf(::SignUpApiImpl) bind SignUpApi::class

@@ -49,28 +49,28 @@ fun LoginScreen(
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
                 .background(MaterialTheme.colorScheme.onPrimary),
-            verticalArrangement = Arrangement.Center
+            verticalArrangement = Arrangement.Center,
         ) {
             EmailTextField(
                 modifier = Modifier.statusBarsPadding(),
                 value = email,
-                onValueChanged = viewModel.email::set
+                onValueChanged = viewModel.email::set,
             )
 
             PasswordTextField(
                 modifier = Modifier.padding(top = 8.dp),
                 value = password,
-                onValueChanged = viewModel.password::set
+                onValueChanged = viewModel.password::set,
             )
 
             SignInButton(
                 modifier = Modifier.padding(top = 16.dp),
-                onClick = viewModel::onSignInClicked
+                onClick = viewModel::onSignInClicked,
             )
 
             SignUpButton(
                 modifier = Modifier.padding(top = 32.dp),
-                onClick = viewModel::onSignUpClicked
+                onClick = viewModel::onSignUpClicked,
             )
         }
         AppSnackBar(

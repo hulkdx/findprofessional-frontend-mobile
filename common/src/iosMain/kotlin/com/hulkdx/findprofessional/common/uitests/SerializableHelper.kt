@@ -5,7 +5,6 @@ import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
-
 object SerializableHelper {
     fun decodeAuthRequest(value: String) = Json.decodeFromString<AuthRequest>(value)
     fun encodeAuthRequest(value: AuthRequest) = Json.encodeToString(value)

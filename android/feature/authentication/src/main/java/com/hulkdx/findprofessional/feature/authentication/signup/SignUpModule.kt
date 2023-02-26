@@ -13,4 +13,3 @@ val signUpModule: Module
         viewModelOf(::SignUpViewModel)
         factoryOf(::MainNavigationScreen) bind AndroidNavigationScreen::class
     }
-
