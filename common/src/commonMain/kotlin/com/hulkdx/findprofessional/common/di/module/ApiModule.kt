@@ -2,11 +2,14 @@ package com.hulkdx.findprofessional.common.di.module
 
 import com.hulkdx.findprofessional.common.config.PlatformSpecific
 import com.hulkdx.findprofessional.common.config.api.BaseUrl
+import com.hulkdx.findprofessional.common.config.api.interceptor.AppInterceptor
+import com.hulkdx.findprofessional.common.config.api.interceptor.TokenInterceptor
 import io.ktor.client.*
 import io.ktor.client.plugins.*
 import io.ktor.client.plugins.contentnegotiation.*
 import io.ktor.serialization.kotlinx.json.*
 import org.koin.core.module.Module
+import org.koin.core.module.dsl.factoryOf
 import org.koin.dsl.module
 
 val apiModule: Module
@@ -31,7 +34,21 @@ val apiModule: Module
                 install(DefaultRequest) {
                     url(baseUrl.value)
                 }
+                // throws exception when request is not successful:
                 expectSuccess = true
+            }.apply {
+                val interceptors = getAll<AppInterceptor>()
+                plugin(HttpSend).apply {
+                    for (interceptor in interceptors) {
+                        intercept(interceptor::intercept)
+                    }
+                }
             }
         }
+
+        provideInterceptors()
     }
+
+private inline fun Module.provideInterceptors() {
+    factoryOf<AppInterceptor>(::TokenInterceptor)
+}
