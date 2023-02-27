@@ -1,5 +1,6 @@
 package com.hulkdx.findprofessional.common.di
 
+import com.hulkdx.findprofessional.common.config.storage.datastore.datastoreModule
 import com.hulkdx.findprofessional.common.di.module.apiModule
 import com.hulkdx.findprofessional.common.feature.authentication.login.loginModule
 import com.hulkdx.findprofessional.common.feature.authentication.signup.signUpModule
@@ -13,6 +14,7 @@ fun initKoin(
         appDeclaration()
         modules(
             apiModule,
+            datastoreModule,
             platformModule(),
 
             loginModule,
