@@ -27,7 +27,7 @@ jobs:
             ${{ runner.os }}-gradle-
 
       - name: Run unit tests
-        run: ./gradlew assembleDebug testDebug
+        run: ./gradlew assembleDebug testDebug iosSimulatorArm64Test
 
       - name: Run instrumentation tests
         uses: reactivecircus/android-emulator-runner@v2

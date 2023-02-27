@@ -51,6 +51,14 @@ kotlin {
                 implementation("io.ktor:ktor-client-darwin:${BuildDep.KTOR_VERSION}")
             }
         }
+
+        val commonTest by getting {
+            dependencies {
+                implementation(kotlin("test"))
+                implementation(kotlin("test-common"))
+                implementation(kotlin("test-annotations-common"))
+            }
+        }
     }
 }
 
