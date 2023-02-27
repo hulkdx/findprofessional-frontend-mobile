@@ -10,7 +10,7 @@ object BuildDep {
     const val MIN_SDK_VERSION = 24
     const val COMPILE_SDK_VERSION = 33
 
-    const val KOTLIN_VERSION = "1.8.0"
+    const val KOTLIN_VERSION = "1.8.10"
 
     // https://developer.android.com/studio/releases/gradle-plugin
     const val AGP_VERSION = "7.4.1"
@@ -26,7 +26,7 @@ object BuildDep {
     // --------------------------------------------------------------------------------
 
     // https://developer.android.com/jetpack/androidx/releases/compose
-    const val COMPOSE_VERSION = "1.4.0"
+    const val COMPOSE_VERSION = "1.4.3"
 
     // https://developer.android.com/jetpack/androidx/releases/compose
     const val COMPOSE_BOM = "2023.01.00"
