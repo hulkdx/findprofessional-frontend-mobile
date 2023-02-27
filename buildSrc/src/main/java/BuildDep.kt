@@ -51,4 +51,11 @@ object BuildDep {
 
     // https://developer.android.com/jetpack/androidx/releases/lifecycle
     const val ANDROIDX_LIFECYCLE = "2.6.0-alpha05"
+
+    // --------------------------------------------------------------------------------
+    // Android Test
+    // --------------------------------------------------------------------------------
+
+    // https://github.com/Kotlin/kotlinx.coroutines/tree/master/kotlinx-coroutines-test
+    const val COROUTINES_TEST_VERSION = "1.6.4"
 }
