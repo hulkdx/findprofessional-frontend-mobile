@@ -30,6 +30,8 @@ class LoginViewModelTest {
         sut = LoginUseCase(
             navigator,
             loginApi,
+            accessTokenStorage,
+            refreshTokenStorage,
         )
     }
 
