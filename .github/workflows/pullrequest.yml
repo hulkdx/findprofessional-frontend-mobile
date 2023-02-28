@@ -34,7 +34,8 @@ jobs:
         with:
           api-level: 29
           arch: x86
-          disable-animations: true
+          disable-animations: false
+          sdcard-path-or-size: 100M
           disk-size: 100M
           script: ./gradlew connectedDebugAndroidTest
 
