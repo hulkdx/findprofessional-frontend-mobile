@@ -58,6 +58,7 @@ kotlin {
                 implementation(kotlin("test-common"))
                 implementation(kotlin("test-annotations-common"))
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:${BuildDep.COROUTINES_TEST_VERSION}")
+                implementation("io.insert-koin:koin-test:${BuildDep.KOIN_VERSION}")
             }
         }
     }

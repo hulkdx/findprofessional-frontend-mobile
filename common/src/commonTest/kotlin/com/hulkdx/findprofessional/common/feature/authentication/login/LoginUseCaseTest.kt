@@ -1,12 +1,16 @@
 package com.hulkdx.findprofessional.common.feature.authentication.login
 
+import com.hulkdx.findprofessional.common.config.storage.AccessTokenStorage
+import com.hulkdx.findprofessional.common.config.storage.RefreshTokenStorage
 import com.hulkdx.findprofessional.common.feature.authentication.signup.model.AuthRequest
 import com.hulkdx.findprofessional.common.navigation.NavigationScreen
 import com.hulkdx.findprofessional.common.navigation.Navigator
+import com.hulkdx.findprofessional.common.utils.KoinTestUtil
+import kotlinx.coroutines.test.runTest
+import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
-import kotlin.test.assertFalse
 
 class LoginViewModelTest {
 
@@ -14,29 +18,74 @@ class LoginViewModelTest {
 
     private val loginApi = LoginApiMock()
     private val navigator = NavigatorMock()
+    private val accessTokenStorage = AccessTokenStorageMock()
+    private val refreshTokenStorage = RefreshTokenStorageMock()
 
     @BeforeTest
     fun setUp() {
+        KoinTestUtil.startKoin()
         sut = LoginUseCase(
             navigator,
             loginApi,
         )
     }
 
+    @AfterTest
+    internal fun tearDown() {
+        KoinTestUtil.stopKoin()
+    }
+
     @Test
-    fun `SampleFailingTest`() {
-        assertEquals(true, true)
+    fun `onSignInClicked should store tokens`() = runTest {
+        // Arrange
+        val accessToken = "accessToken"
+        val refreshToken = "accessToken"
+        loginApi.loginReturns = LoginResponse(accessToken, refreshToken)
+        // Act
+        sut.onSignInClicked(AuthRequest("", ""))
+        // Assert
+        assertEquals(accessToken, accessTokenStorage.setValue)
+        assertEquals(refreshToken, refreshTokenStorage.setValue)
     }
 
-    private class LoginApiMock: LoginApi {
+    // region mock classes
+
+    private class LoginApiMock : LoginApi {
+        lateinit var loginReturns: LoginResponse
+
         override suspend fun login(request: AuthRequest): LoginResponse {
-            TODO("Not yet implemented")
+            return loginReturns
         }
     }
 
-    private class NavigatorMock: Navigator {
+    private class NavigatorMock : Navigator {
         override fun navigate(screen: NavigationScreen) {
-            TODO("Not yet implemented")
         }
     }
+
+    private class AccessTokenStorageMock : AccessTokenStorage {
+        var setValue: String = ""
+
+        override suspend fun get(): String? {
+            return null
+        }
+
+        override suspend fun set(value: String) {
+            setValue = value
+        }
+    }
+
+    private class RefreshTokenStorageMock : RefreshTokenStorage {
+        var setValue: String = ""
+
+        override suspend fun get(): String? {
+            return null
+        }
+
+        override suspend fun set(value: String) {
+            setValue = value
+        }
+    }
+
+    // endregion
 }
