@@ -27,7 +27,7 @@ jobs:
             ${{ runner.os }}-gradle-
 
       - name: Run unit tests
-        run: ./gradlew assembleDebug
+        run: ./gradlew assembleDebug testDebug iosSimulatorArm64Test
 
       - name: Run instrumentation tests
         uses: reactivecircus/android-emulator-runner@v2
@@ -35,6 +35,7 @@ jobs:
           api-level: 29
           arch: x86
           disable-animations: true
+          disk-size: 100M
           script: ./gradlew connectedDebugAndroidTest
 
       - name: Upload test reports
