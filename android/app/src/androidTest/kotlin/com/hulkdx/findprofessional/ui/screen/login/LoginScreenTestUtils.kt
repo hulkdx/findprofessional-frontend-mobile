@@ -1,6 +1,7 @@
 package com.hulkdx.findprofessional.ui.screen.login
 
 import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.onAllNodesWithTag
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performTextInput
@@ -49,6 +50,10 @@ class LoginVerify(
     }
 
     fun mainScreenShown() {
+        rule.waitUntil(timeoutMillis = 10_000) {
+            rule.onAllNodesWithTag("MainScreen")
+                .fetchSemanticsNodes().size == 1
+        }
         rule.onNodeWithTag("MainScreen")
             .assertIsDisplayed()
     }
