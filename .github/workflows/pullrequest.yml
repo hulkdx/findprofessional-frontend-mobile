@@ -36,8 +36,6 @@ jobs:
           arch: x86
           disable-animations: false
           emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
-          sdcard-path-or-size: 100M
-          disk-size: 100M
           script: ./gradlew connectedDebugAndroidTest
 
       - name: Upload test reports
@@ -48,7 +46,6 @@ jobs:
           path: |
             **/build/reports/tests
             **/build/reports/androidTests/connected
-            screenshot.png
 
   ios-tests:
     name: iOS tests

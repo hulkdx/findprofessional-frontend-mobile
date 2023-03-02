@@ -36,7 +36,7 @@ class LoginUseCaseTest {
     }
 
     @AfterTest
-    internal fun tearDown() {
+    fun tearDown() {
         KoinTestUtil.stopKoin()
     }
 

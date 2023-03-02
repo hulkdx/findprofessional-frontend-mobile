@@ -50,11 +50,12 @@ class LoginVerify(
     }
 
     fun mainScreenShown() {
+        val testTag = "MainScreen"
         rule.waitUntil(timeoutMillis = 10_000) {
-            rule.onAllNodesWithTag("MainScreen")
+            rule.onAllNodesWithTag(testTag)
                 .fetchSemanticsNodes().size == 1
         }
-        rule.onNodeWithTag("MainScreen")
+        rule.onNodeWithTag(testTag)
             .assertIsDisplayed()
     }
 }
