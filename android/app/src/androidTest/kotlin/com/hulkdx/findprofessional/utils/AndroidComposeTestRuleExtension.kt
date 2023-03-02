@@ -3,6 +3,7 @@ package com.hulkdx.findprofessional.utils
 import androidx.annotation.StringRes
 import androidx.compose.ui.test.SemanticsNodeInteraction
 import androidx.compose.ui.test.junit4.AndroidComposeTestRule
+import androidx.compose.ui.test.onAllNodesWithTag
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.test.ext.junit.rules.ActivityScenarioRule
@@ -21,4 +22,13 @@ fun AndroidComposeTestRule<*, *>.onNodeWithTextRes(
 
 fun AndroidComposeTestRule<*, *>.onNodeWithTagRes(@StringRes res: Int): SemanticsNodeInteraction {
     return onNodeWithTag(activity.getString(res))
+}
+
+fun Rule.waitUntilAppear(
+    testTag: String,
+    timeoutMillis: Long = 10_000,
+) {
+    waitUntil(timeoutMillis) {
+        onAllNodesWithTag(testTag).fetchSemanticsNodes().size == 1
+    }
 }

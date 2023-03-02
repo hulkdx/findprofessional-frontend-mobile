@@ -57,12 +57,5 @@ object BuildDep {
     // --------------------------------------------------------------------------------
 
     // https://github.com/Kotlin/kotlinx.coroutines/tree/master/kotlinx-coroutines-test
-    const val COROUTINES_TEST_VERSION = "1.5.2"
-
-    // https://github.com/junit-team/junit5
-    const val JUNIT_VERSION = "5.7.2"
-
-    // https://github.com/mockito/mockito
-    const val MOCKITO_VERSION = "3.10.0"
-    const val MOCKITO_JUNIT5_VERSION = "2.23.0"
+    const val COROUTINES_TEST_VERSION = "1.6.4"
 }

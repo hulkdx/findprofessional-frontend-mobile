@@ -49,11 +49,4 @@ dependencies {
 
     implementation(platform("androidx.compose:compose-bom:${BuildDep.COMPOSE_BOM}"))
     implementation("io.insert-koin:koin-androidx-compose:${BuildDep.KOIN_COMPOSE_VERSION}")
-
-    testImplementation("org.junit.jupiter:junit-jupiter-api:${BuildDep.JUNIT_VERSION}")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${BuildDep.JUNIT_VERSION}")
-    testImplementation("org.junit.jupiter:junit-jupiter-params:${BuildDep.JUNIT_VERSION}")
-    testImplementation("org.mockito:mockito-core:${BuildDep.MOCKITO_VERSION}")
-    testImplementation("org.mockito:mockito-junit-jupiter:${BuildDep.MOCKITO_JUNIT5_VERSION}")
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:${BuildDep.COROUTINES_TEST_VERSION}")
 }
