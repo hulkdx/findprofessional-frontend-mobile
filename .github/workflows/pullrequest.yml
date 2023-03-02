@@ -35,8 +35,10 @@ jobs:
           api-level: 29
           arch: x86
           disable-animations: false
+          emulator-build: 7425822 # workaround to emulator bug: https://github.com/ReactiveCircus/android-emulator-runner/issues/160
           emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
-          script: ./gradlew connectedDebugAndroidTest
+          script: |
+            ./gradlew connectedDebugAndroidTest || (adb exec-out "run-as com.hulkdx.findprofessional cp -r files/uitest-screenshot-failure /sdcard/uitest-screenshot-failure" && adb pull sdcard/uitest-screenshot-failure && exit 1)
 
       - name: Upload test reports
         if: always()
@@ -46,6 +48,7 @@ jobs:
           path: |
             **/build/reports/tests
             **/build/reports/androidTests/connected
+            uitest-screenshot-failure
 
   ios-tests:
     name: iOS tests

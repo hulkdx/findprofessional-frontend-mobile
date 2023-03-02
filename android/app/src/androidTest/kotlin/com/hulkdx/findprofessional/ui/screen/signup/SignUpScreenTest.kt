@@ -14,8 +14,8 @@ class SignUpScreenTest {
     @get:Rule
     val composeRule = createAndroidComposeRule<MainActivity>()
 
-    @get:Rule
-    val rule = UiTestRule()
+    @get:Rule(order = 1)
+    val rule = UiTestRule(composeRule)
 
     @Before
     fun setUp() {
