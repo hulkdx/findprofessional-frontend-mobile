@@ -2,15 +2,8 @@ package com.hulkdx.findprofessional.common.config.storage.datastore
 
 import androidx.datastore.preferences.core.PreferenceDataStoreFactory
 import com.hulkdx.findprofessional.common.config.PlatformSpecific
-import com.hulkdx.findprofessional.common.config.api.BaseUrl
-import com.hulkdx.findprofessional.common.config.api.interceptor.AppInterceptor
-import com.hulkdx.findprofessional.common.config.api.interceptor.TokenInterceptor
 import com.hulkdx.findprofessional.common.config.storage.AccessTokenStorage
 import com.hulkdx.findprofessional.common.config.storage.RefreshTokenStorage
-import io.ktor.client.*
-import io.ktor.client.plugins.*
-import io.ktor.client.plugins.contentnegotiation.*
-import io.ktor.serialization.kotlinx.json.*
 import okio.Path.Companion.toPath
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.factoryOf
