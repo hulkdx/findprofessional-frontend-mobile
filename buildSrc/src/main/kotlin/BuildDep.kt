@@ -35,13 +35,13 @@ object BuildDep {
     const val COROUTINES_VERSION = "1.6.4"
 
     // https://github.com/InsertKoinIO/koin
-    const val KOIN_VERSION = "3.3.2"
+    const val KOIN_VERSION = "3.3.3"
 
     // https://github.com/InsertKoinIO/koin
     const val KOIN_COMPOSE_VERSION = "3.4.1"
 
     // https://github.com/square/leakcanary
-    const val LEAK_CANARY_VERSION = "2.8.1"
+    const val LEAK_CANARY_VERSION = "2.10"
 
     // https://ktor.io/docs/getting-started-ktor-client-multiplatform-mobile.html#ktor-dependencies
     const val KTOR_VERSION = "2.2.2"
@@ -50,7 +50,7 @@ object BuildDep {
     const val ACCOMPANIST_VERSION = "0.28.0"
 
     // https://developer.android.com/jetpack/androidx/releases/lifecycle
-    const val ANDROIDX_LIFECYCLE = "2.6.0-alpha05"
+    const val ANDROIDX_LIFECYCLE = "2.6.0-rc01"
 
     // --------------------------------------------------------------------------------
     // Android Test
