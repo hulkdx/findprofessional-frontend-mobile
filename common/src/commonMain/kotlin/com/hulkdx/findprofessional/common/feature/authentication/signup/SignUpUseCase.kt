@@ -2,6 +2,8 @@
 
 package com.hulkdx.findprofessional.common.feature.authentication.signup
 
+import com.hulkdx.findprofessional.common.config.storage.AccessTokenStorage
+import com.hulkdx.findprofessional.common.config.storage.RefreshTokenStorage
 import com.hulkdx.findprofessional.common.feature.authentication.signup.model.AuthRequest
 import com.hulkdx.findprofessional.common.navigation.NavigationScreen
 import com.hulkdx.findprofessional.common.navigation.Navigator
@@ -12,12 +14,16 @@ import io.ktor.client.plugins.*
 import io.ktor.http.*
 
 class SignUpUseCase(
-    private val signUpApi: SignUpApi,
     private val navigator: Navigator,
+    private val signUpApi: SignUpApi,
+    private val accessTokenStorage: AccessTokenStorage,
+    private val refreshTokenStorage: RefreshTokenStorage,
 ) {
 
-    suspend fun register(request: AuthRequest) = try {
-        signUpApi.register(request)
+    suspend fun onSubmitClicked(request: AuthRequest) = try {
+        val (accessToken, refreshToken) = signUpApi.register(request)
+        accessTokenStorage.set(accessToken)
+        refreshTokenStorage.set(refreshToken)
         navigator.navigate(NavigationScreen.Main)
         null
     } catch (e: Throwable) {

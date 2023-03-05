@@ -19,8 +19,9 @@ object InMemoryApi {
     var user: AuthRequest? = null
 
     object Signup : SignUpApi {
-        override suspend fun register(request: AuthRequest) {
+        override suspend fun register(request: AuthRequest): AuthToken {
             user = request
+            return AuthToken("uiTestAccessToken", "uiTestRefreshToken")
         }
     }
 
