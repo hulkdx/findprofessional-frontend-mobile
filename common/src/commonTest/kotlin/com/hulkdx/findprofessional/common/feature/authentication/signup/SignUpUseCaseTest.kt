@@ -40,7 +40,7 @@ class SignUpUseCaseTest {
     }
 
     @Test
-    fun `onSignInClicked should store tokens`() = runTest {
+    fun `onSubmitClicked should store tokens`() = runTest {
         // Arrange
         val accessToken = "accessToken"
         val refreshToken = "accessToken"
