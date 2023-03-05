@@ -6,7 +6,7 @@ import dev.icerock.moko.resources.desc.StringDesc
 import dev.icerock.moko.resources.desc.desc
 import io.ktor.client.plugins.*
 
-fun Throwable.generalError(): StringDesc {
+internal fun Throwable.generalError(): StringDesc {
     return if (getPlatformSpecific().isDebug()) {
         if (this is ClientRequestException) {
             message.desc()
