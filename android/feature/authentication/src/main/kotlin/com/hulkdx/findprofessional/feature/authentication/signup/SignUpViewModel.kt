@@ -18,7 +18,7 @@ class SignUpViewModel(
     val error by savedStateHandle.getStateFlowWrapper<StringDesc?>(null)
 
     fun onSubmitClicked() = viewModelScope.launch {
-        val err = useCase.register(AuthRequest(email.value, password.value))
+        val err = useCase.onSubmitClicked(AuthRequest(email.value, password.value))
         if (err != null) {
             error.set(err)
         }
