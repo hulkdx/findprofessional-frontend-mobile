@@ -1,7 +1,7 @@
 package com.hulkdx.findprofessional.common.config.api
 
 import com.hulkdx.findprofessional.common.feature.authentication.login.LoginApi
-import com.hulkdx.findprofessional.common.feature.authentication.login.LoginResponse
+import com.hulkdx.findprofessional.common.feature.authentication.login.AuthToken
 import com.hulkdx.findprofessional.common.feature.authentication.signup.SignUpApi
 import com.hulkdx.findprofessional.common.feature.authentication.signup.model.AuthRequest
 import org.koin.core.context.loadKoinModules
@@ -25,9 +25,9 @@ object InMemoryApi {
     }
 
     object Login : LoginApi {
-        override suspend fun login(request: AuthRequest): LoginResponse {
+        override suspend fun login(request: AuthRequest): AuthToken {
             if (request == user) {
-                return LoginResponse("uiTestAccessToken", "uiTestRefreshToken")
+                return AuthToken("uiTestAccessToken", "uiTestRefreshToken")
             }
             throw RuntimeException("user not found")
         }

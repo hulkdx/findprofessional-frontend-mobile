@@ -45,7 +45,7 @@ class LoginUseCaseTest {
         // Arrange
         val accessToken = "accessToken"
         val refreshToken = "accessToken"
-        loginApi.loginReturns = LoginResponse(accessToken, refreshToken)
+        loginApi.loginReturns = AuthToken(accessToken, refreshToken)
         // Act
         sut.onSignInClicked(AuthRequest("", ""))
         // Assert
@@ -56,9 +56,9 @@ class LoginUseCaseTest {
     // region mock classes
 
     private class LoginApiMock : LoginApi {
-        lateinit var loginReturns: LoginResponse
+        lateinit var loginReturns: AuthToken
 
-        override suspend fun login(request: AuthRequest): LoginResponse {
+        override suspend fun login(request: AuthRequest): AuthToken {
             return loginReturns
         }
     }
