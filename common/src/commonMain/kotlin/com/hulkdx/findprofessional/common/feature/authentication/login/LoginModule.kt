@@ -9,4 +9,5 @@ val loginModule: Module
     get() = module {
         factoryOf(::LoginUseCase)
         factoryOf(::LoginApiImpl) bind LoginApi::class
+        factoryOf(::RefreshTokenApiImpl) bind RefreshTokenApi::class
     }
