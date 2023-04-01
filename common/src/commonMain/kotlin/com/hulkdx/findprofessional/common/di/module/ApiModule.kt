@@ -4,13 +4,13 @@ import com.hulkdx.findprofessional.common.config.PlatformSpecific
 import com.hulkdx.findprofessional.common.config.api.FindProfessionalApiFactory
 import com.hulkdx.findprofessional.common.config.api.interceptor.AppInterceptor
 import com.hulkdx.findprofessional.common.config.api.interceptor.TokenInterceptor
+import com.hulkdx.findprofessional.common.feature.authentication.login.RefreshTokenApiImpl
 import io.ktor.client.*
 import io.ktor.client.plugins.*
 import io.ktor.client.plugins.contentnegotiation.*
 import io.ktor.client.plugins.logging.*
 import io.ktor.serialization.kotlinx.json.*
 import org.koin.core.module.Module
-import org.koin.core.module.dsl.factoryOf
 import org.koin.dsl.module
 
 val apiModule: Module
@@ -40,7 +40,14 @@ val apiModule: Module
                     }
                 }
             }.apply {
-                val interceptors = getAll<AppInterceptor>()
+                val tokenInterceptor = TokenInterceptor(
+                    RefreshTokenApiImpl(this),
+                    get(),
+                    get(),
+                )
+                val interceptors = listOf<AppInterceptor>(
+                    tokenInterceptor,
+                )
                 plugin(HttpSend).apply {
                     for (interceptor in interceptors) {
                         intercept(interceptor::intercept)
@@ -48,10 +55,4 @@ val apiModule: Module
                 }
             }
         }
-
-        provideInterceptors()
     }
-
-private inline fun Module.provideInterceptors() {
-    factoryOf<AppInterceptor>(::TokenInterceptor)
-}
