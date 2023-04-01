@@ -2,6 +2,7 @@ package com.hulkdx.findprofessional.utils
 
 import androidx.annotation.StringRes
 import androidx.compose.ui.test.SemanticsNodeInteraction
+import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.AndroidComposeTestRule
 import androidx.compose.ui.test.onAllNodesWithTag
 import androidx.compose.ui.test.onNodeWithTag
@@ -31,4 +32,10 @@ fun Rule.waitUntilAppear(
     waitUntil(timeoutMillis) {
         onAllNodesWithTag(testTag).fetchSemanticsNodes().size == 1
     }
+}
+
+fun Rule.assertNodeIsDisplayed(testTag: String) {
+    waitUntilAppear(testTag = testTag)
+    onNodeWithTag(testTag)
+        .assertIsDisplayed()
 }

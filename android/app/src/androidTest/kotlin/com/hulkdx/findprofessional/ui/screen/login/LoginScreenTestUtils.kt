@@ -9,6 +9,7 @@ import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performTextInput
 import com.hulkdx.findprofessional.resources.MR
 import com.hulkdx.findprofessional.utils.Rule
+import com.hulkdx.findprofessional.utils.assertNodeIsDisplayed
 import com.hulkdx.findprofessional.utils.onNodeWithTagRes
 import com.hulkdx.findprofessional.utils.onNodeWithTextRes
 import com.hulkdx.findprofessional.utils.waitUntilAppear
@@ -53,9 +54,6 @@ class LoginVerify(
     }
 
     fun mainScreenShown() {
-        val testTag = "MainScreen"
-        rule.waitUntilAppear(testTag = testTag)
-        rule.onNodeWithTag(testTag)
-            .assertIsDisplayed()
+        rule.assertNodeIsDisplayed("MainScreen")
     }
 }

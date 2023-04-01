@@ -6,6 +6,7 @@ import androidx.compose.ui.test.performClick
 import com.hulkdx.findprofessional.resources.MR
 import com.hulkdx.findprofessional.ui.screen.login.launchLoginScreen
 import com.hulkdx.findprofessional.utils.Rule
+import com.hulkdx.findprofessional.utils.assertNodeIsDisplayed
 import com.hulkdx.findprofessional.utils.onNodeWithTextRes
 
 fun launchSignUpScreen(
@@ -33,7 +34,6 @@ class SignUpVerify(
     private val rule: Rule,
 ) {
     fun mainScreenShown() {
-        rule.onNodeWithTag("MainScreen")
-            .assertIsDisplayed()
+        rule.assertNodeIsDisplayed("MainScreen")
     }
 }
