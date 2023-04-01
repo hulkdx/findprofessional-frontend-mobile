@@ -7,6 +7,7 @@ import com.hulkdx.findprofessional.common.config.api.interceptor.TokenIntercepto
 import io.ktor.client.*
 import io.ktor.client.plugins.*
 import io.ktor.client.plugins.contentnegotiation.*
+import io.ktor.client.plugins.logging.*
 import io.ktor.serialization.kotlinx.json.*
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.factoryOf
@@ -26,6 +27,7 @@ val apiModule: Module
 
         single {
             val baseUrl = get<BaseUrl>()
+            val ps = get<PlatformSpecific>()
 
             HttpClient {
                 install(ContentNegotiation) {
@@ -36,6 +38,17 @@ val apiModule: Module
                 }
                 // throws exception when request is not successful:
                 expectSuccess = true
+
+                if (ps.isDebug()) {
+                    install(Logging) {
+                        logger = object : Logger {
+                            override fun log(message: String) {
+                                println(message)
+                            }
+                        }
+                        level = LogLevel.ALL
+                    }
+                }
             }.apply {
                 val interceptors = getAll<AppInterceptor>()
                 plugin(HttpSend).apply {
