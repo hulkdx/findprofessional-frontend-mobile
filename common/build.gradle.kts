@@ -31,6 +31,8 @@ kotlin {
                 implementation("io.ktor:ktor-serialization-kotlinx-json:${BuildDep.KTOR_VERSION}")
                 api("dev.icerock.moko:resources:${BuildDep.MOKO_RESOURCES_VERSION}")
                 implementation("androidx.datastore:datastore-preferences-core:${BuildDep.DATASTORE_VERSION}")
+
+                implementation("io.ktor:ktor-client-logging:${BuildDep.KTOR_VERSION}")
             }
         }
         val androidMain by getting {

@@ -53,7 +53,7 @@ jobs:
   ios-tests:
     name: iOS tests
     runs-on: macos-12
-    timeout-minutes: 50
+    timeout-minutes: 90
     steps:
       - name: Checkout
         uses: actions/checkout@v3
