@@ -1,6 +1,21 @@
 package com.hulkdx.findprofessional.common.config.api
 
-import kotlin.jvm.JvmInline
+import com.hulkdx.findprofessional.common.config.PlatformSpecific
 
-@JvmInline
-value class BaseUrl(val value: String)
+object FindProfessionalApiFactory {
+
+    fun baseUrl(ps: PlatformSpecific): String {
+        return if (ps.isDebug()) {
+            localHostBaseUrl(ps)
+        } else {
+            productionBaseUrl()
+        }
+    }
+
+    private fun localHostBaseUrl(ps: PlatformSpecific) =
+        "http://${ps.localhostUrl()}:8080/"
+
+    private fun productionBaseUrl() =
+        "http://api.sabajafarzadeh.com:30000/"
+
+}

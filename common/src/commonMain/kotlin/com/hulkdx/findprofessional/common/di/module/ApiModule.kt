@@ -1,7 +1,7 @@
 package com.hulkdx.findprofessional.common.di.module
 
 import com.hulkdx.findprofessional.common.config.PlatformSpecific
-import com.hulkdx.findprofessional.common.config.api.BaseUrl
+import com.hulkdx.findprofessional.common.config.api.FindProfessionalApiFactory
 import com.hulkdx.findprofessional.common.config.api.interceptor.AppInterceptor
 import com.hulkdx.findprofessional.common.config.api.interceptor.TokenInterceptor
 import io.ktor.client.*
@@ -17,24 +17,14 @@ val apiModule: Module
     get() = module {
         single {
             val ps = get<PlatformSpecific>()
-            val url = if (ps.isDebug()) {
-                "http://${ps.localhostUrl()}:8080/"
-            } else {
-                "http://api.sabajafarzadeh.com:30000/"
-            }
-            BaseUrl(url)
-        }
-
-        single {
-            val baseUrl = get<BaseUrl>()
-            val ps = get<PlatformSpecific>()
+            val baseUrl = FindProfessionalApiFactory.baseUrl(ps)
 
             HttpClient {
                 install(ContentNegotiation) {
                     json()
                 }
                 install(DefaultRequest) {
-                    url(baseUrl.value)
+                    url(baseUrl)
                 }
                 // throws exception when request is not successful:
                 expectSuccess = true
