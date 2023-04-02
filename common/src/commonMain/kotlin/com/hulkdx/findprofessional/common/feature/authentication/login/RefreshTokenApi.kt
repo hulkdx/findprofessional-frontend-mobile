@@ -18,7 +18,7 @@ class RefreshTokenApiImpl(
         accessToken: String,
     ): AuthToken {
         return client.post {
-            url("auth/refresh")
+            url(urlString)
             contentType(ContentType.Application.Json)
             setBody(RefreshRequest(refreshToken))
             headers {
@@ -26,6 +26,10 @@ class RefreshTokenApiImpl(
             }
         }
             .body()
+    }
+
+    companion object {
+        const val urlString = "auth/refresh"
     }
 }
 

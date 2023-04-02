@@ -35,7 +35,7 @@ object BuildDep {
     const val COROUTINES_VERSION = "1.6.4"
 
     // https://github.com/InsertKoinIO/koin
-    const val KOIN_VERSION = "3.3.3"
+    const val KOIN_VERSION = "3.4.0"
 
     // https://github.com/InsertKoinIO/koin
     const val KOIN_COMPOSE_VERSION = "3.4.1"
