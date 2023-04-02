@@ -4,14 +4,16 @@ import com.hulkdx.findprofessional.common.config.PlatformSpecific
 import com.hulkdx.findprofessional.common.config.api.FindProfessionalApiFactory
 import com.hulkdx.findprofessional.common.config.api.interceptor.AppInterceptor
 import com.hulkdx.findprofessional.common.config.api.interceptor.TokenInterceptor
-import com.hulkdx.findprofessional.common.feature.authentication.login.RefreshTokenApiImpl
 import io.ktor.client.*
 import io.ktor.client.plugins.*
 import io.ktor.client.plugins.contentnegotiation.*
 import io.ktor.client.plugins.logging.*
 import io.ktor.serialization.kotlinx.json.*
 import org.koin.core.module.Module
+import org.koin.core.module.dsl.factoryOf
+import org.koin.dsl.bind
 import org.koin.dsl.module
+import org.koin.mp.KoinPlatformTools
 
 val apiModule: Module
     get() = module {
@@ -39,20 +41,25 @@ val apiModule: Module
                         level = LogLevel.ALL
                     }
                 }
-            }.apply {
-                val tokenInterceptor = TokenInterceptor(
-                    RefreshTokenApiImpl(this),
-                    get(),
-                    get(),
-                )
-                val interceptors = listOf<AppInterceptor>(
-                    tokenInterceptor,
-                )
-                plugin(HttpSend).apply {
-                    for (interceptor in interceptors) {
-                        intercept(interceptor::intercept)
-                    }
-                }
             }
         }
+
+        provideInterceptors()
     }
+
+// Needs to be done after startKoin so we can access koin
+// Needs to be done after HttpClient provide to avoid circular dependency
+fun setupApiInterceptors() {
+    val koin = KoinPlatformTools.defaultContext().get()
+    val httpClient: HttpClient = koin.get()
+    val interceptors: List<AppInterceptor> = koin.getAll()
+    httpClient.plugin(HttpSend).apply {
+        for (interceptor in interceptors) {
+            intercept(interceptor::intercept)
+        }
+    }
+}
+
+private inline fun Module.provideInterceptors() {
+    factoryOf(::TokenInterceptor) bind AppInterceptor::class
+}
