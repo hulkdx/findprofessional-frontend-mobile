@@ -63,6 +63,30 @@ class TokenInterceptorTest {
         assertEquals(true, isRetriedCall)
     }
 
+    @Test
+    fun `don't intercept filtered url`() = runTest {
+        // Arrange
+        val filterUrl = "/auth/refresh"
+
+        accessTokenStorage.value = "not empty"
+        refreshTokenStorage.value = "not empty"
+        val sender = SenderMock().apply {
+            response(
+                request = { url(filterUrl) },
+                responseStatusCode = HttpStatusCode.Unauthorized
+            )
+        }
+        val request = request {}
+        // Act
+        sut.intercept(sender, request)
+        // Assert
+        assertEquals(false, refreshTokenApi.isRefreshTokenCalled)
+        assertEquals(false, accessTokenStorage.isSetCalled)
+        assertEquals(false, refreshTokenStorage.isSetCalled)
+        val isRetriedCall = (sender.isExecuteCalledCount == 2)
+        assertEquals(false, isRetriedCall)
+    }
+
     // region mock classes
 
     private class AccessTokenStorageMock : AccessTokenStorage {
@@ -113,7 +137,7 @@ class TokenInterceptorTest {
 
         suspend fun response(
             request: HttpRequestBuilder.() -> Unit = {},
-            responseStatusCode: HttpStatusCode,
+            responseStatusCode: HttpStatusCode = HttpStatusCode.OK,
             responseBody: Any = "",
             requestTime: GMTDate = GMTDate.START,
             headers: Headers = headersOf(),
