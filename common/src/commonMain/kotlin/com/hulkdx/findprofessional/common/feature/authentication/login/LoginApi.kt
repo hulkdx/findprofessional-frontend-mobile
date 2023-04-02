@@ -12,6 +12,10 @@ class LoginApiImpl(
     private val client: HttpClient,
 ) : LoginApi {
     override suspend fun login(request: AuthRequest): AuthToken {
-        return client.post("auth/login", request)
+        return client.post(urlString, request)
+    }
+
+    companion object {
+        const val urlString = "auth/login"
     }
 }

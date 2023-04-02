@@ -14,6 +14,10 @@ class SignUpApiImpl(
 ) : SignUpApi {
 
     override suspend fun register(request: AuthRequest): AuthToken {
-        return client.post("auth/register", request)
+        return client.post(urlString, request)
+    }
+
+    companion object {
+        const val urlString = "auth/register"
     }
 }
