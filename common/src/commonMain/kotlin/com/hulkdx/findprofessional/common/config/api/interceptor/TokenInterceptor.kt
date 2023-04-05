@@ -8,8 +8,10 @@ import com.hulkdx.findprofessional.common.feature.authentication.login.RefreshTo
 import com.hulkdx.findprofessional.common.feature.authentication.signup.SignUpApi
 import com.hulkdx.findprofessional.common.feature.authentication.signup.SignUpApiImpl
 import io.ktor.client.call.*
+import io.ktor.client.engine.*
 import io.ktor.client.plugins.*
 import io.ktor.client.request.*
+import io.ktor.http.*
 import io.ktor.http.HttpStatusCode.Companion.Unauthorized
 
 class TokenInterceptor(
@@ -44,7 +46,13 @@ class TokenInterceptor(
             accessTokenStorage.set(newAccessToken)
             refreshTokenStorage.set(newRefreshToken)
 
-            val retry = sender.execute(request)
+            val newRequest = request.apply {
+                headers {
+                    remove(HttpHeaders.Authorization)
+                    append(HttpHeaders.Authorization, newAccessToken)
+                }
+            }
+            val retry = sender.execute(newRequest)
             if (retry.response.status == Unauthorized) {
                 logout()
             }
