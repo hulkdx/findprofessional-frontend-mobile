@@ -69,6 +69,7 @@ dependencies {
 
     androidTestImplementation(platform("androidx.compose:compose-bom:${BuildDep.COMPOSE_BOM}"))
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
+    androidTestImplementation("io.ktor:ktor-client-mock:${BuildDep.KTOR_VERSION}")
 
     debugImplementation("com.squareup.leakcanary:leakcanary-android:${BuildDep.LEAK_CANARY_VERSION}")
 }

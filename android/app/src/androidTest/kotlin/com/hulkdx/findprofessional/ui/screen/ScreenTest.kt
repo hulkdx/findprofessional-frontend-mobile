@@ -16,12 +16,12 @@ open class ScreenTest {
     val rule = UiTestRule(composeRule)
 
     @Before
-    fun setUp() {
+    open fun setUp() {
         InMemoryApi.loadKoinModules()
     }
 
     @After
-    fun tearDown() {
+    open fun tearDown() {
         InMemoryApi.unloadKoinModules()
     }
 }

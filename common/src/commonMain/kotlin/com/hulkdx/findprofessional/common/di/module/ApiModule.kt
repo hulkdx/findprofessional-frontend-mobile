@@ -17,11 +17,11 @@ import org.koin.mp.KoinPlatformTools
 
 val apiModule: Module
     get() = module {
-        single {
-            val ps = get<PlatformSpecific>()
-            val baseUrl = FindProfessionalApiFactory.baseUrl(ps)
+        factory<HttpClientConfig<*>.() -> Unit> {
+            {
+                val ps = get<PlatformSpecific>()
+                val baseUrl = FindProfessionalApiFactory.baseUrl(ps)
 
-            HttpClient {
                 install(ContentNegotiation) {
                     json()
                 }
@@ -42,6 +42,9 @@ val apiModule: Module
                     }
                 }
             }
+        }
+        single {
+            HttpClient(get<HttpClientConfig<*>.() -> Unit>())
         }
 
         provideInterceptors()

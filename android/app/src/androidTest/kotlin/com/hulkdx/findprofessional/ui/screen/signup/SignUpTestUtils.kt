@@ -1,7 +1,5 @@
 package com.hulkdx.findprofessional.ui.screen.signup
 
-import androidx.compose.ui.test.assertIsDisplayed
-import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performClick
 import com.hulkdx.findprofessional.resources.MR
 import com.hulkdx.findprofessional.ui.screen.login.launchLoginScreen
