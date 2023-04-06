@@ -132,6 +132,8 @@ class TokenInterceptorTest {
             isSetCalled = true
             this.value = value
         }
+
+        override suspend fun remove() {}
     }
 
     private class RefreshTokenStorageMock : RefreshTokenStorage {
@@ -146,6 +148,8 @@ class TokenInterceptorTest {
             isSetCalled = true
             this.value = value
         }
+
+        override suspend fun remove() {}
     }
 
     private class RefreshTokenApiMock : RefreshTokenApi {

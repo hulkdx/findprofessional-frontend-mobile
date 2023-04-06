@@ -77,6 +77,7 @@ class SignUpUseCaseTest {
         override suspend fun set(value: String) {
             setValue = value
         }
+        override suspend fun remove() {}
     }
 
     private class RefreshTokenStorageMock : RefreshTokenStorage {
@@ -89,6 +90,7 @@ class SignUpUseCaseTest {
         override suspend fun set(value: String) {
             setValue = value
         }
+        override suspend fun remove() {}
     }
 
     // endregion
