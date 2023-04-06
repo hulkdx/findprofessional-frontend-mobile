@@ -1,4 +1,4 @@
-@file:OptIn(InternalAPI::class)
+@file:OptIn(InternalAPI::class, ExperimentalCoroutinesApi::class)
 
 package com.hulkdx.findprofessional.common.config.api.interceptor
 
@@ -6,6 +6,7 @@ import com.hulkdx.findprofessional.common.config.storage.AccessTokenStorage
 import com.hulkdx.findprofessional.common.config.storage.RefreshTokenStorage
 import com.hulkdx.findprofessional.common.feature.authentication.login.AuthToken
 import com.hulkdx.findprofessional.common.feature.authentication.login.RefreshTokenApi
+import com.hulkdx.findprofessional.common.feature.authentication.logout.LogoutUseCase
 import com.hulkdx.findprofessional.common.utils.KoinTestUtil
 import io.ktor.client.*
 import io.ktor.client.call.*
@@ -14,6 +15,7 @@ import io.ktor.client.request.*
 import io.ktor.http.*
 import io.ktor.util.*
 import io.ktor.util.date.*
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import kotlin.coroutines.coroutineContext
 import kotlin.test.AfterTest
@@ -36,6 +38,7 @@ class TokenInterceptorTest {
             refreshTokenApi,
             accessTokenStorage,
             refreshTokenStorage,
+            DummyLogoutUseCase()
         )
     }
 
@@ -50,7 +53,10 @@ class TokenInterceptorTest {
         accessTokenStorage.value = "not empty"
         refreshTokenStorage.value = "not empty"
         val sender = SenderMock().apply {
-            response(responseStatusCode = HttpStatusCode.Unauthorized)
+            response(
+                request = { header(HttpHeaders.Authorization, "not empty") },
+                responseStatusCode = HttpStatusCode.Unauthorized,
+            )
         }
         val request = request {}
         // Act
@@ -79,6 +85,31 @@ class TokenInterceptorTest {
         val request = request {}
         // Act
         sut.intercept(sender, request)
+        // Assert
+        assertEquals(false, refreshTokenApi.isRefreshTokenCalled)
+        assertEquals(false, accessTokenStorage.isSetCalled)
+        assertEquals(false, refreshTokenStorage.isSetCalled)
+        val isRetriedCall = (sender.isExecuteCalledCount == 2)
+        assertEquals(false, isRetriedCall)
+    }
+
+    @Test
+    fun `don't intercept for request without authorization header`() = runTest {
+        // Arrange
+        val request: HttpRequestBuilder.() -> Unit = {
+            // empty header
+            headersOf()
+        }
+        accessTokenStorage.value = "not empty"
+        refreshTokenStorage.value = "not empty"
+        val sender = SenderMock().apply {
+            response(
+                request = request,
+                responseStatusCode = HttpStatusCode.Unauthorized,
+            )
+        }
+        // Act
+        sut.intercept(sender, request {})
         // Assert
         assertEquals(false, refreshTokenApi.isRefreshTokenCalled)
         assertEquals(false, accessTokenStorage.isSetCalled)
@@ -156,6 +187,10 @@ class TokenInterceptorTest {
                 )
             )
         }
+    }
+
+    class DummyLogoutUseCase: LogoutUseCase {
+        override suspend fun logout() {}
     }
 
     // endregion

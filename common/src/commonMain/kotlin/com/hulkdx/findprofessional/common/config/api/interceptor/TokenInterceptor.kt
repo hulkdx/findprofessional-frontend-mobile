@@ -5,10 +5,9 @@ import com.hulkdx.findprofessional.common.config.storage.RefreshTokenStorage
 import com.hulkdx.findprofessional.common.feature.authentication.login.LoginApiImpl
 import com.hulkdx.findprofessional.common.feature.authentication.login.RefreshTokenApi
 import com.hulkdx.findprofessional.common.feature.authentication.login.RefreshTokenApiImpl
-import com.hulkdx.findprofessional.common.feature.authentication.signup.SignUpApi
+import com.hulkdx.findprofessional.common.feature.authentication.logout.LogoutUseCase
 import com.hulkdx.findprofessional.common.feature.authentication.signup.SignUpApiImpl
 import io.ktor.client.call.*
-import io.ktor.client.engine.*
 import io.ktor.client.plugins.*
 import io.ktor.client.request.*
 import io.ktor.http.*
@@ -18,6 +17,7 @@ class TokenInterceptor(
     private val api: RefreshTokenApi,
     private val accessTokenStorage: AccessTokenStorage,
     private val refreshTokenStorage: RefreshTokenStorage,
+    private val logoutUseCase: LogoutUseCase,
 ) : AppInterceptor {
 
     private val filterUrl = listOf(
@@ -34,11 +34,15 @@ class TokenInterceptor(
             return original
         }
 
+        if (!original.request.hasAuthorizationHeader()) {
+            return original
+        }
+
         if (original.response.status == Unauthorized) {
             val accessToken = accessTokenStorage.get()
             val refreshToken = refreshTokenStorage.get()
             if (accessToken == null || refreshToken == null) {
-                logout()
+                logoutUseCase.logout()
                 return original
             }
 
@@ -54,15 +58,16 @@ class TokenInterceptor(
             }
             val retry = sender.execute(newRequest)
             if (retry.response.status == Unauthorized) {
-                logout()
+                logoutUseCase.logout()
             }
             return retry
         }
         return original
     }
 
-    private fun logout() {
-        // TODO:
+    private fun HttpRequest.hasAuthorizationHeader(): Boolean {
+        val authorizationHeader = headers[HttpHeaders.Authorization] ?: ""
+        return authorizationHeader.isNotEmpty()
     }
 
 }
