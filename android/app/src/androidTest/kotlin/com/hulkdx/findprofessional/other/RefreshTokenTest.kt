@@ -117,6 +117,12 @@ class RefreshTokenTest {
     }
 
     private suspend fun refreshApiResponseUnauthorized() {
+        refreshApi.responseError = {
+            throwUnauthorizedException()
+        }
+    }
+
+    private suspend fun throwUnauthorizedException() {
         val config: HttpClientConfig<*>.() -> Unit = get()
         val mockEngine = MockEngine { _ ->
             respond(
@@ -126,11 +132,7 @@ class RefreshTokenTest {
             )
         }
         val client = HttpClient(mockEngine, config)
-
-        refreshApi.responseError = {
-            // would throw exception
-            client.get("")
-        }
+        client.get("")
     }
 
     // region mock classes
