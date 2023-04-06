@@ -17,3 +17,7 @@ suspend fun DataStore<Preferences>.getAsString(key: String) =
 suspend fun DataStore<Preferences>.set(key: String, value: String) {
     edit { it[stringPreferencesKey(key)] = value }
 }
+
+suspend fun DataStore<Preferences>.remove(key: String) {
+    edit { it.remove(stringPreferencesKey(key)) }
+}

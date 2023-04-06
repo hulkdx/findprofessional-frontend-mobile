@@ -12,6 +12,7 @@ import com.hulkdx.findprofessional.common.feature.authentication.login.RefreshTo
 import com.hulkdx.findprofessional.common.feature.authentication.signup.model.AuthRequest
 import com.hulkdx.findprofessional.ui.screen.login.launchLoginScreen
 import com.hulkdx.findprofessional.utils.UiTestRule
+import com.hulkdx.findprofessional.utils.assertNodeIsDisplayed
 import com.hulkdx.findprofessional.utils.get
 import com.hulkdx.findprofessional.utils.getAll
 import io.ktor.client.*
@@ -19,7 +20,10 @@ import io.ktor.client.call.*
 import io.ktor.client.engine.mock.*
 import io.ktor.client.plugins.*
 import io.ktor.client.request.*
+import io.ktor.client.statement.*
 import io.ktor.http.*
+import io.ktor.util.*
+import io.ktor.util.date.*
 import io.ktor.utils.io.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
@@ -69,33 +73,71 @@ class RefreshTokenTest {
     }
 
     @Test
-    fun when_invalid_access_token_should_intercept_refreshToken() = runTest {
+    fun when_invalidAccessToken_then_intercept_should_call_refreshToken() = runTest {
         // Arrange
-        val email = "test@email.com"
-        val password = "somepass"
-        // 0. refresh api response a valid token
-        refreshApi.response = VALID_TOKENS
+        refreshApiResponseValidToken()
+        loginWithValidTokens()
+        // Act
+        callApiWithInvalidToken()
+        // Assert
+        assertThat(refreshApi.isRefreshTokenCalled, `is`(true))
+    }
 
-        // 1. we login with valid tokes first
+    @Test
+    fun when_invalidAccessToken_and_refreshApi_response_invalidTokens_then_intercept_should_logout() = runTest {
+        // Arrange
+        refreshApiResponseUnauthorized()
+        loginWithValidTokens()
+        // Act
+        callApiWithInvalidToken()
+        // Asserts
+        composeRule.assertNodeIsDisplayed("LoginScreen")
+    }
+
+    // region helper methods
+
+    private fun refreshApiResponseValidToken() {
+        refreshApi.response = VALID_TOKENS
+    }
+
+    private suspend fun refreshApiResponseUnauthorized() {
+        refreshApi.responseError = {
+            throwUnauthorizedException()
+        }
+    }
+
+    private fun loginWithValidTokens() {
         loginApi.response = VALID_TOKENS
         launchLoginScreen(composeRule) {
-            typeEmail(email)
-            typePassword(password)
+            typeEmail("irrelevant")
+            typePassword("irrelevant")
             pressSignInButton()
         }.verify {
             mainScreenShown()
         }
-
-        // Act
-        // 2. then we call randomApi with invalid token
-        accessTokenStorage.set(INVALID_TOKENS.accessToken)
-        randomApi.randomApi()
-
-        // Asserts
-        assertThat(refreshApi.isRefreshTokenCalled, `is`(true))
-        // assert no exceptions
     }
 
+    private suspend fun callApiWithInvalidToken() {
+        accessTokenStorage.set(INVALID_TOKENS.accessToken)
+        runCatching {
+            randomApi.randomApi()
+        }
+    }
+
+    private suspend fun throwUnauthorizedException() {
+        val config: HttpClientConfig<*>.() -> Unit = get()
+        val mockEngine = MockEngine { _ ->
+            respond(
+                content = ByteReadChannel(""),
+                status = HttpStatusCode.Unauthorized,
+                headers = headersOf()
+            )
+        }
+        val client = HttpClient(mockEngine, config)
+        client.get("")
+    }
+
+    // endregion
     // region mock classes
 
     private class LoginApiMock : LoginApi {
@@ -108,10 +150,12 @@ class RefreshTokenTest {
 
     private class RefreshApiMock : RefreshTokenApi {
         var response: AuthToken? = null
+        var responseError: (suspend () -> Unit)? = null
         var isRefreshTokenCalled = false
 
         override suspend fun refreshToken(refreshToken: String, accessToken: String): AuthToken {
             isRefreshTokenCalled = true
+            responseError?.let { it() }
             return response!!
         }
     }
@@ -130,7 +174,6 @@ class RefreshTokenTest {
 
         private fun httpClient(): HttpClient {
             val mockEngine = MockEngine { request ->
-                println("Saba mockEngine, ${request.headers}")
                 respond(
                     content = ByteReadChannel(""),
                     status = if (request.hasValidAccessToken()) HttpStatusCode.OK else HttpStatusCode.Unauthorized,

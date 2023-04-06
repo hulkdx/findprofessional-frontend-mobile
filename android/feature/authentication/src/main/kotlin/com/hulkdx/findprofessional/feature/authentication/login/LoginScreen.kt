@@ -43,7 +43,10 @@ fun LoginScreen(
     val password by viewModel.password.collectAsStateWithLifecycle()
     val error by viewModel.error.collectAsStateWithLifecycle()
 
-    Box(modifier = Modifier.imePadding()) {
+    Box(
+        modifier = Modifier.imePadding()
+            .testTag("LoginScreen")
+    ) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
