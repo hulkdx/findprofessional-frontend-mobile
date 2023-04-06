@@ -83,8 +83,27 @@ class RefreshTokenTest {
         assertThat(refreshApi.isRefreshTokenCalled, `is`(true))
     }
 
+    @Test
+    fun when_invalidAccessToken_and_refreshApi_response_invalidTokens_then_intercept_should_logout() = runTest {
+        // Arrange
+        refreshApiResponseUnauthorized()
+        loginWithValidTokens()
+        // Act
+        callApiWithInvalidToken()
+        // Asserts
+        composeRule.assertNodeIsDisplayed("LoginScreen")
+    }
+
+    // region helper methods
+
     private fun refreshApiResponseValidToken() {
         refreshApi.response = VALID_TOKENS
+    }
+
+    private suspend fun refreshApiResponseUnauthorized() {
+        refreshApi.responseError = {
+            throwUnauthorizedException()
+        }
     }
 
     private fun loginWithValidTokens() {
@@ -100,25 +119,8 @@ class RefreshTokenTest {
 
     private suspend fun callApiWithInvalidToken() {
         accessTokenStorage.set(INVALID_TOKENS.accessToken)
-        randomApi.randomApi()
-    }
-
-    @Test
-    fun when_invalidAccessToken_and_refreshApi_response_invalidTokens_then_intercept_should_logout() = runTest {
-        // Arrange
-        refreshApiResponseUnauthorized()
-        loginWithValidTokens()
-        // Act
         runCatching {
-            callApiWithInvalidToken()
-        }
-        // Asserts
-        composeRule.assertNodeIsDisplayed("LoginScreen")
-    }
-
-    private suspend fun refreshApiResponseUnauthorized() {
-        refreshApi.responseError = {
-            throwUnauthorizedException()
+            randomApi.randomApi()
         }
     }
 
@@ -135,6 +137,7 @@ class RefreshTokenTest {
         client.get("")
     }
 
+    // endregion
     // region mock classes
 
     private class LoginApiMock : LoginApi {
