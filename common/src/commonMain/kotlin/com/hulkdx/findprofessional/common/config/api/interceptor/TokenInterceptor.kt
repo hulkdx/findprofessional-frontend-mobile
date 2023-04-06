@@ -45,8 +45,16 @@ class TokenInterceptor(
                 logoutUseCase.logout()
                 return original
             }
-
-            val (newAccessToken, newRefreshToken) = api.refreshToken(accessToken, refreshToken)
+            val (newAccessToken, newRefreshToken) = try {
+                api.refreshToken(accessToken, refreshToken)
+            } catch (e: ClientRequestException) {
+                if (e.response.status == Unauthorized) {
+                    logoutUseCase.logout()
+                    return original
+                } else {
+                    throw e
+                }
+            }
             accessTokenStorage.set(newAccessToken)
             refreshTokenStorage.set(newRefreshToken)
 
@@ -69,5 +77,4 @@ class TokenInterceptor(
         val authorizationHeader = headers[HttpHeaders.Authorization] ?: ""
         return authorizationHeader.isNotEmpty()
     }
-
 }
