@@ -35,7 +35,11 @@ val apiModule: Module
                     install(Logging) {
                         logger = object : Logger {
                             override fun log(message: String) {
+                                println("--------------")
+                                println("--------------")
                                 println(message)
+                                println("--------------")
+                                println("--------------")
                             }
                         }
                         level = LogLevel.ALL
