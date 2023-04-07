@@ -8,7 +8,7 @@ import com.hulkdx.findprofessional.common.config.storage.RefreshTokenStorage
 class RefreshTokenStorageDataStore(
     private val dataStore: DataStore<Preferences>,
 ) : RefreshTokenStorage {
-    private val key = "AccessTokenStorageDataStore"
+    private val key = "RefreshTokenStorageDataStore"
 
     override suspend fun get() = dataStore.getAsString(key)
     override suspend fun set(value: String) = dataStore.set(key, value)
