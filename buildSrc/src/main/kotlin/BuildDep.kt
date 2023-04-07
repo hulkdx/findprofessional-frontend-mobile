@@ -19,7 +19,7 @@ object BuildDep {
     // KMM
     // --------------------------------------------------------------------------------
     const val MOKO_RESOURCES_VERSION = "0.20.1"
-    const val DATASTORE_VERSION = "1.1.0-dev01"
+    const val DATASTORE_VERSION = "1.1.0-alpha04"
 
     // --------------------------------------------------------------------------------
     // Android Main
