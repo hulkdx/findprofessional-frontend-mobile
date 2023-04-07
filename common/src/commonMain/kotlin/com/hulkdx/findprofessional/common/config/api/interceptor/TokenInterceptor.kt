@@ -60,8 +60,9 @@ class TokenInterceptor(
 
             val newRequest = request.apply {
                 headers {
+                    val authType = get(HttpHeaders.Authorization)?.split(" ")?.get(0)
                     remove(HttpHeaders.Authorization)
-                    append(HttpHeaders.Authorization, newAccessToken)
+                    append(HttpHeaders.Authorization, "$authType $newAccessToken")
                 }
             }
             val retry = sender.execute(newRequest)
