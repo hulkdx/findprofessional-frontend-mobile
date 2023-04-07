@@ -58,20 +58,22 @@ class TokenInterceptor(
             accessTokenStorage.set(newAccessToken)
             refreshTokenStorage.set(newRefreshToken)
 
-            val newRequest = request.apply {
-                headers {
-                    val authType = get(HttpHeaders.Authorization)?.split(" ")?.get(0)
-                    remove(HttpHeaders.Authorization)
-                    append(HttpHeaders.Authorization, "$authType $newAccessToken")
-                }
-            }
-            val retry = sender.execute(newRequest)
+            val retry = sender.execute(request.replaceAuthHeader(newAccessToken))
             if (retry.response.status == Unauthorized) {
                 logoutUseCase.logout()
             }
             return retry
         }
         return original
+    }
+
+    private fun HttpRequestBuilder.replaceAuthHeader(accessToken: String): HttpRequestBuilder {
+        headers {
+            val authType = get(HttpHeaders.Authorization)?.split(" ")?.get(0)
+            remove(HttpHeaders.Authorization)
+            append(HttpHeaders.Authorization, "$authType $accessToken")
+        }
+        return this
     }
 
     private fun HttpRequest.hasAuthorizationHeader(): Boolean {
