@@ -22,6 +22,7 @@ import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertNotEquals
 
 class TokenInterceptorTest {
 
@@ -118,6 +119,32 @@ class TokenInterceptorTest {
         assertEquals(false, isRetriedCall)
     }
 
+
+    @Test
+    fun `intercept should remove the old access token and replace it with new one`() = runTest {
+        // Arrange
+        val oldAccessToken = "oldAccessToken"
+        val newAccessToken = "newAccessToken"
+        val req: HttpRequestBuilder.() -> Unit = {
+            header(HttpHeaders.Authorization, "Bearer $oldAccessToken")
+        }
+        refreshTokenApi.response = AuthToken(newAccessToken, "irrelevant")
+
+        accessTokenStorage.value = "not empty"
+        refreshTokenStorage.value = "not empty"
+        val sender = SenderMock().apply {
+            response(
+                request = req,
+                responseStatusCode = HttpStatusCode.Unauthorized,
+            )
+        }
+        // Act
+        sut.intercept(sender, request(req))
+        // Assert
+        val responseHeader = sender.requestBuilder?.headers?.get(HttpHeaders.Authorization)
+        assertEquals("Bearer $newAccessToken", responseHeader)
+    }
+
     // region mock classes
 
     private class AccessTokenStorageMock : AccessTokenStorage {
@@ -154,19 +181,22 @@ class TokenInterceptorTest {
 
     private class RefreshTokenApiMock : RefreshTokenApi {
         var isRefreshTokenCalled = false
+        var response: AuthToken = AuthToken("access", "refresh")
 
         override suspend fun refreshToken(refreshToken: String, accessToken: String): AuthToken {
             isRefreshTokenCalled = true
-            return AuthToken("access", "refresh")
+            return response
         }
     }
 
     private class SenderMock : Sender {
         private var response: HttpClientCall? = null
         var isExecuteCalledCount = 0
+        var requestBuilder: HttpRequestBuilder? = null
 
         override suspend fun execute(requestBuilder: HttpRequestBuilder): HttpClientCall {
             isExecuteCalledCount += 1
+            this.requestBuilder = requestBuilder
             return response!!
         }
 
