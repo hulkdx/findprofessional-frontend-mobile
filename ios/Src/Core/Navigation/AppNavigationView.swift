@@ -23,8 +23,8 @@ struct AppNavigationView: View {
             LoginScreen()
         } else if screen is NavigationScreen.SignUp {
             SignUpScreen()
-        } else if screen is NavigationScreen.Main {
-            MainScreen()
+        } else if screen is NavigationScreen.Home {
+            HomeScreen()
         } else {
             fatalError("Not implemented")
         }

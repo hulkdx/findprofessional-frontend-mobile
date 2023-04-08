@@ -21,7 +21,7 @@ class LoginUseCase(
         val (accessToken, refreshToken) = api.login(request)
         accessTokenStorage.set(accessToken)
         refreshTokenStorage.set(refreshToken)
-        navigator.navigate(NavigationScreen.Main)
+        navigator.navigate(NavigationScreen.Home)
         null
     } catch (e: Throwable) {
         e.generalError()

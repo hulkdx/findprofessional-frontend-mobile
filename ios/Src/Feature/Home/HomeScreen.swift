@@ -2,15 +2,15 @@ import SwiftUI
 import shared
 
 #if DEBUG
-struct MainScreen_Previews: PreviewProvider {
+struct HomeScreen_Previews: PreviewProvider {
    static var previews: some View {
-       MainScreen()
+       HomeScreen()
    }
 }
 #endif
 
-struct MainScreen: View {
+struct HomeScreen: View {
     var body: some View {
-        Text("MainScreen")
+        Text("HomeScreen")
     }
 }

@@ -24,7 +24,7 @@ class SignUpUseCase(
         val (accessToken, refreshToken) = signUpApi.register(request)
         accessTokenStorage.set(accessToken)
         refreshTokenStorage.set(refreshToken)
-        navigator.navigate(NavigationScreen.Main)
+        navigator.navigate(NavigationScreen.Home)
         null
     } catch (e: Throwable) {
         val statusCode = (e as? ClientRequestException)?.response?.status

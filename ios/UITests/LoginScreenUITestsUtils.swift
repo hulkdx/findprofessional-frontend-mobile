@@ -46,8 +46,8 @@ struct LoginVerifyBuilder {
         XCTAssertTrue(element.exists)
     }
     
-    func mainScreenShown() {
-        let element = app.staticTexts["MainScreen"]
+    func homeScreenShown() {
+        let element = app.staticTexts["HomeScreen"]
         XCTAssertTrue(element.exists)
     }
 }

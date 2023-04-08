@@ -26,6 +26,6 @@ class LoginScreenUITests: XCTestCase {
             .pressSignInButton()
             
             .verify()
-            .mainScreenShown()
+            .homeScreenShown()
     }
 }

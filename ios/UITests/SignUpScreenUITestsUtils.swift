@@ -22,8 +22,8 @@ struct SignUpBuilder {
 struct SignUpVerifyBuilder {
     let app: XCUIApplication
     
-    func mainScreenShown() {
-        let element = app.staticTexts["MainScreen"]
+    func homeScreenShown() {
+        let element = app.staticTexts["HomeScreen"]
         XCTAssertTrue(element.exists)
     }
 }

@@ -6,8 +6,8 @@ import com.hulkdx.findprofessional.common.navigation.NavigationScreen
 import com.hulkdx.findprofessional.common.navigation.Navigator
 import com.hulkdx.findprofessional.core.navigation.AndroidNavigationScreen
 import com.hulkdx.findprofessional.feature.authentication.login.LoginNavigationScreen
-import com.hulkdx.findprofessional.feature.authentication.signup.MainNavigationScreen
 import com.hulkdx.findprofessional.feature.authentication.signup.SignUpNavigationScreen
+import com.hulkdx.findprofessional.feature.home.HomeNavigationScreen
 
 class NavigatorImpl : Navigator {
 
@@ -16,7 +16,7 @@ class NavigatorImpl : Navigator {
     override fun navigate(screen: NavigationScreen) {
         val value = when (screen) {
             NavigationScreen.Login -> LoginNavigationScreen()
-            NavigationScreen.Main -> MainNavigationScreen()
+            NavigationScreen.Home -> HomeNavigationScreen()
             NavigationScreen.SignUp -> SignUpNavigationScreen()
         }
         screenState.value = value
