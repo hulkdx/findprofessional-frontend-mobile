@@ -17,13 +17,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.feature.authentication.ui.AppSnackBar
 import com.hulkdx.findprofessional.feature.authentication.ui.EmailTextField
 import com.hulkdx.findprofessional.feature.authentication.ui.FilledButton
 import com.hulkdx.findprofessional.feature.authentication.ui.PasswordTextField
 import com.hulkdx.findprofessional.resources.MR
 import dev.icerock.moko.resources.compose.localized
+import dev.icerock.moko.resources.desc.StringDesc
 import org.koin.androidx.compose.getViewModel
 
 @Composable
@@ -34,8 +37,30 @@ fun SignUpScreen(
     val password by viewModel.password.collectAsStateWithLifecycle()
     val error by viewModel.error.collectAsStateWithLifecycle()
 
+    SignUpScreen(
+        email = email,
+        onEmailChanged = viewModel.email::set,
+        password = password,
+        onPasswordChanged = viewModel.password::set,
+        onSubmitClicked = viewModel::onSubmitClicked,
+        error = error?.localized(),
+        onErrorDismissed = { viewModel.error.set(null) }
+    )
+}
+
+@Composable
+private fun SignUpScreen(
+    email: String,
+    onEmailChanged: (String) -> Unit,
+    password: String,
+    onPasswordChanged: (String) -> Unit,
+    onSubmitClicked: () -> Unit,
+    error: String?,
+    onErrorDismissed: () -> Unit,
+) {
     Box(
-        modifier = Modifier.imePadding()
+        modifier = Modifier
+            .imePadding()
             .testTag("SignUpScreen"),
     ) {
         Column(
@@ -49,24 +74,41 @@ fun SignUpScreen(
                 modifier = Modifier
                     .statusBarsPadding(),
                 value = email,
-                onValueChanged = viewModel.email::set,
+                onValueChanged = onEmailChanged,
             )
             PasswordTextField(
                 modifier = Modifier
                     .padding(top = 8.dp),
                 value = password,
-                onValueChanged = viewModel.password::set,
+                onValueChanged = onPasswordChanged,
             )
             SubmitButton(
                 modifier = Modifier
                     .padding(top = 16.dp),
-                onClick = viewModel::onSubmitClicked,
+                onClick = onSubmitClicked,
             )
         }
         AppSnackBar(
             modifier = Modifier.align(Alignment.BottomCenter),
-            message = error?.localized(),
-            onDismiss = { viewModel.error.set(null) },
+            message = error,
+            onDismiss = onErrorDismissed,
+        )
+    }
+}
+
+
+@Composable
+@Preview
+private fun SignUpScreenPreview() {
+    AppTheme {
+        SignUpScreen(
+            email = "",
+            onEmailChanged = {},
+            password = "",
+            onPasswordChanged = {},
+            onSubmitClicked = {},
+            error = "",
+            onErrorDismissed = {}
         )
     }
 }
