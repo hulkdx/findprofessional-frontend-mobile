@@ -18,7 +18,11 @@ object BuildDep {
     // --------------------------------------------------------------------------------
     // KMM
     // --------------------------------------------------------------------------------
-    const val MOKO_RESOURCES_VERSION = "0.20.1"
+
+    // https://github.com/icerockdev/moko-resources
+    const val MOKO_RESOURCES_VERSION = "0.21.1"
+
+    // https://developer.android.com/jetpack/androidx/releases/datastore
     const val DATASTORE_VERSION = "1.1.0-alpha04"
 
     // --------------------------------------------------------------------------------
@@ -26,10 +30,10 @@ object BuildDep {
     // --------------------------------------------------------------------------------
 
     // https://developer.android.com/jetpack/androidx/releases/compose
-    const val COMPOSE_VERSION = "1.4.3"
+    const val COMPOSE_VERSION = "1.4.4"
 
     // https://developer.android.com/jetpack/androidx/releases/compose
-    const val COMPOSE_BOM = "2023.01.00"
+    const val COMPOSE_BOM = "2023.04.00"
 
     // https://github.com/Kotlin/kotlinx.coroutines
     const val COROUTINES_VERSION = "1.6.4"
@@ -38,24 +42,24 @@ object BuildDep {
     const val KOIN_VERSION = "3.4.0"
 
     // https://github.com/InsertKoinIO/koin
-    const val KOIN_COMPOSE_VERSION = "3.4.1"
+    const val KOIN_COMPOSE_VERSION = "3.4.3"
 
     // https://github.com/square/leakcanary
     const val LEAK_CANARY_VERSION = "2.10"
 
     // https://ktor.io/docs/getting-started-ktor-client-multiplatform-mobile.html#ktor-dependencies
-    const val KTOR_VERSION = "2.2.2"
+    const val KTOR_VERSION = "2.2.4"
 
     // https://github.com/google/accompanist
-    const val ACCOMPANIST_VERSION = "0.28.0"
+    const val ACCOMPANIST_VERSION = "0.30.1"
 
     // https://developer.android.com/jetpack/androidx/releases/lifecycle
-    const val ANDROIDX_LIFECYCLE = "2.6.0-rc01"
+    const val ANDROIDX_LIFECYCLE = "2.6.1"
 
     // --------------------------------------------------------------------------------
     // Android Test
     // --------------------------------------------------------------------------------
 
     // https://github.com/Kotlin/kotlinx.coroutines/tree/master/kotlinx-coroutines-test
-    const val COROUTINES_TEST_VERSION = "1.6.4"
+    const val COROUTINES_TEST_VERSION = COROUTINES_VERSION
 }
