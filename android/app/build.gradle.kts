@@ -53,9 +53,10 @@ android {
 }
 
 dependencies {
+    implementation(project(":android:feature:authentication"))
+    implementation(project(":android:feature:home"))
 
     implementation(project(":android:core"))
-    implementation(project(":android:feature:authentication"))
     implementation(project(":common"))
 
     implementation(platform("androidx.compose:compose-bom:${BuildDep.COMPOSE_BOM}"))

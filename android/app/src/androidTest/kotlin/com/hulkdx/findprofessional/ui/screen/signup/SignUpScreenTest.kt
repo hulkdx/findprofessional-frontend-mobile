@@ -10,7 +10,7 @@ class SignUpScreenTest : ScreenTest() {
         launchSignUpScreen(composeRule) {
             pressSignUpButton()
         }.verify {
-            mainScreenShown()
+            homeScreenShown()
         }
     }
 }

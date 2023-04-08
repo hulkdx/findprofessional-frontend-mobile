@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.hulkdx.findprofessional.feature.authentication"
+    namespace = "com.hulkdx.findprofessional.feature.home"
     compileSdk = BuildDep.COMPILE_SDK_VERSION
 
     defaultConfig {

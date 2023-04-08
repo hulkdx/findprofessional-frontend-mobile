@@ -113,7 +113,7 @@ class RefreshTokenTest {
             typePassword("irrelevant")
             pressSignInButton()
         }.verify {
-            mainScreenShown()
+            homeScreenShown()
         }
     }
 

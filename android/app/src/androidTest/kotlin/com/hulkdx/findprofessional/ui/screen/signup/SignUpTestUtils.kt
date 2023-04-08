@@ -31,7 +31,7 @@ class SignUpDsl(
 class SignUpVerify(
     private val rule: Rule,
 ) {
-    fun mainScreenShown() {
-        rule.assertNodeIsDisplayed("MainScreen")
+    fun homeScreenShown() {
+        rule.assertNodeIsDisplayed("HomeScreen")
     }
 }

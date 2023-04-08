@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.feature.authentication.signup
+package com.hulkdx.findprofessional.feature.home
 
 import com.hulkdx.findprofessional.core.navigation.AndroidNavigationScreen
 import org.koin.androidx.viewmodel.dsl.viewModelOf
@@ -7,8 +7,8 @@ import org.koin.core.module.dsl.factoryOf
 import org.koin.dsl.bind
 import org.koin.dsl.module
 
-val signUpModule: Module
+val homeModule: Module
     get() = module {
-        factoryOf(::SignUpNavigationScreen) bind AndroidNavigationScreen::class
-        viewModelOf(::SignUpViewModel)
+        factoryOf(::HomeNavigationScreen) bind AndroidNavigationScreen::class
+        viewModelOf(::HomeViewModel)
     }

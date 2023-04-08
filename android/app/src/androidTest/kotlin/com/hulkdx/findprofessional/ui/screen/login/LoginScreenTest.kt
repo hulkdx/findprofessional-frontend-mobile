@@ -25,7 +25,7 @@ class LoginScreenTest : ScreenTest() {
             typePassword("somepass")
             pressSignInButton()
         }.verify {
-            mainScreenShown()
+            homeScreenShown()
         }
     }
 }

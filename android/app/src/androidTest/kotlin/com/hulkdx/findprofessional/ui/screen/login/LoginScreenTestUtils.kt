@@ -1,9 +1,6 @@
 package com.hulkdx.findprofessional.ui.screen.login
 
-import androidx.compose.ui.test.SemanticsNodeInteraction
-import androidx.compose.ui.test.SemanticsNodeInteractionCollection
 import androidx.compose.ui.test.assertIsDisplayed
-import androidx.compose.ui.test.onAllNodesWithTag
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performTextInput
@@ -12,7 +9,6 @@ import com.hulkdx.findprofessional.utils.Rule
 import com.hulkdx.findprofessional.utils.assertNodeIsDisplayed
 import com.hulkdx.findprofessional.utils.onNodeWithTagRes
 import com.hulkdx.findprofessional.utils.onNodeWithTextRes
-import com.hulkdx.findprofessional.utils.waitUntilAppear
 
 fun launchLoginScreen(
     rule: Rule,
@@ -53,7 +49,7 @@ class LoginVerify(
             .assertIsDisplayed()
     }
 
-    fun mainScreenShown() {
-        rule.assertNodeIsDisplayed("MainScreen")
+    fun homeScreenShown() {
+        rule.assertNodeIsDisplayed("HomeScreen")
     }
 }

@@ -20,7 +20,7 @@
 		4646BB6A298FCD5600F16CBF /* Snackbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4646BB69298FCD5600F16CBF /* Snackbar.swift */; };
 		46905BA7298BD9BB005D4292 /* AppNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46905BA6298BD9BB005D4292 /* AppNavigationView.swift */; };
 		46CE2300297D7BB60002EBE5 /* LoginScreenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CE22FF297D7BB60002EBE5 /* LoginScreenUITests.swift */; };
-		46D2116E2993D08B00654431 /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D2116D2993D08B00654431 /* MainScreen.swift */; };
+		46D2116E2993D08B00654431 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D2116D2993D08B00654431 /* HomeScreen.swift */; };
 		46D211702993DCCD00654431 /* LoginScreenUITestsUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D2116F2993DCCD00654431 /* LoginScreenUITestsUtils.swift */; };
 		46D211722993DD0200654431 /* SignUpScreenUITestsUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D211712993DD0200654431 /* SignUpScreenUITestsUtils.swift */; };
 		46D56A8D2999201A006F47EC /* AsyncButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D56A8C2999201A006F47EC /* AsyncButton.swift */; };
@@ -74,7 +74,7 @@
 		46905BA6298BD9BB005D4292 /* AppNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigationView.swift; sourceTree = "<group>"; };
 		46CE22FD297D7BB60002EBE5 /* UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		46CE22FF297D7BB60002EBE5 /* LoginScreenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenUITests.swift; sourceTree = "<group>"; };
-		46D2116D2993D08B00654431 /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
+		46D2116D2993D08B00654431 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		46D2116F2993DCCD00654431 /* LoginScreenUITestsUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenUITestsUtils.swift; sourceTree = "<group>"; };
 		46D211712993DD0200654431 /* SignUpScreenUITestsUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpScreenUITestsUtils.swift; sourceTree = "<group>"; };
 		46D56A8C2999201A006F47EC /* AsyncButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncButton.swift; sourceTree = "<group>"; };
@@ -140,6 +140,14 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		46824B9F29E1AABA00EF7F2D /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				46D2116D2993D08B00654431 /* HomeScreen.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		46905BA4298BD986005D4292 /* Core */ = {
 			isa = PBXGroup;
 			children = (
@@ -190,8 +198,8 @@
 		46E01EB7280AE34C0023A293 /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				46824B9F29E1AABA00EF7F2D /* Home */,
 				46E01EB8280AE38E0023A293 /* Authentication */,
-				46D2116D2993D08B00654431 /* MainScreen.swift */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -451,7 +459,7 @@
 				46DB4CDB299ED307000FB20D /* HandleUiTestArguments.swift in Sources */,
 				463B8DF6280B014C0016B0BD /* AppFont.swift in Sources */,
 				46E01EBB280AE3B40023A293 /* LoginScreen.swift in Sources */,
-				46D2116E2993D08B00654431 /* MainScreen.swift in Sources */,
+				46D2116E2993D08B00654431 /* HomeScreen.swift in Sources */,
 				460CE534280D91FE007E758C /* EmailTextField.swift in Sources */,
 				46E01EBD280AE3FD0023A293 /* LoginViewModel.swift in Sources */,
 				46D56A8D2999201A006F47EC /* AsyncButton.swift in Sources */,

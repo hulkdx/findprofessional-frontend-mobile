@@ -13,6 +13,6 @@ class SignUpScreenUITests: XCTestCase {
         launchSignUpScreen(app)
             .pressSignUpButton()
             .verify()
-            .mainScreenShown()
+            .homeScreenShown()
     }
 }
