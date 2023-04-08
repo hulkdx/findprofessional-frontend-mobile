@@ -11,9 +11,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.core.theme.LightGrey
 import com.hulkdx.findprofessional.core.theme.body2
+import com.hulkdx.findprofessional.feature.authentication.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -49,4 +52,19 @@ fun CommonTextField(
         ),
         visualTransformation = visualTransformation,
     )
+}
+
+@Preview
+@Composable
+private fun CommonTextFieldPreview() {
+    AppTheme {
+        CommonTextField(
+            modifier = Modifier,
+            hint = "hint",
+            leadingIconDrawable = R.drawable.ic_email,
+            leadingIconContentDescription = "",
+            value = "value",
+            onValueChanged = {},
+        )
+    }
 }
