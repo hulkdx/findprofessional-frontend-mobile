@@ -9,4 +9,6 @@
 
     <string name="emailExists">Email already exists!</string>
     <string name="generalError">Error please try again</string>
+
+    <string name="professionals">Professionals</string>
 </resources>
