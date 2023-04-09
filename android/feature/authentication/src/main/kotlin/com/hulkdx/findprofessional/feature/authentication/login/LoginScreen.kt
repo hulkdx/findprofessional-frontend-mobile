@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.rememberScrollState
@@ -29,7 +28,7 @@ import com.hulkdx.findprofessional.core.theme.body1
 import com.hulkdx.findprofessional.core.utils.append
 import com.hulkdx.findprofessional.core.utils.bold
 import com.hulkdx.findprofessional.core.utils.singleClick
-import com.hulkdx.findprofessional.feature.authentication.ui.AppSnackBar
+import com.hulkdx.findprofessional.core.commonui.CUSnackBar
 import com.hulkdx.findprofessional.feature.authentication.ui.EmailTextField
 import com.hulkdx.findprofessional.feature.authentication.ui.FilledButton
 import com.hulkdx.findprofessional.feature.authentication.ui.PasswordTextField
@@ -101,7 +100,7 @@ private fun LoginScreen(
                 onClick = onSignUpClicked,
             )
         }
-        AppSnackBar(
+        CUSnackBar(
             modifier = Modifier.align(Alignment.BottomCenter),
             message = error,
             onDismiss = onErrorDismissed

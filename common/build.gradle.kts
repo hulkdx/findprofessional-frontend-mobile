@@ -15,7 +15,7 @@ kotlin {
         iosSimulatorArm64(),
     ).forEach {
         it.binaries.framework {
-            export("dev.icerock.moko:resources:0.20.1")
+            export("dev.icerock.moko:resources:${BuildDep.MOKO_RESOURCES_VERSION}")
             export("dev.icerock.moko:graphics:0.9.0")
             baseName = "shared"
         }
