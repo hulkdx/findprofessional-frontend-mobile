@@ -17,7 +17,7 @@ import com.hulkdx.findprofessional.core.theme.body2
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CommonTextField(
+fun CUTextField(
     modifier: Modifier,
     hint: String,
     @DrawableRes leadingIconDrawable: Int,

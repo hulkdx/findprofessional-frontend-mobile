@@ -20,7 +20,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.core.theme.h1
-import com.hulkdx.findprofessional.feature.authentication.ui.AppSnackBar
+import com.hulkdx.findprofessional.core.commonui.CUSnackBar
 import com.hulkdx.findprofessional.resources.MR
 import dev.icerock.moko.resources.compose.localized
 import org.koin.androidx.compose.getViewModel
@@ -57,7 +57,7 @@ fun HomeScreen(
                 style = h1,
             )
         }
-        AppSnackBar(
+        CUSnackBar(
             modifier = Modifier.align(Alignment.BottomCenter),
             message = error,
             onDismiss = onErrorDismissed

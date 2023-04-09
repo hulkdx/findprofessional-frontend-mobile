@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.feature.authentication.ui
+package com.hulkdx.findprofessional.core.commonui
 
 import androidx.compose.material3.SnackbarDuration
 import androidx.compose.material3.SnackbarHost
@@ -12,7 +12,7 @@ import androidx.compose.ui.platform.LocalAccessibilityManager
 import kotlinx.coroutines.delay
 
 @Composable
-fun AppSnackBar(
+fun CUSnackBar(
     modifier: Modifier = Modifier,
     message: String?,
     onDismiss: () -> Unit,
