@@ -18,7 +18,7 @@ jobs:
       - uses: actions/setup-java@v3
         with:
           distribution: "zulu"
-          java-version: $JAVA_VERSION
+          java-version: ${{ env.JAVA_VERSION }}
 
       - uses: actions/cache@v3
         with:
@@ -67,7 +67,7 @@ jobs:
       - uses: actions/setup-java@v3
         with:
           distribution: "zulu"
-          java-version: $JAVA_VERSION
+          java-version: ${{ env.JAVA_VERSION }}
 
       - uses: actions/cache@v3
         with:

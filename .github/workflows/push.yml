@@ -20,7 +20,7 @@ jobs:
       - uses: actions/setup-java@v3
         with:
           distribution: "zulu"
-          java-version: $JAVA_VERSION
+          java-version: ${{ env.JAVA_VERSION }}
 
       - name: Version bump setup
         run: echo "RELEASE_VERSION=$(git rev-list --count origin/main)" >> $GITHUB_ENV
