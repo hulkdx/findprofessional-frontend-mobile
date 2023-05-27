@@ -1,3 +1,5 @@
+import org.gradle.api.JavaVersion
+
 /**
  * Dependencies that are used in the application
  *
@@ -10,10 +12,13 @@ object BuildDep {
     const val MIN_SDK_VERSION = 24
     const val COMPILE_SDK_VERSION = 33
 
+    val JAVA_VERSION_SOURCE_COMPATIBILITY = JavaVersion.VERSION_17
+    val JAVA_VERSION_TARGET_COMPATIBILITY = JAVA_VERSION_SOURCE_COMPATIBILITY
+
     const val KOTLIN_VERSION = "1.8.10"
 
     // https://developer.android.com/studio/releases/gradle-plugin
-    const val AGP_VERSION = "7.4.2"
+    const val AGP_VERSION = "8.0.2"
 
     // --------------------------------------------------------------------------------
     // KMM
