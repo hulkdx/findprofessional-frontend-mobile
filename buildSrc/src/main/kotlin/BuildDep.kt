@@ -53,7 +53,7 @@ object BuildDep {
     const val LEAK_CANARY_VERSION = "2.10"
 
     // https://ktor.io/docs/getting-started-ktor-client-multiplatform-mobile.html#ktor-dependencies
-    const val KTOR_VERSION = "2.2.4"
+    const val KTOR_VERSION = "2.3.0"
 
     // https://github.com/google/accompanist
     const val ACCOMPANIST_VERSION = "0.30.1"

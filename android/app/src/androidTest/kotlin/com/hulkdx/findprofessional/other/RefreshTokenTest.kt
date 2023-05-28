@@ -26,6 +26,7 @@ import io.ktor.util.*
 import io.ktor.util.date.*
 import io.ktor.utils.io.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.runTest
 import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.MatcherAssert.assertThat
@@ -73,7 +74,7 @@ class RefreshTokenTest {
     }
 
     @Test
-    fun when_invalidAccessToken_then_intercept_should_call_refreshToken() = runTest {
+    fun when_invalidAccessToken_then_intercept_should_call_refreshToken() = runBlocking {
         // Arrange
         refreshApiResponseValidToken()
         loginWithValidTokens()
