@@ -19,6 +19,7 @@ jobs:
         with:
           distribution: "zulu"
           java-version: ${{ env.JAVA_VERSION }}
+          cache: 'gradle'
 
       - uses: actions/cache@v3
         with:
@@ -68,6 +69,7 @@ jobs:
         with:
           distribution: "zulu"
           java-version: ${{ env.JAVA_VERSION }}
+          cache: 'gradle'
 
       - uses: actions/cache@v3
         with:

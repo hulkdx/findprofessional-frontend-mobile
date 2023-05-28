@@ -120,7 +120,7 @@ class RefreshTokenTest {
     private suspend fun callApiWithInvalidToken() {
         accessTokenStorage.set(INVALID_TOKENS.accessToken)
         runCatching {
-//            randomApi.randomApi()
+            randomApi.randomApi()
         }
     }
 
