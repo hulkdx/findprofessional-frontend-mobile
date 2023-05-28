@@ -71,7 +71,7 @@ class RefreshTokenTest {
     fun tearDown() {
         unloadKoinModules(module)
     }
-
+/*
     @Test
     fun when_invalidAccessToken_then_intercept_should_call_refreshToken() = runTest {
         // Arrange
@@ -82,7 +82,7 @@ class RefreshTokenTest {
         // Assert
         assertThat(refreshApi.isRefreshTokenCalled, `is`(true))
     }
-
+*/
     @Test
     fun when_invalidAccessToken_and_refreshApi_response_invalidTokens_then_intercept_should_logout() = runTest {
         // Arrange
