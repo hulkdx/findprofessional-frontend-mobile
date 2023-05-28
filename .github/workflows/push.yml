@@ -6,6 +6,7 @@ on:
 
 env:
   JAVA_VERSION: 17
+  JAVA_DIST: "zulu"
 
 jobs:
   deploy:
@@ -19,7 +20,7 @@ jobs:
 
       - uses: actions/setup-java@v3
         with:
-          distribution: "zulu"
+          distribution: ${{ env.JAVA_DIST }}
           java-version: ${{ env.JAVA_VERSION }}
           cache: 'gradle'
 
