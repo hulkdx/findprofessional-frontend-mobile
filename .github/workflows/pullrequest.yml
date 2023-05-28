@@ -4,6 +4,10 @@ on:
   pull_request:
     branches: [main]
 
+env:
+  JAVA_VERSION: 17
+  JAVA_DIST: "zulu"
+
 jobs:
   android-tests:
     runs-on: macos-12
@@ -14,8 +18,9 @@ jobs:
 
       - uses: actions/setup-java@v3
         with:
-          distribution: "zulu"
-          java-version: 11
+          distribution: ${{ env.JAVA_DIST }}
+          java-version: ${{ env.JAVA_VERSION }}
+          cache: 'gradle'
 
       - uses: actions/cache@v3
         with:
@@ -63,8 +68,9 @@ jobs:
 
       - uses: actions/setup-java@v3
         with:
-          distribution: "zulu"
-          java-version: 11
+          distribution: ${{ env.JAVA_DIST }}
+          java-version: ${{ env.JAVA_VERSION }}
+          cache: 'gradle'
 
       - uses: actions/cache@v3
         with:

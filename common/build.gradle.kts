@@ -75,6 +75,15 @@ android {
         targetSdk = BuildDep.COMPILE_SDK_VERSION
     }
     namespace = "com.hulkdx.findprofessional.common"
+
+    compileOptions {
+        sourceCompatibility = BuildDep.JAVA_VERSION_SOURCE_COMPATIBILITY
+        targetCompatibility = BuildDep.JAVA_VERSION_TARGET_COMPATIBILITY
+    }
+
+    buildFeatures {
+        buildConfig = true
+    }
 }
 
 multiplatformResources {
