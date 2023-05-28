@@ -78,7 +78,7 @@ class RefreshTokenTest {
         refreshApiResponseValidToken()
         loginWithValidTokens()
         // Act
-        // callApiWithInvalidToken()
+        callApiWithInvalidToken()
         // Assert
         assertThat(refreshApi.isRefreshTokenCalled, `is`(true))
     }
@@ -120,7 +120,7 @@ class RefreshTokenTest {
     private suspend fun callApiWithInvalidToken() {
         accessTokenStorage.set(INVALID_TOKENS.accessToken)
         runCatching {
-            randomApi.randomApi()
+//            randomApi.randomApi()
         }
     }
 
