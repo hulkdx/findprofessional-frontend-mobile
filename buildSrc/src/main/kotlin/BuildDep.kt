@@ -25,7 +25,7 @@ object BuildDep {
     // --------------------------------------------------------------------------------
 
     // https://github.com/icerockdev/moko-resources
-    const val MOKO_RESOURCES_VERSION = "0.21.1"
+    const val MOKO_RESOURCES_VERSION = "0.22.3"
 
     // https://developer.android.com/jetpack/androidx/releases/datastore
     const val DATASTORE_VERSION = "1.1.0-alpha04"
