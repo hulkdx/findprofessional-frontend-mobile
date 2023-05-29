@@ -50,7 +50,7 @@ jobs:
       matrix:
         api-level: [
           29, # Android 10
-#          30, # Android 11
+          30, # Android 11
 #          32, # Android 12
 #          33, # Android 13
         ]
