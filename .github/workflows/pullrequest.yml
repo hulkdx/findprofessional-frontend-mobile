@@ -47,13 +47,21 @@ jobs:
     runs-on: macos-12
     timeout-minutes: 30
     strategy:
+      fail-fast: false
       matrix:
-        api-level: [
-          29, # Android 10
-          30, # Android 11
-          32, # Android 12
-          33, # Android 13
-        ]
+        include:
+          - api-level: 29 # Android 10
+            arch: x86
+            target: default
+          - api-level: 30 # Android 11
+            arch: x86_64
+            target: default
+          - api-level: 31 # Android 12
+            arch: x86_64
+            target: default
+          - api-level: 33 # Android 13
+            arch: x86_64
+            target: google_apis
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -63,9 +71,6 @@ jobs:
           distribution: ${{ env.JAVA_DIST }}
           java-version: ${{ env.JAVA_VERSION }}
           cache: 'gradle'
-
-      - name: clear gradle cache
-        run: mv ~/.gradle ~/.invalid || true
 
       - uses: actions/cache@v3
         with:
@@ -80,7 +85,8 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: ${{ matrix.api-level }}
-          arch: x86
+          arch: ${{ matrix.arch }}
+          target: ${{ matrix.target }}
           disable-animations: false
           emulator-build: 7425822 # workaround to emulator bug: https://github.com/ReactiveCircus/android-emulator-runner/issues/160
           emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
