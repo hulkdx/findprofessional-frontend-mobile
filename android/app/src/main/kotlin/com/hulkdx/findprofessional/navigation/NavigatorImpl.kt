@@ -18,6 +18,7 @@ class NavigatorImpl : Navigator {
             NavigationScreen.Login -> LoginNavigationScreen()
             NavigationScreen.Home -> HomeNavigationScreen()
             NavigationScreen.SignUp -> SignUpNavigationScreen()
+            NavigationScreen.Developer -> TODO()
         }
         screenState.value = value
     }
