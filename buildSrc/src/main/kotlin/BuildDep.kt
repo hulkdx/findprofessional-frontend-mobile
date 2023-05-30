@@ -9,7 +9,7 @@ object BuildDep {
     // --------------------------------------------------------------------------------
     // General
     // --------------------------------------------------------------------------------
-    const val MIN_SDK_VERSION = 24
+    const val MIN_SDK_VERSION = 29
     const val COMPILE_SDK_VERSION = 33
 
     val JAVA_VERSION_SOURCE_COMPATIBILITY = JavaVersion.VERSION_17
