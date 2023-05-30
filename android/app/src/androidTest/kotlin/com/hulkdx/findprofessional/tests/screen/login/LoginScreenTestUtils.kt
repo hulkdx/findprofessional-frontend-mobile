@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.ui.screen.login
+package com.hulkdx.findprofessional.tests.screen.login
 
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.onNodeWithTag

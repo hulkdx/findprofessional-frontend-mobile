@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.ui.screen
+package com.hulkdx.findprofessional.utils
 
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import com.hulkdx.findprofessional.MainActivity

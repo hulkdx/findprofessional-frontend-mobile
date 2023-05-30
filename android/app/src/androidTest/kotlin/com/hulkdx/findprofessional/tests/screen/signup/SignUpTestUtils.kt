@@ -1,8 +1,8 @@
-package com.hulkdx.findprofessional.ui.screen.signup
+package com.hulkdx.findprofessional.tests.screen.signup
 
 import androidx.compose.ui.test.performClick
 import com.hulkdx.findprofessional.resources.MR
-import com.hulkdx.findprofessional.ui.screen.login.launchLoginScreen
+import com.hulkdx.findprofessional.tests.screen.login.launchLoginScreen
 import com.hulkdx.findprofessional.utils.Rule
 import com.hulkdx.findprofessional.utils.assertNodeIsDisplayed
 import com.hulkdx.findprofessional.utils.onNodeWithTextRes

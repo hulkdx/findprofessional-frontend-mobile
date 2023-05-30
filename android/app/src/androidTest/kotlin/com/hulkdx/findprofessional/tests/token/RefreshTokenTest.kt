@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalCoroutinesApi::class)
 
-package com.hulkdx.findprofessional.other
+package com.hulkdx.findprofessional.tests.token
 
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import com.hulkdx.findprofessional.MainActivity
@@ -10,7 +10,7 @@ import com.hulkdx.findprofessional.common.feature.authentication.login.AuthToken
 import com.hulkdx.findprofessional.common.feature.authentication.login.LoginApi
 import com.hulkdx.findprofessional.common.feature.authentication.login.RefreshTokenApi
 import com.hulkdx.findprofessional.common.feature.authentication.signup.model.AuthRequest
-import com.hulkdx.findprofessional.ui.screen.login.launchLoginScreen
+import com.hulkdx.findprofessional.tests.screen.login.launchLoginScreen
 import com.hulkdx.findprofessional.utils.UiTestRule
 import com.hulkdx.findprofessional.utils.assertNodeIsDisplayed
 import com.hulkdx.findprofessional.utils.get

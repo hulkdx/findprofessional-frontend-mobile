@@ -1,8 +1,8 @@
-package com.hulkdx.findprofessional.ui.screen.login
+package com.hulkdx.findprofessional.tests.screen.login
 
 import com.hulkdx.findprofessional.common.config.api.InMemoryApi
 import com.hulkdx.findprofessional.common.feature.authentication.signup.model.AuthRequest
-import com.hulkdx.findprofessional.ui.screen.ScreenTest
+import com.hulkdx.findprofessional.utils.ScreenTest
 import org.junit.Test
 
 class LoginScreenTest : ScreenTest() {

@@ -1,6 +1,6 @@
-package com.hulkdx.findprofessional.ui.screen.signup
+package com.hulkdx.findprofessional.tests.screen.signup
 
-import com.hulkdx.findprofessional.ui.screen.ScreenTest
+import com.hulkdx.findprofessional.utils.ScreenTest
 import org.junit.Test
 
 class SignUpScreenTest : ScreenTest() {
