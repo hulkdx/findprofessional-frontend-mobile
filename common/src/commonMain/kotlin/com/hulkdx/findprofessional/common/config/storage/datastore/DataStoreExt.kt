@@ -2,21 +2,41 @@ package com.hulkdx.findprofessional.common.config.storage.datastore
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.map
 
+inline fun <T> DataStore<Preferences>.getFlow(pref: Preferences.Key<T>) =
+    data.map { it[pref] }
+
 fun DataStore<Preferences>.getFlowAsString(key: String) =
-    data.map { it[stringPreferencesKey(key)] }
+    getFlow(stringPreferencesKey(key))
 
 suspend fun DataStore<Preferences>.getAsString(key: String) =
     getFlowAsString(key).firstOrNull()
 
-suspend fun DataStore<Preferences>.setAsString(key: String, value: String) {
-    edit { it[stringPreferencesKey(key)] = value }
+fun DataStore<Preferences>.getFlowAsBoolean(key: String) =
+    getFlow(booleanPreferencesKey(key))
+
+suspend fun DataStore<Preferences>.getAsBoolean(key: String) =
+    getFlowAsBoolean(key).firstOrNull()
+
+suspend inline fun <T> DataStore<Preferences>.set(pref: Preferences.Key<T>, value: T) {
+    edit { it[pref] = value }
 }
 
-suspend fun DataStore<Preferences>.removeString(key: String) {
-    edit { it.remove(stringPreferencesKey(key)) }
+suspend fun DataStore<Preferences>.setAsString(key: String, value: String) =
+    set(stringPreferencesKey(key), value)
+
+suspend fun DataStore<Preferences>.setAsBoolean(key: String, value: Boolean) =
+    set(booleanPreferencesKey(key), value)
+
+suspend fun <T> DataStore<Preferences>.remove(pref: Preferences.Key<T>) {
+    edit { it.remove(pref) }
 }
+
+suspend fun DataStore<Preferences>.removeString(key: String) = remove(stringPreferencesKey(key))
+
+suspend fun DataStore<Preferences>.removeBoolean(key: String) = remove(booleanPreferencesKey(key))

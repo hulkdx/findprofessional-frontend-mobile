@@ -3,6 +3,7 @@ package com.hulkdx.findprofessional.common.config.storage.datastore
 import androidx.datastore.preferences.core.PreferenceDataStoreFactory
 import com.hulkdx.findprofessional.common.config.PlatformSpecific
 import com.hulkdx.findprofessional.common.config.storage.AccessTokenStorage
+import com.hulkdx.findprofessional.common.config.storage.DeveloperStorage
 import com.hulkdx.findprofessional.common.config.storage.RefreshTokenStorage
 import okio.Path.Companion.toPath
 import org.koin.core.module.Module
@@ -22,4 +23,5 @@ val datastoreModule: Module
         }
         factoryOf(::AccessTokenStorageDataStore) bind AccessTokenStorage::class
         factoryOf(::RefreshTokenStorageDataStore) bind RefreshTokenStorage::class
+        factoryOf(::DeveloperStorageDataStore) bind DeveloperStorage::class
     }

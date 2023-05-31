@@ -10,28 +10,36 @@ import androidx.compose.material3.Checkbox
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.hulkdx.findprofessional.common.config.storage.DeveloperStorage
+import com.hulkdx.findprofessional.common.config.storage.DeveloperStorage.Key.MockData
 import com.hulkdx.findprofessional.core.theme.AppTheme
-
+import kotlinx.coroutines.launch
+import org.koin.compose.koinInject
 
 @Composable
 fun DeveloperScreen() {
-    // TODO: update data
+    val storage = koinInject<DeveloperStorage>()
+    val scope = rememberCoroutineScope()
+
+    val useMockDataFlow = storage.getAsFlowBoolean(MockData).collectAsStateWithLifecycle(false)
+    val useMockData = useMockDataFlow.value ?: false
+
     DeveloperScreen(
-        checked = true,
-        onCheckedChange = {},
+        mockData = useMockData,
+        onMockDataChanged = { scope.launch { storage.setAsBoolean(MockData, !useMockData) } },
     )
 }
 
 @Composable
 fun DeveloperScreen(
-    checked: Boolean,
-    onCheckedChange: ((Boolean) -> Unit),
+    mockData: Boolean,
+    onMockDataChanged: ((Boolean) -> Unit),
 ) {
     Column(
         modifier = Modifier
@@ -45,8 +53,8 @@ fun DeveloperScreen(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Checkbox(
-                checked = checked,
-                onCheckedChange = onCheckedChange
+                checked = mockData,
+                onCheckedChange = onMockDataChanged
             )
             Text(text = "Use Mock Data")
         }
@@ -58,8 +66,8 @@ fun DeveloperScreen(
 private fun HomeScreenPreview() {
     AppTheme {
         DeveloperScreen(
-            checked = true,
-            onCheckedChange = {},
+            mockData = true,
+            onMockDataChanged = {},
         )
     }
 }
