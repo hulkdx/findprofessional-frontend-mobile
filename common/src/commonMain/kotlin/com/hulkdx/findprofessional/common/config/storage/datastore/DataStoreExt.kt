@@ -6,7 +6,6 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.singleOrNull
 
 fun DataStore<Preferences>.getFlowAsString(key: String) =
     data.map { it[stringPreferencesKey(key)] }
@@ -14,10 +13,10 @@ fun DataStore<Preferences>.getFlowAsString(key: String) =
 suspend fun DataStore<Preferences>.getAsString(key: String) =
     getFlowAsString(key).firstOrNull()
 
-suspend fun DataStore<Preferences>.set(key: String, value: String) {
+suspend fun DataStore<Preferences>.setAsString(key: String, value: String) {
     edit { it[stringPreferencesKey(key)] = value }
 }
 
-suspend fun DataStore<Preferences>.remove(key: String) {
+suspend fun DataStore<Preferences>.removeString(key: String) {
     edit { it.remove(stringPreferencesKey(key)) }
 }

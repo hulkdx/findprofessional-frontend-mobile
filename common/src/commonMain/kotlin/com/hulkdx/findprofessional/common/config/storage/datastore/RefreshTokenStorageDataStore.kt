@@ -2,7 +2,6 @@ package com.hulkdx.findprofessional.common.config.storage.datastore
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.core.edit
 import com.hulkdx.findprofessional.common.config.storage.RefreshTokenStorage
 
 class RefreshTokenStorageDataStore(
@@ -11,6 +10,6 @@ class RefreshTokenStorageDataStore(
     private val key = "RefreshTokenStorageDataStore"
 
     override suspend fun get() = dataStore.getAsString(key)
-    override suspend fun set(value: String) = dataStore.set(key, value)
-    override suspend fun remove() = dataStore.remove(key)
+    override suspend fun set(value: String) = dataStore.setAsString(key, value)
+    override suspend fun remove() = dataStore.removeString(key)
 }
