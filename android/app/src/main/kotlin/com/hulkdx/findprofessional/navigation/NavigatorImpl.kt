@@ -7,6 +7,7 @@ import com.hulkdx.findprofessional.common.navigation.Navigator
 import com.hulkdx.findprofessional.core.navigation.AndroidNavigationScreen
 import com.hulkdx.findprofessional.feature.authentication.login.LoginNavigationScreen
 import com.hulkdx.findprofessional.feature.authentication.signup.SignUpNavigationScreen
+import com.hulkdx.findprofessional.feature.developer.DeveloperNavigationScreen
 import com.hulkdx.findprofessional.feature.home.HomeNavigationScreen
 
 class NavigatorImpl : Navigator {
@@ -18,7 +19,7 @@ class NavigatorImpl : Navigator {
             NavigationScreen.Login -> LoginNavigationScreen()
             NavigationScreen.Home -> HomeNavigationScreen()
             NavigationScreen.SignUp -> SignUpNavigationScreen()
-            NavigationScreen.Developer -> TODO()
+            NavigationScreen.Developer -> DeveloperNavigationScreen()
         }
         screenState.value = value
     }

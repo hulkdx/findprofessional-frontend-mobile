@@ -24,6 +24,7 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.hulkdx.findprofessional.common.BuildConfig
 import com.hulkdx.findprofessional.common.navigation.Navigator
 import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.core.theme.body1
@@ -73,6 +74,7 @@ private fun LoginScreen(
 ) {
     Box(
         modifier = Modifier
+            .statusBarsPadding()
             .testTag("LoginScreen")
     ) {
         Column(
@@ -109,7 +111,13 @@ private fun LoginScreen(
             message = error,
             onDismiss = onErrorDismissed
         )
-        DeveloperButton(onDevClicked)
+
+        if (BuildConfig.DEBUG) {
+            DeveloperButton(
+                modifier = Modifier.align(Alignment.TopEnd),
+                onClick = onDevClicked,
+            )
+        }
     }
 }
 
@@ -173,9 +181,10 @@ fun SignUpButton(
 
 @Composable
 fun DeveloperButton(
+    modifier: Modifier,
     onClick: () -> Unit
 ) {
-    TextButton(onClick = onClick) {
+    TextButton(modifier = modifier,onClick = onClick) {
         Text(text = "dev")
     }
 }
