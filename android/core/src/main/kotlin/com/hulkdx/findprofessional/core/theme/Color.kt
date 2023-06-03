@@ -14,6 +14,7 @@ internal val lightColorPalette = lightColorScheme(
     onPrimary = White,
     onSecondary = LightBlue,
     onTertiary = LightGrey,
+    onTertiaryContainer = Gray,
 )
 
 internal val darkColorPalette = lightColorPalette

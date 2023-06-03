@@ -18,7 +18,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Color.Companion.Gray
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -63,7 +62,7 @@ fun CUSearchField(
             Text(
                 text = "Search",
                 style = body2,
-                color = Gray,
+                color = MaterialTheme.colorScheme.onTertiaryContainer,
             )
         },
         singleLine = true,
@@ -71,7 +70,7 @@ fun CUSearchField(
             Icon(
                 imageVector = Icons.Filled.Search,
                 contentDescription = "search",
-                tint = Gray,
+                tint = MaterialTheme.colorScheme.onTertiaryContainer,
             )
         },
         keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Search),
