@@ -10,8 +10,8 @@ import com.google.accompanist.navigation.animation.composable
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import com.hulkdx.findprofessional.core.navigation.AndroidNavigationScreen
 import com.hulkdx.findprofessional.feature.authentication.login.LoginNavigationScreen
-import org.koin.androidx.compose.get
-import org.koin.androidx.compose.getKoin
+import org.koin.compose.getKoin
+import org.koin.compose.koinInject
 
 @Composable
 fun NavigationComposable() {
@@ -42,7 +42,7 @@ private fun CreateScreens(navController: NavHostController) {
 
 @Composable
 private fun SetupNavigation(navController: NavHostController) {
-    val navigator: NavigatorImpl = get()
+    val navigator: NavigatorImpl = koinInject()
 
     navigator.screenState.value?.apply {
         navController.navigate(route)
