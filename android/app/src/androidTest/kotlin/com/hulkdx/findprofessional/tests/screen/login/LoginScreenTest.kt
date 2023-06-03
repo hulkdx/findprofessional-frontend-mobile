@@ -28,4 +28,13 @@ class LoginScreenTest : ScreenTest() {
             homeScreenShown()
         }
     }
+
+    @Test
+    fun performDeveloper() {
+        launchLoginScreen(composeRule) {
+            pressDeveloperButton()
+        }.verify {
+            developerScreenShown()
+        }
+    }
 }

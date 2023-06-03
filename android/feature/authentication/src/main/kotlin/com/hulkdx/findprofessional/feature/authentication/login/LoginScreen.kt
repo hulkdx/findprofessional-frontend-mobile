@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -23,6 +24,8 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.hulkdx.findprofessional.common.BuildConfig
+import com.hulkdx.findprofessional.common.navigation.Navigator
 import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.core.theme.body1
 import com.hulkdx.findprofessional.core.utils.append
@@ -52,7 +55,8 @@ fun LoginScreen(
         onSignInClicked = viewModel::onSignInClicked,
         onSignUpClicked = viewModel::onSignUpClicked,
         error = error?.localized(),
-        onErrorDismissed = { viewModel.error.set(null) }
+        onErrorDismissed = { viewModel.error.set(null) },
+        onDevClicked = viewModel::onDevClicked,
     )
 }
 
@@ -66,9 +70,11 @@ private fun LoginScreen(
     onSignUpClicked: () -> Unit,
     error: String?,
     onErrorDismissed: () -> Unit,
+    onDevClicked: () -> Unit,
 ) {
     Box(
         modifier = Modifier
+            .statusBarsPadding()
             .testTag("LoginScreen")
     ) {
         Column(
@@ -105,6 +111,13 @@ private fun LoginScreen(
             message = error,
             onDismiss = onErrorDismissed
         )
+
+        if (BuildConfig.DEBUG) {
+            DeveloperButton(
+                modifier = Modifier.align(Alignment.TopEnd),
+                onClick = onDevClicked,
+            )
+        }
     }
 }
 
@@ -121,6 +134,7 @@ private fun LoginScreenPreview() {
             onSignUpClicked = {},
             error = "",
             onErrorDismissed = {},
+            onDevClicked = {},
         )
     }
 }
@@ -162,6 +176,16 @@ fun SignUpButton(
                 color = MaterialTheme.colorScheme.primary,
             )
         }
+    }
+}
+
+@Composable
+fun DeveloperButton(
+    modifier: Modifier,
+    onClick: () -> Unit
+) {
+    TextButton(modifier = modifier,onClick = onClick) {
+        Text(text = "dev")
     }
 }
 

@@ -2,6 +2,7 @@ package com.hulkdx.findprofessional.tests.screen.login
 
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.onNodeWithTag
+import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performTextInput
 import com.hulkdx.findprofessional.resources.MR
@@ -38,6 +39,11 @@ class LoginDsl(
             .performClick()
     }
 
+    fun pressDeveloperButton() {
+        rule.onNodeWithText("dev")
+            .performClick()
+    }
+
     fun verify(block: LoginVerify.() -> Unit) = LoginVerify(rule).apply(block)
 }
 
@@ -51,5 +57,9 @@ class LoginVerify(
 
     fun homeScreenShown() {
         rule.assertNodeIsDisplayed("HomeScreen")
+    }
+
+    fun developerScreenShown() {
+        rule.assertNodeIsDisplayed("DeveloperScreen")
     }
 }

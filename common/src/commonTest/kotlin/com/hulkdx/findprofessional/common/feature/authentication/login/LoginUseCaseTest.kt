@@ -1,5 +1,3 @@
-@file:OptIn(ExperimentalCoroutinesApi::class)
-
 package com.hulkdx.findprofessional.common.feature.authentication.login
 
 import com.hulkdx.findprofessional.common.config.storage.AccessTokenStorage
@@ -8,7 +6,6 @@ import com.hulkdx.findprofessional.common.feature.authentication.signup.model.Au
 import com.hulkdx.findprofessional.common.navigation.NavigationScreen
 import com.hulkdx.findprofessional.common.navigation.Navigator
 import com.hulkdx.findprofessional.common.utils.KoinTestUtil
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import kotlin.test.AfterTest
 import kotlin.test.BeforeTest

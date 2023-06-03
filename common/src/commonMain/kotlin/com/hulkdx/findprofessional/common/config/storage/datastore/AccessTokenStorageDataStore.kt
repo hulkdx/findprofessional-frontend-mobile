@@ -11,6 +11,6 @@ class AccessTokenStorageDataStore(
     private val key = "AccessTokenStorageDataStore"
 
     override suspend fun get() = dataStore.getAsString(key)
-    override suspend fun set(value: String) = dataStore.set(key, value)
-    override suspend fun remove() = dataStore.remove(key)
+    override suspend fun set(value: String) = dataStore.setAsString(key, value)
+    override suspend fun remove() = dataStore.removeString(key)
 }

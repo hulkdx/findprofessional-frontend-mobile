@@ -51,6 +51,7 @@ android {
 dependencies {
     implementation(project(":android:feature:authentication"))
     implementation(project(":android:feature:home"))
+    implementation(project(":android:feature:developer"))
 
     implementation(project(":android:core"))
     implementation(project(":common"))

@@ -26,4 +26,8 @@ class LoginUseCase(
     } catch (e: Throwable) {
         e.generalError()
     }
+
+    fun onDevClicked() {
+        navigator.navigate(NavigationScreen.Developer)
+    }
 }
