@@ -3,7 +3,6 @@ package com.hulkdx.findprofessional.core.commonui
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
@@ -12,10 +11,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.hulkdx.findprofessional.core.R
 import com.hulkdx.findprofessional.core.theme.body2
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CUTextField(
     modifier: Modifier,
@@ -44,9 +44,25 @@ fun CUTextField(
                 style = body2,
             )
         },
-        colors = TextFieldDefaults.textFieldColors(
-            containerColor = MaterialTheme.colorScheme.onTertiary,
+        colors = TextFieldDefaults.colors(
+            focusedContainerColor = MaterialTheme.colorScheme.onTertiary,
+            unfocusedContainerColor = MaterialTheme.colorScheme.onTertiary,
+            disabledContainerColor = MaterialTheme.colorScheme.onTertiary,
         ),
         visualTransformation = visualTransformation,
+    )
+}
+
+@Preview
+@Composable
+private fun CUTextField() {
+    CUTextField(
+        modifier = Modifier,
+        hint = "Hint",
+        leadingIconDrawable = R.drawable.ic_email,
+        leadingIconContentDescription = "",
+        visualTransformation = VisualTransformation.None,
+        value = "",
+        onValueChanged = {}
     )
 }
