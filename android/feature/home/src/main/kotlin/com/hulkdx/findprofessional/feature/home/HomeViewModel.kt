@@ -12,6 +12,18 @@ class HomeViewModel(
     val error by savedStateHandle.getStateFlowWrapper<StringDesc?>(null)
     val professionals by savedStateHandle.getStateFlowWrapper<List<Professional>>(listOf())
 
+    init {
+        // TODO: test data / remove it
+        professionals.set(listOf(
+            Professional(
+                title = "Mike Tyson",
+                description = "Boxer",
+                price = "100$/h",
+                imageUrl = "https://i.imgur.com/HDgjt8R.jpeg"
+            )
+        ))
+    }
+
     fun onSearchClick(query: String) {
     }
 
