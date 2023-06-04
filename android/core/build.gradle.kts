@@ -42,4 +42,6 @@ dependencies {
     implementation("com.google.accompanist:accompanist-navigation-animation:${BuildDep.ACCOMPANIST_VERSION}")
     implementation("androidx.compose.ui:ui-tooling-preview")
     debugImplementation("androidx.compose.ui:ui-tooling")
+
+    implementation("io.coil-kt:coil-compose:${BuildDep.COIL_VERSION}")
 }

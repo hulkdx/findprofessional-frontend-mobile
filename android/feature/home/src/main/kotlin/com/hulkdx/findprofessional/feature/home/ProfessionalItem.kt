@@ -6,14 +6,10 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import coil.compose.AsyncImage
-import coil.imageLoader
-import coil.request.ImageRequest
-import coil.util.DebugLogger
 import com.hulkdx.findprofessional.common.feature.home.Professional
+import com.hulkdx.findprofessional.core.commonui.CUAsyncImage
 
 @Composable
 internal fun ProfessionalItem(
@@ -24,20 +20,7 @@ internal fun ProfessionalItem(
     Column(
         modifier = Modifier,
     ) {
-        // TODO: move this into CU
-        val imageLoader = LocalContext.current.imageLoader.newBuilder()
-            .logger(DebugLogger())
-            .build()
-        AsyncImage(
-            model = ImageRequest.Builder(LocalContext.current)
-                .data(professional.imageUrl)
-//              TODO:
-//                .placeholder()
-//                .error()
-                .build(),
-            imageLoader = imageLoader,
-            contentDescription = "",
-        )
+        CUAsyncImage(url = professional.imageUrl)
         Button(
             modifier = Modifier.padding(top = 8.dp),
             onClick = { onLikeClick(professional) }

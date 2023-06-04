@@ -23,7 +23,7 @@ fun NavigationComposable() {
 
 @Composable
 private fun CreateScreens(navController: NavHostController) {
-    val startDestination = HomeNavigationScreen().route
+    val startDestination = LoginNavigationScreen().route
     val navigationScreens: List<AndroidNavigationScreen> = getKoin().getAll()
 
     AnimatedNavHost(navController = navController, startDestination = startDestination) {
