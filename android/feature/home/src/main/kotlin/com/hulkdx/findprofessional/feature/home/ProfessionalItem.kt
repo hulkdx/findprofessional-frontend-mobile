@@ -1,6 +1,7 @@
 package com.hulkdx.findprofessional.feature.home
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
@@ -20,7 +21,10 @@ internal fun ProfessionalItem(
     Column(
         modifier = Modifier,
     ) {
-        CUAsyncImage(url = professional.imageUrl)
+        CUAsyncImage(
+            modifier = Modifier.fillMaxWidth(),
+            url = professional.imageUrl
+        )
         Button(
             modifier = Modifier.padding(top = 8.dp),
             onClick = { onLikeClick(professional) }
