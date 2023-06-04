@@ -7,6 +7,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.hulkdx.findprofessional.common.feature.home.Professional
 
@@ -36,4 +37,19 @@ internal fun ProfessionalItem(
         Text(text = professional.description)
         Text(text = professional.price)
     }
+}
+
+@Preview
+@Composable
+private fun ProfessionalItemPreview() {
+    ProfessionalItem(
+        professional = Professional(
+            title = "Mike Tyson",
+            description = "Boxer",
+            price = "100$/h",
+            imageUrl = "https://imgur.com/gallery/7R6wmYb"
+        ),
+        onLikeClick = {},
+        onItemClick = {}
+    )
 }
