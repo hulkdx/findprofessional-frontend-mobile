@@ -43,8 +43,26 @@ val body1 = TextStyle(
     lineHeight = 23.sp,
 )
 
-val body2 = TextStyle(
+val body1Medium = TextStyle(
     fontFamily = interFamily,
     fontWeight = FontWeight.Medium,
+    fontSize = 14.sp,
+    lineHeight = 23.sp,
+)
+
+val body2 = TextStyle(
+    fontFamily = interFamily,
+    fontWeight = FontWeight.Normal,
+    fontSize = 14.sp,
+)
+
+val body2Medium = TextStyle(
+    fontFamily = interFamily,
+    fontWeight = FontWeight.Medium,
+    fontSize = 14.sp,
+)
+val body2Bold = TextStyle(
+    fontFamily = interFamily,
+    fontWeight = FontWeight.Bold,
     fontSize = 14.sp,
 )

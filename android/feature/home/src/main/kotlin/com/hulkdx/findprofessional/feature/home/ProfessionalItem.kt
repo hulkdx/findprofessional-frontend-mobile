@@ -23,7 +23,8 @@ import com.hulkdx.findprofessional.common.feature.home.Professional
 import com.hulkdx.findprofessional.core.R
 import com.hulkdx.findprofessional.core.commonui.CUAsyncImage
 import com.hulkdx.findprofessional.core.theme.AppTheme
-import com.hulkdx.findprofessional.core.theme.body1
+import com.hulkdx.findprofessional.core.theme.*
+import com.hulkdx.findprofessional.core.theme.body1Medium
 import com.hulkdx.findprofessional.core.theme.h3
 
 @Composable
@@ -36,13 +37,15 @@ internal fun ProfessionalItem(
         Modifier
             .fillMaxWidth()
             .clip(shape = RoundedCornerShape(16.dp))
-            .background(MaterialTheme.colorScheme.onPrimary),
+            .background(MaterialTheme.colorScheme.onPrimary)
+            .padding(bottom = 20.dp)
+        ,
     ) {
         Row {
             ProfileImage(professional)
             Column(
                 Modifier
-                    .padding(top = 16.dp, start = 16.dp)
+                    .padding(start = 16.dp)
                     .weight(1F)
             ) {
                 Title(professional)
@@ -51,7 +54,7 @@ internal fun ProfessionalItem(
             }
             LikeButton(professional, onLikeClick)
         }
-        Text(text = professional.price)
+        Price(professional)
     }
 }
 
@@ -69,6 +72,7 @@ private fun ProfileImage(professional: Professional) {
 @Composable
 private fun Title(professional: Professional) {
     Text(
+        modifier = Modifier.padding(top = 20.dp),
         style = h3,
         text = professional.title,
     )
@@ -77,7 +81,8 @@ private fun Title(professional: Professional) {
 @Composable
 fun CoachType(professional: Professional) {
     Text(
-        style = body1,
+        modifier = Modifier.padding(top = 8.dp),
+        style = body1Medium,
         color = MaterialTheme.colorScheme.onTertiaryContainer,
         text = professional.type,
     )
@@ -85,7 +90,9 @@ fun CoachType(professional: Professional) {
 
 @Composable
 fun Star(professional: Professional) {
-    Row {
+    Row(
+        modifier = Modifier.padding(top = 2.dp),
+    ) {
         Icon(
             modifier = Modifier.align(CenterVertically),
             painter = painterResource(R.drawable.ic_star),
@@ -93,6 +100,7 @@ fun Star(professional: Professional) {
             contentDescription = "",
         )
         Text(
+            modifier = Modifier.padding(start = 6.dp),
             color = MaterialTheme.colorScheme.scrim,
             text = professional.star,
         )
@@ -115,6 +123,21 @@ private fun LikeButton(
     }
 }
 
+@Composable
+private fun Price(professional: Professional) {
+    Text(
+        modifier = Modifier.padding(start = 16.dp, top = 24.dp,),
+        style = body1,
+        text = "Hourly rate",
+        color = MaterialTheme.colorScheme.onTertiaryContainer,
+    )
+    Text(
+        modifier = Modifier.padding(start = 16.dp, top = 4.dp),
+        style = body2Bold,
+        text = professional.currencyPrice + " " + professional.price,
+    )
+}
+
 @Preview
 @Composable
 private fun ProfessionalItemPreview() {
@@ -123,12 +146,13 @@ private fun ProfessionalItemPreview() {
             professional = Professional(
                 title = "Mike Tyson",
                 type = "Life coach",
-                price = "100$/h",
+                price = "100",
+                currencyPrice = "EUR",
                 star = "5.0",
                 imageUrl = "https://imgur.com/gallery/7R6wmYb"
             ),
             onLikeClick = {},
-            onItemClick = {}
+            onItemClick = {},
         )
     }
 }

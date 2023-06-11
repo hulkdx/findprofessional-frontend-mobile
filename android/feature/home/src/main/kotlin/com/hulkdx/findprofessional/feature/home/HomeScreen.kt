@@ -133,7 +133,8 @@ private fun HomeScreenPreview() {
                 Professional(
                     title = "Mike Tyson",
                     type = "Life coach",
-                    price = "100$/h",
+                    price = "100",
+                    currencyPrice = "EUR",
                     star = "5.0",
                     imageUrl = "https://imgur.com/gallery/7R6wmYb"
                 )

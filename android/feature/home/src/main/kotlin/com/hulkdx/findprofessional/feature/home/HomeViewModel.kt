@@ -9,9 +9,10 @@ import dev.icerock.moko.resources.desc.StringDesc
 val TEST_PRO = Professional(
     title = "Mike Tyson",
     type = "Life coach",
-    price = "100$/h",
+    price = "100",
+    currencyPrice = "EUR",
     star = "5.0",
-    imageUrl = "https://i.imgur.com/HDgjt8R.jpeg"
+    imageUrl = "https://i.imgur.com/HDgjt8R.jpeg",
 )
 
 class HomeViewModel(

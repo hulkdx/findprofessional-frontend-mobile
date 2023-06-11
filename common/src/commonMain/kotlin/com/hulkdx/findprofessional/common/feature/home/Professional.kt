@@ -7,6 +7,7 @@ data class Professional(
     val title: String,
     val type: String,
     val price: String,
+    val currencyPrice: String,
     val imageUrl: String,
     val star: String,
 )
