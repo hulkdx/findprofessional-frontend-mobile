@@ -74,6 +74,7 @@ private fun Title(professional: Professional) {
     Text(
         modifier = Modifier.padding(top = 20.dp),
         style = h3,
+        maxLines = 1,
         text = professional.title,
     )
 }
@@ -84,6 +85,7 @@ fun CoachType(professional: Professional) {
         modifier = Modifier.padding(top = 8.dp),
         style = body1Medium,
         color = MaterialTheme.colorScheme.onTertiaryContainer,
+        maxLines = 1,
         text = professional.type,
     )
 }
@@ -102,6 +104,7 @@ fun Star(professional: Professional) {
         Text(
             modifier = Modifier.padding(start = 6.dp),
             color = MaterialTheme.colorScheme.scrim,
+            maxLines = 1,
             text = professional.star,
         )
     }
@@ -129,11 +132,13 @@ private fun Price(professional: Professional) {
         modifier = Modifier.padding(start = 16.dp, top = 24.dp,),
         style = body1,
         text = "Hourly rate",
+        maxLines = 1,
         color = MaterialTheme.colorScheme.onTertiaryContainer,
     )
     Text(
         modifier = Modifier.padding(start = 16.dp, top = 4.dp),
         style = body2Bold,
+        maxLines = 1,
         text = professional.currencyPrice + " " + professional.price,
     )
 }
