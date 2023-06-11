@@ -18,6 +18,7 @@ import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.hulkdx.findprofessional.common.feature.home.Professional
@@ -29,6 +30,7 @@ import com.hulkdx.findprofessional.core.theme.body1Medium
 import com.hulkdx.findprofessional.core.theme.body2Bold
 import com.hulkdx.findprofessional.core.theme.h3
 import com.hulkdx.findprofessional.core.utils.singleClick
+import com.hulkdx.findprofessional.resources.MR
 
 @Composable
 internal fun ProfessionalItem(
@@ -154,7 +156,7 @@ private fun Price(professional: Professional) {
                 start = 16.dp,
             ),
         style = body1,
-        text = "Hourly rate",
+        text = stringResource(MR.strings.hourly_rate.resourceId),
         maxLines = 1,
         color = MaterialTheme.colorScheme.onTertiaryContainer,
     )
