@@ -8,6 +8,7 @@ private val White = Color(0xFFFFFFFF)
 private val LightBlue = Color(0xFFE1EFFF)
 private val LightGrey = Color(0xFFF4F4F4)
 private val Gray = Color(0xFF8B8B8B)
+private val Yellow = Color(0xFFF6C548)
 
 internal val lightColorPalette = lightColorScheme(
     primary = Green,
@@ -15,6 +16,7 @@ internal val lightColorPalette = lightColorScheme(
     onSecondary = LightBlue,
     onTertiary = LightGrey,
     onTertiaryContainer = Gray,
+    scrim = Yellow,
 )
 
 internal val darkColorPalette = lightColorPalette

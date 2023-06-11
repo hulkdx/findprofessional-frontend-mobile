@@ -8,4 +8,5 @@ data class Professional(
     val type: String,
     val price: String,
     val imageUrl: String,
+    val star: String,
 )

@@ -134,6 +134,7 @@ private fun HomeScreenPreview() {
                     title = "Mike Tyson",
                     type = "Life coach",
                     price = "100$/h",
+                    star = "5.0",
                     imageUrl = "https://imgur.com/gallery/7R6wmYb"
                 )
             ),

@@ -6,6 +6,14 @@ import com.hulkdx.findprofessional.common.feature.home.Professional
 import com.hulkdx.findprofessional.core.utils.getStateFlowWrapper
 import dev.icerock.moko.resources.desc.StringDesc
 
+val TEST_PRO = Professional(
+    title = "Mike Tyson",
+    type = "Life coach",
+    price = "100$/h",
+    star = "5.0",
+    imageUrl = "https://i.imgur.com/HDgjt8R.jpeg"
+)
+
 class HomeViewModel(
     savedStateHandle: SavedStateHandle,
 ) : ViewModel() {
@@ -14,50 +22,7 @@ class HomeViewModel(
 
     init {
         // TODO: test data / remove it
-        professionals.set(listOf(
-            Professional(
-                title = "Mike Tyson",
-                type = "Life coach",
-                price = "100$/h",
-                imageUrl = "https://i.imgur.com/HDgjt8R.jpeg"
-            ),
-            Professional(
-                title = "Mike Tyson",
-                type = "Life coach",
-                price = "100$/h",
-                imageUrl = "https://i.imgur.com/HDgjt8R.jpeg"
-            ),
-            Professional(
-                title = "Mike Tyson",
-                type = "Life coach",
-                price = "100$/h",
-                imageUrl = "https://i.imgur.com/HDgjt8R.jpeg"
-            ),
-            Professional(
-                title = "Mike Tyson",
-                type = "Life coach",
-                price = "100$/h",
-                imageUrl = "https://i.imgur.com/HDgjt8R.jpeg"
-            ),
-            Professional(
-                title = "Mike Tyson",
-                type = "Life coach",
-                price = "100$/h",
-                imageUrl = "https://i.imgur.com/HDgjt8R.jpeg"
-            ),
-            Professional(
-                title = "Mike Tyson",
-                type = "Life coach",
-                price = "100$/h",
-                imageUrl = "https://i.imgur.com/HDgjt8R.jpeg"
-            ),
-            Professional(
-                title = "Mike Tyson",
-                type = "Life coach",
-                price = "100$/h",
-                imageUrl = "https://i.imgur.com/HDgjt8R.jpeg"
-            ),
-        ))
+        professionals.set(listOf(TEST_PRO,TEST_PRO,TEST_PRO,TEST_PRO,TEST_PRO,TEST_PRO,TEST_PRO,TEST_PRO))
     }
 
     fun onSearchClick(query: String) {
