@@ -17,10 +17,46 @@ class HomeViewModel(
         professionals.set(listOf(
             Professional(
                 title = "Mike Tyson",
-                description = "Boxer",
+                type = "Life coach",
                 price = "100$/h",
                 imageUrl = "https://i.imgur.com/HDgjt8R.jpeg"
-            )
+            ),
+            Professional(
+                title = "Mike Tyson",
+                type = "Life coach",
+                price = "100$/h",
+                imageUrl = "https://i.imgur.com/HDgjt8R.jpeg"
+            ),
+            Professional(
+                title = "Mike Tyson",
+                type = "Life coach",
+                price = "100$/h",
+                imageUrl = "https://i.imgur.com/HDgjt8R.jpeg"
+            ),
+            Professional(
+                title = "Mike Tyson",
+                type = "Life coach",
+                price = "100$/h",
+                imageUrl = "https://i.imgur.com/HDgjt8R.jpeg"
+            ),
+            Professional(
+                title = "Mike Tyson",
+                type = "Life coach",
+                price = "100$/h",
+                imageUrl = "https://i.imgur.com/HDgjt8R.jpeg"
+            ),
+            Professional(
+                title = "Mike Tyson",
+                type = "Life coach",
+                price = "100$/h",
+                imageUrl = "https://i.imgur.com/HDgjt8R.jpeg"
+            ),
+            Professional(
+                title = "Mike Tyson",
+                type = "Life coach",
+                price = "100$/h",
+                imageUrl = "https://i.imgur.com/HDgjt8R.jpeg"
+            ),
         ))
     }
 

@@ -5,7 +5,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Professional(
     val title: String,
-    val description: String,
+    val type: String,
     val price: String,
     val imageUrl: String,
 )

@@ -1,6 +1,7 @@
 package com.hulkdx.findprofessional.feature.home
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
@@ -8,9 +9,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
@@ -19,7 +19,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -70,7 +69,7 @@ private fun HomeScreen(
         ) {
             Search(onSearchClick)
             Title()
-            ProfessionalsGrid(
+            ProfessionalList(
                 professionals = professionals,
                 onLikeClick = onLikeClick,
                 onItemClick = onItemClick,
@@ -104,16 +103,16 @@ private fun Title() {
 }
 
 @Composable
-private fun ColumnScope.ProfessionalsGrid(
+private fun ColumnScope.ProfessionalList(
     professionals: List<Professional>,
     onLikeClick: (Professional) -> Unit,
     onItemClick: (Professional) -> Unit,
 ) {
-    LazyVerticalGrid(
+    LazyColumn(
         modifier = Modifier
             .padding(horizontal = 16.dp, vertical = 8.dp)
             .weight(1F, true),
-        columns = GridCells.Fixed(2),
+        verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
         items(professionals) { professional ->
             ProfessionalItem(
@@ -133,7 +132,7 @@ private fun HomeScreenPreview() {
             professionals = listOf(
                 Professional(
                     title = "Mike Tyson",
-                    description = "Boxer",
+                    type = "Life coach",
                     price = "100$/h",
                     imageUrl = "https://imgur.com/gallery/7R6wmYb"
                 )
