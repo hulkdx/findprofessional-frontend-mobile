@@ -40,7 +40,7 @@ val body1 = TextStyle(
     fontFamily = interFamily,
     fontWeight = FontWeight.Normal,
     fontSize = 14.sp,
-    lineHeight = 23.sp,
+    lineHeight = 20.sp,
 )
 
 val body1Medium = TextStyle(

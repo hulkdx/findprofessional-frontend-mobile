@@ -25,6 +25,7 @@ import com.hulkdx.findprofessional.core.commonui.CUAsyncImage
 import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.core.theme.*
 import com.hulkdx.findprofessional.core.theme.body1Medium
+import com.hulkdx.findprofessional.core.theme.body2Bold
 import com.hulkdx.findprofessional.core.theme.h3
 
 @Composable
@@ -38,8 +39,7 @@ internal fun ProfessionalItem(
             .fillMaxWidth()
             .clip(shape = RoundedCornerShape(16.dp))
             .background(MaterialTheme.colorScheme.onPrimary)
-            .padding(bottom = 20.dp)
-        ,
+            .padding(bottom = 20.dp),
     ) {
         Row {
             ProfileImage(professional)
@@ -54,6 +54,7 @@ internal fun ProfessionalItem(
             }
             LikeButton(professional, onLikeClick)
         }
+        Description(professional)
         Price(professional)
     }
 }
@@ -72,7 +73,7 @@ private fun ProfileImage(professional: Professional) {
 @Composable
 private fun Title(professional: Professional) {
     Text(
-        modifier = Modifier.padding(top = 20.dp),
+        modifier = Modifier.padding(top = 16.dp),
         style = h3,
         maxLines = 1,
         text = professional.title,
@@ -82,7 +83,7 @@ private fun Title(professional: Professional) {
 @Composable
 fun CoachType(professional: Professional) {
     Text(
-        modifier = Modifier.padding(top = 8.dp),
+        modifier = Modifier.padding(top = 4.dp),
         style = body1Medium,
         color = MaterialTheme.colorScheme.onTertiaryContainer,
         maxLines = 1,
@@ -102,7 +103,7 @@ fun Star(professional: Professional) {
             contentDescription = "",
         )
         Text(
-            modifier = Modifier.padding(start = 6.dp),
+            modifier = Modifier.padding(start = 2.dp),
             color = MaterialTheme.colorScheme.scrim,
             maxLines = 1,
             text = professional.star,
@@ -116,7 +117,7 @@ private fun LikeButton(
     onLikeClick: (Professional) -> Unit,
 ) {
     IconButton(
-        modifier = Modifier.padding(top = 6.dp),
+        modifier = Modifier.padding(top = 6.dp, end = 8.dp),
         onClick = { onLikeClick(professional) },
     ) {
         Icon(
@@ -127,19 +128,37 @@ private fun LikeButton(
 }
 
 @Composable
+fun Description(professional: Professional) {
+    Text(
+        modifier = Modifier
+            .padding(
+                top = 12.dp,
+                start = 16.dp,
+                end = 16.dp,
+            ),
+        style = body1,
+        text = professional.description,
+    )
+}
+
+@Composable
 private fun Price(professional: Professional) {
     Text(
-        modifier = Modifier.padding(start = 16.dp, top = 24.dp,),
+        modifier = Modifier
+            .padding(
+                top = 16.dp,
+                start = 16.dp,
+            ),
         style = body1,
         text = "Hourly rate",
         maxLines = 1,
         color = MaterialTheme.colorScheme.onTertiaryContainer,
     )
     Text(
-        modifier = Modifier.padding(start = 16.dp, top = 4.dp),
+        modifier = Modifier.padding(start = 16.dp),
         style = body2Bold,
         maxLines = 1,
-        text = professional.currencyPrice + " " + professional.price,
+        text = professional.price,
     )
 }
 
@@ -150,11 +169,11 @@ private fun ProfessionalItemPreview() {
         ProfessionalItem(
             professional = Professional(
                 title = "Mike Tyson",
+                description = "Former professional boxer who competed from 1985 to 2005.",
                 type = "Life coach",
-                price = "100",
-                currencyPrice = "EUR",
+                price = "EUR 100",
                 star = "5.0",
-                imageUrl = "https://imgur.com/gallery/7R6wmYb"
+                imageUrl = "https://imgur.com/gallery/7R6wmYb",
             ),
             onLikeClick = {},
             onItemClick = {},

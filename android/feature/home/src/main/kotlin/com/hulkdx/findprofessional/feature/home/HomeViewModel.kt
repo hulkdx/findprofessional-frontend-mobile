@@ -9,8 +9,8 @@ import dev.icerock.moko.resources.desc.StringDesc
 val TEST_PRO = Professional(
     title = "Mike Tyson",
     type = "Life coach",
-    price = "100",
-    currencyPrice = "EUR",
+    price = "EUR 100",
+    description = "Former professional boxer who competed from 1985 to 2005.",
     star = "5.0",
     imageUrl = "https://i.imgur.com/HDgjt8R.jpeg",
 )
