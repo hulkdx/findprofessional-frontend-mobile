@@ -1,6 +1,7 @@
 package com.hulkdx.findprofessional.feature.home
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -23,10 +24,11 @@ import com.hulkdx.findprofessional.common.feature.home.Professional
 import com.hulkdx.findprofessional.core.R
 import com.hulkdx.findprofessional.core.commonui.CUAsyncImage
 import com.hulkdx.findprofessional.core.theme.AppTheme
-import com.hulkdx.findprofessional.core.theme.*
+import com.hulkdx.findprofessional.core.theme.body1
 import com.hulkdx.findprofessional.core.theme.body1Medium
 import com.hulkdx.findprofessional.core.theme.body2Bold
 import com.hulkdx.findprofessional.core.theme.h3
+import com.hulkdx.findprofessional.core.utils.singleClick
 
 @Composable
 internal fun ProfessionalItem(
@@ -36,6 +38,7 @@ internal fun ProfessionalItem(
 ) {
     Column(
         Modifier
+            .clickable(onClick = singleClick { onItemClick(professional) })
             .fillMaxWidth()
             .clip(shape = RoundedCornerShape(16.dp))
             .background(MaterialTheme.colorScheme.onPrimary)
@@ -118,9 +121,10 @@ private fun LikeButton(
 ) {
     IconButton(
         modifier = Modifier.padding(top = 6.dp, end = 8.dp),
-        onClick = { onLikeClick(professional) },
+        onClick = singleClick { onLikeClick(professional) },
     ) {
         Icon(
+            modifier = Modifier.size(24.dp),
             painter = painterResource(R.drawable.ic_like),
             contentDescription = "",
         )
