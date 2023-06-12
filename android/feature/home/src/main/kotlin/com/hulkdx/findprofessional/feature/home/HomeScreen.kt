@@ -131,11 +131,11 @@ private fun HomeScreenPreview() {
         HomeScreen(
             professionals = listOf(
                 Professional(
-                    title = "Mike Tyson",
-                    type = "Life coach",
+                    fullName = "Mike Tyson",
+                    coachType = "Life coach",
                     price = "EUR 100",
                     description = "Former professional boxer who competed from 1985 to 2005.",
-                    star = "5.0",
+                    rating = "5.0",
                     imageUrl = "https://imgur.com/gallery/7R6wmYb"
                 )
             ),

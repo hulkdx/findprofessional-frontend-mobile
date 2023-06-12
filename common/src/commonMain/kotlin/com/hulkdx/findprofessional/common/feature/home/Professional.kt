@@ -4,10 +4,10 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Professional(
-    val title: String,
-    val type: String,
+    val fullName: String,
+    val coachType: String,
     val price: String,
     val description: String,
     val imageUrl: String,
-    val star: String,
+    val rating: String,
 )

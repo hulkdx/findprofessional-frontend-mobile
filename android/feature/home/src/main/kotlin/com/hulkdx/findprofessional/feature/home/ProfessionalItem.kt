@@ -53,9 +53,9 @@ internal fun ProfessionalItem(
                     .padding(start = 16.dp)
                     .weight(1F)
             ) {
-                Title(professional)
+                FullName(professional)
                 CoachType(professional)
-                Star(professional)
+                Rating(professional)
             }
             LikeButton(professional, onLikeClick)
         }
@@ -76,12 +76,12 @@ private fun ProfileImage(professional: Professional) {
 }
 
 @Composable
-private fun Title(professional: Professional) {
+private fun FullName(professional: Professional) {
     Text(
         modifier = Modifier.padding(top = 16.dp),
         style = h3,
         maxLines = 1,
-        text = professional.title,
+        text = professional.fullName,
     )
 }
 
@@ -92,12 +92,12 @@ fun CoachType(professional: Professional) {
         style = body1Medium,
         color = MaterialTheme.colorScheme.onTertiaryContainer,
         maxLines = 1,
-        text = professional.type,
+        text = professional.coachType,
     )
 }
 
 @Composable
-fun Star(professional: Professional) {
+fun Rating(professional: Professional) {
     Row(
         modifier = Modifier.padding(top = 2.dp),
     ) {
@@ -111,7 +111,7 @@ fun Star(professional: Professional) {
             modifier = Modifier.padding(start = 2.dp),
             color = MaterialTheme.colorScheme.scrim,
             maxLines = 1,
-            text = professional.star,
+            text = professional.rating,
         )
     }
 }
@@ -174,11 +174,11 @@ private fun ProfessionalItemPreview() {
     AppTheme {
         ProfessionalItem(
             professional = Professional(
-                title = "Mike Tyson",
+                fullName = "Mike Tyson",
                 description = "Former professional boxer who competed from 1985 to 2005.",
-                type = "Life coach",
+                coachType = "Life coach",
                 price = "EUR 100",
-                star = "5.0",
+                rating = "5.0",
                 imageUrl = "https://imgur.com/gallery/7R6wmYb",
             ),
             onLikeClick = {},
