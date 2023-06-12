@@ -2,6 +2,7 @@ plugins {
     kotlin("multiplatform")
     kotlin("plugin.serialization") version BuildDep.KOTLIN_VERSION
     id("com.android.library")
+    id("kotlin-parcelize")
 
     id("dev.icerock.mobile.multiplatform-resources") version BuildDep.MOKO_RESOURCES_VERSION
 }
