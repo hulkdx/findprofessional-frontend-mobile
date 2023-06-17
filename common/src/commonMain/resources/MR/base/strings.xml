@@ -11,4 +11,6 @@
     <string name="generalError">Error please try again</string>
 
     <string name="professionals">Professionals</string>
+
+    <string name="hourly_rate">Hourly rate</string>
 </resources>

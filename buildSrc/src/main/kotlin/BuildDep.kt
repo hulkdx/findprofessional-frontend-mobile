@@ -61,6 +61,8 @@ object BuildDep {
     // https://developer.android.com/jetpack/androidx/releases/lifecycle
     const val ANDROIDX_LIFECYCLE = "2.6.1"
 
+    const val COIL_VERSION = "2.4.0"
+
     // --------------------------------------------------------------------------------
     // Android Test
     // --------------------------------------------------------------------------------

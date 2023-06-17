@@ -51,8 +51,7 @@ class LoginVerify(
     private val rule: Rule,
 ) {
     fun signupScreenShown() {
-        rule.onNodeWithTag("SignUpScreen")
-            .assertIsDisplayed()
+        rule.assertNodeIsDisplayed("SignUpScreen")
     }
 
     fun homeScreenShown() {

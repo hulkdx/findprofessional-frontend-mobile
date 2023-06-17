@@ -26,6 +26,7 @@ android {
 
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 
     composeOptions {
@@ -40,6 +41,10 @@ dependencies {
 
     implementation("androidx.lifecycle:lifecycle-runtime-compose:${BuildDep.ANDROIDX_LIFECYCLE}")
     implementation("com.google.accompanist:accompanist-navigation-animation:${BuildDep.ACCOMPANIST_VERSION}")
+    implementation("com.google.accompanist:accompanist-placeholder-material:${BuildDep.ACCOMPANIST_VERSION}")
+
     implementation("androidx.compose.ui:ui-tooling-preview")
     debugImplementation("androidx.compose.ui:ui-tooling")
+
+    implementation("io.coil-kt:coil-compose:${BuildDep.COIL_VERSION}")
 }

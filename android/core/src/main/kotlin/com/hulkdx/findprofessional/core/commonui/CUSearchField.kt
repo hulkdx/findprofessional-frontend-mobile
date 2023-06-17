@@ -21,7 +21,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.hulkdx.findprofessional.core.theme.body2
+import com.hulkdx.findprofessional.core.theme.body2Medium
 
 @Composable
 fun CUSearchField(
@@ -61,7 +61,7 @@ fun CUSearchField(
         placeholder = {
             Text(
                 text = "Search",
-                style = body2,
+                style = body2Medium,
                 color = MaterialTheme.colorScheme.onTertiaryContainer,
             )
         },
