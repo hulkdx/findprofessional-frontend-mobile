@@ -1,9 +1,9 @@
-package com.hulkdx.findprofessional.common.feature.authentication.login
+package com.hulkdx.findprofessional.common.feature.authentication.model
 
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class AuthToken(
+data class Token(
     val accessToken: String,
     val refreshToken: String,
 )

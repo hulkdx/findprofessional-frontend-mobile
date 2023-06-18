@@ -45,7 +45,7 @@ class TokenInterceptor(
                 logoutUseCase.logout()
                 return original
             }
-            val (newAccessToken, newRefreshToken) = try {
+            val response = try {
                 api.refreshToken(refreshToken, accessToken)
             } catch (e: ClientRequestException) {
                 if (e.response.status == Unauthorized) {
@@ -55,6 +55,8 @@ class TokenInterceptor(
                     throw e
                 }
             }
+            val newAccessToken = response.token.accessToken
+            val newRefreshToken = response.token.refreshToken
             accessTokenStorage.set(newAccessToken)
             refreshTokenStorage.set(newRefreshToken)
 

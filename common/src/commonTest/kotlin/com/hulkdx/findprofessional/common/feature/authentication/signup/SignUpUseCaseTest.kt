@@ -2,8 +2,9 @@ package com.hulkdx.findprofessional.common.feature.authentication.signup
 
 import com.hulkdx.findprofessional.common.config.storage.AccessTokenStorage
 import com.hulkdx.findprofessional.common.config.storage.RefreshTokenStorage
-import com.hulkdx.findprofessional.common.feature.authentication.login.AuthToken
-import com.hulkdx.findprofessional.common.feature.authentication.login.LoginUseCase
+import com.hulkdx.findprofessional.common.feature.authentication.model.Auth
+import com.hulkdx.findprofessional.common.feature.authentication.model.Token
+import com.hulkdx.findprofessional.common.feature.authentication.model.User
 import com.hulkdx.findprofessional.common.feature.authentication.signup.model.AuthRequest
 import com.hulkdx.findprofessional.common.navigation.NavigationScreen
 import com.hulkdx.findprofessional.common.navigation.Navigator
@@ -44,7 +45,7 @@ class SignUpUseCaseTest {
         // Arrange
         val accessToken = "accessToken"
         val refreshToken = "accessToken"
-        loginApi.registerReturns = AuthToken(accessToken, refreshToken)
+        loginApi.registerReturns = Auth(Token(accessToken, refreshToken), User(""))
         // Act
         sut.onSubmitClicked(AuthRequest("", ""))
         // Assert
@@ -55,9 +56,9 @@ class SignUpUseCaseTest {
     // region mock classes
 
     private class SignUpApiMock : SignUpApi {
-        lateinit var registerReturns: AuthToken
+        lateinit var registerReturns: Auth
 
-        override suspend fun register(request: AuthRequest): AuthToken {
+        override suspend fun register(request: AuthRequest): Auth {
             return registerReturns
         }
     }

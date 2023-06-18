@@ -4,9 +4,11 @@ import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import com.hulkdx.findprofessional.MainActivity
 import com.hulkdx.findprofessional.common.config.api.interceptor.AppInterceptor
 import com.hulkdx.findprofessional.common.config.storage.AccessTokenStorage
-import com.hulkdx.findprofessional.common.feature.authentication.login.AuthToken
+import com.hulkdx.findprofessional.common.feature.authentication.model.Auth
 import com.hulkdx.findprofessional.common.feature.authentication.login.LoginApi
 import com.hulkdx.findprofessional.common.feature.authentication.login.RefreshTokenApi
+import com.hulkdx.findprofessional.common.feature.authentication.model.Token
+import com.hulkdx.findprofessional.common.feature.authentication.model.User
 import com.hulkdx.findprofessional.common.feature.authentication.signup.model.AuthRequest
 import com.hulkdx.findprofessional.tests.screen.login.launchLoginScreen
 import com.hulkdx.findprofessional.utils.UiTestRule
@@ -36,8 +38,8 @@ import org.koin.dsl.module
 class RefreshTokenTest {
 
     companion object {
-        private val INVALID_TOKENS = AuthToken("invalid_irrelevant_at", "invalid_irrelevant_rt")
-        private val VALID_TOKENS = AuthToken("valid_irrelevant_at", "valid_irrelevant_rt")
+        private val INVALID_TOKENS = Auth(Token("invalid_irrelevant_at", "invalid_irrelevant_rt"), User("email"))
+        private val VALID_TOKENS = Auth(Token("valid_irrelevant_at", "valid_irrelevant_rt"), User("email"))
     }
 
     @get:Rule
@@ -79,7 +81,7 @@ class RefreshTokenTest {
     }
 
     @Test
-    fun when_invalidAccessToken_and_refreshApi_response_invalidTokens_then_intercept_should_logout() = runTest {
+    fun when_invalidAccessToken_and_refreshApi_response_invalidTokens_then_intercept_should_logout() = runBlocking {
         // Arrange
         refreshApiResponseUnauthorized()
         loginWithValidTokens()
@@ -113,7 +115,7 @@ class RefreshTokenTest {
     }
 
     private suspend fun callApiWithInvalidToken() {
-        accessTokenStorage.set(INVALID_TOKENS.accessToken)
+        accessTokenStorage.set(INVALID_TOKENS.token.accessToken)
         runCatching {
             randomApi.randomApi()
         }
@@ -136,19 +138,19 @@ class RefreshTokenTest {
     // region mock classes
 
     private class LoginApiMock : LoginApi {
-        var response: AuthToken? = null
+        var response: Auth? = null
 
-        override suspend fun login(request: AuthRequest): AuthToken {
+        override suspend fun login(request: AuthRequest): Auth {
             return response!!
         }
     }
 
     private class RefreshApiMock : RefreshTokenApi {
-        var response: AuthToken? = null
+        var response: Auth? = null
         var responseError: (suspend () -> Unit)? = null
         var isRefreshTokenCalled = false
 
-        override suspend fun refreshToken(refreshToken: String, accessToken: String): AuthToken {
+        override suspend fun refreshToken(refreshToken: String, accessToken: String): Auth {
             isRefreshTokenCalled = true
             responseError?.let { it() }
             return response!!
@@ -190,7 +192,7 @@ class RefreshTokenTest {
         }
 
         private fun HttpRequestData.hasValidAccessToken(): Boolean {
-            return getAccessToken() != INVALID_TOKENS.accessToken
+            return getAccessToken() != INVALID_TOKENS.token.accessToken
         }
     }
 

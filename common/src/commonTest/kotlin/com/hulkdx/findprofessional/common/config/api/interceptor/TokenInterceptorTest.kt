@@ -4,9 +4,11 @@ package com.hulkdx.findprofessional.common.config.api.interceptor
 
 import com.hulkdx.findprofessional.common.config.storage.AccessTokenStorage
 import com.hulkdx.findprofessional.common.config.storage.RefreshTokenStorage
-import com.hulkdx.findprofessional.common.feature.authentication.login.AuthToken
+import com.hulkdx.findprofessional.common.feature.authentication.model.Auth
 import com.hulkdx.findprofessional.common.feature.authentication.login.RefreshTokenApi
 import com.hulkdx.findprofessional.common.feature.authentication.logout.LogoutUseCase
+import com.hulkdx.findprofessional.common.feature.authentication.model.Token
+import com.hulkdx.findprofessional.common.feature.authentication.model.User
 import com.hulkdx.findprofessional.common.utils.KoinTestUtil
 import io.ktor.client.*
 import io.ktor.client.call.*
@@ -22,7 +24,6 @@ import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
-import kotlin.test.assertNotEquals
 
 class TokenInterceptorTest {
 
@@ -128,7 +129,7 @@ class TokenInterceptorTest {
         val req: HttpRequestBuilder.() -> Unit = {
             header(HttpHeaders.Authorization, "Bearer $oldAccessToken")
         }
-        refreshTokenApi.response = AuthToken(newAccessToken, "irrelevant")
+        refreshTokenApi.response = Auth(Token(newAccessToken, "irrelevant"), User("irrelevant"))
 
         accessTokenStorage.value = "not empty"
         refreshTokenStorage.value = "not empty"
@@ -181,9 +182,9 @@ class TokenInterceptorTest {
 
     private class RefreshTokenApiMock : RefreshTokenApi {
         var isRefreshTokenCalled = false
-        var response: AuthToken = AuthToken("access", "refresh")
+        var response: Auth = Auth(Token("access", "refresh"), User("email"))
 
-        override suspend fun refreshToken(refreshToken: String, accessToken: String): AuthToken {
+        override suspend fun refreshToken(refreshToken: String, accessToken: String): Auth {
             isRefreshTokenCalled = true
             return response
         }
