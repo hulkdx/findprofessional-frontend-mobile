@@ -21,7 +21,8 @@ class SignUpUseCase(
 ) {
 
     suspend fun onSubmitClicked(request: AuthRequest) = try {
-        val (accessToken, refreshToken) = signUpApi.register(request)
+        val (token, user) = signUpApi.register(request)
+        val (accessToken, refreshToken) = token
         accessTokenStorage.set(accessToken)
         refreshTokenStorage.set(refreshToken)
         navigator.navigate(NavigationScreen.Home)

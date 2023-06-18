@@ -2,6 +2,9 @@ package com.hulkdx.findprofessional.common.feature.authentication.login
 
 import com.hulkdx.findprofessional.common.config.storage.AccessTokenStorage
 import com.hulkdx.findprofessional.common.config.storage.RefreshTokenStorage
+import com.hulkdx.findprofessional.common.feature.authentication.model.Auth
+import com.hulkdx.findprofessional.common.feature.authentication.model.Token
+import com.hulkdx.findprofessional.common.feature.authentication.model.User
 import com.hulkdx.findprofessional.common.feature.authentication.signup.model.AuthRequest
 import com.hulkdx.findprofessional.common.navigation.NavigationScreen
 import com.hulkdx.findprofessional.common.navigation.Navigator
@@ -42,7 +45,7 @@ class LoginUseCaseTest {
         // Arrange
         val accessToken = "accessToken"
         val refreshToken = "accessToken"
-        loginApi.loginReturns = AuthToken(accessToken, refreshToken)
+        loginApi.loginReturns = Auth(Token(accessToken, refreshToken), User(""))
         // Act
         sut.onSignInClicked(AuthRequest("", ""))
         // Assert
@@ -53,9 +56,9 @@ class LoginUseCaseTest {
     // region mock classes
 
     private class LoginApiMock : LoginApi {
-        lateinit var loginReturns: AuthToken
+        lateinit var loginReturns: Auth
 
-        override suspend fun login(request: AuthRequest): AuthToken {
+        override suspend fun login(request: AuthRequest): Auth {
             return loginReturns
         }
     }

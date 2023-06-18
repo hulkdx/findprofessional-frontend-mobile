@@ -1,7 +1,9 @@
 package com.hulkdx.findprofessional.common.config.api
 
 import com.hulkdx.findprofessional.common.feature.authentication.login.LoginApi
-import com.hulkdx.findprofessional.common.feature.authentication.login.AuthToken
+import com.hulkdx.findprofessional.common.feature.authentication.model.Auth
+import com.hulkdx.findprofessional.common.feature.authentication.model.Token
+import com.hulkdx.findprofessional.common.feature.authentication.model.User
 import com.hulkdx.findprofessional.common.feature.authentication.signup.SignUpApi
 import com.hulkdx.findprofessional.common.feature.authentication.signup.model.AuthRequest
 import org.koin.core.context.loadKoinModules
@@ -19,16 +21,32 @@ object InMemoryApi {
     var user: AuthRequest? = null
 
     object Signup : SignUpApi {
-        override suspend fun register(request: AuthRequest): AuthToken {
+        override suspend fun register(request: AuthRequest): Auth {
             user = request
-            return AuthToken("uiTestAccessToken", "uiTestRefreshToken")
+            return Auth(
+                Token(
+                "uiTestAccessToken",
+                "uiTestRefreshToken",
+                ),
+                User(
+                    "uiTestEmail",
+                )
+            )
         }
     }
 
     object Login : LoginApi {
-        override suspend fun login(request: AuthRequest): AuthToken {
+        override suspend fun login(request: AuthRequest): Auth {
             if (request == user) {
-                return AuthToken("uiTestAccessToken", "uiTestRefreshToken")
+                return Auth(
+                    Token(
+                        "uiTestAccessToken",
+                        "uiTestRefreshToken",
+                    ),
+                    User(
+                        "uiTestEmail",
+                    )
+                )
             }
             throw RuntimeException("user not found")
         }
