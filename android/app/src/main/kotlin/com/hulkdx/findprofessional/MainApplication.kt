@@ -8,6 +8,7 @@ import com.hulkdx.findprofessional.common.di.initKoin
 import com.hulkdx.findprofessional.di.appModule
 import com.hulkdx.findprofessional.feature.authentication.login.loginModule
 import com.hulkdx.findprofessional.feature.authentication.signup.signUpModule
+import com.hulkdx.findprofessional.feature.authentication.splash.splashModule
 import com.hulkdx.findprofessional.feature.developer.developerModule
 import com.hulkdx.findprofessional.feature.home.homeModule
 import kotlinx.coroutines.runBlocking
@@ -26,6 +27,7 @@ class MainApplication : Application() {
                 signUpModule,
                 homeModule,
                 developerModule,
+                splashModule,
             )
         }
 
