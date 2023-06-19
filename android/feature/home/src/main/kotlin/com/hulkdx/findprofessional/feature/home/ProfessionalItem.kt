@@ -71,7 +71,7 @@ private fun ProfileImage(professional: Professional) {
             .padding(start = 16.dp, top = 24.dp)
             .size(52.dp)
             .clip(shape = CircleShape),
-        url = professional.imageUrl
+        url = professional.profileImageUrl ?: ""
     )
 }
 
@@ -92,7 +92,7 @@ fun CoachType(professional: Professional) {
         style = body1Medium,
         color = MaterialTheme.colorScheme.onTertiaryContainer,
         maxLines = 1,
-        text = professional.coachType,
+        text = professional.coachType ?: "",
     )
 }
 
@@ -174,12 +174,14 @@ private fun ProfessionalItemPreview() {
     AppTheme {
         ProfessionalItem(
             professional = Professional(
-                fullName = "Mike Tyson",
-                description = "Former professional boxer who competed from 1985 to 2005.",
+                id = 1,
+                firstName = "Mike",
+                lastName = "Tyson",
                 coachType = "Life coach",
-                price = "EUR 100",
-                rating = "5.0",
-                imageUrl = "https://imgur.com/gallery/7R6wmYb",
+                priceNumber = 100,
+                priceCurrency = "EUR",
+                email = "",
+                profileImageUrl = "https://imgur.com/gallery/7R6wmYb"
             ),
             onLikeClick = {},
             onItemClick = {},
