@@ -31,4 +31,13 @@ class LoginUseCase(
     fun onDevClicked() {
         navigator.navigate(NavigationScreen.Developer)
     }
+
+    suspend fun onSplashScreenLoaded() {
+        val isUserLoggedIn = accessTokenStorage.get() != null
+        if (isUserLoggedIn) {
+            navigator.navigate(NavigationScreen.Home)
+        } else {
+            navigator.navigate(NavigationScreen.Login)
+        }
+    }
 }
