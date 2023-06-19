@@ -316,7 +316,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7555FFA5242A565B00829871 /* Build configuration list for PBXNativeTarget "FindProfessional" */;
 			buildPhases = (
-				7555FFB5242A651A00829871 /* ShellScript */,
+				7555FFB5242A651A00829871 /* Run Script */,
 				7555FF77242A565900829871 /* Sources */,
 				7555FF78242A565900829871 /* Frameworks */,
 				7555FF79242A565900829871 /* Resources */,
@@ -412,9 +412,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd \"$SRCROOT/..\"\n./gradlew :common:embedAndSignAppleFrameworkForXcode\n";
+			shellScript = "set -o allexport\nsource .env\nset +o allexport\n\ncd \"$SRCROOT/..\"\n./gradlew :common:embedAndSignAppleFrameworkForXcode\n";
 		};
-		7555FFB5242A651A00829871 /* ShellScript */ = {
+		7555FFB5242A651A00829871 /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -423,13 +423,14 @@
 			);
 			inputPaths = (
 			);
+			name = "Run Script";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd \"$SRCROOT/..\"\n./gradlew :common:embedAndSignAppleFrameworkForXcode\n";
+			shellScript = "set -o allexport\nsource .env\nset +o allexport\n\ncd \"$SRCROOT/..\"\n./gradlew :common:embedAndSignAppleFrameworkForXcode\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
