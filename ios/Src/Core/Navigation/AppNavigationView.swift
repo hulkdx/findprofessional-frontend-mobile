@@ -14,7 +14,7 @@ struct AppNavigationView: View {
     }
 
     func initialScreen() -> some View {
-        return LoginScreen()
+        return SplashScreen()
     }
     
     @ViewBuilder

@@ -16,6 +16,8 @@
 		460CE534280D91FE007E758C /* EmailTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460CE533280D91FE007E758C /* EmailTextField.swift */; };
 		460CE536280D923F007E758C /* FilledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460CE535280D923F007E758C /* FilledButton.swift */; };
 		460CE538280D9300007E758C /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460CE537280D9300007E758C /* PasswordTextField.swift */; };
+		462A025A2A42036100974F69 /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462A02582A42036100974F69 /* SplashViewModel.swift */; };
+		462A025B2A42036100974F69 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462A02592A42036100974F69 /* SplashScreen.swift */; };
 		463B8DF6280B014C0016B0BD /* AppFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463B8DF5280B014C0016B0BD /* AppFont.swift */; };
 		4646BB6A298FCD5600F16CBF /* Snackbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4646BB69298FCD5600F16CBF /* Snackbar.swift */; };
 		46905BA7298BD9BB005D4292 /* AppNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46905BA6298BD9BB005D4292 /* AppNavigationView.swift */; };
@@ -69,6 +71,8 @@
 		460CE533280D91FE007E758C /* EmailTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailTextField.swift; sourceTree = "<group>"; };
 		460CE535280D923F007E758C /* FilledButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilledButton.swift; sourceTree = "<group>"; };
 		460CE537280D9300007E758C /* PasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
+		462A02582A42036100974F69 /* SplashViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
+		462A02592A42036100974F69 /* SplashScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		463B8DF5280B014C0016B0BD /* AppFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFont.swift; sourceTree = "<group>"; };
 		4646BB69298FCD5600F16CBF /* Snackbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Snackbar.swift; sourceTree = "<group>"; };
 		46905BA6298BD9BB005D4292 /* AppNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigationView.swift; sourceTree = "<group>"; };
@@ -140,6 +144,15 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		462A02572A42036100974F69 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				462A02582A42036100974F69 /* SplashViewModel.swift */,
+				462A02592A42036100974F69 /* SplashScreen.swift */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
 		46824B9F29E1AABA00EF7F2D /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -209,6 +222,7 @@
 			children = (
 				46E01EB9280AE3A80023A293 /* Login */,
 				460CE52B280D8FEE007E758C /* Signup */,
+				462A02572A42036100974F69 /* Splash */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -451,6 +465,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				462A025B2A42036100974F69 /* SplashScreen.swift in Sources */,
 				2152FB042600AC8F00CF470E /* MainApp.swift in Sources */,
 				46905BA7298BD9BB005D4292 /* AppNavigationView.swift in Sources */,
 				460CE536280D923F007E758C /* FilledButton.swift in Sources */,
@@ -462,6 +477,7 @@
 				46E01EBB280AE3B40023A293 /* LoginScreen.swift in Sources */,
 				46D2116E2993D08B00654431 /* HomeScreen.swift in Sources */,
 				460CE534280D91FE007E758C /* EmailTextField.swift in Sources */,
+				462A025A2A42036100974F69 /* SplashViewModel.swift in Sources */,
 				46E01EBD280AE3FD0023A293 /* LoginViewModel.swift in Sources */,
 				46D56A8D2999201A006F47EC /* AsyncButton.swift in Sources */,
 				460CE52D280D902D007E758C /* SignUpScreen.swift in Sources */,
