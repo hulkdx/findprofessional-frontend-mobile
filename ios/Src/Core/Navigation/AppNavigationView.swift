@@ -35,7 +35,9 @@ class NavigatorImpl: ObservableObject, Navigator {
     @Published var path = NavigationPath()
     
     func navigate(screen: NavigationScreen) {
-        path.append(screen)
+        DispatchQueue.main.async { [weak self] in
+            self?.path.append(screen)
+        }
     }
 }
 
