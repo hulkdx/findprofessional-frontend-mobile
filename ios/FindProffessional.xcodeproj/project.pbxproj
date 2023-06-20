@@ -412,7 +412,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -o allexport\nsource .env\nset +o allexport\n\ncd \"$SRCROOT/..\"\n./gradlew :common:embedAndSignAppleFrameworkForXcode\n";
+			shellScript = "if [ -f .env ]; then\n    set -o allexport\n    source .env\n    set +o allexport\nfi\n\ncd \"$SRCROOT/..\"\n./gradlew :common:embedAndSignAppleFrameworkForXcode\n";
 		};
 		7555FFB5242A651A00829871 /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -430,7 +430,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -o allexport\nsource .env\nset +o allexport\n\ncd \"$SRCROOT/..\"\n./gradlew :common:embedAndSignAppleFrameworkForXcode\n";
+			shellScript = "if [ -f .env ]; then\n    set -o allexport\n    source .env\n    set +o allexport\nfi\n\ncd \"$SRCROOT/..\"\n./gradlew :common:embedAndSignAppleFrameworkForXcode\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
