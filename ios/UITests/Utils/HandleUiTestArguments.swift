@@ -3,6 +3,7 @@ import shared
 
 #if DEBUG
 func handleUiTestArguments() {
+    clearUiTestCache()
     ProcessInfo.processInfo.arguments.forEach { arg in
         if arg == ArgKt.IN_MEMORY_API {
             InMemoryApi.shared.loadKoinModules()
@@ -14,5 +15,9 @@ func handleUiTestArguments() {
             InMemoryApi.shared.user = authRequest
         }
     }
+}
+
+private func clearUiTestCache() {
+    KoinHelper().accessTokenStorage.remove { e in }
 }
 #endif
