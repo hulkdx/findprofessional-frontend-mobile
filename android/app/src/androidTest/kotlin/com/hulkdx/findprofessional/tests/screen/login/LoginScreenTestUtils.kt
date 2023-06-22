@@ -3,14 +3,11 @@ package com.hulkdx.findprofessional.tests.screen.login
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performTextInput
-import com.hulkdx.findprofessional.common.config.storage.AccessTokenStorage
 import com.hulkdx.findprofessional.resources.MR
 import com.hulkdx.findprofessional.utils.Rule
 import com.hulkdx.findprofessional.utils.assertNodeIsDisplayed
-import com.hulkdx.findprofessional.utils.get
 import com.hulkdx.findprofessional.utils.onNodeWithTagRes
 import com.hulkdx.findprofessional.utils.onNodeWithTextRes
-import kotlinx.coroutines.runBlocking
 
 fun launchLoginScreen(
     rule: Rule,
