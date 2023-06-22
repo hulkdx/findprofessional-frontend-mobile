@@ -32,7 +32,7 @@ struct AppNavigationView: View {
 }
 
 class NavigatorImpl: ObservableObject, Navigator {
-    @Published var path = NavigationPath()
+    @Published var path: [NavigationScreen] = []
     
     func navigate(screen: NavigationScreen) {
         DispatchQueue.main.async { [weak self] in

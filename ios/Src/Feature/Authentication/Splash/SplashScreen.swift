@@ -18,6 +18,7 @@ struct SplashScreen: View {
         ZStack {
             ProgressView()
                 .progressViewStyle(CircularProgressViewStyle(tint: AppColor.Green))
+                .task { await viewModel.load() }
         }
     }
 }

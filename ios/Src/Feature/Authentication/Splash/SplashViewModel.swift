@@ -7,13 +7,13 @@ class SplashViewModel: ObservableObject {
     
     init(_ useCase: LoginUseCase) {
         self.useCase = useCase
-        
-        Task {
-            do {
-                try await useCase.onSplashScreenLoaded()
-            } catch {
-                // no-op: usecase already handling exceptions
-            }
+    }
+    
+    func load() async {
+        do {
+            try await useCase.onSplashScreenLoaded()
+        } catch {
+            // no-op: usecase already handling exceptions
         }
     }
 }
