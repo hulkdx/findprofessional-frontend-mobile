@@ -25,6 +25,8 @@ struct AppNavigationView: View {
             SignUpScreen()
         } else if screen is NavigationScreen.Home {
             HomeScreen()
+        } else if screen is NavigationScreen.Splash {
+            SplashScreen()
         } else {
             fatalError("Not implemented")
         }
