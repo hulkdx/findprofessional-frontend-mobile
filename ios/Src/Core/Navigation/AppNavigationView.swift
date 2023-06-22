@@ -14,7 +14,7 @@ struct AppNavigationView: View {
     }
 
     func initialScreen() -> some View {
-        return SplashScreen()
+        return createScreens(screen: navigator.firstScreen)
     }
     
     @ViewBuilder
@@ -34,11 +34,51 @@ struct AppNavigationView: View {
 }
 
 class NavigatorImpl: ObservableObject, Navigator {
+    @Published var firstScreen: NavigationScreen = NavigationScreen.Splash()
     @Published var path: [NavigationScreen] = []
     
     func navigate(screen: NavigationScreen) {
         DispatchQueue.main.async { [weak self] in
-            self?.path.append(screen)
+            self?.navigateMain(screen)
+        }
+    }
+
+    private func navigateMain(_ screen: NavigationScreen) {
+        path.append(screen)
+    }
+
+    func navigate(screen: NavigationScreen, popTo: NavigationScreen, inclusive: Bool) {
+        DispatchQueue.main.async { [weak self] in
+            self?.navigateMain(screen, popTo, inclusive)
+        }
+    }
+
+    private func navigateMain(_ screen: NavigationScreen, _ popTo: NavigationScreen, _ inclusive: Bool) {
+        var found = false
+        for i in 0..<path.count {
+            let p = path[i]
+            if (p == popTo) {
+                var newPath: [NavigationScreen] = []
+                if (inclusive) {
+                    newPath = Array(path[0..<i])
+
+                } else {
+                    newPath = Array(path[0...i])
+                }
+                newPath.append(screen)
+                path = newPath
+                found = true
+                break
+            }
+        }
+        
+        if (!found && firstScreen == popTo) {
+            if (inclusive) {
+                firstScreen = screen
+                path = []
+            } else {
+                path = [screen]
+            }
         }
     }
 }
