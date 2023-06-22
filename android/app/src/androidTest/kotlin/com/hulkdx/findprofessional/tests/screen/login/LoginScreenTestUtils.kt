@@ -16,9 +16,6 @@ fun launchLoginScreen(
     rule: Rule,
     block: LoginDsl.() -> Unit,
 ): LoginDsl {
-    runBlocking {
-        get<AccessTokenStorage>().remove()
-    }
     return LoginDsl(rule).apply(block)
 }
 
