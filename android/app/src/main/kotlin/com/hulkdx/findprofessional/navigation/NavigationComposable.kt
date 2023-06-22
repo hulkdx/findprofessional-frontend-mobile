@@ -47,6 +47,6 @@ private fun SetupNavigation(navController: NavHostController) {
     val navigator: NavigatorImpl = koinInject()
 
     navigator.screenState.value?.apply {
-        navController.navigate(route)
+        navController.navigate(route, navOptions)
     }
 }

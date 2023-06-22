@@ -34,10 +34,11 @@ class LoginUseCase(
 
     suspend fun onSplashScreenLoaded() {
         val isUserLoggedIn = accessTokenStorage.get() != null
-        if (isUserLoggedIn) {
-            navigator.navigate(NavigationScreen.Home)
+        val dest = if (isUserLoggedIn) {
+            NavigationScreen.Home
         } else {
-            navigator.navigate(NavigationScreen.Login)
+            NavigationScreen.Login
         }
+        navigator.navigate(screen = dest, popTo = NavigationScreen.Splash, inclusive = true)
     }
 }
