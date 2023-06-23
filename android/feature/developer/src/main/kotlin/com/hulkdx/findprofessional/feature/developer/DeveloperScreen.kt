@@ -1,5 +1,8 @@
 package com.hulkdx.findprofessional.feature.developer
 
+import android.app.Activity
+import android.content.Context
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -13,12 +16,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.hulkdx.findprofessional.common.config.storage.DeveloperStorage
 import com.hulkdx.findprofessional.common.config.storage.DeveloperStorage.Key.MockData
 import com.hulkdx.findprofessional.core.theme.AppTheme
+import com.hulkdx.findprofessional.core.utils.ApplicationUtils.restartApplication
 import kotlinx.coroutines.launch
 import org.koin.compose.koinInject
 
@@ -26,6 +31,11 @@ import org.koin.compose.koinInject
 fun DeveloperScreen() {
     val storage = koinInject<DeveloperStorage>()
     val scope = rememberCoroutineScope()
+    val context = LocalContext.current
+
+    BackHandler {
+        restartApplication(context)
+    }
 
     val useMockDataFlow = storage.getAsFlowBoolean(MockData).collectAsStateWithLifecycle(false)
     val useMockData = useMockDataFlow.value ?: false
@@ -71,4 +81,3 @@ private fun HomeScreenPreview() {
         )
     }
 }
-

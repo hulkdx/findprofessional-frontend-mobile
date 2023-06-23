@@ -16,10 +16,6 @@ class ProfessionalApiImpl(
 ) : ProfessionalApi {
 
     override suspend fun findAll(): List<Professional> {
-        return client.getAuth(accessTokenStorage, urlString)
-    }
-
-    companion object {
-        const val urlString = "http://10.0.2.2:8081/professional"
+        return client.getAuth(accessTokenStorage, "professional")
     }
 }
