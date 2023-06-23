@@ -19,9 +19,8 @@ class LoginUseCase(
 
     suspend fun onSignInClicked(request: AuthRequest) = try {
         val (token, user) = api.login(request)
-        val (accessToken, refreshToken) = token
-        accessTokenStorage.set(accessToken)
-        refreshTokenStorage.set(refreshToken)
+        accessTokenStorage.set(token.accessToken)
+        refreshTokenStorage.set(token.refreshToken)
         navigator.navigate(NavigationScreen.Home)
         null
     } catch (e: Throwable) {
