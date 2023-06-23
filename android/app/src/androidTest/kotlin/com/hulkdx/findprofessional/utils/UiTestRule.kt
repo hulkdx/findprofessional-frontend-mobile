@@ -3,22 +3,29 @@ package com.hulkdx.findprofessional.utils
 import androidx.compose.ui.graphics.asAndroidBitmap
 import androidx.compose.ui.test.captureToImage
 import androidx.compose.ui.test.onRoot
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.edit
 import com.hulkdx.findprofessional.navigation.NavigatorImpl
+import kotlinx.coroutines.runBlocking
 import org.junit.rules.TestRule
 import org.junit.runner.Description
 import org.junit.runners.model.Statement
-import org.koin.java.KoinJavaComponent
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
 class UiTestRule(
     private val composeRule: Rule
-): TestRule {
+): TestRule, KoinComponent {
 
-    private val navigator by KoinJavaComponent.inject<NavigatorImpl>(NavigatorImpl::class.java)
+    private val navigator: NavigatorImpl by inject()
+    private val dataStore: DataStore<Preferences> by inject()
 
     override fun apply(base: Statement, description: Description): Statement {
         return object : Statement() {
             override fun evaluate() {
                 try {
+                    setup()
                     base.evaluate()
                 } catch (e: Throwable) {
                     failed(description)
@@ -30,11 +37,11 @@ class UiTestRule(
         }
     }
 
-    private fun tearDown() {
-        cleanup()
+    private fun setup() {
+        runBlocking { dataStore.edit { it.clear() } }
     }
 
-    private fun cleanup() {
+    private fun tearDown() {
         navigator.screenState.value = null
     }
 

@@ -64,8 +64,13 @@ class LoginUseCaseTest {
     }
 
     private class NavigatorMock : Navigator {
-        override fun navigate(screen: NavigationScreen) {
-        }
+        override fun navigate(screen: NavigationScreen) {}
+
+        override fun navigate(
+            screen: NavigationScreen,
+            popTo: NavigationScreen,
+            inclusive: Boolean,
+        ) {}
     }
 
     private class AccessTokenStorageMock : AccessTokenStorage {

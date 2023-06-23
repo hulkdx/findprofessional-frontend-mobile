@@ -1,7 +1,5 @@
 package com.hulkdx.findprofessional.tests.screen.login
 
-import androidx.compose.ui.test.assertIsDisplayed
-import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performTextInput
@@ -14,7 +12,9 @@ import com.hulkdx.findprofessional.utils.onNodeWithTextRes
 fun launchLoginScreen(
     rule: Rule,
     block: LoginDsl.() -> Unit,
-) = LoginDsl(rule).apply(block)
+): LoginDsl {
+    return LoginDsl(rule).apply(block)
+}
 
 class LoginDsl(
     private val rule: Rule,

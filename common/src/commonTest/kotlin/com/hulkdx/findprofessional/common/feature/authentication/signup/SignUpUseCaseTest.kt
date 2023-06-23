@@ -66,6 +66,13 @@ class SignUpUseCaseTest {
     private class NavigatorMock : Navigator {
         override fun navigate(screen: NavigationScreen) {
         }
+
+        override fun navigate(
+            screen: NavigationScreen,
+            popTo: NavigationScreen,
+            inclusive: Boolean,
+        ) {
+        }
     }
 
     private class AccessTokenStorageMock : AccessTokenStorage {
@@ -78,6 +85,7 @@ class SignUpUseCaseTest {
         override suspend fun set(value: String) {
             setValue = value
         }
+
         override suspend fun remove() {}
     }
 
@@ -91,6 +99,7 @@ class SignUpUseCaseTest {
         override suspend fun set(value: String) {
             setValue = value
         }
+
         override suspend fun remove() {}
     }
 

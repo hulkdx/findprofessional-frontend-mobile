@@ -6,11 +6,11 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -25,13 +25,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.hulkdx.findprofessional.common.BuildConfig
-import com.hulkdx.findprofessional.common.navigation.Navigator
+import com.hulkdx.findprofessional.core.commonui.CUSnackBar
 import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.core.theme.body1
 import com.hulkdx.findprofessional.core.utils.append
 import com.hulkdx.findprofessional.core.utils.bold
 import com.hulkdx.findprofessional.core.utils.singleClick
-import com.hulkdx.findprofessional.core.commonui.CUSnackBar
 import com.hulkdx.findprofessional.feature.authentication.ui.EmailTextField
 import com.hulkdx.findprofessional.feature.authentication.ui.FilledButton
 import com.hulkdx.findprofessional.feature.authentication.ui.PasswordTextField
@@ -74,7 +73,8 @@ private fun LoginScreen(
 ) {
     Box(
         modifier = Modifier
-            .statusBarsPadding()
+            .systemBarsPadding()
+            .imePadding()
             .testTag("LoginScreen")
     ) {
         Column(
@@ -85,7 +85,7 @@ private fun LoginScreen(
             verticalArrangement = Arrangement.Center,
         ) {
             EmailTextField(
-                modifier = Modifier.statusBarsPadding(),
+                modifier = Modifier,
                 value = email,
                 onValueChanged = onEmailChanged,
             )
@@ -182,9 +182,9 @@ fun SignUpButton(
 @Composable
 fun DeveloperButton(
     modifier: Modifier,
-    onClick: () -> Unit
+    onClick: () -> Unit,
 ) {
-    TextButton(modifier = modifier,onClick = onClick) {
+    TextButton(modifier = modifier, onClick = onClick) {
         Text(text = "dev")
     }
 }

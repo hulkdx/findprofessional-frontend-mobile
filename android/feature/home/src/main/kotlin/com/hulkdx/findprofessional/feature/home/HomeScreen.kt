@@ -8,7 +8,7 @@ import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
@@ -59,7 +59,7 @@ private fun HomeScreen(
     Box(
         modifier = Modifier
             .background(MaterialTheme.colorScheme.onTertiary)
-            .statusBarsPadding()
+            .systemBarsPadding()
             .testTag("HomeScreen")
     ) {
         Column(
