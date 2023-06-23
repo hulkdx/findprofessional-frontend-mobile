@@ -1,13 +1,17 @@
 package com.hulkdx.findprofessional.common.config.api
 
 import com.hulkdx.findprofessional.common.feature.authentication.login.LoginApi
+import com.hulkdx.findprofessional.common.feature.authentication.login.loginModule
+import com.hulkdx.findprofessional.common.feature.authentication.logout.logoutModule
 import com.hulkdx.findprofessional.common.feature.authentication.model.Auth
 import com.hulkdx.findprofessional.common.feature.authentication.model.Token
 import com.hulkdx.findprofessional.common.feature.authentication.model.User
 import com.hulkdx.findprofessional.common.feature.authentication.signup.SignUpApi
 import com.hulkdx.findprofessional.common.feature.authentication.signup.model.AuthRequest
+import com.hulkdx.findprofessional.common.feature.authentication.signup.signUpModule
 import com.hulkdx.findprofessional.common.feature.home.Professional
 import com.hulkdx.findprofessional.common.feature.home.ProfessionalApi
+import com.hulkdx.findprofessional.common.feature.home.homeModule
 import org.koin.core.context.loadKoinModules
 import org.koin.core.context.unloadKoinModules
 import org.koin.dsl.module
@@ -28,8 +32,8 @@ object InMemoryApi {
             user = request
             return Auth(
                 Token(
-                "uiTestAccessToken",
-                "uiTestRefreshToken",
+                    "uiTestAccessToken",
+                    "uiTestRefreshToken",
                 ),
                 User(
                     "uiTestEmail",
@@ -55,7 +59,7 @@ object InMemoryApi {
         }
     }
 
-    object Pro: ProfessionalApi {
+    object Pro : ProfessionalApi {
         override suspend fun findAll(): List<Professional> {
             return listOf(
                 Professional(
@@ -78,5 +82,14 @@ object InMemoryApi {
 
     fun unloadKoinModules() {
         unloadKoinModules(module)
+        // reload the api modules here
+        loadKoinModules(
+            listOf(
+                loginModule,
+                signUpModule,
+                logoutModule,
+                homeModule,
+            )
+        )
     }
 }
