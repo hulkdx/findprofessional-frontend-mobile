@@ -111,7 +111,7 @@ fun Rating(professional: Professional) {
             modifier = Modifier.padding(start = 2.dp),
             color = MaterialTheme.colorScheme.scrim,
             maxLines = 1,
-            text = professional.rating,
+            text = professional.rating ?: "0.0",
         )
     }
 }
@@ -135,6 +135,7 @@ private fun LikeButton(
 
 @Composable
 fun Description(professional: Professional) {
+    val description = professional.description ?: return
     Text(
         modifier = Modifier
             .padding(
@@ -143,7 +144,7 @@ fun Description(professional: Professional) {
                 end = 16.dp,
             ),
         style = body1,
-        text = professional.description,
+        text = description,
     )
 }
 
@@ -181,7 +182,9 @@ private fun ProfessionalItemPreview() {
                 priceNumber = 100,
                 priceCurrency = "EUR",
                 email = "",
-                profileImageUrl = "https://imgur.com/gallery/7R6wmYb"
+                profileImageUrl = "https://imgur.com/gallery/7R6wmYb",
+                rating = "5.0",
+                description = "former professional boxer who competed from 1985 to 2005"
             ),
             onLikeClick = {},
             onItemClick = {},

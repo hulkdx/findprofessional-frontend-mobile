@@ -18,13 +18,11 @@ data class Professional(
     val priceNumber: Int? = null,
     val priceCurrency: String? = null,
     val profileImageUrl: String? = null,
+    val rating: String? = null,
+    val description: String? = null
 ) : CommonParcelable {
     val fullName: String
         get() = "$firstName $lastName"
     val price: String
         get() = "$priceCurrency $priceNumber"
-    val description: String
-        get() = "TODO"
-    val rating: String
-        get() = "TODO"
 }
