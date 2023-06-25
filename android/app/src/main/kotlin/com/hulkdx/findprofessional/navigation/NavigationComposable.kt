@@ -4,22 +4,23 @@ package com.hulkdx.findprofessional.navigation
 
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.currentBackStackEntryAsState
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.composable
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import com.hulkdx.findprofessional.core.navigation.AndroidNavigationScreen
-import com.hulkdx.findprofessional.feature.authentication.login.LoginNavigationScreen
 import com.hulkdx.findprofessional.feature.authentication.splash.SplashNavigationScreen
-import com.hulkdx.findprofessional.feature.home.HomeNavigationScreen
 import org.koin.compose.getKoin
 import org.koin.compose.koinInject
 
 @Composable
 fun NavigationComposable() {
     val navController = rememberAnimatedNavController()
-    CreateScreens(navController)
     SetupNavigation(navController)
+    CreateScreens(navController)
 }
 
 @Composable
@@ -46,7 +47,48 @@ private fun CreateScreens(navController: NavHostController) {
 private fun SetupNavigation(navController: NavHostController) {
     val navigator: NavigatorImpl = koinInject()
 
-    navigator.screenState.value?.apply {
+    SetupNavigationNavigate(navController, navigator)
+    SetupNavigationCurrentScreen(navController, navigator)
+    SetupNavigationGoBack(navigator, navController)
+}
+
+@Composable
+private fun SetupNavigationNavigate(
+    navController: NavHostController,
+    navigator: NavigatorImpl,
+) {
+    val screenState by remember { navigator.screenState }
+
+    screenState?.apply {
+        if (isNavigated) {
+            return@apply
+        }
+        isNavigated = true
         navController.navigate(route, navOptions)
+    }
+}
+
+@Composable
+private fun SetupNavigationGoBack(
+    navigator: NavigatorImpl,
+    navController: NavHostController,
+) {
+    val goBack by remember { navigator.goBack }
+
+    if (goBack) {
+        navigator.goBack.value = false
+        navController.popBackStack()
+    }
+}
+
+@Composable
+private fun SetupNavigationCurrentScreen(
+    navController: NavHostController,
+    navigator: NavigatorImpl,
+) {
+    val navStack by navController.currentBackStackEntryAsState()
+    val currentScreen = navStack?.destination?.route
+    if (currentScreen != null) {
+        navigator.currentScreen = currentScreen
     }
 }

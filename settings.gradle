@@ -18,6 +18,7 @@ include ':ios'
 include ':common'
 
 include ':android:feature:authentication'
-include ':android:feature:home'
 include ':android:feature:developer'
+include ':android:feature:home'
+include ':android:feature:navigation'
 

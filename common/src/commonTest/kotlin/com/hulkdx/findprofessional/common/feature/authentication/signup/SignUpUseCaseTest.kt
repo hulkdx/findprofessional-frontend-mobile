@@ -73,6 +73,9 @@ class SignUpUseCaseTest {
             inclusive: Boolean,
         ) {
         }
+        override fun goBack() {}
+
+        override fun getCurrentScreen(): NavigationScreen { throw RuntimeException() }
     }
 
     private class AccessTokenStorageMock : AccessTokenStorage {
