@@ -7,6 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.currentBackStackEntryAsState
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.composable
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
@@ -18,8 +19,8 @@ import org.koin.compose.koinInject
 @Composable
 fun NavigationComposable() {
     val navController = rememberAnimatedNavController()
-    CreateScreens(navController)
     SetupNavigation(navController)
+    CreateScreens(navController)
 }
 
 @Composable
@@ -45,6 +46,16 @@ private fun CreateScreens(navController: NavHostController) {
 @Composable
 private fun SetupNavigation(navController: NavHostController) {
     val navigator: NavigatorImpl = koinInject()
+
+    SetupNavigationNavigate(navController, navigator)
+    SetupNavigationCurrentScreen(navController, navigator)
+}
+
+@Composable
+private fun SetupNavigationNavigate(
+    navController: NavHostController,
+    navigator: NavigatorImpl,
+) {
     val screenState by remember { navigator.screenState }
 
     screenState?.apply {
@@ -53,5 +64,17 @@ private fun SetupNavigation(navController: NavHostController) {
         }
         isNavigated = true
         navController.navigate(route, navOptions)
+    }
+}
+
+@Composable
+private fun SetupNavigationCurrentScreen(
+    navController: NavHostController,
+    navigator: NavigatorImpl,
+) {
+    val navStack by navController.currentBackStackEntryAsState()
+    val currentScreen = navStack?.destination?.route
+    if (currentScreen != null) {
+        navigator.currentScreen = currentScreen
     }
 }

@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.hulkdx.findprofessional.feature.home"
+    namespace = "com.hulkdx.findprofessional.feature.navigation"
     compileSdk = BuildDep.COMPILE_SDK_VERSION
 
     defaultConfig {
@@ -45,10 +45,10 @@ android {
 dependencies {
     implementation(project(":android:core"))
     implementation(project(":common"))
-    implementation(project(":android:feature:navigation"))
 
     implementation(platform("androidx.compose:compose-bom:${BuildDep.COMPOSE_BOM}"))
     implementation("io.insert-koin:koin-androidx-compose:${BuildDep.KOIN_COMPOSE_VERSION}")
+    implementation("com.google.accompanist:accompanist-navigation-animation:${BuildDep.ACCOMPANIST_VERSION}")
 
     implementation("androidx.compose.ui:ui-tooling-preview")
     debugImplementation("androidx.compose.ui:ui-tooling")

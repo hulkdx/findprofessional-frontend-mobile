@@ -28,6 +28,7 @@ import com.hulkdx.findprofessional.core.commonui.CUSearchField
 import com.hulkdx.findprofessional.core.commonui.CUSnackBar
 import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.core.theme.h1
+import com.hulkdx.findprofessional.feature.navigation.AppNavigationBar
 import com.hulkdx.findprofessional.resources.MR
 import dev.icerock.moko.resources.compose.localized
 import org.koin.androidx.compose.getViewModel
@@ -80,6 +81,7 @@ private fun HomeScreen(
             message = error,
             onDismiss = onErrorDismissed
         )
+        AppNavigationBar()
     }
 }
 

@@ -3,10 +3,8 @@ package com.hulkdx.findprofessional.navigation
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.neverEqualPolicy
 import androidx.navigation.NavOptions
-import androidx.navigation.navOptions
 import com.hulkdx.findprofessional.common.navigation.NavigationScreen
 import com.hulkdx.findprofessional.common.navigation.Navigator
-import com.hulkdx.findprofessional.core.navigation.AndroidNavigationScreen
 import com.hulkdx.findprofessional.feature.authentication.login.LoginNavigationScreen
 import com.hulkdx.findprofessional.feature.authentication.signup.SignUpNavigationScreen
 import com.hulkdx.findprofessional.feature.authentication.splash.SplashNavigationScreen
@@ -16,6 +14,7 @@ import com.hulkdx.findprofessional.feature.home.HomeNavigationScreen
 class NavigatorImpl : Navigator {
 
     val screenState = mutableStateOf<State?>(null, neverEqualPolicy())
+    var currentScreen: String = ""
 
     override fun navigate(screen: NavigationScreen) {
         val route = screen.toAndroidScreen().route
@@ -32,7 +31,7 @@ class NavigatorImpl : Navigator {
     }
 
     override fun getCurrentScreen(): NavigationScreen {
-        return screenState.value?.route.toNavigationScreen()
+        return currentScreen.toNavigationScreen()
     }
 
     data class State(
