@@ -81,5 +81,15 @@ class NavigatorImpl: ObservableObject, Navigator {
             }
         }
     }
+    
+    func goBack() {
+        DispatchQueue.main.async { [weak self] in
+            self?.path.removeLast()
+        }
+    }
+
+    func getCurrentScreen() -> NavigationScreen {
+        return path.last ?? NavigationScreen.Splash()
+    }
 }
 
