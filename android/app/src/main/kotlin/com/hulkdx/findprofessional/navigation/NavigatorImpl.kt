@@ -38,6 +38,7 @@ class NavigatorImpl : Navigator {
     data class State(
         val route: String,
         val navOptions: NavOptions? = null,
+        var isNavigated: Boolean = false,
     )
 }
 
