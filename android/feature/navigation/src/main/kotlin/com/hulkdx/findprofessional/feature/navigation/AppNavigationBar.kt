@@ -3,7 +3,7 @@ package com.hulkdx.findprofessional.feature.navigation
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -12,8 +12,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.stringResource
 import com.hulkdx.findprofessional.common.navigation.NavigationScreen
 import com.hulkdx.findprofessional.common.navigation.Navigator
+import com.hulkdx.findprofessional.resources.MR
 import org.koin.compose.koinInject
 
 @Composable
@@ -28,13 +30,13 @@ fun AppNavigationBar(
 ) {
     val items = listOf(
         NavData(
-            name = "Home",
+            name = stringResource(MR.strings.home.resourceId),
             icon = Icons.Filled.Home,
             screen = NavigationScreen.Home
         ),
         NavData(
-            name = "Settings",
-            icon = Icons.Filled.Settings,
+            name = stringResource(MR.strings.profile.resourceId),
+            icon = Icons.Filled.Person,
             screen = NavigationScreen.Login,
         )
     )

@@ -13,4 +13,7 @@
     <string name="professionals">Professionals</string>
 
     <string name="hourly_rate">Hourly rate</string>
+
+    <string name="home">Home</string>
+    <string name="profile">Profile</string>
 </resources>
