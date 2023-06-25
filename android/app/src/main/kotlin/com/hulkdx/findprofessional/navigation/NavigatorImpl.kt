@@ -14,6 +14,7 @@ import com.hulkdx.findprofessional.feature.home.HomeNavigationScreen
 class NavigatorImpl : Navigator {
 
     val screenState = mutableStateOf<State?>(null, neverEqualPolicy())
+    val goBack = mutableStateOf(false)
     var currentScreen: String = ""
 
     override fun navigate(screen: NavigationScreen) {
@@ -28,6 +29,10 @@ class NavigatorImpl : Navigator {
             .setPopUpTo(popToRoute, inclusive)
             .build()
         screenState.value = State(route, options)
+    }
+
+    override fun goBack() {
+        goBack.value = true
     }
 
     override fun getCurrentScreen(): NavigationScreen {

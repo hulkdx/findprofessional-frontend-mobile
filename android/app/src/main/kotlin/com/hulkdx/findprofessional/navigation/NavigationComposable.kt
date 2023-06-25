@@ -49,6 +49,7 @@ private fun SetupNavigation(navController: NavHostController) {
 
     SetupNavigationNavigate(navController, navigator)
     SetupNavigationCurrentScreen(navController, navigator)
+    SetupNavigationGoBack(navigator, navController)
 }
 
 @Composable
@@ -64,6 +65,19 @@ private fun SetupNavigationNavigate(
         }
         isNavigated = true
         navController.navigate(route, navOptions)
+    }
+}
+
+@Composable
+private fun SetupNavigationGoBack(
+    navigator: NavigatorImpl,
+    navController: NavHostController,
+) {
+    val goBack by remember { navigator.goBack }
+
+    if (goBack) {
+        navigator.goBack.value = false
+        navController.popBackStack()
     }
 }
 
