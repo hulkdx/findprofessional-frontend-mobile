@@ -31,6 +31,10 @@ class NavigatorImpl : Navigator {
         screenState.value = State(route, options)
     }
 
+    override fun getCurrentScreen(): NavigationScreen {
+        return screenState.value?.route.toNavigationScreen()
+    }
+
     data class State(
         val route: String,
         val navOptions: NavOptions? = null,
@@ -39,9 +43,19 @@ class NavigatorImpl : Navigator {
 
 private fun NavigationScreen.toAndroidScreen() =
     when (this) {
-        NavigationScreen.Login -> LoginNavigationScreen()
-        NavigationScreen.Home -> HomeNavigationScreen()
-        NavigationScreen.SignUp -> SignUpNavigationScreen()
-        NavigationScreen.Developer -> DeveloperNavigationScreen()
-        NavigationScreen.Splash -> SplashNavigationScreen()
+        is NavigationScreen.Login -> LoginNavigationScreen()
+        is NavigationScreen.Home -> HomeNavigationScreen()
+        is NavigationScreen.SignUp -> SignUpNavigationScreen()
+        is NavigationScreen.Developer -> DeveloperNavigationScreen()
+        is NavigationScreen.Splash -> SplashNavigationScreen()
+    }
+
+private fun String?.toNavigationScreen() =
+    when (this) {
+        LoginNavigationScreen().route -> NavigationScreen.Login
+        HomeNavigationScreen().route -> NavigationScreen.Home
+        SignUpNavigationScreen().route -> NavigationScreen.SignUp
+        DeveloperNavigationScreen().route -> NavigationScreen.Developer
+        SplashNavigationScreen().route -> NavigationScreen.Splash
+        else -> throw RuntimeException("Route=$this is not defined")
     }
