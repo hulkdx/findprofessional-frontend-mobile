@@ -37,7 +37,7 @@ fun AppNavigationBar(
         NavData(
             name = stringResource(MR.strings.profile.resourceId),
             icon = Icons.Filled.Person,
-            screen = NavigationScreen.Login,
+            screen = NavigationScreen.Profile,
         )
     )
 
