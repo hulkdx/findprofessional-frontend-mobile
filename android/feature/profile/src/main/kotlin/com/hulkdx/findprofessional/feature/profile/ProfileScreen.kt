@@ -11,11 +11,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
+import com.hulkdx.findprofessional.common.navigation.Navigator
 import com.hulkdx.findprofessional.core.commonui.CUSnackBar
 import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.feature.navigation.AppNavigationBar
+import com.hulkdx.findprofessional.feature.navigation.StubNavigator
 import dev.icerock.moko.resources.compose.localized
 import org.koin.androidx.compose.getViewModel
+import org.koin.compose.koinInject
 
 
 @Composable
@@ -23,6 +26,7 @@ fun ProfileScreen(viewModel: ProfileViewModel = getViewModel()) {
     val error by viewModel.error.collectAsStateWithLifecycle()
 
     ProfileScreen(
+        navigator = koinInject(),
         error = error?.localized(),
         onErrorDismissed = { viewModel.error.set(null) },
     )
@@ -30,6 +34,7 @@ fun ProfileScreen(viewModel: ProfileViewModel = getViewModel()) {
 
 @Composable
 private fun ProfileScreen(
+    navigator: Navigator,
     error: String?,
     onErrorDismissed: () -> Unit,
 ) {
@@ -45,7 +50,7 @@ private fun ProfileScreen(
             message = error,
             onDismiss = onErrorDismissed
         )
-        AppNavigationBar()
+        AppNavigationBar(navigator)
     }
 }
 
@@ -54,6 +59,7 @@ private fun ProfileScreen(
 private fun ProfileScreenPreview() {
     AppTheme {
         ProfileScreen(
+            navigator = StubNavigator(),
             error = "",
             onErrorDismissed = {},
         )
