@@ -24,17 +24,14 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.hulkdx.findprofessional.common.feature.home.Professional
-import com.hulkdx.findprofessional.common.navigation.Navigator
 import com.hulkdx.findprofessional.core.commonui.CUSearchField
 import com.hulkdx.findprofessional.core.commonui.CUSnackBar
 import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.core.theme.h1
 import com.hulkdx.findprofessional.feature.navigation.AppNavigationBar
-import com.hulkdx.findprofessional.feature.navigation.StubNavigator
 import com.hulkdx.findprofessional.resources.MR
 import dev.icerock.moko.resources.compose.localized
 import org.koin.androidx.compose.getViewModel
-import org.koin.compose.koinInject
 
 @Composable
 fun HomeScreen(viewModel: HomeViewModel = getViewModel()) {
@@ -42,7 +39,6 @@ fun HomeScreen(viewModel: HomeViewModel = getViewModel()) {
     val professionals by viewModel.professionals.collectAsStateWithLifecycle()
 
     HomeScreen(
-        navigator = koinInject(),
         professionals = professionals,
         onSearchClick = viewModel::onSearchClick,
         onLikeClick = viewModel::onLikeClick,
@@ -54,7 +50,6 @@ fun HomeScreen(viewModel: HomeViewModel = getViewModel()) {
 
 @Composable
 private fun HomeScreen(
-    navigator: Navigator,
     professionals: List<Professional>,
     onLikeClick: (Professional) -> Unit,
     onItemClick: (Professional) -> Unit,
@@ -86,7 +81,7 @@ private fun HomeScreen(
             message = error,
             onDismiss = onErrorDismissed
         )
-        AppNavigationBar(navigator)
+        AppNavigationBar()
     }
 }
 
@@ -136,7 +131,6 @@ private fun ColumnScope.ProfessionalList(
 private fun HomeScreenPreview() {
     AppTheme {
         HomeScreen(
-            navigator = StubNavigator(),
             professionals = listOf(
                 Professional(
                     id = 1,
