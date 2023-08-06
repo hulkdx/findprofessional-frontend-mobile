@@ -5,6 +5,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hulkdx.findprofessional.common.feature.home.HomeUseCase
 import com.hulkdx.findprofessional.common.feature.home.Professional
+import com.hulkdx.findprofessional.common.navigation.NavigationScreen
+import com.hulkdx.findprofessional.common.navigation.Navigator
 import com.hulkdx.findprofessional.core.utils.getStateFlowWrapper
 import dev.icerock.moko.resources.desc.StringDesc
 import kotlinx.coroutines.launch
@@ -12,6 +14,7 @@ import kotlinx.coroutines.launch
 class HomeViewModel(
     savedStateHandle: SavedStateHandle,
     private val useCase: HomeUseCase,
+    private val navigator: Navigator,
 ) : ViewModel() {
     val error by savedStateHandle.getStateFlowWrapper<StringDesc?>(null)
     val professionals by savedStateHandle.getStateFlowWrapper<List<Professional>>(listOf())
@@ -36,5 +39,6 @@ class HomeViewModel(
     }
 
     fun onItemClick(professional: Professional) {
+        navigator.navigate(NavigationScreen.HomeDetail)
     }
 }

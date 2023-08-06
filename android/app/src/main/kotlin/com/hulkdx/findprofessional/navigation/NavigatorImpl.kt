@@ -10,6 +10,7 @@ import com.hulkdx.findprofessional.feature.authentication.signup.SignUpNavigatio
 import com.hulkdx.findprofessional.feature.authentication.splash.SplashNavigationScreen
 import com.hulkdx.findprofessional.feature.developer.DeveloperNavigationScreen
 import com.hulkdx.findprofessional.feature.home.HomeNavigationScreen
+import com.hulkdx.findprofessional.feature.home.detail.HomeDetailNavigationScreen
 import com.hulkdx.findprofessional.feature.profile.ProfileNavigationScreen
 
 class NavigatorImpl : Navigator {
@@ -51,6 +52,7 @@ private fun NavigationScreen.toAndroidScreen() =
     when (this) {
         is NavigationScreen.Login -> LoginNavigationScreen()
         is NavigationScreen.Home -> HomeNavigationScreen()
+        is NavigationScreen.HomeDetail -> HomeDetailNavigationScreen()
         is NavigationScreen.SignUp -> SignUpNavigationScreen()
         is NavigationScreen.Developer -> DeveloperNavigationScreen()
         is NavigationScreen.Splash -> SplashNavigationScreen()
@@ -61,6 +63,7 @@ private fun String?.toNavigationScreen() =
     when (this) {
         LoginNavigationScreen().route -> NavigationScreen.Login
         HomeNavigationScreen().route -> NavigationScreen.Home
+        HomeDetailNavigationScreen().route -> NavigationScreen.HomeDetail
         SignUpNavigationScreen().route -> NavigationScreen.SignUp
         DeveloperNavigationScreen().route -> NavigationScreen.Developer
         SplashNavigationScreen().route -> NavigationScreen.Splash

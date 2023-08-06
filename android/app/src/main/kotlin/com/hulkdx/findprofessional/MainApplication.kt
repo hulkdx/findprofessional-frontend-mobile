@@ -10,6 +10,7 @@ import com.hulkdx.findprofessional.feature.authentication.login.loginModule
 import com.hulkdx.findprofessional.feature.authentication.signup.signUpModule
 import com.hulkdx.findprofessional.feature.authentication.splash.splashModule
 import com.hulkdx.findprofessional.feature.developer.developerModule
+import com.hulkdx.findprofessional.feature.home.detail.homeDetailModule
 import com.hulkdx.findprofessional.feature.home.homeModule
 import com.hulkdx.findprofessional.feature.profile.profileModule
 import kotlinx.coroutines.runBlocking
@@ -27,6 +28,7 @@ class MainApplication : Application() {
                 loginModule,
                 signUpModule,
                 homeModule,
+                homeDetailModule,
                 developerModule,
                 splashModule,
                 profileModule,
