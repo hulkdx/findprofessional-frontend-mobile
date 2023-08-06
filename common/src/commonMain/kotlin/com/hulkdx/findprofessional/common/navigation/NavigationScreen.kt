@@ -13,4 +13,5 @@ sealed class NavigationScreen {
     object SignUp : NavigationScreen()
     object Home : NavigationScreen()
     object Developer : NavigationScreen()
+    object Profile : NavigationScreen()
 }

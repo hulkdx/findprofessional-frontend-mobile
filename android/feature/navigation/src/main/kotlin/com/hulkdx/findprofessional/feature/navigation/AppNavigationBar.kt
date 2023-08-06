@@ -13,20 +13,24 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import com.hulkdx.findprofessional.common.navigation.NavigationScreen
 import com.hulkdx.findprofessional.common.navigation.Navigator
+import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.resources.MR
-import org.koin.compose.koinInject
 
 @Composable
-fun BoxScope.AppNavigationBar() {
-    AppNavigationBar(Modifier.align(Alignment.BottomCenter))
+fun BoxScope.AppNavigationBar(navigator: Navigator) {
+    AppNavigationBar(
+        modifier = Modifier.align(Alignment.BottomCenter),
+        navigator = navigator,
+    )
 }
 
 @Composable
 fun AppNavigationBar(
     modifier: Modifier,
-    navigator: Navigator = koinInject(),
+    navigator: Navigator,
 ) {
     val items = listOf(
         NavData(
@@ -37,7 +41,7 @@ fun AppNavigationBar(
         NavData(
             name = stringResource(MR.strings.profile.resourceId),
             icon = Icons.Filled.Person,
-            screen = NavigationScreen.Login,
+            screen = NavigationScreen.Profile,
         )
     )
 
@@ -58,3 +62,14 @@ private data class NavData(
     val icon: ImageVector,
     val screen: NavigationScreen,
 )
+
+@Preview
+@Composable
+private fun AppNavigationBarPreview() {
+    AppTheme {
+        AppNavigationBar(
+            Modifier,
+            StubNavigator(),
+        )
+    }
+}

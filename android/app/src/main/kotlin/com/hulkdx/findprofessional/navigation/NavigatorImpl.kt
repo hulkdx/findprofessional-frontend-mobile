@@ -10,6 +10,7 @@ import com.hulkdx.findprofessional.feature.authentication.signup.SignUpNavigatio
 import com.hulkdx.findprofessional.feature.authentication.splash.SplashNavigationScreen
 import com.hulkdx.findprofessional.feature.developer.DeveloperNavigationScreen
 import com.hulkdx.findprofessional.feature.home.HomeNavigationScreen
+import com.hulkdx.findprofessional.feature.profile.ProfileNavigationScreen
 
 class NavigatorImpl : Navigator {
 
@@ -53,6 +54,7 @@ private fun NavigationScreen.toAndroidScreen() =
         is NavigationScreen.SignUp -> SignUpNavigationScreen()
         is NavigationScreen.Developer -> DeveloperNavigationScreen()
         is NavigationScreen.Splash -> SplashNavigationScreen()
+        is NavigationScreen.Profile -> ProfileNavigationScreen()
     }
 
 private fun String?.toNavigationScreen() =
@@ -62,5 +64,6 @@ private fun String?.toNavigationScreen() =
         SignUpNavigationScreen().route -> NavigationScreen.SignUp
         DeveloperNavigationScreen().route -> NavigationScreen.Developer
         SplashNavigationScreen().route -> NavigationScreen.Splash
+        ProfileNavigationScreen().route -> NavigationScreen.Profile
         else -> throw RuntimeException("Route=$this is not defined")
     }
