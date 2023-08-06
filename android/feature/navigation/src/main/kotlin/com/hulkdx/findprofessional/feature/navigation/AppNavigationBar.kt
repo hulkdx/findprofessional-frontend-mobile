@@ -20,18 +20,17 @@ import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.resources.MR
 
 @Composable
-fun BoxScope.AppNavigationBar(navigator: Navigator) {
+fun BoxScope.AppNavigationBar() {
     AppNavigationBar(
         modifier = Modifier.align(Alignment.BottomCenter),
-        navigator = navigator,
     )
 }
 
 @Composable
 fun AppNavigationBar(
     modifier: Modifier,
-    navigator: Navigator,
 ) {
+    val navigator = getNavigator()
     val items = listOf(
         NavData(
             name = stringResource(MR.strings.home.resourceId),
@@ -69,7 +68,6 @@ private fun AppNavigationBarPreview() {
     AppTheme {
         AppNavigationBar(
             Modifier,
-            StubNavigator(),
         )
     }
 }
