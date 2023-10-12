@@ -48,7 +48,7 @@ dependencies {
 
     implementation(platform("androidx.compose:compose-bom:${BuildDep.COMPOSE_BOM}"))
     implementation("io.insert-koin:koin-androidx-compose:${BuildDep.KOIN_COMPOSE_VERSION}")
-    implementation("com.google.accompanist:accompanist-navigation-animation:${BuildDep.ACCOMPANIST_VERSION}")
+    implementation("androidx.navigation:navigation-compose:${BuildDep.COMPOSE_NAVIGATION}")
 
     implementation("androidx.compose.ui:ui-tooling-preview")
     debugImplementation("androidx.compose.ui:ui-tooling")

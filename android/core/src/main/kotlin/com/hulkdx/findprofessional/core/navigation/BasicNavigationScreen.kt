@@ -1,8 +1,5 @@
-@file:OptIn(ExperimentalAnimationApi::class)
-
 package com.hulkdx.findprofessional.core.navigation
 
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.navigation.NamedNavArgument
 
 abstract class BasicNavigationScreen : AndroidNavigationScreen {

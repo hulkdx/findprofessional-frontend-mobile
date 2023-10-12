@@ -68,14 +68,11 @@ kotlin {
 }
 
 android {
+    namespace = "com.hulkdx.findprofessional.common"
     compileSdk = BuildDep.COMPILE_SDK_VERSION
-    sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
-    sourceSets["main"].res.srcDir(File(buildDir, "generated/moko/androidMain/res"))
     defaultConfig {
         minSdk = BuildDep.MIN_SDK_VERSION
-        targetSdk = BuildDep.COMPILE_SDK_VERSION
     }
-    namespace = "com.hulkdx.findprofessional.common"
 
     compileOptions {
         sourceCompatibility = BuildDep.JAVA_VERSION_SOURCE_COMPATIBILITY
@@ -83,8 +80,15 @@ android {
     }
 
     buildFeatures {
+        // AGP 8.0
         buildConfig = true
     }
+
+    // TODO: moko-resource temporary workaround:
+    // https://github.com/icerockdev/moko-resources/issues/510
+    sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
+    sourceSets["main"].res.srcDir(File(buildDir, "generated/moko/androidMain/res"))
+    sourceSets["main"].java.srcDirs("build/generated/moko/androidMain/src")
 }
 
 multiplatformResources {

@@ -58,7 +58,7 @@ dependencies {
     implementation(project(":common"))
 
     implementation(platform("androidx.compose:compose-bom:${BuildDep.COMPOSE_BOM}"))
-    implementation("com.google.accompanist:accompanist-navigation-animation:${BuildDep.ACCOMPANIST_VERSION}")
+    implementation("androidx.navigation:navigation-compose:${BuildDep.COMPOSE_NAVIGATION}")
     implementation("com.google.accompanist:accompanist-systemuicontroller:${BuildDep.ACCOMPANIST_VERSION}")
 
     implementation("io.insert-koin:koin-core:${BuildDep.KOIN_VERSION}")
