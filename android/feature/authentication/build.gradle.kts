@@ -50,6 +50,4 @@ dependencies {
     implementation("io.insert-koin:koin-androidx-compose:${BuildDep.KOIN_COMPOSE_VERSION}")
     implementation("androidx.compose.ui:ui-tooling-preview")
     debugImplementation("androidx.compose.ui:ui-tooling")
-
-    implementation("com.google.accompanist:accompanist-placeholder-material:${BuildDep.ACCOMPANIST_VERSION}")
 }
