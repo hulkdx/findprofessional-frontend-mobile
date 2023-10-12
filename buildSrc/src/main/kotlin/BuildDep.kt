@@ -28,7 +28,7 @@ object BuildDep {
     const val MOKO_RESOURCES_VERSION = "0.23.0"
 
     // https://developer.android.com/jetpack/androidx/releases/datastore
-    const val DATASTORE_VERSION = "1.1.0-alpha04"
+    const val DATASTORE_VERSION = "1.1.0-alpha05"
 
     // --------------------------------------------------------------------------------
     // Android Main
@@ -44,26 +44,28 @@ object BuildDep {
     const val COMPOSE_NAVIGATION = "2.7.4"
 
     // https://github.com/Kotlin/kotlinx.coroutines
-    const val COROUTINES_VERSION = "1.7.1"
+    const val COROUTINES_VERSION = "1.7.3"
 
     // https://github.com/InsertKoinIO/koin
-    const val KOIN_VERSION = "3.4.1"
+    const val KOIN_VERSION = "3.5.0"
 
     // https://github.com/InsertKoinIO/koin
-    const val KOIN_COMPOSE_VERSION = "3.4.4"
+    const val KOIN_COMPOSE_VERSION = KOIN_VERSION
 
     // https://github.com/square/leakcanary
-    const val LEAK_CANARY_VERSION = "2.10"
+    const val LEAK_CANARY_VERSION = "2.12"
 
     // https://ktor.io/docs/getting-started-ktor-client-multiplatform-mobile.html#ktor-dependencies
-    const val KTOR_VERSION = "2.3.0"
+    const val KTOR_VERSION = "2.3.5"
 
     // https://github.com/google/accompanist
+    // TODO: to be removed, deprecated and not maintained anymore
     const val ACCOMPANIST_VERSION = "0.32.0"
 
     // https://developer.android.com/jetpack/androidx/releases/lifecycle
-    const val ANDROIDX_LIFECYCLE = "2.6.1"
+    const val ANDROIDX_LIFECYCLE = "2.6.2"
 
+    // https://github.com/coil-kt/coil
     const val COIL_VERSION = "2.4.0"
 
     // --------------------------------------------------------------------------------
