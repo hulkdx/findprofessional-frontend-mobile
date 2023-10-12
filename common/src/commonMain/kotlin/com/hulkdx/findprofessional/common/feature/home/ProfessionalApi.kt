@@ -3,8 +3,6 @@ package com.hulkdx.findprofessional.common.feature.home
 import com.hulkdx.findprofessional.common.config.storage.AccessTokenStorage
 import com.hulkdx.findprofessional.common.utils.getAuth
 import io.ktor.client.HttpClient
-import io.ktor.client.call.body
-import io.ktor.client.request.get
 
 interface ProfessionalApi {
     suspend fun findAll(): List<Professional>

@@ -1,7 +1,5 @@
 package com.hulkdx.findprofessional.feature.developer
 
-import android.app.Activity
-import android.content.Context
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column

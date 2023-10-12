@@ -8,11 +8,11 @@ package com.hulkdx.findprofessional.common.navigation
  * iOS:     AppNavigationView::createScreens
  */
 sealed class NavigationScreen {
-    object Splash : NavigationScreen()
-    object Login : NavigationScreen()
-    object SignUp : NavigationScreen()
-    object Home : NavigationScreen()
-    object HomeDetail : NavigationScreen()
-    object Developer : NavigationScreen()
-    object Profile : NavigationScreen()
+    data object Splash : NavigationScreen()
+    data object Login : NavigationScreen()
+    data object SignUp : NavigationScreen()
+    data object Home : NavigationScreen()
+    data object HomeDetail : NavigationScreen()
+    data object Developer : NavigationScreen()
+    data object Profile : NavigationScreen()
 }

@@ -58,10 +58,6 @@ object BuildDep {
     // https://ktor.io/docs/getting-started-ktor-client-multiplatform-mobile.html#ktor-dependencies
     const val KTOR_VERSION = "2.3.5"
 
-    // https://github.com/google/accompanist
-    // TODO: to be removed, deprecated and not maintained anymore
-    const val ACCOMPANIST_VERSION = "0.32.0"
-
     // https://developer.android.com/jetpack/androidx/releases/lifecycle
     const val ANDROIDX_ACTIVITY = "1.8.0"
 

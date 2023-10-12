@@ -39,11 +39,6 @@ class LoginDsl(
             .performClick()
     }
 
-    fun pressDeveloperButton() {
-        rule.onNodeWithText("dev")
-            .performClick()
-    }
-
     fun verify(block: LoginVerify.() -> Unit) = LoginVerify(rule).apply(block)
 }
 
@@ -56,9 +51,5 @@ class LoginVerify(
 
     fun homeScreenShown() {
         rule.assertNodeIsDisplayed("HomeScreen")
-    }
-
-    fun developerScreenShown() {
-        rule.assertNodeIsDisplayed("DeveloperScreen")
     }
 }

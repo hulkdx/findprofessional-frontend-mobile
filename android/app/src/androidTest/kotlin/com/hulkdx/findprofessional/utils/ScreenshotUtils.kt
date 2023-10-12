@@ -3,9 +3,6 @@ package com.hulkdx.findprofessional.utils
 import android.graphics.Bitmap
 import android.graphics.Bitmap.CompressFormat
 import android.graphics.Bitmap.CompressFormat.PNG
-import androidx.compose.ui.graphics.asAndroidBitmap
-import androidx.compose.ui.test.captureToImage
-import androidx.compose.ui.test.onRoot
 import java.io.File
 import java.io.FileOutputStream
 

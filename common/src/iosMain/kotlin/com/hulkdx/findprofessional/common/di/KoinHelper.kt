@@ -3,7 +3,6 @@ package com.hulkdx.findprofessional.common.di
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
-import com.hulkdx.findprofessional.common.config.storage.AccessTokenStorage
 import com.hulkdx.findprofessional.common.feature.authentication.login.LoginUseCase
 import com.hulkdx.findprofessional.common.feature.authentication.signup.SignUpUseCase
 import com.hulkdx.findprofessional.common.navigation.Navigator

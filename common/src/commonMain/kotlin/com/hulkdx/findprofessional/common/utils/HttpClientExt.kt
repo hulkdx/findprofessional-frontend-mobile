@@ -18,7 +18,7 @@ suspend inline fun <reified T, reified R> HttpClient.post(
         .body()
 }
 
-suspend inline fun <reified T, reified R> HttpClient.get(
+suspend inline fun <reified R> HttpClient.get(
     url: String,
 ): R {
     return get {
