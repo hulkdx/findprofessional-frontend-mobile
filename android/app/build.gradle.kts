@@ -59,13 +59,11 @@ dependencies {
 
     implementation(platform("androidx.compose:compose-bom:${BuildDep.COMPOSE_BOM}"))
     implementation("androidx.navigation:navigation-compose:${BuildDep.COMPOSE_NAVIGATION}")
-    implementation("com.google.accompanist:accompanist-systemuicontroller:${BuildDep.ACCOMPANIST_VERSION}")
+    implementation("androidx.activity:activity-compose:${BuildDep.ANDROIDX_ACTIVITY}")
 
     implementation("io.insert-koin:koin-core:${BuildDep.KOIN_VERSION}")
     implementation("io.insert-koin:koin-android:${BuildDep.KOIN_VERSION}")
-    implementation("io.insert-koin:koin-androidx-compose:${BuildDep.KOIN_COMPOSE_VERSION}") {
-        exclude("androidx.navigation")
-    }
+    implementation("io.insert-koin:koin-androidx-compose:${BuildDep.KOIN_COMPOSE_VERSION}")
 
     androidTestImplementation(platform("androidx.compose:compose-bom:${BuildDep.COMPOSE_BOM}"))
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")

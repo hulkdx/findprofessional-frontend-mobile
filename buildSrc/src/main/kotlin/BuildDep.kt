@@ -63,6 +63,9 @@ object BuildDep {
     const val ACCOMPANIST_VERSION = "0.32.0"
 
     // https://developer.android.com/jetpack/androidx/releases/lifecycle
+    const val ANDROIDX_ACTIVITY = "1.8.0"
+
+    // https://developer.android.com/jetpack/androidx/releases/lifecycle
     const val ANDROIDX_LIFECYCLE = "2.6.2"
 
     // https://github.com/coil-kt/coil
