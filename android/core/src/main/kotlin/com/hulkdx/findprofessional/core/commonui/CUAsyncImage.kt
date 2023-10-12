@@ -1,5 +1,6 @@
 package com.hulkdx.findprofessional.core.commonui
 
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
@@ -36,7 +37,7 @@ fun CUAsyncImage(
         imageLoader = imageLoader,
         contentScale = contentScale,
         loading = {
-            // TODO: show shimmer placeholder
+            AnimatedShimmer(Modifier.fillMaxSize())
         },
     )
 }
