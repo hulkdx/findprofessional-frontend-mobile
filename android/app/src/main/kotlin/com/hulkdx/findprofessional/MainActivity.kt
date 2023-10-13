@@ -1,5 +1,6 @@
 package com.hulkdx.findprofessional
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -12,6 +13,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         enableEdgeToEdge()
+        window.navigationBarColor = Color.BLACK
+
         setContent {
             AppTheme {
                 NavigationComposable()

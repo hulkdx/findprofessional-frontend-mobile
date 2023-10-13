@@ -1,3 +1,5 @@
+@file:Suppress("PrivatePropertyName")
+
 package com.hulkdx.findprofessional.core.theme
 
 import androidx.compose.material3.lightColorScheme
