@@ -33,7 +33,7 @@ import com.hulkdx.findprofessional.core.utils.singleClick
 import com.hulkdx.findprofessional.resources.MR
 
 @Composable
-internal fun ProfessionalItem(
+fun ProfessionalItem(
     professional: Professional,
     onLikeClick: (Professional) -> Unit,
     onItemClick: (Professional) -> Unit,
@@ -86,7 +86,7 @@ private fun FullName(professional: Professional) {
 }
 
 @Composable
-fun CoachType(professional: Professional) {
+private fun CoachType(professional: Professional) {
     Text(
         modifier = Modifier.padding(top = 4.dp),
         style = body1Medium,
@@ -97,7 +97,7 @@ fun CoachType(professional: Professional) {
 }
 
 @Composable
-fun Rating(professional: Professional) {
+private fun Rating(professional: Professional) {
     Row(
         modifier = Modifier.padding(top = 2.dp),
     ) {
@@ -134,7 +134,7 @@ private fun LikeButton(
 }
 
 @Composable
-fun Description(professional: Professional) {
+private fun Description(professional: Professional) {
     val description = professional.description ?: return
     Text(
         modifier = Modifier
