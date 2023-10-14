@@ -5,6 +5,7 @@ import androidx.compose.runtime.neverEqualPolicy
 import androidx.navigation.NavOptions
 import com.hulkdx.findprofessional.common.navigation.NavigationScreen
 import com.hulkdx.findprofessional.common.navigation.Navigator
+import com.hulkdx.findprofessional.core.navigation.AndroidNavigationScreen
 import com.hulkdx.findprofessional.feature.authentication.login.LoginNavigationScreen
 import com.hulkdx.findprofessional.feature.authentication.signup.SignUpNavigationScreen
 import com.hulkdx.findprofessional.feature.authentication.splash.SplashNavigationScreen
@@ -20,13 +21,13 @@ class NavigatorImpl : Navigator {
     var currentScreen: String = ""
 
     override fun navigate(screen: NavigationScreen) {
-        val route = screen.toAndroidScreen().route
+        val route = screen.toAndroidScreen()
         screenState.value = State(route)
     }
 
     override fun navigate(screen: NavigationScreen, popTo: NavigationScreen, inclusive: Boolean) {
-        val route = screen.toAndroidScreen().route
-        val popToRoute = popTo.toAndroidScreen().route
+        val route = screen.toAndroidScreen()
+        val popToRoute = popTo.toAndroidScreen()
         val options = NavOptions.Builder()
             .setPopUpTo(popToRoute, inclusive)
             .build()
@@ -48,22 +49,22 @@ class NavigatorImpl : Navigator {
     )
 }
 
-private fun NavigationScreen.toAndroidScreen() =
+private fun NavigationScreen.toAndroidScreen(): String =
     when (this) {
-        is NavigationScreen.Login -> LoginNavigationScreen()
-        is NavigationScreen.Home -> HomeNavigationScreen()
-        is NavigationScreen.HomeDetail -> HomeDetailNavigationScreen()
-        is NavigationScreen.SignUp -> SignUpNavigationScreen()
-        is NavigationScreen.Developer -> DeveloperNavigationScreen()
-        is NavigationScreen.Splash -> SplashNavigationScreen()
-        is NavigationScreen.Profile -> ProfileNavigationScreen()
+        is NavigationScreen.Login -> LoginNavigationScreen().route
+        is NavigationScreen.Home -> HomeNavigationScreen().route
+        is NavigationScreen.HomeDetail -> HomeDetailNavigationScreen().destination(professional)
+        is NavigationScreen.SignUp -> SignUpNavigationScreen().route
+        is NavigationScreen.Developer -> DeveloperNavigationScreen().route
+        is NavigationScreen.Splash -> SplashNavigationScreen().route
+        is NavigationScreen.Profile -> ProfileNavigationScreen().route
     }
 
 private fun String?.toNavigationScreen() =
     when (this) {
         LoginNavigationScreen().route -> NavigationScreen.Login
         HomeNavigationScreen().route -> NavigationScreen.Home
-        HomeDetailNavigationScreen().route -> NavigationScreen.HomeDetail
+//        HomeDetailNavigationScreen().route -> NavigationScreen.HomeDetail(TODO())
         SignUpNavigationScreen().route -> NavigationScreen.SignUp
         DeveloperNavigationScreen().route -> NavigationScreen.Developer
         SplashNavigationScreen().route -> NavigationScreen.Splash
