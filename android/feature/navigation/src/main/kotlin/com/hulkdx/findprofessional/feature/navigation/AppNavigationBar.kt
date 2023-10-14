@@ -43,12 +43,13 @@ fun AppNavigationBar(
         )
     )
 
+    val currentScreen = navigator.getCurrentScreen()
     NavigationBar(modifier = modifier) {
         items.forEach { item ->
             NavigationBarItem(
                 icon = { Icon(item.icon, contentDescription = item.name) },
                 label = { Text(item.name) },
-                selected = item.screen == navigator.getCurrentScreen(),
+                selected = item.screen == currentScreen,
                 onClick = { navigator.navigate(item.screen) },
             )
         }
