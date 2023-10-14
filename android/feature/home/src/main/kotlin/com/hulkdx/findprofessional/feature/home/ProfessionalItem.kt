@@ -17,6 +17,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -98,6 +99,15 @@ private fun CoachType(professional: Professional) {
 
 @Composable
 private fun Rating(professional: Professional) {
+    if (professional.rating == null) {
+        Icon(
+            modifier = Modifier.padding(top = 2.dp),
+            painter = painterResource(R.drawable.ic_new_rating),
+            tint = Color(0xFF00B3BD),
+            contentDescription = "",
+        )
+        return
+    }
     Row(
         modifier = Modifier.padding(top = 2.dp),
     ) {
@@ -184,6 +194,29 @@ private fun ProfessionalItemPreview() {
                 email = "",
                 profileImageUrl = "https://imgur.com/gallery/7R6wmYb",
                 rating = "5.0",
+                description = "former professional boxer who competed from 1985 to 2005"
+            ),
+            onLikeClick = {},
+            onItemClick = {},
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun ProfessionalItemWithoutRatingPreview() {
+    AppTheme {
+        ProfessionalItem(
+            professional = Professional(
+                id = 1,
+                firstName = "New",
+                lastName = "Tyson",
+                coachType = "New Life coach",
+                priceNumber = 100,
+                priceCurrency = "EUR",
+                email = "",
+                profileImageUrl = "https://imgur.com/gallery/7R6wmYb",
+                rating = null,
                 description = "former professional boxer who competed from 1985 to 2005"
             ),
             onLikeClick = {},

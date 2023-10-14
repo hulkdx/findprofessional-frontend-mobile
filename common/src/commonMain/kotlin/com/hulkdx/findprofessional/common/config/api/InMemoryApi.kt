@@ -70,7 +70,21 @@ object InMemoryApi {
                     "Life coach",
                     100,
                     "EUR",
-                    "https://i.imgur.com/5Yma8Kl.jpeg"
+                    "https://i.imgur.com/5Yma8Kl.jpeg",
+                    "5.0",
+                    "former professional boxer who competed from 1985 to 2005",
+                ),
+                Professional(
+                    2,
+                    "test2@email.com",
+                    "Naomi",
+                    "Spence",
+                    "Life coach",
+                    200,
+                    "EUR",
+                    "https://i.imgur.com/FVABZOc.jpeg",
+                    null,
+                    "actress from 1985 to 2005",
                 )
             )
         }
