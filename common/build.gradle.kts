@@ -1,13 +1,14 @@
 plugins {
-    kotlin("multiplatform")
-    kotlin("plugin.serialization") version BuildDep.KOTLIN_VERSION
-    id("com.android.library")
-    id("kotlin-parcelize")
+    alias(libs.plugins.kotlin.multiplatform)
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.moko)
 
-    id("dev.icerock.mobile.multiplatform-resources") version BuildDep.MOKO_RESOURCES_VERSION
+    id(libs.plugins.kotlin.parcelize.get().pluginId)
 }
 
 kotlin {
+    // TODO: change it with androidTarget
     android()
 
     listOf(
@@ -16,8 +17,7 @@ kotlin {
         iosSimulatorArm64(),
     ).forEach {
         it.binaries.framework {
-            export("dev.icerock.moko:resources:${BuildDep.MOKO_RESOURCES_VERSION}")
-            export("dev.icerock.moko:graphics:0.9.0")
+            export(libs.moko.resources)
             baseName = "shared"
         }
     }
@@ -25,21 +25,21 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation("io.insert-koin:koin-core:${BuildDep.KOIN_VERSION}")
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${BuildDep.COROUTINES_VERSION}")
-                implementation("io.ktor:ktor-client-core:${BuildDep.KTOR_VERSION}")
-                implementation("io.ktor:ktor-client-content-negotiation:${BuildDep.KTOR_VERSION}")
-                implementation("io.ktor:ktor-serialization-kotlinx-json:${BuildDep.KTOR_VERSION}")
-                api("dev.icerock.moko:resources:${BuildDep.MOKO_RESOURCES_VERSION}")
-                implementation("androidx.datastore:datastore-preferences-core:${BuildDep.DATASTORE_VERSION}")
+                api(libs.moko.resources)
+                implementation(libs.androidx.dataStore.core)
+                implementation(libs.koin.core)
+                implementation(libs.kotlinx.coroutines.core)
+                implementation(libs.ktor.core)
+                implementation(libs.ktor.content.negotiation)
+                implementation(libs.ktor.serialization)
+                implementation(libs.ktor.logging)
 
-                implementation("io.ktor:ktor-client-logging:${BuildDep.KTOR_VERSION}")
             }
         }
         val androidMain by getting {
             dependencies {
-                implementation("io.ktor:ktor-client-okhttp:${BuildDep.KTOR_VERSION}")
-                api("dev.icerock.moko:resources-compose:${BuildDep.MOKO_RESOURCES_VERSION}")
+                implementation(libs.ktor.okhttp)
+                api(libs.moko.resources.compose)
             }
         }
         val iosX64Main by getting
@@ -51,7 +51,7 @@ kotlin {
             iosArm64Main.dependsOn(this)
             iosSimulatorArm64Main.dependsOn(this)
             dependencies {
-                implementation("io.ktor:ktor-client-darwin:${BuildDep.KTOR_VERSION}")
+                implementation(libs.ktor.darwin)
             }
         }
 
@@ -60,8 +60,8 @@ kotlin {
                 implementation(kotlin("test"))
                 implementation(kotlin("test-common"))
                 implementation(kotlin("test-annotations-common"))
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:${BuildDep.COROUTINES_TEST_VERSION}")
-                implementation("io.insert-koin:koin-test:${BuildDep.KOIN_VERSION}")
+                implementation(libs.kotlinx.coroutines.test)
+                implementation(libs.koin.test)
             }
         }
     }
@@ -69,14 +69,14 @@ kotlin {
 
 android {
     namespace = "com.hulkdx.findprofessional.common"
-    compileSdk = BuildDep.COMPILE_SDK_VERSION
+    compileSdk = 34
     defaultConfig {
-        minSdk = BuildDep.MIN_SDK_VERSION
+        minSdk = 29
     }
 
     compileOptions {
-        sourceCompatibility = BuildDep.JAVA_VERSION_SOURCE_COMPATIBILITY
-        targetCompatibility = BuildDep.JAVA_VERSION_TARGET_COMPATIBILITY
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
     buildFeatures {
