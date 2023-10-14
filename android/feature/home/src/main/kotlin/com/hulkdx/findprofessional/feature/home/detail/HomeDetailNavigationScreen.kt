@@ -7,7 +7,6 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Parcel
 import android.os.Parcelable
-import android.util.Log
 import androidx.navigation.NamedNavArgument
 import androidx.navigation.NavType
 import androidx.navigation.navArgument
@@ -21,7 +20,7 @@ import java.nio.charset.StandardCharsets
 
 class HomeDetailNavigationScreen : SlideNavigationScreen() {
     override val content: Content = {
-        val professional = requireNotNull(it.arguments?.getParcelable<Professional?>("p"))
+        val professional = it.arguments.professional()
         HomeDetailScreen()
     }
 
@@ -38,6 +37,10 @@ class HomeDetailNavigationScreen : SlideNavigationScreen() {
     fun destination(professional: Professional): String {
         return this.javaClass.name + "/" + HomeNavType().serializeValue(professional)
     }
+}
+
+fun Bundle?.professional(): Professional {
+    return requireNotNull(this?.getParcelable("p"))
 }
 
 class HomeNavType : NavType<Professional>(false) {
