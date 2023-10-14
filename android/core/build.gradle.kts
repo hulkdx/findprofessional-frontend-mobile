@@ -4,10 +4,10 @@ plugins {
 }
 
 android {
-    compileSdk = BuildDep.COMPILE_SDK_VERSION
+    compileSdk = 34
 
     defaultConfig {
-        minSdk = BuildDep.MIN_SDK_VERSION
+        minSdk = 29
     }
 
     buildTypes {
@@ -20,8 +20,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = BuildDep.JAVA_VERSION_SOURCE_COMPATIBILITY
-        targetCompatibility = BuildDep.JAVA_VERSION_TARGET_COMPATIBILITY
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
     buildFeatures {
@@ -30,20 +30,18 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = BuildDep.COMPOSE_VERSION
+        kotlinCompilerExtensionVersion = libs.versions.androidxComposeCompiler.get()
     }
     namespace = "com.hulkdx.findprofessional.core"
 }
 
 dependencies {
-    implementation(platform("androidx.compose:compose-bom:${BuildDep.COMPOSE_BOM}"))
-    api("androidx.compose.material3:material3")
+    implementation(platform(libs.androidx.compose.bom))
+    api(libs.androidx.compose.material3)
+    api(libs.androidx.compose.ui.tooling.preview)
+    implementation(libs.androidx.lifecycle.runtimeCompose)
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.coil.compose)
 
-    implementation("androidx.lifecycle:lifecycle-runtime-compose:${BuildDep.ANDROIDX_LIFECYCLE}")
-    implementation("androidx.navigation:navigation-compose:${BuildDep.COMPOSE_NAVIGATION}")
-
-    implementation("androidx.compose.ui:ui-tooling-preview")
-    debugImplementation("androidx.compose.ui:ui-tooling")
-
-    implementation("io.coil-kt:coil-compose:${BuildDep.COIL_VERSION}")
+    debugApi(libs.androidx.compose.ui.tooling)
 }

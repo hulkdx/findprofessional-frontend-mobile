@@ -1,8 +1,6 @@
 plugins {
-    id("com.android.application") version BuildDep.AGP_VERSION apply false
-    id("org.jetbrains.kotlin.android") version BuildDep.KOTLIN_VERSION apply false
-}
-
-tasks.register("clean", Delete::class) {
-    delete(rootProject.buildDir)
+    alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.android.library) apply false
+    alias(libs.plugins.kotlin.android) apply false
+    alias(libs.plugins.kotlin.multiplatform) apply false
 }

@@ -5,10 +5,10 @@ plugins {
 
 android {
     namespace = "com.hulkdx.findprofessional.feature.navigation"
-    compileSdk = BuildDep.COMPILE_SDK_VERSION
+    compileSdk = 34
 
     defaultConfig {
-        minSdk = BuildDep.MIN_SDK_VERSION
+        minSdk = 29
     }
 
     buildTypes {
@@ -21,8 +21,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = BuildDep.JAVA_VERSION_SOURCE_COMPATIBILITY
-        targetCompatibility = BuildDep.JAVA_VERSION_TARGET_COMPATIBILITY
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
     buildFeatures {
@@ -30,7 +30,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = BuildDep.COMPOSE_VERSION
+        kotlinCompilerExtensionVersion = libs.versions.androidxComposeCompiler.get()
     }
 
     tasks.withType<Test> {
@@ -46,10 +46,7 @@ dependencies {
     implementation(project(":android:core"))
     implementation(project(":common"))
 
-    implementation(platform("androidx.compose:compose-bom:${BuildDep.COMPOSE_BOM}"))
-    implementation("io.insert-koin:koin-androidx-compose:${BuildDep.KOIN_COMPOSE_VERSION}")
-    implementation("androidx.navigation:navigation-compose:${BuildDep.COMPOSE_NAVIGATION}")
-
-    implementation("androidx.compose.ui:ui-tooling-preview")
-    debugImplementation("androidx.compose.ui:ui-tooling")
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.koin.androidx.compose)
+    implementation(libs.androidx.navigation.compose)
 }

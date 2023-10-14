@@ -4,12 +4,12 @@ plugins {
 }
 
 android {
-    compileSdk = BuildDep.COMPILE_SDK_VERSION
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.hulkdx.findprofessional"
-        minSdk = BuildDep.MIN_SDK_VERSION
-        targetSdk = BuildDep.COMPILE_SDK_VERSION
+        minSdk = 29
+        targetSdk = 34
         versionCode = 3
         versionName = "1.0"
 
@@ -28,8 +28,8 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = BuildDep.JAVA_VERSION_SOURCE_COMPATIBILITY
-        targetCompatibility = BuildDep.JAVA_VERSION_TARGET_COMPATIBILITY
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
     buildFeatures {
@@ -37,7 +37,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = BuildDep.COMPOSE_VERSION
+        kotlinCompilerExtensionVersion = libs.versions.androidxComposeCompiler.get()
     }
 
     packagingOptions {
@@ -49,26 +49,24 @@ android {
 }
 
 dependencies {
+    implementation(project(":common"))
+    implementation(project(":android:core"))
     implementation(project(":android:feature:authentication"))
     implementation(project(":android:feature:home"))
     implementation(project(":android:feature:developer"))
     implementation(project(":android:feature:profile"))
 
-    implementation(project(":android:core"))
-    implementation(project(":common"))
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.activity.compose)
+    implementation(libs.koin.core)
+    implementation(libs.koin.android)
+    implementation(libs.koin.androidx.compose)
 
-    implementation(platform("androidx.compose:compose-bom:${BuildDep.COMPOSE_BOM}"))
-    implementation("androidx.navigation:navigation-compose:${BuildDep.COMPOSE_NAVIGATION}")
-    implementation("androidx.activity:activity-compose:${BuildDep.ANDROIDX_ACTIVITY}")
+    debugImplementation(libs.leakcanary)
 
-    implementation("io.insert-koin:koin-core:${BuildDep.KOIN_VERSION}")
-    implementation("io.insert-koin:koin-android:${BuildDep.KOIN_VERSION}")
-    implementation("io.insert-koin:koin-androidx-compose:${BuildDep.KOIN_COMPOSE_VERSION}")
-
-    androidTestImplementation(platform("androidx.compose:compose-bom:${BuildDep.COMPOSE_BOM}"))
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4")
-    androidTestImplementation("io.ktor:ktor-client-mock:${BuildDep.KTOR_VERSION}")
-    androidTestImplementation("androidx.datastore:datastore-preferences-core:${BuildDep.DATASTORE_VERSION}")
-
-    debugImplementation("com.squareup.leakcanary:leakcanary-android:${BuildDep.LEAK_CANARY_VERSION}")
+    androidTestImplementation(platform(libs.androidx.compose.bom))
+    androidTestImplementation(libs.androidx.compose.ui.test)
+    androidTestImplementation(libs.ktor.mock)
+    androidTestImplementation(libs.androidx.dataStore.core)
 }
