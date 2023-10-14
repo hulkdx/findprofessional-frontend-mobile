@@ -8,7 +8,7 @@ import org.koin.androidx.compose.getViewModel
 
 @Composable
 fun HomeDetailScreen(viewModel: HomeDetailViewModel = getViewModel()) {
-    AppNavBarContainer(testTag = "HomeScreen", error = viewModel.error) {
+    AppNavBarContainer(testTag = "HomeScreenDetail", error = viewModel.error) {
         HomeDetailScreen(
         )
     }
