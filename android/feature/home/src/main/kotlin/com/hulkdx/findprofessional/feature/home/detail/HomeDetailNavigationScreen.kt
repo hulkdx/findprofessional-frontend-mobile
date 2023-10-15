@@ -1,18 +1,14 @@
 package com.hulkdx.findprofessional.feature.home.detail
 
-import android.annotation.SuppressLint
-import android.net.Uri
-import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.navigation.NamedNavArgument
-import androidx.navigation.NavType
 import androidx.navigation.navArgument
 import com.hulkdx.findprofessional.common.feature.home.Professional
+import com.hulkdx.findprofessional.common.navigation.NavigationScreen
 import com.hulkdx.findprofessional.core.navigation.Content
 import com.hulkdx.findprofessional.core.navigation.SlideNavigationScreen
-import com.hulkdx.findprofessional.feature.navigation.DefaultParcelableNavTypeSerializer
-import java.net.URLEncoder
-import java.nio.charset.StandardCharsets
+import com.hulkdx.findprofessional.feature.navigation.NavTypeParcelable
 
 
 class HomeDetailNavigationScreen : SlideNavigationScreen() {
@@ -22,7 +18,7 @@ class HomeDetailNavigationScreen : SlideNavigationScreen() {
     }
 
     override val route: String
-        get() = this.javaClass.name + "/{p}"
+        get() = "${this.javaClass.name}/{p}"
 
     override val arguments: List<NamedNavArgument>
         get() = listOf(
@@ -32,45 +28,12 @@ class HomeDetailNavigationScreen : SlideNavigationScreen() {
         )
 
     fun destination(professional: Professional): String {
-        return this.javaClass.name + "/" + HomeNavType().serializeValue(professional)
+        return this.javaClass.name + "/" + HomeNavType().encodeValue(professional)
     }
+
+    private class HomeNavType : NavTypeParcelable<Professional>(Professional::class.java)
 }
 
 fun Bundle?.professional(): Professional {
     return requireNotNull(this?.getParcelable("p"))
 }
-
-class HomeNavType : NavType<Professional>(false) {
-    override fun get(bundle: Bundle, key: String): Professional? {
-        return bundle.getParcelable(key)
-    }
-
-    override fun parseValue(value: String): Professional {
-        return DefaultParcelableNavTypeSerializer(Professional::class.java).fromRouteString(value) as Professional
-    }
-
-    override fun put(bundle: Bundle, key: String, value: Professional) {
-        bundle.putParcelable(key, value)
-    }
-
-    fun serializeValue(value: Professional): String {
-        return encodeForRoute(
-            DefaultParcelableNavTypeSerializer(Professional::class.java).toRouteString(
-                value
-            )
-        )
-    }
-}
-
-@SuppressLint("ObsoleteSdkInt")
-private val isRunningOnUnitTests = Build.VERSION.SDK_INT == 0
-
-
-fun encodeForRoute(arg: String): String {
-    return if (!isRunningOnUnitTests) {
-        Uri.encode(arg)
-    } else {
-        URLEncoder.encode(arg, StandardCharsets.UTF_8.toString())
-    }
-}
-
