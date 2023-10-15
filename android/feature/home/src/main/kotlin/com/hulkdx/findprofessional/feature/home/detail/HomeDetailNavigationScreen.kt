@@ -14,7 +14,7 @@ private const val ARG1 = "p"
 class HomeDetailNavigationScreen : SlideNavigationScreen() {
     override val content: Content = {
         val professional = professional(it.arguments)
-        HomeDetailScreen()
+        HomeDetailScreen(professional)
     }
 
     override val route: String

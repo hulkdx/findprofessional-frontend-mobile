@@ -1,22 +1,40 @@
 package com.hulkdx.findprofessional.feature.home.detail
 
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.hulkdx.findprofessional.common.feature.home.Professional
 import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.feature.navigation.navbar.AppNavBarContainer
 import org.koin.androidx.compose.getViewModel
 
 @Composable
-fun HomeDetailScreen(viewModel: HomeDetailViewModel = getViewModel()) {
+fun HomeDetailScreen(
+    professional: Professional,
+    viewModel: HomeDetailViewModel = getViewModel(),
+) {
     AppNavBarContainer(testTag = "HomeScreenDetail", error = viewModel.error) {
         HomeDetailScreen(
+            professional
         )
     }
 }
 
 @Composable
 private fun HomeDetailScreen(
+    professional: Professional,
 ) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState())
+    ) {
+
+    }
 }
 
 @Preview
@@ -24,6 +42,18 @@ private fun HomeDetailScreen(
 private fun HomeDetailScreenPreview() {
     AppTheme {
         HomeDetailScreen(
+            Professional(
+                id = 1,
+                firstName = "Mike",
+                lastName = "Tyson",
+                coachType = "Life coach",
+                priceNumber = 100,
+                priceCurrency = "EUR",
+                email = "",
+                profileImageUrl = "https://imgur.com/gallery/7R6wmYb",
+                rating = "5.0",
+                description = "former professional boxer who competed from 1985 to 2005"
+            )
         )
     }
 }
