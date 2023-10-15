@@ -8,8 +8,8 @@ import android.os.Parcelable
 import androidx.core.os.BundleCompat
 import androidx.navigation.NavType
 import com.hulkdx.findprofessional.common.feature.home.Professional
-import com.hulkdx.findprofessional.feature.navigation.util.base64ToParcelable
-import com.hulkdx.findprofessional.feature.navigation.util.parcelableToBase64
+import com.hulkdx.findprofessional.feature.navigation.navtype.util.base64ToParcelable
+import com.hulkdx.findprofessional.feature.navigation.navtype.util.parcelableToBase64
 import java.net.URLEncoder
 import java.nio.charset.StandardCharsets
 

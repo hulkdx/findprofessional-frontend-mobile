@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.feature.navigation.util
+package com.hulkdx.findprofessional.feature.navigation.navtype.util
 
 import android.os.Parcel
 import android.os.Parcelable
