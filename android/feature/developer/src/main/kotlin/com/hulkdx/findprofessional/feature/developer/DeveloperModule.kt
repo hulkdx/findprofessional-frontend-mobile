@@ -1,6 +1,6 @@
 package com.hulkdx.findprofessional.feature.developer
 
-import com.hulkdx.findprofessional.core.navigation.AndroidNavigationScreen
+import com.hulkdx.findprofessional.feature.navigation.screen.AndroidNavigationScreen
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.factoryOf
 import org.koin.dsl.bind

@@ -1,5 +1,4 @@
-package com.hulkdx.findprofessional.feature.navigation
-
+package com.hulkdx.findprofessional.feature.navigation.navtype
 
 import android.annotation.SuppressLint
 import android.net.Uri
@@ -16,6 +15,7 @@ import java.nio.charset.StandardCharsets
 
 @SuppressLint("ObsoleteSdkInt")
 private val isRunningOnUnitTests = Build.VERSION.SDK_INT == 0
+
 
 open class NavTypeParcelable<T : Parcelable>(
     private val jClass: Class<out T>,

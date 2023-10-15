@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.core.navigation
+package com.hulkdx.findprofessional.feature.navigation.screen
 
 import androidx.compose.animation.AnimatedContentTransitionScope
 import androidx.compose.animation.AnimatedVisibilityScope

@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.feature.navigation
+package com.hulkdx.findprofessional.feature.navigation.navbar
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box

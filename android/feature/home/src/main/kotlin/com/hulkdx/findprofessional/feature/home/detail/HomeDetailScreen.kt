@@ -3,7 +3,7 @@ package com.hulkdx.findprofessional.feature.home.detail
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import com.hulkdx.findprofessional.core.theme.AppTheme
-import com.hulkdx.findprofessional.feature.navigation.AppNavBarContainer
+import com.hulkdx.findprofessional.feature.navigation.navbar.AppNavBarContainer
 import org.koin.androidx.compose.getViewModel
 
 @Composable

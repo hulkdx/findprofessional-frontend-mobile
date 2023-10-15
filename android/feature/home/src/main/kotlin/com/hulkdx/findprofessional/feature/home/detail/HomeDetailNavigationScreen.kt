@@ -5,9 +5,9 @@ import androidx.core.os.BundleCompat
 import androidx.navigation.NamedNavArgument
 import androidx.navigation.navArgument
 import com.hulkdx.findprofessional.common.feature.home.Professional
-import com.hulkdx.findprofessional.core.navigation.Content
-import com.hulkdx.findprofessional.core.navigation.SlideNavigationScreen
-import com.hulkdx.findprofessional.feature.navigation.NavTypeParcelable
+import com.hulkdx.findprofessional.feature.navigation.screen.Content
+import com.hulkdx.findprofessional.feature.navigation.screen.SlideNavigationScreen
+import com.hulkdx.findprofessional.feature.navigation.navtype.NavTypeParcelable
 
 private const val ARG1 = "p"
 

@@ -8,7 +8,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.hulkdx.findprofessional.core.navigation.AndroidNavigationScreen
+import com.hulkdx.findprofessional.feature.navigation.screen.AndroidNavigationScreen
 import com.hulkdx.findprofessional.feature.authentication.splash.SplashNavigationScreen
 import org.koin.compose.getKoin
 import org.koin.compose.koinInject

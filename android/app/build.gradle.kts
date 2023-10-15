@@ -55,6 +55,7 @@ dependencies {
     implementation(project(":android:feature:home"))
     implementation(project(":android:feature:developer"))
     implementation(project(":android:feature:profile"))
+    implementation(project(":android:feature:navigation"))
 
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.navigation.compose)

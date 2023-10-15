@@ -21,9 +21,8 @@ import com.hulkdx.findprofessional.common.feature.home.Professional
 import com.hulkdx.findprofessional.core.commonui.CUSearchField
 import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.core.theme.h1
-import com.hulkdx.findprofessional.feature.navigation.AppNavBarContainer
+import com.hulkdx.findprofessional.feature.navigation.navbar.AppNavBarContainer
 import com.hulkdx.findprofessional.resources.MR
-import dev.icerock.moko.resources.compose.localized
 import org.koin.androidx.compose.getViewModel
 
 @Composable
