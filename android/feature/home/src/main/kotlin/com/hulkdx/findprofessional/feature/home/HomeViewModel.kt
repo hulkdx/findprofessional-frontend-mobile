@@ -39,6 +39,6 @@ class HomeViewModel(
     }
 
     fun onItemClick(professional: Professional) {
-        navigator.navigate(NavigationScreen.HomeDetail)
+        navigator.navigate(NavigationScreen.HomeDetail(professional))
     }
 }

@@ -84,8 +84,6 @@ private fun SetupNavigationCurrentScreen(
     navigator: NavigatorImpl,
 ) {
     val navStack by navController.currentBackStackEntryAsState()
-    val currentScreen = navStack?.destination?.route
-    if (currentScreen != null) {
-        navigator.currentScreen = currentScreen
-    }
+    navigator.currentScreen = navStack?.destination?.route ?: return
+    navigator.currentScreenBundle = navStack?.arguments ?: return
 }
