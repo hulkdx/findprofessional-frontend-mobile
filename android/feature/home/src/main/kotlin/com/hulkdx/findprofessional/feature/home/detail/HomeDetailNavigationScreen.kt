@@ -9,8 +9,6 @@ import com.hulkdx.findprofessional.feature.navigation.screen.Content
 import com.hulkdx.findprofessional.feature.navigation.screen.SlideNavigationScreen
 import com.hulkdx.findprofessional.feature.navigation.navtype.NavTypeParcelable
 
-private const val ARG1 = "p"
-
 class HomeDetailNavigationScreen : SlideNavigationScreen() {
     override val content: Content = {
         val professional = professional(it.arguments)
@@ -34,6 +32,8 @@ class HomeDetailNavigationScreen : SlideNavigationScreen() {
     private class HomeNavType : NavTypeParcelable<Professional>(Professional::class.java)
 
     companion object {
+        const val ARG1 = "p"
+
         fun professional(bundle: Bundle?): Professional {
             requireNotNull(bundle)
             return requireNotNull(BundleCompat.getParcelable(bundle, ARG1, Professional::class.java))
