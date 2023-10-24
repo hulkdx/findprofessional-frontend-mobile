@@ -103,7 +103,7 @@ private fun Rating(professional: Professional) {
         Icon(
             modifier = Modifier.padding(top = 2.dp),
             painter = painterResource(R.drawable.ic_new_rating),
-            tint = Color(0xFF00B3BD),
+            tint = MaterialTheme.colorScheme.scrim,
             contentDescription = "",
         )
         return

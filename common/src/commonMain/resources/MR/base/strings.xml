@@ -16,4 +16,8 @@
 
     <string name="home">Home</string>
     <string name="profile">Profile</string>
+    <string name="rating">Rating</string>
+    <string name="availability">Availability</string>
+    <string name="reviews">Reviews</string>
+    <string name="videos">Videos</string>
 </resources>
