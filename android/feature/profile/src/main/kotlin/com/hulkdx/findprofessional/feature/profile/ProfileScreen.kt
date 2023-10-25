@@ -25,6 +25,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.hulkdx.findprofessional.core.commonui.CUSnackBar
 import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.core.theme.h3
@@ -40,7 +41,7 @@ fun ProfileScreen(viewModel: ProfileViewModel = getViewModel()) {
     ProfileScreen(
         onLogoutClicked = viewModel::onLogoutClicked,
         error = error?.localized(),
-        onErrorDismissed = { viewModel.error.set(null) },
+        onErrorDismissed = { viewModel.setError(null) },
     )
 }
 

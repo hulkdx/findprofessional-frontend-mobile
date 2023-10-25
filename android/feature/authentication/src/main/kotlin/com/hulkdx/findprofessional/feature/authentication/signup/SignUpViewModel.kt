@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hulkdx.findprofessional.common.feature.authentication.signup.SignUpUseCase
 import com.hulkdx.findprofessional.common.feature.authentication.signup.model.AuthRequest
-import com.hulkdx.findprofessional.core.utils.getStateFlowWrapper
 import dev.icerock.moko.resources.desc.StringDesc
 import kotlinx.coroutines.launch
 
