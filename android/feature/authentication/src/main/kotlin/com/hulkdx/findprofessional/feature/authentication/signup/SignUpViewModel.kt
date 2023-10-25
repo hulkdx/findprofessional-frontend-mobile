@@ -10,17 +10,29 @@ import dev.icerock.moko.resources.desc.StringDesc
 import kotlinx.coroutines.launch
 
 class SignUpViewModel(
-    savedStateHandle: SavedStateHandle,
+    private val savedStateHandle: SavedStateHandle,
     private val useCase: SignUpUseCase,
 ) : ViewModel() {
-    val email by savedStateHandle.getStateFlowWrapper("")
-    val password by savedStateHandle.getStateFlowWrapper("")
-    val error by savedStateHandle.getStateFlowWrapper<StringDesc?>(null)
+    val email = savedStateHandle.getStateFlow("email", "")
+    val password = savedStateHandle.getStateFlow("password", "")
+    val error = savedStateHandle.getStateFlow<StringDesc?>("error", null)
 
     fun onSubmitClicked() = viewModelScope.launch {
         val err = useCase.onSubmitClicked(AuthRequest(email.value, password.value))
         if (err != null) {
-            error.set(err)
+            setError(err)
         }
+    }
+
+    fun setError(error: StringDesc?) {
+        savedStateHandle["error"] = error
+    }
+
+    fun setPassword(password: String) {
+        savedStateHandle["password"] = password
+    }
+
+    fun setEmail(email: String) {
+        savedStateHandle["email"] = email
     }
 }
