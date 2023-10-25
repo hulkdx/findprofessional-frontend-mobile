@@ -7,17 +7,16 @@ import com.hulkdx.findprofessional.common.feature.home.HomeUseCase
 import com.hulkdx.findprofessional.common.feature.home.Professional
 import com.hulkdx.findprofessional.common.navigation.NavigationScreen
 import com.hulkdx.findprofessional.common.navigation.Navigator
-import com.hulkdx.findprofessional.core.utils.getStateFlowWrapper
 import dev.icerock.moko.resources.desc.StringDesc
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
-    savedStateHandle: SavedStateHandle,
+    private val savedStateHandle: SavedStateHandle,
     private val useCase: HomeUseCase,
     private val navigator: Navigator,
 ) : ViewModel() {
-    val error by savedStateHandle.getStateFlowWrapper<StringDesc?>(null)
-    val professionals by savedStateHandle.getStateFlowWrapper<List<Professional>>(listOf())
+    val error = savedStateHandle.getStateFlow<StringDesc?>("error", null)
+    val professionals = savedStateHandle.getStateFlow<List<Professional>>("professionals", listOf())
 
     init {
         findAll()
@@ -26,9 +25,9 @@ class HomeViewModel(
     private fun findAll() = viewModelScope.launch {
         val (pro, err) = useCase.findAll()
         if (err != null) {
-            error.set(err)
+            setError(err)
         } else {
-            professionals.set(pro)
+            setProfessionals(pro)
         }
     }
 
@@ -40,5 +39,13 @@ class HomeViewModel(
 
     fun onItemClick(professional: Professional) {
         navigator.navigate(NavigationScreen.HomeDetail(professional))
+    }
+
+    fun setError(error: StringDesc?) {
+        savedStateHandle["error"] = error
+    }
+
+    private fun setProfessionals(pro: List<Professional>) {
+        savedStateHandle["professionals"] = pro
     }
 }

@@ -42,16 +42,15 @@ fun AppNavBarContainer(
 fun AppNavBarContainer(
     modifier: Modifier = Modifier,
     testTag: String,
-    error: GetStateFlowWrapper<StringDesc?>,
+    error: StringDesc?,
+    onErrorDismissed: () -> Unit,
     content: @Composable () -> Unit,
 ) {
-    val errorStr by error.collectAsStateWithLifecycle()
-
     AppNavBarContainer(
         modifier,
         testTag,
-        errorStr?.localized(),
-        { error.set(null) },
+        error?.localized(),
+        onErrorDismissed,
         content,
     )
 }
