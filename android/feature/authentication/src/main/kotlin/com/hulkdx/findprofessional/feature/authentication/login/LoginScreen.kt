@@ -24,6 +24,7 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.hulkdx.findprofessional.common.BuildConfig
 import com.hulkdx.findprofessional.core.commonui.CUSnackBar
 import com.hulkdx.findprofessional.core.theme.AppTheme
@@ -48,13 +49,13 @@ fun LoginScreen(
 
     LoginScreen(
         email = email,
-        onEmailChanged = viewModel.email::set,
+        onEmailChanged = viewModel::setEmail,
         password = password,
-        onPasswordChanged = viewModel.password::set,
+        onPasswordChanged = viewModel::setPassword,
         onSignInClicked = viewModel::onSignInClicked,
         onSignUpClicked = viewModel::onSignUpClicked,
         error = error?.localized(),
-        onErrorDismissed = { viewModel.error.set(null) },
+        onErrorDismissed = { viewModel.setError(null) },
         onDevClicked = viewModel::onDevClicked,
     )
 }
