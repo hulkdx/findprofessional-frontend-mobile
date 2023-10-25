@@ -37,7 +37,6 @@ import org.koin.androidx.compose.getViewModel
 
 @Composable
 fun HomeDetailScreen(
-    professional: Professional,
     viewModel: HomeDetailViewModel = getViewModel(),
 ) {
     HomeDetailScreen(

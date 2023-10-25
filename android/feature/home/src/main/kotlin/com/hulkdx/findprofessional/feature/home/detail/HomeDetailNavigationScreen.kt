@@ -11,8 +11,7 @@ import com.hulkdx.findprofessional.feature.navigation.navtype.NavTypeParcelable
 
 class HomeDetailNavigationScreen : SlideNavigationScreen() {
     override val content: Content = {
-        val professional = professional(it.arguments)
-        HomeDetailScreen(professional)
+        HomeDetailScreen()
     }
 
     override val route: String
