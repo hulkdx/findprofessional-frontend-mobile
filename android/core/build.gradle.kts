@@ -40,7 +40,7 @@ dependencies {
     api(libs.androidx.compose.material3)
     api(libs.androidx.compose.ui.tooling.preview)
     api(libs.androidx.navigation.compose)
-    implementation(libs.androidx.lifecycle.runtimeCompose)
+    api(libs.androidx.lifecycle.runtimeCompose)
     implementation(libs.coil.compose)
 
     debugApi(libs.androidx.compose.ui.tooling)

@@ -17,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.hulkdx.findprofessional.common.feature.home.Professional
 import com.hulkdx.findprofessional.core.commonui.CUSearchField
 import com.hulkdx.findprofessional.core.theme.AppTheme
@@ -28,8 +29,13 @@ import org.koin.androidx.compose.getViewModel
 @Composable
 fun HomeScreen(viewModel: HomeViewModel = getViewModel()) {
     val professionals by viewModel.professionals.collectAsStateWithLifecycle()
+    val error by viewModel.error.collectAsStateWithLifecycle()
 
-    AppNavBarContainer(testTag = "HomeScreen", error = viewModel.error) {
+    AppNavBarContainer(
+        testTag = "HomeScreen",
+        error = error,
+        onErrorDismissed = { viewModel.setError(null) },
+    ) {
         HomeScreen(
             professionals = professionals,
             onSearchClick = viewModel::onSearchClick,

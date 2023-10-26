@@ -5,17 +5,16 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hulkdx.findprofessional.common.feature.authentication.login.LoginUseCase
 import com.hulkdx.findprofessional.common.feature.authentication.signup.model.AuthRequest
-import com.hulkdx.findprofessional.core.utils.getStateFlowWrapper
 import dev.icerock.moko.resources.desc.StringDesc
 import kotlinx.coroutines.launch
 
 class LoginViewModel(
-    savedStateHandle: SavedStateHandle,
+    private val savedStateHandle: SavedStateHandle,
     private val loginUseCase: LoginUseCase,
 ) : ViewModel() {
-    val email by savedStateHandle.getStateFlowWrapper("")
-    val password by savedStateHandle.getStateFlowWrapper("")
-    val error by savedStateHandle.getStateFlowWrapper<StringDesc?>(null)
+    val email = savedStateHandle.getStateFlow("email", "")
+    val password = savedStateHandle.getStateFlow("password", "")
+    val error = savedStateHandle.getStateFlow<StringDesc?>("error", null)
 
     fun onSignUpClicked() {
         loginUseCase.onSignUpClicked()
@@ -24,11 +23,23 @@ class LoginViewModel(
     fun onSignInClicked() = viewModelScope.launch {
         val err = loginUseCase.onSignInClicked(AuthRequest(email.value, password.value))
         if (err != null) {
-            error.set(err)
+            setError(err)
         }
     }
 
     fun onDevClicked() {
         loginUseCase.onDevClicked()
+    }
+
+    fun setError(error: StringDesc?) {
+        savedStateHandle["error"] = error
+    }
+
+    fun setPassword(password: String) {
+        savedStateHandle["password"] = password
+    }
+
+    fun setEmail(email: String) {
+        savedStateHandle["email"] = email
     }
 }
