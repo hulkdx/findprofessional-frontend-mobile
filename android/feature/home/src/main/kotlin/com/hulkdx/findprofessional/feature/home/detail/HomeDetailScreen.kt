@@ -1,6 +1,7 @@
 package com.hulkdx.findprofessional.feature.home.detail
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
@@ -30,7 +31,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.hulkdx.findprofessional.common.feature.home.Professional
 import com.hulkdx.findprofessional.core.R
@@ -39,8 +39,8 @@ import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.core.theme.body1
 import com.hulkdx.findprofessional.core.theme.body1Medium
 import com.hulkdx.findprofessional.core.theme.body2
-import com.hulkdx.findprofessional.core.theme.*
 import com.hulkdx.findprofessional.core.theme.h3
+import com.hulkdx.findprofessional.core.theme.h3Bold
 import com.hulkdx.findprofessional.resources.MR
 import org.koin.androidx.compose.getViewModel
 
@@ -235,25 +235,33 @@ private fun AvailabilityContentRow(rows: List<String>) {
             end = 16.dp,
         )
     ) {
-        for ((index, item) in rows.withIndex()) {
-            AvailabilityContentElement(item, index == 0, index == rows.size - 1)
+        for (item in rows) {
+            AvailabilityContentElement(item)
         }
     }
 }
 
 @Composable
-private fun RowScope.AvailabilityContentElement(row: String, isFirstElement: Boolean, isLastElement: Boolean) {
+private fun RowScope.AvailabilityContentElement(row: String) {
     when (row) {
-        "0", "1", "2", "3", "4" -> {
-            // TODO: fix the colors
-            Box(
-                Modifier
-                    .weight(1F)
-                    .fillMaxWidth()
-                    .height(30.dp)
-                    .padding(2.dp)
-                    .background(Color.Gray)
-            )
+        "0" -> {
+            AvailabilityBox(Color(0xFFF2F2F2))
+        }
+
+        "1" -> {
+            AvailabilityBox(Color(0xFFE1F0D1))
+        }
+
+        "2" -> {
+            AvailabilityBox(Color(0xFFC1DDA1))
+        }
+
+        "3" -> {
+            AvailabilityBox(Color(0xFFA8D279))
+        }
+
+        "4" -> {
+            AvailabilityBox(Color(0xFF8FC750))
         }
 
         else -> {
@@ -266,7 +274,19 @@ private fun RowScope.AvailabilityContentElement(row: String, isFirstElement: Boo
             )
         }
     }
+}
 
+@Composable
+private fun RowScope.AvailabilityBox(color: Color) {
+    Box(
+        Modifier
+            .weight(1F)
+            .fillMaxWidth()
+            .height(30.dp)
+            .padding(2.dp)
+            .border(0.5.dp, Color(0xFF797979))
+            .background(color)
+    )
 }
 
 @Composable
