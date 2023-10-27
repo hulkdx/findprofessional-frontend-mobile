@@ -17,7 +17,9 @@ data class Professional(
     val profileImageUrl: String? = null,
     val rating: String? = null,
     val description: String? = null,
+    // TODO: add to backend:
     val availabilities: List<List<String>> = TEST_AVAILABILITIES,
+    val totalReviews: String? = "200",
 ) : CommonParcelable {
     val fullName: String
         get() = "$firstName $lastName"

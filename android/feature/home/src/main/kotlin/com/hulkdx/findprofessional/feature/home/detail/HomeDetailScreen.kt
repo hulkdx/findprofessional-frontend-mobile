@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
@@ -24,10 +25,12 @@ import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.hulkdx.findprofessional.common.feature.home.Professional
 import com.hulkdx.findprofessional.core.R
@@ -36,6 +39,7 @@ import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.core.theme.body1
 import com.hulkdx.findprofessional.core.theme.body1Medium
 import com.hulkdx.findprofessional.core.theme.body2
+import com.hulkdx.findprofessional.core.theme.*
 import com.hulkdx.findprofessional.core.theme.h3
 import com.hulkdx.findprofessional.resources.MR
 import org.koin.androidx.compose.getViewModel
@@ -63,6 +67,7 @@ private fun HomeDetailScreen(
         items(professional.availabilities) {
             AvailabilityContentRow(it)
         }
+        item { Review(professional) }
     }
 }
 
@@ -71,7 +76,8 @@ private fun TopHeader(professional: Professional) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(top = 32.dp, start = 16.dp, end = 16.dp)
+            .statusBarsPadding()
+            .padding(top = 16.dp, start = 16.dp, end = 16.dp)
             .clip(shape = RoundedCornerShape(10.dp))
             .background(MaterialTheme.colorScheme.onPrimary)
     ) {
@@ -214,30 +220,29 @@ private fun RatingIcon(professional: Professional) {
 
 @Composable
 private fun AvailabilityHeader() {
-    Row(Modifier.padding(start = 16.dp, top = 16.dp)) {
-        Icon(
-            painter = painterResource(R.drawable.ic_calendar_clock),
-            contentDescription = ""
-        )
-        Text(
-            modifier = Modifier.padding(start = 8.dp),
-            style = h3,
-            text = stringResource(MR.strings.availability.resourceId)
-        )
-    }
+    Header(
+        modifier = Modifier.padding(top = 16.dp),
+        icon = painterResource(R.drawable.ic_calendar_clock),
+        text = stringResource(MR.strings.availability.resourceId)
+    )
 }
 
 @Composable
 private fun AvailabilityContentRow(rows: List<String>) {
-    Row {
-        for (item in rows) {
-            AvailabilityContentElement(item)
+    Row(
+        Modifier.padding(
+            start = 16.dp,
+            end = 16.dp,
+        )
+    ) {
+        for ((index, item) in rows.withIndex()) {
+            AvailabilityContentElement(item, index == 0, index == rows.size - 1)
         }
     }
 }
 
 @Composable
-private fun RowScope.AvailabilityContentElement(row: String) {
+private fun RowScope.AvailabilityContentElement(row: String, isFirstElement: Boolean, isLastElement: Boolean) {
     when (row) {
         "0", "1", "2", "3", "4" -> {
             // TODO: fix the colors
@@ -251,33 +256,32 @@ private fun RowScope.AvailabilityContentElement(row: String) {
             )
         }
 
-        else -> Text(
-            text = row,
-            modifier = Modifier
-                .weight(1F)
-                .padding(vertical = 2.dp)
-                .align(Alignment.CenterVertically),
-            textAlign = TextAlign.Center,
-        )
+        else -> {
+            Text(
+                text = row,
+                modifier = Modifier
+                    .weight(1F)
+                    .align(Alignment.CenterVertically),
+                textAlign = TextAlign.Center,
+            )
+        }
     }
 
 }
 
 @Composable
 private fun Review(professional: Professional) {
-    ReviewHeader()
+    ReviewHeader(professional)
     ReviewContent(professional)
 }
 
 @Composable
-private fun ReviewHeader() {
-    Row(Modifier.padding(start = 16.dp, top = 16.dp)) {
-        Text(
-            modifier = Modifier.padding(start = 8.dp),
-            style = h3,
-            text = stringResource(MR.strings.reviews.resourceId)
-        )
-    }
+private fun ReviewHeader(professional: Professional) {
+    Header(
+        modifier = Modifier,
+        icon = null,
+        text = professional.totalReviews + " " + stringResource(MR.strings.reviews.resourceId)
+    )
 }
 
 @Composable
@@ -303,6 +307,27 @@ private fun VideoHeader() {
 
 @Composable
 private fun VideoContent(professional: Professional) {
+}
+
+@Composable
+private fun Header(
+    modifier: Modifier,
+    icon: Painter?,
+    text: String,
+) {
+    Row(modifier.padding(start = 16.dp, top = 32.dp, bottom = 16.dp)) {
+        if (icon != null) {
+            Icon(
+                painter = icon,
+                contentDescription = ""
+            )
+        }
+        Text(
+            modifier = Modifier.padding(start = 8.dp),
+            style = h3Bold,
+            text = text,
+        )
+    }
 }
 
 @Preview
