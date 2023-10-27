@@ -1,17 +1,20 @@
 package com.hulkdx.findprofessional.feature.home.detail
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -20,8 +23,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.hulkdx.findprofessional.common.feature.home.Professional
@@ -48,14 +53,16 @@ fun HomeDetailScreen(
 private fun HomeDetailScreen(
     professional: Professional,
 ) {
-    Column(
+    LazyColumn(
         modifier = Modifier
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.onTertiary)
-            .verticalScroll(rememberScrollState())
     ) {
-        TopHeader(professional)
-        Availability(professional)
+        item { TopHeader(professional) }
+        item { AvailabilityHeader() }
+        items(professional.availabilities) {
+            AvailabilityContentRow(it)
+        }
     }
 }
 
@@ -206,12 +213,6 @@ private fun RatingIcon(professional: Professional) {
 }
 
 @Composable
-private fun Availability(professional: Professional) {
-    AvailabilityHeader()
-    AvailabilityContent(professional)
-}
-
-@Composable
 private fun AvailabilityHeader() {
     Row(Modifier.padding(start = 16.dp, top = 16.dp)) {
         Icon(
@@ -227,8 +228,39 @@ private fun AvailabilityHeader() {
 }
 
 @Composable
-private fun AvailabilityContent(professional: Professional) {
-    // TODO:
+private fun AvailabilityContentRow(rows: List<String>) {
+    Row {
+        for (item in rows) {
+            AvailabilityContentElement(item)
+        }
+    }
+}
+
+@Composable
+private fun RowScope.AvailabilityContentElement(row: String) {
+    when (row) {
+        "0", "1", "2", "3", "4" -> {
+            // TODO: fix the colors
+            Box(
+                Modifier
+                    .weight(1F)
+                    .fillMaxWidth()
+                    .height(30.dp)
+                    .padding(2.dp)
+                    .background(Color.Gray)
+            )
+        }
+
+        else -> Text(
+            text = row,
+            modifier = Modifier
+                .weight(1F)
+                .padding(vertical = 2.dp)
+                .align(Alignment.CenterVertically),
+            textAlign = TextAlign.Center,
+        )
+    }
+
 }
 
 @Composable

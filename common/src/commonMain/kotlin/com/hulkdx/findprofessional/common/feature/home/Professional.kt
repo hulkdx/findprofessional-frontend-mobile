@@ -4,9 +4,6 @@ import com.hulkdx.findprofessional.common.utils.CommonParcelable
 import com.hulkdx.findprofessional.common.utils.CommonParcelize
 import kotlinx.serialization.Serializable
 
-/**
- *  TODO: what to show if these optional values are not present
- */
 @CommonParcelize
 @Serializable
 data class Professional(
@@ -19,10 +16,22 @@ data class Professional(
     val priceCurrency: String? = null,
     val profileImageUrl: String? = null,
     val rating: String? = null,
-    val description: String? = null
+    val description: String? = null,
+    val availabilities: List<List<String>> = TEST_AVAILABILITIES,
 ) : CommonParcelable {
     val fullName: String
         get() = "$firstName $lastName"
     val price: String
         get() = "$priceCurrency $priceNumber"
 }
+
+// TODO: remove
+private val TEST_AVAILABILITIES = listOf(
+    listOf("", "Thu\n19", "Fri\n20", "Sat\n21", "Sun\n22", "Mon\n23", "Tue\n24"),
+    listOf("00-04", "0", "0", "0", "0", "0", "0"),
+    listOf("04-08", "0", "0", "0", "0", "0", "0"),
+    listOf("08-12", "0", "0", "0", "0", "0", "0"),
+    listOf("12-16", "0", "0", "0", "0", "0", "0"),
+    listOf("16-20", "0", "0", "0", "0", "0", "0"),
+    listOf("20-24", "0", "0", "0", "0", "0", "0"),
+)
