@@ -26,7 +26,6 @@ import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -264,13 +263,7 @@ private fun RowScope.AvailabilityContentElement(row: String) {
         }
 
         else -> {
-            Text(
-                text = row,
-                modifier = Modifier
-                    .weight(1F)
-                    .align(Alignment.CenterVertically),
-                textAlign = TextAlign.Center,
-            )
+            AvailabilityText(row)
         }
     }
 }
@@ -285,6 +278,17 @@ private fun RowScope.AvailabilityBox(color: Color) {
             .padding(2.dp)
             .border(0.5.dp, Color(0xFF797979))
             .background(color)
+    )
+}
+
+@Composable
+private fun RowScope.AvailabilityText(row: String) {
+    Text(
+        text = row,
+        modifier = Modifier.Companion
+            .weight(1F)
+            .align(Alignment.CenterVertically),
+        textAlign = TextAlign.Center,
     )
 }
 
