@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -63,9 +64,11 @@ private fun HomeDetailScreen(
     ) {
         item { TopHeader(professional) }
         item { AvailabilityHeader() }
+        item { AvailabilityContentTop() }
         items(professional.availabilities) {
             AvailabilityContentRow(it)
         }
+        item { AvailabilityContentBottom() }
         item { Review(professional) }
     }
 }
@@ -226,12 +229,39 @@ private fun AvailabilityHeader() {
 }
 
 @Composable
+private fun AvailabilityContentTop() {
+    Spacer(
+        Modifier
+            .fillMaxWidth()
+            .height(16.dp)
+            .padding(start = 16.dp, end = 16.dp)
+            .clip(RoundedCornerShape(topStart = 10.dp, topEnd = 16.dp))
+            .background(MaterialTheme.colorScheme.onPrimary)
+    )
+}
+
+@Composable
+private fun AvailabilityContentBottom() {
+    Text(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp)
+            .clip(RoundedCornerShape(bottomStart = 10.dp, bottomEnd = 16.dp))
+            .background(MaterialTheme.colorScheme.onPrimary)
+            .padding(12.dp),
+        text = "Base on your timezone (UTC +03:30)",
+        style = body2,
+        color = MaterialTheme.colorScheme.onTertiaryContainer,
+        textAlign = TextAlign.Center,
+    )
+}
+
+@Composable
 private fun AvailabilityContentRow(rows: List<String>) {
     Row(
-        Modifier.padding(
-            start = 16.dp,
-            end = 16.dp,
-        )
+        Modifier
+            .padding(start = 16.dp, end = 16.dp)
+            .background(MaterialTheme.colorScheme.onPrimary)
     ) {
         for (item in rows) {
             AvailabilityContentElement(item)
