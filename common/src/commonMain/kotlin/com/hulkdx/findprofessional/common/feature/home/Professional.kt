@@ -20,12 +20,23 @@ data class Professional(
     // TODO: add to backend:
     val availabilities: List<List<String>> = TEST_AVAILABILITIES,
     val totalReviews: String? = "200",
-    val reviews: List<String> = listOf("", ""),
+    val reviews: List<Review> = TEST_REVIEW,
 ) : CommonParcelable {
     val fullName: String
         get() = "$firstName $lastName"
     val price: String
         get() = "$priceCurrency $priceNumber"
+}
+
+@CommonParcelize
+@Serializable
+data class Review(
+    val profileImageUrl: String,
+    val firstName: String,
+    val lastName: String,
+): CommonParcelable {
+    val fullName: String
+        get() = "$firstName $lastName"
 }
 
 // TODO: remove
@@ -37,4 +48,13 @@ private val TEST_AVAILABILITIES = listOf(
     listOf("12-16", "0", "0", "0", "3", "0", "0"),
     listOf("16-20", "0", "0", "0", "0", "0", "0"),
     listOf("20-24", "0", "0", "0", "0", "4", "0"),
+)
+
+// TODO: remove
+private val TEST_REVIEW = listOf(
+    Review(
+        profileImageUrl = "",
+        firstName = "Stefan",
+        lastName = "Holman"
+    )
 )

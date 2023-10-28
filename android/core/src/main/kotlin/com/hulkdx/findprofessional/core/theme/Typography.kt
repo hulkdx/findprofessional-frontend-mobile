@@ -80,3 +80,9 @@ val body3 = TextStyle(
     fontWeight = FontWeight.Normal,
     fontSize = 12.sp,
 )
+
+val body3Bold = TextStyle(
+    fontFamily = interFamily,
+    fontWeight = FontWeight.Bold,
+    fontSize = 12.sp,
+)
