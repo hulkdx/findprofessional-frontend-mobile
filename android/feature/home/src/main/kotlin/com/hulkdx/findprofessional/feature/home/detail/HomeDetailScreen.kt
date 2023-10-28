@@ -222,7 +222,6 @@ private fun RatingIcon(professional: Professional) {
 private fun AvailabilityHeader() {
     Header(
         modifier = Modifier.padding(top = 16.dp),
-        icon = painterResource(R.drawable.ic_calendar_clock),
         text = stringResource(MR.strings.availability.resourceId)
     )
 }
@@ -299,7 +298,6 @@ private fun Review(professional: Professional) {
 private fun ReviewHeader(professional: Professional) {
     Header(
         modifier = Modifier,
-        icon = null,
         text = professional.totalReviews + " " + stringResource(MR.strings.reviews.resourceId)
     )
 }
@@ -308,40 +306,13 @@ private fun ReviewHeader(professional: Professional) {
 private fun ReviewContent(professional: Professional) {
 }
 
-@Composable
-private fun Video(professional: Professional) {
-    VideoHeader()
-    VideoContent(professional)
-}
-
-@Composable
-private fun VideoHeader() {
-    Row(Modifier.padding(start = 16.dp, top = 16.dp)) {
-        Text(
-            modifier = Modifier.padding(start = 8.dp),
-            style = h3,
-            text = stringResource(MR.strings.videos.resourceId)
-        )
-    }
-}
-
-@Composable
-private fun VideoContent(professional: Professional) {
-}
 
 @Composable
 private fun Header(
     modifier: Modifier,
-    icon: Painter?,
     text: String,
 ) {
     Row(modifier.padding(start = 16.dp, top = 32.dp, bottom = 16.dp)) {
-        if (icon != null) {
-            Icon(
-                painter = icon,
-                contentDescription = ""
-            )
-        }
         Text(
             modifier = Modifier.padding(start = 8.dp),
             style = h3Bold,
