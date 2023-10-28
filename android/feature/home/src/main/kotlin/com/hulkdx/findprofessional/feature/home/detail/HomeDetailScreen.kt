@@ -24,6 +24,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.hulkdx.findprofessional.common.config.api.InMemoryApi
 import com.hulkdx.findprofessional.common.feature.home.Professional
 import com.hulkdx.findprofessional.core.R
 import com.hulkdx.findprofessional.core.commonui.CUAsyncImage
@@ -217,20 +218,9 @@ private fun RatingIcon(professional: Professional) {
 private fun HomeDetailScreenPreview() {
     AppTheme {
         HomeDetailScreen(
-            Professional(
-                id = 1,
-                firstName = "Mike",
-                lastName = "Tyson",
-                coachType = "Life coach",
-                priceNumber = 100,
-                priceCurrency = "EUR",
-                email = "",
-                profileImageUrl = "https://imgur.com/gallery/7R6wmYb",
-                rating = "5.0",
-                description = "former professional boxer who competed from 1985 to 2005",
-            ),
+            InMemoryApi.professionals[0],
             {},
-            {}
+            {},
         )
     }
 }

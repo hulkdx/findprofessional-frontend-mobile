@@ -26,6 +26,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.hulkdx.findprofessional.common.config.api.InMemoryApi
 import com.hulkdx.findprofessional.common.feature.home.Professional
 import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.core.theme.body2
@@ -162,18 +163,7 @@ fun AvailabilityPreview() {
     AppTheme {
         LazyColumn(Modifier.background(MaterialTheme.colorScheme.onTertiary)) {
             Availability(
-                Professional(
-                    id = 1,
-                    firstName = "Mike",
-                    lastName = "Tyson",
-                    coachType = "Life coach",
-                    priceNumber = 100,
-                    priceCurrency = "EUR",
-                    email = "",
-                    profileImageUrl = "https://imgur.com/gallery/7R6wmYb",
-                    rating = "5.0",
-                    description = "former professional boxer who competed from 1985 to 2005",
-                ),
+                InMemoryApi.professionals[0],
                 timeZone = "UTC +03.00"
             )
         }
