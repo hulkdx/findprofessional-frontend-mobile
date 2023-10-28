@@ -39,6 +39,7 @@ import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.core.theme.body1
 import com.hulkdx.findprofessional.core.theme.body1Medium
 import com.hulkdx.findprofessional.core.theme.body2
+import com.hulkdx.findprofessional.core.theme.body3
 import com.hulkdx.findprofessional.core.theme.h3
 import com.hulkdx.findprofessional.core.theme.h3Bold
 import com.hulkdx.findprofessional.resources.MR
@@ -68,7 +69,8 @@ private fun HomeDetailScreen(
         items(professional.availabilities) {
             AvailabilityContentRow(it)
         }
-        item { AvailabilityContentBottom() }
+        // TODO: get the timezone from user
+        item { AvailabilityContentBottom("UTC +03.00") }
         item { Review(professional) }
     }
 }
@@ -241,7 +243,7 @@ private fun AvailabilityContentTop() {
 }
 
 @Composable
-private fun AvailabilityContentBottom() {
+private fun AvailabilityContentBottom(timeZone: String) {
     Text(
         modifier = Modifier
             .fillMaxWidth()
@@ -262,6 +264,7 @@ private fun AvailabilityContentRow(rows: List<String>) {
         Modifier
             .padding(start = 16.dp, end = 16.dp)
             .background(MaterialTheme.colorScheme.onPrimary)
+            .padding(start = 12.dp, end = 25.dp)
     ) {
         for (item in rows) {
             AvailabilityContentElement(item)
@@ -305,8 +308,8 @@ private fun RowScope.AvailabilityBox(color: Color) {
             .weight(1F)
             .fillMaxWidth()
             .height(30.dp)
-            .padding(2.dp)
-            .border(0.5.dp, Color(0xFF797979))
+            .padding(6.dp)
+            .border(1.dp, Color(0xFF797979))
             .background(color)
     )
 }
@@ -318,6 +321,7 @@ private fun RowScope.AvailabilityText(row: String) {
         modifier = Modifier.Companion
             .weight(1F)
             .align(Alignment.CenterVertically),
+        style = body3,
         textAlign = TextAlign.Center,
     )
 }
