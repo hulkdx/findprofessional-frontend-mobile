@@ -58,18 +58,33 @@ private fun ReviewContent(review: Review) {
             .clip(shape = RoundedCornerShape(10.dp))
             .background(MaterialTheme.colorScheme.onPrimary)
     ) {
-        Row(Modifier.padding(top = 18.dp, start = 18.dp)) {
-            ReviewProfile(review.profileImageUrl)
-            Column(
-                Modifier
-                    .align(CenterVertically)
-                    .padding(start = 12.dp)
-            ) {
-                ReviewName(review.fullName)
-                ReviewStar(review.star)
-            }
+        Header(review)
+    }
+}
+
+@Composable
+private fun Header(review: Review) {
+    Row(Modifier.padding(top = 18.dp, start = 18.dp)) {
+        ReviewProfile(review.profileImageUrl)
+        Column(
+            Modifier
+                .align(CenterVertically)
+                .padding(start = 12.dp)
+        ) {
+            ReviewName(review.fullName)
+            ReviewStar(review.star)
         }
     }
+}
+
+@Composable
+private fun ReviewProfile(profileImageUrl: String) {
+    CUAsyncImage(
+        modifier = Modifier
+            .size(35.dp)
+            .clip(shape = CircleShape),
+        url = profileImageUrl
+    )
 }
 
 @Composable
@@ -95,34 +110,9 @@ private fun ReviewStar(star: Int) {
     }
 }
 
-@Composable
-private fun ReviewProfile(profileImageUrl: String) {
-    CUAsyncImage(
-        modifier = Modifier
-            .size(35.dp)
-            .clip(shape = CircleShape),
-        url = profileImageUrl
-    )
-}
-
 @Preview
 @Composable
-private fun ReviewContent5StarPreview() {
-    AppTheme {
-        ReviewContent(
-            Review(
-                profileImageUrl = "",
-                firstName = "Stefan",
-                lastName = "Holman",
-                star = 5,
-            )
-        )
-    }
-}
-
-@Preview
-@Composable
-private fun ReviewContent4StarPreview() {
+private fun ReviewContentStarPreview() {
     AppTheme {
         ReviewContent(
             Review(
@@ -130,52 +120,10 @@ private fun ReviewContent4StarPreview() {
                 firstName = "Stefan",
                 lastName = "Holman",
                 star = 4,
+                text = "Authentic and Wonderful 12-days tour of Paris. 12-days tour of Paris. Authentic and Wonderful 12-days tour of Paris. Authentic and Wonderful 12-days tour of Paris.\n" +
+                        "feeling like I’ve learned a lot."
             )
         )
     }
 }
 
-@Preview
-@Composable
-private fun ReviewContent3StarPreview() {
-    AppTheme {
-        ReviewContent(
-            Review(
-                profileImageUrl = "",
-                firstName = "Stefan",
-                lastName = "Holman",
-                star = 3,
-            )
-        )
-    }
-}
-
-@Preview
-@Composable
-private fun ReviewContent2StarPreview() {
-    AppTheme {
-        ReviewContent(
-            Review(
-                profileImageUrl = "",
-                firstName = "Stefan",
-                lastName = "Holman",
-                star = 2,
-            )
-        )
-    }
-}
-
-@Preview
-@Composable
-private fun ReviewContent1StarPreview() {
-    AppTheme {
-        ReviewContent(
-            Review(
-                profileImageUrl = "",
-                firstName = "Stefan",
-                lastName = "Holman",
-                star = 1,
-            )
-        )
-    }
-}

@@ -35,6 +35,7 @@ data class Review(
     val firstName: String,
     val lastName: String,
     val star: Int,
+    val text: String,
 ): CommonParcelable {
     val fullName: String
         get() = "$firstName $lastName"
@@ -58,5 +59,7 @@ private val TEST_REVIEW = listOf(
         firstName = "Stefan",
         lastName = "Holman",
         star = 5,
+        text = "Authentic and Wonderful 12-days tour of Paris. 12-days tour of Paris. Authentic and Wonderful 12-days tour of Paris. Authentic and Wonderful 12-days tour of Paris.\n" +
+                "feeling like I’ve learned a lot."
     )
 )
