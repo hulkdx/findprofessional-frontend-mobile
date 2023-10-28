@@ -86,3 +86,9 @@ val body3Bold = TextStyle(
     fontWeight = FontWeight.Bold,
     fontSize = 12.sp,
 )
+
+val body3SemiBold = TextStyle(
+    fontFamily = interFamily,
+    fontWeight = FontWeight.SemiBold,
+    fontSize = 12.sp,
+)

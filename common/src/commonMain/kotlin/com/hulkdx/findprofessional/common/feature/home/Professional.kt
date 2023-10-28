@@ -36,6 +36,7 @@ data class Review(
     val lastName: String,
     val star: Int,
     val text: String,
+    val date: String,
 ): CommonParcelable {
     val fullName: String
         get() = "$firstName $lastName"
@@ -55,11 +56,21 @@ private val TEST_AVAILABILITIES = listOf(
 // TODO: remove
 private val TEST_REVIEW = listOf(
     Review(
-        profileImageUrl = "",
+        profileImageUrl = "https://i.imgur.com/HDgjt8R.jpeg",
         firstName = "Stefan",
         lastName = "Holman",
         star = 5,
         text = "Authentic and Wonderful 12-days tour of Paris. 12-days tour of Paris. Authentic and Wonderful 12-days tour of Paris. Authentic and Wonderful 12-days tour of Paris.\n" +
-                "feeling like I’ve learned a lot."
-    )
+                "feeling like I’ve learned a lot.",
+        date = "Sep 18, 2023",
+    ),
+    Review(
+        profileImageUrl = "https://i.imgur.com/HDgjt8R.jpeg",
+        firstName = "Stefan",
+        lastName = "Holman",
+        star = 5,
+        text = "Authentic and Wonderful 12-days tour of Paris. 12-days tour of Paris. Authentic and Wonderful 12-days tour of Paris. Authentic and Wonderful 12-days tour of Paris.\n" +
+                "feeling like I’ve learned a lot.",
+        date = "Sep 18, 2023",
+    ),
 )

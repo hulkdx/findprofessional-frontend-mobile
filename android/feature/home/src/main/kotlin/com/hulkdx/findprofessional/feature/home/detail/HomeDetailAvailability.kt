@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -23,10 +24,13 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.hulkdx.findprofessional.common.feature.home.Professional
+import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.core.theme.body2
 import com.hulkdx.findprofessional.core.theme.body3
+import com.hulkdx.findprofessional.core.theme.h3Bold
 import com.hulkdx.findprofessional.resources.MR
 
 internal fun LazyListScope.Availability(
@@ -44,10 +48,16 @@ internal fun LazyListScope.Availability(
 
 @Composable
 private fun AvailabilityHeader() {
-    Header(
-        modifier = Modifier.padding(top = 16.dp),
-        text = stringResource(MR.strings.availability.resourceId)
-    )
+    Row(
+        Modifier
+            .padding(top = 16.dp)
+            .padding(start = 16.dp, top = 32.dp, bottom = 16.dp)) {
+        Text(
+            modifier = Modifier.padding(start = 8.dp),
+            style = h3Bold,
+            text = stringResource(MR.strings.availability.resourceId),
+        )
+    }
 }
 
 @Composable
@@ -144,4 +154,28 @@ private fun RowScope.AvailabilityText(row: String) {
         style = body3,
         textAlign = TextAlign.Center,
     )
+}
+
+@Preview
+@Composable
+fun AvailabilityPreview() {
+    AppTheme {
+        LazyColumn(Modifier.background(MaterialTheme.colorScheme.onTertiary)) {
+            Availability(
+                Professional(
+                    id = 1,
+                    firstName = "Mike",
+                    lastName = "Tyson",
+                    coachType = "Life coach",
+                    priceNumber = 100,
+                    priceCurrency = "EUR",
+                    email = "",
+                    profileImageUrl = "https://imgur.com/gallery/7R6wmYb",
+                    rating = "5.0",
+                    description = "former professional boxer who competed from 1985 to 2005",
+                ),
+                timeZone = "UTC +03.00"
+            )
+        }
+    }
 }

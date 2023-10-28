@@ -42,12 +42,16 @@ fun HomeDetailScreen(
 ) {
     HomeDetailScreen(
         viewModel.professional,
+        viewModel::onReviewShowMoreClicked,
+        viewModel::onBookClick
     )
 }
 
 @Composable
 private fun HomeDetailScreen(
     professional: Professional,
+    onReviewShowMoreClicked: () -> Unit,
+    onBookClicked: () -> Unit,
 ) {
     LazyColumn(
         modifier = Modifier
@@ -58,7 +62,7 @@ private fun HomeDetailScreen(
         item { TopHeader(professional) }
         // TODO: get the timezone from the user
         Availability(professional, "UTC +03.00")
-        Review(professional)
+        Review(professional, onReviewShowMoreClicked)
     }
 }
 
@@ -67,7 +71,7 @@ private fun TopHeader(professional: Professional) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(top = 16.dp, start = 16.dp, end = 16.dp)
+            .padding(start = 16.dp, end = 16.dp)
             .clip(shape = RoundedCornerShape(10.dp))
             .background(MaterialTheme.colorScheme.onPrimary)
     ) {
@@ -208,21 +212,7 @@ private fun RatingIcon(professional: Professional) {
     }
 }
 
-@Composable
-internal fun Header(
-    modifier: Modifier,
-    text: String,
-) {
-    Row(modifier.padding(start = 16.dp, top = 32.dp, bottom = 16.dp)) {
-        Text(
-            modifier = Modifier.padding(start = 8.dp),
-            style = h3Bold,
-            text = text,
-        )
-    }
-}
-
-@Preview
+@Preview(heightDp = 1500)
 @Composable
 private fun HomeDetailScreenPreview() {
     AppTheme {
@@ -238,7 +228,9 @@ private fun HomeDetailScreenPreview() {
                 profileImageUrl = "https://imgur.com/gallery/7R6wmYb",
                 rating = "5.0",
                 description = "former professional boxer who competed from 1985 to 2005",
-            )
+            ),
+            {},
+            {}
         )
     }
 }

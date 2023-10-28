@@ -4,7 +4,9 @@ package com.hulkdx.findprofessional.feature.home.detail
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -13,6 +15,8 @@ import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -24,29 +28,36 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.hulkdx.findprofessional.common.feature.home.Professional
 import com.hulkdx.findprofessional.common.feature.home.Review
 import com.hulkdx.findprofessional.core.R
 import com.hulkdx.findprofessional.core.commonui.CUAsyncImage
 import com.hulkdx.findprofessional.core.theme.AppTheme
+import com.hulkdx.findprofessional.core.theme.body3
 import com.hulkdx.findprofessional.core.theme.body3Bold
+import com.hulkdx.findprofessional.core.theme.body3SemiBold
+import com.hulkdx.findprofessional.core.theme.h3Bold
 import com.hulkdx.findprofessional.resources.MR
 
 
-internal fun LazyListScope.Review(professional: Professional) {
-    item { ReviewHeader(professional) }
-    item { ReviewHeader(professional) }
+internal fun LazyListScope.Review(professional: Professional, onShowMoreClicked: () -> Unit) {
+    item { ReviewHeader(professional.totalReviews) }
     items(professional.reviews) {
         ReviewContent(it)
     }
+    item { ShowMoreButton(onShowMoreClicked) }
 }
 
 @Composable
-private fun ReviewHeader(professional: Professional) {
-    Header(
-        modifier = Modifier,
-        text = professional.totalReviews + " " + stringResource(MR.strings.reviews.resourceId)
-    )
+private fun ReviewHeader(totalReviews: String?) {
+    Row(Modifier.padding(start = 16.dp, top = 32.dp, bottom = 16.dp)) {
+        Text(
+            modifier = Modifier.padding(start = 8.dp),
+            style = h3Bold,
+            text = totalReviews + " " + stringResource(MR.strings.reviews.resourceId),
+        )
+    }
 }
 
 @Composable
@@ -55,10 +66,14 @@ private fun ReviewContent(review: Review) {
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = 16.dp)
+            .padding(bottom = 8.dp)
             .clip(shape = RoundedCornerShape(10.dp))
             .background(MaterialTheme.colorScheme.onPrimary)
+            .padding(bottom = 16.dp)
     ) {
         Header(review)
+        ReviewText(review.text)
+        ReviewDate(review.date)
     }
 }
 
@@ -110,6 +125,62 @@ private fun ReviewStar(star: Int) {
     }
 }
 
+@Composable
+private fun ReviewText(text: String) {
+    Text(
+        modifier = Modifier
+            .padding(top = 12.dp)
+            .padding(horizontal = 16.dp),
+        text = text,
+        style = body3.copy(lineHeight = 21.sp),
+        color = Color(0xFF717180),
+    )
+}
+
+@Composable
+private fun ReviewDate(date: String) {
+    Text(
+        modifier = Modifier
+            .padding(top = 6.dp)
+            .padding(horizontal = 16.dp),
+        text = date,
+        style = body3SemiBold,
+        color = Color(0xFFAFAFBC),
+    )
+}
+
+@Composable
+private fun ShowMoreButton(onClick: () -> Unit) {
+    Button(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp)
+            .padding(bottom = 64.dp),
+        contentPadding = PaddingValues(vertical = 16.dp),
+        onClick = onClick,
+        colors = ButtonDefaults.buttonColors(
+            containerColor = MaterialTheme.colorScheme.onPrimary,
+            contentColor = Color.Black,
+        ),
+        shape = RoundedCornerShape(10.dp),
+    ) {
+        Text(
+            "Show More",
+            color = Color(0xFF717180),
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun ReviewHeaderPreview() {
+    AppTheme {
+        Box(Modifier.background(Color.White)) {
+            ReviewHeader("200")
+        }
+    }
+}
+
 @Preview
 @Composable
 private fun ReviewContentStarPreview() {
@@ -121,9 +192,17 @@ private fun ReviewContentStarPreview() {
                 lastName = "Holman",
                 star = 4,
                 text = "Authentic and Wonderful 12-days tour of Paris. 12-days tour of Paris. Authentic and Wonderful 12-days tour of Paris. Authentic and Wonderful 12-days tour of Paris.\n" +
-                        "feeling like I’ve learned a lot."
+                        "feeling like I’ve learned a lot.",
+                date = "Sep 18, 2023",
             )
         )
     }
 }
 
+@Preview
+@Composable
+private fun ShowMoreButtonPreview() {
+    AppTheme {
+        ShowMoreButton {}
+    }
+}
