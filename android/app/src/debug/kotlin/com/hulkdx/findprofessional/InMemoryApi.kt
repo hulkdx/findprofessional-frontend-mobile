@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.common.config.api
+package com.hulkdx.findprofessional
 
 import com.hulkdx.findprofessional.common.feature.authentication.login.LoginApi
 import com.hulkdx.findprofessional.common.feature.authentication.login.loginModule
@@ -16,9 +16,7 @@ import com.hulkdx.findprofessional.common.feature.home.homeModule
 import org.koin.core.context.loadKoinModules
 import org.koin.core.context.unloadKoinModules
 import org.koin.dsl.module
-import kotlin.native.concurrent.ThreadLocal
 
-@ThreadLocal
 object InMemoryApi {
     val module = module {
         single<SignUpApi> { Signup }

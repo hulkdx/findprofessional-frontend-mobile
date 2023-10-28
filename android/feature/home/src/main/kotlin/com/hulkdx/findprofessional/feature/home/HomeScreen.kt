@@ -18,7 +18,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.hulkdx.findprofessional.common.config.api.InMemoryApi
 import com.hulkdx.findprofessional.common.feature.home.Professional
 import com.hulkdx.findprofessional.core.commonui.CUSearchField
 import com.hulkdx.findprofessional.core.theme.AppTheme
@@ -114,7 +113,20 @@ private fun ColumnScope.ProfessionalList(
 private fun HomeScreenPreview() {
     AppTheme {
         HomeScreen(
-            professionals = InMemoryApi.professionals,
+            professionals = listOf(
+                Professional(
+                    id = 1,
+                    firstName = "Mike",
+                    lastName = "Tyson",
+                    coachType = "Life coach",
+                    priceNumber = 100,
+                    priceCurrency = "EUR",
+                    email = "",
+                    profileImageUrl = "https://imgur.com/gallery/7R6wmYb",
+                    availabilities = listOf(),
+                    reviews = listOf(),
+                )
+            ),
             onSearchClick = {},
             onLikeClick = {},
             onItemClick = {},

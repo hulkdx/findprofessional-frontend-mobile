@@ -26,8 +26,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.hulkdx.findprofessional.common.config.api.InMemoryApi
-import com.hulkdx.findprofessional.common.feature.home.Professional
+import com.hulkdx.findprofessional.common.feature.home.Availability
 import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.core.theme.body2
 import com.hulkdx.findprofessional.core.theme.body3
@@ -35,12 +34,12 @@ import com.hulkdx.findprofessional.core.theme.h3Bold
 import com.hulkdx.findprofessional.resources.MR
 
 internal fun LazyListScope.Availability(
-    professional: Professional,
+    availabilities: Availability,
     timeZone: String,
 ) {
     item { AvailabilityHeader() }
     item { AvailabilityContentTop() }
-    items(professional.availabilities) {
+    items(availabilities) {
         AvailabilityContentRow(it)
     }
     item { AvailabilityContentBottom(timeZone) }
@@ -163,7 +162,15 @@ fun AvailabilityPreview() {
     AppTheme {
         LazyColumn(Modifier.background(MaterialTheme.colorScheme.onTertiary)) {
             Availability(
-                InMemoryApi.professionals[0],
+                listOf(
+                    listOf("", "Thu\n19", "Fri\n20", "Sat\n21", "Sun\n22", "Mon\n23", "Tue\n24"),
+                    listOf("00-04", "0", "0", "0", "0", "0", "0"),
+                    listOf("04-08", "0", "1", "0", "0", "0", "0"),
+                    listOf("08-12", "0", "0", "2", "0", "0", "0"),
+                    listOf("12-16", "0", "0", "0", "3", "0", "0"),
+                    listOf("16-20", "0", "0", "0", "0", "0", "0"),
+                    listOf("20-24", "0", "0", "0", "0", "4", "0"),
+                ),
                 timeZone = "UTC +03.00"
             )
         }

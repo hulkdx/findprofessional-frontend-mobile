@@ -4,6 +4,8 @@ import com.hulkdx.findprofessional.common.utils.CommonParcelable
 import com.hulkdx.findprofessional.common.utils.CommonParcelize
 import kotlinx.serialization.Serializable
 
+typealias Availability = List<List<String>>
+
 @CommonParcelize
 @Serializable
 data class Professional(
@@ -18,7 +20,7 @@ data class Professional(
     val rating: String? = null,
     val description: String? = null,
     // TODO: add to backend:
-    val availabilities: List<List<String>>,
+    val availabilities: Availability,
     val totalReviews: String = "0",
     val reviews: List<Review>,
 ) : CommonParcelable {

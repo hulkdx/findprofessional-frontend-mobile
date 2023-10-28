@@ -24,8 +24,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.hulkdx.findprofessional.common.config.api.InMemoryApi
 import com.hulkdx.findprofessional.common.feature.home.Professional
+import com.hulkdx.findprofessional.common.feature.home.Review
 import com.hulkdx.findprofessional.core.R
 import com.hulkdx.findprofessional.core.commonui.CUAsyncImage
 import com.hulkdx.findprofessional.core.theme.AppTheme
@@ -33,7 +33,6 @@ import com.hulkdx.findprofessional.core.theme.body1
 import com.hulkdx.findprofessional.core.theme.body1Medium
 import com.hulkdx.findprofessional.core.theme.body2
 import com.hulkdx.findprofessional.core.theme.h3
-import com.hulkdx.findprofessional.core.theme.h3Bold
 import com.hulkdx.findprofessional.resources.MR
 import org.koin.androidx.compose.getViewModel
 
@@ -62,7 +61,7 @@ private fun HomeDetailScreen(
     ) {
         item { TopHeader(professional) }
         // TODO: get the timezone from the user
-        Availability(professional, "UTC +03.00")
+        Availability(professional.availabilities, "UTC +03.00")
         Review(professional, onReviewShowMoreClicked)
     }
 }
@@ -218,7 +217,47 @@ private fun RatingIcon(professional: Professional) {
 private fun HomeDetailScreenPreview() {
     AppTheme {
         HomeDetailScreen(
-            InMemoryApi.professionals[0],
+            Professional(
+                1,
+                "test@email.com",
+                "Luba",
+                "Mikaela",
+                "Life coach",
+                100,
+                "EUR",
+                "https://i.imgur.com/5Yma8Kl.jpeg",
+                "5.0",
+                "former professional boxer who competed from 1985 to 2005",
+                availabilities = listOf(
+                    listOf("", "Thu\n19", "Fri\n20", "Sat\n21", "Sun\n22", "Mon\n23", "Tue\n24"),
+                    listOf("00-04", "0", "0", "0", "0", "0", "0"),
+                    listOf("04-08", "0", "1", "0", "0", "0", "0"),
+                    listOf("08-12", "0", "0", "2", "0", "0", "0"),
+                    listOf("12-16", "0", "0", "0", "3", "0", "0"),
+                    listOf("16-20", "0", "0", "0", "0", "0", "0"),
+                    listOf("20-24", "0", "0", "0", "0", "4", "0"),
+                ),
+                reviews = listOf(
+                    Review(
+                        profileImageUrl = "https://i.imgur.com/HDgjt8R.jpeg",
+                        firstName = "Stefan",
+                        lastName = "Holman",
+                        star = 5,
+                        text = "Authentic and Wonderful 12-days tour of Paris. 12-days tour of Paris. Authentic and Wonderful 12-days tour of Paris. Authentic and Wonderful 12-days tour of Paris.\n" +
+                                "feeling like I’ve learned a lot.",
+                        date = "Sep 18, 2023",
+                    ),
+                    Review(
+                        profileImageUrl = "https://i.imgur.com/HDgjt8R.jpeg",
+                        firstName = "Stefan",
+                        lastName = "Holman",
+                        star = 5,
+                        text = "Authentic and Wonderful 12-days tour of Paris. 12-days tour of Paris. Authentic and Wonderful 12-days tour of Paris. Authentic and Wonderful 12-days tour of Paris.\n" +
+                                "feeling like I’ve learned a lot.",
+                        date = "Sep 18, 2023",
+                    ),
+                )
+            ),
             {},
             {},
         )
