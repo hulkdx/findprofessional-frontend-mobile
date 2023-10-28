@@ -20,6 +20,7 @@ data class Professional(
     // TODO: add to backend:
     val availabilities: List<List<String>> = TEST_AVAILABILITIES,
     val totalReviews: String? = "200",
+    val reviews: List<String> = listOf("", ""),
 ) : CommonParcelable {
     val fullName: String
         get() = "$firstName $lastName"

@@ -66,7 +66,7 @@ private fun HomeDetailScreen(
         item { TopHeader(professional) }
         // TODO: get the timezone from the user
         Availability(professional, "UTC +03.00")
-        item { Review(professional) }
+        Review(professional)
     }
 }
 
@@ -215,25 +215,6 @@ private fun RatingIcon(professional: Professional) {
             text = professional.rating ?: "0.0",
         )
     }
-}
-
-@Composable
-private fun Review(professional: Professional) {
-    ReviewHeader(professional)
-    ReviewContent(professional)
-}
-
-@Composable
-private fun ReviewHeader(professional: Professional) {
-    Header(
-        modifier = Modifier,
-        text = professional.totalReviews + " " + stringResource(MR.strings.reviews.resourceId)
-    )
-}
-
-@Composable
-private fun ReviewContent(professional: Professional) {
-    Co
 }
 
 @Composable
