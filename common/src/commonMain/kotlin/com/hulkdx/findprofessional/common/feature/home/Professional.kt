@@ -34,6 +34,7 @@ data class Review(
     val profileImageUrl: String,
     val firstName: String,
     val lastName: String,
+    val star: Int,
 ): CommonParcelable {
     val fullName: String
         get() = "$firstName $lastName"
@@ -55,6 +56,7 @@ private val TEST_REVIEW = listOf(
     Review(
         profileImageUrl = "",
         firstName = "Stefan",
-        lastName = "Holman"
+        lastName = "Holman",
+        star = 5,
     )
 )

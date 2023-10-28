@@ -13,7 +13,6 @@ import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -62,10 +61,12 @@ private fun ReviewContent(review: Review) {
         Row(Modifier.padding(top = 18.dp, start = 18.dp)) {
             ReviewProfile(review.profileImageUrl)
             Column(
-                Modifier.align(CenterVertically)
+                Modifier
+                    .align(CenterVertically)
+                    .padding(start = 12.dp)
             ) {
                 ReviewName(review.fullName)
-                ReviewStar()
+                ReviewStar(review.star)
             }
         }
     }
@@ -74,7 +75,7 @@ private fun ReviewContent(review: Review) {
 @Composable
 private fun ReviewName(fullName: String) {
     Text(
-        modifier = Modifier.padding(start = 12.dp),
+        modifier = Modifier,
         text = fullName,
         color = Color(0xFF5F5F70),
         style = body3Bold,
@@ -82,12 +83,16 @@ private fun ReviewName(fullName: String) {
 }
 
 @Composable
-fun ReviewStar() {
-    Image(
-        modifier = Modifier,
-        painter = painterResource(R.drawable.ic_star2),
-        contentDescription = "",
-    )
+private fun ReviewStar(star: Int) {
+    Row(Modifier.padding(top = 2.dp)) {
+        for (i in 1..star) {
+            Image(
+                modifier = Modifier,
+                painter = painterResource(R.drawable.ic_star2),
+                contentDescription = "",
+            )
+        }
+    }
 }
 
 @Composable
@@ -102,13 +107,74 @@ private fun ReviewProfile(profileImageUrl: String) {
 
 @Preview
 @Composable
-private fun ReviewContentPreview() {
+private fun ReviewContent5StarPreview() {
     AppTheme {
         ReviewContent(
             Review(
                 profileImageUrl = "",
                 firstName = "Stefan",
-                lastName = "Holman"
+                lastName = "Holman",
+                star = 5,
+            )
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun ReviewContent4StarPreview() {
+    AppTheme {
+        ReviewContent(
+            Review(
+                profileImageUrl = "",
+                firstName = "Stefan",
+                lastName = "Holman",
+                star = 4,
+            )
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun ReviewContent3StarPreview() {
+    AppTheme {
+        ReviewContent(
+            Review(
+                profileImageUrl = "",
+                firstName = "Stefan",
+                lastName = "Holman",
+                star = 3,
+            )
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun ReviewContent2StarPreview() {
+    AppTheme {
+        ReviewContent(
+            Review(
+                profileImageUrl = "",
+                firstName = "Stefan",
+                lastName = "Holman",
+                star = 2,
+            )
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun ReviewContent1StarPreview() {
+    AppTheme {
+        ReviewContent(
+            Review(
+                profileImageUrl = "",
+                firstName = "Stefan",
+                lastName = "Holman",
+                star = 1,
             )
         )
     }
