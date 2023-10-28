@@ -4,7 +4,7 @@ androidGradlePlugin = "8.1.2"
 # https://developer.android.com/jetpack/androidx/releases/lifecycle
 androidxActivity = "1.8.0"
 # https://developer.android.com/jetpack/compose/bom/bom-mapping
-androidxComposeBom = "2023.10.00"
+androidxComposeBom = "2023.10.01"
 # https://developer.android.com/jetpack/androidx/releases/compose
 androidxComposeCompiler = "1.5.3"
 # https://developer.android.com/jetpack/androidx/releases/datastore

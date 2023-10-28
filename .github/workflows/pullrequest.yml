@@ -62,6 +62,8 @@ jobs:
           - api-level: 33 # Android 13
             arch: x86_64
             target: google_apis
+          # TODO: add api-level 34
+
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -90,14 +92,17 @@ jobs:
           disable-animations: false
           # emulator-build: 7425822 # workaround to emulator bug: https://github.com/ReactiveCircus/android-emulator-runner/issues/160
           emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
-          script: |
-            ./gradlew connectedDebugAndroidTest || (adb exec-out "run-as com.hulkdx.findprofessional cp -r files/uitest-screenshot-failure /sdcard/uitest-screenshot-failure" && adb pull sdcard/uitest-screenshot-failure && exit 1)
+          script: >
+            ./gradlew connectedDebugAndroidTest ||
+            (adb exec-out "run-as com.hulkdx.findprofessional cp -r files/uitest-screenshot-failure /sdcard/uitest-screenshot-failure" &&
+            adb pull sdcard/uitest-screenshot-failure &&
+            exit 1)
 
       - name: Upload test reports
         if: always()
         uses: actions/upload-artifact@v3
         with:
-          name: android-integration-test-reports
+          name: android-integration-test-reports-${{ matrix.api-level }}
           path: |
             **/build/reports/tests
             **/build/reports/androidTests/connected

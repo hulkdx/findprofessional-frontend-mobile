@@ -1,5 +1,7 @@
 package com.hulkdx.findprofessional.utils
 
+import android.os.Build
+import android.os.Environment
 import androidx.compose.ui.graphics.asAndroidBitmap
 import androidx.compose.ui.test.captureToImage
 import androidx.compose.ui.test.onRoot
@@ -13,10 +15,11 @@ import org.junit.runner.Description
 import org.junit.runners.model.Statement
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
+import java.io.File
 
 class UiTestRule(
-    private val composeRule: Rule
-): TestRule, KoinComponent {
+    private val composeRule: Rule,
+) : TestRule, KoinComponent {
 
     private val navigator: NavigatorImpl by inject()
     private val dataStore: DataStore<Preferences> by inject()
@@ -57,5 +60,15 @@ class UiTestRule(
         val screenshotsDir = "$dataDir/uitest-screenshot-failure"
         val screenshotName = "$methodName.png"
         ScreenshotUtils.take(bitmap, screenshotsDir, screenshotName)
+
+        // Android 13: will delete the app after androidTest is done.
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            val input = File(screenshotsDir, screenshotName)
+            val output = File(
+                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
+                ""
+            )
+            input.copyTo(output)
+        }
     }
 }
