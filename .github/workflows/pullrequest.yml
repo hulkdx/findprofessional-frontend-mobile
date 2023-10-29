@@ -94,8 +94,7 @@ jobs:
           emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           script: >
             ./gradlew connectedDebugAndroidTest ||
-            (adb exec-out "run-as com.hulkdx.findprofessional cp -r files/uitest-screenshot-failure /sdcard/uitest-screenshot-failure" &&
-            adb pull sdcard/uitest-screenshot-failure &&
+            (adb pull sdcard/Download/uitest-screenshot-failure &&
             exit 1)
 
       - name: Upload test reports

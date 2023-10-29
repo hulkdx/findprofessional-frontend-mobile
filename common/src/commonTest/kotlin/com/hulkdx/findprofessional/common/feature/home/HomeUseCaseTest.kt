@@ -18,6 +18,8 @@ class HomeUseCaseTest {
         "",
         "",
         1,
+        availabilities = listOf(),
+        reviews = listOf(),
     )
 
     private lateinit var sut: HomeUseCase
