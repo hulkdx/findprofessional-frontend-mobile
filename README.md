@@ -11,11 +11,6 @@ https://www.figma.com/file/59wAYmh2zv94mUeA7udBzc/Login-Screen?node-id=0%3A1
 ### CI
 A push to `main` branch will release it to [Google Play](https://play.google.com/store/apps/details?id=com.hulkdx.findprofessional)
 
-### Dependency Check
-```sh
-./gradlew dependencyUpdates
-```
-
 ## iOS
 
 ### CI
