@@ -36,6 +36,13 @@ val h3 = TextStyle(
     lineHeight = 20.sp,
 )
 
+val h3Bold = TextStyle(
+    fontFamily = interFamily,
+    fontWeight = FontWeight.Bold,
+    fontSize = 17.sp,
+    lineHeight = 20.sp,
+)
+
 val body1 = TextStyle(
     fontFamily = interFamily,
     fontWeight = FontWeight.Normal,
@@ -61,8 +68,27 @@ val body2Medium = TextStyle(
     fontWeight = FontWeight.Medium,
     fontSize = 14.sp,
 )
+
 val body2Bold = TextStyle(
     fontFamily = interFamily,
     fontWeight = FontWeight.Bold,
     fontSize = 14.sp,
+)
+
+val body3 = TextStyle(
+    fontFamily = interFamily,
+    fontWeight = FontWeight.Normal,
+    fontSize = 12.sp,
+)
+
+val body3Bold = TextStyle(
+    fontFamily = interFamily,
+    fontWeight = FontWeight.Bold,
+    fontSize = 12.sp,
+)
+
+val body3SemiBold = TextStyle(
+    fontFamily = interFamily,
+    fontWeight = FontWeight.SemiBold,
+    fontSize = 12.sp,
 )

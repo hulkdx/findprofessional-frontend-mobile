@@ -8,10 +8,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.layout.systemBarsPadding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -25,6 +25,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.hulkdx.findprofessional.common.feature.home.Professional
+import com.hulkdx.findprofessional.common.feature.home.Review
 import com.hulkdx.findprofessional.core.R
 import com.hulkdx.findprofessional.core.commonui.CUAsyncImage
 import com.hulkdx.findprofessional.core.theme.AppTheme
@@ -41,21 +42,27 @@ fun HomeDetailScreen(
 ) {
     HomeDetailScreen(
         viewModel.professional,
+        viewModel::onReviewShowMoreClicked,
+        viewModel::onBookClick
     )
 }
 
 @Composable
 private fun HomeDetailScreen(
     professional: Professional,
+    onReviewShowMoreClicked: () -> Unit,
+    onBookClicked: () -> Unit,
 ) {
-    Column(
+    LazyColumn(
         modifier = Modifier
             .fillMaxSize()
+            .systemBarsPadding()
             .background(MaterialTheme.colorScheme.onTertiary)
-            .verticalScroll(rememberScrollState())
     ) {
-        TopHeader(professional)
-        Availability(professional)
+        item { TopHeader(professional) }
+        // TODO: get the timezone from the user
+        Availability(professional.availabilities, "UTC +03.00")
+        Review(professional, onReviewShowMoreClicked)
     }
 }
 
@@ -64,7 +71,7 @@ private fun TopHeader(professional: Professional) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(top = 32.dp, start = 16.dp, end = 16.dp)
+            .padding(start = 16.dp, end = 16.dp)
             .clip(shape = RoundedCornerShape(10.dp))
             .background(MaterialTheme.colorScheme.onPrimary)
     ) {
@@ -205,91 +212,54 @@ private fun RatingIcon(professional: Professional) {
     }
 }
 
-@Composable
-private fun Availability(professional: Professional) {
-    AvailabilityHeader()
-    AvailabilityContent(professional)
-}
-
-@Composable
-private fun AvailabilityHeader() {
-    Row(Modifier.padding(start = 16.dp, top = 16.dp)) {
-        Icon(
-            painter = painterResource(R.drawable.ic_calendar_clock),
-            contentDescription = ""
-        )
-        Text(
-            modifier = Modifier.padding(start = 8.dp),
-            style = h3,
-            text = stringResource(MR.strings.availability.resourceId)
-        )
-    }
-}
-
-@Composable
-private fun AvailabilityContent(professional: Professional) {
-    // TODO:
-}
-
-@Composable
-private fun Review(professional: Professional) {
-    ReviewHeader()
-    ReviewContent(professional)
-}
-
-@Composable
-private fun ReviewHeader() {
-    Row(Modifier.padding(start = 16.dp, top = 16.dp)) {
-        Text(
-            modifier = Modifier.padding(start = 8.dp),
-            style = h3,
-            text = stringResource(MR.strings.reviews.resourceId)
-        )
-    }
-}
-
-@Composable
-private fun ReviewContent(professional: Professional) {
-}
-
-@Composable
-private fun Video(professional: Professional) {
-    VideoHeader()
-    VideoContent(professional)
-}
-
-@Composable
-private fun VideoHeader() {
-    Row(Modifier.padding(start = 16.dp, top = 16.dp)) {
-        Text(
-            modifier = Modifier.padding(start = 8.dp),
-            style = h3,
-            text = stringResource(MR.strings.videos.resourceId)
-        )
-    }
-}
-
-@Composable
-private fun VideoContent(professional: Professional) {
-}
-
-@Preview
+@Preview(heightDp = 1500)
 @Composable
 private fun HomeDetailScreenPreview() {
     AppTheme {
         HomeDetailScreen(
             Professional(
-                id = 1,
-                firstName = "Mike",
-                lastName = "Tyson",
-                coachType = "Life coach",
-                priceNumber = 100,
-                priceCurrency = "EUR",
-                email = "",
-                profileImageUrl = "https://imgur.com/gallery/7R6wmYb",
-                rating = "5.0",
-                description = "former professional boxer who competed from 1985 to 2005"
-            )
+                1,
+                "test@email.com",
+                "Luba",
+                "Mikaela",
+                "Life coach",
+                100,
+                "EUR",
+                "https://i.imgur.com/5Yma8Kl.jpeg",
+                "5.0",
+                "former professional boxer who competed from 1985 to 2005",
+                availabilities = listOf(
+                    listOf("", "Thu\n19", "Fri\n20", "Sat\n21", "Sun\n22", "Mon\n23", "Tue\n24"),
+                    listOf("00-04", "0", "0", "0", "0", "0", "0"),
+                    listOf("04-08", "0", "1", "0", "0", "0", "0"),
+                    listOf("08-12", "0", "0", "2", "0", "0", "0"),
+                    listOf("12-16", "0", "0", "0", "3", "0", "0"),
+                    listOf("16-20", "0", "0", "0", "0", "0", "0"),
+                    listOf("20-24", "0", "0", "0", "0", "4", "0"),
+                ),
+                reviews = listOf(
+                    Review(
+                        profileImageUrl = "https://i.imgur.com/HDgjt8R.jpeg",
+                        firstName = "Stefan",
+                        lastName = "Holman",
+                        star = 5,
+                        text = "Authentic and Wonderful 12-days tour of Paris. 12-days tour of Paris. Authentic and Wonderful 12-days tour of Paris. Authentic and Wonderful 12-days tour of Paris.\n" +
+                                "feeling like I’ve learned a lot.",
+                        date = "Sep 18, 2023",
+                    ),
+                    Review(
+                        profileImageUrl = "https://i.imgur.com/HDgjt8R.jpeg",
+                        firstName = "Stefan",
+                        lastName = "Holman",
+                        star = 5,
+                        text = "Authentic and Wonderful 12-days tour of Paris. 12-days tour of Paris. Authentic and Wonderful 12-days tour of Paris. Authentic and Wonderful 12-days tour of Paris.\n" +
+                                "feeling like I’ve learned a lot.",
+                        date = "Sep 18, 2023",
+                    ),
+                )
+            ),
+            {},
+            {},
         )
     }
 }

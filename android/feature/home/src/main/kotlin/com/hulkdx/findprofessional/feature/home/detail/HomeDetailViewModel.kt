@@ -22,4 +22,7 @@ class HomeDetailViewModel(
     fun setError(error: StringDesc?) {
         savedStateHandle["error"] = error
     }
+
+    fun onReviewShowMoreClicked() {
+    }
 }

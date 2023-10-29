@@ -122,7 +122,9 @@ private fun HomeScreenPreview() {
                     priceNumber = 100,
                     priceCurrency = "EUR",
                     email = "",
-                    profileImageUrl = "https://imgur.com/gallery/7R6wmYb"
+                    profileImageUrl = "https://imgur.com/gallery/7R6wmYb",
+                    availabilities = listOf(),
+                    reviews = listOf(),
                 )
             ),
             onSearchClick = {},

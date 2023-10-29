@@ -13,7 +13,7 @@ func handleUiTestArguments() {
             let authRequestStr = arg.replacingOccurrences(of: ArgKt.IN_MEMORY_API_USER, with: "")
             let authRequest = SerializableHelper().decodeAuthRequest(value: authRequestStr)
             
-            InMemoryApi.shared.user = authRequest
+            InMemoryApi.shared.setUser(authRequest)
         }
     }
 }

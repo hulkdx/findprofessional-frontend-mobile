@@ -103,7 +103,7 @@ private fun Rating(professional: Professional) {
         Icon(
             modifier = Modifier.padding(top = 2.dp),
             painter = painterResource(R.drawable.ic_new_rating),
-            tint = MaterialTheme.colorScheme.scrim,
+            tint = Color(0xFF00B3BD),
             contentDescription = "",
         )
         return
@@ -194,7 +194,9 @@ private fun ProfessionalItemPreview() {
                 email = "",
                 profileImageUrl = "https://imgur.com/gallery/7R6wmYb",
                 rating = "5.0",
-                description = "former professional boxer who competed from 1985 to 2005"
+                description = "former professional boxer who competed from 1985 to 2005",
+                availabilities = listOf(),
+                reviews = listOf(),
             ),
             onLikeClick = {},
             onItemClick = {},
@@ -209,15 +211,17 @@ private fun ProfessionalItemWithoutRatingPreview() {
         ProfessionalItem(
             professional = Professional(
                 id = 1,
-                firstName = "New",
+                firstName = "Mike",
                 lastName = "Tyson",
-                coachType = "New Life coach",
+                coachType = "Life coach",
                 priceNumber = 100,
                 priceCurrency = "EUR",
                 email = "",
                 profileImageUrl = "https://imgur.com/gallery/7R6wmYb",
                 rating = null,
-                description = "former professional boxer who competed from 1985 to 2005"
+                description = "former professional boxer who competed from 1985 to 2005",
+                availabilities = listOf(),
+                reviews = listOf(),
             ),
             onLikeClick = {},
             onItemClick = {},

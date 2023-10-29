@@ -8,8 +8,7 @@ plugins {
 }
 
 kotlin {
-    // TODO: change it with androidTarget
-    android()
+    androidTarget()
 
     listOf(
         iosX64(),
