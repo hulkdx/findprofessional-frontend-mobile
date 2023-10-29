@@ -1,6 +1,6 @@
 package com.hulkdx.findprofessional.common.navigation
 
-import com.hulkdx.findprofessional.common.feature.home.Professional
+import com.hulkdx.findprofessional.common.feature.home.model.Professional
 
 /**
  * common NavigationScreen for both Android and iOS platform, each platform then map

@@ -18,7 +18,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.hulkdx.findprofessional.common.feature.home.Professional
+import com.hulkdx.findprofessional.common.feature.home.model.Professional
+import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalReview
 import com.hulkdx.findprofessional.core.commonui.CUSearchField
 import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.core.theme.h1
@@ -124,7 +125,7 @@ private fun HomeScreenPreview() {
                     email = "",
                     profileImageUrl = "https://imgur.com/gallery/7R6wmYb",
                     availabilities = listOf(),
-                    reviews = listOf(),
+                    reviews = ProfessionalReview(100, listOf()),
                 )
             ),
             onSearchClick = {},

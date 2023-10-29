@@ -1,6 +1,7 @@
 package com.hulkdx.findprofessional.common.feature.home
 
 import com.hulkdx.findprofessional.common.config.storage.AccessTokenStorage
+import com.hulkdx.findprofessional.common.feature.home.model.Professional
 import com.hulkdx.findprofessional.common.utils.auth
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body

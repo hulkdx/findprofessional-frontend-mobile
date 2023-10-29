@@ -29,8 +29,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.hulkdx.findprofessional.common.feature.home.Professional
-import com.hulkdx.findprofessional.common.feature.home.Review
+import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalReview
 import com.hulkdx.findprofessional.core.R
 import com.hulkdx.findprofessional.core.commonui.CUAsyncImage
 import com.hulkdx.findprofessional.core.theme.AppTheme
@@ -41,27 +40,32 @@ import com.hulkdx.findprofessional.core.theme.h3Bold
 import com.hulkdx.findprofessional.resources.MR
 
 
-internal fun LazyListScope.Review(professional: Professional, onShowMoreClicked: () -> Unit) {
-    item { ReviewHeader(professional.totalReviews) }
-    items(professional.reviews) {
+internal fun LazyListScope.Review(
+    review: ProfessionalReview?,
+    onShowMoreClicked: () -> Unit,
+) {
+    review ?: return
+
+    item { ReviewHeader(review.total) }
+    items(review.content) {
         ReviewContent(it)
     }
     item { ShowMoreButton(onShowMoreClicked) }
 }
 
 @Composable
-private fun ReviewHeader(totalReviews: String?) {
+private fun ReviewHeader(totalReviews: Int) {
     Row(Modifier.padding(start = 16.dp, top = 32.dp, bottom = 16.dp)) {
         Text(
             modifier = Modifier.padding(start = 8.dp),
             style = h3Bold,
-            text = totalReviews + " " + stringResource(MR.strings.reviews.resourceId),
+            text = "$totalReviews ${stringResource(MR.strings.reviews.resourceId)}",
         )
     }
 }
 
 @Composable
-private fun ReviewContent(review: Review) {
+private fun ReviewContent(reviewContent: ProfessionalReview.Content) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -71,22 +75,22 @@ private fun ReviewContent(review: Review) {
             .background(MaterialTheme.colorScheme.onPrimary)
             .padding(bottom = 16.dp)
     ) {
-        Header(review)
-        ReviewText(review.text)
-        ReviewDate(review.date)
+        Header(reviewContent)
+        ReviewText(reviewContent.reviewText)
+        ReviewDate(reviewContent.reviewDate)
     }
 }
 
 @Composable
-private fun Header(review: Review) {
+private fun Header(review: ProfessionalReview.Content) {
     Row(Modifier.padding(top = 18.dp, start = 18.dp)) {
-        ReviewProfile(review.profileImageUrl)
+        ReviewProfile(review.userProfileImageUrl)
         Column(
             Modifier
                 .align(CenterVertically)
                 .padding(start = 12.dp)
         ) {
-            ReviewName(review.fullName)
+            ReviewName(review.userFullName)
             ReviewStar(review.star)
         }
     }
@@ -176,7 +180,7 @@ private fun ShowMoreButton(onClick: () -> Unit) {
 private fun ReviewHeaderPreview() {
     AppTheme {
         Box(Modifier.background(Color.White)) {
-            ReviewHeader("200")
+            ReviewHeader(200)
         }
     }
 }
@@ -186,14 +190,13 @@ private fun ReviewHeaderPreview() {
 private fun ReviewContentStarPreview() {
     AppTheme {
         ReviewContent(
-            Review(
-                profileImageUrl = "",
-                firstName = "Stefan",
-                lastName = "Holman",
+            ProfessionalReview.Content(
+                userProfileImageUrl = "",
+                userFirstName = "Stefan",
+                userLastName = "Holman",
                 star = 4,
-                text = "Authentic and Wonderful 12-days tour of Paris. 12-days tour of Paris. Authentic and Wonderful 12-days tour of Paris. Authentic and Wonderful 12-days tour of Paris.\n" +
-                        "feeling like I’ve learned a lot.",
-                date = "Sep 18, 2023",
+                reviewText = "Authentic and Wonderful 12-days tour of Paris. 12-days tour of Paris. Authentic and Wonderful 12-days tour of Paris. Authentic and Wonderful 12-days tour of Paris.\nfeeling like I’ve learned a lot.",
+                reviewDate = "Sep 18, 2023",
             )
         )
     }
