@@ -28,3 +28,6 @@ UseCase: The domain layer; encapsulates the business logic of our app and reques
 
 Repository: Fetches data either from a remote or local data source and exposes them to our domain layer. It only talks to abstractions so that it won’t violate the Dependency Inversion Principle. It is a common code (KMM) for both android and iOS.
 
+# TODO
+
+Move the compose functions into common module when [multiplatform iOS](https://github.com/JetBrains/compose-multiplatform-ios-android-template) is stable.
