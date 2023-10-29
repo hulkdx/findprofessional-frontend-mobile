@@ -24,8 +24,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.hulkdx.findprofessional.common.feature.home.Professional
-import com.hulkdx.findprofessional.common.feature.home.Review
+import com.hulkdx.findprofessional.common.feature.home.model.Professional
+import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalReview
 import com.hulkdx.findprofessional.core.R
 import com.hulkdx.findprofessional.core.commonui.CUAsyncImage
 import com.hulkdx.findprofessional.core.theme.AppTheme
@@ -62,7 +62,7 @@ private fun HomeDetailScreen(
         item { TopHeader(professional) }
         // TODO: get the timezone from the user
         Availability(professional.availabilities, "UTC +03.00")
-        Review(professional, onReviewShowMoreClicked)
+        Review(professional.reviews, onReviewShowMoreClicked)
     }
 }
 
@@ -237,25 +237,18 @@ private fun HomeDetailScreenPreview() {
                     listOf("16-20", "0", "0", "0", "0", "0", "0"),
                     listOf("20-24", "0", "0", "0", "0", "4", "0"),
                 ),
-                reviews = listOf(
-                    Review(
-                        profileImageUrl = "https://i.imgur.com/HDgjt8R.jpeg",
-                        firstName = "Stefan",
-                        lastName = "Holman",
-                        star = 5,
-                        text = "Authentic and Wonderful 12-days tour of Paris. 12-days tour of Paris. Authentic and Wonderful 12-days tour of Paris. Authentic and Wonderful 12-days tour of Paris.\n" +
-                                "feeling like I’ve learned a lot.",
-                        date = "Sep 18, 2023",
-                    ),
-                    Review(
-                        profileImageUrl = "https://i.imgur.com/HDgjt8R.jpeg",
-                        firstName = "Stefan",
-                        lastName = "Holman",
-                        star = 5,
-                        text = "Authentic and Wonderful 12-days tour of Paris. 12-days tour of Paris. Authentic and Wonderful 12-days tour of Paris. Authentic and Wonderful 12-days tour of Paris.\n" +
-                                "feeling like I’ve learned a lot.",
-                        date = "Sep 18, 2023",
-                    ),
+                reviews = ProfessionalReview(
+                    100,
+                    listOf(
+                        ProfessionalReview.Content(
+                            userProfileImageUrl = "https://i.imgur.com/HDgjt8R.jpeg",
+                            userFirstName = "Stefan",
+                            userLastName = "Holman",
+                            star = 5,
+                            reviewText = "Authentic and Wonderful 12-days tour of Paris. 12-days tour of Paris. Authentic and Wonderful 12-days tour of Paris. Authentic and Wonderful 12-days tour of Paris.\nfeeling like I’ve learned a lot.",
+                            reviewDate = "Sep 18, 2023",
+                        ),
+                    )
                 )
             ),
             {},

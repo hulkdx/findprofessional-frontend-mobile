@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.core.os.BundleCompat
 import androidx.navigation.NamedNavArgument
 import androidx.navigation.navArgument
-import com.hulkdx.findprofessional.common.feature.home.Professional
+import com.hulkdx.findprofessional.common.feature.home.model.Professional
 import com.hulkdx.findprofessional.feature.navigation.screen.Content
 import com.hulkdx.findprofessional.feature.navigation.screen.SlideNavigationScreen
 import com.hulkdx.findprofessional.feature.navigation.navtype.NavTypeParcelable

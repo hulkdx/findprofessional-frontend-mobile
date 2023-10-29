@@ -2,6 +2,7 @@
 
 package com.hulkdx.findprofessional.common.feature.home
 
+import com.hulkdx.findprofessional.common.feature.home.model.Professional
 import com.hulkdx.findprofessional.common.utils.KoinTestUtil
 import kotlinx.coroutines.test.runTest
 import kotlin.test.AfterTest
@@ -19,7 +20,6 @@ class HomeUseCaseTest {
         "",
         1,
         availabilities = listOf(),
-        reviews = listOf(),
     )
 
     private lateinit var sut: HomeUseCase

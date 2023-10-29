@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.common.feature.home
+package com.hulkdx.findprofessional.common.feature.home.model
 
 import com.hulkdx.findprofessional.common.utils.CommonParcelable
 import com.hulkdx.findprofessional.common.utils.CommonParcelize
@@ -20,9 +20,8 @@ data class Professional(
     val rating: String? = null,
     val description: String? = null,
     // TODO: add to backend:
+    val reviews: ProfessionalReview? = null,
     val availabilities: Availability,
-    val totalReviews: String = "0",
-    val reviews: List<Review>,
 ) : CommonParcelable {
     val fullName: String
         get() = "$firstName $lastName"
@@ -30,16 +29,3 @@ data class Professional(
         get() = "$priceCurrency $priceNumber"
 }
 
-@CommonParcelize
-@Serializable
-data class Review(
-    val profileImageUrl: String,
-    val firstName: String,
-    val lastName: String,
-    val star: Int,
-    val text: String,
-    val date: String,
-): CommonParcelable {
-    val fullName: String
-        get() = "$firstName $lastName"
-}

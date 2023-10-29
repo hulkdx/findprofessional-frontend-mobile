@@ -9,9 +9,9 @@ import com.hulkdx.findprofessional.common.feature.authentication.model.User
 import com.hulkdx.findprofessional.common.feature.authentication.signup.SignUpApi
 import com.hulkdx.findprofessional.common.feature.authentication.signup.model.AuthRequest
 import com.hulkdx.findprofessional.common.feature.authentication.signup.signUpModule
-import com.hulkdx.findprofessional.common.feature.home.Professional
+import com.hulkdx.findprofessional.common.feature.home.model.Professional
 import com.hulkdx.findprofessional.common.feature.home.ProfessionalApi
-import com.hulkdx.findprofessional.common.feature.home.Review
+import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalReview
 import com.hulkdx.findprofessional.common.feature.home.homeModule
 import org.koin.core.context.loadKoinModules
 import org.koin.core.context.unloadKoinModules
@@ -47,26 +47,6 @@ object InMemoryApi {
                 listOf("16-20", "0", "0", "0", "0", "0", "0"),
                 listOf("20-24", "0", "0", "0", "0", "4", "0"),
             ),
-            reviews = listOf(
-                Review(
-                    profileImageUrl = "https://i.imgur.com/HDgjt8R.jpeg",
-                    firstName = "Stefan",
-                    lastName = "Holman",
-                    star = 5,
-                    text = "Authentic and Wonderful 12-days tour of Paris. 12-days tour of Paris. Authentic and Wonderful 12-days tour of Paris. Authentic and Wonderful 12-days tour of Paris.\n" +
-                            "feeling like I’ve learned a lot.",
-                    date = "Sep 18, 2023",
-                ),
-                Review(
-                    profileImageUrl = "https://i.imgur.com/HDgjt8R.jpeg",
-                    firstName = "Stefan",
-                    lastName = "Holman",
-                    star = 5,
-                    text = "Authentic and Wonderful 12-days tour of Paris. 12-days tour of Paris. Authentic and Wonderful 12-days tour of Paris. Authentic and Wonderful 12-days tour of Paris.\n" +
-                            "feeling like I’ve learned a lot.",
-                    date = "Sep 18, 2023",
-                ),
-            )
         ),
         Professional(
             2,
@@ -88,26 +68,6 @@ object InMemoryApi {
                 listOf("16-20", "0", "0", "0", "0", "0", "0"),
                 listOf("20-24", "0", "0", "0", "0", "4", "0"),
             ),
-            reviews = listOf(
-                Review(
-                    profileImageUrl = "https://i.imgur.com/HDgjt8R.jpeg",
-                    firstName = "Stefan",
-                    lastName = "Holman",
-                    star = 5,
-                    text = "Authentic and Wonderful 12-days tour of Paris. 12-days tour of Paris. Authentic and Wonderful 12-days tour of Paris. Authentic and Wonderful 12-days tour of Paris.\n" +
-                            "feeling like I’ve learned a lot.",
-                    date = "Sep 18, 2023",
-                ),
-                Review(
-                    profileImageUrl = "https://i.imgur.com/HDgjt8R.jpeg",
-                    firstName = "Stefan",
-                    lastName = "Holman",
-                    star = 5,
-                    text = "Authentic and Wonderful 12-days tour of Paris. 12-days tour of Paris. Authentic and Wonderful 12-days tour of Paris. Authentic and Wonderful 12-days tour of Paris.\n" +
-                            "feeling like I’ve learned a lot.",
-                    date = "Sep 18, 2023",
-                ),
-            )
         )
     )
 

@@ -1,5 +1,6 @@
 package com.hulkdx.findprofessional.common.feature.home
 
+import com.hulkdx.findprofessional.common.feature.home.model.Professional
 import com.hulkdx.findprofessional.common.utils.generalError
 
 class HomeUseCase(

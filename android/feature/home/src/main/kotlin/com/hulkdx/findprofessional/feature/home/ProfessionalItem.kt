@@ -22,7 +22,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.hulkdx.findprofessional.common.feature.home.Professional
+import com.hulkdx.findprofessional.common.feature.home.model.Professional
 import com.hulkdx.findprofessional.core.R
 import com.hulkdx.findprofessional.core.commonui.CUAsyncImage
 import com.hulkdx.findprofessional.core.theme.AppTheme
@@ -196,7 +196,6 @@ private fun ProfessionalItemPreview() {
                 rating = "5.0",
                 description = "former professional boxer who competed from 1985 to 2005",
                 availabilities = listOf(),
-                reviews = listOf(),
             ),
             onLikeClick = {},
             onItemClick = {},
@@ -221,7 +220,6 @@ private fun ProfessionalItemWithoutRatingPreview() {
                 rating = null,
                 description = "former professional boxer who competed from 1985 to 2005",
                 availabilities = listOf(),
-                reviews = listOf(),
             ),
             onLikeClick = {},
             onItemClick = {},
