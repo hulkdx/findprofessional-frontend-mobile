@@ -61,7 +61,7 @@ private fun HomeDetailScreen(
     ) {
         item { TopHeader(professional) }
         // TODO: get the timezone from the user
-        Availability(professional.availabilities, "UTC +03.00")
+        // Availability(professional.availabilities, "UTC +03.00")
         Review(professional.reviews, onReviewShowMoreClicked)
     }
 }
