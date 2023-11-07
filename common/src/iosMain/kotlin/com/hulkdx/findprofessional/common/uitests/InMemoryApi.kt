@@ -8,7 +8,10 @@ import com.hulkdx.findprofessional.common.feature.authentication.signup.SignUpAp
 import com.hulkdx.findprofessional.common.feature.authentication.signup.model.AuthRequest
 import com.hulkdx.findprofessional.common.feature.home.ProfessionalApi
 import com.hulkdx.findprofessional.common.feature.home.model.Professional
+import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalAvailability
 import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalReview
+import kotlinx.datetime.toLocalDate
+import kotlinx.datetime.toLocalTime
 import org.koin.core.context.loadKoinModules
 import org.koin.dsl.module
 import kotlin.experimental.ExperimentalObjCName
@@ -39,14 +42,32 @@ object InMemoryApi {
             "https://i.imgur.com/5Yma8Kl.jpeg",
             "5.0",
             "former professional boxer who competed from 1985 to 2005",
-            availabilities = listOf(
-                listOf("", "Thu\n19", "Fri\n20", "Sat\n21", "Sun\n22", "Mon\n23", "Tue\n24"),
-                listOf("00-04", "0", "0", "0", "0", "0", "0"),
-                listOf("04-08", "0", "1", "0", "0", "0", "0"),
-                listOf("08-12", "0", "0", "2", "0", "0", "0"),
-                listOf("12-16", "0", "0", "0", "3", "0", "0"),
-                listOf("16-20", "0", "0", "0", "0", "0", "0"),
-                listOf("20-24", "0", "0", "0", "0", "4", "0"),
+            availability = listOf(
+                ProfessionalAvailability(
+                    date = "2023-11-09".toLocalDate(),
+                    from = "08:00".toLocalTime(),
+                    to = "09:00".toLocalTime(),
+                ),
+                ProfessionalAvailability(
+                    date = "2023-11-10".toLocalDate(),
+                    from = "07:00".toLocalTime(),
+                    to = "08:00".toLocalTime(),
+                ),
+                ProfessionalAvailability(
+                    date = "2023-11-11".toLocalDate(),
+                    from = "09:00".toLocalTime(),
+                    to = "11:00".toLocalTime(),
+                ),
+                ProfessionalAvailability(
+                    date = "2023-11-12".toLocalDate(),
+                    from = "12:00".toLocalTime(),
+                    to = "15:00".toLocalTime(),
+                ),
+                ProfessionalAvailability(
+                    date = "2023-11-13".toLocalDate(),
+                    from = "20:00".toLocalTime(),
+                    to = "00:00".toLocalTime(),
+                ),
             ),
             reviews = ProfessionalReview(
                 100,
@@ -73,15 +94,7 @@ object InMemoryApi {
             "https://i.imgur.com/FVABZOc.jpeg",
             null,
             "actress from 1985 to 2005",
-            availabilities = listOf(
-                listOf("", "Thu\n19", "Fri\n20", "Sat\n21", "Sun\n22", "Mon\n23", "Tue\n24"),
-                listOf("00-04", "0", "0", "0", "0", "0", "0"),
-                listOf("04-08", "0", "1", "0", "0", "0", "0"),
-                listOf("08-12", "0", "0", "2", "0", "0", "0"),
-                listOf("12-16", "0", "0", "0", "3", "0", "0"),
-                listOf("16-20", "0", "0", "0", "0", "0", "0"),
-                listOf("20-24", "0", "0", "0", "0", "4", "0"),
-            ),
+            availability = listOf(),
         )
     )
 

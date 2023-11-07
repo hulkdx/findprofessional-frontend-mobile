@@ -20,8 +20,9 @@ androidxNavigation = "2.7.4"
 coil = "2.4.0"
 # https://github.com/InsertKoinIO/koin
 koin = "3.5.0"
-# https://ktor.io/docs/getting-started-ktor-client-multiplatform-mobile.html#ktor-dependencies
+# https://github.com/Kotlin/kotlinx-datetime
 kotlinxDatetime = "0.4.0"
+# https://ktor.io/docs/getting-started-ktor-client-multiplatform-mobile.html#ktor-dependencies
 ktor = "2.3.5"
 # https://github.com/Kotlin/kotlinx.coroutines
 kotlinxCoroutines = "1.7.3"
