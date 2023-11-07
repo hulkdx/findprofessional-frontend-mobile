@@ -17,7 +17,7 @@ data class Professional(
     val profileImageUrl: String? = null,
     val rating: String? = null,
     val description: String? = null,
-    val availability: List<ProfessionalAvailability>,
+    val availability: List<ProfessionalAvailability> = listOf(),
     // TODO: add to backend:
     val reviews: ProfessionalReview? = null,
 ) : CommonParcelable {
