@@ -47,6 +47,4 @@ dependencies {
     implementation(project(":common"))
     implementation(project(":android:feature:navigation"))
 
-    implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.koin.androidx.compose)
 }
