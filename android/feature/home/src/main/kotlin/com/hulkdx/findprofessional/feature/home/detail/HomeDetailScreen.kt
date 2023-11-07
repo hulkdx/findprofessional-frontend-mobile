@@ -26,6 +26,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.hulkdx.findprofessional.common.feature.home.utils.Availability
 import com.hulkdx.findprofessional.common.feature.home.model.Professional
 import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalReview
 import com.hulkdx.findprofessional.core.R
@@ -43,8 +44,11 @@ fun HomeDetailScreen(
     viewModel: HomeDetailViewModel = getViewModel(),
 ) {
     val professional by viewModel.professional.collectAsStateWithLifecycle()
+    val availability by viewModel.availability.collectAsStateWithLifecycle()
+
     HomeDetailScreen(
         professional,
+        availability,
         viewModel::onReviewShowMoreClicked,
         viewModel::onBookClick
     )
@@ -53,6 +57,7 @@ fun HomeDetailScreen(
 @Composable
 private fun HomeDetailScreen(
     professional: Professional,
+    availability: Availability?,
     onReviewShowMoreClicked: () -> Unit,
     onBookClicked: () -> Unit,
 ) {
@@ -64,7 +69,7 @@ private fun HomeDetailScreen(
     ) {
         item { TopHeader(professional) }
         // TODO: get the timezone from the user
-        // Availability(professional.availabilities, "UTC +03.00")
+        Availability(availability, "UTC +03.00")
         Review(professional.reviews, onReviewShowMoreClicked)
     }
 }
@@ -231,15 +236,7 @@ private fun HomeDetailScreenPreview() {
                 "https://i.imgur.com/5Yma8Kl.jpeg",
                 "5.0",
                 "former professional boxer who competed from 1985 to 2005",
-                availabilities = listOf(
-                    listOf("", "Thu\n19", "Fri\n20", "Sat\n21", "Sun\n22", "Mon\n23", "Tue\n24"),
-                    listOf("00-04", "0", "0", "0", "0", "0", "0"),
-                    listOf("04-08", "0", "1", "0", "0", "0", "0"),
-                    listOf("08-12", "0", "0", "2", "0", "0", "0"),
-                    listOf("12-16", "0", "0", "0", "3", "0", "0"),
-                    listOf("16-20", "0", "0", "0", "0", "0", "0"),
-                    listOf("20-24", "0", "0", "0", "0", "4", "0"),
-                ),
+                availability = listOf(),
                 reviews = ProfessionalReview(
                     100,
                     listOf(
@@ -252,7 +249,16 @@ private fun HomeDetailScreenPreview() {
                             reviewDate = "Sep 18, 2023",
                         ),
                     )
-                )
+                ),
+            ),
+            availability = listOf(
+                listOf("", "Thu\n19", "Fri\n20", "Sat\n21", "Sun\n22", "Mon\n23", "Tue\n24"),
+                listOf("00-04", "0", "0", "0", "0", "0", "0"),
+                listOf("04-08", "0", "1", "0", "0", "0", "0"),
+                listOf("08-12", "0", "0", "2", "0", "0", "0"),
+                listOf("12-16", "0", "0", "0", "3", "0", "0"),
+                listOf("16-20", "0", "0", "0", "0", "0", "0"),
+                listOf("20-24", "0", "0", "0", "0", "4", "0"),
             ),
             {},
             {},

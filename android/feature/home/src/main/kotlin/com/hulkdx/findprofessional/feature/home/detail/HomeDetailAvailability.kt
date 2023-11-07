@@ -26,7 +26,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.hulkdx.findprofessional.common.feature.home.model.Availability
+import com.hulkdx.findprofessional.common.feature.home.utils.Availability
 import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.core.theme.body2
 import com.hulkdx.findprofessional.core.theme.body3
@@ -34,9 +34,10 @@ import com.hulkdx.findprofessional.core.theme.h3Bold
 import com.hulkdx.findprofessional.resources.MR
 
 internal fun LazyListScope.Availability(
-    availabilities: Availability,
+    availabilities: Availability?,
     timeZone: String,
 ) {
+    if (availabilities == null) return
     item { AvailabilityHeader() }
     item { AvailabilityContentTop() }
     items(availabilities) {

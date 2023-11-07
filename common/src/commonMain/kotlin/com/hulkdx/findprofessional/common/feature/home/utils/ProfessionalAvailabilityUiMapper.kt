@@ -1,6 +1,5 @@
 package com.hulkdx.findprofessional.common.feature.home.utils
 
-import com.hulkdx.findprofessional.common.feature.home.model.Availability
 import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalAvailability
 import com.hulkdx.findprofessional.common.utils.toShort
 import kotlinx.datetime.Clock
@@ -11,9 +10,10 @@ import kotlinx.datetime.TimeZone
 import kotlinx.datetime.plus
 import kotlinx.datetime.toLocalDateTime
 
+typealias Availability = List<List<String>>
 
 fun List<ProfessionalAvailability>.mapToUi(
-    clock: Clock,
+    clock: Clock = Clock.System,
     timeZone: TimeZone = TimeZone.UTC,
 ): Availability {
     val startDate = clock.now()
