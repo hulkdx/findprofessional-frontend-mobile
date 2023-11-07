@@ -42,7 +42,9 @@ fun List<ProfessionalAvailability>.mapToUi(
 
         for (x in items) {
             if (x.date == currentDate.date) {
-                // TODO:
+                for (j in 1..<t) {
+                    result[j][i + 1] = calculateDuration(x, j - 1)
+                }
             }
         }
     }
@@ -78,4 +80,27 @@ private fun List<ProfessionalAvailability>.betweenDates(
 
 private fun LocalDateTime.topRowFormat(): String {
     return "${dayOfWeek.toShort()}\n${dayOfMonth}"
+}
+
+// index 0 means time between 0 to 4, etc...
+internal fun calculateDuration(
+    a: ProfessionalAvailability,
+    index: Int,
+): String {
+    val startTime = index * 4
+    val endTime = (index + 1) * 4
+
+    val fromHour = a.from.hour
+    val toHour = if (a.to.hour == 0 && a.from.hour > 0) 24 else a.to.hour
+
+    if (fromHour < endTime && toHour > startTime) {
+        if (toHour > endTime) {
+            return (4 - fromHour).toString()
+        }
+        val diff = toHour - fromHour
+        val mod = diff.mod(4)
+        val res = if (diff > 0 && mod == 0) 4 else mod
+        return res.toString()
+    }
+    return "0"
 }
