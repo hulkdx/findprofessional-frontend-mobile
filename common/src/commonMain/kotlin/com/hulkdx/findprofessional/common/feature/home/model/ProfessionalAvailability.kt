@@ -18,7 +18,3 @@ data class ProfessionalAvailability(
     val from: LocalTime,
     val to: LocalTime,
 ) : CommonParcelable
-
-fun map(a: List<ProfessionalAvailability>): List<String> {
-    TODO()
-}
