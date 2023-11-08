@@ -5,6 +5,7 @@ import com.hulkdx.findprofessional.common.config.PlatformSpecific
 import com.hulkdx.findprofessional.common.config.storage.AccessTokenStorage
 import com.hulkdx.findprofessional.common.config.storage.DeveloperStorage
 import com.hulkdx.findprofessional.common.config.storage.RefreshTokenStorage
+import com.hulkdx.findprofessional.common.config.storage.UserStorage
 import okio.Path.Companion.toPath
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.factoryOf
@@ -24,4 +25,5 @@ val datastoreModule: Module
         factoryOf(::AccessTokenStorageDataStore) bind AccessTokenStorage::class
         factoryOf(::RefreshTokenStorageDataStore) bind RefreshTokenStorage::class
         factoryOf(::DeveloperStorageDataStore) bind DeveloperStorage::class
+        factoryOf(::UserStorageDataStore) bind UserStorage::class
     }

@@ -4,6 +4,7 @@ package com.hulkdx.findprofessional.common.feature.authentication.signup
 
 import com.hulkdx.findprofessional.common.config.storage.AccessTokenStorage
 import com.hulkdx.findprofessional.common.config.storage.RefreshTokenStorage
+import com.hulkdx.findprofessional.common.config.storage.UserStorage
 import com.hulkdx.findprofessional.common.feature.authentication.signup.model.AuthRequest
 import com.hulkdx.findprofessional.common.navigation.NavigationScreen
 import com.hulkdx.findprofessional.common.navigation.Navigator
@@ -18,6 +19,7 @@ class SignUpUseCase(
     private val signUpApi: SignUpApi,
     private val accessTokenStorage: AccessTokenStorage,
     private val refreshTokenStorage: RefreshTokenStorage,
+    private val userStorage: UserStorage,
 ) {
 
     suspend fun onSubmitClicked(request: AuthRequest) = try {
@@ -25,6 +27,7 @@ class SignUpUseCase(
         val (accessToken, refreshToken) = token
         accessTokenStorage.set(accessToken)
         refreshTokenStorage.set(refreshToken)
+        userStorage.set(user)
         navigator.navigate(NavigationScreen.Home)
         null
     } catch (e: Throwable) {

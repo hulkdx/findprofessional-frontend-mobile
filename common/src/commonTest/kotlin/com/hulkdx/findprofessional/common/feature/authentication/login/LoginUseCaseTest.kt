@@ -2,6 +2,7 @@ package com.hulkdx.findprofessional.common.feature.authentication.login
 
 import com.hulkdx.findprofessional.common.config.storage.AccessTokenStorage
 import com.hulkdx.findprofessional.common.config.storage.RefreshTokenStorage
+import com.hulkdx.findprofessional.common.config.storage.UserStorage
 import com.hulkdx.findprofessional.common.feature.authentication.model.Auth
 import com.hulkdx.findprofessional.common.feature.authentication.model.Token
 import com.hulkdx.findprofessional.common.feature.authentication.model.User
@@ -32,6 +33,7 @@ class LoginUseCaseTest {
             loginApi,
             accessTokenStorage,
             refreshTokenStorage,
+            UserStorageFake
         )
     }
 
@@ -100,6 +102,12 @@ class LoginUseCaseTest {
         override suspend fun set(value: String) {
             setValue = value
         }
+        override suspend fun remove() {}
+    }
+
+    object UserStorageFake: UserStorage {
+        override suspend fun get(): User? = null
+        override suspend fun set(value: User) {}
         override suspend fun remove() {}
     }
 

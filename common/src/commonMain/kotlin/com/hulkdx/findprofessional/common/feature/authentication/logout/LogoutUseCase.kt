@@ -2,6 +2,7 @@ package com.hulkdx.findprofessional.common.feature.authentication.logout
 
 import com.hulkdx.findprofessional.common.config.storage.AccessTokenStorage
 import com.hulkdx.findprofessional.common.config.storage.RefreshTokenStorage
+import com.hulkdx.findprofessional.common.config.storage.UserStorage
 import com.hulkdx.findprofessional.common.navigation.NavigationScreen
 import com.hulkdx.findprofessional.common.navigation.Navigator
 
@@ -13,6 +14,7 @@ class LogoutUseCaseImpl(
     private val navigator: Navigator,
     private val accessTokenStorage: AccessTokenStorage,
     private val refreshTokenStorage: RefreshTokenStorage,
+    private val userStorage: UserStorage,
 ): LogoutUseCase {
     override suspend fun logout() {
         val isAlreadyLoggedOut = accessTokenStorage.get() == null && refreshTokenStorage.get() == null
@@ -21,6 +23,7 @@ class LogoutUseCaseImpl(
         }
         accessTokenStorage.remove()
         refreshTokenStorage.remove()
+        userStorage.remove()
         navigator.navigate(NavigationScreen.Login)
     }
 }
