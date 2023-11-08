@@ -47,8 +47,5 @@ dependencies {
     implementation(project(":common"))
     implementation(project(":android:feature:navigation"))
 
-    implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.lifecycle.runtimeCompose)
     implementation(libs.androidx.activity.compose)
-    implementation(libs.koin.androidx.compose)
 }

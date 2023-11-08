@@ -1,6 +1,9 @@
 [versions]
+
+kotlin = "1.9.10"
 # https://developer.android.com/studio/releases/gradle-plugin
 androidGradlePlugin = "8.1.2"
+
 # https://developer.android.com/jetpack/androidx/releases/lifecycle
 androidxActivity = "1.8.0"
 # https://developer.android.com/jetpack/compose/bom/bom-mapping
@@ -17,9 +20,10 @@ androidxNavigation = "2.7.4"
 coil = "2.4.0"
 # https://github.com/InsertKoinIO/koin
 koin = "3.5.0"
+# https://github.com/Kotlin/kotlinx-datetime
+kotlinxDatetime = "0.4.0"
 # https://ktor.io/docs/getting-started-ktor-client-multiplatform-mobile.html#ktor-dependencies
 ktor = "2.3.5"
-kotlin = "1.9.10"
 # https://github.com/Kotlin/kotlinx.coroutines
 kotlinxCoroutines = "1.7.3"
 # https://github.com/square/leakcanary
@@ -42,6 +46,7 @@ koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin"
 koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koin" }
 koin-androidx-compose = { group = "io.insert-koin", name = "koin-androidx-compose", version.ref = "koin" }
 koin-test = { group = "io.insert-koin", name = "koin-test", version.ref = "koin" }
+kotlinx-datetime = { group = "org.jetbrains.kotlinx", name = "kotlinx-datetime", version.ref = "kotlinxDatetime" }
 ktor-core = { group = "io.ktor", name = "ktor-client-core", version.ref = "ktor" }
 ktor-okhttp = { group = "io.ktor", name = "ktor-client-okhttp", version.ref = "ktor" }
 ktor-darwin = { group = "io.ktor", name = "ktor-client-darwin", version.ref = "ktor" }

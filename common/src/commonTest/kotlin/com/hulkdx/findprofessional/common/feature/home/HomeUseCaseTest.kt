@@ -19,7 +19,7 @@ class HomeUseCaseTest {
         "",
         "",
         1,
-        availabilities = listOf(),
+        availability = listOf(),
     )
 
     private lateinit var sut: HomeUseCase

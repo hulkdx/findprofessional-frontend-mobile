@@ -52,12 +52,9 @@ dependencies {
     implementation(project(":android:feature:profile"))
     implementation(project(":android:feature:navigation"))
 
-    implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.activity.compose)
     implementation(libs.koin.core)
     implementation(libs.koin.android)
-    implementation(libs.koin.androidx.compose)
 
     debugImplementation(libs.leakcanary)
 

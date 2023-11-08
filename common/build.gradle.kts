@@ -32,7 +32,7 @@ kotlin {
                 implementation(libs.ktor.content.negotiation)
                 implementation(libs.ktor.serialization)
                 implementation(libs.ktor.logging)
-
+                api(libs.kotlinx.datetime)
             }
         }
         val androidMain by getting {
