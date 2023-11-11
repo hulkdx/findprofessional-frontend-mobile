@@ -2,6 +2,7 @@ package com.hulkdx.findprofessional.common.feature.authentication.signup
 
 import com.hulkdx.findprofessional.common.config.storage.AccessTokenStorage
 import com.hulkdx.findprofessional.common.config.storage.RefreshTokenStorage
+import com.hulkdx.findprofessional.common.feature.authentication.login.LoginUseCaseTest.UserStorageFake
 import com.hulkdx.findprofessional.common.feature.authentication.model.Auth
 import com.hulkdx.findprofessional.common.feature.authentication.model.Token
 import com.hulkdx.findprofessional.common.feature.authentication.model.User
@@ -32,6 +33,7 @@ class SignUpUseCaseTest {
             loginApi,
             accessTokenStorage,
             refreshTokenStorage,
+            UserStorageFake,
         )
     }
 
