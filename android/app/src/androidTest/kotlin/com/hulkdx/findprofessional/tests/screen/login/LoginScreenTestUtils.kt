@@ -20,7 +20,7 @@ class LoginDsl(
     private val rule: Rule,
 ) {
     fun typeEmail(email: String) {
-        rule.onNodeWithTextRes(MR.strings.email.resourceId)
+        rule.onNodeWithTextRes(MR.strings.email.resourceId, useUnmergedTree = true)
             .performTextInput(email)
     }
 
