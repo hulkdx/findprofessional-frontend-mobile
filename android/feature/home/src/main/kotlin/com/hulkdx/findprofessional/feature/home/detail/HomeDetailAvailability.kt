@@ -14,10 +14,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.key
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -97,8 +99,10 @@ private fun AvailabilityContentRow(rows: List<String>) {
             .background(MaterialTheme.colorScheme.onPrimary)
             .padding(start = 12.dp, end = 25.dp)
     ) {
-        for (item in rows) {
-            AvailabilityContentElement(item)
+        rows.forEachIndexed { index, item ->
+            key(index) {
+                AvailabilityContentElement(item)
+            }
         }
     }
 }
