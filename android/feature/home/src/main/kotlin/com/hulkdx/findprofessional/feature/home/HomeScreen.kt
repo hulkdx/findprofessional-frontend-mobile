@@ -99,7 +99,10 @@ private fun ColumnScope.ProfessionalList(
             .weight(1F, true),
         verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
-        items(professionals) { professional ->
+        items(
+            professionals,
+            key = { it.id },
+        ) { professional ->
             ProfessionalItem(
                 professional = professional,
                 onLikeClick = onLikeClick,
