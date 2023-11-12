@@ -27,6 +27,14 @@ android {
     }
 }
 
+tasks.withType<Test> {
+    useJUnitPlatform()
+
+    testLogging {
+        events("passed", "failed", "skipped", "standardOut", "standardError")
+    }
+}
+
 dependencies {
     implementation(project(":android:core"))
     implementation(project(":android:feature:authentication"))
