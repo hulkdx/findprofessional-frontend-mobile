@@ -10,3 +10,5 @@ interface PlatformSpecific {
 
 fun getPlatformSpecific(): PlatformSpecific =
     KoinPlatformTools.defaultContext().get().get()
+
+fun isDebug() = getPlatformSpecific().isDebug()
