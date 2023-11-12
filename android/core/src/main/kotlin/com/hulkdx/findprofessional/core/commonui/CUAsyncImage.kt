@@ -9,7 +9,7 @@ import coil.compose.SubcomposeAsyncImage
 import coil.imageLoader
 import coil.request.ImageRequest
 import coil.util.DebugLogger
-import com.hulkdx.findprofessional.core.BuildConfig
+import com.hulkdx.findprofessional.isDebug
 
 @Composable
 fun CUAsyncImage(
@@ -18,7 +18,7 @@ fun CUAsyncImage(
     contentScale: ContentScale = ContentScale.Crop,
     contentDescription: String? = null,
 ) {
-    val imageLoader = if (BuildConfig.DEBUG) {
+    val imageLoader = if (isDebug()) {
         LocalContext.current.imageLoader.newBuilder()
             .logger(DebugLogger())
             .build()

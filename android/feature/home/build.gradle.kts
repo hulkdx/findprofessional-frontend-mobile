@@ -44,7 +44,6 @@ android {
 
 dependencies {
     implementation(project(":android:core"))
-    implementation(project(":common"))
     implementation(project(":android:feature:navigation"))
 
 }

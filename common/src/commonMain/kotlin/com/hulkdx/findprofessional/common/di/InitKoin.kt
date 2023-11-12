@@ -18,7 +18,6 @@ fun initKoin(
         modules(
             apiModule,
             datastoreModule,
-            platformModule(),
 
             loginModule,
             signUpModule,

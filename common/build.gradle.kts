@@ -78,11 +78,6 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
-    buildFeatures {
-        // AGP 8.0
-        buildConfig = true
-    }
-
     // TODO: moko-resource temporary workaround:
     // https://github.com/icerockdev/moko-resources/issues/510
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
