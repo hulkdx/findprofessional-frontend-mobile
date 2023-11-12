@@ -1,6 +1,5 @@
 package com.hulkdx.findprofessional.tests.screen.login
 
-import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performTextInput
 import com.hulkdx.findprofessional.resources.MR
@@ -13,6 +12,8 @@ fun launchLoginScreen(
     rule: Rule,
     block: LoginDsl.() -> Unit,
 ): LoginDsl {
+    rule.assertNodeIsDisplayed("LoginScreen")
+
     return LoginDsl(rule).apply(block)
 }
 
@@ -20,7 +21,7 @@ class LoginDsl(
     private val rule: Rule,
 ) {
     fun typeEmail(email: String) {
-        rule.onNodeWithTextRes(MR.strings.email.resourceId, useUnmergedTree = true)
+        rule.onNodeWithTextRes(MR.strings.email.resourceId)
             .performTextInput(email)
     }
 
