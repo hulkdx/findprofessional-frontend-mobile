@@ -60,6 +60,9 @@ leakcanary = { group = "com.squareup.leakcanary", name = "leakcanary-android", v
 moko-resources = { group = "dev.icerock.moko", name = "resources", version.ref = "moko" }
 moko-resources-compose = { group = "dev.icerock.moko", name = "resources-compose", version.ref = "moko" }
 
+# build-logic dependencies
+android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }
+
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
 android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
@@ -68,3 +71,6 @@ kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref 
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 kotlin-parcelize = { id = "kotlin-parcelize" }
 moko = { id = "dev.icerock.mobile.multiplatform-resources", version.ref = "moko" }
+# build-logic
+hulkdx-android-application-compose = { id = "com.hulkdx.findprofessional.application.compose", version = "unspecified" }
+hulkdx-android-library-compose = { id = "com.hulkdx.findprofessional.library.compose", version = "unspecified" }

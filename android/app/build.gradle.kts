@@ -1,14 +1,13 @@
 plugins {
-    id("com.android.application")
-    id("kotlin-android")
+    alias(libs.plugins.hulkdx.android.application.compose)
+    alias(libs.plugins.kotlin.android)
 }
 
 android {
-    compileSdk = 34
+    namespace = "com.hulkdx.findprofessional"
 
     defaultConfig {
-        applicationId = "com.hulkdx.findprofessional"
-        minSdk = 29
+        applicationId = namespace
         targetSdk = 34
         versionCode = 3
         versionName = "1.0"
@@ -26,21 +25,14 @@ android {
             )
         }
     }
+}
 
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+tasks.withType<Test> {
+    useJUnitPlatform()
+
+    testLogging {
+        events("passed", "failed", "skipped", "standardOut", "standardError")
     }
-
-    buildFeatures {
-        compose = true
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.androidxComposeCompiler.get()
-    }
-
-    namespace = "com.hulkdx.findprofessional"
 }
 
 dependencies {
