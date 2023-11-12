@@ -13,6 +13,8 @@ fun launchLoginScreen(
     rule: Rule,
     block: LoginDsl.() -> Unit,
 ): LoginDsl {
+    rule.assertNodeIsDisplayed("LoginScreen")
+
     return LoginDsl(rule).apply(block)
 }
 
@@ -20,7 +22,7 @@ class LoginDsl(
     private val rule: Rule,
 ) {
     fun typeEmail(email: String) {
-        rule.onNodeWithTextRes(MR.strings.email.resourceId, useUnmergedTree = true)
+        rule.onNodeWithTextRes(MR.strings.email.resourceId)
             .performTextInput(email)
     }
 
