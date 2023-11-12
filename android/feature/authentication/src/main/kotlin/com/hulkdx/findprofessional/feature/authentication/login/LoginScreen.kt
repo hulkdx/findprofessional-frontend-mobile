@@ -113,12 +113,12 @@ private fun LoginScreen(
             onDismiss = onErrorDismissed
         )
 
-        if (BuildConfig.DEBUG) {
+//        if (BuildConfig.DEBUG) {
             DeveloperButton(
                 modifier = Modifier.align(Alignment.TopEnd),
                 onClick = onDevClicked,
             )
-        }
+//        }
     }
 }
 
