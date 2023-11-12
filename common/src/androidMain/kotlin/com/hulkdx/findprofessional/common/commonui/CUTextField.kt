@@ -52,17 +52,3 @@ fun CUTextField(
         visualTransformation = visualTransformation,
     )
 }
-
-@Preview
-@Composable
-private fun CUTextField() {
-    CUTextField(
-        modifier = Modifier,
-        hint = "Hint",
-        leadingIconDrawable = R.drawable.ic_email,
-        leadingIconContentDescription = "",
-        visualTransformation = VisualTransformation.None,
-        value = "",
-        onValueChanged = {}
-    )
-}

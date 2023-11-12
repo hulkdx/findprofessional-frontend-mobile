@@ -79,12 +79,3 @@ fun CUSearchField(
 
 }
 
-@Preview
-@Composable
-private fun CUTextField() {
-    CUSearchField(
-        query = "",
-        onQueryChange = {},
-        onSearch = {},
-    )
-}
