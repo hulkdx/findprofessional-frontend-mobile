@@ -5,9 +5,9 @@ import shared
 struct MainApp: App {
     
     init() {
-        InitKoinKt.doInitKoin { koinApp in
-            koinApp.addNavigatorAsSingle { _, _ in NavigatorImpl() }
-        }
+        InitKoinIOSKt.doInitKoinIOS(
+            navigator:  { _, _ in NavigatorImpl() }
+        )
 
 #if DEBUG
         handleUiTestArguments()

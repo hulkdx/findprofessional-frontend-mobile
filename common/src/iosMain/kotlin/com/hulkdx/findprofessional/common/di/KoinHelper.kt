@@ -26,11 +26,3 @@ class KoinHelper : KoinComponent {
     }
 }
 
-@Suppress("unused")
-fun KoinApplication.addNavigatorAsSingle(definition: Definition<Navigator>) {
-    modules(
-        module {
-            single(definition = definition)
-        },
-    )
-}

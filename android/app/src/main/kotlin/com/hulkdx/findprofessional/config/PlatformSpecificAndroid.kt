@@ -1,7 +1,8 @@
-package com.hulkdx.findprofessional.common.config
+package com.hulkdx.findprofessional.config
 
 import android.content.Context
 import com.hulkdx.findprofessional.common.BuildConfig
+import com.hulkdx.findprofessional.common.config.PlatformSpecific
 
 class PlatformSpecificAndroid(
     private val appContext: Context,
