@@ -32,11 +32,11 @@ import androidx.compose.ui.unit.sp
 import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalReview
 import com.hulkdx.findprofessional.core.R
 import com.hulkdx.findprofessional.core.commonui.CUAsyncImage
-import com.hulkdx.findprofessional.core.theme.AppTheme
-import com.hulkdx.findprofessional.core.theme.body3
-import com.hulkdx.findprofessional.core.theme.body3Bold
-import com.hulkdx.findprofessional.core.theme.body3SemiBold
-import com.hulkdx.findprofessional.core.theme.h3Bold
+import com.hulkdx.findprofessional.common.theme.AppTheme
+import com.hulkdx.findprofessional.common.theme.body3
+import com.hulkdx.findprofessional.common.theme.body3Bold
+import com.hulkdx.findprofessional.common.theme.body3SemiBold
+import com.hulkdx.findprofessional.common.theme.h3Bold
 import com.hulkdx.findprofessional.resources.MR
 
 

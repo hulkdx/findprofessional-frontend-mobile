@@ -36,6 +36,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":common"))
     implementation(libs.coil.compose)
 
     api(platform(libs.androidx.compose.bom))

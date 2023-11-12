@@ -27,8 +27,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.hulkdx.findprofessional.core.commonui.CUSnackBar
-import com.hulkdx.findprofessional.core.theme.AppTheme
-import com.hulkdx.findprofessional.core.theme.h3
+import com.hulkdx.findprofessional.common.theme.AppTheme
+import com.hulkdx.findprofessional.common.theme.h3
 import com.hulkdx.findprofessional.feature.navigation.navbar.AppNavigationBar
 import dev.icerock.moko.resources.compose.localized
 import org.koin.androidx.compose.getViewModel

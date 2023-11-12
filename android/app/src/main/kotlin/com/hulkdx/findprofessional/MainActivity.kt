@@ -4,7 +4,7 @@ import android.graphics.Color
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import com.hulkdx.findprofessional.core.theme.AppTheme
+import com.hulkdx.findprofessional.common.theme.AppTheme
 import com.hulkdx.findprofessional.navigation.NavigationComposable
 import androidx.activity.enableEdgeToEdge
 

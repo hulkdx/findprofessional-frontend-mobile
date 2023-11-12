@@ -6,7 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.hulkdx.findprofessional.common.feature.home.HomeDetailUseCase
 import com.hulkdx.findprofessional.common.feature.home.model.Professional
 import com.hulkdx.findprofessional.common.feature.home.utils.mapToUi
-import com.hulkdx.findprofessional.core.utils.getStateFlow
+import com.hulkdx.findprofessional.common.utils.getStateFlow
 import com.hulkdx.findprofessional.feature.home.detail.HomeDetailNavigationScreen.Companion.ARG1
 import dev.icerock.moko.resources.desc.StringDesc
 import kotlinx.coroutines.Dispatchers

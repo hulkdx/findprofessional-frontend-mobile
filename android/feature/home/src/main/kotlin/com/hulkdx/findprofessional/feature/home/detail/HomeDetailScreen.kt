@@ -31,11 +31,11 @@ import com.hulkdx.findprofessional.common.feature.home.model.Professional
 import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalReview
 import com.hulkdx.findprofessional.core.R
 import com.hulkdx.findprofessional.core.commonui.CUAsyncImage
-import com.hulkdx.findprofessional.core.theme.AppTheme
-import com.hulkdx.findprofessional.core.theme.body1
-import com.hulkdx.findprofessional.core.theme.body1Medium
-import com.hulkdx.findprofessional.core.theme.body2
-import com.hulkdx.findprofessional.core.theme.h3
+import com.hulkdx.findprofessional.common.theme.AppTheme
+import com.hulkdx.findprofessional.common.theme.body1
+import com.hulkdx.findprofessional.common.theme.body1Medium
+import com.hulkdx.findprofessional.common.theme.body2
+import com.hulkdx.findprofessional.common.theme.h3
 import com.hulkdx.findprofessional.resources.MR
 import org.koin.androidx.compose.getViewModel
 

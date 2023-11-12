@@ -37,6 +37,18 @@ kotlin {
         }
         val androidMain by getting {
             dependencies {
+                implementation(libs.coil.compose)
+
+                api(project.dependencies.platform(libs.androidx.compose.bom))
+                api(libs.androidx.compose.material3)
+                api(libs.androidx.navigation.compose)
+                api(libs.androidx.lifecycle.runtimeCompose)
+
+                api(libs.androidx.compose.ui.tooling.preview)
+                // debugApi(libs.androidx.compose.ui.tooling)
+
+                api(libs.koin.androidx.compose)
+
                 implementation(libs.ktor.okhttp)
                 api(libs.moko.resources.compose)
             }

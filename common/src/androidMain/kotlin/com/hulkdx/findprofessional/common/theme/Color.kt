@@ -1,6 +1,6 @@
 @file:Suppress("PrivatePropertyName")
 
-package com.hulkdx.findprofessional.core.theme
+package com.hulkdx.findprofessional.common.theme
 
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.ui.graphics.Color

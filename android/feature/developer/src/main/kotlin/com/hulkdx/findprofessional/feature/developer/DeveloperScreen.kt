@@ -22,7 +22,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.hulkdx.findprofessional.common.config.storage.DeveloperStorage
 import com.hulkdx.findprofessional.common.config.storage.DeveloperStorage.Key.MockData
-import com.hulkdx.findprofessional.core.theme.AppTheme
+import com.hulkdx.findprofessional.common.theme.AppTheme
 import kotlinx.coroutines.launch
 import org.koin.compose.koinInject
 

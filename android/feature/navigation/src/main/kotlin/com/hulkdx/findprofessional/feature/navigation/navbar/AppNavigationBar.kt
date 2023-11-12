@@ -15,7 +15,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.hulkdx.findprofessional.common.navigation.NavigationScreen
-import com.hulkdx.findprofessional.core.theme.AppTheme
+import com.hulkdx.findprofessional.common.theme.AppTheme
 import com.hulkdx.findprofessional.feature.navigation.getNavigator
 import com.hulkdx.findprofessional.resources.MR
 

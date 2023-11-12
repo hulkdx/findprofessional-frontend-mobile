@@ -8,7 +8,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.hulkdx.findprofessional.core.theme.h3
+import com.hulkdx.findprofessional.common.theme.h3
 
 @Composable
 fun FilledButton(
