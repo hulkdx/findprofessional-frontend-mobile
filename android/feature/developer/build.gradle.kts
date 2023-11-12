@@ -1,45 +1,10 @@
 plugins {
-    id("com.android.library")
-    id("kotlin-android")
+    alias(libs.plugins.hulkdx.android.library.compose)
+    alias(libs.plugins.kotlin.android)
 }
 
 android {
     namespace = "com.hulkdx.findprofessional.feature.developer"
-    compileSdk = 34
-
-    defaultConfig {
-        minSdk = 29
-    }
-
-    buildTypes {
-        release {
-            isMinifyEnabled = true
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro",
-            )
-        }
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
-
-    buildFeatures {
-        compose = true
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.androidxComposeCompiler.get()
-    }
-
-    tasks.withType<Test> {
-        useJUnitPlatform()
-
-        testLogging {
-            events("passed", "failed", "skipped", "standardOut", "standardError")
-        }
-    }
 }
 
 dependencies {
