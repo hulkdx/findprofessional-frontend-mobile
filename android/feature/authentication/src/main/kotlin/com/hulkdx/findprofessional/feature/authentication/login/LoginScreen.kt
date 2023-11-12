@@ -29,9 +29,9 @@ import com.hulkdx.findprofessional.common.BuildConfig
 import com.hulkdx.findprofessional.core.commonui.CUSnackBar
 import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.core.theme.body1
-import com.hulkdx.findprofessional.core.utils.append
-import com.hulkdx.findprofessional.core.utils.bold
-import com.hulkdx.findprofessional.core.utils.singleClick
+import com.hulkdx.findprofessional.common.utils.append
+import com.hulkdx.findprofessional.common.utils.bold
+import com.hulkdx.findprofessional.common.utils.singleClick
 import com.hulkdx.findprofessional.feature.authentication.ui.EmailTextField
 import com.hulkdx.findprofessional.feature.authentication.ui.FilledButton
 import com.hulkdx.findprofessional.feature.authentication.ui.PasswordTextField

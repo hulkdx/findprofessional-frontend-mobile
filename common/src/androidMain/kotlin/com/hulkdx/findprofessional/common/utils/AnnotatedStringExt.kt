@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.core.utils
+package com.hulkdx.findprofessional.common.utils
 
 import android.annotation.SuppressLint
 import androidx.annotation.StringRes

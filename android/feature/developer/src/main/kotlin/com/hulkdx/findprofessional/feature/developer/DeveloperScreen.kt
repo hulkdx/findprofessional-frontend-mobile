@@ -1,5 +1,7 @@
 package com.hulkdx.findprofessional.feature.developer
 
+import android.app.Activity
+import android.content.Context
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -21,7 +23,6 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.hulkdx.findprofessional.common.config.storage.DeveloperStorage
 import com.hulkdx.findprofessional.common.config.storage.DeveloperStorage.Key.MockData
 import com.hulkdx.findprofessional.core.theme.AppTheme
-import com.hulkdx.findprofessional.core.utils.ApplicationUtils.restartApplication
 import kotlinx.coroutines.launch
 import org.koin.compose.koinInject
 
@@ -78,4 +79,11 @@ private fun HomeScreenPreview() {
             onMockDataChanged = {},
         )
     }
+}
+
+private fun restartApplication(context: Context) {
+    val intent = context.packageManager.getLaunchIntentForPackage(context.packageName)
+    context.startActivity(intent)
+    (context as Activity).finish()
+    Runtime.getRuntime().exit(0)
 }

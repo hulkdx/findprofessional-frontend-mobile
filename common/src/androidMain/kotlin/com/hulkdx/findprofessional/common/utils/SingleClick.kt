@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.core.utils
+package com.hulkdx.findprofessional.common.utils
 
 fun singleClick(onClick: () -> Unit): () -> Unit {
     var latest: Long = 0

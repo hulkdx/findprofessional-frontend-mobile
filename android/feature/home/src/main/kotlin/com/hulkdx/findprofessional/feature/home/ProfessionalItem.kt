@@ -30,7 +30,7 @@ import com.hulkdx.findprofessional.core.theme.body1
 import com.hulkdx.findprofessional.core.theme.body1Medium
 import com.hulkdx.findprofessional.core.theme.body2Bold
 import com.hulkdx.findprofessional.core.theme.h3
-import com.hulkdx.findprofessional.core.utils.singleClick
+import com.hulkdx.findprofessional.common.utils.singleClick
 import com.hulkdx.findprofessional.resources.MR
 
 @Composable
