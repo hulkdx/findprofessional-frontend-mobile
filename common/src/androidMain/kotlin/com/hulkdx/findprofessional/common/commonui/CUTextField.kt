@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.core.commonui
+package com.hulkdx.findprofessional.common.commonui
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
@@ -13,7 +13,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.hulkdx.findprofessional.core.R
+import com.hulkdx.findprofessional.common.R
 import com.hulkdx.findprofessional.common.theme.body2Medium
 
 @Composable

@@ -20,7 +20,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.hulkdx.findprofessional.core.commonui.CUSnackBar
+import com.hulkdx.findprofessional.common.commonui.CUSnackBar
 import com.hulkdx.findprofessional.common.theme.AppTheme
 import com.hulkdx.findprofessional.feature.authentication.ui.EmailTextField
 import com.hulkdx.findprofessional.feature.authentication.ui.FilledButton

@@ -23,8 +23,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.hulkdx.findprofessional.common.feature.home.model.Professional
-import com.hulkdx.findprofessional.core.R
-import com.hulkdx.findprofessional.core.commonui.CUAsyncImage
+import com.hulkdx.findprofessional.common.R
+import com.hulkdx.findprofessional.common.commonui.CUAsyncImage
 import com.hulkdx.findprofessional.common.theme.AppTheme
 import com.hulkdx.findprofessional.common.theme.body1
 import com.hulkdx.findprofessional.common.theme.body1Medium

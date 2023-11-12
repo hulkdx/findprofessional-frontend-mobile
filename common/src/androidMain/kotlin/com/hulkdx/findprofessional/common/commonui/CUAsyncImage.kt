@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.core.commonui
+package com.hulkdx.findprofessional.common.commonui
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
@@ -9,7 +9,7 @@ import coil.compose.SubcomposeAsyncImage
 import coil.imageLoader
 import coil.request.ImageRequest
 import coil.util.DebugLogger
-import com.hulkdx.findprofessional.core.BuildConfig
+import com.hulkdx.findprofessional.common.BuildConfig
 
 @Composable
 fun CUAsyncImage(

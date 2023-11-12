@@ -36,6 +36,7 @@ kotlin {
             }
         }
         val androidMain by getting {
+            dependsOn(commonMain)
             dependencies {
                 implementation(libs.coil.compose)
 
@@ -92,7 +93,12 @@ android {
 
     buildFeatures {
         // AGP 8.0
+        compose = true
         buildConfig = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = libs.versions.androidxComposeCompiler.get()
     }
 
     // TODO: moko-resource temporary workaround:

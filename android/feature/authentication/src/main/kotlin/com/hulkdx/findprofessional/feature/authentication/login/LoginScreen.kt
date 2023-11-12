@@ -26,7 +26,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.hulkdx.findprofessional.common.BuildConfig
-import com.hulkdx.findprofessional.core.commonui.CUSnackBar
+import com.hulkdx.findprofessional.common.commonui.CUSnackBar
 import com.hulkdx.findprofessional.common.theme.AppTheme
 import com.hulkdx.findprofessional.common.theme.body1
 import com.hulkdx.findprofessional.common.utils.append
