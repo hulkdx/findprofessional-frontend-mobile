@@ -46,6 +46,8 @@ fun LoginScreen(
     val password by viewModel.password.collectAsStateWithLifecycle()
     val error by viewModel.error.collectAsStateWithLifecycle()
 
+    val showDeveloper = true
+
     LoginScreen(
         email = email,
         onEmailChanged = viewModel::setEmail,
@@ -55,6 +57,7 @@ fun LoginScreen(
         onSignUpClicked = viewModel::onSignUpClicked,
         error = error?.localized(),
         onErrorDismissed = { viewModel.setError(null) },
+        showDeveloper = showDeveloper,
         onDevClicked = viewModel::onDevClicked,
     )
 }
@@ -69,6 +72,7 @@ private fun LoginScreen(
     onSignUpClicked: () -> Unit,
     error: String?,
     onErrorDismissed: () -> Unit,
+    showDeveloper: Boolean,
     onDevClicked: () -> Unit,
 ) {
     Box(
@@ -112,12 +116,12 @@ private fun LoginScreen(
             onDismiss = onErrorDismissed
         )
 
-//        if (BuildConfig.DEBUG) {
+        if (showDeveloper) {
             DeveloperButton(
                 modifier = Modifier.align(Alignment.TopEnd),
                 onClick = onDevClicked,
             )
-//        }
+        }
     }
 }
 
@@ -135,6 +139,7 @@ private fun LoginScreenPreview() {
             error = "",
             onErrorDismissed = {},
             onDevClicked = {},
+            showDeveloper = true,
         )
     }
 }
