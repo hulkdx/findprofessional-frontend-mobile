@@ -126,25 +126,6 @@ private fun LoginScreen(
     }
 }
 
-@Preview
-@Composable
-private fun LoginScreenPreview() {
-    AppTheme {
-        LoginScreen(
-            email = "",
-            onEmailChanged = {},
-            password = "",
-            onPasswordChanged = {},
-            onSignInClicked = {},
-            onSignUpClicked = {},
-            error = "",
-            onErrorDismissed = {},
-            onDevClicked = {},
-            showDeveloper = true,
-        )
-    }
-}
-
 @Composable
 fun SignInButton(
     modifier: Modifier,
@@ -195,3 +176,21 @@ fun DeveloperButton(
     }
 }
 
+@Preview
+@Composable
+private fun LoginScreenPreview() {
+    AppTheme {
+        LoginScreen(
+            email = "",
+            onEmailChanged = {},
+            password = "",
+            onPasswordChanged = {},
+            onSignInClicked = {},
+            onSignUpClicked = {},
+            error = "",
+            onErrorDismissed = {},
+            onDevClicked = {},
+            showDeveloper = true,
+        )
+    }
+}
