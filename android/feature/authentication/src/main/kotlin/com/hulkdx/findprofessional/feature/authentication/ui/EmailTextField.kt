@@ -24,8 +24,6 @@ fun EmailTextField(
                 end = 16.dp,
             ),
         hint = stringResource(id = MR.strings.email.resourceId),
-        leadingIconDrawable = coreR.drawable.ic_email,
-        leadingIconContentDescription = stringResource(id = MR.strings.email.resourceId),
         value = value,
         onValueChanged = onValueChanged,
     )

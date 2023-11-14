@@ -1,5 +1,6 @@
 package com.hulkdx.findprofessional.feature.authentication.login
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -9,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBarsPadding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
@@ -17,8 +19,10 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.style.TextAlign
@@ -32,8 +36,10 @@ import com.hulkdx.findprofessional.core.theme.body1
 import com.hulkdx.findprofessional.core.utils.append
 import com.hulkdx.findprofessional.core.utils.bold
 import com.hulkdx.findprofessional.core.utils.singleClick
+import com.hulkdx.findprofessional.feature.authentication.R
 import com.hulkdx.findprofessional.feature.authentication.ui.EmailTextField
 import com.hulkdx.findprofessional.feature.authentication.ui.FilledButton
+import com.hulkdx.findprofessional.feature.authentication.ui.LogoImage
 import com.hulkdx.findprofessional.feature.authentication.ui.PasswordTextField
 import com.hulkdx.findprofessional.resources.MR
 import dev.icerock.moko.resources.compose.localized
@@ -89,8 +95,14 @@ private fun LoginScreen(
                 .background(MaterialTheme.colorScheme.onPrimary),
             verticalArrangement = Arrangement.Center,
         ) {
+            LogoImage(
+                modifier = Modifier
+                    .width(110.dp)
+                    .align(CenterHorizontally)
+            )
+
             EmailTextField(
-                modifier = Modifier,
+                modifier = Modifier.padding(top = 50.dp),
                 value = email,
                 onValueChanged = onEmailChanged,
             )
