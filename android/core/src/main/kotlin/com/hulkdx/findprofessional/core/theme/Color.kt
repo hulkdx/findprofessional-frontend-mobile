@@ -16,6 +16,7 @@ private val Yellow = Color(0xFFF6C548)
 private val BackgroundColor = Color(0xFFF5F6FA)
 
 private val TextPlaceholder = Color(0xFFAEAEB6)
+val TextButtonColor = Color(0xFF09B0B9)
 
 internal val lightColorPalette = lightColorScheme(
     primary = Green,

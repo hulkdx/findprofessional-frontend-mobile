@@ -7,6 +7,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import com.hulkdx.findprofessional.core.theme.AppTheme
+import com.hulkdx.findprofessional.core.theme.TextButtonColor
 import com.hulkdx.findprofessional.core.theme.body1
 
 @Composable
@@ -22,7 +23,7 @@ fun CUTextButton(
         Text(
             text = text,
             style = body1,
-            color = Color(0xFF09B0B9)
+            color = TextButtonColor
         )
     }
 }
