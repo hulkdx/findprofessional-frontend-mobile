@@ -7,6 +7,9 @@ on:
 env:
   JAVA_VERSION: 17
   JAVA_DIST: "zulu"
+  XCODE_VERSION: "14.2"
+  XCODE_MACOS_VERSION: "macos-12"
+  XCODE_IPHONE_VERSION: "iPhone 14"
 
 jobs:
   android-unit-tests:
@@ -109,14 +112,14 @@ jobs:
 
   ios-tests:
     name: iOS tests
-    runs-on: macos-12
+    runs-on: env.XCODE_MACOS_VERSION
     timeout-minutes: 90
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
       - name: Select Xcode
-        run: sudo xcode-select -switch /Applications/Xcode_14.2.app
+        run: sudo xcode-select -switch /Applications/Xcode_${{ env.XCODE_VERSION }}.app
 
       - uses: actions/setup-java@v3
         with:
@@ -147,7 +150,7 @@ jobs:
           -scheme FindProfessional
           -configuration Debug
           -sdk iphonesimulator
-          -destination 'platform=iOS Simulator,name=iPhone 14'
+          -destination 'platform=iOS Simulator,name=${{ env.XCODE_IPHONE_VERSION }}'
           build test
           ONLY_ACTIVE_ARCH=YES
           CODE_SIGNING_REQUIRED=NO
