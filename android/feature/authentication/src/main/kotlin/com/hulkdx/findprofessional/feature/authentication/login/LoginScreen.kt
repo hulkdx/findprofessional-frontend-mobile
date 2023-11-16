@@ -55,6 +55,7 @@ fun LoginScreen(
         onPasswordChanged = viewModel::setPassword,
         onSignInClicked = viewModel::onSignInClicked,
         onSignUpClicked = viewModel::onSignUpClicked,
+        onForgotPasswordClicked = viewModel::onForgotPasswordClicked,
         error = error?.localized(),
         onErrorDismissed = { viewModel.setError(null) },
         showDeveloper = showDeveloper,
@@ -70,6 +71,7 @@ private fun LoginScreen(
     onPasswordChanged: (String) -> Unit,
     onSignInClicked: () -> Unit,
     onSignUpClicked: () -> Unit,
+    onForgotPasswordClicked: () -> Unit,
     error: String?,
     onErrorDismissed: () -> Unit,
     showDeveloper: Boolean,
@@ -123,7 +125,7 @@ private fun LoginScreen(
                 modifier = Modifier
                     .padding(top = 16.dp)
                     .align(CenterHorizontally),
-                onClick = onSignInClicked,
+                onClick = onForgotPasswordClicked,
             )
 
             Spacer(modifier = Modifier.weight(1F))
@@ -210,6 +212,7 @@ private fun LoginScreenPreview() {
             onSignUpClicked = {},
             error = "",
             onErrorDismissed = {},
+            onForgotPasswordClicked = {},
             onDevClicked = {},
             showDeveloper = true,
         )
