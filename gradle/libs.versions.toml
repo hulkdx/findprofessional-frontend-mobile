@@ -17,7 +17,7 @@ androidxLifecycle = "2.6.2"
 # https://developer.android.com/jetpack/androidx/releases/navigation
 androidxNavigation = "2.7.4"
 # https://github.com/coil-kt/coil
-coil = "2.4.0"
+coil = "2.5.0"
 # https://github.com/InsertKoinIO/koin
 koin = "3.5.0"
 # https://github.com/Kotlin/kotlinx-datetime
