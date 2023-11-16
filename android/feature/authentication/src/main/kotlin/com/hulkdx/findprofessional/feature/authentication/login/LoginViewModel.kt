@@ -42,4 +42,8 @@ class LoginViewModel(
     fun setEmail(email: String) {
         savedStateHandle["email"] = email
     }
+
+    fun onForgotPasswordClicked() {
+        // TODO:
+    }
 }

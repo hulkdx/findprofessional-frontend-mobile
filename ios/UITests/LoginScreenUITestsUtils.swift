@@ -1,4 +1,5 @@
 import XCTest
+import shared
 
 func launchLoginScreen(_ app: XCUIApplication) -> LoginBuilder {
     app.launch()
@@ -9,14 +10,14 @@ struct LoginBuilder {
     let app: XCUIApplication
     
     func typeEmail(_ email: String) -> LoginBuilder {
-        let element = app.textFields["Email"]
+        let element = app.textFields[MR.strings().email.desc().localized()]
         element.tap()
         element.typeText(email)
         return self
     }
 
     func typePassword(_ password: String) -> LoginBuilder {
-        let element = app.secureTextFields["Password"]
+        let element = app.secureTextFields[MR.strings().password.desc().localized()]
         element.tap()
         element.typeText(password)
         return self
@@ -29,7 +30,7 @@ struct LoginBuilder {
     }
     
     func pressSignInButton() -> LoginBuilder {
-        app.buttons["Sign in"].tap()
+        app.buttons[MR.strings().signIn.desc().localized()].tap()
         return self
     }
     

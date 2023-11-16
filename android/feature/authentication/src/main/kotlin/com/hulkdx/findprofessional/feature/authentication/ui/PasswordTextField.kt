@@ -20,13 +20,8 @@ fun PasswordTextField(
     CUTextField(
         modifier = modifier
             .fillMaxWidth()
-            .padding(
-                start = 16.dp,
-                end = 16.dp,
-            ),
+        ,
         hint = stringResource(id = MR.strings.password.resourceId),
-        leadingIconDrawable = R.drawable.ic_password,
-        leadingIconContentDescription = stringResource(id = MR.strings.password.resourceId),
         visualTransformation = PasswordVisualTransformation(),
         value = value,
         onValueChanged = onValueChanged,

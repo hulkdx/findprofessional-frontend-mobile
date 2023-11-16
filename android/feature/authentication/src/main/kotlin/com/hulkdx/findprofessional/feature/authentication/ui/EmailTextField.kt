@@ -19,13 +19,8 @@ fun EmailTextField(
     CUTextField(
         modifier = modifier
             .fillMaxWidth()
-            .padding(
-                start = 16.dp,
-                end = 16.dp,
-            ),
+        ,
         hint = stringResource(id = MR.strings.email.resourceId),
-        leadingIconDrawable = coreR.drawable.ic_email,
-        leadingIconContentDescription = stringResource(id = MR.strings.email.resourceId),
         value = value,
         onValueChanged = onValueChanged,
     )
