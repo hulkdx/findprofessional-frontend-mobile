@@ -4,7 +4,8 @@
     <string name="password">Password</string>
     <string name="signUp">Sign Up</string>
 
-    <string name="signIn">Sign in</string>
+    <string name="signIn">Login</string>
+    <string name="forgotYourPassword">Forgot your password?</string>
     <string name="dontHaveAnAccount">Don’t have an account?</string>
 
     <string name="emailExists">Email already exists!</string>

@@ -1,10 +1,7 @@
 package com.hulkdx.findprofessional.feature.authentication.login
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.imePadding
@@ -19,26 +16,21 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.buildAnnotatedString
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.constraintlayout.compose.ChainStyle
+import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.hulkdx.findprofessional.common.config.isDebug
+import com.hulkdx.findprofessional.core.commonui.CUFilledButton
 import com.hulkdx.findprofessional.core.commonui.CUSnackBar
+import com.hulkdx.findprofessional.core.commonui.CUTextButton
 import com.hulkdx.findprofessional.core.theme.AppTheme
-import com.hulkdx.findprofessional.core.theme.body1
-import com.hulkdx.findprofessional.core.utils.append
-import com.hulkdx.findprofessional.core.utils.bold
 import com.hulkdx.findprofessional.core.utils.singleClick
-import com.hulkdx.findprofessional.feature.authentication.R
 import com.hulkdx.findprofessional.feature.authentication.ui.EmailTextField
-import com.hulkdx.findprofessional.feature.authentication.ui.FilledButton
 import com.hulkdx.findprofessional.feature.authentication.ui.LogoImage
 import com.hulkdx.findprofessional.feature.authentication.ui.PasswordTextField
 import com.hulkdx.findprofessional.resources.MR
@@ -84,42 +76,92 @@ private fun LoginScreen(
 ) {
     Box(
         modifier = Modifier
+            .background(MaterialTheme.colorScheme.onPrimary)
             .systemBarsPadding()
             .imePadding()
             .testTag("LoginScreen")
     ) {
-        Column(
+        ConstraintLayout(
             modifier = Modifier
                 .fillMaxSize()
+                .background(MaterialTheme.colorScheme.onPrimary)
+                .systemBarsPadding()
                 .verticalScroll(rememberScrollState())
-                .background(MaterialTheme.colorScheme.onPrimary),
-            verticalArrangement = Arrangement.Center,
+                .imePadding()
+                .testTag("LoginScreen")
         ) {
-            LogoImage(
-                modifier = Modifier
-                    .width(110.dp)
-                    .align(CenterHorizontally)
+            val (
+                logoImage,
+                emailConstraint,
+                passwordConstraint,
+                loginConstraint,
+                forgotPasswordConstraint,
+                signUpConstraint,
+            ) = createRefs()
+
+            createVerticalChain(
+                logoImage,
+                emailConstraint,
+                passwordConstraint,
+                loginConstraint,
+                forgotPasswordConstraint,
+                chainStyle = ChainStyle.Packed
             )
 
+            LogoImage(
+                modifier = Modifier
+                    .constrainAs(logoImage) {
+                        start.linkTo(parent.start)
+                        end.linkTo(parent.end)
+                    }
+                    .width(110.dp)
+            )
             EmailTextField(
-                modifier = Modifier.padding(top = 50.dp),
+                modifier = Modifier
+                    .padding(horizontal = 24.dp)
+                    .padding(top = 50.dp)
+                    .constrainAs(emailConstraint) {
+                    },
                 value = email,
                 onValueChanged = onEmailChanged,
             )
 
             PasswordTextField(
-                modifier = Modifier.padding(top = 8.dp),
+                modifier = Modifier
+                    .padding(horizontal = 24.dp)
+                    .padding(top = 16.dp)
+                    .constrainAs(passwordConstraint) {
+                    },
                 value = password,
                 onValueChanged = onPasswordChanged,
             )
 
-            SignInButton(
-                modifier = Modifier.padding(top = 16.dp),
+            LoginButton(
+                modifier = Modifier
+                    .padding(horizontal = 24.dp)
+                    .padding(top = 16.dp)
+                    .constrainAs(loginConstraint) {
+                    },
+                onClick = onSignInClicked,
+            )
+
+            ForgotPasswordButton(
+                modifier = Modifier
+                    .padding(top = 16.dp)
+                    .constrainAs(forgotPasswordConstraint) {
+                        start.linkTo(parent.start)
+                        end.linkTo(parent.end)
+                    },
                 onClick = onSignInClicked,
             )
 
             SignUpButton(
-                modifier = Modifier.padding(top = 32.dp),
+                modifier = Modifier
+                    .constrainAs(signUpConstraint) {
+                        linkTo(forgotPasswordConstraint.bottom, parent.bottom, bias = .80F)
+                        start.linkTo(parent.start)
+                        end.linkTo(parent.end)
+                    },
                 onClick = onSignUpClicked,
             )
         }
@@ -139,14 +181,26 @@ private fun LoginScreen(
 }
 
 @Composable
-fun SignInButton(
+fun LoginButton(
     modifier: Modifier,
     onClick: () -> Unit,
 ) {
-    FilledButton(
-        modifier,
+    CUFilledButton(
+        modifier.fillMaxWidth(),
         text = stringResource(id = MR.strings.signIn.resourceId),
         onClick,
+    )
+}
+
+@Composable
+fun ForgotPasswordButton(
+    modifier: Modifier,
+    onClick: () -> Unit,
+) {
+    CUTextButton(
+        modifier = modifier,
+        text = stringResource(id = MR.strings.forgotYourPassword.resourceId),
+        onClick = singleClick(onClick),
     )
 }
 
@@ -155,27 +209,13 @@ fun SignUpButton(
     modifier: Modifier,
     onClick: () -> Unit,
 ) {
-    Box(
+    CUTextButton(
         modifier = modifier
-            .fillMaxWidth(),
-        contentAlignment = Alignment.TopCenter,
-    ) {
-        TextButton(
-            onClick = singleClick(onClick),
-            Modifier.testTag(stringResource(id = MR.strings.signUp.resourceId)),
-        ) {
-            Text(
-                textAlign = TextAlign.Center,
-                text = buildAnnotatedString {
-                    append(MR.strings.dontHaveAnAccount.resourceId)
-                    append(" ")
-                    bold { append(id = MR.strings.signUp.resourceId) }
-                },
-                style = body1,
-                color = MaterialTheme.colorScheme.primary,
-            )
-        }
-    }
+            .testTag(stringResource(id = MR.strings.signUp.resourceId))
+        ,
+        text = stringResource(id = MR.strings.dontHaveAnAccount.resourceId),
+        onClick = singleClick(onClick),
+    )
 }
 
 @Composable

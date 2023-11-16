@@ -60,13 +60,13 @@ val body1Medium = TextStyle(
 val body2 = TextStyle(
     fontFamily = interFamily,
     fontWeight = FontWeight.Normal,
-    fontSize = 14.sp,
+    fontSize = 16.sp,
 )
 
 val body2Medium = TextStyle(
     fontFamily = interFamily,
     fontWeight = FontWeight.Medium,
-    fontSize = 14.sp,
+    fontSize = 16.sp,
 )
 
 val body2Bold = TextStyle(
