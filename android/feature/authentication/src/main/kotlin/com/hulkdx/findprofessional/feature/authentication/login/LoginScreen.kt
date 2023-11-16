@@ -6,11 +6,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -74,21 +74,14 @@ private fun LoginScreen(
     showDeveloper: Boolean,
     onDevClicked: () -> Unit,
 ) {
-    Box(
-        modifier = Modifier
-            .background(MaterialTheme.colorScheme.onPrimary)
-            .systemBarsPadding()
-            .imePadding()
-            .testTag("LoginScreen")
-    ) {
+    Scaffold(Modifier.testTag("LoginScreen")) {
         ConstraintLayout(
             modifier = Modifier
                 .fillMaxSize()
                 .background(MaterialTheme.colorScheme.onPrimary)
-                .systemBarsPadding()
-                .verticalScroll(rememberScrollState())
+                .padding(it)
                 .imePadding()
-                .testTag("LoginScreen")
+                .verticalScroll(rememberScrollState())
         ) {
             val (
                 logoImage,
@@ -165,17 +158,19 @@ private fun LoginScreen(
                 onClick = onSignUpClicked,
             )
         }
-        CUSnackBar(
-            modifier = Modifier.align(Alignment.BottomCenter),
-            message = error,
-            onDismiss = onErrorDismissed
-        )
 
-        if (showDeveloper) {
-            DeveloperButton(
-                modifier = Modifier.align(Alignment.TopEnd),
-                onClick = onDevClicked,
+        Box(Modifier.fillMaxSize().padding(it)) {
+            CUSnackBar(
+                modifier = Modifier.align(Alignment.BottomCenter),
+                message = "error",
+                onDismiss = onErrorDismissed
             )
+            if (showDeveloper) {
+                DeveloperButton(
+                    modifier = Modifier.align(Alignment.TopEnd),
+                    onClick = onDevClicked,
+                )
+            }
         }
     }
 }
@@ -211,8 +206,7 @@ fun SignUpButton(
 ) {
     CUTextButton(
         modifier = modifier
-            .testTag(stringResource(id = MR.strings.signUp.resourceId))
-        ,
+            .testTag(stringResource(id = MR.strings.signUp.resourceId)),
         text = stringResource(id = MR.strings.dontHaveAnAccount.resourceId),
         onClick = singleClick(onClick),
     )
