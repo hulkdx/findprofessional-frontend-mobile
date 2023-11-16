@@ -2,27 +2,28 @@ package com.hulkdx.findprofessional.feature.authentication.login
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.constraintlayout.compose.ChainStyle
-import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.hulkdx.findprofessional.common.config.isDebug
 import com.hulkdx.findprofessional.core.commonui.CUFilledButton
@@ -74,103 +75,77 @@ private fun LoginScreen(
     showDeveloper: Boolean,
     onDevClicked: () -> Unit,
 ) {
-    Scaffold(Modifier.testTag("LoginScreen")) {
-        ConstraintLayout(
+    Box(
+        modifier = Modifier
+            .background(MaterialTheme.colorScheme.onPrimary)
+            .systemBarsPadding()
+            .imePadding()
+            .testTag("LoginScreen")
+    ) {
+        Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(MaterialTheme.colorScheme.onPrimary)
-                .padding(it)
-                .imePadding()
-                .verticalScroll(rememberScrollState())
+                .verticalScroll(rememberScrollState()),
         ) {
-            val (
-                logoImage,
-                emailConstraint,
-                passwordConstraint,
-                loginConstraint,
-                forgotPasswordConstraint,
-                signUpConstraint,
-            ) = createRefs()
 
-            createVerticalChain(
-                logoImage,
-                emailConstraint,
-                passwordConstraint,
-                loginConstraint,
-                forgotPasswordConstraint,
-                chainStyle = ChainStyle.Packed
-            )
+            Spacer(modifier = Modifier.weight(2.5F))
 
             LogoImage(
                 modifier = Modifier
-                    .constrainAs(logoImage) {
-                        start.linkTo(parent.start)
-                        end.linkTo(parent.end)
-                    }
                     .width(110.dp)
+                    .align(CenterHorizontally)
             )
+
             EmailTextField(
                 modifier = Modifier
-                    .padding(horizontal = 24.dp)
                     .padding(top = 50.dp)
-                    .constrainAs(emailConstraint) {
-                    },
+                    .padding(horizontal = 24.dp),
                 value = email,
                 onValueChanged = onEmailChanged,
             )
 
             PasswordTextField(
                 modifier = Modifier
-                    .padding(horizontal = 24.dp)
                     .padding(top = 16.dp)
-                    .constrainAs(passwordConstraint) {
-                    },
+                    .padding(horizontal = 24.dp),
                 value = password,
                 onValueChanged = onPasswordChanged,
             )
 
             LoginButton(
                 modifier = Modifier
-                    .padding(horizontal = 24.dp)
                     .padding(top = 16.dp)
-                    .constrainAs(loginConstraint) {
-                    },
+                    .padding(horizontal = 24.dp),
                 onClick = onSignInClicked,
             )
 
             ForgotPasswordButton(
                 modifier = Modifier
                     .padding(top = 16.dp)
-                    .constrainAs(forgotPasswordConstraint) {
-                        start.linkTo(parent.start)
-                        end.linkTo(parent.end)
-                    },
+                    .align(CenterHorizontally),
                 onClick = onSignInClicked,
             )
 
+            Spacer(modifier = Modifier.weight(1F))
+
             SignUpButton(
                 modifier = Modifier
-                    .constrainAs(signUpConstraint) {
-                        linkTo(forgotPasswordConstraint.bottom, parent.bottom, bias = .80F)
-                        start.linkTo(parent.start)
-                        end.linkTo(parent.end)
-                    },
+                    .padding(bottom = 50.dp)
+                    .align(CenterHorizontally),
                 onClick = onSignUpClicked,
             )
         }
+        CUSnackBar(
+            modifier = Modifier.align(Alignment.BottomCenter),
+            message = error,
+            onDismiss = onErrorDismissed
+        )
 
-        Box(Modifier.fillMaxSize().padding(it)) {
-            CUSnackBar(
-                modifier = Modifier.align(Alignment.BottomCenter),
-                message = error,
-                onDismiss = onErrorDismissed
+        if (showDeveloper) {
+            DeveloperButton(
+                modifier = Modifier.align(Alignment.TopEnd),
+                onClick = onDevClicked,
             )
-            if (showDeveloper) {
-                DeveloperButton(
-                    modifier = Modifier.align(Alignment.TopEnd),
-                    onClick = onDevClicked,
-                )
-            }
         }
     }
 }
