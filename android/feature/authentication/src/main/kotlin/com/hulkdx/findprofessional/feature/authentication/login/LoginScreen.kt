@@ -162,7 +162,7 @@ private fun LoginScreen(
         Box(Modifier.fillMaxSize().padding(it)) {
             CUSnackBar(
                 modifier = Modifier.align(Alignment.BottomCenter),
-                message = "error",
+                message = error,
                 onDismiss = onErrorDismissed
             )
             if (showDeveloper) {
