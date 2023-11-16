@@ -1,4 +1,5 @@
 import XCTest
+import shared
 
 func launchSignUpScreen(_ app: XCUIApplication) -> SignUpBuilder {
     launchLoginScreen(app)
@@ -10,7 +11,7 @@ struct SignUpBuilder {
     let app: XCUIApplication
     
     func pressSignUpButton() -> SignUpBuilder {
-        app.buttons["Sign Up"].tap()
+        app.buttons[MR.strings().signUp.desc().localized()].tap()
         return self
     }
     
