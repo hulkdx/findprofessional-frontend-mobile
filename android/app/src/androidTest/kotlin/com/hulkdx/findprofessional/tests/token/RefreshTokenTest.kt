@@ -11,8 +11,7 @@ import com.hulkdx.findprofessional.common.feature.authentication.model.Token
 import com.hulkdx.findprofessional.common.feature.authentication.model.User
 import com.hulkdx.findprofessional.common.feature.authentication.signup.model.AuthRequest
 import com.hulkdx.findprofessional.tests.screen.login.launchLoginScreen
-import com.hulkdx.findprofessional.utils.AfterComposeRule
-import com.hulkdx.findprofessional.utils.BeforeComposeRule
+import com.hulkdx.findprofessional.utils.UiTestRule
 import com.hulkdx.findprofessional.utils.assertNodeIsDisplayed
 import com.hulkdx.findprofessional.utils.get
 import com.hulkdx.findprofessional.utils.getAll
@@ -42,16 +41,11 @@ class RefreshTokenTest {
         private val VALID_TOKENS = Auth(Token("valid_irrelevant_at", "valid_irrelevant_rt"), User("email"))
     }
 
-    @get:Rule(order = -1)
-    val beforeComposeRule = BeforeComposeRule(additionalSetup = {
-        loadKoinModules(module)
-    })
-
-    @get:Rule(order = 0)
+    @get:Rule
     val composeRule = createAndroidComposeRule<MainActivity>()
 
     @get:Rule(order = 1)
-    val afterComposeRule = AfterComposeRule(composeRule)
+    val afterComposeRule = UiTestRule(composeRule)
 
     private lateinit var randomApi: RandomTestRefreshTokenApi
     private val accessTokenStorage: AccessTokenStorage = get()
@@ -65,6 +59,7 @@ class RefreshTokenTest {
 
     @Before
     fun setUp() {
+        loadKoinModules(module)
         randomApi = RandomTestRefreshTokenApi(get(), getAll(), accessTokenStorage)
     }
 

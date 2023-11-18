@@ -15,7 +15,8 @@ androidxDataStore = "1.1.0-alpha06"
 # https://developer.android.com/jetpack/androidx/releases/lifecycle
 androidxLifecycle = "2.6.2"
 # https://developer.android.com/jetpack/androidx/releases/navigation
-androidxNavigation = "2.7.5"
+# TODO: Ui tests fails on 2.7.5
+androidxNavigation = "2.7.4"
 # https://github.com/coil-kt/coil
 coil = "2.5.0"
 # https://github.com/InsertKoinIO/koin

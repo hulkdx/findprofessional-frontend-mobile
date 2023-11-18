@@ -8,19 +8,15 @@ import org.junit.Before
 import org.junit.Rule
 
 open class ScreenTest {
-    @get:Rule(order = -1)
-    val beforeComposeRule = BeforeComposeRule(additionalSetup = {
-        InMemoryApi.loadKoinModules()
-    })
-
-    @get:Rule(order = 0)
+    @get:Rule
     val composeRule = createAndroidComposeRule<MainActivity>()
 
     @get:Rule(order = 1)
-    val afterComposeRule = AfterComposeRule(composeRule)
+    val rule = UiTestRule(composeRule)
 
     @Before
     open fun setUp() {
+        InMemoryApi.loadKoinModules()
     }
 
     @After

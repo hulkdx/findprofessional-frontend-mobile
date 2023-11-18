@@ -6,16 +6,14 @@ import androidx.compose.ui.test.captureToImage
 import androidx.compose.ui.test.onRoot
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.core.edit
 import com.hulkdx.findprofessional.navigation.NavigatorImpl
-import kotlinx.coroutines.runBlocking
 import org.junit.rules.TestRule
 import org.junit.runner.Description
 import org.junit.runners.model.Statement
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
-class AfterComposeRule(
+class UiTestRule(
     private val composeRule: Rule,
 ) : TestRule, KoinComponent {
 
