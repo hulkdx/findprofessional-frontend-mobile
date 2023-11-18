@@ -1,9 +1,5 @@
 package com.hulkdx.findprofessional.utils
 
-import android.os.Environment
-import androidx.compose.ui.graphics.asAndroidBitmap
-import androidx.compose.ui.test.captureToImage
-import androidx.compose.ui.test.onRoot
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
@@ -16,7 +12,7 @@ import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
 class BeforeComposeRule(
-    private val additionalRules: () -> Unit = {}
+    private val additionalSetup: () -> Unit = {}
 ) : TestRule, KoinComponent {
 
     private val navigator: NavigatorImpl by inject()
@@ -25,15 +21,22 @@ class BeforeComposeRule(
     override fun apply(base: Statement, description: Description): Statement {
         return object : Statement() {
             override fun evaluate() {
-                setup()
-                base.evaluate()
+                try {
+                    setup()
+                    base.evaluate()
+                } finally {
+                    tearDown()
+                }
             }
         }
     }
 
     private fun setup() {
+        additionalSetup()
+    }
+
+    private fun tearDown() {
         navigator.screenState.value = null
         runBlocking { dataStore.edit { it.clear() } }
-        additionalRules()
     }
 }

@@ -43,7 +43,7 @@ class RefreshTokenTest {
     }
 
     @get:Rule(order = -1)
-    val beforeComposeRule = BeforeComposeRule(additionalRules = {
+    val beforeComposeRule = BeforeComposeRule(additionalSetup = {
         loadKoinModules(module)
     })
 
