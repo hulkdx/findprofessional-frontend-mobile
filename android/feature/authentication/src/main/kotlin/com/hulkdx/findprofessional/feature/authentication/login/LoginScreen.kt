@@ -64,7 +64,7 @@ fun LoginScreen(
 }
 
 @Composable
-private fun LoginScreen(
+fun LoginScreen(
     email: String,
     onEmailChanged: (String) -> Unit,
     password: String,
