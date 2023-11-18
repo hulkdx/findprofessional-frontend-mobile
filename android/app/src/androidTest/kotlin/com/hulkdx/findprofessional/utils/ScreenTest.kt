@@ -9,7 +9,9 @@ import org.junit.Rule
 
 open class ScreenTest {
     @get:Rule(order = -1)
-    val beforeComposeRule = BeforeComposeRule()
+    val beforeComposeRule = BeforeComposeRule(additionalSetup = {
+        InMemoryApi.loadKoinModules()
+    })
 
     @get:Rule(order = 0)
     val composeRule = createAndroidComposeRule<MainActivity>()
@@ -19,7 +21,6 @@ open class ScreenTest {
 
     @Before
     open fun setUp() {
-        InMemoryApi.loadKoinModules()
     }
 
     @After
