@@ -8,7 +8,7 @@ env:
   JAVA_VERSION: 17
   JAVA_DIST: "zulu"
   XCODE_VERSION: "14.2"
-  XCODE_MACOS_VERSION: "macos-12"
+  XCODE_MACOS_VERSION: macos-12
   XCODE_IPHONE_VERSION: "iPhone 14"
 
 jobs:
@@ -112,7 +112,7 @@ jobs:
 
   ios-tests:
     name: iOS tests
-    runs-on: env.XCODE_MACOS_VERSION
+    runs-on: ${{ env.XCODE_MACOS_VERSION }}
     timeout-minutes: 90
     steps:
       - name: Checkout
