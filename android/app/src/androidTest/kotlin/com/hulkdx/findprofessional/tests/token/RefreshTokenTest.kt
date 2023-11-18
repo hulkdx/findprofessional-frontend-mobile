@@ -11,7 +11,7 @@ import com.hulkdx.findprofessional.common.feature.authentication.model.Token
 import com.hulkdx.findprofessional.common.feature.authentication.model.User
 import com.hulkdx.findprofessional.common.feature.authentication.signup.model.AuthRequest
 import com.hulkdx.findprofessional.tests.screen.login.launchLoginScreen
-import com.hulkdx.findprofessional.utils.UiTestRule
+import com.hulkdx.findprofessional.utils.ScreenshotOnFailureRule
 import com.hulkdx.findprofessional.utils.assertNodeIsDisplayed
 import com.hulkdx.findprofessional.utils.get
 import com.hulkdx.findprofessional.utils.getAll
@@ -45,7 +45,7 @@ class RefreshTokenTest {
     val composeRule = createAndroidComposeRule<MainActivity>()
 
     @get:Rule(order = 1)
-    val afterComposeRule = UiTestRule(composeRule)
+    val rule = ScreenshotOnFailureRule(composeRule)
 
     private lateinit var randomApi: RandomTestRefreshTokenApi
     private val accessTokenStorage: AccessTokenStorage = get()

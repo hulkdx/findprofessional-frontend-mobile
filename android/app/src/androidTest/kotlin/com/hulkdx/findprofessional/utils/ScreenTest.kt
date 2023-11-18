@@ -12,7 +12,7 @@ open class ScreenTest {
     val composeRule = createAndroidComposeRule<MainActivity>()
 
     @get:Rule(order = 1)
-    val rule = UiTestRule(composeRule)
+    val rule = ScreenshotOnFailureRule(composeRule)
 
     @Before
     open fun setUp() {
