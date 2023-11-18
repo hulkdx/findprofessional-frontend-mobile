@@ -1,6 +1,6 @@
 [versions]
 
-kotlin = "1.9.10"
+kotlin = "1.9.20"
 # https://developer.android.com/studio/releases/gradle-plugin
 androidGradlePlugin = "8.1.4"
 
@@ -9,7 +9,7 @@ androidxActivity = "1.8.0"
 # https://developer.android.com/jetpack/compose/bom/bom-mapping
 androidxComposeBom = "2023.10.01"
 # https://developer.android.com/jetpack/androidx/releases/compose
-androidxComposeCompiler = "1.5.3"
+androidxComposeCompiler = "1.5.4"
 # https://developer.android.com/jetpack/androidx/releases/datastore
 androidxDataStore = "1.1.0-alpha06"
 # https://developer.android.com/jetpack/androidx/releases/lifecycle
