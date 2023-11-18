@@ -39,11 +39,11 @@ class UiTestRule(
     }
 
     private fun setup() {
-        runBlocking { dataStore.edit { it.clear() } }
     }
 
     private fun tearDown() {
         navigator.screenState.value = null
+        runBlocking { dataStore.edit { it.clear() } }
     }
 
     private fun failed(description: Description) {
