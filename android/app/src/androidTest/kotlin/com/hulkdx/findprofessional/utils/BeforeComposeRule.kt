@@ -15,8 +15,8 @@ import org.junit.runners.model.Statement
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
-class UiTestRule(
-    private val composeRule: Rule,
+class BeforeComposeRule(
+    private val additionalRules: () -> Unit = {}
 ) : TestRule, KoinComponent {
 
     private val navigator: NavigatorImpl by inject()
@@ -25,38 +25,15 @@ class UiTestRule(
     override fun apply(base: Statement, description: Description): Statement {
         return object : Statement() {
             override fun evaluate() {
-                try {
-                    setup()
-                    base.evaluate()
-                } catch (e: Throwable) {
-                    failed(description)
-                    throw e
-                } finally {
-                    tearDown()
-                }
+                setup()
+                base.evaluate()
             }
         }
     }
 
     private fun setup() {
-    }
-
-    private fun tearDown() {
         navigator.screenState.value = null
         runBlocking { dataStore.edit { it.clear() } }
-    }
-
-    private fun failed(description: Description) {
-        takeScreenshotIfTestFails(description)
-    }
-
-    private fun takeScreenshotIfTestFails(description: Description) {
-        val methodName = description.methodName
-        val dir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).path
-
-        val bitmap = composeRule.onRoot().captureToImage().asAndroidBitmap()
-        val screenshotsDir = "$dir/uitest-screenshot-failure"
-        val screenshotName = "$methodName.png"
-        ScreenshotUtils.take(bitmap, screenshotsDir, screenshotName)
+        additionalRules()
     }
 }

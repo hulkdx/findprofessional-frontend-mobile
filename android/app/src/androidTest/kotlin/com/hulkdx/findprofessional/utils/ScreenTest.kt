@@ -8,11 +8,14 @@ import org.junit.Before
 import org.junit.Rule
 
 open class ScreenTest {
-    @get:Rule
+    @get:Rule(order = -1)
+    val beforeComposeRule = BeforeComposeRule()
+
+    @get:Rule(order = 0)
     val composeRule = createAndroidComposeRule<MainActivity>()
 
     @get:Rule(order = 1)
-    val rule = UiTestRule(composeRule)
+    val afterComposeRule = AfterComposeRule(composeRule)
 
     @Before
     open fun setUp() {
