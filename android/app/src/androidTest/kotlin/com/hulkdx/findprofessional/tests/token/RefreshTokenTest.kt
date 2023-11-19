@@ -11,6 +11,7 @@ import com.hulkdx.findprofessional.common.feature.authentication.model.Token
 import com.hulkdx.findprofessional.common.feature.authentication.model.User
 import com.hulkdx.findprofessional.common.feature.authentication.signup.model.AuthRequest
 import com.hulkdx.findprofessional.tests.screen.login.launchLoginScreen
+import com.hulkdx.findprofessional.utils.KoinTestRule
 import com.hulkdx.findprofessional.utils.ScreenshotOnFailureRule
 import com.hulkdx.findprofessional.utils.assertNodeIsDisplayed
 import com.hulkdx.findprofessional.utils.get
@@ -30,7 +31,6 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.koin.core.context.loadKoinModules
-import org.koin.core.context.unloadKoinModules
 import org.koin.dsl.bind
 import org.koin.dsl.module
 
@@ -41,35 +41,38 @@ class RefreshTokenTest {
         private val VALID_TOKENS = Auth(Token("valid_irrelevant_at", "valid_irrelevant_rt"), User("email"))
     }
 
-    @get:Rule
-    val composeRule = createAndroidComposeRule<MainActivity>()
-
-    @get:Rule(order = 1)
-    val rule = ScreenshotOnFailureRule(composeRule)
-
-    private lateinit var randomApi: RandomTestRefreshTokenApi
-    private val accessTokenStorage: AccessTokenStorage = get()
-    private val loginApi = LoginApiMock()
-    private val refreshApi = RefreshApiMock()
-
     private val module = module {
         single { refreshApi } bind RefreshTokenApi::class
         single { loginApi } bind LoginApi::class
     }
 
+    @get:Rule(order = 1)
+    val koinTestRule = KoinTestRule(module)
+
+    @get:Rule(order = 2)
+    val composeRule = createAndroidComposeRule<MainActivity>()
+
+    @get:Rule(order = 3)
+    val screenshotOnFailureRule = ScreenshotOnFailureRule(composeRule)
+
+    private lateinit var randomApi: RandomTestRefreshTokenApi
+    private lateinit var accessTokenStorage: AccessTokenStorage
+    private val loginApi = LoginApiMock()
+    private val refreshApi = RefreshApiMock()
+
     @Before
     fun setUp() {
-        loadKoinModules(module)
+        accessTokenStorage = get()
         randomApi = RandomTestRefreshTokenApi(get(), getAll(), accessTokenStorage)
     }
 
     @After
     fun tearDown() {
-        unloadKoinModules(module)
     }
 
     @Test
     fun when_invalidAccessToken_then_intercept_should_call_refreshToken() = runBlocking {
+        println("Saba when_invalidAccessToken_then_intercept_should_call_refreshToken")
         // Arrange
         refreshApiResponseValidToken()
         loginWithValidTokens()
