@@ -18,11 +18,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.hulkdx.findprofessional.core.commonui.CUFilledButton
 import com.hulkdx.findprofessional.core.commonui.CUSnackBar
+import com.hulkdx.findprofessional.core.commonui.CUTextField
 import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.feature.authentication.ui.EmailTextField
 import com.hulkdx.findprofessional.feature.authentication.ui.PasswordTextField
@@ -39,6 +41,10 @@ fun SignUpScreen(
     val error by viewModel.error.collectAsStateWithLifecycle()
 
     SignUpScreen(
+        firstName = "",
+        onFirstNameChanged = {},
+        lastName = "",
+        onLastNameChanged = {},
         email = email,
         onEmailChanged = viewModel::setEmail,
         password = password,
@@ -51,6 +57,10 @@ fun SignUpScreen(
 
 @Composable
 private fun SignUpScreen(
+    firstName: String,
+    onFirstNameChanged: (String) -> Unit,
+    lastName: String,
+    onLastNameChanged: (String) -> Unit,
     email: String,
     onEmailChanged: (String) -> Unit,
     password: String,
@@ -69,23 +79,35 @@ private fun SignUpScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
-                .background(MaterialTheme.colorScheme.onPrimary),
+                .background(MaterialTheme.colorScheme.onPrimary)
+                .padding(horizontal = 24.dp),
             verticalArrangement = Arrangement.Center,
         ) {
+            FirstNameTextField(
+                value = firstName,
+                onValueChanged = onFirstNameChanged
+            )
+
+            LastNameTextField(
+                modifier = Modifier.padding(top = 8.dp),
+                value = lastName,
+                onValueChanged = onLastNameChanged
+            )
+
             EmailTextField(
-                modifier = Modifier,
+                modifier = Modifier.padding(top = 8.dp),
                 value = email,
-                onValueChanged = onEmailChanged,
+                onValueChanged = onEmailChanged
             )
+
             PasswordTextField(
-                modifier = Modifier
-                    .padding(top = 8.dp),
+                modifier = Modifier.padding(top = 8.dp),
                 value = password,
-                onValueChanged = onPasswordChanged,
+                onValueChanged = onPasswordChanged
             )
+
             SubmitButton(
-                modifier = Modifier
-                    .padding(top = 16.dp),
+                modifier = Modifier.padding(top = 16.dp),
                 onClick = onSubmitClicked,
             )
         }
@@ -99,10 +121,44 @@ private fun SignUpScreen(
 
 
 @Composable
+private fun FirstNameTextField(
+    modifier: Modifier = Modifier,
+    value: String,
+    onValueChanged: (String) -> (Unit),
+) {
+    CUTextField(
+        modifier = modifier.fillMaxWidth(),
+        hint = stringResource(id = MR.strings.firstName.resourceId),
+        visualTransformation = PasswordVisualTransformation(),
+        value = value,
+        onValueChanged = onValueChanged,
+    )
+}
+
+@Composable
+private fun LastNameTextField(
+    modifier: Modifier = Modifier,
+    value: String,
+    onValueChanged: (String) -> (Unit),
+) {
+    CUTextField(
+        modifier = modifier.fillMaxWidth(),
+        hint = stringResource(id = MR.strings.lastName.resourceId),
+        visualTransformation = PasswordVisualTransformation(),
+        value = value,
+        onValueChanged = onValueChanged,
+    )
+}
+
+@Composable
 @Preview
 private fun SignUpScreenPreview() {
     AppTheme {
         SignUpScreen(
+            firstName = "",
+            onFirstNameChanged = {},
+            lastName = "",
+            onLastNameChanged = {},
             email = "",
             onEmailChanged = {},
             password = "",

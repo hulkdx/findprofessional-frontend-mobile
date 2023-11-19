@@ -69,23 +69,27 @@ class RefreshTokenTest {
     }
 
     @Test
-    fun when_invalidAccessToken_then_intercept_should_call_refreshToken() = runBlocking {
+    fun when_invalidAccessToken_then_intercept_should_call_refreshToken() {
         // Arrange
         refreshApiResponseValidToken()
         loginWithValidTokens()
         // Act
-        callApiWithInvalidToken()
+        runBlocking {
+            callApiWithInvalidToken()
+        }
         // Assert
         assertThat(refreshApi.isRefreshTokenCalled, `is`(true))
     }
 
     @Test
-    fun when_invalidAccessToken_and_refreshApi_response_invalidTokens_then_intercept_should_logout() = runBlocking {
+    fun when_invalidAccessToken_and_refreshApi_response_invalidTokens_then_intercept_should_logout()  {
         // Arrange
         refreshApiResponseUnauthorized()
         loginWithValidTokens()
         // Act
-        callApiWithInvalidToken()
+        runBlocking {
+            callApiWithInvalidToken()
+        }
         // Asserts
         composeRule.assertNodeIsDisplayed("LoginScreen")
     }
@@ -96,7 +100,7 @@ class RefreshTokenTest {
         refreshApi.response = VALID_TOKENS
     }
 
-    private suspend fun refreshApiResponseUnauthorized() {
+    private fun refreshApiResponseUnauthorized() {
         refreshApi.responseError = {
             throwUnauthorizedException()
         }
