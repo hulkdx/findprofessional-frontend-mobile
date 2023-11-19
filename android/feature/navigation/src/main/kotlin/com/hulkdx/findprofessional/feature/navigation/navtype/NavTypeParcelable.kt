@@ -30,6 +30,7 @@ open class NavTypeParcelable<T : Parcelable>(
     }
 
     override fun parseValue(value: String): T {
+        @Suppress("UNCHECKED_CAST")
         return value.base64ToParcelable(jClass) as T
     }
 
