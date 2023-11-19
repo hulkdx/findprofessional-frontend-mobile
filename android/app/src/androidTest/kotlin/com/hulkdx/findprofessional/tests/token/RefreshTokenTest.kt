@@ -72,7 +72,6 @@ class RefreshTokenTest {
 
     @Test
     fun when_invalidAccessToken_then_intercept_should_call_refreshToken() = runBlocking {
-        println("Saba when_invalidAccessToken_then_intercept_should_call_refreshToken")
         // Arrange
         refreshApiResponseValidToken()
         loginWithValidTokens()
