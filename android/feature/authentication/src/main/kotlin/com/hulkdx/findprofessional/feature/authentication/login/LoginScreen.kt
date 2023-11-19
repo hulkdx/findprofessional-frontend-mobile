@@ -106,14 +106,6 @@ fun LoginScreen(
                 onValueChanged = onEmailChanged,
             )
 
-            EmailTextField(
-                modifier = Modifier
-                    .padding(top = 50.dp)
-                    .padding(horizontal = 24.dp),
-                value = email,
-                onValueChanged = onEmailChanged,
-            )
-
             PasswordTextField(
                 modifier = Modifier
                     .padding(top = 16.dp)
