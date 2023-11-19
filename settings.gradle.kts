@@ -18,6 +18,8 @@ include(":android:core")
 include(":ios")
 include(":common")
 
+include(":android:paparazzi-tests")
+
 include(":android:feature:authentication")
 include(":android:feature:developer")
 include(":android:feature:home")

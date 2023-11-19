@@ -35,6 +35,9 @@ jobs:
       - name: Run unit tests
         run: ./gradlew assembleDebug testDebug iosSimulatorArm64Test
 
+      - name: Run screenshot tests
+        run: ./gradlew :android:paparazzi-tests:verifyPaparazziDebug
+
       - name: Upload test reports
         if: always()
         uses: actions/upload-artifact@v3
