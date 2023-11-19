@@ -19,7 +19,7 @@ fun SplashScreen(viewModel: SplashViewModel = getViewModel()) {
 }
 
 @Composable
-private fun Splash() {
+fun Splash() {
     Box(
         modifier = Modifier
             .fillMaxSize()
