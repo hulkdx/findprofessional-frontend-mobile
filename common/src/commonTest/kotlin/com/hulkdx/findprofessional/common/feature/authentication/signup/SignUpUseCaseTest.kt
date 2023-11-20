@@ -7,6 +7,7 @@ import com.hulkdx.findprofessional.common.feature.authentication.model.Auth
 import com.hulkdx.findprofessional.common.feature.authentication.model.Token
 import com.hulkdx.findprofessional.common.feature.authentication.model.User
 import com.hulkdx.findprofessional.common.feature.authentication.signup.model.LoginRequest
+import com.hulkdx.findprofessional.common.feature.authentication.signup.model.RegisterRequest
 import com.hulkdx.findprofessional.common.navigation.NavigationScreen
 import com.hulkdx.findprofessional.common.navigation.Navigator
 import com.hulkdx.findprofessional.common.utils.KoinTestUtil
@@ -49,7 +50,14 @@ class SignUpUseCaseTest {
         val refreshToken = "accessToken"
         loginApi.registerReturns = Auth(Token(accessToken, refreshToken), User(""))
         // Act
-        sut.onSubmitClicked(LoginRequest("", ""))
+        sut.onSubmitClicked(
+            RegisterRequest(
+                "", "",
+                firstName = "",
+                lastName = "",
+                profileImage = null
+            )
+        )
         // Assert
         assertEquals(accessToken, accessTokenStorage.setValue)
         assertEquals(refreshToken, refreshTokenStorage.setValue)
@@ -60,7 +68,7 @@ class SignUpUseCaseTest {
     private class SignUpApiMock : SignUpApi {
         lateinit var registerReturns: Auth
 
-        override suspend fun register(request: LoginRequest): Auth {
+        override suspend fun register(request: RegisterRequest): Auth {
             return registerReturns
         }
     }
@@ -75,9 +83,12 @@ class SignUpUseCaseTest {
             inclusive: Boolean,
         ) {
         }
+
         override fun goBack() {}
 
-        override fun getCurrentScreen(): NavigationScreen { throw RuntimeException() }
+        override fun getCurrentScreen(): NavigationScreen {
+            throw RuntimeException()
+        }
     }
 
     private class AccessTokenStorageMock : AccessTokenStorage {

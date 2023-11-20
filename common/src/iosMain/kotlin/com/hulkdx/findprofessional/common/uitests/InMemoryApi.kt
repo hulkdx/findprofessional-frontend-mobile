@@ -6,6 +6,7 @@ import com.hulkdx.findprofessional.common.feature.authentication.model.Token
 import com.hulkdx.findprofessional.common.feature.authentication.model.User
 import com.hulkdx.findprofessional.common.feature.authentication.signup.SignUpApi
 import com.hulkdx.findprofessional.common.feature.authentication.signup.model.LoginRequest
+import com.hulkdx.findprofessional.common.feature.authentication.signup.model.RegisterRequest
 import com.hulkdx.findprofessional.common.feature.home.ProfessionalApi
 import com.hulkdx.findprofessional.common.feature.home.model.Professional
 import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalAvailability
@@ -28,7 +29,7 @@ object InMemoryApi {
         single<ProfessionalApi> { Pro }
     }
 
-    private var user: LoginRequest? = null
+    private var user: RegisterRequest? = null
 
     private val professionals = listOf(
         Professional(
@@ -99,7 +100,7 @@ object InMemoryApi {
     )
 
     private object Signup : SignUpApi {
-        override suspend fun register(request: LoginRequest): Auth {
+        override suspend fun register(request: RegisterRequest): Auth {
             user = request
             return Auth(
                 Token(
@@ -115,7 +116,7 @@ object InMemoryApi {
 
     private object Login : LoginApi {
         override suspend fun login(request: LoginRequest): Auth {
-            if (request == user) {
+            if (request == LoginRequest(user?.email ?: "", user?.password ?: "")) {
                 return Auth(
                     Token(
                         "uiTestAccessToken",
@@ -141,6 +142,12 @@ object InMemoryApi {
     }
 
     fun setUser(@ObjCName("_") user: LoginRequest) {
-        InMemoryApi.user = user
+        InMemoryApi.user = RegisterRequest(
+            email = user.email,
+            password = user.password,
+            firstName = "",
+            lastName = "",
+            profileImage = null
+        )
     }
 }
