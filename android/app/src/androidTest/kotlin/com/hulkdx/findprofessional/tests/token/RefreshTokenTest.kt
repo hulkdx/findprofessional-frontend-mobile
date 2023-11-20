@@ -15,6 +15,7 @@ import com.hulkdx.findprofessional.utils.UiTestRule
 import com.hulkdx.findprofessional.utils.assertNodeIsDisplayed
 import com.hulkdx.findprofessional.utils.get
 import com.hulkdx.findprofessional.utils.getAll
+import com.hulkdx.findprofessional.utils.newUser
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.engine.mock.*
@@ -37,8 +38,8 @@ import org.koin.dsl.module
 class RefreshTokenTest {
 
     companion object {
-        private val INVALID_TOKENS = Auth(Token("invalid_irrelevant_at", "invalid_irrelevant_rt"), User("email"))
-        private val VALID_TOKENS = Auth(Token("valid_irrelevant_at", "valid_irrelevant_rt"), User("email"))
+        private val INVALID_TOKENS = Auth(Token("invalid_irrelevant_at", "invalid_irrelevant_rt"), newUser())
+        private val VALID_TOKENS = Auth(Token("valid_irrelevant_at", "valid_irrelevant_rt"), newUser())
     }
 
     @get:Rule

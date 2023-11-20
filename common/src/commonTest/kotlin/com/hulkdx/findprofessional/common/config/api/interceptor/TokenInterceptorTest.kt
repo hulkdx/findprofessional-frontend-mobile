@@ -10,6 +10,7 @@ import com.hulkdx.findprofessional.common.feature.authentication.logout.LogoutUs
 import com.hulkdx.findprofessional.common.feature.authentication.model.Token
 import com.hulkdx.findprofessional.common.feature.authentication.model.User
 import com.hulkdx.findprofessional.common.utils.KoinTestUtil
+import com.hulkdx.findprofessional.common.utils.newUser
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.plugins.*
@@ -129,7 +130,7 @@ class TokenInterceptorTest {
         val req: HttpRequestBuilder.() -> Unit = {
             header(HttpHeaders.Authorization, "Bearer $oldAccessToken")
         }
-        refreshTokenApi.response = Auth(Token(newAccessToken, "irrelevant"), User("irrelevant"))
+        refreshTokenApi.response = Auth(Token(newAccessToken, "irrelevant"), newUser())
 
         accessTokenStorage.value = "not empty"
         refreshTokenStorage.value = "not empty"
@@ -182,7 +183,7 @@ class TokenInterceptorTest {
 
     private class RefreshTokenApiMock : RefreshTokenApi {
         var isRefreshTokenCalled = false
-        var response: Auth = Auth(Token("access", "refresh"), User("email"))
+        var response: Auth = Auth(Token("access", "refresh"), newUser())
 
         override suspend fun refreshToken(refreshToken: String, accessToken: String): Auth {
             isRefreshTokenCalled = true

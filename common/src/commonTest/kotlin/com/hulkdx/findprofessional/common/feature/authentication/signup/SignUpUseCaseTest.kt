@@ -11,6 +11,7 @@ import com.hulkdx.findprofessional.common.feature.authentication.signup.model.Re
 import com.hulkdx.findprofessional.common.navigation.NavigationScreen
 import com.hulkdx.findprofessional.common.navigation.Navigator
 import com.hulkdx.findprofessional.common.utils.KoinTestUtil
+import com.hulkdx.findprofessional.common.utils.newUser
 import kotlinx.coroutines.test.runTest
 import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
@@ -48,7 +49,7 @@ class SignUpUseCaseTest {
         // Arrange
         val accessToken = "accessToken"
         val refreshToken = "accessToken"
-        loginApi.registerReturns = Auth(Token(accessToken, refreshToken), User(""))
+        loginApi.registerReturns = Auth(Token(accessToken, refreshToken), newUser())
         // Act
         sut.onSubmitClicked(
             RegisterRequest(

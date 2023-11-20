@@ -120,7 +120,10 @@ object InMemoryApi {
                 ),
                 User(
                     "uiTestEmail",
-                )
+                    firstName = "uiTestFirstName",
+                    lastName = "uiTestLastName",
+                    profileImage = null,
+                ),
             )
         }
     }
@@ -135,7 +138,10 @@ object InMemoryApi {
                     ),
                     User(
                         "uiTestEmail",
-                    )
+                        firstName = "uiTestFirstName",
+                        lastName = "uiTestLastName",
+                        profileImage = null,
+                    ),
                 )
             }
             throw RuntimeException("user not found")

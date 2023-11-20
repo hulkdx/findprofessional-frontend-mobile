@@ -10,6 +10,7 @@ import com.hulkdx.findprofessional.common.feature.authentication.signup.model.Lo
 import com.hulkdx.findprofessional.common.navigation.NavigationScreen
 import com.hulkdx.findprofessional.common.navigation.Navigator
 import com.hulkdx.findprofessional.common.utils.KoinTestUtil
+import com.hulkdx.findprofessional.common.utils.newUser
 import kotlinx.coroutines.test.runTest
 import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
@@ -47,7 +48,7 @@ class LoginUseCaseTest {
         // Arrange
         val accessToken = "accessToken"
         val refreshToken = "accessToken"
-        loginApi.loginReturns = Auth(Token(accessToken, refreshToken), User(""))
+        loginApi.loginReturns = Auth(Token(accessToken, refreshToken), newUser())
         // Act
         sut.onSignInClicked(LoginRequest("", ""))
         // Assert
