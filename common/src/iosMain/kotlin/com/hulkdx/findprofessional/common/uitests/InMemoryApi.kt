@@ -5,7 +5,7 @@ import com.hulkdx.findprofessional.common.feature.authentication.model.Auth
 import com.hulkdx.findprofessional.common.feature.authentication.model.Token
 import com.hulkdx.findprofessional.common.feature.authentication.model.User
 import com.hulkdx.findprofessional.common.feature.authentication.signup.SignUpApi
-import com.hulkdx.findprofessional.common.feature.authentication.signup.model.AuthRequest
+import com.hulkdx.findprofessional.common.feature.authentication.signup.model.LoginRequest
 import com.hulkdx.findprofessional.common.feature.home.ProfessionalApi
 import com.hulkdx.findprofessional.common.feature.home.model.Professional
 import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalAvailability
@@ -28,7 +28,7 @@ object InMemoryApi {
         single<ProfessionalApi> { Pro }
     }
 
-    private var user: AuthRequest? = null
+    private var user: LoginRequest? = null
 
     private val professionals = listOf(
         Professional(
@@ -99,7 +99,7 @@ object InMemoryApi {
     )
 
     private object Signup : SignUpApi {
-        override suspend fun register(request: AuthRequest): Auth {
+        override suspend fun register(request: LoginRequest): Auth {
             user = request
             return Auth(
                 Token(
@@ -114,7 +114,7 @@ object InMemoryApi {
     }
 
     private object Login : LoginApi {
-        override suspend fun login(request: AuthRequest): Auth {
+        override suspend fun login(request: LoginRequest): Auth {
             if (request == user) {
                 return Auth(
                     Token(
@@ -140,7 +140,7 @@ object InMemoryApi {
         loadKoinModules(module)
     }
 
-    fun setUser(@ObjCName("_") user: AuthRequest) {
+    fun setUser(@ObjCName("_") user: LoginRequest) {
         InMemoryApi.user = user
     }
 }

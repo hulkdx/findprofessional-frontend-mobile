@@ -4,7 +4,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hulkdx.findprofessional.common.feature.authentication.login.LoginUseCase
-import com.hulkdx.findprofessional.common.feature.authentication.signup.model.AuthRequest
+import com.hulkdx.findprofessional.common.feature.authentication.signup.model.LoginRequest
 import dev.icerock.moko.resources.desc.StringDesc
 import kotlinx.coroutines.launch
 
@@ -21,7 +21,7 @@ class LoginViewModel(
     }
 
     fun onSignInClicked() = viewModelScope.launch {
-        val err = loginUseCase.onSignInClicked(AuthRequest(email.value, password.value))
+        val err = loginUseCase.onSignInClicked(LoginRequest(email.value, password.value))
         if (err != null) {
             setError(err)
         }

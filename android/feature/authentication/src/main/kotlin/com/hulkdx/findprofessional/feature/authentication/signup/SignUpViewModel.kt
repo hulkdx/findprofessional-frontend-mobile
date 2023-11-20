@@ -4,7 +4,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hulkdx.findprofessional.common.feature.authentication.signup.SignUpUseCase
-import com.hulkdx.findprofessional.common.feature.authentication.signup.model.AuthRequest
+import com.hulkdx.findprofessional.common.feature.authentication.signup.model.LoginRequest
 import dev.icerock.moko.resources.desc.StringDesc
 import kotlinx.coroutines.launch
 
@@ -17,7 +17,7 @@ class SignUpViewModel(
     val error = savedStateHandle.getStateFlow<StringDesc?>("error", null)
 
     fun onSubmitClicked() = viewModelScope.launch {
-        val err = useCase.onSubmitClicked(AuthRequest(email.value, password.value))
+        val err = useCase.onSubmitClicked(LoginRequest(email.value, password.value))
         if (err != null) {
             setError(err)
         }

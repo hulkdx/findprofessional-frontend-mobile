@@ -6,7 +6,7 @@ import com.hulkdx.findprofessional.common.config.storage.UserStorage
 import com.hulkdx.findprofessional.common.feature.authentication.model.Auth
 import com.hulkdx.findprofessional.common.feature.authentication.model.Token
 import com.hulkdx.findprofessional.common.feature.authentication.model.User
-import com.hulkdx.findprofessional.common.feature.authentication.signup.model.AuthRequest
+import com.hulkdx.findprofessional.common.feature.authentication.signup.model.LoginRequest
 import com.hulkdx.findprofessional.common.navigation.NavigationScreen
 import com.hulkdx.findprofessional.common.navigation.Navigator
 import com.hulkdx.findprofessional.common.utils.KoinTestUtil
@@ -49,7 +49,7 @@ class LoginUseCaseTest {
         val refreshToken = "accessToken"
         loginApi.loginReturns = Auth(Token(accessToken, refreshToken), User(""))
         // Act
-        sut.onSignInClicked(AuthRequest("", ""))
+        sut.onSignInClicked(LoginRequest("", ""))
         // Assert
         assertEquals(accessToken, accessTokenStorage.setValue)
         assertEquals(refreshToken, refreshTokenStorage.setValue)
@@ -60,7 +60,7 @@ class LoginUseCaseTest {
     private class LoginApiMock : LoginApi {
         lateinit var loginReturns: Auth
 
-        override suspend fun login(request: AuthRequest): Auth {
+        override suspend fun login(request: LoginRequest): Auth {
             return loginReturns
         }
     }

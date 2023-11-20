@@ -9,7 +9,7 @@ import com.hulkdx.findprofessional.common.feature.authentication.login.LoginApi
 import com.hulkdx.findprofessional.common.feature.authentication.login.RefreshTokenApi
 import com.hulkdx.findprofessional.common.feature.authentication.model.Token
 import com.hulkdx.findprofessional.common.feature.authentication.model.User
-import com.hulkdx.findprofessional.common.feature.authentication.signup.model.AuthRequest
+import com.hulkdx.findprofessional.common.feature.authentication.signup.model.LoginRequest
 import com.hulkdx.findprofessional.tests.screen.login.launchLoginScreen
 import com.hulkdx.findprofessional.utils.UiTestRule
 import com.hulkdx.findprofessional.utils.assertNodeIsDisplayed
@@ -143,7 +143,7 @@ class RefreshTokenTest {
     private class LoginApiMock : LoginApi {
         var response: Auth? = null
 
-        override suspend fun login(request: AuthRequest): Auth {
+        override suspend fun login(request: LoginRequest): Auth {
             return response!!
         }
     }
