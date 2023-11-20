@@ -2,6 +2,7 @@ package com.hulkdx.findprofessional.common.feature.authentication.signup
 
 import com.hulkdx.findprofessional.common.feature.authentication.model.Auth
 import com.hulkdx.findprofessional.common.feature.authentication.signup.model.LoginRequest
+import com.hulkdx.findprofessional.common.feature.authentication.signup.model.RegisterRequest
 import io.ktor.client.*
 import io.ktor.client.call.body
 import io.ktor.client.request.post
@@ -11,14 +12,14 @@ import io.ktor.http.ContentType
 import io.ktor.http.contentType
 
 interface SignUpApi {
-    suspend fun register(request: LoginRequest): Auth
+    suspend fun register(request: RegisterRequest): Auth
 }
 
 class SignUpApiImpl(
     private val client: HttpClient,
 ) : SignUpApi {
 
-    override suspend fun register(request: LoginRequest): Auth {
+    override suspend fun register(request: RegisterRequest): Auth {
         return client.post {
             url(urlString)
             contentType(ContentType.Application.Json)

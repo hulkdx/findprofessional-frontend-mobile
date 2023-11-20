@@ -8,6 +8,7 @@ import com.hulkdx.findprofessional.common.feature.authentication.model.Token
 import com.hulkdx.findprofessional.common.feature.authentication.model.User
 import com.hulkdx.findprofessional.common.feature.authentication.signup.SignUpApi
 import com.hulkdx.findprofessional.common.feature.authentication.signup.model.LoginRequest
+import com.hulkdx.findprofessional.common.feature.authentication.signup.model.RegisterRequest
 import com.hulkdx.findprofessional.common.feature.authentication.signup.signUpModule
 import com.hulkdx.findprofessional.common.feature.home.ProfessionalApi
 import com.hulkdx.findprofessional.common.feature.home.homeModule
@@ -26,7 +27,7 @@ object InMemoryApi {
         single<ProfessionalApi> { Pro }
     }
 
-    var user: LoginRequest? = null
+    var user: RegisterRequest? = null
 
     val professionals = listOf(
         Professional(
@@ -110,7 +111,7 @@ object InMemoryApi {
     )
 
     object Signup : SignUpApi {
-        override suspend fun register(request: LoginRequest): Auth {
+        override suspend fun register(request: RegisterRequest): Auth {
             user = request
             return Auth(
                 Token(
@@ -126,7 +127,7 @@ object InMemoryApi {
 
     object Login : LoginApi {
         override suspend fun login(request: LoginRequest): Auth {
-            if (request == user) {
+            if (request == LoginRequest(user?.email ?: "", user?.password ?: "")) {
                 return Auth(
                     Token(
                         "uiTestAccessToken",

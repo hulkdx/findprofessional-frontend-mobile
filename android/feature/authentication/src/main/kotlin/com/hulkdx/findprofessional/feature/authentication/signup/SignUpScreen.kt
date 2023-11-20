@@ -36,18 +36,17 @@ import org.koin.androidx.compose.getViewModel
 fun SignUpScreen(
     viewModel: SignUpViewModel = getViewModel(),
 ) {
-    val email by viewModel.email.collectAsStateWithLifecycle()
-    val password by viewModel.password.collectAsStateWithLifecycle()
+    val data by viewModel.uiState.collectAsStateWithLifecycle()
     val error by viewModel.error.collectAsStateWithLifecycle()
 
     SignUpScreen(
-        firstName = "",
-        onFirstNameChanged = {},
-        lastName = "",
-        onLastNameChanged = {},
-        email = email,
+        firstName = data.firstName,
+        onFirstNameChanged = viewModel::setFirstName,
+        lastName = data.lastName,
+        onLastNameChanged = viewModel::setLastName,
+        email = data.email,
         onEmailChanged = viewModel::setEmail,
-        password = password,
+        password = data.password,
         onPasswordChanged = viewModel::setPassword,
         onSubmitClicked = viewModel::onSubmitClicked,
         error = error?.localized(),
@@ -129,7 +128,6 @@ private fun FirstNameTextField(
     CUTextField(
         modifier = modifier.fillMaxWidth(),
         hint = stringResource(id = MR.strings.firstName.resourceId),
-        visualTransformation = PasswordVisualTransformation(),
         value = value,
         onValueChanged = onValueChanged,
     )
@@ -144,7 +142,6 @@ private fun LastNameTextField(
     CUTextField(
         modifier = modifier.fillMaxWidth(),
         hint = stringResource(id = MR.strings.lastName.resourceId),
-        visualTransformation = PasswordVisualTransformation(),
         value = value,
         onValueChanged = onValueChanged,
     )
