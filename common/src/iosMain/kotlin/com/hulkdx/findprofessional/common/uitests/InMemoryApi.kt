@@ -147,13 +147,7 @@ object InMemoryApi {
         loadKoinModules(module)
     }
 
-    fun setUser(@ObjCName("_") user: LoginRequest) {
-        InMemoryApi.user = RegisterRequest(
-            email = user.email,
-            password = user.password,
-            firstName = "",
-            lastName = "",
-            profileImage = null
-        )
+    fun setUser(@ObjCName("_") user: RegisterRequest) {
+        InMemoryApi.user = user
     }
 }

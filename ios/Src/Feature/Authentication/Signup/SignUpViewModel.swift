@@ -19,7 +19,7 @@ class SignUpViewModel: ObservableObject {
 
     func onSubmitClicked() async {
         do {
-            let error = try await useCase.onSubmitClicked(request: AuthRequest(email: email, password: password))
+            let error = try await useCase.onSubmitClicked(request: RegisterRequest(email: email, password: password, firstName: "", lastName: ""))
             if (error != nil) {
                 self.error = error?.localized()
             }

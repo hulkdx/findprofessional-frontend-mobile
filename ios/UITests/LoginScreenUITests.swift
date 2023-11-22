@@ -18,7 +18,7 @@ class LoginScreenUITests: XCTestCase {
     }
     
     func testPerformLogin() {
-        app.inMemoryApiUser(AuthRequest(email: "test@email.com", password: "some-pass"))
+        app.inMemoryApiUser(email: "test@email.com", password: "some-pass")
         
         launchLoginScreen(app)
             .typeEmail("test@email.com")

@@ -56,7 +56,6 @@ class SignUpUseCaseTest {
                 "", "",
                 firstName = "",
                 lastName = "",
-                profileImage = null
             )
         )
         // Assert

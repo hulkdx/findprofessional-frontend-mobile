@@ -1,8 +1,6 @@
 package com.hulkdx.findprofessional.tests.screen.login
 
 import com.hulkdx.findprofessional.InMemoryApi
-import com.hulkdx.findprofessional.common.feature.authentication.signup.model.LoginRequest
-import com.hulkdx.findprofessional.common.feature.authentication.signup.model.RegisterRequest
 import com.hulkdx.findprofessional.utils.ScreenTest
 import org.junit.Test
 

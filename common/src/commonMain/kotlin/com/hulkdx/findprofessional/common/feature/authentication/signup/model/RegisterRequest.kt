@@ -11,5 +11,4 @@ data class RegisterRequest(
     val password: String,
     val firstName: String,
     val lastName: String,
-    val profileImage: String?,
 ) : CommonParcelable

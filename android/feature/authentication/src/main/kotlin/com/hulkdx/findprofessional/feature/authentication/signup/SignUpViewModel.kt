@@ -22,7 +22,6 @@ class SignUpViewModel(
             password = "",
             firstName = "",
             lastName = "",
-            profileImage = null,
         )
     )
     val error = savedStateHandle.getStateFlow<StringDesc?>(KEY_ERROR, null)

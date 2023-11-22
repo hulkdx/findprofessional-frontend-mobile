@@ -172,6 +172,6 @@ object InMemoryApi {
     }
 
     fun setUser(email: String, password: String) {
-        user = RegisterRequest(email, password, firstName = "", lastName = "", profileImage = null)
+        user = RegisterRequest(email, password, firstName = "", lastName = "")
     }
 }
