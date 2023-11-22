@@ -1,7 +1,6 @@
 package com.hulkdx.findprofessional.tests.screen.login
 
 import com.hulkdx.findprofessional.InMemoryApi
-import com.hulkdx.findprofessional.common.feature.authentication.signup.model.AuthRequest
 import com.hulkdx.findprofessional.utils.ScreenTest
 import org.junit.Test
 
@@ -18,7 +17,7 @@ class LoginScreenTest : ScreenTest() {
 
     @Test
     fun performLogin() {
-        InMemoryApi.user = AuthRequest("test@email.com", "somepass")
+        InMemoryApi.setUser("test@email.com", "somepass")
 
         launchLoginScreen(composeRule) {
             typeEmail("test@email.com")

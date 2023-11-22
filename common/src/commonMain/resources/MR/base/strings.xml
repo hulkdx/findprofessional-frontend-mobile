@@ -7,6 +7,8 @@
     <string name="signIn">Login</string>
     <string name="forgotYourPassword">Forgot your password?</string>
     <string name="dontHaveAnAccount">Don’t have an account?</string>
+    <string name="firstName">First name</string>
+    <string name="lastName">Last name</string>
 
     <string name="emailExists">Email already exists!</string>
     <string name="generalError">Error please try again</string>

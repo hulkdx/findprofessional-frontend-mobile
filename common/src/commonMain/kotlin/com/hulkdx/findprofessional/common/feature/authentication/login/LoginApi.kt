@@ -1,7 +1,7 @@
 package com.hulkdx.findprofessional.common.feature.authentication.login
 
 import com.hulkdx.findprofessional.common.feature.authentication.model.Auth
-import com.hulkdx.findprofessional.common.feature.authentication.signup.model.AuthRequest
+import com.hulkdx.findprofessional.common.feature.authentication.signup.model.LoginRequest
 import io.ktor.client.*
 import io.ktor.client.call.body
 import io.ktor.client.request.post
@@ -11,13 +11,13 @@ import io.ktor.http.ContentType
 import io.ktor.http.contentType
 
 interface LoginApi {
-    suspend fun login(request: AuthRequest): Auth
+    suspend fun login(request: LoginRequest): Auth
 }
 
 class LoginApiImpl(
     private val client: HttpClient,
 ) : LoginApi {
-    override suspend fun login(request: AuthRequest): Auth {
+    override suspend fun login(request: LoginRequest): Auth {
         return client.post {
             url(urlString)
             contentType(ContentType.Application.Json)

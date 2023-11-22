@@ -6,10 +6,12 @@ import com.hulkdx.findprofessional.common.feature.authentication.login.LoginUseC
 import com.hulkdx.findprofessional.common.feature.authentication.model.Auth
 import com.hulkdx.findprofessional.common.feature.authentication.model.Token
 import com.hulkdx.findprofessional.common.feature.authentication.model.User
-import com.hulkdx.findprofessional.common.feature.authentication.signup.model.AuthRequest
+import com.hulkdx.findprofessional.common.feature.authentication.signup.model.LoginRequest
+import com.hulkdx.findprofessional.common.feature.authentication.signup.model.RegisterRequest
 import com.hulkdx.findprofessional.common.navigation.NavigationScreen
 import com.hulkdx.findprofessional.common.navigation.Navigator
 import com.hulkdx.findprofessional.common.utils.KoinTestUtil
+import com.hulkdx.findprofessional.common.utils.newUser
 import kotlinx.coroutines.test.runTest
 import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
@@ -47,9 +49,15 @@ class SignUpUseCaseTest {
         // Arrange
         val accessToken = "accessToken"
         val refreshToken = "accessToken"
-        loginApi.registerReturns = Auth(Token(accessToken, refreshToken), User(""))
+        loginApi.registerReturns = Auth(Token(accessToken, refreshToken), newUser())
         // Act
-        sut.onSubmitClicked(AuthRequest("", ""))
+        sut.onSubmitClicked(
+            RegisterRequest(
+                "", "",
+                firstName = "",
+                lastName = "",
+            )
+        )
         // Assert
         assertEquals(accessToken, accessTokenStorage.setValue)
         assertEquals(refreshToken, refreshTokenStorage.setValue)
@@ -60,7 +68,7 @@ class SignUpUseCaseTest {
     private class SignUpApiMock : SignUpApi {
         lateinit var registerReturns: Auth
 
-        override suspend fun register(request: AuthRequest): Auth {
+        override suspend fun register(request: RegisterRequest): Auth {
             return registerReturns
         }
     }
@@ -75,9 +83,12 @@ class SignUpUseCaseTest {
             inclusive: Boolean,
         ) {
         }
+
         override fun goBack() {}
 
-        override fun getCurrentScreen(): NavigationScreen { throw RuntimeException() }
+        override fun getCurrentScreen(): NavigationScreen {
+            throw RuntimeException()
+        }
     }
 
     private class AccessTokenStorageMock : AccessTokenStorage {

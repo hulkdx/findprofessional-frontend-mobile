@@ -5,7 +5,8 @@ import com.hulkdx.findprofessional.common.feature.authentication.model.Auth
 import com.hulkdx.findprofessional.common.feature.authentication.model.Token
 import com.hulkdx.findprofessional.common.feature.authentication.model.User
 import com.hulkdx.findprofessional.common.feature.authentication.signup.SignUpApi
-import com.hulkdx.findprofessional.common.feature.authentication.signup.model.AuthRequest
+import com.hulkdx.findprofessional.common.feature.authentication.signup.model.LoginRequest
+import com.hulkdx.findprofessional.common.feature.authentication.signup.model.RegisterRequest
 import com.hulkdx.findprofessional.common.feature.home.ProfessionalApi
 import com.hulkdx.findprofessional.common.feature.home.model.Professional
 import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalAvailability
@@ -28,7 +29,7 @@ object InMemoryApi {
         single<ProfessionalApi> { Pro }
     }
 
-    private var user: AuthRequest? = null
+    private var user: RegisterRequest? = null
 
     private val professionals = listOf(
         Professional(
@@ -99,7 +100,7 @@ object InMemoryApi {
     )
 
     private object Signup : SignUpApi {
-        override suspend fun register(request: AuthRequest): Auth {
+        override suspend fun register(request: RegisterRequest): Auth {
             user = request
             return Auth(
                 Token(
@@ -108,14 +109,17 @@ object InMemoryApi {
                 ),
                 User(
                     "uiTestEmail",
-                )
+                    firstName = "uiTestFirstName",
+                    lastName = "uiTestLastName",
+                    profileImage = null,
+                ),
             )
         }
     }
 
     private object Login : LoginApi {
-        override suspend fun login(request: AuthRequest): Auth {
-            if (request == user) {
+        override suspend fun login(request: LoginRequest): Auth {
+            if (request == LoginRequest(user?.email ?: "", user?.password ?: "")) {
                 return Auth(
                     Token(
                         "uiTestAccessToken",
@@ -123,7 +127,10 @@ object InMemoryApi {
                     ),
                     User(
                         "uiTestEmail",
-                    )
+                        firstName = "uiTestFirstName",
+                        lastName = "uiTestLastName",
+                        profileImage = null,
+                    ),
                 )
             }
             throw RuntimeException("user not found")
@@ -140,7 +147,7 @@ object InMemoryApi {
         loadKoinModules(module)
     }
 
-    fun setUser(@ObjCName("_") user: AuthRequest) {
+    fun setUser(@ObjCName("_") user: RegisterRequest) {
         InMemoryApi.user = user
     }
 }

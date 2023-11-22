@@ -23,7 +23,7 @@ class LoginViewModel: ObservableObject {
     
     func signInButtonClicked() async {
         do {
-            let error = try await useCase.onSignInClicked(request: AuthRequest(email: email, password: password))
+            let error = try await useCase.onSignInClicked(request: LoginRequest(email: email, password: password))
             if (error != nil) {
                 self.error = error?.localized()
             }

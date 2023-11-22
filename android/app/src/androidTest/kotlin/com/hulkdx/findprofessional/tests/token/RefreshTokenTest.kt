@@ -9,13 +9,14 @@ import com.hulkdx.findprofessional.common.feature.authentication.login.LoginApi
 import com.hulkdx.findprofessional.common.feature.authentication.login.RefreshTokenApi
 import com.hulkdx.findprofessional.common.feature.authentication.model.Token
 import com.hulkdx.findprofessional.common.feature.authentication.model.User
-import com.hulkdx.findprofessional.common.feature.authentication.signup.model.AuthRequest
+import com.hulkdx.findprofessional.common.feature.authentication.signup.model.LoginRequest
 import com.hulkdx.findprofessional.tests.screen.login.launchLoginScreen
 import com.hulkdx.findprofessional.utils.KoinTestRule
 import com.hulkdx.findprofessional.utils.ScreenshotOnFailureRule
 import com.hulkdx.findprofessional.utils.assertNodeIsDisplayed
 import com.hulkdx.findprofessional.utils.get
 import com.hulkdx.findprofessional.utils.getAll
+import com.hulkdx.findprofessional.utils.newUser
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.engine.mock.*
@@ -37,8 +38,8 @@ import org.koin.dsl.module
 class RefreshTokenTest {
 
     companion object {
-        private val INVALID_TOKENS = Auth(Token("invalid_irrelevant_at", "invalid_irrelevant_rt"), User("email"))
-        private val VALID_TOKENS = Auth(Token("valid_irrelevant_at", "valid_irrelevant_rt"), User("email"))
+        private val INVALID_TOKENS = Auth(Token("invalid_irrelevant_at", "invalid_irrelevant_rt"), newUser())
+        private val VALID_TOKENS = Auth(Token("valid_irrelevant_at", "valid_irrelevant_rt"), newUser())
     }
 
     private val module = module {
@@ -71,23 +72,27 @@ class RefreshTokenTest {
     }
 
     @Test
-    fun when_invalidAccessToken_then_intercept_should_call_refreshToken() = runBlocking {
+    fun when_invalidAccessToken_then_intercept_should_call_refreshToken() {
         // Arrange
         refreshApiResponseValidToken()
         loginWithValidTokens()
         // Act
-        callApiWithInvalidToken()
+        runBlocking {
+            callApiWithInvalidToken()
+        }
         // Assert
         assertThat(refreshApi.isRefreshTokenCalled, `is`(true))
     }
 
     @Test
-    fun when_invalidAccessToken_and_refreshApi_response_invalidTokens_then_intercept_should_logout() = runBlocking {
+    fun when_invalidAccessToken_and_refreshApi_response_invalidTokens_then_intercept_should_logout()  {
         // Arrange
         refreshApiResponseUnauthorized()
         loginWithValidTokens()
         // Act
-        callApiWithInvalidToken()
+        runBlocking {
+            callApiWithInvalidToken()
+        }
         // Asserts
         composeRule.assertNodeIsDisplayed("LoginScreen")
     }
@@ -98,7 +103,7 @@ class RefreshTokenTest {
         refreshApi.response = VALID_TOKENS
     }
 
-    private suspend fun refreshApiResponseUnauthorized() {
+    private fun refreshApiResponseUnauthorized() {
         refreshApi.responseError = {
             throwUnauthorizedException()
         }
@@ -141,7 +146,7 @@ class RefreshTokenTest {
     private class LoginApiMock : LoginApi {
         var response: Auth? = null
 
-        override suspend fun login(request: AuthRequest): Auth {
+        override suspend fun login(request: LoginRequest): Auth {
             return response!!
         }
     }

@@ -3,7 +3,7 @@ package com.hulkdx.findprofessional.common.feature.authentication.login
 import com.hulkdx.findprofessional.common.config.storage.AccessTokenStorage
 import com.hulkdx.findprofessional.common.config.storage.RefreshTokenStorage
 import com.hulkdx.findprofessional.common.config.storage.UserStorage
-import com.hulkdx.findprofessional.common.feature.authentication.signup.model.AuthRequest
+import com.hulkdx.findprofessional.common.feature.authentication.signup.model.LoginRequest
 import com.hulkdx.findprofessional.common.navigation.NavigationScreen
 import com.hulkdx.findprofessional.common.navigation.Navigator
 import com.hulkdx.findprofessional.common.utils.generalError
@@ -19,7 +19,7 @@ class LoginUseCase(
         navigator.navigate(NavigationScreen.SignUp)
     }
 
-    suspend fun onSignInClicked(request: AuthRequest) = try {
+    suspend fun onSignInClicked(request: LoginRequest) = try {
         val (token, user) = api.login(request)
         accessTokenStorage.set(token.accessToken)
         refreshTokenStorage.set(token.refreshToken)
