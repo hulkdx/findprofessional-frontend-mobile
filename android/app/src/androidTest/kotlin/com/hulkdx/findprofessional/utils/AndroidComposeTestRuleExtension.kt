@@ -50,10 +50,9 @@ fun Rule.assertNodeIsDisplayed(testTag: String) {
 }
 
 // TODO: Move it to another class
-val device by lazy { UiDevice.getInstance(InstrumentationRegistry.getInstrumentation()) }
 
 fun Rule.pressBackButton() {
-    waitForIdle()
+    val device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
     assertTrue("Cannot press on back button", device.pressBack())
 }
 
