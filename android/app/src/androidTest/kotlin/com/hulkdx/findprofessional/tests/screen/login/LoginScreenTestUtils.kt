@@ -1,14 +1,14 @@
 package com.hulkdx.findprofessional.tests.screen.login
 
-import androidx.compose.ui.test.onRoot
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performTextInput
-import androidx.test.espresso.Espresso
 import com.hulkdx.findprofessional.resources.MR
 import com.hulkdx.findprofessional.utils.Rule
+import com.hulkdx.findprofessional.utils.assertAppIsClosed
 import com.hulkdx.findprofessional.utils.assertNodeIsDisplayed
 import com.hulkdx.findprofessional.utils.onNodeWithTagRes
 import com.hulkdx.findprofessional.utils.onNodeWithTextRes
+import com.hulkdx.findprofessional.utils.pressBackButton
 
 fun launchLoginScreen(
     rule: Rule,
@@ -43,7 +43,7 @@ class LoginDsl(
     }
 
     fun pressBackButton() {
-        Espresso.pressBackUnconditionally()
+        rule.pressBackButton()
     }
 
     fun verify(block: LoginVerify.() -> Unit) = LoginVerify(rule).apply(block)
@@ -61,6 +61,6 @@ class LoginVerify(
     }
 
     fun appIsClosed() {
-        rule.onRoot().assertDoesNotExist()
+        rule.assertAppIsClosed()
     }
 }

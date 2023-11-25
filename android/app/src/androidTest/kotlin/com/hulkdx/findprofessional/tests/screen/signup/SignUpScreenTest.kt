@@ -13,4 +13,14 @@ class SignUpScreenTest : ScreenTest() {
             homeScreenShown()
         }
     }
+
+    @Test
+    fun performBackPressAfterSignUp() {
+        launchSignUpScreen(composeRule) {
+            pressSignUpButton()
+            pressBackButton()
+        }.verify {
+            appIsClosed()
+        }
+    }
 }
