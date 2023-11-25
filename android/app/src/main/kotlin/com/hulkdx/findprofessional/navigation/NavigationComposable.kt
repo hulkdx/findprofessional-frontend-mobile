@@ -54,7 +54,7 @@ private fun SetupNavigationNavigate(
     navController: NavHostController,
     navigator: NavigatorImpl,
 ) {
-    val screenState by remember { navigator.screenState }
+    val screenState = navigator.screenState.value
 
     screenState?.apply {
         if (isNavigated) {

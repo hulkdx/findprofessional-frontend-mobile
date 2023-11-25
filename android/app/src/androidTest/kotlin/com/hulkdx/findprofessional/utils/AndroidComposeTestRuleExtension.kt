@@ -1,9 +1,9 @@
 package com.hulkdx.findprofessional.utils
 
 import androidx.annotation.StringRes
+import androidx.compose.ui.test.ComposeTimeoutException
 import androidx.compose.ui.test.SemanticsNodeInteraction
 import androidx.compose.ui.test.assertIsDisplayed
-import androidx.compose.ui.test.isRoot
 import androidx.compose.ui.test.junit4.AndroidComposeTestRule
 import androidx.compose.ui.test.onAllNodesWithTag
 import androidx.compose.ui.test.onNodeWithTag
@@ -50,7 +50,18 @@ fun Rule.pressBackButton() {
 }
 
 fun Rule.assertAppIsClosed(timeoutMillis: Long = 10_000) {
-    waitUntil(timeoutMillis) {
-        onAllNodes(isRoot()).fetchSemanticsNodes().isEmpty()
+    val startTime = System.currentTimeMillis()
+    while (true) {
+        try {
+            onRoot().assertDoesNotExist()
+            break
+        } catch (e: AssertionError) {
+            Thread.sleep(100)
+            if (System.currentTimeMillis() - startTime > timeoutMillis) {
+                throw ComposeTimeoutException(
+                    "Condition still not satisfied after $timeoutMillis ms"
+                )
+            }
+        }
     }
 }

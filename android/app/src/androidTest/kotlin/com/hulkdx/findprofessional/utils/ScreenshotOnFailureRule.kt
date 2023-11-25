@@ -18,9 +18,8 @@ class ScreenshotOnFailureRule(
                 try {
                     base.evaluate()
                 } catch (e: Throwable) {
-                    val newException = runCatching { takeScreenshotIfTestFails(description) }
-                        .exceptionOrNull()
-                    throw newException?.initCause(e) ?: e
+                    runCatching { takeScreenshotIfTestFails(description) }
+                    throw e
                 }
             }
         }
