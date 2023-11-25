@@ -61,6 +61,5 @@ dependencies {
     androidTestImplementation(libs.ktor.mock)
     androidTestImplementation(libs.androidx.dataStore.core)
     androidTestImplementation(libs.androidx.espresso.core)
-    //androidTestImplementation(libs.androidx.uiautomator)
-    androidTestImplementation("androidx.test.uiautomator:uiautomator:2.3.0-alpha03")
+    androidTestImplementation(libs.androidx.uiautomator)
 }

@@ -2,6 +2,7 @@ package com.hulkdx.findprofessional.tests.screen.login
 
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performTextInput
+import androidx.test.espresso.Espresso
 import com.hulkdx.findprofessional.resources.MR
 import com.hulkdx.findprofessional.utils.Rule
 import com.hulkdx.findprofessional.utils.assertAppIsClosed
@@ -43,6 +44,7 @@ class LoginDsl(
     }
 
     fun pressBackButton() {
+        Espresso.closeSoftKeyboard()
         rule.pressBackButton()
     }
 

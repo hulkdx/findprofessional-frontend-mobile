@@ -1,6 +1,7 @@
 package com.hulkdx.findprofessional.tests.screen.signup
 
 import androidx.compose.ui.test.performClick
+import androidx.test.espresso.Espresso
 import com.hulkdx.findprofessional.resources.MR
 import com.hulkdx.findprofessional.tests.screen.login.launchLoginScreen
 import com.hulkdx.findprofessional.utils.Rule
@@ -28,6 +29,7 @@ class SignUpDsl(
     }
 
     fun pressBackButton() {
+        Espresso.closeSoftKeyboard()
         rule.pressBackButton()
     }
 

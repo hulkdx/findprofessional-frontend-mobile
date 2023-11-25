@@ -1,6 +1,5 @@
 package com.hulkdx.findprofessional.utils
 
-import android.os.SystemClock
 import androidx.annotation.StringRes
 import androidx.compose.ui.test.ComposeTimeoutException
 import androidx.compose.ui.test.SemanticsNodeInteraction
