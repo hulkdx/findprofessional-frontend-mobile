@@ -13,10 +13,12 @@ import com.hulkdx.findprofessional.feature.developer.DeveloperNavigationScreen
 import com.hulkdx.findprofessional.feature.home.HomeNavigationScreen
 import com.hulkdx.findprofessional.feature.home.detail.HomeDetailNavigationScreen
 import com.hulkdx.findprofessional.feature.profile.ProfileNavigationScreen
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.update
 
 class NavigatorImpl : Navigator {
 
-    val screenState = mutableStateOf<State?>(null, neverEqualPolicy())
+    val screenState = MutableStateFlow<State?>(null)
     val goBack = mutableStateOf(false)
     var currentScreen: String = ""
     var currentScreenBundle: Bundle = Bundle()

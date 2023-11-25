@@ -2,6 +2,7 @@ package com.hulkdx.findprofessional.utils
 
 import android.os.SystemClock
 import androidx.annotation.StringRes
+import androidx.compose.ui.test.ComposeTimeoutException
 import androidx.compose.ui.test.SemanticsNodeInteraction
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.AndroidComposeTestRule
@@ -34,8 +35,12 @@ fun Rule.waitUntilAppear(
     testTag: String,
     timeoutMillis: Long = 10_000,
 ) {
-    waitUntil(timeoutMillis) {
-        onAllNodesWithTag(testTag).fetchSemanticsNodes().size == 1
+    try {
+        waitUntil(timeoutMillis) {
+            onAllNodesWithTag(testTag).fetchSemanticsNodes().size == 1
+        }
+    } catch (e: ComposeTimeoutException) {
+        throw RuntimeException("cannot find a node with test tag : $testTag after 10 seconds.")
     }
 }
 
@@ -53,8 +58,11 @@ fun Rule.pressBackButton() {
 }
 
 fun Rule.assertAppIsClosed(timeoutMillis: Long = 10_000) {
-    SystemClock.sleep(1000)
-    waitUntil(timeoutMillis) {
-        runCatching { onRoot().assertDoesNotExist() }.isSuccess
+    try {
+        waitUntil(timeoutMillis) {
+            runCatching { onRoot().assertDoesNotExist() }.isSuccess
+        }
+    } catch (e: ComposeTimeoutException) {
+        throw RuntimeException("The app is not closed after 10 seconds.")
     }
 }
