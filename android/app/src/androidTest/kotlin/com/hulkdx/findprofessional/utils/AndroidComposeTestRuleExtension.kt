@@ -53,7 +53,8 @@ fun Rule.assertNodeIsDisplayed(testTag: String) {
 val device by lazy { UiDevice.getInstance(InstrumentationRegistry.getInstrumentation()) }
 
 fun Rule.pressBackButton() {
-    assertTrue(device.pressBack())
+    waitForIdle()
+    assertTrue("Cannot press on back button", device.pressBack())
 }
 
 fun Rule.assertAppIsClosed(timeoutMillis: Long = 10_000) {
