@@ -63,4 +63,6 @@ class LoginVerify(
     fun appIsClosed() {
         rule.assertAppIsClosed()
     }
+
+    fun then(block: LoginDsl.() -> Unit) = LoginDsl(rule).apply(block)
 }

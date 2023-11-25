@@ -13,6 +13,7 @@ import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.uiautomator.UiDevice
 import com.hulkdx.findprofessional.MainActivity
+import org.junit.Assert.assertTrue
 
 typealias Rule = AndroidComposeTestRule<ActivityScenarioRule<MainActivity>, MainActivity>
 
@@ -47,10 +48,8 @@ fun Rule.assertNodeIsDisplayed(testTag: String) {
 // TODO: Move it to another class
 val device by lazy { UiDevice.getInstance(InstrumentationRegistry.getInstrumentation()) }
 
-fun Rule.pressBackButton(timeoutMillis: Long = 10_000) {
-    waitUntil(timeoutMillis) {
-        device.pressBack()
-    }
+fun Rule.pressBackButton() {
+    assertTrue(device.pressBack())
 }
 
 fun Rule.assertAppIsClosed(timeoutMillis: Long = 10_000) {

@@ -44,4 +44,7 @@ class SignUpVerify(
     fun appIsClosed() {
         rule.assertAppIsClosed()
     }
+
+    fun then(block: SignUpDsl.() -> Unit) = SignUpDsl(rule).apply(block)
+
 }

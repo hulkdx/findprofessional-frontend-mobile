@@ -56,7 +56,7 @@ fun HomeDetailScreen(
 }
 
 @Composable
-private fun HomeDetailScreen(
+fun HomeDetailScreen(
     professional: Professional,
     availability: Availability?,
     onReviewShowMoreClicked: () -> Unit,

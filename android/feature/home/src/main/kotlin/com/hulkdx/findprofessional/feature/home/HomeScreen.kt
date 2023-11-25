@@ -47,7 +47,7 @@ fun HomeScreen(viewModel: HomeViewModel = getViewModel()) {
 }
 
 @Composable
-private fun HomeScreen(
+fun HomeScreen(
     professionals: List<Professional>,
     onLikeClick: (Professional) -> Unit,
     onItemClick: (Professional) -> Unit,

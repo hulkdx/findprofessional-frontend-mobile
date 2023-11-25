@@ -36,6 +36,9 @@ class LoginScreenTest : ScreenTest() {
             typeEmail("test@email.com")
             typePassword("somepass")
             pressSignInButton()
+        }.verify {
+            homeScreenShown()
+        }.then {
             pressBackButton()
         }.verify {
             appIsClosed()
