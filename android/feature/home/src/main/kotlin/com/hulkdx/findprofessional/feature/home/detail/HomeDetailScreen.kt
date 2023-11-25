@@ -21,6 +21,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -66,6 +67,7 @@ private fun HomeDetailScreen(
             .fillMaxSize()
             .systemBarsPadding()
             .background(MaterialTheme.colorScheme.onTertiary)
+            .testTag("HomeDetailScreen")
     ) {
         item { TopHeader(professional) }
         // TODO: get the timezone from the user

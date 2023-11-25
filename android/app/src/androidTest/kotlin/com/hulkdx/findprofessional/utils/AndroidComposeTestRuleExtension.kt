@@ -3,6 +3,7 @@ package com.hulkdx.findprofessional.utils
 import androidx.annotation.StringRes
 import androidx.compose.ui.test.SemanticsNodeInteraction
 import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.isRoot
 import androidx.compose.ui.test.junit4.AndroidComposeTestRule
 import androidx.compose.ui.test.onAllNodesWithTag
 import androidx.compose.ui.test.onNodeWithTag
@@ -48,6 +49,8 @@ fun Rule.pressBackButton() {
     Espresso.pressBackUnconditionally()
 }
 
-fun Rule.assertAppIsClosed() {
-    onRoot().assertDoesNotExist()
+fun Rule.assertAppIsClosed(timeoutMillis: Long = 10_000) {
+    waitUntil(timeoutMillis) {
+        onAllNodes(isRoot()).fetchSemanticsNodes().isEmpty()
+    }
 }
