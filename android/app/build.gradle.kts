@@ -60,4 +60,5 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.test.manifest)
     androidTestImplementation(libs.ktor.mock)
     androidTestImplementation(libs.androidx.dataStore.core)
+    androidTestImplementation(libs.androidx.espresso.core)
 }
