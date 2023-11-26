@@ -51,9 +51,15 @@ fun Rule.assertNodeIsDisplayed(testTag: String) {
 
 // TODO: Move it to another class
 
-fun Rule.pressBackButton() {
+fun Rule.pressBackButton(timeoutMillis: Long = 10_000) {
     val device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
-    assertTrue("Cannot press on back button", device.pressBack())
+    try {
+        waitUntil(timeoutMillis) {
+            device.pressBack()
+        }
+    } catch (e: ComposeTimeoutException) {
+        throw RuntimeException("Cannot press on back button after 10 seconds.")
+    }
 }
 
 fun Rule.assertAppIsClosed(timeoutMillis: Long = 10_000) {
