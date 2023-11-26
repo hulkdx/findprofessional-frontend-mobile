@@ -95,8 +95,8 @@ jobs:
           arch: ${{ matrix.arch }}
           target: ${{ matrix.target }}
           disable-animations: false
-          # emulator-build: 7425822 # workaround to emulator bug: https://github.com/ReactiveCircus/android-emulator-runner/issues/160
-          emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+          emulator-build: 9536276
+          emulator-options: -no-snapshot -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -camera-front none
           script: >
             ./gradlew connectedDebugAndroidTest ||
             (adb pull sdcard/Download/uitest-screenshot-failure &&

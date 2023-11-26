@@ -10,7 +10,10 @@ android {
 
 dependencies {
     implementation(project(":android:feature:authentication"))
+    implementation(project(":android:feature:home"))
+    implementation(project(":android:feature:profile"))
     implementation(project(":android:core"))
+    implementation(project(":android:app"))
 
     testImplementation(platform(libs.androidx.compose.bom))
     testImplementation("androidx.compose.runtime:runtime")

@@ -4,14 +4,16 @@ kotlin = "1.9.20"
 # https://developer.android.com/studio/releases/gradle-plugin
 androidGradlePlugin = "8.1.4"
 
-# https://developer.android.com/jetpack/androidx/releases/lifecycle
-androidxActivity = "1.8.0"
+# https://developer.android.com/jetpack/androidx/releases/activity
+androidxActivity = "1.8.1"
 # https://developer.android.com/jetpack/compose/bom/bom-mapping
 androidxComposeBom = "2023.10.01"
 # https://developer.android.com/jetpack/androidx/releases/compose
 androidxComposeCompiler = "1.5.4"
 # https://developer.android.com/jetpack/androidx/releases/datastore
 androidxDataStore = "1.1.0-alpha06"
+# https://developer.android.com/jetpack/androidx/releases/test
+androidxEspresso = "3.5.1"
 # https://developer.android.com/jetpack/androidx/releases/lifecycle
 androidxLifecycle = "2.6.2"
 # https://developer.android.com/jetpack/androidx/releases/navigation
@@ -41,7 +43,7 @@ androidx-compose-ui-test = { group = "androidx.compose.ui", name = "ui-test-juni
 androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
-androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version = "3.5.1" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "androidxEspresso" }
 androidx-dataStore-core = { group = "androidx.datastore", name = "datastore-preferences-core", version.ref = "androidxDataStore" }
 androidx-lifecycle-runtimeCompose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidxLifecycle" }
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "androidxNavigation" }

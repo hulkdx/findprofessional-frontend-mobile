@@ -25,6 +25,8 @@ import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.core.theme.h1
 import com.hulkdx.findprofessional.feature.navigation.navbar.AppNavBarContainer
 import com.hulkdx.findprofessional.resources.MR
+import dev.icerock.moko.resources.compose.localized
+import dev.icerock.moko.resources.desc.StringDesc
 import org.koin.androidx.compose.getViewModel
 
 @Composable
@@ -32,22 +34,41 @@ fun HomeScreen(viewModel: HomeViewModel = getViewModel()) {
     val professionals by viewModel.professionals.collectAsStateWithLifecycle()
     val error by viewModel.error.collectAsStateWithLifecycle()
 
+    HomeScreen(
+        professionals,
+        error?.localized(),
+        { viewModel.setError(null) },
+        viewModel::onLikeClick,
+        viewModel::onItemClick,
+        viewModel::onSearchClick,
+    )
+}
+
+@Composable
+fun HomeScreen(
+    professionals: List<Professional>,
+    error: String?,
+    onErrorDismissed: () -> Unit,
+    onLikeClick: (Professional) -> Unit,
+    onItemClick: (Professional) -> Unit,
+    onSearchClick: (String) -> Unit,
+) {
     AppNavBarContainer(
         testTag = "HomeScreen",
         error = error,
-        onErrorDismissed = { viewModel.setError(null) },
+        onErrorDismissed = onErrorDismissed,
     ) {
         HomeScreen(
             professionals = professionals,
-            onSearchClick = viewModel::onSearchClick,
-            onLikeClick = viewModel::onLikeClick,
-            onItemClick = viewModel::onItemClick,
+            onSearchClick = onSearchClick,
+            onLikeClick = onLikeClick,
+            onItemClick = onItemClick,
         )
     }
 }
 
 @Composable
-fun HomeScreen(
+private fun HomeScreen(
     professionals: List<Professional>,
     onLikeClick: (Professional) -> Unit,
     onItemClick: (Professional) -> Unit,
@@ -131,6 +152,8 @@ private fun HomeScreenPreview() {
                     reviews = ProfessionalReview(100, listOf()),
                 )
             ),
+            error = null,
+            onErrorDismissed = {},
             onSearchClick = {},
             onLikeClick = {},
             onItemClick = {},
