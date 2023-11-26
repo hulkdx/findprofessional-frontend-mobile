@@ -9,6 +9,7 @@ import androidx.compose.ui.test.onAllNodesWithTag
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.onRoot
+import androidx.test.espresso.Espresso
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.uiautomator.UiDevice
@@ -52,14 +53,15 @@ fun Rule.assertNodeIsDisplayed(testTag: String) {
 // TODO: Move it to another class
 
 fun Rule.pressBackButton(timeoutMillis: Long = 10_000) {
-    val device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
-    try {
-        waitUntil(timeoutMillis) {
-            device.pressBack()
-        }
-    } catch (e: ComposeTimeoutException) {
-        throw RuntimeException("Cannot press on back button after 10 seconds.")
-    }
+    Espresso.pressBackUnconditionally()
+//    val device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
+//    try {
+//        waitUntil(timeoutMillis) {
+//            device.pressBack()
+//        }
+//    } catch (e: ComposeTimeoutException) {
+//        throw RuntimeException("Cannot press on back button after 10 seconds.")
+//    }
 }
 
 fun Rule.assertAppIsClosed(timeoutMillis: Long = 10_000) {
