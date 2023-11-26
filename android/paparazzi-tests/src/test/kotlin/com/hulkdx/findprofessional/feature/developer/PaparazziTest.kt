@@ -13,6 +13,7 @@ import com.hulkdx.findprofessional.feature.authentication.signup.SignUpScreen
 import com.hulkdx.findprofessional.feature.authentication.splash.Splash
 import com.hulkdx.findprofessional.feature.home.HomeScreen
 import com.hulkdx.findprofessional.feature.home.detail.HomeDetailScreen
+import com.hulkdx.findprofessional.feature.profile.ProfileScreen
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -102,6 +103,17 @@ class PaparazziTest {
                     // @formatter:on
                 {},
                 {},
+            )
+        }
+    }
+
+    @Test
+    fun `ProfileScreen paparazzi test`() {
+        paparazziTest {
+            ProfileScreen(
+                onLogoutClicked = {},
+                error = "",
+                onErrorDismissed = {},
             )
         }
     }

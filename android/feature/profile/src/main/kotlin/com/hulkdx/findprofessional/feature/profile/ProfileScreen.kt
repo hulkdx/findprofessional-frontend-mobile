@@ -46,7 +46,7 @@ fun ProfileScreen(viewModel: ProfileViewModel = getViewModel()) {
 }
 
 @Composable
-private fun ProfileScreen(
+fun ProfileScreen(
     onLogoutClicked: () -> Unit,
     error: String?,
     onErrorDismissed: () -> Unit,
