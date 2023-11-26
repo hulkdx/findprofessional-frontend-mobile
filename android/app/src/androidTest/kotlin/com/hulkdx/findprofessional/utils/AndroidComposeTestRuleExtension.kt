@@ -11,10 +11,7 @@ import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.onRoot
 import androidx.test.espresso.Espresso
 import androidx.test.ext.junit.rules.ActivityScenarioRule
-import androidx.test.platform.app.InstrumentationRegistry
-import androidx.test.uiautomator.UiDevice
 import com.hulkdx.findprofessional.MainActivity
-import org.junit.Assert.assertTrue
 
 typealias Rule = AndroidComposeTestRule<ActivityScenarioRule<MainActivity>, MainActivity>
 
@@ -50,18 +47,8 @@ fun Rule.assertNodeIsDisplayed(testTag: String) {
         .assertIsDisplayed()
 }
 
-// TODO: Move it to another class
-
-fun Rule.pressBackButton(timeoutMillis: Long = 10_000) {
+fun Rule.pressBackButton() {
     Espresso.pressBackUnconditionally()
-//    val device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
-//    try {
-//        waitUntil(timeoutMillis) {
-//            device.pressBack()
-//        }
-//    } catch (e: ComposeTimeoutException) {
-//        throw RuntimeException("Cannot press on back button after 10 seconds.")
-//    }
 }
 
 fun Rule.assertAppIsClosed(timeoutMillis: Long = 10_000) {

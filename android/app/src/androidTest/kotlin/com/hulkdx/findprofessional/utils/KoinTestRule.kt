@@ -33,10 +33,6 @@ class KoinTestRule(
         }
     }
 
-    override fun apply(base: Statement, description: Description): Statement {
-        return super.apply(base, description)
-    }
-
     override fun before() {
         temporaryFolder.create()
         loadKoinModules(

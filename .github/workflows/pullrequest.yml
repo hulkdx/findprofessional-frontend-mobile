@@ -112,48 +112,48 @@ jobs:
             **/build/reports/androidTests/connected
             uitest-screenshot-failure
 
-  # ios-tests:
-  #   name: iOS tests
-  #   runs-on: macos-12
-  #   timeout-minutes: 90
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v3
+  ios-tests:
+    name: iOS tests
+    runs-on: macos-12
+    timeout-minutes: 90
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
 
-  #     - name: Select Xcode
-  #       run: sudo xcode-select -switch /Applications/Xcode_${{ env.XCODE_VERSION }}.app
+      - name: Select Xcode
+        run: sudo xcode-select -switch /Applications/Xcode_${{ env.XCODE_VERSION }}.app
 
-  #     - uses: actions/setup-java@v3
-  #       with:
-  #         distribution: ${{ env.JAVA_DIST }}
-  #         java-version: ${{ env.JAVA_VERSION }}
-  #         cache: 'gradle'
+      - uses: actions/setup-java@v3
+        with:
+          distribution: ${{ env.JAVA_DIST }}
+          java-version: ${{ env.JAVA_VERSION }}
+          cache: 'gradle'
 
-  #     - uses: actions/cache@v3
-  #       with:
-  #         path: |
-  #           ~/.gradle/caches
-  #           ~/.gradle/wrapper
-  #         key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-  #         restore-keys: |
-  #           ${{ runner.os }}-gradle-
+      - uses: actions/cache@v3
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
 
-  #     - name: Get cached Swift Packages managed by Xcode
-  #       uses: actions/cache@v3
-  #       with:
-  #         path: ~/Library/Developer/Xcode/DerivedData/**/SourcePackages/
-  #         key: ${{ runner.os }}-spm-${{ hashFiles('**/Package.resolved') }}
-  #         restore-keys: |
-  #           ${{ runner.os }}-spm-
+      - name: Get cached Swift Packages managed by Xcode
+        uses: actions/cache@v3
+        with:
+          path: ~/Library/Developer/Xcode/DerivedData/**/SourcePackages/
+          key: ${{ runner.os }}-spm-${{ hashFiles('**/Package.resolved') }}
+          restore-keys: |
+            ${{ runner.os }}-spm-
 
-  #     - name: Build and Test
-  #       run: xcodebuild
-  #         -workspace ios/FindProffessional.xcodeproj/project.xcworkspace
-  #         -scheme FindProfessional
-  #         -configuration Debug
-  #         -sdk iphonesimulator
-  #         -destination 'platform=iOS Simulator,name=${{ env.XCODE_IPHONE_VERSION }}'
-  #         build test
-  #         ONLY_ACTIVE_ARCH=YES
-  #         CODE_SIGNING_REQUIRED=NO
-  #         CODE_SIGN_IDENTITY=""
+      - name: Build and Test
+        run: xcodebuild
+          -workspace ios/FindProffessional.xcodeproj/project.xcworkspace
+          -scheme FindProfessional
+          -configuration Debug
+          -sdk iphonesimulator
+          -destination 'platform=iOS Simulator,name=${{ env.XCODE_IPHONE_VERSION }}'
+          build test
+          ONLY_ACTIVE_ARCH=YES
+          CODE_SIGNING_REQUIRED=NO
+          CODE_SIGN_IDENTITY=""
