@@ -25,7 +25,7 @@ class NavigatorImpl : Navigator {
 
     override fun navigate(screen: NavigationScreen) {
         val route = screen.toAndroidScreen()
-        screenState.value = State(route)
+        screenState.update { State(route) }
     }
 
     override fun navigate(screen: NavigationScreen, popTo: NavigationScreen, inclusive: Boolean) {
@@ -34,7 +34,7 @@ class NavigatorImpl : Navigator {
         val options = NavOptions.Builder()
             .setPopUpTo(popToRoute, inclusive)
             .build()
-        screenState.value = State(route, options)
+        screenState.update { State(route, options) }
     }
 
     override fun goBack() {
