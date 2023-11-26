@@ -18,6 +18,7 @@ import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -41,6 +42,7 @@ fun ProfessionalItem(
 ) {
     Column(
         Modifier
+            .testTag("pro-${professional.id}")
             .clickable(onClick = singleClick { onItemClick(professional) })
             .fillMaxWidth()
             .clip(shape = RoundedCornerShape(16.dp))
@@ -67,6 +69,7 @@ fun ProfessionalItem(
 
 @Composable
 private fun ProfileImage(professional: Professional) {
+    val image = professional.profileImageUrl ?: return
     CUAsyncImage(
         modifier = Modifier
             .padding(start = 16.dp, top = 24.dp)
