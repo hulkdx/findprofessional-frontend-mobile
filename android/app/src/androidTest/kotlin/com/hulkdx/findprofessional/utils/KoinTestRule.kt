@@ -1,30 +1,31 @@
 package com.hulkdx.findprofessional.utils
 
 import androidx.datastore.preferences.core.PreferenceDataStoreFactory
-import com.hulkdx.findprofessional.common.navigation.Navigator
-import com.hulkdx.findprofessional.navigation.NavigatorImpl
+import com.hulkdx.findprofessional.di.appModule
+import com.hulkdx.findprofessional.feature.authentication.login.loginModule
+import com.hulkdx.findprofessional.feature.authentication.signup.signUpModule
+import com.hulkdx.findprofessional.feature.authentication.splash.splashModule
+import com.hulkdx.findprofessional.feature.developer.developerModule
+import com.hulkdx.findprofessional.feature.home.detail.homeDetailModule
+import com.hulkdx.findprofessional.feature.home.homeModule
+import com.hulkdx.findprofessional.feature.profile.profileModule
 import okio.Path.Companion.toOkioPath
 import org.junit.rules.ExternalResource
 import org.junit.rules.TemporaryFolder
-import org.junit.rules.TestRule
 import org.junit.runner.Description
 import org.junit.runners.model.Statement
 import org.koin.core.context.loadKoinModules
 import org.koin.core.context.unloadKoinModules
 import org.koin.core.module.Module
-import org.koin.core.module.dsl.singleOf
-import org.koin.dsl.bind
 import org.koin.dsl.module
 
 class KoinTestRule(
-    private vararg val additional: Module
+    private vararg val additional: Module,
 ) : ExternalResource() {
 
     private val temporaryFolder = TemporaryFolder.builder().assureDeletion().build()
 
     private val testModules = module {
-        singleOf(::NavigatorImpl) bind Navigator::class
-
         single {
             PreferenceDataStoreFactory.createWithPath(produceFile = {
                 temporaryFolder.newFile("user_preferences_test.preferences_pb").toOkioPath()
@@ -34,6 +35,18 @@ class KoinTestRule(
 
     override fun before() {
         temporaryFolder.create()
+        loadKoinModules(
+            listOf(
+                appModule,
+                loginModule,
+                signUpModule,
+                homeModule,
+                homeDetailModule,
+                developerModule,
+                splashModule,
+                profileModule,
+            )
+        )
         loadKoinModules(testModules)
         loadKoinModules(additional.toList())
     }

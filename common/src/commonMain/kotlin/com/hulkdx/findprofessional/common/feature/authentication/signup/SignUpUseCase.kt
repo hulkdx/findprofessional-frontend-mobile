@@ -5,7 +5,6 @@ package com.hulkdx.findprofessional.common.feature.authentication.signup
 import com.hulkdx.findprofessional.common.config.storage.AccessTokenStorage
 import com.hulkdx.findprofessional.common.config.storage.RefreshTokenStorage
 import com.hulkdx.findprofessional.common.config.storage.UserStorage
-import com.hulkdx.findprofessional.common.feature.authentication.signup.model.LoginRequest
 import com.hulkdx.findprofessional.common.feature.authentication.signup.model.RegisterRequest
 import com.hulkdx.findprofessional.common.navigation.NavigationScreen
 import com.hulkdx.findprofessional.common.navigation.Navigator
@@ -29,7 +28,7 @@ class SignUpUseCase(
         accessTokenStorage.set(accessToken)
         refreshTokenStorage.set(refreshToken)
         userStorage.set(user)
-        navigator.navigate(NavigationScreen.Home)
+        navigator.navigate(NavigationScreen.Home, popTo = NavigationScreen.Login, inclusive = true)
         null
     } catch (e: Throwable) {
         val statusCode = (e as? ClientRequestException)?.response?.status

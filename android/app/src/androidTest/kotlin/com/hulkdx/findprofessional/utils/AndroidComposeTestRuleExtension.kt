@@ -1,12 +1,15 @@
 package com.hulkdx.findprofessional.utils
 
 import androidx.annotation.StringRes
+import androidx.compose.ui.test.ComposeTimeoutException
 import androidx.compose.ui.test.SemanticsNodeInteraction
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.AndroidComposeTestRule
 import androidx.compose.ui.test.onAllNodesWithTag
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
+import androidx.compose.ui.test.onRoot
+import androidx.test.espresso.Espresso
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import com.hulkdx.findprofessional.MainActivity
 
@@ -29,8 +32,12 @@ fun Rule.waitUntilAppear(
     testTag: String,
     timeoutMillis: Long = 10_000,
 ) {
-    waitUntil(timeoutMillis) {
-        onAllNodesWithTag(testTag).fetchSemanticsNodes().size == 1
+    try {
+        waitUntil(timeoutMillis) {
+            onAllNodesWithTag(testTag).fetchSemanticsNodes().size == 1
+        }
+    } catch (e: ComposeTimeoutException) {
+        throw RuntimeException("cannot find a node with test tag : $testTag after 10 seconds.")
     }
 }
 
@@ -38,4 +45,18 @@ fun Rule.assertNodeIsDisplayed(testTag: String) {
     waitUntilAppear(testTag = testTag)
     onNodeWithTag(testTag)
         .assertIsDisplayed()
+}
+
+fun Rule.pressBackButton() {
+    Espresso.pressBackUnconditionally()
+}
+
+fun Rule.assertAppIsClosed(timeoutMillis: Long = 10_000) {
+    try {
+        waitUntil(timeoutMillis) {
+            runCatching { onRoot().assertDoesNotExist() }.isSuccess
+        }
+    } catch (e: ComposeTimeoutException) {
+        throw RuntimeException("The app is not closed after 10 seconds.")
+    }
 }

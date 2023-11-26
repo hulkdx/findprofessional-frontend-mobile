@@ -24,7 +24,7 @@ class LoginUseCase(
         accessTokenStorage.set(token.accessToken)
         refreshTokenStorage.set(token.refreshToken)
         userStorage.set(user)
-        navigator.navigate(NavigationScreen.Home)
+        navigator.navigate(NavigationScreen.Home, popTo = NavigationScreen.Login, inclusive = true)
         null
     } catch (e: Throwable) {
         e.generalError()

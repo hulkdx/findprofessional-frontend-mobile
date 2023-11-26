@@ -3,6 +3,7 @@ package com.hulkdx.findprofessional.navigation
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -54,7 +55,7 @@ private fun SetupNavigationNavigate(
     navController: NavHostController,
     navigator: NavigatorImpl,
 ) {
-    val screenState by remember { navigator.screenState }
+    val screenState by navigator.screenState.collectAsStateWithLifecycle()
 
     screenState?.apply {
         if (isNavigated) {

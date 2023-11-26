@@ -27,4 +27,21 @@ class LoginScreenTest : ScreenTest() {
             homeScreenShown()
         }
     }
+
+    @Test
+    fun performBackPressAfterLogin() {
+        InMemoryApi.setUser("test@email.com", "somepass")
+
+        launchLoginScreen(composeRule) {
+            typeEmail("test@email.com")
+            typePassword("somepass")
+            pressSignInButton()
+        }.verify {
+            homeScreenShown()
+        }.then {
+            pressBackButton()
+        }.verify {
+            appIsClosed()
+        }
+    }
 }

@@ -55,7 +55,7 @@ fun SignUpScreen(
 }
 
 @Composable
-private fun SignUpScreen(
+fun SignUpScreen(
     firstName: String,
     onFirstNameChanged: (String) -> Unit,
     lastName: String,
