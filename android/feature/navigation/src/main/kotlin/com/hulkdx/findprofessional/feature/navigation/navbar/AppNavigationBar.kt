@@ -20,9 +20,9 @@ import com.hulkdx.findprofessional.feature.navigation.getNavigator
 import com.hulkdx.findprofessional.resources.MR
 
 @Composable
-fun BoxScope.AppNavigationBar() {
+fun BoxScope.AppNavigationBar(modifier: Modifier = Modifier) {
     AppNavigationBar(
-        modifier = Modifier.align(Alignment.BottomCenter),
+        modifier = modifier.align(Alignment.BottomCenter),
     )
 }
 
