@@ -6,6 +6,7 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.ui.graphics.Color
 
 private val Green = Color(0xFF00B262)
+private val DarkGreen = Color(0xFF0F6A2C)
 private val LightGreen = Color(0xFFD4E0D8)
 private val White = Color(0xFFFFFFFF)
 private val LightBlue = Color(0xFFE1EFFF)
@@ -18,11 +19,14 @@ private val BackgroundColor = Color(0xFFF5F6FA)
 private val TextPlaceholder = Color(0xFFAEAEB6)
 val TextButtonColor = Color(0xFF09B0B9)
 
+val DividerColor1 = Color(0xFFD0D0D0)
+
 internal val lightColorPalette = lightColorScheme(
     primary = Green,
     onPrimary = BackgroundColor,
     onSecondary = LightBlue,
     secondaryContainer = LightGreen,
+    onSecondaryContainer = DarkGreen,
     onTertiary = LightGrey,
     onTertiaryContainer = Gray,
     onSurfaceVariant = TextPlaceholder,
