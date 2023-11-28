@@ -22,7 +22,7 @@ fun AppNavBarContainer(
 ) {
     Box(
         modifier = modifier
-            .background(MaterialTheme.colorScheme.onTertiary)
+            .background(MaterialTheme.colorScheme.onPrimary)
             .systemBarsPadding()
             .testTag(testTag)
     ) {

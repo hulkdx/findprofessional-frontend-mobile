@@ -46,7 +46,7 @@ fun ProfessionalItem(
             .clickable(onClick = singleClick { onItemClick(professional) })
             .fillMaxWidth()
             .clip(shape = RoundedCornerShape(16.dp))
-            .background(MaterialTheme.colorScheme.onPrimary)
+            .background(MaterialTheme.colorScheme.surfaceVariant)
             .padding(bottom = 20.dp),
     ) {
         Row {
