@@ -5,9 +5,6 @@ import com.hulkdx.findprofessional.MainActivity
 import org.junit.Rule
 
 open class ScreenTest {
-    @get:Rule(order = 0)
-    val retryOnDeviceErrorRule = PlatformPopupRule()
-
     @get:Rule(order = 1)
     val inMemoryApiRule = InMemoryApiRule()
 
@@ -19,4 +16,7 @@ open class ScreenTest {
 
     @get:Rule(order = 4)
     val screenshotOnFailureRule = ScreenshotOnFailureRule(composeRule)
+
+    @get:Rule(order = 5)
+    val retryOnDeviceErrorRule = PlatformPopupRule()
 }
