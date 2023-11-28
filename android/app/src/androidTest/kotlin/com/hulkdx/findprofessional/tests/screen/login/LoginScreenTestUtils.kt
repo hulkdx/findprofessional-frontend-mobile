@@ -44,7 +44,7 @@ class LoginDsl(
     }
 
     fun pressBackButton() {
-        runCatching { Espresso.closeSoftKeyboard() }
+        Espresso.closeSoftKeyboard()
         rule.pressBackButton()
     }
 
