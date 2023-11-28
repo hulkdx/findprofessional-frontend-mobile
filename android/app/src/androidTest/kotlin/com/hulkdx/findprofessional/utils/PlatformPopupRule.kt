@@ -16,9 +16,9 @@ class PlatformPopupRule : ExternalResource() {
     }
 
     private fun closePlatformPopup() {
-        onData(anything())
-            .inRoot(RootMatchers.isPlatformPopup())
-            .atPosition(1)
-            .perform(click())
+//        onData(anything())
+//            .inRoot(RootMatchers.isPlatformPopup())
+//            .atPosition(1)
+//            .perform(click())
     }
 }

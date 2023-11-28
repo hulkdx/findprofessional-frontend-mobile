@@ -3,11 +3,27 @@ package com.hulkdx.findprofessional.utils
 import android.graphics.Bitmap
 import android.graphics.Bitmap.CompressFormat
 import android.graphics.Bitmap.CompressFormat.PNG
+import androidx.test.uiautomator.UiDevice
 import java.io.File
 import java.io.FileOutputStream
 
 
 object ScreenshotUtils {
+
+    fun take(
+        device: UiDevice,
+        screenshotsDir: String,
+        screenshotName: String,
+    ) {
+        val dir = File(screenshotsDir)
+        createDirIfNotExists(dir)
+
+        val screenshotPath = "$screenshotsDir/$screenshotName"
+        val file = File(screenshotPath)
+        createFileIfNotExists(file)
+
+        device.takeScreenshot(file)
+    }
 
     fun take(
         bitmap: Bitmap,
