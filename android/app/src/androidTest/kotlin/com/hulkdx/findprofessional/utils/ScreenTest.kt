@@ -15,5 +15,5 @@ open class ScreenTest {
     val composeRule = createAndroidComposeRule<MainActivity>()
 
     @get:Rule(order = 4)
-    val screenshotOnFailureRule = ScreenshotOnFailureRule(composeRule)
+    val screenshotOnFailureRule = ScreenshotOnFailureRule()
 }

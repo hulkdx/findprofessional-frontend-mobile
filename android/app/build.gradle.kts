@@ -52,6 +52,7 @@ dependencies {
     implementation(libs.androidx.activity.compose)
     implementation(libs.koin.core)
     implementation(libs.koin.android)
+    implementation(libs.androidx.uiautomator)
 
     debugImplementation(libs.leakcanary)
 

@@ -68,6 +68,7 @@ moko-resources-compose = { group = "dev.icerock.moko", name = "resources-compose
 
 # build-logic dependencies
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }
+androidx-uiautomator = { group = "androidx.test.uiautomator", name = "uiautomator", version = "2.2.0" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
