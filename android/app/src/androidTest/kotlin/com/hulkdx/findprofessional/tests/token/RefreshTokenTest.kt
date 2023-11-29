@@ -54,7 +54,7 @@ class RefreshTokenTest {
     val composeRule = createAndroidComposeRule<MainActivity>()
 
     @get:Rule(order = 3)
-    val screenshotOnFailureRule = ScreenshotOnFailureRule(composeRule)
+    val screenshotOnFailureRule = ScreenshotOnFailureRule()
 
     private lateinit var randomApi: RandomTestRefreshTokenApi
     private lateinit var accessTokenStorage: AccessTokenStorage
