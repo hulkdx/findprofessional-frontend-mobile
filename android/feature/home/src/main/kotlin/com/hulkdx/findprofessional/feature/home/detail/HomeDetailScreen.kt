@@ -66,7 +66,7 @@ fun HomeDetailScreen(
         modifier = Modifier
             .fillMaxSize()
             .systemBarsPadding()
-            .background(MaterialTheme.colorScheme.onTertiary)
+            .background(MaterialTheme.colorScheme.onPrimary)
             .testTag("HomeDetailScreen")
     ) {
         item { TopHeader(professional) }
@@ -83,7 +83,7 @@ private fun TopHeader(professional: Professional) {
             .fillMaxWidth()
             .padding(start = 16.dp, end = 16.dp)
             .clip(shape = RoundedCornerShape(10.dp))
-            .background(MaterialTheme.colorScheme.onPrimary)
+            .background(MaterialTheme.colorScheme.surfaceVariant)
     ) {
         ProfileImage(professional)
         FullName(professional)

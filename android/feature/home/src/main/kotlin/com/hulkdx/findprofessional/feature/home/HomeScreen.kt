@@ -1,5 +1,6 @@
 package com.hulkdx.findprofessional.feature.home
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
@@ -10,10 +11,12 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -77,35 +80,15 @@ private fun HomeScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
+            .padding(top = 32.dp)
             .verticalScroll(rememberScrollState())
     ) {
-        Search(onSearchClick)
-        Title()
         ProfessionalList(
             professionals = professionals,
             onLikeClick = onLikeClick,
             onItemClick = onItemClick,
         )
     }
-}
-
-@Composable
-private fun Search(onSearch: (String) -> Unit) {
-    CUSearchField(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(top = 16.dp, start = 16.dp, end = 16.dp),
-        onSearch = onSearch,
-    )
-}
-
-@Composable
-private fun Title() {
-    Text(
-        modifier = Modifier.padding(top = 24.dp, start = 24.dp),
-        text = stringResource(id = MR.strings.professionals.resourceId),
-        style = h1,
-    )
 }
 
 @Composable
