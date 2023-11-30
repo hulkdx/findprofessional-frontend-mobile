@@ -29,6 +29,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.hulkdx.findprofessional.common.feature.authentication.model.User
+import com.hulkdx.findprofessional.common.feature.home.model.Professional
 import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalReview
 import com.hulkdx.findprofessional.core.R
 import com.hulkdx.findprofessional.core.commonui.CUAsyncImage
@@ -38,23 +40,25 @@ import com.hulkdx.findprofessional.core.theme.body3Bold
 import com.hulkdx.findprofessional.core.theme.body3SemiBold
 import com.hulkdx.findprofessional.core.theme.h3Bold
 import com.hulkdx.findprofessional.resources.MR
+import kotlinx.datetime.Clock
+import kotlinx.datetime.Instant
 
 
 internal fun LazyListScope.Review(
-    review: ProfessionalReview?,
+    professional: Professional,
     onShowMoreClicked: () -> Unit,
 ) {
-    review ?: return
+    if (professional.reviews.isEmpty()) return
 
-    item { ReviewHeader(review.total) }
-    items(review.content) {
+    item { ReviewHeader(professional.rating) }
+    items(professional.reviews) {
         ReviewContent(it)
     }
     item { ShowMoreButton(onShowMoreClicked) }
 }
 
 @Composable
-private fun ReviewHeader(totalReviews: Int) {
+private fun ReviewHeader(totalReviews: String?) {
     Row(Modifier.padding(start = 16.dp, top = 32.dp, bottom = 16.dp)) {
         Text(
             modifier = Modifier.padding(start = 8.dp),
@@ -65,7 +69,7 @@ private fun ReviewHeader(totalReviews: Int) {
 }
 
 @Composable
-private fun ReviewContent(reviewContent: ProfessionalReview.Content) {
+private fun ReviewContent(reviewContent: ProfessionalReview) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -76,22 +80,22 @@ private fun ReviewContent(reviewContent: ProfessionalReview.Content) {
             .padding(bottom = 16.dp)
     ) {
         Header(reviewContent)
-        ReviewText(reviewContent.reviewText)
-        ReviewDate(reviewContent.reviewDate)
+        ReviewText(reviewContent.contentText)
+        ReviewDate(reviewContent.updatedAt.toString())
     }
 }
 
 @Composable
-private fun Header(review: ProfessionalReview.Content) {
+private fun Header(review: ProfessionalReview) {
     Row(Modifier.padding(top = 18.dp, start = 18.dp)) {
-        ReviewProfile(review.userProfileImageUrl)
+        ReviewProfile(review.user.fullName)
         Column(
             Modifier
                 .align(CenterVertically)
                 .padding(start = 12.dp)
         ) {
-            ReviewName(review.userFullName)
-            ReviewStar(review.star)
+            ReviewName(review.user.fullName)
+            ReviewStar(review.rate)
         }
     }
 }
@@ -130,7 +134,8 @@ private fun ReviewStar(star: Int) {
 }
 
 @Composable
-private fun ReviewText(text: String) {
+private fun ReviewText(text: String?) {
+    text ?: return
     Text(
         modifier = Modifier
             .padding(top = 12.dp)
@@ -180,7 +185,7 @@ private fun ShowMoreButton(onClick: () -> Unit) {
 private fun ReviewHeaderPreview() {
     AppTheme {
         Box(Modifier.background(Color.White)) {
-            ReviewHeader(200)
+            ReviewHeader("200")
         }
     }
 }
@@ -190,13 +195,18 @@ private fun ReviewHeaderPreview() {
 private fun ReviewContentStarPreview() {
     AppTheme {
         ReviewContent(
-            ProfessionalReview.Content(
-                userProfileImageUrl = "",
-                userFirstName = "Stefan",
-                userLastName = "Holman",
-                star = 4,
-                reviewText = "Authentic and Wonderful 12-days tour of Paris. 12-days tour of Paris. Authentic and Wonderful 12-days tour of Paris. Authentic and Wonderful 12-days tour of Paris.\nfeeling like I’ve learned a lot.",
-                reviewDate = "Sep 18, 2023",
+            ProfessionalReview(
+                id = 0,
+                user = User(
+                    profileImage = "",
+                    firstName = "Stefan",
+                    lastName = "Holman",
+                    email = "",
+                ),
+                rate = 4,
+                contentText = "Authentic and Wonderful 12-days tour of Paris. 12-days tour of Paris. Authentic and Wonderful 12-days tour of Paris. Authentic and Wonderful 12-days tour of Paris.\nfeeling like I’ve learned a lot.",
+                createdAt = Clock.System.now(),
+                updatedAt = Clock.System.now(),
             )
         )
     }

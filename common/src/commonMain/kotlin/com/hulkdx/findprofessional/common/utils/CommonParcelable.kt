@@ -1,5 +1,6 @@
 package com.hulkdx.findprofessional.common.utils
 
+import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalTime
 
@@ -22,3 +23,4 @@ expect annotation class CommonTypeParceler<T, P : CommonParceler<in T>>()
 
 expect object LocalDateParceler : CommonParceler<LocalDate?>
 expect object LocalTimeParceler : CommonParceler<LocalTime?>
+expect object InstantParceler : CommonParceler<Instant?>
