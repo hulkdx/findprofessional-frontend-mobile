@@ -1,28 +1,22 @@
 package com.hulkdx.findprofessional.common.feature.home.model
 
+import com.hulkdx.findprofessional.common.feature.authentication.model.User
 import com.hulkdx.findprofessional.common.utils.CommonParcelable
 import com.hulkdx.findprofessional.common.utils.CommonParcelize
+import com.hulkdx.findprofessional.common.utils.CommonTypeParceler
+import com.hulkdx.findprofessional.common.utils.InstantParceler
+import kotlinx.datetime.Instant
 import kotlinx.serialization.Serializable
 
 @CommonParcelize
 @Serializable
+@CommonTypeParceler<Instant, InstantParceler>
 data class ProfessionalReview(
-    val total: Int,
-    val content: List<Content>,
-) : CommonParcelable {
+    val id: Long,
+    val user: User,
+    val rate: Int,
+    val contentText: String?,
+    val createdAt: Instant,
+    val updatedAt: Instant,
+): CommonParcelable
 
-    @CommonParcelize
-    @Serializable
-    data class Content(
-        val userFirstName: String,
-        val userLastName: String,
-        val userProfileImageUrl: String,
-        val star: Int,
-        val reviewText: String,
-        val reviewDate: String,
-    ) : CommonParcelable {
-
-        val userFullName: String
-            get() = "$userFirstName $userLastName"
-    }
-}
