@@ -148,6 +148,8 @@ private fun HomeScreenPreview() {
                     priceCurrency = "EUR",
                     email = "",
                     profileImageUrl = "https://imgur.com/gallery/7R6wmYb",
+                    availability = listOf(),
+                    reviews = ProfessionalReview(100, listOf()),
                 )
             ),
             error = null,

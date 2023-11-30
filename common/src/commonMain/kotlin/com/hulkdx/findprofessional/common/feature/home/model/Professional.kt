@@ -18,9 +18,8 @@ data class Professional(
     val rating: String? = null,
     val description: String? = null,
     val availability: List<ProfessionalAvailability> = listOf(),
-    val reviews: List<ProfessionalReview> = listOf(),
-    val createdAt: String = "",
-    val updatedAt: String = "",
+    // TODO: add to backend:
+    val reviews: ProfessionalReview? = null,
 ) : CommonParcelable {
     val fullName: String
         get() = "$firstName $lastName"

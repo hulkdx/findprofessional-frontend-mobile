@@ -27,10 +27,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.hulkdx.findprofessional.common.feature.authentication.model.User
+import com.hulkdx.findprofessional.common.feature.home.utils.Availability
 import com.hulkdx.findprofessional.common.feature.home.model.Professional
 import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalReview
-import com.hulkdx.findprofessional.common.feature.home.utils.Availability
 import com.hulkdx.findprofessional.core.R
 import com.hulkdx.findprofessional.core.commonui.CUAsyncImage
 import com.hulkdx.findprofessional.core.theme.AppTheme
@@ -39,7 +38,6 @@ import com.hulkdx.findprofessional.core.theme.body1Medium
 import com.hulkdx.findprofessional.core.theme.body2
 import com.hulkdx.findprofessional.core.theme.h3
 import com.hulkdx.findprofessional.resources.MR
-import kotlinx.datetime.Clock
 import org.koin.androidx.compose.getViewModel
 
 @Composable
@@ -74,7 +72,7 @@ fun HomeDetailScreen(
         item { TopHeader(professional) }
         // TODO: get the timezone from the user
         Availability(availability, "UTC +03.00")
-        Review(professional, onReviewShowMoreClicked)
+        Review(professional.reviews, onReviewShowMoreClicked)
     }
 }
 
@@ -241,19 +239,17 @@ private fun HomeDetailScreenPreview() {
                 "5.0",
                 "former professional boxer who competed from 1985 to 2005",
                 availability = listOf(),
-                reviews = listOf(
-                    ProfessionalReview(
-                        id = 0,
-                        user = User(
-                            profileImage = "",
-                            firstName = "Stefan",
-                            lastName = "Holman",
-                            email = "",
+                reviews = ProfessionalReview(
+                    100,
+                    listOf(
+                        ProfessionalReview.Content(
+                            userProfileImageUrl = "https://i.imgur.com/HDgjt8R.jpeg",
+                            userFirstName = "Stefan",
+                            userLastName = "Holman",
+                            star = 5,
+                            reviewText = "Authentic and Wonderful 12-days tour of Paris. 12-days tour of Paris. Authentic and Wonderful 12-days tour of Paris. Authentic and Wonderful 12-days tour of Paris.\nfeeling like I’ve learned a lot.",
+                            reviewDate = "Sep 18, 2023",
                         ),
-                        rate = 4,
-                        contentText = "Authentic and Wonderful 12-days tour of Paris. 12-days tour of Paris. Authentic and Wonderful 12-days tour of Paris. Authentic and Wonderful 12-days tour of Paris.\nfeeling like I’ve learned a lot.",
-                        createdAt = Clock.System.now(),
-                        updatedAt = Clock.System.now(),
                     )
                 ),
             ),
