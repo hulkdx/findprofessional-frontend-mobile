@@ -71,7 +71,7 @@ private fun AvailabilityContentTop() {
             .height(16.dp)
             .padding(start = 16.dp, end = 16.dp)
             .clip(RoundedCornerShape(topStart = 10.dp, topEnd = 16.dp))
-            .background(MaterialTheme.colorScheme.surfaceVariant)
+            .background(MaterialTheme.colorScheme.onPrimary)
     )
 }
 
@@ -82,7 +82,7 @@ private fun AvailabilityContentBottom(timeZone: String) {
             .fillMaxWidth()
             .padding(horizontal = 16.dp)
             .clip(RoundedCornerShape(bottomStart = 10.dp, bottomEnd = 16.dp))
-            .background(MaterialTheme.colorScheme.surfaceVariant)
+            .background(MaterialTheme.colorScheme.onPrimary)
             .padding(12.dp),
         text = "Base on your timezone (UTC +03:30)",
         style = body2,
@@ -96,7 +96,7 @@ private fun AvailabilityContentRow(rows: List<String>) {
     Row(
         Modifier
             .padding(start = 16.dp, end = 16.dp)
-            .background(MaterialTheme.colorScheme.surfaceVariant)
+            .background(MaterialTheme.colorScheme.onPrimary)
             .padding(start = 12.dp, end = 25.dp)
     ) {
         rows.forEachIndexed { index, item ->
