@@ -76,7 +76,7 @@ private fun ReviewContent(reviewContent: ProfessionalReview) {
             .padding(horizontal = 16.dp)
             .padding(bottom = 8.dp)
             .clip(shape = RoundedCornerShape(10.dp))
-            .background(MaterialTheme.colorScheme.onPrimary)
+            .background(MaterialTheme.colorScheme.surfaceVariant)
             .padding(bottom = 16.dp)
     ) {
         Header(reviewContent)
@@ -88,7 +88,7 @@ private fun ReviewContent(reviewContent: ProfessionalReview) {
 @Composable
 private fun Header(review: ProfessionalReview) {
     Row(Modifier.padding(top = 18.dp, start = 18.dp)) {
-        ReviewProfile(review.user.fullName)
+        ReviewProfile(review.user.profileImage)
         Column(
             Modifier
                 .align(CenterVertically)
@@ -101,7 +101,8 @@ private fun Header(review: ProfessionalReview) {
 }
 
 @Composable
-private fun ReviewProfile(profileImageUrl: String) {
+private fun ReviewProfile(profileImageUrl: String?) {
+    profileImageUrl ?: return
     CUAsyncImage(
         modifier = Modifier
             .size(35.dp)
@@ -168,7 +169,7 @@ private fun ShowMoreButton(onClick: () -> Unit) {
         contentPadding = PaddingValues(vertical = 16.dp),
         onClick = onClick,
         colors = ButtonDefaults.buttonColors(
-            containerColor = MaterialTheme.colorScheme.onPrimary,
+            containerColor = MaterialTheme.colorScheme.surfaceVariant,
             contentColor = Color.Black,
         ),
         shape = RoundedCornerShape(10.dp),
