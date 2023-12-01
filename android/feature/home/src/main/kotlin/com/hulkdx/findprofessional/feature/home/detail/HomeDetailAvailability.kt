@@ -35,17 +35,13 @@ import com.hulkdx.findprofessional.core.theme.body3
 import com.hulkdx.findprofessional.core.theme.h3Bold
 import com.hulkdx.findprofessional.resources.MR
 
-internal fun LazyListScope.Availability(
-    availabilities: Availability?,
-    timeZone: String,
-) {
+internal fun LazyListScope.Availability(availabilities: Availability?) {
     if (availabilities == null) return
     item { AvailabilityHeader() }
     item { AvailabilityContentTop() }
     items(availabilities) {
         AvailabilityContentRow(it)
     }
-    item { AvailabilityContentBottom(timeZone) }
 }
 
 
@@ -72,22 +68,6 @@ private fun AvailabilityContentTop() {
             .padding(start = 16.dp, end = 16.dp)
             .clip(RoundedCornerShape(topStart = 10.dp, topEnd = 16.dp))
             .background(MaterialTheme.colorScheme.surfaceVariant)
-    )
-}
-
-@Composable
-private fun AvailabilityContentBottom(timeZone: String) {
-    Text(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp)
-            .clip(RoundedCornerShape(bottomStart = 10.dp, bottomEnd = 16.dp))
-            .background(MaterialTheme.colorScheme.surfaceVariant)
-            .padding(12.dp),
-        text = "Base on your timezone (UTC +03:30)",
-        style = body2,
-        color = MaterialTheme.colorScheme.onTertiaryContainer,
-        textAlign = TextAlign.Center,
     )
 }
 
@@ -176,7 +156,6 @@ fun AvailabilityPreview() {
                     listOf("16-20", "0", "0", "0", "0", "0", "0"),
                     listOf("20-24", "0", "0", "0", "0", "4", "0"),
                 ),
-                timeZone = "UTC +03.00"
             )
         }
     }

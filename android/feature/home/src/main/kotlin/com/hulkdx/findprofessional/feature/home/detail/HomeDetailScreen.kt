@@ -72,8 +72,7 @@ fun HomeDetailScreen(
             .testTag("HomeDetailScreen")
     ) {
         item { TopHeader(professional) }
-        // TODO: get the timezone from the user
-        Availability(availability, "UTC +03.00")
+        Availability(availability)
         Review(professional, onReviewShowMoreClicked)
     }
 }
