@@ -70,19 +70,6 @@ object InMemoryApi {
                     to = "00:00".toLocalTime(),
                 ),
             ),
-            reviews = ProfessionalReview(
-                100,
-                listOf(
-                    ProfessionalReview.Content(
-                        userProfileImageUrl = "https://i.imgur.com/HDgjt8R.jpeg",
-                        userFirstName = "Stefan",
-                        userLastName = "Holman",
-                        star = 5,
-                        reviewText = "Authentic and Wonderful 12-days tour of Paris. 12-days tour of Paris. Authentic and Wonderful 12-days tour of Paris. Authentic and Wonderful 12-days tour of Paris.\nfeeling like I’ve learned a lot.",
-                        reviewDate = "Sep 18, 2023",
-                    ),
-                )
-            )
         ),
         Professional(
             2,
