@@ -22,7 +22,7 @@ class PaparazziTest {
     val paparazzi = Paparazzi()
 
     @get:Rule
-    val paparazzi2 = Paparazzi(
+    val paparazziFullHeight = Paparazzi(
         deviceConfig = DeviceConfig.NEXUS_5.copy(screenHeight = 5000)
     )
 
@@ -91,7 +91,7 @@ class PaparazziTest {
 
     @Test
     fun `HomeDetailScreen paparazzi test`() {
-        paparazzi2.paparazziTest {
+        paparazziFullHeight.paparazziTest {
             HomeDetailScreen(
                 professional = InMemoryApi.professionals[0],
                 // @formatter:off
