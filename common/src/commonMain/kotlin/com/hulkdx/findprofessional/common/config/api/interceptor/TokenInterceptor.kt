@@ -55,8 +55,8 @@ class TokenInterceptor(
                     throw e
                 }
             }
-            val newAccessToken = response.token.accessToken
-            val newRefreshToken = response.token.refreshToken
+            val newAccessToken = response.accessToken
+            val newRefreshToken = response.refreshToken
             accessTokenStorage.set(newAccessToken)
             refreshTokenStorage.set(newRefreshToken)
 

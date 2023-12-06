@@ -1,14 +1,19 @@
 package com.hulkdx.findprofessional.common.feature.authentication.login
 
-import com.hulkdx.findprofessional.common.feature.authentication.model.Auth
-import io.ktor.client.*
-import io.ktor.client.call.*
-import io.ktor.client.request.*
-import io.ktor.http.*
+import com.hulkdx.findprofessional.common.feature.authentication.model.Token
+import io.ktor.client.HttpClient
+import io.ktor.client.call.body
+import io.ktor.client.request.headers
+import io.ktor.client.request.post
+import io.ktor.client.request.setBody
+import io.ktor.client.request.url
+import io.ktor.http.ContentType
+import io.ktor.http.HttpHeaders
+import io.ktor.http.contentType
 import kotlinx.serialization.Serializable
 
 interface RefreshTokenApi {
-    suspend fun refreshToken(refreshToken: String, accessToken: String): Auth
+    suspend fun refreshToken(refreshToken: String, accessToken: String): Token
 }
 
 class RefreshTokenApiImpl(
@@ -17,7 +22,7 @@ class RefreshTokenApiImpl(
     override suspend fun refreshToken(
         refreshToken: String,
         accessToken: String,
-    ): Auth {
+    ): Token {
         return client.post {
             url(urlString)
             contentType(ContentType.Application.Json)
