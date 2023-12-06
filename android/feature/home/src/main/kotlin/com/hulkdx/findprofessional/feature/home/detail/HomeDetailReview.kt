@@ -57,7 +57,7 @@ internal fun LazyListScope.Review(
 }
 
 @Composable
-private fun ReviewHeader(reviewSize: String?) {
+private fun ReviewHeader(reviewSize: String) {
     Row(Modifier.padding(start = 16.dp, top = 32.dp, bottom = 16.dp)) {
         Text(
             modifier = Modifier.padding(start = 8.dp),
