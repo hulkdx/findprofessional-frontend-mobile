@@ -31,7 +31,7 @@ object InMemoryApi {
 
     var user: RegisterRequest? = null
 
-    val reviews = listOf(
+    private val reviews = listOf(
         ProfessionalReview(
             id = 0,
             user = User(

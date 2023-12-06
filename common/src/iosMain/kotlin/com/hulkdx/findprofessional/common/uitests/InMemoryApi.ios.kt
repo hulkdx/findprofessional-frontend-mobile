@@ -70,6 +70,7 @@ object InMemoryApi {
                     to = "00:00".toLocalTime(),
                 ),
             ),
+            reviewSize = "100",
         ),
         Professional(
             2,
@@ -82,7 +83,7 @@ object InMemoryApi {
             "https://i.imgur.com/FVABZOc.jpeg",
             null,
             "actress from 1985 to 2005",
-            availability = listOf(),
+            reviewSize = "100",
         )
     )
 
