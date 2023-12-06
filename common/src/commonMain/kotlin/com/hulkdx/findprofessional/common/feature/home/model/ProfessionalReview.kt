@@ -6,6 +6,8 @@ import com.hulkdx.findprofessional.common.utils.CommonParcelize
 import com.hulkdx.findprofessional.common.utils.CommonTypeParceler
 import com.hulkdx.findprofessional.common.utils.InstantParceler
 import kotlinx.datetime.Instant
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.toLocalDateTime
 import kotlinx.serialization.Serializable
 
 @CommonParcelize
@@ -18,5 +20,10 @@ data class ProfessionalReview(
     val contentText: String?,
     val createdAt: Instant,
     val updatedAt: Instant,
-): CommonParcelable
+): CommonParcelable {
+    val formattedDate: String = updatedAt.toLocalDateTime(TimeZone.UTC)
+        .let {
+            "${it.dayOfMonth} ${it.monthNumber} ${it.year}"
+        }
+}
 

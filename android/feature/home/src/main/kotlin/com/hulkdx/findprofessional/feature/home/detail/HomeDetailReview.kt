@@ -80,7 +80,7 @@ private fun ReviewContent(reviewContent: ProfessionalReview) {
     ) {
         Header(reviewContent)
         ReviewText(reviewContent.contentText)
-        ReviewDate(reviewContent.updatedAt.toString())
+        ReviewDate(reviewContent.formattedDate)
     }
 }
 
