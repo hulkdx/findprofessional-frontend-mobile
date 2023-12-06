@@ -3,10 +3,9 @@ package com.hulkdx.findprofessional.feature.developer
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.platform.LocalInspectionMode
+import app.cash.paparazzi.DeviceConfig
 import app.cash.paparazzi.Paparazzi
 import com.hulkdx.findprofessional.InMemoryApi
-import com.hulkdx.findprofessional.common.feature.home.model.Professional
-import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalReview
 import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.feature.authentication.login.LoginScreen
 import com.hulkdx.findprofessional.feature.authentication.signup.SignUpScreen
@@ -22,20 +21,25 @@ class PaparazziTest {
     @get:Rule
     val paparazzi = Paparazzi()
 
+    @get:Rule
+    val paparazzi2 = Paparazzi(
+        deviceConfig = DeviceConfig.NEXUS_5.copy(screenHeight = 5000)
+    )
+
     @Before
     fun setup() {
     }
 
     @Test
     fun `SplashScreen paparazzi test`() {
-        paparazziTest {
+        paparazzi.paparazziTest {
             Splash()
         }
     }
 
     @Test
     fun `LoginScreen paparazzi test`() {
-        paparazziTest {
+        paparazzi.paparazziTest {
             LoginScreen(
                 email = "",
                 onEmailChanged = {},
@@ -54,7 +58,7 @@ class PaparazziTest {
 
     @Test
     fun `SignUpScreen paparazzi test`() {
-        paparazziTest {
+        paparazzi.paparazziTest {
             SignUpScreen(
                 firstName = "",
                 onFirstNameChanged = {},
@@ -73,7 +77,7 @@ class PaparazziTest {
 
     @Test
     fun `HomeScreen paparazzi test`() {
-        paparazziTest {
+        paparazzi.paparazziTest {
             HomeScreen(
                 professionals = InMemoryApi.professionals,
                 error = null,
@@ -87,7 +91,7 @@ class PaparazziTest {
 
     @Test
     fun `HomeDetailScreen paparazzi test`() {
-        paparazziTest {
+        paparazzi2.paparazziTest {
             HomeDetailScreen(
                 professional = InMemoryApi.professionals[0],
                 // @formatter:off
@@ -109,7 +113,7 @@ class PaparazziTest {
 
     @Test
     fun `ProfileScreen paparazzi test`() {
-        paparazziTest {
+        paparazzi.paparazziTest {
             ProfileScreen(
                 onLogoutClicked = {},
                 error = "",
@@ -118,8 +122,8 @@ class PaparazziTest {
         }
     }
 
-    private fun paparazziTest(content: @Composable () -> Unit) {
-        paparazzi.snapshot {
+    private fun Paparazzi.paparazziTest(content: @Composable () -> Unit) {
+        snapshot {
             CompositionLocalProvider(LocalInspectionMode provides true) {
                 AppTheme {
                     content()
