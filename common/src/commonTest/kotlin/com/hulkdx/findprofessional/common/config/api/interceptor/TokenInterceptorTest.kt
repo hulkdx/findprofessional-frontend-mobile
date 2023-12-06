@@ -130,7 +130,7 @@ class TokenInterceptorTest {
         val req: HttpRequestBuilder.() -> Unit = {
             header(HttpHeaders.Authorization, "Bearer $oldAccessToken")
         }
-        refreshTokenApi.response = Auth(Token(newAccessToken, "irrelevant"), newUser())
+        refreshTokenApi.response = Token(newAccessToken, "irrelevant")
 
         accessTokenStorage.value = "not empty"
         refreshTokenStorage.value = "not empty"
@@ -183,9 +183,9 @@ class TokenInterceptorTest {
 
     private class RefreshTokenApiMock : RefreshTokenApi {
         var isRefreshTokenCalled = false
-        var response: Auth = Auth(Token("access", "refresh"), newUser())
+        var response = Token("access", "refresh")
 
-        override suspend fun refreshToken(refreshToken: String, accessToken: String): Auth {
+        override suspend fun refreshToken(refreshToken: String, accessToken: String): Token {
             isRefreshTokenCalled = true
             return response
         }

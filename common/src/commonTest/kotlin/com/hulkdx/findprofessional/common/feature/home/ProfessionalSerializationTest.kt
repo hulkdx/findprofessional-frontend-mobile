@@ -23,6 +23,7 @@ class ProfessionalSerializationTest {
                     "profileImageUrl": "image_url_1",
                     "description": "Experienced life coach",
                     "rating": "5.00",
+                    "reviewSize": "100",
                     "availability": [
                       {
                         "date": "2023-10-31",
@@ -45,6 +46,7 @@ class ProfessionalSerializationTest {
                     "priceNumber": 100,
                     "priceCurrency": "USD",
                     "profileImageUrl": "image_url_1",
+                    "reviewSize": "10",
                     "description": "Experienced life coach"
                   }
                 ]
