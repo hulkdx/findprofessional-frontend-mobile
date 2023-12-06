@@ -42,6 +42,7 @@ internal fun LazyListScope.Availability(availabilities: Availability?) {
     items(availabilities) {
         AvailabilityContentRow(it)
     }
+    item { AvailabilityContentBottom() }
 }
 
 
@@ -138,6 +139,18 @@ private fun RowScope.AvailabilityText(row: String) {
             .align(Alignment.CenterVertically),
         style = body3,
         textAlign = TextAlign.Center,
+    )
+}
+
+@Composable
+private fun AvailabilityContentBottom() {
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp)
+            .clip(RoundedCornerShape(bottomStart = 10.dp, bottomEnd = 16.dp))
+            .background(MaterialTheme.colorScheme.surfaceVariant)
+            .padding(12.dp),
     )
 }
 
