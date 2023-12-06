@@ -70,19 +70,7 @@ object InMemoryApi {
                     to = "00:00".toLocalTime(),
                 ),
             ),
-            reviews = ProfessionalReview(
-                100,
-                listOf(
-                    ProfessionalReview.Content(
-                        userProfileImageUrl = "https://i.imgur.com/HDgjt8R.jpeg",
-                        userFirstName = "Stefan",
-                        userLastName = "Holman",
-                        star = 5,
-                        reviewText = "Authentic and Wonderful 12-days tour of Paris. 12-days tour of Paris. Authentic and Wonderful 12-days tour of Paris. Authentic and Wonderful 12-days tour of Paris.\nfeeling like I’ve learned a lot.",
-                        reviewDate = "Sep 18, 2023",
-                    ),
-                )
-            )
+            reviewSize = "100",
         ),
         Professional(
             2,
@@ -95,7 +83,7 @@ object InMemoryApi {
             "https://i.imgur.com/FVABZOc.jpeg",
             null,
             "actress from 1985 to 2005",
-            availability = listOf(),
+            reviewSize = "100",
         )
     )
 

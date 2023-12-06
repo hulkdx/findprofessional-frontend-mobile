@@ -1,28 +1,29 @@
 package com.hulkdx.findprofessional.common.feature.home.model
 
+import com.hulkdx.findprofessional.common.feature.authentication.model.User
 import com.hulkdx.findprofessional.common.utils.CommonParcelable
 import com.hulkdx.findprofessional.common.utils.CommonParcelize
+import com.hulkdx.findprofessional.common.utils.CommonTypeParceler
+import com.hulkdx.findprofessional.common.utils.InstantParceler
+import kotlinx.datetime.Instant
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.toLocalDateTime
 import kotlinx.serialization.Serializable
 
 @CommonParcelize
 @Serializable
+@CommonTypeParceler<Instant, InstantParceler>
 data class ProfessionalReview(
-    val total: Int,
-    val content: List<Content>,
-) : CommonParcelable {
-
-    @CommonParcelize
-    @Serializable
-    data class Content(
-        val userFirstName: String,
-        val userLastName: String,
-        val userProfileImageUrl: String,
-        val star: Int,
-        val reviewText: String,
-        val reviewDate: String,
-    ) : CommonParcelable {
-
-        val userFullName: String
-            get() = "$userFirstName $userLastName"
-    }
+    val id: Long,
+    val user: User,
+    val rate: Int,
+    val contentText: String?,
+    val createdAt: Instant,
+    val updatedAt: Instant,
+): CommonParcelable {
+    val formattedDate: String = updatedAt.toLocalDateTime(TimeZone.UTC)
+        .let {
+            "${it.dayOfMonth} ${it.monthNumber} ${it.year}"
+        }
 }
+

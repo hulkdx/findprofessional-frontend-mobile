@@ -14,6 +14,8 @@ import com.hulkdx.findprofessional.common.feature.home.ProfessionalApi
 import com.hulkdx.findprofessional.common.feature.home.homeModule
 import com.hulkdx.findprofessional.common.feature.home.model.Professional
 import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalAvailability
+import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalReview
+import kotlinx.datetime.Clock
 import kotlinx.datetime.toLocalDate
 import kotlinx.datetime.toLocalTime
 import org.koin.core.context.loadKoinModules
@@ -28,6 +30,35 @@ object InMemoryApi {
     }
 
     var user: RegisterRequest? = null
+
+    private val reviews = listOf(
+        ProfessionalReview(
+            id = 0,
+            user = User(
+                email = "kasey.harper@example.com",
+                firstName = "Vilma",
+                lastName = "Rory",
+                profileImage = "https://i.imgur.com/D99rBXe.jpeg"
+            ),
+            rate = 5,
+            contentText = "It was really great",
+            createdAt = Clock.System.now(),
+            updatedAt = Clock.System.now()
+        ),
+        ProfessionalReview(
+            id = 0,
+            user = User(
+                email = "kasey.harper@example.com",
+                profileImage = "https://i.imgur.com/A755ZPz.jpeg",
+                firstName = "Elwood",
+                lastName = "Agnes"
+            ),
+            rate = 4,
+            contentText = "Not bad",
+            createdAt = Clock.System.now(),
+            updatedAt = Clock.System.now()
+        )
+    )
 
     val professionals = listOf(
         Professional(
@@ -68,6 +99,8 @@ object InMemoryApi {
                     to = "00:00".toLocalTime(),
                 ),
             ),
+            reviewSize = "100",
+            reviews = reviews
         ),
         Professional(
             2,
@@ -107,6 +140,8 @@ object InMemoryApi {
                     to = "00:00".toLocalTime(),
                 ),
             ),
+            reviewSize = "100",
+            reviews = reviews,
         )
     )
 

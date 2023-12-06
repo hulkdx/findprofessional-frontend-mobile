@@ -8,7 +8,6 @@ import com.hulkdx.findprofessional.common.feature.authentication.model.Auth
 import com.hulkdx.findprofessional.common.feature.authentication.login.LoginApi
 import com.hulkdx.findprofessional.common.feature.authentication.login.RefreshTokenApi
 import com.hulkdx.findprofessional.common.feature.authentication.model.Token
-import com.hulkdx.findprofessional.common.feature.authentication.model.User
 import com.hulkdx.findprofessional.common.feature.authentication.signup.model.LoginRequest
 import com.hulkdx.findprofessional.tests.screen.login.launchLoginScreen
 import com.hulkdx.findprofessional.utils.KoinTestRule
@@ -31,15 +30,14 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import org.koin.core.context.loadKoinModules
 import org.koin.dsl.bind
 import org.koin.dsl.module
 
 class RefreshTokenTest {
 
     companion object {
-        private val INVALID_TOKENS = Auth(Token("invalid_irrelevant_at", "invalid_irrelevant_rt"), newUser())
-        private val VALID_TOKENS = Auth(Token("valid_irrelevant_at", "valid_irrelevant_rt"), newUser())
+        private val INVALID_TOKENS = Token("invalid_irrelevant_at", "invalid_irrelevant_rt")
+        private val VALID_TOKENS = Token("valid_irrelevant_at", "valid_irrelevant_rt")
     }
 
     private val module = module {
@@ -110,7 +108,7 @@ class RefreshTokenTest {
     }
 
     private fun loginWithValidTokens() {
-        loginApi.response = VALID_TOKENS
+        loginApi.response = Auth(VALID_TOKENS, newUser())
         launchLoginScreen(composeRule) {
             typeEmail("irrelevant")
             typePassword("irrelevant")
@@ -121,7 +119,7 @@ class RefreshTokenTest {
     }
 
     private suspend fun callApiWithInvalidToken() {
-        accessTokenStorage.set(INVALID_TOKENS.token.accessToken)
+        accessTokenStorage.set(INVALID_TOKENS.accessToken)
         runCatching {
             randomApi.randomApi()
         }
@@ -152,11 +150,11 @@ class RefreshTokenTest {
     }
 
     private class RefreshApiMock : RefreshTokenApi {
-        var response: Auth? = null
+        var response: Token? = null
         var responseError: (suspend () -> Unit)? = null
         var isRefreshTokenCalled = false
 
-        override suspend fun refreshToken(refreshToken: String, accessToken: String): Auth {
+        override suspend fun refreshToken(refreshToken: String, accessToken: String): Token {
             isRefreshTokenCalled = true
             responseError?.let { it() }
             return response!!
@@ -198,7 +196,7 @@ class RefreshTokenTest {
         }
 
         private fun HttpRequestData.hasValidAccessToken(): Boolean {
-            return getAccessToken() != INVALID_TOKENS.token.accessToken
+            return getAccessToken() != INVALID_TOKENS.accessToken
         }
     }
 

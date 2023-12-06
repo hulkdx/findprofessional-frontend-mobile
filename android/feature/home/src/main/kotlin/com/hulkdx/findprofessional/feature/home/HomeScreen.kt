@@ -147,9 +147,8 @@ private fun HomeScreenPreview() {
                     priceNumber = 100,
                     priceCurrency = "EUR",
                     email = "",
+                    reviewSize = "100",
                     profileImageUrl = "https://imgur.com/gallery/7R6wmYb",
-                    availability = listOf(),
-                    reviews = ProfessionalReview(100, listOf()),
                 )
             ),
             error = null,
