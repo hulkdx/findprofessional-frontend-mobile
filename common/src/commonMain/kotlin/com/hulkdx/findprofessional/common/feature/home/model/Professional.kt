@@ -18,6 +18,7 @@ data class Professional(
     val rating: String? = null,
     val description: String? = null,
     val availability: List<ProfessionalAvailability> = listOf(),
+    val reviewSize: String,
     val reviews: List<ProfessionalReview> = listOf(),
     val createdAt: String = "",
     val updatedAt: String = "",

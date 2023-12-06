@@ -41,7 +41,6 @@ import com.hulkdx.findprofessional.core.theme.body3SemiBold
 import com.hulkdx.findprofessional.core.theme.h3Bold
 import com.hulkdx.findprofessional.resources.MR
 import kotlinx.datetime.Clock
-import kotlinx.datetime.Instant
 
 
 internal fun LazyListScope.Review(
@@ -50,7 +49,7 @@ internal fun LazyListScope.Review(
 ) {
     if (professional.reviews.isEmpty()) return
 
-    item { ReviewHeader(professional.rating) }
+    item { ReviewHeader(professional.reviewSize) }
     items(professional.reviews) {
         ReviewContent(it)
     }
@@ -58,12 +57,12 @@ internal fun LazyListScope.Review(
 }
 
 @Composable
-private fun ReviewHeader(totalReviews: String?) {
+private fun ReviewHeader(reviewSize: String?) {
     Row(Modifier.padding(start = 16.dp, top = 32.dp, bottom = 16.dp)) {
         Text(
             modifier = Modifier.padding(start = 8.dp),
             style = h3Bold,
-            text = "$totalReviews ${stringResource(MR.strings.reviews.resourceId)}",
+            text = "$reviewSize ${stringResource(MR.strings.reviews.resourceId)}",
         )
     }
 }

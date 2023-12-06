@@ -240,6 +240,7 @@ private fun HomeDetailScreenPreview() {
                 "5.0",
                 "former professional boxer who competed from 1985 to 2005",
                 availability = listOf(),
+                reviewSize = "100",
                 reviews = listOf(
                     ProfessionalReview(
                         id = 0,

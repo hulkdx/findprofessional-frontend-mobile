@@ -99,6 +99,7 @@ object InMemoryApi {
                     to = "00:00".toLocalTime(),
                 ),
             ),
+            reviewSize = "100",
             reviews = reviews
         ),
         Professional(
@@ -139,6 +140,7 @@ object InMemoryApi {
                     to = "00:00".toLocalTime(),
                 ),
             ),
+            reviewSize = "100",
             reviews = reviews,
         )
     )
