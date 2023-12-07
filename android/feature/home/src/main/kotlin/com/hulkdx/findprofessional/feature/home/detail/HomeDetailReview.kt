@@ -26,6 +26,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -38,7 +40,7 @@ import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.core.theme.body3
 import com.hulkdx.findprofessional.core.theme.body3Bold
 import com.hulkdx.findprofessional.core.theme.body3SemiBold
-import com.hulkdx.findprofessional.core.theme.h3Bold
+import com.hulkdx.findprofessional.core.theme.interFamily
 import com.hulkdx.findprofessional.resources.MR
 import kotlinx.datetime.Clock
 
@@ -61,7 +63,12 @@ private fun ReviewHeader(reviewSize: String) {
     Row(Modifier.padding(start = 16.dp, top = 32.dp, bottom = 16.dp)) {
         Text(
             modifier = Modifier.padding(start = 8.dp),
-            style = h3Bold,
+            style = TextStyle(
+                fontFamily = interFamily,
+                fontWeight = FontWeight.Bold,
+                fontSize = 17.sp,
+                lineHeight = 20.sp,
+            ),
             text = "$reviewSize ${stringResource(MR.strings.reviews.resourceId)}",
         )
     }

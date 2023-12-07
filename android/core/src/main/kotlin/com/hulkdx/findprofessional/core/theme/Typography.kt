@@ -23,57 +23,25 @@ val interFamily = FontFamily(
 
 // endregion
 
-val h1 = TextStyle(
-    fontFamily = interFamily,
-    fontWeight = FontWeight.ExtraBold,
-    fontSize = 30.sp,
-)
-
-val h3 = TextStyle(
-    fontFamily = interFamily,
-    fontWeight = FontWeight.Medium,
-    fontSize = 17.sp,
-    lineHeight = 20.sp,
-)
-
-val h3Bold = TextStyle(
-    fontFamily = interFamily,
-    fontWeight = FontWeight.Bold,
-    fontSize = 17.sp,
-    lineHeight = 20.sp,
-)
-
 val body1 = TextStyle(
     fontFamily = interFamily,
     fontWeight = FontWeight.Normal,
-    fontSize = 14.sp,
+    fontSize = 16.sp,
     lineHeight = 20.sp,
 )
 
-val body1Medium = TextStyle(
-    fontFamily = interFamily,
-    fontWeight = FontWeight.Medium,
-    fontSize = 14.sp,
-    lineHeight = 23.sp,
-)
+val body1Medium = body1.copy(fontWeight = FontWeight.Medium)
 
 val body2 = TextStyle(
     fontFamily = interFamily,
     fontWeight = FontWeight.Normal,
-    fontSize = 16.sp,
-)
-
-val body2Medium = TextStyle(
-    fontFamily = interFamily,
-    fontWeight = FontWeight.Medium,
-    fontSize = 16.sp,
-)
-
-val body2Bold = TextStyle(
-    fontFamily = interFamily,
-    fontWeight = FontWeight.Bold,
     fontSize = 14.sp,
+    lineHeight = 20.sp,
 )
+
+val body2Medium = body2.copy(fontWeight = FontWeight.Medium)
+
+val body2Bold = body2.copy(fontWeight = FontWeight.Bold)
 
 val body3 = TextStyle(
     fontFamily = interFamily,
@@ -81,14 +49,8 @@ val body3 = TextStyle(
     fontSize = 12.sp,
 )
 
-val body3Bold = TextStyle(
-    fontFamily = interFamily,
-    fontWeight = FontWeight.Bold,
-    fontSize = 12.sp,
-)
+val body3Medium = body3.copy(fontWeight = FontWeight.Medium)
 
-val body3SemiBold = TextStyle(
-    fontFamily = interFamily,
-    fontWeight = FontWeight.SemiBold,
-    fontSize = 12.sp,
-)
+val body3Bold = body3.copy(fontWeight = FontWeight.Bold)
+
+val body3SemiBold = body3.copy(fontWeight = FontWeight.SemiBold)

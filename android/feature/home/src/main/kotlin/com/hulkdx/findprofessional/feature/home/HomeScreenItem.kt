@@ -27,10 +27,11 @@ import com.hulkdx.findprofessional.common.feature.home.model.Professional
 import com.hulkdx.findprofessional.core.R
 import com.hulkdx.findprofessional.core.commonui.CUAsyncImage
 import com.hulkdx.findprofessional.core.theme.AppTheme
-import com.hulkdx.findprofessional.core.theme.body1
-import com.hulkdx.findprofessional.core.theme.body1Medium
+import com.hulkdx.findprofessional.core.theme.body2
 import com.hulkdx.findprofessional.core.theme.body2Bold
-import com.hulkdx.findprofessional.core.theme.h3
+import com.hulkdx.findprofessional.core.theme.body2Medium
+import com.hulkdx.findprofessional.core.theme.body3
+import com.hulkdx.findprofessional.core.theme.body3Medium
 import com.hulkdx.findprofessional.core.utils.singleClick
 import com.hulkdx.findprofessional.resources.MR
 
@@ -47,35 +48,47 @@ fun HomeScreenItem(
             .fillMaxWidth()
             .clip(shape = RoundedCornerShape(16.dp))
             .background(MaterialTheme.colorScheme.surfaceVariant)
-            .padding(bottom = 20.dp),
+            .padding(bottom = 16.dp)
+        ,
     ) {
-        Row {
-            ProfileImage(professional)
-            Column(
-                Modifier
-                    .padding(start = 16.dp)
-                    .weight(1F)
-            ) {
-                FullName(professional)
-                CoachType(professional)
-                Rating(professional)
-            }
-            LikeButton(professional, onLikeClick)
-        }
+        TopRow(professional, onLikeClick)
         Description(professional)
         Price(professional)
     }
 }
 
 @Composable
+private fun TopRow(
+    professional: Professional,
+    onLikeClick: (Professional) -> Unit,
+) {
+    Row {
+        ProfileImage(professional)
+        Column(
+            Modifier
+                .padding(start = 14.dp)
+                .weight(1F)
+        ) {
+            FullName(professional)
+            CoachType(professional)
+            Rating(professional)
+        }
+        LikeButton(professional, onLikeClick)
+    }
+}
+
+@Composable
 private fun ProfileImage(professional: Professional) {
-    val image = professional.profileImageUrl ?: return
+    val url = professional.profileImageUrl
+    if (url.isNullOrBlank()) {
+        return
+    }
     CUAsyncImage(
         modifier = Modifier
-            .padding(start = 16.dp, top = 24.dp)
-            .size(52.dp)
+            .padding(start = 16.dp, top = 10.dp)
+            .size(50.dp)
             .clip(shape = CircleShape),
-        url = professional.profileImageUrl ?: ""
+        url = url,
     )
 }
 
@@ -83,8 +96,9 @@ private fun ProfileImage(professional: Professional) {
 private fun FullName(professional: Professional) {
     Text(
         modifier = Modifier.padding(top = 16.dp),
-        style = h3,
+        style = body2Medium,
         maxLines = 1,
+        color = Color.Black,
         text = professional.fullName,
     )
 }
@@ -92,9 +106,9 @@ private fun FullName(professional: Professional) {
 @Composable
 private fun CoachType(professional: Professional) {
     Text(
-        modifier = Modifier.padding(top = 4.dp),
-        style = body1Medium,
-        color = MaterialTheme.colorScheme.onTertiaryContainer,
+        modifier = Modifier.padding(top = 1.dp),
+        style = body3,
+        color = Color(0xFF9D9CAC),
         maxLines = 1,
         text = professional.coachType ?: "",
     )
@@ -103,19 +117,16 @@ private fun CoachType(professional: Professional) {
 @Composable
 private fun Rating(professional: Professional) {
     if (professional.rating == null) {
-        Icon(
-            modifier = Modifier.padding(top = 2.dp),
-            painter = painterResource(R.drawable.ic_new_rating),
-            tint = Color(0xFF00B3BD),
-            contentDescription = "",
-        )
         return
     }
     Row(
         modifier = Modifier.padding(top = 2.dp),
     ) {
         Icon(
-            modifier = Modifier.align(CenterVertically),
+            modifier = Modifier
+                .size(14.dp)
+                .align(CenterVertically)
+            ,
             painter = painterResource(R.drawable.ic_star),
             tint = MaterialTheme.colorScheme.scrim,
             contentDescription = "",
@@ -123,6 +134,7 @@ private fun Rating(professional: Professional) {
         Text(
             modifier = Modifier.padding(start = 2.dp),
             color = MaterialTheme.colorScheme.scrim,
+            style = body3Medium,
             maxLines = 1,
             text = professional.rating ?: "0.0",
         )
@@ -156,7 +168,7 @@ private fun Description(professional: Professional) {
                 start = 16.dp,
                 end = 16.dp,
             ),
-        style = body1,
+        style = body2,
         text = description,
     )
 }
@@ -169,7 +181,7 @@ private fun Price(professional: Professional) {
                 top = 16.dp,
                 start = 16.dp,
             ),
-        style = body1,
+        style = body2,
         text = stringResource(MR.strings.hourly_rate.resourceId),
         maxLines = 1,
         color = MaterialTheme.colorScheme.onTertiaryContainer,

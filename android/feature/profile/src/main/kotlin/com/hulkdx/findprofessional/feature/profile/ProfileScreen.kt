@@ -28,7 +28,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.hulkdx.findprofessional.core.commonui.CUSnackBar
 import com.hulkdx.findprofessional.core.theme.AppTheme
-import com.hulkdx.findprofessional.core.theme.h3
+import com.hulkdx.findprofessional.core.theme.body1
 import com.hulkdx.findprofessional.feature.navigation.navbar.AppNavigationBar
 import dev.icerock.moko.resources.compose.localized
 import org.koin.androidx.compose.getViewModel
@@ -93,7 +93,7 @@ private fun ProfileItem(
         Text(
             modifier = Modifier,
             text = text,
-            style = h3,
+            style = body1,
         )
         Icon(
             imageVector = icon,
