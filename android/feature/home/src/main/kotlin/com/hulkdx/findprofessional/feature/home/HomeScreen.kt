@@ -79,8 +79,7 @@ private fun HomeScreen(
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
     ) {
-        Search(onSearchClick)
-        Title()
+        // Search(onSearchClick)
         ProfessionalList(
             professionals = professionals,
             onLikeClick = onLikeClick,
@@ -100,15 +99,6 @@ private fun Search(onSearch: (String) -> Unit) {
 }
 
 @Composable
-private fun Title() {
-    Text(
-        modifier = Modifier.padding(top = 24.dp, start = 24.dp),
-        text = stringResource(id = MR.strings.professionals.resourceId),
-        style = h1,
-    )
-}
-
-@Composable
 private fun ColumnScope.ProfessionalList(
     professionals: List<Professional>,
     onLikeClick: (Professional) -> Unit,
@@ -116,7 +106,7 @@ private fun ColumnScope.ProfessionalList(
 ) {
     LazyColumn(
         modifier = Modifier
-            .padding(horizontal = 16.dp, vertical = 8.dp)
+            .padding(16.dp)
             .weight(1F, true),
         verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
