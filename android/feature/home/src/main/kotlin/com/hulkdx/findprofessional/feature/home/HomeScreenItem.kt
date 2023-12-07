@@ -35,7 +35,7 @@ import com.hulkdx.findprofessional.core.utils.singleClick
 import com.hulkdx.findprofessional.resources.MR
 
 @Composable
-fun ProfessionalItem(
+fun HomeScreenItem(
     professional: Professional,
     onLikeClick: (Professional) -> Unit,
     onItemClick: (Professional) -> Unit,
@@ -186,7 +186,7 @@ private fun Price(professional: Professional) {
 @Composable
 private fun ProfessionalItemPreview() {
     AppTheme {
-        ProfessionalItem(
+        HomeScreenItem(
             professional = Professional(
                 id = 1,
                 firstName = "Mike",
@@ -211,7 +211,7 @@ private fun ProfessionalItemPreview() {
 @Composable
 private fun ProfessionalItemWithoutRatingPreview() {
     AppTheme {
-        ProfessionalItem(
+        HomeScreenItem(
             professional = Professional(
                 id = 1,
                 firstName = "Mike",

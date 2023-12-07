@@ -10,23 +10,17 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.hulkdx.findprofessional.common.feature.home.model.Professional
-import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalReview
 import com.hulkdx.findprofessional.core.commonui.CUSearchField
 import com.hulkdx.findprofessional.core.theme.AppTheme
-import com.hulkdx.findprofessional.core.theme.h1
 import com.hulkdx.findprofessional.feature.navigation.navbar.AppNavBarContainer
-import com.hulkdx.findprofessional.resources.MR
 import dev.icerock.moko.resources.compose.localized
-import dev.icerock.moko.resources.desc.StringDesc
 import org.koin.androidx.compose.getViewModel
 
 @Composable
@@ -80,7 +74,7 @@ private fun HomeScreen(
             .verticalScroll(rememberScrollState())
     ) {
         // Search(onSearchClick)
-        ProfessionalList(
+        HomeScreenItemList(
             professionals = professionals,
             onLikeClick = onLikeClick,
             onItemClick = onItemClick,
@@ -99,7 +93,7 @@ private fun Search(onSearch: (String) -> Unit) {
 }
 
 @Composable
-private fun ColumnScope.ProfessionalList(
+private fun ColumnScope.HomeScreenItemList(
     professionals: List<Professional>,
     onLikeClick: (Professional) -> Unit,
     onItemClick: (Professional) -> Unit,
@@ -114,7 +108,7 @@ private fun ColumnScope.ProfessionalList(
             professionals,
             key = { it.id },
         ) { professional ->
-            ProfessionalItem(
+            HomeScreenItem(
                 professional = professional,
                 onLikeClick = onLikeClick,
                 onItemClick = onItemClick,
