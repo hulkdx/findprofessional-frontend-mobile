@@ -10,6 +10,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.core.theme.body1
+import com.hulkdx.findprofessional.core.theme.body1Medium
 
 @Composable
 fun CUFilledButton(
@@ -25,7 +26,7 @@ fun CUFilledButton(
     ) {
         Text(
             text = text,
-            style = body1,
+            style = body1Medium,
         )
     }
 }
