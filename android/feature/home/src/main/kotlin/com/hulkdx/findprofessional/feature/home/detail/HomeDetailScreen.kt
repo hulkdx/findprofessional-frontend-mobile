@@ -159,7 +159,7 @@ private fun Price(professional: Professional) {
         Text(
             modifier = Modifier.weight(1F),
             style = body2,
-            text = stringResource(MR.strings.hourly_rate.resourceId),
+            text = stringResource(MR.strings.perHour.resourceId),
             maxLines = 1,
             color = MaterialTheme.colorScheme.onTertiaryContainer,
         )

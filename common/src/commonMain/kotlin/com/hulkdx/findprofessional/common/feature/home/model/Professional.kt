@@ -27,5 +27,7 @@ data class Professional(
         get() = "$firstName $lastName"
     val price: String
         get() = "$priceCurrency $priceNumber"
+    // TODO:
+    val currencySymbol = "€"
 }
 

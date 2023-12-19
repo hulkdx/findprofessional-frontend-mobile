@@ -14,6 +14,8 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.Bottom
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -21,17 +23,22 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.hulkdx.findprofessional.common.feature.home.model.Professional
 import com.hulkdx.findprofessional.core.R
 import com.hulkdx.findprofessional.core.commonui.CUAsyncImage
 import com.hulkdx.findprofessional.core.theme.AppTheme
+import com.hulkdx.findprofessional.core.theme.body1
 import com.hulkdx.findprofessional.core.theme.body2
 import com.hulkdx.findprofessional.core.theme.body2Bold
 import com.hulkdx.findprofessional.core.theme.body2Medium
 import com.hulkdx.findprofessional.core.theme.body3
 import com.hulkdx.findprofessional.core.theme.body3Medium
+import com.hulkdx.findprofessional.core.theme.h1
+import com.hulkdx.findprofessional.core.theme.h2
+import com.hulkdx.findprofessional.core.theme.h2Medium
 import com.hulkdx.findprofessional.core.utils.singleClick
 import com.hulkdx.findprofessional.resources.MR
 
@@ -70,8 +77,10 @@ private fun TopRow(
                 .weight(1F)
         ) {
             FullName(professional)
-            CoachType(professional)
-            Rating(professional)
+            Row(Modifier.padding(top = 2.dp)) {
+                CoachType(professional)
+                Rating(professional)
+            }
         }
         LikeButton(professional, onLikeClick)
     }
@@ -85,7 +94,7 @@ private fun ProfileImage(professional: Professional) {
     }
     CUAsyncImage(
         modifier = Modifier
-            .padding(start = 16.dp, top = 10.dp)
+            .padding(start = 16.dp, top = 16.dp)
             .size(50.dp)
             .clip(shape = CircleShape),
         url = url,
@@ -96,7 +105,7 @@ private fun ProfileImage(professional: Professional) {
 private fun FullName(professional: Professional) {
     Text(
         modifier = Modifier.padding(top = 16.dp),
-        style = body2Medium,
+        style = h2Medium,
         maxLines = 1,
         color = Color.Black,
         text = professional.fullName,
@@ -106,8 +115,7 @@ private fun FullName(professional: Professional) {
 @Composable
 private fun CoachType(professional: Professional) {
     Text(
-        modifier = Modifier.padding(top = 1.dp),
-        style = body3,
+        style = body2,
         color = Color(0xFF9D9CAC),
         maxLines = 1,
         text = professional.coachType ?: "",
@@ -120,7 +128,7 @@ private fun Rating(professional: Professional) {
         return
     }
     Row(
-        modifier = Modifier.padding(top = 2.dp),
+        modifier = Modifier.padding(start = 10.dp),
     ) {
         Icon(
             modifier = Modifier
@@ -134,7 +142,7 @@ private fun Rating(professional: Professional) {
         Text(
             modifier = Modifier.padding(start = 2.dp),
             color = MaterialTheme.colorScheme.scrim,
-            style = body3Medium,
+            style = body2,
             maxLines = 1,
             text = professional.rating ?: "0.0",
         )
@@ -164,7 +172,7 @@ private fun Description(professional: Professional) {
     Text(
         modifier = Modifier
             .padding(
-                top = 12.dp,
+                top = 14.dp,
                 start = 16.dp,
                 end = 16.dp,
             ),
@@ -175,23 +183,30 @@ private fun Description(professional: Professional) {
 
 @Composable
 private fun Price(professional: Professional) {
-    Text(
-        modifier = Modifier
-            .padding(
-                top = 16.dp,
-                start = 16.dp,
-            ),
-        style = body2,
-        text = stringResource(MR.strings.hourly_rate.resourceId),
-        maxLines = 1,
-        color = MaterialTheme.colorScheme.onTertiaryContainer,
-    )
-    Text(
-        modifier = Modifier.padding(start = 16.dp),
-        style = body2Bold,
-        maxLines = 1,
-        text = professional.price,
-    )
+    Row(Modifier.padding(start = 16.dp)) {
+        Text(
+            style = h1,
+            maxLines = 1,
+            text = professional.priceNumber.toString(),
+        )
+        Text(
+            modifier = Modifier
+                .padding(bottom = 4.dp)
+                .align(Bottom),
+            style = body2,
+            maxLines = 1,
+            text = " ${professional.currencySymbol} ",
+        )
+        Text(
+            modifier = Modifier
+                .padding(bottom = 4.dp)
+                .align(Bottom),
+            style = body2,
+            text = stringResource(MR.strings.perHour.resourceId),
+            maxLines = 1,
+            color = MaterialTheme.colorScheme.onTertiaryContainer,
+        )
+    }
 }
 
 @Preview
