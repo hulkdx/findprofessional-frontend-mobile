@@ -4,6 +4,8 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -14,6 +16,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment.Companion.Bottom
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -27,15 +30,14 @@ import com.hulkdx.findprofessional.common.feature.home.model.Professional
 import com.hulkdx.findprofessional.core.R
 import com.hulkdx.findprofessional.core.commonui.CUAsyncImage
 import com.hulkdx.findprofessional.core.theme.AppTheme
-import com.hulkdx.findprofessional.core.theme.body1
-import com.hulkdx.findprofessional.core.theme.body1Medium
-import com.hulkdx.findprofessional.core.theme.body2Bold
-import com.hulkdx.findprofessional.core.theme.h3
+import com.hulkdx.findprofessional.core.theme.body2
+import com.hulkdx.findprofessional.core.theme.h1
+import com.hulkdx.findprofessional.core.theme.h2Medium
 import com.hulkdx.findprofessional.core.utils.singleClick
 import com.hulkdx.findprofessional.resources.MR
 
 @Composable
-fun ProfessionalItem(
+fun HomeScreenItem(
     professional: Professional,
     onLikeClick: (Professional) -> Unit,
     onItemClick: (Professional) -> Unit,
@@ -47,44 +49,47 @@ fun ProfessionalItem(
             .fillMaxWidth()
             .clip(shape = RoundedCornerShape(16.dp))
             .background(MaterialTheme.colorScheme.surfaceVariant)
-            .padding(bottom = 20.dp),
+            .padding(24.dp),
     ) {
-        Row {
-            ProfileImage(professional)
-            Column(
-                Modifier
-                    .padding(start = 16.dp)
-                    .weight(1F)
-            ) {
-                FullName(professional)
-                CoachType(professional)
-                Rating(professional)
-            }
-            LikeButton(professional, onLikeClick)
-        }
+        TopRow(professional)
         Description(professional)
-        Price(professional)
+        BottomRow(professional, onLikeClick)
+    }
+}
+
+@Composable
+private fun TopRow(professional: Professional) {
+    Row {
+        ProfileImage(professional)
+        Column(
+            Modifier
+                .padding(start = 8.dp)
+                .align(CenterVertically)
+                .weight(1F)
+        ) {
+            FullName(professional)
+            CoachType(professional)
+        }
+        Rating(professional)
     }
 }
 
 @Composable
 private fun ProfileImage(professional: Professional) {
-    val image = professional.profileImageUrl ?: return
     CUAsyncImage(
         modifier = Modifier
-            .padding(start = 16.dp, top = 24.dp)
-            .size(52.dp)
+            .size(50.dp)
             .clip(shape = CircleShape),
-        url = professional.profileImageUrl ?: ""
+        url = professional.profileImageUrl ?: "",
     )
 }
 
 @Composable
 private fun FullName(professional: Professional) {
     Text(
-        modifier = Modifier.padding(top = 16.dp),
-        style = h3,
+        style = h2Medium,
         maxLines = 1,
+        color = Color.Black,
         text = professional.fullName,
     )
 }
@@ -92,30 +97,25 @@ private fun FullName(professional: Professional) {
 @Composable
 private fun CoachType(professional: Professional) {
     Text(
-        modifier = Modifier.padding(top = 4.dp),
-        style = body1Medium,
-        color = MaterialTheme.colorScheme.onTertiaryContainer,
+        style = body2,
+        color = Color(0xFF9D9CAC),
         maxLines = 1,
         text = professional.coachType ?: "",
     )
 }
 
 @Composable
-private fun Rating(professional: Professional) {
+private fun RowScope.Rating(professional: Professional) {
     if (professional.rating == null) {
-        Icon(
-            modifier = Modifier.padding(top = 2.dp),
-            painter = painterResource(R.drawable.ic_new_rating),
-            tint = Color(0xFF00B3BD),
-            contentDescription = "",
-        )
         return
     }
     Row(
-        modifier = Modifier.padding(top = 2.dp),
+        modifier = Modifier.align(CenterVertically),
     ) {
         Icon(
-            modifier = Modifier.align(CenterVertically),
+            modifier = Modifier
+                .size(16.dp)
+                .align(CenterVertically),
             painter = painterResource(R.drawable.ic_star),
             tint = MaterialTheme.colorScheme.scrim,
             contentDescription = "",
@@ -123,6 +123,7 @@ private fun Rating(professional: Professional) {
         Text(
             modifier = Modifier.padding(start = 2.dp),
             color = MaterialTheme.colorScheme.scrim,
+            style = body2,
             maxLines = 1,
             text = professional.rating ?: "0.0",
         )
@@ -130,12 +131,26 @@ private fun Rating(professional: Professional) {
 }
 
 @Composable
-private fun LikeButton(
+fun BottomRow(
+    professional: Professional,
+    onLikeClick: (Professional) -> Unit,
+) {
+    Row {
+        Price(professional)
+        Spacer(modifier = Modifier.weight(1F))
+        LikeButton(professional, onLikeClick)
+    }
+}
+
+@Composable
+private fun RowScope.LikeButton(
     professional: Professional,
     onLikeClick: (Professional) -> Unit,
 ) {
     IconButton(
-        modifier = Modifier.padding(top = 6.dp, end = 8.dp),
+        modifier = Modifier
+            .padding(top = 8.dp)
+            .align(CenterVertically),
         onClick = singleClick { onLikeClick(professional) },
     ) {
         Icon(
@@ -152,41 +167,47 @@ private fun Description(professional: Professional) {
     Text(
         modifier = Modifier
             .padding(
-                top = 12.dp,
-                start = 16.dp,
-                end = 16.dp,
+                top = 16.dp,
             ),
-        style = body1,
+        style = body2,
         text = description,
     )
 }
 
 @Composable
 private fun Price(professional: Professional) {
-    Text(
-        modifier = Modifier
-            .padding(
-                top = 16.dp,
-                start = 16.dp,
-            ),
-        style = body1,
-        text = stringResource(MR.strings.hourly_rate.resourceId),
-        maxLines = 1,
-        color = MaterialTheme.colorScheme.onTertiaryContainer,
-    )
-    Text(
-        modifier = Modifier.padding(start = 16.dp),
-        style = body2Bold,
-        maxLines = 1,
-        text = professional.price,
-    )
+    Row(Modifier.padding(top = 16.dp)) {
+        Text(
+            style = h1,
+            maxLines = 1,
+            text = professional.priceNumber.toString(),
+        )
+        Text(
+            modifier = Modifier
+                .padding(bottom = 4.dp)
+                .align(Bottom),
+            style = body2,
+            maxLines = 1,
+            text = " ${professional.priceCurrencySymbol} ",
+            color = Color(0xFF9D9CAC),
+        )
+        Text(
+            modifier = Modifier
+                .padding(bottom = 4.dp)
+                .align(Bottom),
+            style = body2,
+            text = stringResource(MR.strings.perHour.resourceId),
+            maxLines = 1,
+            color = Color(0xFF9D9CAC),
+        )
+    }
 }
 
 @Preview
 @Composable
 private fun ProfessionalItemPreview() {
     AppTheme {
-        ProfessionalItem(
+        HomeScreenItem(
             professional = Professional(
                 id = 1,
                 firstName = "Mike",
@@ -211,7 +232,7 @@ private fun ProfessionalItemPreview() {
 @Composable
 private fun ProfessionalItemWithoutRatingPreview() {
     AppTheme {
-        ProfessionalItem(
+        HomeScreenItem(
             professional = Professional(
                 id = 1,
                 firstName = "Mike",

@@ -1,7 +1,6 @@
 package com.hulkdx.findprofessional.core.commonui
 
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
@@ -12,8 +11,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.hulkdx.findprofessional.core.theme.AppTheme
-import com.hulkdx.findprofessional.core.theme.body2
-import com.hulkdx.findprofessional.core.theme.body2Medium
+import com.hulkdx.findprofessional.core.theme.body1
 
 @Composable
 fun CUTextField(
@@ -32,7 +30,7 @@ fun CUTextField(
         placeholder = {
             Text(
                 text = hint,
-                style = body2,
+                style = body1,
             )
         },
         colors = TextFieldDefaults.colors(

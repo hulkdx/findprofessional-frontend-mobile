@@ -71,7 +71,7 @@ object InMemoryApi {
             "EUR",
             "https://i.imgur.com/5Yma8Kl.jpeg",
             "5.0",
-            "former professional boxer who competed from 1985 to 2005",
+            "Former professional boxer who competed from 1985 to 2005",
             availability = listOf(
                 ProfessionalAvailability(
                     date = "2023-11-09".toLocalDate(),
@@ -112,7 +112,7 @@ object InMemoryApi {
             "EUR",
             "https://i.imgur.com/FVABZOc.jpeg",
             null,
-            "actress from 1985 to 2005",
+            "One notable actress who graced the screens from 1985 to 2005 is Meryl Streep. Widely regarded as one of the greatest actresses of her generation, Streep's career during this period was marked by an exceptional range and versatility in her performances.",
             availability = listOf(
                 ProfessionalAvailability(
                     date = "2023-11-09".toLocalDate(),

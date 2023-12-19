@@ -34,10 +34,9 @@ import com.hulkdx.findprofessional.common.feature.home.utils.Availability
 import com.hulkdx.findprofessional.core.R
 import com.hulkdx.findprofessional.core.commonui.CUAsyncImage
 import com.hulkdx.findprofessional.core.theme.AppTheme
-import com.hulkdx.findprofessional.core.theme.body1
-import com.hulkdx.findprofessional.core.theme.body1Medium
 import com.hulkdx.findprofessional.core.theme.body2
-import com.hulkdx.findprofessional.core.theme.h3
+import com.hulkdx.findprofessional.core.theme.body1Medium
+import com.hulkdx.findprofessional.core.theme.body1
 import com.hulkdx.findprofessional.resources.MR
 import kotlinx.datetime.Clock
 import org.koin.androidx.compose.getViewModel
@@ -115,7 +114,7 @@ private fun ColumnScope.FullName(professional: Professional) {
         modifier = Modifier
             .padding(top = 16.dp)
             .align(CenterHorizontally),
-        style = h3,
+        style = body1,
         maxLines = 1,
         text = professional.fullName,
     )
@@ -144,7 +143,7 @@ private fun Description(professional: Professional) {
                 start = 16.dp,
                 end = 16.dp,
             ),
-        style = body1,
+        style = body2,
         text = description,
     )
 }
@@ -159,14 +158,14 @@ private fun Price(professional: Professional) {
     ) {
         Text(
             modifier = Modifier.weight(1F),
-            style = body1,
-            text = stringResource(MR.strings.hourly_rate.resourceId),
+            style = body2,
+            text = stringResource(MR.strings.perHour.resourceId),
             maxLines = 1,
             color = MaterialTheme.colorScheme.onTertiaryContainer,
         )
         Text(
             modifier = Modifier,
-            style = body2,
+            style = body1,
             maxLines = 1,
             text = professional.price,
         )
@@ -181,7 +180,7 @@ private fun Rating(professional: Professional) {
     ) {
         Text(
             modifier = Modifier.weight(1F),
-            style = body1,
+            style = body2,
             text = stringResource(MR.strings.rating.resourceId),
             maxLines = 1,
             color = MaterialTheme.colorScheme.onTertiaryContainer,
