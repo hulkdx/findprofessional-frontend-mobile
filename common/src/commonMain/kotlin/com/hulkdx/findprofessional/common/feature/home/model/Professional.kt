@@ -2,6 +2,7 @@ package com.hulkdx.findprofessional.common.feature.home.model
 
 import com.hulkdx.findprofessional.common.utils.CommonParcelable
 import com.hulkdx.findprofessional.common.utils.CommonParcelize
+import com.hulkdx.findprofessional.common.utils.CurrencyFormatter
 import kotlinx.serialization.Serializable
 
 @CommonParcelize
@@ -27,7 +28,8 @@ data class Professional(
         get() = "$firstName $lastName"
     val price: String
         get() = "$priceCurrency $priceNumber"
-    // TODO:
-    val currencySymbol = "€"
+    val priceCurrencySymbol = priceCurrency?.let {
+        CurrencyFormatter.toSymbol(it)
+    }
 }
 

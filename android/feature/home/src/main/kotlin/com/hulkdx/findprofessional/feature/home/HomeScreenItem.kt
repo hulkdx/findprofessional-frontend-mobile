@@ -195,7 +195,7 @@ private fun Price(professional: Professional) {
                 .align(Bottom),
             style = body2,
             maxLines = 1,
-            text = " ${professional.currencySymbol} ",
+            text = " ${professional.priceCurrencySymbol} ",
         )
         Text(
             modifier = Modifier
