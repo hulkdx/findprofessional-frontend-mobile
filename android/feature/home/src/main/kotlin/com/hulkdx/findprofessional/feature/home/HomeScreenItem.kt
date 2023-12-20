@@ -1,5 +1,6 @@
 package com.hulkdx.findprofessional.feature.home
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -21,6 +22,7 @@ import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -110,7 +112,8 @@ private fun RowScope.Rating(professional: Professional) {
         return
     }
     Row(
-        modifier = Modifier.align(CenterVertically),
+        modifier = Modifier.align(CenterVertically)
+            .padding(end = 8.dp),
     ) {
         Icon(
             modifier = Modifier
@@ -122,7 +125,7 @@ private fun RowScope.Rating(professional: Professional) {
         )
         Text(
             modifier = Modifier.padding(start = 2.dp),
-            color = MaterialTheme.colorScheme.scrim,
+            color = Color(0xFF9D9CAC),
             style = body2,
             maxLines = 1,
             text = professional.rating ?: "0.0",
@@ -153,10 +156,14 @@ private fun RowScope.LikeButton(
             .align(CenterVertically),
         onClick = singleClick { onLikeClick(professional) },
     ) {
-        Icon(
+        Image(
             modifier = Modifier.size(24.dp),
             painter = painterResource(R.drawable.ic_like),
             contentDescription = "",
+            colorFilter = ColorFilter.tint(
+                if (professional.isFav) MaterialTheme.colorScheme.error
+                else MaterialTheme.colorScheme.onError
+            )
         )
     }
 }

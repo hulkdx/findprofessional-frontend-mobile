@@ -31,5 +31,7 @@ data class Professional(
     val priceCurrencySymbol = priceCurrency?.let {
         CurrencyFormatter.toSymbol(it)
     }
+    // TODO:
+    val isFav = false
 }
 

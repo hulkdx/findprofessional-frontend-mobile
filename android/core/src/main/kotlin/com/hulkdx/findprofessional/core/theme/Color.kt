@@ -11,6 +11,9 @@ private val LightGray = Color(0xFFAEAEB6)
 private val DarkWhite = Color(0xFFF5F6FA)
 private val YellowStar = Color(0xFFF2A842)
 
+private val SelectedRed = Color(0xFFD80000)
+private val UnselectedGray = Color(0xFFCAC9DA)
+
 val TextButtonColor = Color(0xFF09B0B9)
 
 internal val lightColorPalette = lightColorScheme(
@@ -19,6 +22,8 @@ internal val lightColorPalette = lightColorScheme(
     onSurfaceVariant = LightGray,
     surfaceVariant = White,
     scrim = YellowStar,
+    error = SelectedRed,
+    onError = UnselectedGray
 )
 
 internal val darkColorPalette = lightColorPalette
