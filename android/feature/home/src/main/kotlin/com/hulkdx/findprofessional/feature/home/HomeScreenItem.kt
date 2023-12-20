@@ -124,7 +124,7 @@ private fun RowScope.Rating(professional: Professional) {
             contentDescription = "",
         )
         Text(
-            modifier = Modifier.padding(start = 2.dp),
+            modifier = Modifier.padding(start = 4.dp),
             color = Color(0xFF9D9CAC),
             style = body2,
             maxLines = 1,
