@@ -24,16 +24,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.hulkdx.findprofessional.common.feature.home.utils.Availability
 import com.hulkdx.findprofessional.core.theme.AppTheme
+import com.hulkdx.findprofessional.core.theme.body1Medium
 import com.hulkdx.findprofessional.core.theme.body3
-import com.hulkdx.findprofessional.core.theme.interFamily
+import com.hulkdx.findprofessional.feature.home.detail.HomeScreenDimens.outerHorizontalPadding
 import com.hulkdx.findprofessional.resources.MR
 
 internal fun LazyListScope.Availability(availabilities: Availability?) {
@@ -49,21 +47,16 @@ internal fun LazyListScope.Availability(availabilities: Availability?) {
 
 @Composable
 private fun AvailabilityHeader() {
-    Row(
-        Modifier
-            .padding(top = 16.dp)
-            .padding(start = 16.dp, top = 32.dp, bottom = 16.dp)) {
-        Text(
-            modifier = Modifier.padding(start = 8.dp),
-            style = TextStyle(
-                fontFamily = interFamily,
-                fontWeight = FontWeight.Bold,
-                fontSize = 17.sp,
-                lineHeight = 20.sp,
+    Text(
+        modifier = Modifier
+            .padding(
+                top = 16.dp,
+                bottom = 8.dp,
+                start = outerHorizontalPadding.dp,
             ),
-            text = stringResource(MR.strings.availability.resourceId),
-        )
-    }
+        style = body1Medium,
+        text = stringResource(MR.strings.availability.resourceId),
+    )
 }
 
 @Composable
@@ -164,7 +157,7 @@ private fun AvailabilityContentBottom() {
 @Composable
 fun AvailabilityPreview() {
     AppTheme {
-        LazyColumn(Modifier.background(MaterialTheme.colorScheme.onTertiary)) {
+        LazyColumn(Modifier.background(MaterialTheme.colorScheme.onPrimary)) {
             Availability(
                 listOf(
                     listOf("", "Thu\n19", "Fri\n20", "Sat\n21", "Sun\n22", "Mon\n23", "Tue\n24"),

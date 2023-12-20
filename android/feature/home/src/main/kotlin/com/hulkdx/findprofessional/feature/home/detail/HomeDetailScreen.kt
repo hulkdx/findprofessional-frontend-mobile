@@ -2,28 +2,18 @@ package com.hulkdx.findprofessional.feature.home.detail
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ColumnScope
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.testTag
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -31,13 +21,10 @@ import com.hulkdx.findprofessional.common.feature.authentication.model.User
 import com.hulkdx.findprofessional.common.feature.home.model.Professional
 import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalReview
 import com.hulkdx.findprofessional.common.feature.home.utils.Availability
-import com.hulkdx.findprofessional.core.R
-import com.hulkdx.findprofessional.core.commonui.CUAsyncImage
 import com.hulkdx.findprofessional.core.theme.AppTheme
-import com.hulkdx.findprofessional.core.theme.body2
-import com.hulkdx.findprofessional.core.theme.body1Medium
-import com.hulkdx.findprofessional.core.theme.body1
-import com.hulkdx.findprofessional.resources.MR
+import com.hulkdx.findprofessional.feature.home.Description
+import com.hulkdx.findprofessional.feature.home.TopRow
+import com.hulkdx.findprofessional.feature.home.detail.HomeScreenDimens.outerHorizontalPadding
 import kotlinx.datetime.Clock
 import org.koin.androidx.compose.getViewModel
 
@@ -68,6 +55,7 @@ fun HomeDetailScreen(
             .fillMaxSize()
             .systemBarsPadding()
             .background(MaterialTheme.colorScheme.onPrimary)
+            .padding(top = 49.dp)
             .testTag("HomeDetailScreen")
     ) {
         item { TopHeader(professional) }
@@ -81,144 +69,13 @@ private fun TopHeader(professional: Professional) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(start = 16.dp, end = 16.dp)
+            .padding(horizontal = outerHorizontalPadding.dp)
             .clip(shape = RoundedCornerShape(10.dp))
             .background(MaterialTheme.colorScheme.surfaceVariant)
+            .padding(24.dp)
     ) {
-        ProfileImage(professional)
-        FullName(professional)
-        CoachType(professional)
+        TopRow(professional)
         Description(professional)
-        Price(professional)
-        Rating(professional)
-    }
-}
-
-@Composable
-fun ColumnScope.ProfileImage(
-    professional: Professional,
-) {
-    CUAsyncImage(
-        modifier = Modifier
-            .align(CenterHorizontally)
-            .padding(top = 20.dp)
-            .size(80.dp)
-            .clip(shape = CircleShape),
-        url = professional.profileImageUrl ?: ""
-    )
-}
-
-@Composable
-private fun ColumnScope.FullName(professional: Professional) {
-    Text(
-        modifier = Modifier
-            .padding(top = 16.dp)
-            .align(CenterHorizontally),
-        style = body1,
-        maxLines = 1,
-        text = professional.fullName,
-    )
-}
-
-@Composable
-private fun ColumnScope.CoachType(professional: Professional) {
-    Text(
-        modifier = Modifier
-            .padding(top = 4.dp)
-            .align(CenterHorizontally),
-        style = body1Medium,
-        color = MaterialTheme.colorScheme.onTertiaryContainer,
-        maxLines = 1,
-        text = professional.coachType ?: "",
-    )
-}
-
-@Composable
-private fun Description(professional: Professional) {
-    val description = professional.description ?: return
-    Text(
-        modifier = Modifier
-            .padding(
-                top = 12.dp,
-                start = 16.dp,
-                end = 16.dp,
-            ),
-        style = body2,
-        text = description,
-    )
-}
-
-
-@Composable
-private fun Price(professional: Professional) {
-    Row(
-        Modifier
-            .padding(horizontal = 16.dp)
-            .padding(top = 16.dp)
-    ) {
-        Text(
-            modifier = Modifier.weight(1F),
-            style = body2,
-            text = stringResource(MR.strings.perHour.resourceId),
-            maxLines = 1,
-            color = MaterialTheme.colorScheme.onTertiaryContainer,
-        )
-        Text(
-            modifier = Modifier,
-            style = body1,
-            maxLines = 1,
-            text = professional.price,
-        )
-    }
-}
-
-@Composable
-private fun Rating(professional: Professional) {
-    Row(
-        Modifier
-            .padding(top = 8.dp, bottom = 16.dp, start = 16.dp, end = 16.dp)
-    ) {
-        Text(
-            modifier = Modifier.weight(1F),
-            style = body2,
-            text = stringResource(MR.strings.rating.resourceId),
-            maxLines = 1,
-            color = MaterialTheme.colorScheme.onTertiaryContainer,
-        )
-        RatingIcon(professional)
-        Text(
-            text = "(1000)",
-            color = MaterialTheme.colorScheme.scrim,
-        )
-    }
-}
-
-@Composable
-private fun RatingIcon(professional: Professional) {
-    if (professional.rating == null) {
-        Icon(
-            modifier = Modifier,
-            painter = painterResource(R.drawable.ic_new_rating),
-            tint = MaterialTheme.colorScheme.scrim,
-            contentDescription = "",
-        )
-        return
-    }
-    Row(
-        modifier = Modifier,
-    ) {
-        Icon(
-            modifier = Modifier.align(Alignment.CenterVertically),
-            painter = painterResource(R.drawable.ic_star),
-            tint = MaterialTheme.colorScheme.scrim,
-            contentDescription = "",
-        )
-        Text(
-            modifier = Modifier.padding(start = 2.dp),
-            color = MaterialTheme.colorScheme.scrim,
-            maxLines = 1,
-            text = professional.rating ?: "0.0",
-        )
     }
 }
 

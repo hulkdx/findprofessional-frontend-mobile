@@ -60,7 +60,7 @@ fun HomeScreenItem(
 }
 
 @Composable
-private fun TopRow(professional: Professional) {
+fun TopRow(professional: Professional) {
     Row {
         ProfileImage(professional)
         Column(
@@ -169,7 +169,7 @@ private fun RowScope.LikeButton(
 }
 
 @Composable
-private fun Description(professional: Professional) {
+fun Description(professional: Professional) {
     val description = professional.description ?: return
     Text(
         modifier = Modifier
