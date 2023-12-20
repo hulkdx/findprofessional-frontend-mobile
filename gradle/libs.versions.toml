@@ -22,6 +22,8 @@ androidxNavigation = "2.7.5"
 androidxUiautomator = "2.3.0-alpha05"
 # https://github.com/coil-kt/coil
 coil = "2.5.0"
+# https://github.com/junit-team/junit5
+junit5 = "5.10.1"
 # https://github.com/InsertKoinIO/koin
 koin = "3.5.0"
 # https://github.com/Kotlin/kotlinx-datetime
@@ -51,6 +53,8 @@ androidx-lifecycle-runtimeCompose = { group = "androidx.lifecycle", name = "life
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "androidxNavigation" }
 androidx-uiautomator = { group = "androidx.test.uiautomator", name = "uiautomator", version.ref = "androidxUiautomator" }
 coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
+junit5-bom = { group = "org.junit", name = "junit-bom", version.ref = "junit5" }
+junit5-jupiter = { group = "org.junit.jupiter", name = "junit-jupiter" }
 koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin" }
 koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koin" }
 koin-androidx-compose = { group = "io.insert-koin", name = "koin-androidx-compose", version.ref = "koin" }
