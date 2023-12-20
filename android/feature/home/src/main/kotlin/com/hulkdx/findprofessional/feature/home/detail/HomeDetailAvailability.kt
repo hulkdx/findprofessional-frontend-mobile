@@ -37,13 +37,7 @@ import com.hulkdx.findprofessional.resources.MR
 internal fun LazyListScope.Availability(availabilities: Availability?) {
     if (availabilities == null) return
     item { AvailabilityHeader() }
-    item { AvailabilityContentTop() }
-    items(availabilities) {
-        AvailabilityContentRow(it)
-    }
-    item { AvailabilityContentBottom() }
 }
-
 
 @Composable
 private fun AvailabilityHeader() {
@@ -56,100 +50,6 @@ private fun AvailabilityHeader() {
             ),
         style = body1Medium,
         text = stringResource(MR.strings.availability.resourceId),
-    )
-}
-
-@Composable
-private fun AvailabilityContentTop() {
-    Spacer(
-        Modifier
-            .fillMaxWidth()
-            .height(16.dp)
-            .padding(start = 16.dp, end = 16.dp)
-            .clip(RoundedCornerShape(topStart = 10.dp, topEnd = 16.dp))
-            .background(MaterialTheme.colorScheme.surfaceVariant)
-    )
-}
-
-@Composable
-private fun AvailabilityContentRow(rows: List<String>) {
-    Row(
-        Modifier
-            .padding(start = 16.dp, end = 16.dp)
-            .background(MaterialTheme.colorScheme.surfaceVariant)
-            .padding(start = 12.dp, end = 25.dp)
-    ) {
-        rows.forEachIndexed { index, item ->
-            key(index) {
-                AvailabilityContentElement(item)
-            }
-        }
-    }
-}
-
-@Composable
-private fun RowScope.AvailabilityContentElement(row: String) {
-    when (row) {
-        "0" -> {
-            AvailabilityBox(Color(0xFFF2F2F2))
-        }
-
-        "1" -> {
-            AvailabilityBox(Color(0xFFE1F0D1))
-        }
-
-        "2" -> {
-            AvailabilityBox(Color(0xFFC1DDA1))
-        }
-
-        "3" -> {
-            AvailabilityBox(Color(0xFFA8D279))
-        }
-
-        "4" -> {
-            AvailabilityBox(Color(0xFF8FC750))
-        }
-
-        else -> {
-            AvailabilityText(row)
-        }
-    }
-}
-
-@Composable
-private fun RowScope.AvailabilityBox(color: Color) {
-    Box(
-        Modifier
-            .weight(1F)
-            .fillMaxWidth()
-            .height(30.dp)
-            .padding(6.dp)
-            .border(1.dp, Color(0xFF797979))
-            .background(color)
-    )
-}
-
-@Composable
-private fun RowScope.AvailabilityText(row: String) {
-    Text(
-        text = row,
-        modifier = Modifier
-            .weight(1F)
-            .align(Alignment.CenterVertically),
-        style = body3,
-        textAlign = TextAlign.Center,
-    )
-}
-
-@Composable
-private fun AvailabilityContentBottom() {
-    Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp)
-            .clip(RoundedCornerShape(bottomStart = 10.dp, bottomEnd = 16.dp))
-            .background(MaterialTheme.colorScheme.surfaceVariant)
-            .padding(12.dp),
     )
 }
 
