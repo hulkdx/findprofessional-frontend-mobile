@@ -4,7 +4,6 @@ package com.hulkdx.findprofessional.feature.home.detail
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -25,18 +24,21 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.hulkdx.findprofessional.common.feature.home.utils.Availability
 import com.hulkdx.findprofessional.core.R
 import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.core.theme.body1Medium
 import com.hulkdx.findprofessional.core.theme.h3Medium
 import com.hulkdx.findprofessional.feature.home.detail.HomeScreenDimens.outerHorizontalPadding
+import com.hulkdx.findprofessional.feature.home.detail.utils.AvailabilityData
+import com.hulkdx.findprofessional.feature.home.detail.utils.HomeDetailDateFormatter
 import com.hulkdx.findprofessional.resources.MR
+import kotlin.math.ceil
 
-internal fun LazyListScope.Availability(availabilities: Availability?) {
-    if (availabilities == null) return
+internal fun LazyListScope.Availability(
+    availability: AvailabilityData
+) {
     item { AvailabilityHeader() }
-    item { AvailabilityCalendar() }
+    item { AvailabilityCalendar(availability) }
 }
 
 @Composable
@@ -54,10 +56,13 @@ private fun AvailabilityHeader() {
 }
 
 @Composable
-private fun AvailabilityCalendar() {
+private fun AvailabilityCalendar(availability: AvailabilityData) {
     val onClickLeft = {}
     val onClickRight = {}
-    val currentMonth = "January 2022"
+
+    val currentMonth = availability.calendarDateFormat
+    val lastDay = availability.lengthOfMonth
+    val firstDayInt = availability.firstDay
 
     Column(
         modifier = Modifier
@@ -92,29 +97,67 @@ private fun AvailabilityCalendar() {
             }
         }
 
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceEvenly,
-        ) {
-            MonthText(text = "Mon")
-            MonthText(text = "Tue")
-            MonthText(text = "Wed")
-            MonthText(text = "Thu")
-            MonthText(text = "Fri")
-            MonthText(text = "Sat")
-            MonthText(text = "Sun")
-        }
+        CalendarPart(lastDay, firstDayInt, lastDay)
+    }
+}
 
-        Divider(
-            modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
-            thickness = 0.5.dp
+@Composable
+private fun CalendarPart(
+    numberOfDaysInMonth: Int,
+    firstDay: Int,
+    lastDay: Int,
+) {
+    val perWeek = ceil((numberOfDaysInMonth+firstDay) / 7F).toInt()
+
+    Row {
+        for (i in 0..<7) {
+            Column(modifier = Modifier.weight(1F)) {
+                MonthText(Modifier, i)
+                Divider()
+                for (j in 0..<perWeek) {
+                    CalendarEachDate(i, j, firstDay, lastDay)
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun CalendarEachDate(
+    i: Int,
+    j: Int,
+    firstDay: Int,
+    lastDay: Int,
+) {
+    val z = (i + 1) + (j * 7) - firstDay
+    if (z <= 0 || z > lastDay) {
+        Text(text = "")
+    } else {
+        Text(
+            modifier = Modifier,
+            text = z.toString()
         )
     }
 }
 
 @Composable
-private fun MonthText(text: String) {
+private fun MonthText(
+    modifier: Modifier = Modifier,
+    index: Int,
+) {
+    MonthText(
+        modifier,
+        requireNotNull(HomeDetailDateFormatter.weekNumberMap[index]),
+    )
+}
+
+@Composable
+private fun MonthText(
+    modifier: Modifier = Modifier,
+    text: String,
+) {
     Text(
+        modifier = modifier,
         text = text,
         style = body1Medium,
     )
@@ -126,15 +169,11 @@ fun AvailabilityPreview() {
     AppTheme {
         LazyColumn(Modifier.background(MaterialTheme.colorScheme.onPrimary)) {
             Availability(
-                listOf(
-                    listOf("", "Thu\n19", "Fri\n20", "Sat\n21", "Sun\n22", "Mon\n23", "Tue\n24"),
-                    listOf("00-04", "0", "0", "0", "0", "0", "0"),
-                    listOf("04-08", "0", "1", "0", "0", "0", "0"),
-                    listOf("08-12", "0", "0", "2", "0", "0", "0"),
-                    listOf("12-16", "0", "0", "0", "3", "0", "0"),
-                    listOf("16-20", "0", "0", "0", "0", "0", "0"),
-                    listOf("20-24", "0", "0", "0", "0", "4", "0"),
-                ),
+                AvailabilityData(
+                    "January 2022",
+                    5,
+                    31
+                )
             )
         }
     }

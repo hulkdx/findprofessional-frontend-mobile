@@ -5,13 +5,13 @@ import com.hulkdx.findprofessional.feature.home.detail.utils.HomeDetailDateForma
 import com.hulkdx.findprofessional.feature.home.detail.utils.HomeDetailDateFormatter.lengthOfMonth
 
 
-data class HomeDetailDateDataHolder(
+data class AvailabilityData(
     val calendarDateFormat: String,
     val firstDay: Int,
     val lengthOfMonth: Int,
 )
 
-fun createHomeDetailDate() = HomeDetailDateDataHolder(
+fun createAvailabilityData() = AvailabilityData(
     calendarDateFormat = calendarDateFormat(),
     firstDay = firstDayInt(),
     lengthOfMonth = lengthOfMonth(),

@@ -5,7 +5,7 @@ import java.time.format.DateTimeFormatter
 
 
 object HomeDetailDateFormatter {
-    private val weekNumberMap = mapOf(
+    val weekNumberMap = mapOf(
         0 to "Mon",
         1 to "Tue",
         2 to "Wed",
