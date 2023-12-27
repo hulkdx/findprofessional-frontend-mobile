@@ -120,7 +120,8 @@ private fun HomeDetailScreenPreview() {
             availability = AvailabilityData(
                 "January 2022",
                 5,
-                31
+                31,
+                1
             ),
             {},
             {},

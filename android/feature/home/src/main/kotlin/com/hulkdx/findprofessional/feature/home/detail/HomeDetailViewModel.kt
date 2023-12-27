@@ -7,6 +7,8 @@ import com.hulkdx.findprofessional.common.feature.home.model.Professional
 import com.hulkdx.findprofessional.core.utils.getStateFlow
 import com.hulkdx.findprofessional.feature.home.detail.HomeDetailNavigationScreen.Companion.ARG1
 import com.hulkdx.findprofessional.feature.home.detail.utils.createAvailabilityData
+import com.hulkdx.findprofessional.feature.home.detail.utils.createAvailabilityDataMonthMinusOne
+import com.hulkdx.findprofessional.feature.home.detail.utils.createAvailabilityDataMonthPlusOne
 import dev.icerock.moko.resources.desc.StringDesc
 
 
@@ -31,8 +33,10 @@ class HomeDetailViewModel(
     }
 
     fun availabilityMonthMinusOne() {
+        savedStateHandle["availability"] = createAvailabilityDataMonthMinusOne(availability.value)
     }
 
     fun availabilityMonthPlusOne() {
+        savedStateHandle["availability"] = createAvailabilityDataMonthPlusOne(availability.value)
     }
 }
