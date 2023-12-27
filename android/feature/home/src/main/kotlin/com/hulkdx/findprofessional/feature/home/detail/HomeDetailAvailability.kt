@@ -145,7 +145,7 @@ private fun CalendarMain(
     Row {
         for (i in 0..<7) {
             Column(modifier = Modifier.weight(1F)) {
-                MonthText(Modifier, i)
+                MonthText(i)
                 Divider(
                     modifier = Modifier.padding(vertical = 8.dp),
                     thickness = 0.5.dp,
@@ -222,22 +222,13 @@ private fun NotSelectedCalendarItem(day: Int) {
 
 @Composable
 private fun MonthText(
-    modifier: Modifier = Modifier,
     index: Int,
 ) {
-    MonthText(
-        modifier,
-        requireNotNull(HomeDetailDateFormatter.weekNumberMap[index]),
+    val text = requireNotNull(
+        HomeDetailDateFormatter.weekNumberMap[index]
     )
-}
-
-@Composable
-private fun MonthText(
-    modifier: Modifier = Modifier,
-    text: String,
-) {
     Text(
-        modifier = modifier.fillMaxWidth(),
+        modifier = Modifier.fillMaxWidth(),
         text = text,
         textAlign = TextAlign.Center,
         style = body1Medium,
