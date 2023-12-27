@@ -33,12 +33,15 @@ fun HomeDetailScreen(
     viewModel: HomeDetailViewModel = getViewModel(),
 ) {
     val professional by viewModel.professional.collectAsStateWithLifecycle()
+    val availability by viewModel.availability.collectAsStateWithLifecycle()
 
     HomeDetailScreen(
         professional,
-        viewModel.availability,
+        availability,
         viewModel::onReviewShowMoreClicked,
-        viewModel::onBookClick
+        viewModel::onBookClick,
+        viewModel::availabilityMonthMinusOne,
+        viewModel::availabilityMonthPlusOne,
     )
 }
 
@@ -48,6 +51,8 @@ fun HomeDetailScreen(
     availability: AvailabilityData,
     onReviewShowMoreClicked: () -> Unit,
     onBookClicked: () -> Unit,
+    availabilityMonthMinusOne: () -> Unit,
+    availabilityMonthPlusOne: () -> Unit,
 ) {
     LazyColumn(
         modifier = Modifier
@@ -58,7 +63,7 @@ fun HomeDetailScreen(
             .testTag("HomeDetailScreen")
     ) {
         item { TopHeader(professional) }
-        Availability(availability)
+        Availability(availability, availabilityMonthMinusOne, availabilityMonthPlusOne)
         Review(professional, onReviewShowMoreClicked)
     }
 }
@@ -117,6 +122,8 @@ private fun HomeDetailScreenPreview() {
                 5,
                 31
             ),
+            {},
+            {},
             {},
             {},
         )

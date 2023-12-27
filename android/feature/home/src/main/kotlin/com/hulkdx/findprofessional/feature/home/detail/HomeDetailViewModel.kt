@@ -18,7 +18,7 @@ class HomeDetailViewModel(
     val professional = savedStateHandle.getStateFlow<Professional>(ARG1)
     val error = savedStateHandle.getStateFlow<StringDesc?>("error", null)
 
-    val availability = createAvailabilityData()
+    val availability = savedStateHandle.getStateFlow("availability", createAvailabilityData())
 
     fun onBookClick() {
     }
@@ -28,5 +28,11 @@ class HomeDetailViewModel(
     }
 
     fun onReviewShowMoreClicked() {
+    }
+
+    fun availabilityMonthMinusOne() {
+    }
+
+    fun availabilityMonthPlusOne() {
     }
 }

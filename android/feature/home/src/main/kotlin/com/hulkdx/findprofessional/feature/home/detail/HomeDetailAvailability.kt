@@ -20,6 +20,10 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -42,9 +46,11 @@ import kotlin.math.ceil
 
 internal fun LazyListScope.Availability(
     availability: AvailabilityData,
+    availabilityMonthMinusOne: () -> Unit,
+    availabilityMonthPlusOne: () -> Unit,
 ) {
     item { AvailabilityHeader() }
-    item { AvailabilityCalendar(availability) }
+    item { AvailabilityCalendar(availability, availabilityMonthMinusOne, availabilityMonthPlusOne) }
 }
 
 @Composable
@@ -62,11 +68,11 @@ private fun AvailabilityHeader() {
 }
 
 @Composable
-private fun AvailabilityCalendar(availability: AvailabilityData) {
-    val onClickLeft = {}
-    val onClickRight = {}
-
-    val currentMonth = availability.calendarDateFormat
+private fun AvailabilityCalendar(
+    availability: AvailabilityData,
+    availabilityMonthMinusOne: () -> Unit,
+    availabilityMonthPlusOne: () -> Unit,
+) {
     val lastDay = availability.lengthOfMonth
     val firstDayInt = availability.firstDay
 
@@ -77,21 +83,29 @@ private fun AvailabilityCalendar(availability: AvailabilityData) {
             .clip(shape = RoundedCornerShape(10.dp))
             .background(MaterialTheme.colorScheme.surfaceVariant)
     ) {
-        CalendarTop(onClickLeft, currentMonth, onClickRight)
+        CalendarTop(availability, availabilityMonthMinusOne, availabilityMonthPlusOne)
         CalendarMain(lastDay, firstDayInt, lastDay)
     }
 }
 
 @Composable
 private fun CalendarTop(
-    onClickLeft: () -> Unit,
-    currentMonth: String,
-    onClickRight: () -> Unit,
+    availability: AvailabilityData,
+    availabilityMonthMinusOne: () -> Unit,
+    availabilityMonthPlusOne: () -> Unit,
 ) {
+    val currentMonth = availability.calendarDateFormat
+
     Row(modifier = Modifier.padding(horizontal = 16.dp)) {
-        CalendarTopButton(R.drawable.ic_calendar_left, onClickLeft)
+        CalendarTopButton(
+            icon = R.drawable.ic_calendar_left,
+            onClick = availabilityMonthMinusOne,
+        )
         CalendarTopMonth(currentMonth)
-        CalendarTopButton(R.drawable.ic_calendar_right, onClickRight)
+        CalendarTopButton(
+            icon = R.drawable.ic_calendar_right,
+            onClick = availabilityMonthPlusOne
+        )
     }
 }
 
@@ -110,11 +124,11 @@ private fun RowScope.CalendarTopMonth(currentMonth: String) {
 @Composable
 private fun CalendarTopButton(
     icon: Int,
-    onClickLeft: () -> Unit,
+    onClick: () -> Unit,
 ) {
     IconButton(
         modifier = Modifier.padding(vertical = 6.dp),
-        onClick = onClickLeft,
+        onClick = onClick,
     ) {
         Image(
             painter = painterResource(icon),
@@ -211,7 +225,9 @@ fun AvailabilityPreview() {
                     "January 2022",
                     5,
                     31
-                )
+                ),
+                {},
+                {}
             )
         }
     }
