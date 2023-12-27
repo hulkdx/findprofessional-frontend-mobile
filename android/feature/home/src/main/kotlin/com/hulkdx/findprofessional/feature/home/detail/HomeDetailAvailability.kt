@@ -24,6 +24,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -148,6 +149,7 @@ private fun CalendarMain(
                 Divider(
                     modifier = Modifier.padding(vertical = 8.dp),
                     thickness = 0.5.dp,
+                    color = Color(0xFF9D9CAC)
                 )
                 for (j in 0..<perWeek) {
                     CalendarEachDate(i, j, firstDay, lastDay)
