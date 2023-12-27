@@ -4,7 +4,6 @@ package com.hulkdx.findprofessional.feature.home.detail
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
@@ -14,7 +13,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListScope
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Divider
 import androidx.compose.material3.IconButton
@@ -25,7 +23,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawBehind
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -33,6 +30,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.hulkdx.findprofessional.core.R
 import com.hulkdx.findprofessional.core.theme.AppTheme
+import com.hulkdx.findprofessional.core.theme.body1
 import com.hulkdx.findprofessional.core.theme.body1Medium
 import com.hulkdx.findprofessional.core.theme.h3Medium
 import com.hulkdx.findprofessional.feature.home.detail.HomeScreenDimens.outerHorizontalPadding
@@ -42,7 +40,7 @@ import com.hulkdx.findprofessional.resources.MR
 import kotlin.math.ceil
 
 internal fun LazyListScope.Availability(
-    availability: AvailabilityData
+    availability: AvailabilityData,
 ) {
     item { AvailabilityHeader() }
     item { AvailabilityCalendar(availability) }
@@ -114,13 +112,16 @@ private fun CalendarPart(
     firstDay: Int,
     lastDay: Int,
 ) {
-    val perWeek = ceil((numberOfDaysInMonth+firstDay) / 7F).toInt()
+    val perWeek = ceil((numberOfDaysInMonth + firstDay) / 7F).toInt()
 
     Row {
         for (i in 0..<7) {
             Column(modifier = Modifier.weight(1F)) {
                 MonthText(Modifier, i)
-                Divider()
+                Divider(
+                    modifier = Modifier.padding(vertical = 8.dp),
+                    thickness = 0.5.dp,
+                )
                 for (j in 0..<perWeek) {
                     CalendarEachDate(i, j, firstDay, lastDay)
                 }
@@ -140,18 +141,20 @@ private fun ColumnScope.CalendarEachDate(
     if (z <= 0 || z > lastDay) {
         Box(modifier = Modifier.aspectRatio(1F))
     } else {
+        val calendarColor = MaterialTheme.colorScheme.outlineVariant
         Box(
             modifier = Modifier
                 .aspectRatio(1F)
                 .padding(4.dp)
                 .drawBehind {
-                    drawCircle(Color.Green)
+                    drawCircle(calendarColor)
                 }
         ) {
             Text(
                 modifier = Modifier.align(Alignment.Center),
                 text = z.toString(),
-                color = Color.White
+                style = body1,
+                color = MaterialTheme.colorScheme.surfaceVariant
             )
         }
     }
@@ -174,8 +177,9 @@ private fun MonthText(
     text: String,
 ) {
     Text(
-        modifier = modifier,
+        modifier = modifier.fillMaxWidth(),
         text = text,
+        textAlign = TextAlign.Center,
         style = body1Medium,
     )
 }

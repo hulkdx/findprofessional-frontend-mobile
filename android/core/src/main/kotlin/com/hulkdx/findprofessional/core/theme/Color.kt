@@ -16,6 +16,8 @@ private val UnselectedGray = Color(0xFFCAC9DA)
 
 val TextButtonColor = Color(0xFF09B0B9)
 
+val CalendarSelectedColor = Color(0xFF00B262)
+
 internal val lightColorPalette = lightColorScheme(
     primary = Green,
     onPrimary = DarkWhite,
@@ -23,7 +25,8 @@ internal val lightColorPalette = lightColorScheme(
     surfaceVariant = White,
     scrim = YellowStar,
     error = SelectedRed,
-    onError = UnselectedGray
+    onError = UnselectedGray,
+    outlineVariant = CalendarSelectedColor,
 )
 
 internal val darkColorPalette = lightColorPalette
