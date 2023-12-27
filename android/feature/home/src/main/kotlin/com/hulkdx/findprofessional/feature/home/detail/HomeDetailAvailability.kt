@@ -168,24 +168,34 @@ private fun CalendarEachDate(
 ) {
     val z = (i + 1) + (j * 7) - firstDay
     if (z <= 0 || z > lastDay) {
-        Box(modifier = Modifier.aspectRatio(1F))
+        EmptyCalendarItem()
     } else {
-        val calendarColor = MaterialTheme.colorScheme.outlineVariant
-        Box(
-            modifier = Modifier
-                .aspectRatio(1F)
-                .padding(4.dp)
-                .drawBehind {
-                    drawCircle(calendarColor)
-                }
-        ) {
-            Text(
-                modifier = Modifier.align(Alignment.Center),
-                text = z.toString(),
-                style = body1,
-                color = MaterialTheme.colorScheme.surfaceVariant
-            )
-        }
+        CalendarItem(z)
+    }
+}
+
+@Composable
+private fun EmptyCalendarItem() {
+    Box(modifier = Modifier.aspectRatio(1F))
+}
+
+@Composable
+private fun CalendarItem(z: Int) {
+    val calendarColor = MaterialTheme.colorScheme.outlineVariant
+    Box(
+        modifier = Modifier
+            .aspectRatio(1F)
+            .padding(4.dp)
+            .drawBehind {
+                drawCircle(calendarColor)
+            }
+    ) {
+        Text(
+            modifier = Modifier.align(Alignment.Center),
+            text = z.toString(),
+            style = body1,
+            color = MaterialTheme.colorScheme.surfaceVariant
+        )
     }
 }
 
