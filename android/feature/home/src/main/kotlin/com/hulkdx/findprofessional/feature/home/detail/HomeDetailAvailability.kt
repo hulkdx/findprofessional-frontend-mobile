@@ -6,7 +6,6 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.aspectRatio
@@ -79,6 +78,7 @@ private fun AvailabilityCalendar(
             .padding(horizontal = outerHorizontalPadding.dp)
             .clip(shape = RoundedCornerShape(10.dp))
             .background(MaterialTheme.colorScheme.surfaceVariant)
+            .padding(bottom = 22.dp)
     ) {
         CalendarTop(availability, availabilityMonthMinusOne, availabilityMonthPlusOne)
         CalendarMain(lastDay, firstDayInt, lastDay)
@@ -160,7 +160,7 @@ private fun CalendarMain(
 }
 
 @Composable
-private fun ColumnScope.CalendarEachDate(
+private fun CalendarEachDate(
     i: Int,
     j: Int,
     firstDay: Int,
