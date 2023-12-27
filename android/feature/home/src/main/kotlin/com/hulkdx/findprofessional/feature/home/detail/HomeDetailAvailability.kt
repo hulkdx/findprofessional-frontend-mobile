@@ -40,6 +40,7 @@ import com.hulkdx.findprofessional.feature.home.detail.HomeScreenDimens.outerHor
 import com.hulkdx.findprofessional.feature.home.detail.utils.AvailabilityData
 import com.hulkdx.findprofessional.feature.home.detail.utils.HomeDetailDateFormatter
 import com.hulkdx.findprofessional.resources.MR
+import java.time.LocalDate
 import kotlin.math.ceil
 
 internal fun LazyListScope.Availability(
@@ -152,7 +153,7 @@ private fun CalendarMain(
                     color = Color(0xFF9D9CAC)
                 )
                 for (j in 0..<perWeek) {
-                    CalendarDay(i, j, firstDay, lastDay)
+                    CalendarDay(availability, i, j)
                 }
             }
         }
@@ -161,16 +162,18 @@ private fun CalendarMain(
 
 @Composable
 private fun CalendarDay(
+    availability: AvailabilityData,
     i: Int,
     j: Int,
-    firstDay: Int,
-    lastDay: Int,
 ) {
+    val lastDay = availability.lengthOfMonth
+    val firstDay = availability.firstDay
+
     val day = (i + 1) + (j * 7) - firstDay
     if (day <= 0 || day > lastDay) {
         EmptyCalendarItem()
     } else {
-        CalendarItem(day)
+        CalendarItem(availability, day)
     }
 }
 
@@ -181,9 +184,15 @@ private fun EmptyCalendarItem() {
 
 @Composable
 private fun CalendarItem(
+    availability: AvailabilityData,
     day: Int,
 ) {
-    NotSelectedCalendarItem(day)
+    val isSelected = availability.isSelectedDay(day)
+    if (isSelected) {
+        SelectedCalendarItem(day)
+    } else {
+        NotSelectedCalendarItem(day)
+    }
 }
 
 @Composable

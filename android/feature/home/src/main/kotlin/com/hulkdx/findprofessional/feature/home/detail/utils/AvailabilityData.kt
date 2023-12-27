@@ -4,6 +4,7 @@ import android.os.Parcelable
 import com.hulkdx.findprofessional.feature.home.detail.utils.HomeDetailDateFormatter.calendarDateFormat
 import com.hulkdx.findprofessional.feature.home.detail.utils.HomeDetailDateFormatter.firstDayInt
 import com.hulkdx.findprofessional.feature.home.detail.utils.HomeDetailDateFormatter.lengthOfMonth
+import kotlinx.parcelize.IgnoredOnParcel
 import kotlinx.parcelize.Parcelize
 import java.time.LocalDate
 
@@ -13,7 +14,15 @@ data class AvailabilityData(
     val firstDay: Int,
     val lengthOfMonth: Int,
     val now: Long,
-) : Parcelable
+) : Parcelable {
+
+    @IgnoredOnParcel
+    val nowLocalDate: LocalDate = LocalDate.ofEpochDay(now)
+
+    fun isSelectedDay(day: Int): Boolean {
+        return false
+    }
+}
 
 fun createAvailabilityData(now: LocalDate = LocalDate.now()) = AvailabilityData(
     calendarDateFormat = calendarDateFormat(now),
@@ -23,15 +32,13 @@ fun createAvailabilityData(now: LocalDate = LocalDate.now()) = AvailabilityData(
 )
 
 fun createAvailabilityDataMonthMinusOne(current: AvailabilityData): AvailabilityData {
-    val localDate = LocalDate
-        .ofEpochDay(current.now)
+    val localDate = current.nowLocalDate
         .minusMonths(1)
     return createAvailabilityData(localDate)
 }
 
 fun createAvailabilityDataMonthPlusOne(current: AvailabilityData): AvailabilityData {
-    val localDate = LocalDate
-        .ofEpochDay(current.now)
+    val localDate = current.nowLocalDate
         .plusMonths(1)
     return createAvailabilityData(localDate)
 }
