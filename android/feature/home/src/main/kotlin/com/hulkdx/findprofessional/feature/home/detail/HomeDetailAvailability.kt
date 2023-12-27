@@ -77,12 +77,21 @@ private fun AvailabilityCalendar(availability: AvailabilityData) {
             .clip(shape = RoundedCornerShape(10.dp))
             .background(MaterialTheme.colorScheme.surfaceVariant)
     ) {
-        Row(modifier = Modifier.padding(horizontal = 16.dp)) {
-            CalendarTopButton(R.drawable.ic_calendar_left, onClickLeft)
-            CalendarTopMonth(currentMonth)
-            CalendarTopButton(R.drawable.ic_calendar_right, onClickRight)
-        }
-        CalendarPart(lastDay, firstDayInt, lastDay)
+        CalendarTop(onClickLeft, currentMonth, onClickRight)
+        CalendarMain(lastDay, firstDayInt, lastDay)
+    }
+}
+
+@Composable
+private fun CalendarTop(
+    onClickLeft: () -> Unit,
+    currentMonth: String,
+    onClickRight: () -> Unit,
+) {
+    Row(modifier = Modifier.padding(horizontal = 16.dp)) {
+        CalendarTopButton(R.drawable.ic_calendar_left, onClickLeft)
+        CalendarTopMonth(currentMonth)
+        CalendarTopButton(R.drawable.ic_calendar_right, onClickRight)
     }
 }
 
@@ -115,7 +124,7 @@ private fun CalendarTopButton(
 }
 
 @Composable
-private fun CalendarPart(
+private fun CalendarMain(
     numberOfDaysInMonth: Int,
     firstDay: Int,
     lastDay: Int,
