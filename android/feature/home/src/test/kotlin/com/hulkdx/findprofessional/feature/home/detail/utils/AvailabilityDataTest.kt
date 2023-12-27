@@ -8,7 +8,7 @@ import java.time.LocalDate
 class AvailabilityDataTest {
 
     @Test
-    fun isSelectedDayTest() {
+    fun `when isSelectedDay is included selectedItemForThisMonth then it should return true`() {
         // Arrange
         val now = LocalDate.of(2023, 12, 27)
         val selectedItemForThisMonth = listOf(
