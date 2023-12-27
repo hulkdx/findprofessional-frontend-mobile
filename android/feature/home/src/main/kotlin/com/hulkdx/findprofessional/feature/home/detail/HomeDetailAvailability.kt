@@ -180,7 +180,7 @@ private fun EmptyCalendarItem() {
 }
 
 @Composable
-private fun CalendarItem(z: Int) {
+private fun CalendarItem(day: Int) {
     val calendarColor = MaterialTheme.colorScheme.outlineVariant
     Box(
         modifier = Modifier
@@ -192,7 +192,7 @@ private fun CalendarItem(z: Int) {
     ) {
         Text(
             modifier = Modifier.align(Alignment.Center),
-            text = z.toString(),
+            text = day.toString(),
             style = body1,
             color = MaterialTheme.colorScheme.surfaceVariant
         )
