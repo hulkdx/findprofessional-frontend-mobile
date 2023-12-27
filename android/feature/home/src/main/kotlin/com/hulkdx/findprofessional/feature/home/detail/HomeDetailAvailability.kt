@@ -77,14 +77,12 @@ private fun AvailabilityCalendar(availability: AvailabilityData) {
             .background(MaterialTheme.colorScheme.surfaceVariant)
     ) {
         Row(modifier = Modifier.padding(horizontal = 16.dp)) {
-
             IconButton(onClick = onClickLeft) {
                 Image(
                     painter = painterResource(R.drawable.ic_calendar_left),
                     contentDescription = "",
                 )
             }
-
             Text(
                 modifier = Modifier
                     .weight(1F)
@@ -93,7 +91,6 @@ private fun AvailabilityCalendar(availability: AvailabilityData) {
                 style = h3Medium,
                 textAlign = TextAlign.Center,
             )
-
             IconButton(onClick = onClickRight) {
                 Image(
                     painter = painterResource(R.drawable.ic_calendar_right),
@@ -101,7 +98,6 @@ private fun AvailabilityCalendar(availability: AvailabilityData) {
                 )
             }
         }
-
         CalendarPart(lastDay, firstDayInt, lastDay)
     }
 }
