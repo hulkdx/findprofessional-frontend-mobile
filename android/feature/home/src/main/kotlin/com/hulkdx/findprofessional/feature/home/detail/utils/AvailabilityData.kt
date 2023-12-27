@@ -22,7 +22,7 @@ data class AvailabilityData(
 
     fun isSelectedDay(day: Int): Boolean {
         val checkDay = LocalDate.of(nowLocalDate.year, nowLocalDate.month, day)
-        return false
+        return selectedItemForThisMonth.contains(checkDay)
     }
 }
 
