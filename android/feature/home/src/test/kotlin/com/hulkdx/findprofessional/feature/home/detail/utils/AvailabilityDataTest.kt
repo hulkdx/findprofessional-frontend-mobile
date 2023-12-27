@@ -25,6 +25,24 @@ class AvailabilityDataTest {
         assertEquals(true, result)
     }
 
+    @Test
+    fun `when isSelectedDay is not included selectedItemForThisMonth then it should return true`() {
+        // Arrange
+        val now = LocalDate.of(2023, 12, 27)
+        val selectedItemForThisMonth = listOf(
+            LocalDate.of(2023, 12, 27)
+        )
+
+        val availabilityData = createAvailabilityData(
+            now,
+            selectedItemForThisMonth,
+        )
+        // Act
+        val result = availabilityData.isSelectedDay(28)
+        // Assert
+        assertEquals(false, result)
+    }
+
     private fun createAvailabilityData(
         now: LocalDate,
         selectedItemForThisMonth: List<LocalDate>,
