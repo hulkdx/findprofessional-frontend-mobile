@@ -4,6 +4,7 @@ package com.hulkdx.findprofessional.feature.home.detail
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -13,6 +14,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListScope
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Divider
 import androidx.compose.material3.IconButton
@@ -170,7 +172,7 @@ private fun CalendarEachDate(
     if (day <= 0 || day > lastDay) {
         EmptyCalendarItem()
     } else {
-        SelectedCalendarItem(day)
+        NotSelectedCalendarItem(day)
     }
 }
 
@@ -181,17 +183,7 @@ private fun EmptyCalendarItem() {
 
 @Composable
 private fun SelectedCalendarItem(day: Int) {
-    CalendarItem(
-        day,
-        MaterialTheme.colorScheme.outlineVariant,
-    )
-}
-
-@Composable
-private fun CalendarItem(
-    day: Int,
-    backgroundColor: Color,
-) {
+    val backgroundColor = MaterialTheme.colorScheme.outlineVariant
     Box(
         modifier = Modifier
             .aspectRatio(1F)
@@ -205,6 +197,27 @@ private fun CalendarItem(
             text = day.toString(),
             style = body1,
             color = MaterialTheme.colorScheme.surfaceVariant
+        )
+    }
+}
+
+@Composable
+private fun NotSelectedCalendarItem(day: Int) {
+    Box(
+        modifier = Modifier
+            .aspectRatio(1F)
+            .padding(4.dp)
+            .border(
+                width = 1.dp,
+                color = Color(0xFF9D9CAC),
+                shape = CircleShape,
+            )
+    ) {
+        Text(
+            modifier = Modifier.align(Alignment.Center),
+            text = day.toString(),
+            style = body1,
+            color = Color(0xFF9D9CAC)
         )
     }
 }
