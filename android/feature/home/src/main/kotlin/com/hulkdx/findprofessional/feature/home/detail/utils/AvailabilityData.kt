@@ -14,12 +14,14 @@ data class AvailabilityData(
     val firstDay: Int,
     val lengthOfMonth: Int,
     val now: Long,
+    val selectedItemForThisMonth: List<LocalDate> = listOf(),
 ) : Parcelable {
 
     @IgnoredOnParcel
     val nowLocalDate: LocalDate = LocalDate.ofEpochDay(now)
 
     fun isSelectedDay(day: Int): Boolean {
+        val checkDay = LocalDate.of(nowLocalDate.year, nowLocalDate.month, day)
         return false
     }
 }
