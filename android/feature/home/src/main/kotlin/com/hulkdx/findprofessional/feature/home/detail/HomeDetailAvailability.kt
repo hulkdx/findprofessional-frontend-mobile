@@ -71,9 +71,6 @@ private fun AvailabilityCalendar(
     availabilityMonthMinusOne: () -> Unit,
     availabilityMonthPlusOne: () -> Unit,
 ) {
-    val lastDay = availability.lengthOfMonth
-    val firstDayInt = availability.firstDay
-
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -83,7 +80,7 @@ private fun AvailabilityCalendar(
             .padding(bottom = 22.dp)
     ) {
         CalendarTop(availability, availabilityMonthMinusOne, availabilityMonthPlusOne)
-        CalendarMain(lastDay, firstDayInt, lastDay)
+        CalendarMain(availability)
     }
 }
 
@@ -138,11 +135,12 @@ private fun CalendarTopButton(
 
 @Composable
 private fun CalendarMain(
-    numberOfDaysInMonth: Int,
-    firstDay: Int,
-    lastDay: Int,
+    availability: AvailabilityData,
 ) {
-    val perWeek = ceil((numberOfDaysInMonth + firstDay) / 7F).toInt()
+    val lastDay = availability.lengthOfMonth
+    val firstDay = availability.firstDay
+
+    val perWeek = ceil((lastDay + firstDay) / 7F).toInt()
 
     Row {
         for (i in 0..<7) {
