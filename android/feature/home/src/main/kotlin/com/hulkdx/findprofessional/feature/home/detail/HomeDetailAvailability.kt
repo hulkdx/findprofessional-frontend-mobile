@@ -170,13 +170,20 @@ private fun CalendarDay(
     if (day <= 0 || day > lastDay) {
         EmptyCalendarItem()
     } else {
-        NotSelectedCalendarItem(day)
+        CalendarItem(day)
     }
 }
 
 @Composable
 private fun EmptyCalendarItem() {
     Box(modifier = Modifier.aspectRatio(1F))
+}
+
+@Composable
+private fun CalendarItem(
+    day: Int,
+) {
+    NotSelectedCalendarItem(day)
 }
 
 @Composable
