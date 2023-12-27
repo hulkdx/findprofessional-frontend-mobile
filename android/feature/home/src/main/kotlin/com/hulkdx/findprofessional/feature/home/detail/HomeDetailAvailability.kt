@@ -154,7 +154,7 @@ private fun CalendarMain(
                     color = Color(0xFF9D9CAC)
                 )
                 for (j in 0..<perWeek) {
-                    CalendarEachDate(i, j, firstDay, lastDay)
+                    CalendarDay(i, j, firstDay, lastDay)
                 }
             }
         }
@@ -162,7 +162,7 @@ private fun CalendarMain(
 }
 
 @Composable
-private fun CalendarEachDate(
+private fun CalendarDay(
     i: Int,
     j: Int,
     firstDay: Int,
