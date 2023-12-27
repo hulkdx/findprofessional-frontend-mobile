@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -78,14 +79,7 @@ private fun AvailabilityCalendar(availability: AvailabilityData) {
     ) {
         Row(modifier = Modifier.padding(horizontal = 16.dp)) {
             CalendarTopButton(R.drawable.ic_calendar_left, onClickLeft)
-            Text(
-                modifier = Modifier
-                    .weight(1F)
-                    .align(Alignment.CenterVertically),
-                text = currentMonth,
-                style = h3Medium,
-                textAlign = TextAlign.Center,
-            )
+            CalendarTopMonth(currentMonth)
             CalendarTopButton(R.drawable.ic_calendar_right, onClickRight)
         }
         CalendarPart(lastDay, firstDayInt, lastDay)
@@ -93,11 +87,26 @@ private fun AvailabilityCalendar(availability: AvailabilityData) {
 }
 
 @Composable
+private fun RowScope.CalendarTopMonth(currentMonth: String) {
+    Text(
+        modifier = Modifier
+            .weight(1F)
+            .align(Alignment.CenterVertically),
+        text = currentMonth,
+        style = h3Medium,
+        textAlign = TextAlign.Center,
+    )
+}
+
+@Composable
 private fun CalendarTopButton(
     icon: Int,
     onClickLeft: () -> Unit,
 ) {
-    IconButton(onClick = onClickLeft) {
+    IconButton(
+        modifier = Modifier.padding(vertical = 6.dp),
+        onClick = onClickLeft,
+    ) {
         Image(
             painter = painterResource(icon),
             contentDescription = "",
