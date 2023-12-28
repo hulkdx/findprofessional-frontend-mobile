@@ -2,7 +2,13 @@
 
 package com.hulkdx.findprofessional.common.feature.home.detail.availability
 
+import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalAvailability
+import com.hulkdx.findprofessional.common.utils.createProfessional
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.test.runTest
 import kotlinx.datetime.LocalDate
+import kotlinx.datetime.LocalTime
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -57,4 +63,40 @@ class HomeDetailAvailabilityUseCaseTest {
         // Assert
         assertEquals(expected, result)
     }
+
+    @Test
+    fun getAvailabilityDataTests() = runTest {
+        data class TestData(
+            val availability: List<ProfessionalAvailability>,
+            val expectedResult: List<LocalDate>,
+        )
+
+        val testData = listOf(
+            TestData(
+                availability = listOf(),
+                expectedResult = listOf()
+            ),
+            TestData(
+                availability = listOf(
+                    professionalAvailability(LocalDate(2023, 1, 1))
+                ),
+                expectedResult = listOf(LocalDate(2023, 1, 1))
+            ),
+        )
+
+        for (t in testData) {
+            // Arrange
+            val pro = MutableStateFlow(createProfessional(t.availability))
+            // Act
+            val result = sut.getAvailabilityData(pro).first()
+            // Assert
+            assertEquals(t.expectedResult, result.professionalAvailabilityDates)
+        }
+    }
+
+    private fun professionalAvailability(date: LocalDate) = ProfessionalAvailability(
+        date,
+        LocalTime.fromMillisecondOfDay(1),
+        LocalTime.fromMillisecondOfDay(1),
+    )
 }

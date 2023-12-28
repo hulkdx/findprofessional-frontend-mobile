@@ -1,9 +1,12 @@
 package com.hulkdx.findprofessional.common.utils
 
 import com.hulkdx.findprofessional.common.feature.home.model.Professional
+import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalAvailability
 
 
-fun createProfessional() = Professional(
+fun createProfessional(
+    availability: List<ProfessionalAvailability> = listOf(),
+) = Professional(
     id = 0,
     email = "",
     firstName = null,
@@ -14,7 +17,7 @@ fun createProfessional() = Professional(
     profileImageUrl = null,
     rating = null,
     description = null,
-    availability = listOf(),
+    availability = availability,
     reviewSize = "",
     reviews = listOf(),
     createdAt = "",
