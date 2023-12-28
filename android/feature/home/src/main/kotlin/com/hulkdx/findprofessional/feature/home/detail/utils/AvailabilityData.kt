@@ -1,11 +1,6 @@
 package com.hulkdx.findprofessional.feature.home.detail.utils
 
 import android.os.Parcelable
-import com.hulkdx.findprofessional.common.feature.home.model.Professional
-import com.hulkdx.findprofessional.feature.home.detail.utils.HomeDetailDateFormatter.currentMonth
-import com.hulkdx.findprofessional.feature.home.detail.utils.HomeDetailDateFormatter.firstDayInt
-import com.hulkdx.findprofessional.feature.home.detail.utils.HomeDetailDateFormatter.lengthOfMonth
-import kotlinx.datetime.toJavaLocalDate
 import kotlinx.parcelize.IgnoredOnParcel
 import kotlinx.parcelize.Parcelize
 import java.time.LocalDate
@@ -27,14 +22,3 @@ data class AvailabilityData(
         return professionalAvailabilityDates.contains(checkDay)
     }
 }
-
-fun createAvailabilityData(
-    professional: Professional,
-    now: LocalDate = LocalDate.now(),
-) = AvailabilityData(
-    currentMonth = currentMonth(now),
-    firstDay = firstDayInt(now),
-    lengthOfMonth = lengthOfMonth(now),
-    now = now.toEpochDay(),
-    professionalAvailabilityDates = professional.availability.map { it.date.toJavaLocalDate() },
-)

@@ -7,7 +7,7 @@ import com.hulkdx.findprofessional.common.feature.home.detail.HomeDetailAvailabi
 import com.hulkdx.findprofessional.common.feature.home.model.Professional
 import com.hulkdx.findprofessional.core.utils.getStateFlow
 import com.hulkdx.findprofessional.feature.home.detail.HomeDetailNavigationScreen.Companion.ARG1
-import com.hulkdx.findprofessional.feature.home.detail.utils.createAvailabilityData
+import com.hulkdx.findprofessional.feature.home.detail.utils.AvailabilityData
 import dev.icerock.moko.resources.desc.StringDesc
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted.Companion.WhileSubscribed
@@ -15,6 +15,8 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.datetime.toJavaLocalDate
+import kotlinx.datetime.toKotlinLocalDate
 import java.time.LocalDate
 
 
@@ -57,4 +59,15 @@ class HomeDetailViewModel(
     fun availabilityMonthPlusOne() {
         date.value = date.value.plusMonths(1)
     }
+
+    private fun createAvailabilityData(
+        professional: Professional,
+        now: LocalDate = LocalDate.now(),
+    ) = AvailabilityData(
+        currentMonth = availabilityUseCase.currentMonth(now.toKotlinLocalDate()),
+        firstDay = availabilityUseCase.firstDayInt(now.toKotlinLocalDate()),
+        lengthOfMonth = availabilityUseCase.lengthOfMonth(now.toKotlinLocalDate()),
+        now = now.toEpochDay(),
+        professionalAvailabilityDates = professional.availability.map { it.date.toJavaLocalDate() },
+    )
 }
