@@ -9,5 +9,5 @@ val homeModule: Module
     get() = module {
         factoryOf(::ProfessionalApiImpl) bind ProfessionalApi::class
         factoryOf(::HomeUseCase)
-        factoryOf(::HomeDetailUseCase)
+        factoryOf(::HomeDetailAvailabilityUseCase)
     }
