@@ -40,7 +40,7 @@ class HomeDetailAvailabilityUseCase {
         return "$month $year"
     }
 
-    fun firstDay(now: LocalDate): String? {
+    fun firstDay(now: LocalDate): String {
         val date = LocalDate(now.year, now.monthNumber, 1)
         return date
             .dayOfWeek.name
