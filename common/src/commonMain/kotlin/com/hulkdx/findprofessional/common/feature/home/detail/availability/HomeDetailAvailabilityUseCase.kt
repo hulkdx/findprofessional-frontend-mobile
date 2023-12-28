@@ -17,18 +17,6 @@ import kotlinx.datetime.plus
 import kotlinx.datetime.todayIn
 
 class HomeDetailAvailabilityUseCase {
-    companion object {
-        val weekNumberMap = mapOf(
-            0 to "Mon",
-            1 to "Tue",
-            2 to "Wed",
-            3 to "Thu",
-            4 to "Fri",
-            5 to "Sat",
-            6 to "Sun",
-        )
-    }
-
     private val date = MutableStateFlow(Clock.System.todayIn(TimeZone.UTC))
 
     fun getAvailabilityData(professional: StateFlow<Professional>): Flow<AvailabilityData> {
@@ -37,6 +25,14 @@ class HomeDetailAvailabilityUseCase {
                 createAvailabilityData(professional, date)
             }
             .distinctUntilChanged()
+    }
+
+    fun monthMinusOne() {
+        date.value = date.value.minus(1, DateTimeUnit.MONTH)
+    }
+
+    fun monthPlusOne() {
+        date.value = date.value.plus(1, DateTimeUnit.MONTH)
     }
 
     fun createAvailabilityData(
@@ -80,11 +76,15 @@ class HomeDetailAvailabilityUseCase {
         return now.lengthOfMonth()
     }
 
-    fun monthMinusOne() {
-        date.value = date.value.minus(1, DateTimeUnit.MONTH)
-    }
-
-    fun monthPlusOne() {
-        date.value = date.value.plus(1, DateTimeUnit.MONTH)
+    companion object {
+        val weekNumberMap = mapOf(
+            0 to "Mon",
+            1 to "Tue",
+            2 to "Wed",
+            3 to "Thu",
+            4 to "Fri",
+            5 to "Sat",
+            6 to "Sun",
+        )
     }
 }
