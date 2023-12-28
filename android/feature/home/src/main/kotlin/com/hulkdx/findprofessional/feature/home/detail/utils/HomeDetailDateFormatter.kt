@@ -15,23 +15,23 @@ object HomeDetailDateFormatter {
         6 to "Sun",
     )
 
-    fun currentMonth(now: LocalDate = LocalDate.now()): String {
+    fun currentMonth(now: LocalDate): String {
         return now.format(DateTimeFormatter.ofPattern("MMMM yyyy"))
     }
 
-    fun firstDay(now: LocalDate = LocalDate.now()): String? {
+    fun firstDay(now: LocalDate): String? {
         return LocalDate.of(now.year, now.monthValue, 1)
             .format(DateTimeFormatter.ofPattern("E"))
     }
 
-    fun firstDayInt(now: LocalDate = LocalDate.now()): Int {
+    fun firstDayInt(now: LocalDate): Int {
         val str = firstDay(now)
         return weekNumberMap
             .filter { it.value == str }
             .firstNotNullOf { it.key }
     }
 
-    fun lengthOfMonth(now: LocalDate = LocalDate.now()): Int {
+    fun lengthOfMonth(now: LocalDate): Int {
         return now.lengthOfMonth()
     }
 }
