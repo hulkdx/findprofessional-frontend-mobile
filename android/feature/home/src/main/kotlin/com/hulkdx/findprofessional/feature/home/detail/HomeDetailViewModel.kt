@@ -3,7 +3,6 @@ package com.hulkdx.findprofessional.feature.home.detail
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.hulkdx.findprofessional.common.feature.home.detail.availability.AvailabilityData
 import com.hulkdx.findprofessional.common.feature.home.detail.availability.HomeDetailAvailabilityUseCase
 import com.hulkdx.findprofessional.common.feature.home.model.Professional
 import com.hulkdx.findprofessional.core.utils.getStateFlow
@@ -17,7 +16,6 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.datetime.Clock
 import kotlinx.datetime.DateTimeUnit
-import kotlinx.datetime.LocalDate
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.minus
 import kotlinx.datetime.plus
@@ -36,11 +34,19 @@ class HomeDetailViewModel(
 
     val availability = professional
         .combine(date, ::Pair)
-        .map { (professional, date) -> createAvailabilityData(professional, date) }
+        .map { (professional, date) ->
+            availabilityUseCase.createAvailabilityData(
+                professional,
+                date
+            )
+        }
         .distinctUntilChanged()
         .stateIn(
             scope = viewModelScope,
-            initialValue = createAvailabilityData(professional.value, date.value),
+            initialValue = availabilityUseCase.createAvailabilityData(
+                professional.value,
+                date.value
+            ),
             started = WhileSubscribed(5_000),
         )
 
@@ -63,15 +69,4 @@ class HomeDetailViewModel(
     fun availabilityMonthPlusOne() {
         date.value = date.value.plus(1, DateTimeUnit.MONTH)
     }
-
-    private fun createAvailabilityData(
-        professional: Professional,
-        now: LocalDate = Clock.System.todayIn(TimeZone.UTC),
-    ) = AvailabilityData(
-        currentMonth = availabilityUseCase.currentMonth(now),
-        firstDay = availabilityUseCase.firstDayInt(now),
-        lengthOfMonth = availabilityUseCase.lengthOfMonth(now),
-        now = now.toEpochDays(),
-        professionalAvailabilityDates = professional.availability.map { it.date },
-    )
 }

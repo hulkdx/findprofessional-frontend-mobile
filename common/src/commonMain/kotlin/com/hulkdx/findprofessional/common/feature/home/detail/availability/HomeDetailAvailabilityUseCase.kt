@@ -1,7 +1,11 @@
 package com.hulkdx.findprofessional.common.feature.home.detail.availability
 
+import com.hulkdx.findprofessional.common.feature.home.model.Professional
 import com.hulkdx.findprofessional.common.utils.lengthOfMonth
+import kotlinx.datetime.Clock
 import kotlinx.datetime.LocalDate
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.todayIn
 
 class HomeDetailAvailabilityUseCase {
     companion object {
@@ -15,6 +19,17 @@ class HomeDetailAvailabilityUseCase {
             6 to "Sun",
         )
     }
+
+    fun createAvailabilityData(
+        professional: Professional,
+        now: LocalDate = Clock.System.todayIn(TimeZone.UTC),
+    ) = AvailabilityData(
+        currentMonth = currentMonth(now),
+        firstDay = firstDayInt(now),
+        lengthOfMonth = lengthOfMonth(now),
+        now = now.toEpochDays(),
+        professionalAvailabilityDates = professional.availability.map { it.date },
+    )
 
     fun currentMonth(now: LocalDate): String {
         val month = now.month.name
