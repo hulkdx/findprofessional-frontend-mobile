@@ -1,5 +1,6 @@
 package com.hulkdx.findprofessional.common.utils
 
+import kotlinx.datetime.Clock
 import kotlinx.datetime.DateTimeUnit
 import kotlinx.datetime.DayOfWeek
 import kotlinx.datetime.DayOfWeek.FRIDAY
@@ -10,7 +11,9 @@ import kotlinx.datetime.DayOfWeek.THURSDAY
 import kotlinx.datetime.DayOfWeek.TUESDAY
 import kotlinx.datetime.DayOfWeek.WEDNESDAY
 import kotlinx.datetime.LocalDate
+import kotlinx.datetime.TimeZone
 import kotlinx.datetime.plus
+import kotlinx.datetime.todayIn
 import kotlinx.datetime.until
 
 
@@ -32,4 +35,8 @@ fun LocalDate.lengthOfMonth(): Int {
     val start = LocalDate(year, month, 1)
     val end = start.plus(1, DateTimeUnit.MONTH)
     return start.until(end, DateTimeUnit.DAY)
+}
+
+fun LocalDate.Companion.now(): LocalDate {
+    return Clock.System.todayIn(TimeZone.UTC)
 }

@@ -2,77 +2,64 @@ package com.hulkdx.findprofessional.common.feature.home.detail.availability
 
 import com.hulkdx.findprofessional.common.feature.home.model.Professional
 import com.hulkdx.findprofessional.common.utils.lengthOfMonth
+import com.hulkdx.findprofessional.common.utils.now
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
-import kotlinx.datetime.Clock
-import kotlinx.datetime.DateTimeUnit
+import kotlinx.datetime.DateTimeUnit.Companion.MONTH
 import kotlinx.datetime.LocalDate
-import kotlinx.datetime.TimeZone
 import kotlinx.datetime.minus
 import kotlinx.datetime.plus
-import kotlinx.datetime.todayIn
 
 class HomeDetailAvailabilityUseCase {
-    private val date = MutableStateFlow(Clock.System.todayIn(TimeZone.UTC))
+    private val date = MutableStateFlow(LocalDate.now())
 
     fun getAvailabilityData(professional: StateFlow<Professional>): Flow<AvailabilityData> {
         return combine(professional, date, ::Pair)
             .map { (professional, date) ->
-                createAvailabilityData(professional, date)
+                AvailabilityData(
+                    currentMonth = currentMonth(date),
+                    firstDay = firstDayInt(date),
+                    lengthOfMonth = lengthOfMonth(date),
+                    now = date.toEpochDays(),
+                    professionalAvailabilityDates = professional.availability.map { it.date },
+                )
             }
             .distinctUntilChanged()
     }
 
     fun monthMinusOne() {
-        date.value = date.value.minus(1, DateTimeUnit.MONTH)
+        date.value = date.value.minus(1, MONTH)
     }
 
     fun monthPlusOne() {
-        date.value = date.value.plus(1, DateTimeUnit.MONTH)
+        date.value = date.value.plus(1, MONTH)
     }
 
-    fun createAvailabilityData(
-        professional: Professional,
-        now: LocalDate = Clock.System.todayIn(TimeZone.UTC),
-    ) = AvailabilityData(
-        currentMonth = currentMonth(now),
-        firstDay = firstDayInt(now),
-        lengthOfMonth = lengthOfMonth(now),
-        now = now.toEpochDays(),
-        professionalAvailabilityDates = professional.availability.map { it.date },
-    )
-
-    fun currentMonth(now: LocalDate): String {
-        val month = now.month.name
-            .lowercase()
-            // capitalize
-            .replaceFirstChar { if (it.isLowerCase()) it.titlecase() else it.toString() }
+    internal fun currentMonth(now: LocalDate): String {
+        val month = now.month.name.capitalize()
         val year = now.year
         return "$month $year"
     }
 
-    fun firstDay(now: LocalDate): String {
+    internal fun firstDay(now: LocalDate): String {
         val date = LocalDate(now.year, now.monthNumber, 1)
         return date
-            .dayOfWeek.name
-            .lowercase()
-            // capitalize
-            .replaceFirstChar { if (it.isLowerCase()) it.titlecase() else it.toString() }
+            .dayOfWeek.name.capitalize()
             .take(3)
     }
 
-    fun firstDayInt(now: LocalDate): Int {
+    internal fun firstDayInt(now: LocalDate): Int {
         val str = firstDay(now)
         return weekNumberMap
             .filter { it.value == str }
             .firstNotNullOf { it.key }
     }
 
-    fun lengthOfMonth(now: LocalDate): Int {
+    internal fun lengthOfMonth(now: LocalDate): Int {
         return now.lengthOfMonth()
     }
 
@@ -87,4 +74,9 @@ class HomeDetailAvailabilityUseCase {
             6 to "Sun",
         )
     }
+}
+
+private fun String.capitalize(): String {
+    return lowercase()
+        .replaceFirstChar { if (it.isLowerCase()) it.titlecase() else it.toString() }
 }
