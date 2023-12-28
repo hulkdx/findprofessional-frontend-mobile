@@ -2,6 +2,11 @@ package com.hulkdx.findprofessional.common.feature.home.detail.availability
 
 import com.hulkdx.findprofessional.common.feature.home.model.Professional
 import com.hulkdx.findprofessional.common.utils.lengthOfMonth
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.map
 import kotlinx.datetime.Clock
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.TimeZone
@@ -18,6 +23,20 @@ class HomeDetailAvailabilityUseCase {
             5 to "Sat",
             6 to "Sun",
         )
+    }
+
+    fun getAvailabilityData(
+        professional: StateFlow<Professional>,
+        date: StateFlow<LocalDate>,
+    ): Flow<AvailabilityData> {
+        return combine(professional, date, ::Pair)
+            .map { (professional, date) ->
+                createAvailabilityData(
+                    professional,
+                    date
+                )
+            }
+            .distinctUntilChanged()
     }
 
     fun createAvailabilityData(
