@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.common.feature.home.detail
+package com.hulkdx.findprofessional.common.feature.home.detail.availability
 
 import com.hulkdx.findprofessional.common.utils.lengthOfMonth
 import kotlinx.datetime.LocalDate
