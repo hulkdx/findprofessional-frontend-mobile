@@ -25,4 +25,14 @@ class HomeDetailAvailabilityUseCaseTest {
         // Assert
         assertEquals("January 2022", result)
     }
+
+    @Test
+    fun firstDayTest() {
+        // Arrange
+        val now = LocalDate(2023, 12, 21)
+        // Act
+        val result = sut.firstDay(now)
+        // Assert
+        assertEquals("Fri", result)
+    }
 }
