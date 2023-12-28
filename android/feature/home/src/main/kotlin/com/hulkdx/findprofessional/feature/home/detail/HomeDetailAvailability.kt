@@ -31,6 +31,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.hulkdx.findprofessional.common.feature.home.detail.availability.AvailabilityData
 import com.hulkdx.findprofessional.common.feature.home.detail.availability.HomeDetailAvailabilityUseCase.Companion.weekNumberMap
 import com.hulkdx.findprofessional.core.R
 import com.hulkdx.findprofessional.core.theme.AppTheme
@@ -38,7 +39,6 @@ import com.hulkdx.findprofessional.core.theme.body1
 import com.hulkdx.findprofessional.core.theme.body1Medium
 import com.hulkdx.findprofessional.core.theme.h3Medium
 import com.hulkdx.findprofessional.feature.home.detail.HomeScreenDimens.outerHorizontalPadding
-import com.hulkdx.findprofessional.feature.home.detail.utils.AvailabilityData
 import com.hulkdx.findprofessional.resources.MR
 import kotlin.math.ceil
 

@@ -18,13 +18,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.hulkdx.findprofessional.common.feature.authentication.model.User
+import com.hulkdx.findprofessional.common.feature.home.detail.availability.AvailabilityData
 import com.hulkdx.findprofessional.common.feature.home.model.Professional
 import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalReview
 import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.feature.home.Description
 import com.hulkdx.findprofessional.feature.home.TopRow
 import com.hulkdx.findprofessional.feature.home.detail.HomeScreenDimens.outerHorizontalPadding
-import com.hulkdx.findprofessional.feature.home.detail.utils.AvailabilityData
 import kotlinx.datetime.Clock
 import org.koin.androidx.compose.getViewModel
 
