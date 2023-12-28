@@ -10,11 +10,11 @@ class HomeDetailDateFormatterTest {
     private val sut = HomeDetailDateFormatter
 
     @Test
-    fun calendarDateFormatTest() {
+    fun currentMonthTest() {
         // Arrange
         val now = LocalDate.of(2022, 1, 1)
         // Act
-        val result = sut.calendarDateFormat(now)
+        val result = sut.currentMonth(now)
         // Assert
         assertEquals("January 2022", result)
     }

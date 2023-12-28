@@ -40,7 +40,6 @@ import com.hulkdx.findprofessional.feature.home.detail.HomeScreenDimens.outerHor
 import com.hulkdx.findprofessional.feature.home.detail.utils.AvailabilityData
 import com.hulkdx.findprofessional.feature.home.detail.utils.HomeDetailDateFormatter
 import com.hulkdx.findprofessional.resources.MR
-import java.time.LocalDate
 import kotlin.math.ceil
 
 internal fun LazyListScope.Availability(
@@ -91,14 +90,12 @@ private fun CalendarTop(
     availabilityMonthMinusOne: () -> Unit,
     availabilityMonthPlusOne: () -> Unit,
 ) {
-    val currentMonth = availability.calendarDateFormat
-
     Row(modifier = Modifier.padding(horizontal = 16.dp)) {
         CalendarTopButton(
             icon = R.drawable.ic_calendar_left,
             onClick = availabilityMonthMinusOne,
         )
-        CalendarTopMonth(currentMonth)
+        CalendarTopMonth(availability.currentMonth)
         CalendarTopButton(
             icon = R.drawable.ic_calendar_right,
             onClick = availabilityMonthPlusOne

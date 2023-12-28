@@ -48,7 +48,7 @@ class AvailabilityDataTest {
         selectedItemForThisMonth: List<LocalDate>,
     ) =
         AvailabilityData(
-            calendarDateFormat = "",
+            currentMonth = "",
             firstDay = 0,
             lengthOfMonth = 0,
             now = now.toEpochDay(),

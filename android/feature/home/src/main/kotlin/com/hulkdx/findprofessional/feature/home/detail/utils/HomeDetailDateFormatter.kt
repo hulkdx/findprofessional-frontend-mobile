@@ -15,7 +15,7 @@ object HomeDetailDateFormatter {
         6 to "Sun",
     )
 
-    fun calendarDateFormat(now: LocalDate = LocalDate.now()): String {
+    fun currentMonth(now: LocalDate = LocalDate.now()): String {
         return now.format(DateTimeFormatter.ofPattern("MMMM yyyy"))
     }
 

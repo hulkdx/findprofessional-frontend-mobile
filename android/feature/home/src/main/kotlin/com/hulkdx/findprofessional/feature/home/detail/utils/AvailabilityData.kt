@@ -2,7 +2,7 @@ package com.hulkdx.findprofessional.feature.home.detail.utils
 
 import android.os.Parcelable
 import com.hulkdx.findprofessional.common.feature.home.model.Professional
-import com.hulkdx.findprofessional.feature.home.detail.utils.HomeDetailDateFormatter.calendarDateFormat
+import com.hulkdx.findprofessional.feature.home.detail.utils.HomeDetailDateFormatter.currentMonth
 import com.hulkdx.findprofessional.feature.home.detail.utils.HomeDetailDateFormatter.firstDayInt
 import com.hulkdx.findprofessional.feature.home.detail.utils.HomeDetailDateFormatter.lengthOfMonth
 import kotlinx.datetime.toJavaLocalDate
@@ -12,7 +12,7 @@ import java.time.LocalDate
 
 @Parcelize
 data class AvailabilityData(
-    val calendarDateFormat: String,
+    val currentMonth: String,
     val firstDay: Int,
     val lengthOfMonth: Int,
     val now: Long,
@@ -32,7 +32,7 @@ fun createAvailabilityData(
     professional: Professional,
     now: LocalDate = LocalDate.now(),
 ) = AvailabilityData(
-    calendarDateFormat = calendarDateFormat(now),
+    currentMonth = currentMonth(now),
     firstDay = firstDayInt(now),
     lengthOfMonth = lengthOfMonth(now),
     now = now.toEpochDay(),
