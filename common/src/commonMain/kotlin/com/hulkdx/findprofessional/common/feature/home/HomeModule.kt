@@ -1,5 +1,6 @@
 package com.hulkdx.findprofessional.common.feature.home
 
+import com.hulkdx.findprofessional.common.feature.home.detail.HomeDetailAvailabilityUseCase
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.factoryOf
 import org.koin.dsl.bind
