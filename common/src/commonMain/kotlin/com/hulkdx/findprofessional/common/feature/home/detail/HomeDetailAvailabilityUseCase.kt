@@ -4,7 +4,11 @@ import kotlinx.datetime.LocalDate
 
 class HomeDetailAvailabilityUseCase {
     fun currentMonth(now: LocalDate): String {
-        return ""
-        // return now.format(DateTimeFormatter.ofPattern("MMMM yyyy"))
+        val month = now.month.name
+            .lowercase()
+            // capitalize
+            .replaceFirstChar { if (it.isLowerCase()) it.titlecase() else it.toString() }
+        val year = now.year
+        return "$month $year"
     }
 }
