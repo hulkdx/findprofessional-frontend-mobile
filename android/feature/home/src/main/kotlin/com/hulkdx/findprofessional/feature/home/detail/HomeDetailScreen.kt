@@ -121,7 +121,8 @@ private fun HomeDetailScreenPreview() {
                 "January 2022",
                 5,
                 31,
-                1
+                1,
+                listOf()
             ),
             {},
             {},

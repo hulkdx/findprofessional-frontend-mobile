@@ -52,7 +52,7 @@ class AvailabilityDataTest {
             firstDay = 0,
             lengthOfMonth = 0,
             now = now.toEpochDay(),
-            selectedItemForThisMonth = selectedItemForThisMonth
+            professionalAvailabilityDates = selectedItemForThisMonth
         )
 
 }

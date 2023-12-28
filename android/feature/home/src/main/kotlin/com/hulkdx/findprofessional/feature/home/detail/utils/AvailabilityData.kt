@@ -1,9 +1,11 @@
 package com.hulkdx.findprofessional.feature.home.detail.utils
 
 import android.os.Parcelable
+import com.hulkdx.findprofessional.common.feature.home.model.Professional
 import com.hulkdx.findprofessional.feature.home.detail.utils.HomeDetailDateFormatter.calendarDateFormat
 import com.hulkdx.findprofessional.feature.home.detail.utils.HomeDetailDateFormatter.firstDayInt
 import com.hulkdx.findprofessional.feature.home.detail.utils.HomeDetailDateFormatter.lengthOfMonth
+import kotlinx.datetime.toJavaLocalDate
 import kotlinx.parcelize.IgnoredOnParcel
 import kotlinx.parcelize.Parcelize
 import java.time.LocalDate
@@ -14,7 +16,7 @@ data class AvailabilityData(
     val firstDay: Int,
     val lengthOfMonth: Int,
     val now: Long,
-    val selectedItemForThisMonth: List<LocalDate> = listOf(),
+    val professionalAvailabilityDates: List<LocalDate>,
 ) : Parcelable {
 
     @IgnoredOnParcel
@@ -22,25 +24,17 @@ data class AvailabilityData(
 
     fun isSelectedDay(day: Int): Boolean {
         val checkDay = LocalDate.of(nowLocalDate.year, nowLocalDate.month, day)
-        return selectedItemForThisMonth.contains(checkDay)
+        return professionalAvailabilityDates.contains(checkDay)
     }
 }
 
-fun createAvailabilityData(now: LocalDate = LocalDate.now()) = AvailabilityData(
+fun createAvailabilityData(
+    professional: Professional,
+    now: LocalDate = LocalDate.now(),
+) = AvailabilityData(
     calendarDateFormat = calendarDateFormat(now),
     firstDay = firstDayInt(now),
     lengthOfMonth = lengthOfMonth(now),
     now = now.toEpochDay(),
+    professionalAvailabilityDates = professional.availability.map { it.date.toJavaLocalDate() },
 )
-
-fun createAvailabilityDataMonthMinusOne(current: AvailabilityData): AvailabilityData {
-    val localDate = current.nowLocalDate
-        .minusMonths(1)
-    return createAvailabilityData(localDate)
-}
-
-fun createAvailabilityDataMonthPlusOne(current: AvailabilityData): AvailabilityData {
-    val localDate = current.nowLocalDate
-        .plusMonths(1)
-    return createAvailabilityData(localDate)
-}
