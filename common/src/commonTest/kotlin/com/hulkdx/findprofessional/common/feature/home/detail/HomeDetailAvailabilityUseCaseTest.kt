@@ -35,4 +35,26 @@ class HomeDetailAvailabilityUseCaseTest {
         // Assert
         assertEquals("Fri", result)
     }
+
+    @Test
+    fun firstDayIntTest() {
+        // Arrange
+        val now = LocalDate(2023, 12, 21)
+        val expected = 4
+        // Act
+        val result = sut.firstDayInt(now)
+        // Assert
+        assertEquals(expected, result)
+    }
+
+    @Test
+    fun lengthOfMonthTest() {
+        // Arrange
+        val now = LocalDate(2023, 12, 21)
+        val expected = 31
+        // Act
+        val result = sut.lengthOfMonth(now)
+        // Assert
+        assertEquals(expected, result)
+    }
 }
