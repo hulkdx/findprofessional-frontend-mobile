@@ -40,7 +40,6 @@ import com.hulkdx.findprofessional.core.theme.body1Medium
 import com.hulkdx.findprofessional.core.theme.h3Medium
 import com.hulkdx.findprofessional.feature.home.detail.HomeScreenDimens.outerHorizontalPadding
 import com.hulkdx.findprofessional.resources.MR
-import kotlin.math.ceil
 
 internal fun LazyListScope.Availability(
     availability: AvailabilityData,
@@ -140,18 +139,27 @@ private fun AvailabilityCalendarMainContent(
     availability: AvailabilityData,
 ) {
     Row {
-        for (i in 0..<7) {
-            Column(modifier = Modifier.weight(1F)) {
-                MonthText(i)
-                Divider(
-                    modifier = Modifier.padding(vertical = 8.dp),
-                    thickness = 0.5.dp,
-                    color = Color(0xFF9D9CAC)
-                )
-                for (j in 0..<availability.perWeek) {
-                    CalendarDay(availability, i, j)
-                }
-            }
+        val daysPerWeek = 7
+        for (i in 0..<daysPerWeek) {
+            DayColumn(i, availability)
+        }
+    }
+}
+
+@Composable
+private fun RowScope.DayColumn(
+    dayIndex: Int,
+    availability: AvailabilityData,
+) {
+    Column(modifier = Modifier.weight(1F)) {
+        MonthText(dayIndex)
+        Divider(
+            modifier = Modifier.padding(vertical = 8.dp),
+            thickness = 0.5.dp,
+            color = Color(0xFF9D9CAC)
+        )
+        for (j in 0..<availability.perWeek) {
+            CalendarDay(availability, dayIndex, j)
         }
     }
 }
