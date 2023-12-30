@@ -213,40 +213,45 @@ private fun EmptyDay() {
 @Composable
 private fun SelectedDay(day: Int) {
     val backgroundColor = MaterialTheme.colorScheme.outlineVariant
-    Box(
-        modifier = Modifier
-            .aspectRatio(1F)
-            .padding(4.dp)
-            .drawBehind {
-                drawCircle(backgroundColor)
-            }
-    ) {
-        Text(
-            modifier = Modifier.align(Alignment.Center),
-            text = day.toString(),
-            style = body1,
-            color = MaterialTheme.colorScheme.surfaceVariant
-        )
-    }
+    CommonDay(
+        modifier = Modifier.drawBehind {
+            drawCircle(backgroundColor)
+        },
+        text = day.toString(),
+        textColor = MaterialTheme.colorScheme.surfaceVariant,
+    )
 }
 
 @Composable
 private fun NormalDay(day: Int) {
+    CommonDay(
+        modifier = Modifier.border(
+            width = 1.dp,
+            color = Color(0xFF9D9CAC),
+            shape = CircleShape,
+        ),
+        text = day.toString(),
+        textColor = Color(0xFF9D9CAC),
+    )
+}
+
+@Composable
+private fun CommonDay(
+    modifier: Modifier,
+    text: String,
+    textColor: Color,
+) {
     Box(
         modifier = Modifier
             .aspectRatio(1F)
             .padding(4.dp)
-            .border(
-                width = 1.dp,
-                color = Color(0xFF9D9CAC),
-                shape = CircleShape,
-            )
+            .then(modifier)
     ) {
         Text(
             modifier = Modifier.align(Alignment.Center),
-            text = day.toString(),
+            text = text,
             style = body1,
-            color = Color(0xFF9D9CAC)
+            color = textColor
         )
     }
 }
