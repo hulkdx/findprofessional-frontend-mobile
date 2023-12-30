@@ -60,7 +60,6 @@ fun HomeDetailScreen(
             .fillMaxSize()
             .systemBarsPadding()
             .background(MaterialTheme.colorScheme.onPrimary)
-            .padding(top = 49.dp)
             .testTag("HomeDetailScreen")
     ) {
         item { TopHeader(professional) }
@@ -74,6 +73,7 @@ private fun TopHeader(professional: Professional) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
+            .padding(top = 49.dp)
             .padding(horizontal = outerHorizontalPadding.dp)
             .clip(shape = RoundedCornerShape(10.dp))
             .background(MaterialTheme.colorScheme.surfaceVariant)
