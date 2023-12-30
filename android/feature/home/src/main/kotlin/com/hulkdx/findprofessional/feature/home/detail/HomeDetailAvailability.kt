@@ -77,7 +77,7 @@ private fun AvailabilityCalendar(
             .padding(horizontal = outerHorizontalPadding.dp)
             .clip(shape = RoundedCornerShape(10.dp))
             .background(MaterialTheme.colorScheme.surfaceVariant)
-            .padding(bottom = 22.dp)
+            .padding(bottom = 8.dp)
     ) {
         AvailabilityCalendarTopHeader(
             availability,
@@ -139,7 +139,7 @@ private fun AvailabilityCalendarTopHeaderButton(
 private fun AvailabilityCalendarMainContent(
     availability: AvailabilityData,
 ) {
-    Row {
+    Row(Modifier.padding(horizontal = 8.dp)) {
         for (dayIndex in 0..<7) {
             DayColumn(dayIndex, availability)
         }
