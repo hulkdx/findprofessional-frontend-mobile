@@ -122,7 +122,7 @@ private fun HomeDetailScreenPreview() {
                 "January 2022",
                 5,
                 31,
-                18993,
+                LocalDate(2022, 1, 6),
                 listOf(
                     LocalDate(2022, 1, 6),
                     LocalDate(2022, 1, 7),

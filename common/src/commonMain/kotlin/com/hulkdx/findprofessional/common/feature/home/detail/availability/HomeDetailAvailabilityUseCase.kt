@@ -24,7 +24,7 @@ class HomeDetailAvailabilityUseCase {
                     currentMonth = currentMonth(date),
                     firstDay = firstDayInt(date),
                     lengthOfMonth = lengthOfMonth(date),
-                    now = date.toEpochDays(),
+                    now = date,
                     professionalAvailabilityDates = professional.availability.map { it.date },
                 )
             }
