@@ -40,6 +40,7 @@ import com.hulkdx.findprofessional.core.theme.body1Medium
 import com.hulkdx.findprofessional.core.theme.h3Medium
 import com.hulkdx.findprofessional.feature.home.detail.HomeScreenDimens.outerHorizontalPadding
 import com.hulkdx.findprofessional.resources.MR
+import kotlinx.datetime.LocalDate
 
 internal fun LazyListScope.Availability(
     availability: AvailabilityData,
@@ -139,9 +140,8 @@ private fun AvailabilityCalendarMainContent(
     availability: AvailabilityData,
 ) {
     Row {
-        val daysPerWeek = 7
-        for (i in 0..<daysPerWeek) {
-            DayColumn(i, availability)
+        for (dayIndex in 0..<7) {
+            DayColumn(dayIndex, availability)
         }
     }
 }
@@ -152,55 +152,66 @@ private fun RowScope.DayColumn(
     availability: AvailabilityData,
 ) {
     Column(modifier = Modifier.weight(1F)) {
-        MonthText(dayIndex)
-        Divider(
-            modifier = Modifier.padding(vertical = 8.dp),
-            thickness = 0.5.dp,
-            color = Color(0xFF9D9CAC)
-        )
-        for (j in 0..<availability.perWeek) {
-            CalendarDay(availability, dayIndex, j)
+        DayText(dayIndex)
+        DayDivider()
+        for (weekIndex in 0..<availability.perWeek) {
+            Day(availability, dayIndex, weekIndex)
         }
     }
 }
 
 @Composable
-private fun CalendarDay(
+private fun DayText(dayIndex: Int) {
+    val text = requireNotNull(weekNumberMap[dayIndex])
+    DayText(text)
+}
+
+@Composable
+private fun DayText(text: String) {
+    Text(
+        modifier = Modifier.fillMaxWidth(),
+        text = text,
+        textAlign = TextAlign.Center,
+        style = body1Medium,
+    )
+}
+
+@Composable
+private fun DayDivider() {
+    Divider(
+        modifier = Modifier.padding(vertical = 8.dp),
+        thickness = 0.5.dp,
+        color = Color(0xFF9D9CAC)
+    )
+}
+
+@Composable
+private fun Day(
     availability: AvailabilityData,
-    i: Int,
-    j: Int,
+    dayIndex: Int,
+    weekIndex: Int,
 ) {
     val lastDay = availability.lengthOfMonth
     val firstDay = availability.firstDay
+    val day = (dayIndex + 1) + (weekIndex * 7) - firstDay
+    val isEmptyDay = day <= 0 || day > lastDay
 
-    val day = (i + 1) + (j * 7) - firstDay
-    if (day <= 0 || day > lastDay) {
-        EmptyCalendarItem()
+    if (isEmptyDay) {
+        EmptyDay()
+    } else if (availability.isSelectedDay(day)) {
+        SelectedDay(day)
     } else {
-        CalendarItem(availability, day)
+        NormalDay(day)
     }
 }
 
 @Composable
-private fun EmptyCalendarItem() {
+private fun EmptyDay() {
     Box(modifier = Modifier.aspectRatio(1F))
 }
 
 @Composable
-private fun CalendarItem(
-    availability: AvailabilityData,
-    day: Int,
-) {
-    val isSelected = availability.isSelectedDay(day)
-    if (isSelected) {
-        SelectedCalendarItem(day)
-    } else {
-        NotSelectedCalendarItem(day)
-    }
-}
-
-@Composable
-private fun SelectedCalendarItem(day: Int) {
+private fun SelectedDay(day: Int) {
     val backgroundColor = MaterialTheme.colorScheme.outlineVariant
     Box(
         modifier = Modifier
@@ -220,7 +231,7 @@ private fun SelectedCalendarItem(day: Int) {
 }
 
 @Composable
-private fun NotSelectedCalendarItem(day: Int) {
+private fun NormalDay(day: Int) {
     Box(
         modifier = Modifier
             .aspectRatio(1F)
@@ -240,21 +251,6 @@ private fun NotSelectedCalendarItem(day: Int) {
     }
 }
 
-@Composable
-private fun MonthText(
-    index: Int,
-) {
-    val text = requireNotNull(
-        weekNumberMap[index]
-    )
-    Text(
-        modifier = Modifier.fillMaxWidth(),
-        text = text,
-        textAlign = TextAlign.Center,
-        style = body1Medium,
-    )
-}
-
 @Preview
 @Composable
 fun AvailabilityPreview() {
@@ -265,8 +261,12 @@ fun AvailabilityPreview() {
                     "January 2022",
                     5,
                     31,
-                    1,
-                    listOf()
+                    18993,
+                    listOf(
+                        LocalDate(2022, 1, 6),
+                        LocalDate(2022, 1, 7),
+                        LocalDate(2022, 1, 12),
+                    )
                 ),
                 {},
                 {}
