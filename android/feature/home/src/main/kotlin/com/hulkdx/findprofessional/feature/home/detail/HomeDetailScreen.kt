@@ -38,7 +38,7 @@ fun HomeDetailScreen(
 
     HomeDetailScreen(
         professional,
-        availability,
+        availability ?: return,
         viewModel::onReviewShowMoreClicked,
         viewModel::onBookClick,
         viewModel::availabilityMonthMinusOne,

@@ -3,7 +3,6 @@ package com.hulkdx.findprofessional.feature.home.detail
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.hulkdx.findprofessional.common.feature.home.detail.availability.AvailabilityData
 import com.hulkdx.findprofessional.common.feature.home.detail.availability.HomeDetailAvailabilityUseCase
 import com.hulkdx.findprofessional.common.feature.home.model.Professional
 import com.hulkdx.findprofessional.core.utils.getStateFlow
@@ -22,17 +21,7 @@ class HomeDetailViewModel(
     val error = savedStateHandle.getStateFlow<StringDesc?>("error", null)
 
     val availability = availabilityUseCase.getAvailabilityData(professional)
-        .stateIn(
-            scope = viewModelScope,
-            initialValue = AvailabilityData(
-                currentMonth = "",
-                firstDay = 0,
-                lengthOfMonth = 0,
-                now = 0,
-                professionalAvailabilityDates = listOf()
-            ),
-            started = WhileSubscribed(5_000),
-        )
+        .stateIn(viewModelScope, WhileSubscribed(5_000), null)
 
     fun onBookClick() {
         // TODO:
