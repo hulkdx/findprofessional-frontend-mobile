@@ -271,7 +271,7 @@ fun AvailabilityPreview() {
                         LocalDate(2022, 1, 6),
                         LocalDate(2022, 1, 7),
                         LocalDate(2022, 1, 12),
-                    )
+                    ),
                 ),
                 {},
                 {}

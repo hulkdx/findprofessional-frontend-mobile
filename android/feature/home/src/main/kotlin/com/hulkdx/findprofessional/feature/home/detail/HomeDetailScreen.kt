@@ -26,6 +26,7 @@ import com.hulkdx.findprofessional.feature.home.Description
 import com.hulkdx.findprofessional.feature.home.TopRow
 import com.hulkdx.findprofessional.feature.home.detail.HomeScreenDimens.outerHorizontalPadding
 import kotlinx.datetime.Clock
+import kotlinx.datetime.LocalDate
 import org.koin.androidx.compose.getViewModel
 
 @Composable
@@ -121,8 +122,12 @@ private fun HomeDetailScreenPreview() {
                 "January 2022",
                 5,
                 31,
-                1,
-                listOf()
+                18993,
+                listOf(
+                    LocalDate(2022, 1, 6),
+                    LocalDate(2022, 1, 7),
+                    LocalDate(2022, 1, 12),
+                )
             ),
             {},
             {},
