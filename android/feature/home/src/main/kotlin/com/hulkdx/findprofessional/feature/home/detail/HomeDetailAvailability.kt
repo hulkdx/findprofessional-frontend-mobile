@@ -79,24 +79,28 @@ private fun AvailabilityCalendar(
             .background(MaterialTheme.colorScheme.surfaceVariant)
             .padding(bottom = 22.dp)
     ) {
-        CalendarTop(availability, availabilityMonthMinusOne, availabilityMonthPlusOne)
-        CalendarMain(availability)
+        AvailabilityCalendarTopHeader(
+            availability,
+            availabilityMonthMinusOne,
+            availabilityMonthPlusOne
+        )
+        AvailabilityCalendarMainContent(availability)
     }
 }
 
 @Composable
-private fun CalendarTop(
+private fun AvailabilityCalendarTopHeader(
     availability: AvailabilityData,
     availabilityMonthMinusOne: () -> Unit,
     availabilityMonthPlusOne: () -> Unit,
 ) {
     Row(modifier = Modifier.padding(horizontal = 16.dp)) {
-        CalendarTopButton(
+        AvailabilityCalendarTopHeaderButton(
             icon = R.drawable.ic_calendar_left,
             onClick = availabilityMonthMinusOne,
         )
-        CalendarTopMonth(availability.currentMonth)
-        CalendarTopButton(
+        AvailabilityCalendarTopHeaderMainText(availability.currentMonth)
+        AvailabilityCalendarTopHeaderButton(
             icon = R.drawable.ic_calendar_right,
             onClick = availabilityMonthPlusOne
         )
@@ -104,7 +108,7 @@ private fun CalendarTop(
 }
 
 @Composable
-private fun RowScope.CalendarTopMonth(currentMonth: String) {
+private fun RowScope.AvailabilityCalendarTopHeaderMainText(currentMonth: String) {
     Text(
         modifier = Modifier
             .weight(1F)
@@ -116,7 +120,7 @@ private fun RowScope.CalendarTopMonth(currentMonth: String) {
 }
 
 @Composable
-private fun CalendarTopButton(
+private fun AvailabilityCalendarTopHeaderButton(
     icon: Int,
     onClick: () -> Unit,
 ) {
@@ -132,14 +136,9 @@ private fun CalendarTopButton(
 }
 
 @Composable
-private fun CalendarMain(
+private fun AvailabilityCalendarMainContent(
     availability: AvailabilityData,
 ) {
-    val lastDay = availability.lengthOfMonth
-    val firstDay = availability.firstDay
-
-    val perWeek = ceil((lastDay + firstDay) / 7F).toInt()
-
     Row {
         for (i in 0..<7) {
             Column(modifier = Modifier.weight(1F)) {
@@ -149,7 +148,7 @@ private fun CalendarMain(
                     thickness = 0.5.dp,
                     color = Color(0xFF9D9CAC)
                 )
-                for (j in 0..<perWeek) {
+                for (j in 0..<availability.perWeek) {
                     CalendarDay(availability, i, j)
                 }
             }
