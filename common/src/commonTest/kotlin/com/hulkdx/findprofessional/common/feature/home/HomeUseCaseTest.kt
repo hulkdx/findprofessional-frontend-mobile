@@ -4,6 +4,7 @@ package com.hulkdx.findprofessional.common.feature.home
 
 import com.hulkdx.findprofessional.common.feature.home.model.Professional
 import com.hulkdx.findprofessional.common.utils.KoinTestUtil
+import com.hulkdx.findprofessional.common.utils.createProfessional
 import kotlinx.coroutines.test.runTest
 import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
@@ -11,16 +12,6 @@ import kotlin.test.Test
 import kotlin.test.assertEquals
 
 class HomeUseCaseTest {
-
-    private val TEST_PRO = Professional(
-        1,
-        "",
-        "",
-        "",
-        "",
-        1,
-        reviewSize = "0",
-    )
 
     private lateinit var sut: HomeUseCase
 
@@ -40,7 +31,7 @@ class HomeUseCaseTest {
     @Test
     fun `findAll should respond api result`() = runTest {
         // Arrange
-        val apiResult = listOf(TEST_PRO, TEST_PRO)
+        val apiResult = listOf(createProfessional(), createProfessional())
         api.findAllResponse = apiResult
         // Act
         val (result, err) = sut.findAll()

@@ -46,6 +46,8 @@ val h3 = TextStyle(
     lineHeight = 24.sp,
 )
 
+val h3Medium = h3.copy(fontWeight = FontWeight.Medium)
+
 val body1 = TextStyle(
     fontFamily = interFamily,
     fontWeight = FontWeight.Normal,

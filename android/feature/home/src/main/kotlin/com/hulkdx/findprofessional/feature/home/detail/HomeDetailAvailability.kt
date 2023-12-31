@@ -2,179 +2,279 @@
 
 package com.hulkdx.findprofessional.feature.home.detail
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
-import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListScope
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Divider
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.key
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import com.hulkdx.findprofessional.common.feature.home.utils.Availability
+import com.hulkdx.findprofessional.common.feature.home.detail.availability.AvailabilityData
+import com.hulkdx.findprofessional.common.feature.home.detail.availability.HomeDetailAvailabilityUseCase.Companion.weekNumberMap
+import com.hulkdx.findprofessional.core.R
 import com.hulkdx.findprofessional.core.theme.AppTheme
-import com.hulkdx.findprofessional.core.theme.body3
-import com.hulkdx.findprofessional.core.theme.interFamily
+import com.hulkdx.findprofessional.core.theme.body1
+import com.hulkdx.findprofessional.core.theme.body1Medium
+import com.hulkdx.findprofessional.core.theme.h3Medium
+import com.hulkdx.findprofessional.feature.home.detail.HomeScreenDimens.outerHorizontalPadding
 import com.hulkdx.findprofessional.resources.MR
+import kotlinx.datetime.LocalDate
 
-internal fun LazyListScope.Availability(availabilities: Availability?) {
-    if (availabilities == null) return
+internal fun LazyListScope.Availability(
+    availability: AvailabilityData,
+    availabilityMonthMinusOne: () -> Unit,
+    availabilityMonthPlusOne: () -> Unit,
+) {
     item { AvailabilityHeader() }
-    item { AvailabilityContentTop() }
-    items(availabilities) {
-        AvailabilityContentRow(it)
-    }
-    item { AvailabilityContentBottom() }
+    item { AvailabilityCalendar(availability, availabilityMonthMinusOne, availabilityMonthPlusOne) }
 }
-
 
 @Composable
 private fun AvailabilityHeader() {
-    Row(
-        Modifier
-            .padding(top = 16.dp)
-            .padding(start = 16.dp, top = 32.dp, bottom = 16.dp)) {
-        Text(
-            modifier = Modifier.padding(start = 8.dp),
-            style = TextStyle(
-                fontFamily = interFamily,
-                fontWeight = FontWeight.Bold,
-                fontSize = 17.sp,
-                lineHeight = 20.sp,
+    Text(
+        modifier = Modifier
+            .padding(
+                top = 16.dp,
+                bottom = 8.dp,
+                start = outerHorizontalPadding.dp,
             ),
-            text = stringResource(MR.strings.availability.resourceId),
+        style = body1Medium,
+        text = stringResource(MR.strings.availability.resourceId),
+    )
+}
+
+@Composable
+private fun AvailabilityCalendar(
+    availability: AvailabilityData,
+    availabilityMonthMinusOne: () -> Unit,
+    availabilityMonthPlusOne: () -> Unit,
+) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = outerHorizontalPadding.dp)
+            .clip(shape = RoundedCornerShape(10.dp))
+            .background(MaterialTheme.colorScheme.surfaceVariant)
+            .padding(bottom = 8.dp)
+    ) {
+        AvailabilityCalendarTopHeader(
+            availability,
+            availabilityMonthMinusOne,
+            availabilityMonthPlusOne
+        )
+        AvailabilityCalendarMainContent(availability)
+    }
+}
+
+@Composable
+private fun AvailabilityCalendarTopHeader(
+    availability: AvailabilityData,
+    availabilityMonthMinusOne: () -> Unit,
+    availabilityMonthPlusOne: () -> Unit,
+) {
+    Row(modifier = Modifier.padding(horizontal = 16.dp)) {
+        AvailabilityCalendarTopHeaderButton(
+            icon = R.drawable.ic_calendar_left,
+            onClick = availabilityMonthMinusOne,
+        )
+        AvailabilityCalendarTopHeaderMainText(availability.currentMonth)
+        AvailabilityCalendarTopHeaderButton(
+            icon = R.drawable.ic_calendar_right,
+            onClick = availabilityMonthPlusOne
         )
     }
 }
 
 @Composable
-private fun AvailabilityContentTop() {
-    Spacer(
-        Modifier
-            .fillMaxWidth()
-            .height(16.dp)
-            .padding(start = 16.dp, end = 16.dp)
-            .clip(RoundedCornerShape(topStart = 10.dp, topEnd = 16.dp))
-            .background(MaterialTheme.colorScheme.surfaceVariant)
-    )
-}
-
-@Composable
-private fun AvailabilityContentRow(rows: List<String>) {
-    Row(
-        Modifier
-            .padding(start = 16.dp, end = 16.dp)
-            .background(MaterialTheme.colorScheme.surfaceVariant)
-            .padding(start = 12.dp, end = 25.dp)
-    ) {
-        rows.forEachIndexed { index, item ->
-            key(index) {
-                AvailabilityContentElement(item)
-            }
-        }
-    }
-}
-
-@Composable
-private fun RowScope.AvailabilityContentElement(row: String) {
-    when (row) {
-        "0" -> {
-            AvailabilityBox(Color(0xFFF2F2F2))
-        }
-
-        "1" -> {
-            AvailabilityBox(Color(0xFFE1F0D1))
-        }
-
-        "2" -> {
-            AvailabilityBox(Color(0xFFC1DDA1))
-        }
-
-        "3" -> {
-            AvailabilityBox(Color(0xFFA8D279))
-        }
-
-        "4" -> {
-            AvailabilityBox(Color(0xFF8FC750))
-        }
-
-        else -> {
-            AvailabilityText(row)
-        }
-    }
-}
-
-@Composable
-private fun RowScope.AvailabilityBox(color: Color) {
-    Box(
-        Modifier
-            .weight(1F)
-            .fillMaxWidth()
-            .height(30.dp)
-            .padding(6.dp)
-            .border(1.dp, Color(0xFF797979))
-            .background(color)
-    )
-}
-
-@Composable
-private fun RowScope.AvailabilityText(row: String) {
+private fun RowScope.AvailabilityCalendarTopHeaderMainText(currentMonth: String) {
     Text(
-        text = row,
         modifier = Modifier
             .weight(1F)
             .align(Alignment.CenterVertically),
-        style = body3,
+        text = currentMonth,
+        style = h3Medium,
         textAlign = TextAlign.Center,
     )
 }
 
 @Composable
-private fun AvailabilityContentBottom() {
+private fun AvailabilityCalendarTopHeaderButton(
+    icon: Int,
+    onClick: () -> Unit,
+) {
+    IconButton(
+        modifier = Modifier.padding(vertical = 6.dp),
+        onClick = onClick,
+    ) {
+        Image(
+            painter = painterResource(icon),
+            contentDescription = "",
+        )
+    }
+}
+
+@Composable
+private fun AvailabilityCalendarMainContent(
+    availability: AvailabilityData,
+) {
+    Row(Modifier.padding(horizontal = 8.dp)) {
+        for (dayIndex in 0..<7) {
+            DayColumn(dayIndex, availability)
+        }
+    }
+}
+
+@Composable
+private fun RowScope.DayColumn(
+    dayIndex: Int,
+    availability: AvailabilityData,
+) {
+    Column(modifier = Modifier.weight(1F)) {
+        DayText(dayIndex)
+        DayDivider()
+        for (weekIndex in 0..<availability.perWeek) {
+            Day(availability, dayIndex, weekIndex)
+        }
+    }
+}
+
+@Composable
+private fun DayText(dayIndex: Int) {
+    val text = requireNotNull(weekNumberMap[dayIndex])
+    DayText(text)
+}
+
+@Composable
+private fun DayText(text: String) {
+    Text(
+        modifier = Modifier.fillMaxWidth(),
+        text = text,
+        textAlign = TextAlign.Center,
+        style = body1Medium,
+    )
+}
+
+@Composable
+private fun DayDivider() {
+    Divider(
+        modifier = Modifier.padding(vertical = 8.dp),
+        thickness = 0.5.dp,
+        color = Color(0xFF9D9CAC)
+    )
+}
+
+@Composable
+private fun Day(
+    availability: AvailabilityData,
+    dayIndex: Int,
+    weekIndex: Int,
+) {
+    val lastDay = availability.lengthOfMonth
+    val firstDay = availability.firstDay
+    val day = (dayIndex + 1) + (weekIndex * 7) - firstDay
+    val isEmptyDay = day <= 0 || day > lastDay
+
+    if (isEmptyDay) {
+        EmptyDay()
+    } else if (availability.isSelectedDay(day)) {
+        SelectedDay(day)
+    } else {
+        NormalDay(day)
+    }
+}
+
+@Composable
+private fun EmptyDay() {
+    Box(modifier = Modifier.aspectRatio(1F))
+}
+
+@Composable
+private fun SelectedDay(day: Int) {
+    val backgroundColor = MaterialTheme.colorScheme.outlineVariant
+    CommonDay(
+        modifier = Modifier.drawBehind {
+            drawCircle(backgroundColor)
+        },
+        text = day.toString(),
+        textColor = MaterialTheme.colorScheme.surfaceVariant,
+    )
+}
+
+@Composable
+private fun NormalDay(day: Int) {
+    CommonDay(
+        modifier = Modifier.border(
+            width = 1.dp,
+            color = Color(0xFF9D9CAC),
+            shape = CircleShape,
+        ),
+        text = day.toString(),
+        textColor = Color(0xFF9D9CAC),
+    )
+}
+
+@Composable
+private fun CommonDay(
+    modifier: Modifier,
+    text: String,
+    textColor: Color,
+) {
     Box(
         modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp)
-            .clip(RoundedCornerShape(bottomStart = 10.dp, bottomEnd = 16.dp))
-            .background(MaterialTheme.colorScheme.surfaceVariant)
-            .padding(12.dp),
-    )
+            .aspectRatio(1F)
+            .padding(4.dp)
+            .then(modifier)
+    ) {
+        Text(
+            modifier = Modifier.align(Alignment.Center),
+            text = text,
+            style = body1,
+            color = textColor
+        )
+    }
 }
 
 @Preview
 @Composable
 fun AvailabilityPreview() {
     AppTheme {
-        LazyColumn(Modifier.background(MaterialTheme.colorScheme.onTertiary)) {
+        LazyColumn(Modifier.background(MaterialTheme.colorScheme.onPrimary)) {
             Availability(
-                listOf(
-                    listOf("", "Thu\n19", "Fri\n20", "Sat\n21", "Sun\n22", "Mon\n23", "Tue\n24"),
-                    listOf("00-04", "0", "0", "0", "0", "0", "0"),
-                    listOf("04-08", "0", "1", "0", "0", "0", "0"),
-                    listOf("08-12", "0", "0", "2", "0", "0", "0"),
-                    listOf("12-16", "0", "0", "0", "3", "0", "0"),
-                    listOf("16-20", "0", "0", "0", "0", "0", "0"),
-                    listOf("20-24", "0", "0", "0", "0", "4", "0"),
+                AvailabilityData(
+                    "January 2022",
+                    5,
+                    31,
+                    LocalDate(2022, 1, 1),
+                    listOf(
+                        LocalDate(2022, 1, 6),
+                        LocalDate(2022, 1, 7),
+                        LocalDate(2022, 1, 12),
+                    ),
                 ),
+                {},
+                {}
             )
         }
     }
