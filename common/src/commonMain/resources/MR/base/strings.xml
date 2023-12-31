@@ -22,5 +22,6 @@
     <string name="rating">Rating</string>
     <string name="availability">Availability</string>
     <string name="reviews">Reviews</string>
+    <string name="showAllReviews">Show all reviews</string>
     <string name="videos">Videos</string>
 </resources>

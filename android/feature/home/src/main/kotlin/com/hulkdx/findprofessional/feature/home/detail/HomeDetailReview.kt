@@ -6,7 +6,6 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -15,32 +14,28 @@ import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment.Companion.CenterVertically
+import androidx.compose.ui.Alignment.Companion.TopCenter
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.hulkdx.findprofessional.common.feature.authentication.model.User
 import com.hulkdx.findprofessional.common.feature.home.model.Professional
 import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalReview
 import com.hulkdx.findprofessional.core.R
 import com.hulkdx.findprofessional.core.commonui.CUAsyncImage
+import com.hulkdx.findprofessional.core.commonui.CUTextButton
 import com.hulkdx.findprofessional.core.theme.AppTheme
+import com.hulkdx.findprofessional.core.theme.body1
+import com.hulkdx.findprofessional.core.theme.body1Medium
 import com.hulkdx.findprofessional.core.theme.body3
-import com.hulkdx.findprofessional.core.theme.body3Bold
-import com.hulkdx.findprofessional.core.theme.body3SemiBold
-import com.hulkdx.findprofessional.core.theme.interFamily
 import com.hulkdx.findprofessional.resources.MR
 import kotlinx.datetime.Clock
 
@@ -63,12 +58,7 @@ private fun ReviewHeader(reviewSize: String) {
     Row(Modifier.padding(start = 16.dp, top = 32.dp, bottom = 16.dp)) {
         Text(
             modifier = Modifier.padding(start = 8.dp),
-            style = TextStyle(
-                fontFamily = interFamily,
-                fontWeight = FontWeight.Bold,
-                fontSize = 17.sp,
-                lineHeight = 20.sp,
-            ),
+            style = body1Medium,
             text = "$reviewSize ${stringResource(MR.strings.reviews.resourceId)}",
         )
     }
@@ -108,12 +98,10 @@ private fun Header(review: ProfessionalReview) {
 
 @Composable
 private fun ReviewProfile(profileImageUrl: String?) {
-    profileImageUrl ?: return
     CUAsyncImage(
         modifier = Modifier
-            .size(35.dp)
-            .clip(shape = CircleShape),
-        url = profileImageUrl
+            .size(50.dp)
+            .clip(shape = CircleShape), url = profileImageUrl ?: ""
     )
 }
 
@@ -122,8 +110,8 @@ private fun ReviewName(fullName: String) {
     Text(
         modifier = Modifier,
         text = fullName,
-        color = Color(0xFF5F5F70),
-        style = body3Bold,
+        color = MaterialTheme.colorScheme.outline,
+        style = body1Medium,
     )
 }
 
@@ -148,8 +136,8 @@ private fun ReviewText(text: String?) {
             .padding(top = 12.dp)
             .padding(horizontal = 16.dp),
         text = text,
-        style = body3.copy(lineHeight = 21.sp),
-        color = Color(0xFF717180),
+        style = body1,
+        color = MaterialTheme.colorScheme.outline,
     )
 }
 
@@ -157,32 +145,26 @@ private fun ReviewText(text: String?) {
 private fun ReviewDate(date: String) {
     Text(
         modifier = Modifier
-            .padding(top = 6.dp)
+            .padding(top = 18.dp)
             .padding(horizontal = 16.dp),
         text = date,
-        style = body3SemiBold,
-        color = Color(0xFFAFAFBC),
+        style = body3,
+        color = MaterialTheme.colorScheme.onSurfaceVariant,
     )
 }
 
 @Composable
 private fun ShowMoreButton(onClick: () -> Unit) {
-    Button(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp)
-            .padding(bottom = 64.dp),
-        contentPadding = PaddingValues(vertical = 16.dp),
-        onClick = onClick,
-        colors = ButtonDefaults.buttonColors(
-            containerColor = MaterialTheme.colorScheme.surfaceVariant,
-            contentColor = Color.Black,
-        ),
-        shape = RoundedCornerShape(10.dp),
+    Box(
+        modifier = Modifier.fillMaxWidth(),
+        contentAlignment = TopCenter,
     ) {
-        Text(
-            "Show More",
-            color = Color(0xFF717180),
+        CUTextButton(
+            modifier = Modifier
+                .padding(top = 16.dp, bottom = 30.dp)
+                .padding(horizontal = 16.dp),
+            text = stringResource(MR.strings.showAllReviews.resourceId),
+            onClick = onClick,
         )
     }
 }
@@ -199,13 +181,35 @@ private fun ReviewHeaderPreview() {
 
 @Preview
 @Composable
-private fun ReviewContentStarPreview() {
+private fun ReviewContentPreview() {
     AppTheme {
         ReviewContent(
             ProfessionalReview(
                 id = 0,
                 user = User(
                     profileImage = "",
+                    firstName = "Stefan",
+                    lastName = "Holman",
+                    email = "",
+                ),
+                rate = 4,
+                contentText = "Authentic and Wonderful 12-days tour of Paris. 12-days tour of Paris. Authentic and Wonderful 12-days tour of Paris. Authentic and Wonderful 12-days tour of Paris.\nfeeling like I’ve learned a lot.",
+                createdAt = Clock.System.now(),
+                updatedAt = Clock.System.now(),
+            )
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun ReviewContentNoProfileImagePreview() {
+    AppTheme {
+        ReviewContent(
+            ProfessionalReview(
+                id = 0,
+                user = User(
+                    profileImage = null,
                     firstName = "Stefan",
                     lastName = "Holman",
                     email = "",

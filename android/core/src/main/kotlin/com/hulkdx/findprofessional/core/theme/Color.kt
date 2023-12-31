@@ -14,9 +14,10 @@ private val YellowStar = Color(0xFFF2A842)
 private val SelectedRed = Color(0xFFD80000)
 private val UnselectedGray = Color(0xFFCAC9DA)
 
-val TextButtonColor = Color(0xFF09B0B9)
+private val TextButtonColor = Color(0xFF09B0B9)
+private val TextColorNormal = Color(0xFF32313F)
 
-val CalendarSelectedColor = Color(0xFF33C181)
+private val CalendarSelectedColor = Color(0xFF33C181)
 
 internal val lightColorPalette = lightColorScheme(
     primary = Green,
@@ -27,6 +28,8 @@ internal val lightColorPalette = lightColorScheme(
     error = SelectedRed,
     onError = UnselectedGray,
     outlineVariant = CalendarSelectedColor,
+    outline = TextColorNormal,
+    onErrorContainer = TextButtonColor,
 )
 
 internal val darkColorPalette = lightColorPalette
