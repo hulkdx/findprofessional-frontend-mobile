@@ -10,6 +10,7 @@ private val White = Color(0xFFFFFFFF)
 private val LightGray = Color(0xFFAEAEB6)
 private val DarkWhite = Color(0xFFF5F6FA)
 private val YellowStar = Color(0xFFF2A842)
+private val Red = Color(0xFFFF4538)
 
 private val SelectedRed = Color(0xFFD80000)
 private val UnselectedGray = Color(0xFFCAC9DA)
@@ -23,6 +24,7 @@ private val CalendarSelectedColor = Color(0xFF33C181)
 internal val lightColorPalette = lightColorScheme(
     primary = Green,
     onPrimary = DarkWhite,
+    secondary = Red,
     onSurfaceVariant = LightGray,
     surfaceVariant = White,
     scrim = YellowStar,

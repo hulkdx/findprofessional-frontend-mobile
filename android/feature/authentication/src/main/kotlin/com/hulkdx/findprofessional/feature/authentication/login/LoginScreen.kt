@@ -158,9 +158,9 @@ fun LoginButton(
     onClick: () -> Unit,
 ) {
     CUFilledButton(
-        modifier.fillMaxWidth(),
+        modifier = modifier.fillMaxWidth(),
         text = stringResource(id = MR.strings.signIn.resourceId),
-        onClick,
+        onClick = onClick,
     )
 }
 
