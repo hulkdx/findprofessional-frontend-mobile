@@ -91,7 +91,7 @@ private fun FullName(professional: Professional) {
     Text(
         style = h2Medium,
         maxLines = 1,
-        color = Color.Black,
+        color = MaterialTheme.colorScheme.outline,
         text = professional.fullName,
     )
 }
