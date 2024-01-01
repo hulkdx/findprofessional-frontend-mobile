@@ -9,10 +9,12 @@ import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -22,6 +24,7 @@ import com.hulkdx.findprofessional.common.feature.home.detail.availability.Avail
 import com.hulkdx.findprofessional.common.feature.home.model.Professional
 import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalReview
 import com.hulkdx.findprofessional.core.theme.AppTheme
+import com.hulkdx.findprofessional.core.theme.body2SemiBold
 import com.hulkdx.findprofessional.feature.home.Description
 import com.hulkdx.findprofessional.feature.home.TopRow
 import com.hulkdx.findprofessional.feature.home.detail.HomeScreenDimens.outerHorizontalPadding
@@ -80,8 +83,19 @@ private fun TopHeader(professional: Professional) {
             .padding(24.dp)
     ) {
         TopRow(professional)
+        AboutMeText()
         Description(professional)
     }
+}
+
+@Composable
+private fun AboutMeText() {
+    Text(
+        modifier = Modifier.padding(top = 16.dp),
+        text = "About Me",
+        style = body2SemiBold,
+        color = MaterialTheme.colorScheme.errorContainer,
+    )
 }
 
 @Preview(heightDp = 1500)

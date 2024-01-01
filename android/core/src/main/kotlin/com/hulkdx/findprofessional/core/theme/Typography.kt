@@ -65,7 +65,7 @@ val body2 = TextStyle(
 )
 
 val body2Medium = body2.copy(fontWeight = FontWeight.Medium)
-
+val body2SemiBold = body2.copy(fontWeight = FontWeight.SemiBold)
 val body2Bold = body2.copy(fontWeight = FontWeight.Bold)
 
 val body3 = TextStyle(

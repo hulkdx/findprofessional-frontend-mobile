@@ -181,7 +181,7 @@ private fun DayDivider() {
     Divider(
         modifier = Modifier.padding(vertical = 8.dp),
         thickness = 0.5.dp,
-        color = Color(0xFF9D9CAC)
+        color = MaterialTheme.colorScheme.errorContainer
     )
 }
 
@@ -227,11 +227,11 @@ private fun NormalDay(day: Int) {
     CommonDay(
         modifier = Modifier.border(
             width = 1.dp,
-            color = Color(0xFF9D9CAC),
+            color = MaterialTheme.colorScheme.errorContainer,
             shape = CircleShape,
         ),
         text = day.toString(),
-        textColor = Color(0xFF9D9CAC),
+        textColor = MaterialTheme.colorScheme.errorContainer,
     )
 }
 

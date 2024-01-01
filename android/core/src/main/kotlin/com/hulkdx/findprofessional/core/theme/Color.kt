@@ -16,6 +16,7 @@ private val UnselectedGray = Color(0xFFCAC9DA)
 
 private val TextButtonColor = Color(0xFF09B0B9)
 private val TextColorNormal = Color(0xFF32313F)
+private val TextColorGray = Color(0xFF9D9CAC)
 
 private val CalendarSelectedColor = Color(0xFF33C181)
 
@@ -30,6 +31,7 @@ internal val lightColorPalette = lightColorScheme(
     outlineVariant = CalendarSelectedColor,
     outline = TextColorNormal,
     onErrorContainer = TextButtonColor,
+    errorContainer = TextColorGray,
 )
 
 internal val darkColorPalette = lightColorPalette

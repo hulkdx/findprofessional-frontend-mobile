@@ -100,7 +100,7 @@ private fun FullName(professional: Professional) {
 private fun CoachType(professional: Professional) {
     Text(
         style = body2,
-        color = Color(0xFF9D9CAC),
+        color = MaterialTheme.colorScheme.errorContainer,
         maxLines = 1,
         text = professional.coachType ?: "",
     )
@@ -125,7 +125,7 @@ private fun RowScope.Rating(professional: Professional) {
         )
         Text(
             modifier = Modifier.padding(start = 4.dp),
-            color = Color(0xFF9D9CAC),
+            color = MaterialTheme.colorScheme.errorContainer,
             style = body2,
             maxLines = 1,
             text = professional.rating ?: "0.0",
@@ -196,7 +196,7 @@ private fun Price(professional: Professional) {
             style = body2,
             maxLines = 1,
             text = " ${professional.priceCurrencySymbol} ",
-            color = Color(0xFF9D9CAC),
+            color = MaterialTheme.colorScheme.errorContainer,
         )
         Text(
             modifier = Modifier
@@ -205,7 +205,7 @@ private fun Price(professional: Professional) {
             style = body2,
             text = stringResource(MR.strings.perHour.resourceId),
             maxLines = 1,
-            color = Color(0xFF9D9CAC),
+            color = MaterialTheme.colorScheme.errorContainer,
         )
     }
 }
