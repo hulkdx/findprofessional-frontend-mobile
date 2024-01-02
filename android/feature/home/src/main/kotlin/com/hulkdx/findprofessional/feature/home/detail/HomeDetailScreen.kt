@@ -43,11 +43,11 @@ import com.hulkdx.findprofessional.feature.home.detail.HomeScreenDimens.outerHor
 import com.hulkdx.findprofessional.resources.MR
 import kotlinx.datetime.Clock
 import kotlinx.datetime.LocalDate
-import org.koin.androidx.compose.getViewModel
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun HomeDetailScreen(
-    viewModel: HomeDetailViewModel = getViewModel(),
+    viewModel: HomeDetailViewModel = koinViewModel(),
 ) {
     val professional by viewModel.professional.collectAsStateWithLifecycle()
     val availability by viewModel.availability.collectAsStateWithLifecycle()
@@ -56,8 +56,8 @@ fun HomeDetailScreen(
         professional,
         availability ?: return,
         viewModel::onReviewShowMoreClicked,
-        viewModel::onBookClick,
-        viewModel::onBookClick,
+        viewModel::onLikeClick,
+        viewModel::onChatClick,
         viewModel::onBookClick,
         viewModel::availabilityMonthMinusOne,
         viewModel::availabilityMonthPlusOne,

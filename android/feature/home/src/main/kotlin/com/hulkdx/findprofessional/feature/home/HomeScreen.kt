@@ -21,10 +21,10 @@ import com.hulkdx.findprofessional.core.commonui.CUSearchField
 import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.feature.navigation.navbar.AppNavBarContainer
 import dev.icerock.moko.resources.compose.localized
-import org.koin.androidx.compose.getViewModel
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun HomeScreen(viewModel: HomeViewModel = getViewModel()) {
+fun HomeScreen(viewModel: HomeViewModel = koinViewModel()) {
     val professionals by viewModel.professionals.collectAsStateWithLifecycle()
     val error by viewModel.error.collectAsStateWithLifecycle()
 
