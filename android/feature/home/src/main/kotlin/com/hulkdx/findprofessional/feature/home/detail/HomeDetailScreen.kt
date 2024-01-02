@@ -2,6 +2,7 @@ package com.hulkdx.findprofessional.feature.home.detail
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -14,7 +15,6 @@ import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ButtonDefaults.buttonColors
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -23,6 +23,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -37,7 +38,9 @@ import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.core.theme.body2SemiBold
 import com.hulkdx.findprofessional.feature.home.Description
 import com.hulkdx.findprofessional.feature.home.TopRow
+import com.hulkdx.findprofessional.feature.home.detail.HomeScreenDimens.bottomPartHeight
 import com.hulkdx.findprofessional.feature.home.detail.HomeScreenDimens.outerHorizontalPadding
+import com.hulkdx.findprofessional.resources.MR
 import kotlinx.datetime.Clock
 import kotlinx.datetime.LocalDate
 import org.koin.androidx.compose.getViewModel
@@ -54,17 +57,20 @@ fun HomeDetailScreen(
         availability ?: return,
         viewModel::onReviewShowMoreClicked,
         viewModel::onBookClick,
+        viewModel::onBookClick,
+        viewModel::onBookClick,
         viewModel::availabilityMonthMinusOne,
         viewModel::availabilityMonthPlusOne,
     )
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeDetailScreen(
     professional: Professional,
     availability: AvailabilityData,
     onReviewShowMoreClicked: () -> Unit,
+    onLikeClick: () -> Unit,
+    onChatClick: () -> Unit,
     onBookClicked: () -> Unit,
     availabilityMonthMinusOne: () -> Unit,
     availabilityMonthPlusOne: () -> Unit,
@@ -76,41 +82,57 @@ fun HomeDetailScreen(
             .systemBarsPadding()
             .testTag("HomeDetailScreen")
     ) {
-        LazyColumn {
+        LazyColumn(Modifier.padding(bottom = bottomPartHeight.dp)) {
             item { TopHeader(professional) }
             Availability(availability, availabilityMonthMinusOne, availabilityMonthPlusOne)
             Review(professional, onReviewShowMoreClicked)
         }
+        BottomPart(
+            professional.isFav,
+            onLikeClick,
+            onChatClick,
+            onBookClicked,
+        )
+    }
+}
 
-        Row(
+@Composable
+private fun BoxScope.BottomPart(
+    isFav: Boolean,
+    onLikeClick: () -> Unit,
+    onChatClick: () -> Unit,
+    onBookClicked: () -> Unit,
+) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(bottomPartHeight.dp)
+            .align(Alignment.BottomStart)
+            .background(MaterialTheme.colorScheme.surfaceVariant),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        CULikeButton(
             modifier = Modifier
-                .fillMaxWidth()
-                .height(84.dp)
-                .align(Alignment.BottomStart)
-                .background(MaterialTheme.colorScheme.surfaceVariant),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            CULikeButton(
-                modifier = Modifier
-                    .padding(start = 12.dp)
-                    .size(48.dp),
-                isSelected = false,
-                onClick = {},
-            )
-            CUChatButton(
-                modifier = Modifier
-                    .padding(start = 8.dp, end = 20.dp)
-                    .size(48.dp),
-                onClick = {},
-            )
-            CUFilledButton(
-                modifier = Modifier.weight(1F),
-                text = "Book now",
-                colors = buttonColors(containerColor = MaterialTheme.colorScheme.secondary),
-                contentPadding = PaddingValues(0.dp),
-                onClick = {},
-            )
-        }
+                .padding(start = 12.dp)
+                .size(48.dp),
+            isSelected = false,
+            onClick = onLikeClick,
+        )
+        CUChatButton(
+            modifier = Modifier
+                .padding(start = 8.dp, end = 20.dp)
+                .size(48.dp),
+            onClick = onChatClick,
+        )
+        CUFilledButton(
+            modifier = Modifier
+                .weight(1F)
+                .padding(end = 24.dp),
+            text = stringResource(id = MR.strings.bookNow.resourceId),
+            colors = buttonColors(containerColor = MaterialTheme.colorScheme.secondary),
+            contentPadding = PaddingValues(0.dp),
+            onClick = onBookClicked,
+        )
     }
 }
 
@@ -186,6 +208,8 @@ private fun HomeDetailScreenPreview() {
                     LocalDate(2022, 1, 12),
                 )
             ),
+            {},
+            {},
             {},
             {},
             {},
