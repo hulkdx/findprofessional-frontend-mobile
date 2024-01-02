@@ -23,12 +23,16 @@ class HomeDetailViewModel(
     val availability = availabilityUseCase.getAvailabilityData(professional)
         .stateIn(viewModelScope, WhileSubscribed(5_000), null)
 
-    fun onBookClick() {
-        // TODO:
+    fun onLikeClick() {
     }
 
-    fun onReviewShowMoreClicked() {
-        // TODO:
+    fun onChatClick() {
+    }
+
+    fun onBookClick() {
+    }
+
+    fun onShowMoreReviewClick() {
     }
 
     fun setError(error: StringDesc?) {

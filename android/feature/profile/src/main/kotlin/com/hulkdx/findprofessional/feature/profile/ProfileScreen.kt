@@ -31,11 +31,11 @@ import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.core.theme.body1
 import com.hulkdx.findprofessional.feature.navigation.navbar.AppNavigationBar
 import dev.icerock.moko.resources.compose.localized
-import org.koin.androidx.compose.getViewModel
+import org.koin.androidx.compose.koinViewModel
 
 
 @Composable
-fun ProfileScreen(viewModel: ProfileViewModel = getViewModel()) {
+fun ProfileScreen(viewModel: ProfileViewModel = koinViewModel()) {
     val error by viewModel.error.collectAsStateWithLifecycle()
 
     ProfileScreen(

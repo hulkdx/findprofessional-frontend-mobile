@@ -18,7 +18,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -30,11 +29,11 @@ import com.hulkdx.findprofessional.feature.authentication.ui.EmailTextField
 import com.hulkdx.findprofessional.feature.authentication.ui.PasswordTextField
 import com.hulkdx.findprofessional.resources.MR
 import dev.icerock.moko.resources.compose.localized
-import org.koin.androidx.compose.getViewModel
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun SignUpScreen(
-    viewModel: SignUpViewModel = getViewModel(),
+    viewModel: SignUpViewModel = koinViewModel(),
 ) {
     val data by viewModel.uiState.collectAsStateWithLifecycle()
     val error by viewModel.error.collectAsStateWithLifecycle()

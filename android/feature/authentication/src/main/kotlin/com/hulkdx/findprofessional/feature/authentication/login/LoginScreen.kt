@@ -36,11 +36,11 @@ import com.hulkdx.findprofessional.feature.authentication.ui.LogoImage
 import com.hulkdx.findprofessional.feature.authentication.ui.PasswordTextField
 import com.hulkdx.findprofessional.resources.MR
 import dev.icerock.moko.resources.compose.localized
-import org.koin.androidx.compose.getViewModel
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun LoginScreen(
-    viewModel: LoginViewModel = getViewModel(),
+    viewModel: LoginViewModel = koinViewModel(),
 ) {
     val email by viewModel.email.collectAsStateWithLifecycle()
     val password by viewModel.password.collectAsStateWithLifecycle()
@@ -158,9 +158,9 @@ fun LoginButton(
     onClick: () -> Unit,
 ) {
     CUFilledButton(
-        modifier.fillMaxWidth(),
+        modifier = modifier.fillMaxWidth(),
         text = stringResource(id = MR.strings.signIn.resourceId),
-        onClick,
+        onClick = onClick,
     )
 }
 
