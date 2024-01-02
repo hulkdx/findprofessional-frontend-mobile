@@ -1,6 +1,5 @@
 package com.hulkdx.findprofessional.feature.home
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -13,7 +12,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -21,8 +19,6 @@ import androidx.compose.ui.Alignment.Companion.Bottom
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -31,6 +27,7 @@ import androidx.compose.ui.unit.dp
 import com.hulkdx.findprofessional.common.feature.home.model.Professional
 import com.hulkdx.findprofessional.core.R
 import com.hulkdx.findprofessional.core.commonui.CUAsyncImage
+import com.hulkdx.findprofessional.core.commonui.icons.CULikeButton
 import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.core.theme.body2
 import com.hulkdx.findprofessional.core.theme.h1
@@ -112,7 +109,8 @@ private fun RowScope.Rating(professional: Professional) {
         return
     }
     Row(
-        modifier = Modifier.align(CenterVertically)
+        modifier = Modifier
+            .align(CenterVertically)
             .padding(end = 8.dp),
     ) {
         Icon(
@@ -150,22 +148,13 @@ private fun RowScope.LikeButton(
     professional: Professional,
     onLikeClick: (Professional) -> Unit,
 ) {
-    IconButton(
+    CULikeButton(
         modifier = Modifier
             .padding(top = 8.dp)
             .align(CenterVertically),
+        isSelected = professional.isFav,
         onClick = singleClick { onLikeClick(professional) },
-    ) {
-        Image(
-            modifier = Modifier.size(24.dp),
-            painter = painterResource(R.drawable.ic_like),
-            contentDescription = "",
-            colorFilter = ColorFilter.tint(
-                if (professional.isFav) MaterialTheme.colorScheme.error
-                else MaterialTheme.colorScheme.onError
-            )
-        )
-    }
+    )
 }
 
 @Composable
