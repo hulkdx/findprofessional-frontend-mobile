@@ -1,6 +1,7 @@
 package com.hulkdx.findprofessional.feature.home.detail
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Column
@@ -108,6 +109,7 @@ private fun BoxScope.BottomPart(
             .fillMaxWidth()
             .height(bottomPartHeight.dp)
             .align(Alignment.BottomStart)
+            .border(1.dp, MaterialTheme.colorScheme.onPrimary)
             .background(MaterialTheme.colorScheme.surfaceVariant),
         verticalAlignment = Alignment.CenterVertically,
     ) {
