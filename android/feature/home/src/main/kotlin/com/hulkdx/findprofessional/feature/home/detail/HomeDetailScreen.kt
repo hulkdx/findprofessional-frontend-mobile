@@ -9,10 +9,12 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ButtonDefaults.buttonColors
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -29,6 +31,8 @@ import com.hulkdx.findprofessional.common.feature.home.detail.availability.Avail
 import com.hulkdx.findprofessional.common.feature.home.model.Professional
 import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalReview
 import com.hulkdx.findprofessional.core.commonui.CUFilledButton
+import com.hulkdx.findprofessional.core.commonui.icons.CUChatButton
+import com.hulkdx.findprofessional.core.commonui.icons.CULikeButton
 import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.core.theme.body2SemiBold
 import com.hulkdx.findprofessional.feature.home.Description
@@ -55,6 +59,7 @@ fun HomeDetailScreen(
     )
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeDetailScreen(
     professional: Professional,
@@ -82,10 +87,22 @@ fun HomeDetailScreen(
                 .fillMaxWidth()
                 .height(84.dp)
                 .align(Alignment.BottomStart)
-                .background(MaterialTheme.colorScheme.surfaceVariant)
-                .padding(horizontal = outerHorizontalPadding.dp),
+                .background(MaterialTheme.colorScheme.surfaceVariant),
             verticalAlignment = Alignment.CenterVertically,
         ) {
+            CULikeButton(
+                modifier = Modifier
+                    .padding(start = 12.dp)
+                    .size(48.dp),
+                isSelected = false,
+                onClick = {},
+            )
+            CUChatButton(
+                modifier = Modifier
+                    .padding(start = 8.dp, end = 20.dp)
+                    .size(48.dp),
+                onClick = {},
+            )
             CUFilledButton(
                 modifier = Modifier.weight(1F),
                 text = "Book now",

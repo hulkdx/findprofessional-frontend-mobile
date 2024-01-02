@@ -14,9 +14,8 @@ import com.hulkdx.findprofessional.core.R
 import com.hulkdx.findprofessional.core.theme.AppTheme
 
 @Composable
-fun CULikeButton(
+fun CUChatButton(
     modifier: Modifier = Modifier,
-    isSelected: Boolean,
     onClick: () -> Unit,
 ) {
     IconButton(
@@ -25,28 +24,16 @@ fun CULikeButton(
     ) {
         Image(
             modifier = Modifier.size(24.dp),
-            painter = painterResource(R.drawable.ic_like),
+            painter = painterResource(R.drawable.ic_chat),
             contentDescription = "",
-            colorFilter = ColorFilter.tint(
-                if (isSelected) MaterialTheme.colorScheme.error
-                else MaterialTheme.colorScheme.onError
-            )
         )
     }
 }
 
 @Preview
 @Composable
-private fun CULikeButtonPreview() {
+private fun CUChatButtonPreview() {
     AppTheme {
-        CULikeButton(isSelected = false) {}
-    }
-}
-
-@Preview
-@Composable
-private fun CULikeButtonSelectedPreview() {
-    AppTheme {
-        CULikeButton(isSelected = true) {}
+        CUChatButton {}
     }
 }
