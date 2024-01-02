@@ -22,6 +22,7 @@ import androidx.compose.ui.Alignment.Companion.TopCenter
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -161,6 +162,7 @@ private fun ShowMoreButton(onClick: () -> Unit) {
     ) {
         CUTextButton(
             modifier = Modifier
+                .testTag("showAllReviews")
                 .padding(top = 16.dp, bottom = 30.dp)
                 .padding(horizontal = 16.dp),
             text = stringResource(MR.strings.showAllReviews.resourceId),

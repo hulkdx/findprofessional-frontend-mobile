@@ -6,7 +6,7 @@ import com.hulkdx.findprofessional.feature.authentication.login.LoginScreen
 import com.hulkdx.findprofessional.feature.authentication.signup.SignUpScreen
 import com.hulkdx.findprofessional.feature.authentication.splash.Splash
 import com.hulkdx.findprofessional.feature.home.HomeScreen
-import com.hulkdx.findprofessional.feature.profile.ProfileScreen
+import com.hulkdx.findprofessional.feature.review.ProfileScreen
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test

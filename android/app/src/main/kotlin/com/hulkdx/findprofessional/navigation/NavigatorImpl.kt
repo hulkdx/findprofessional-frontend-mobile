@@ -2,7 +2,6 @@ package com.hulkdx.findprofessional.navigation
 
 import android.os.Bundle
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.neverEqualPolicy
 import androidx.navigation.NavOptions
 import com.hulkdx.findprofessional.common.navigation.NavigationScreen
 import com.hulkdx.findprofessional.common.navigation.Navigator
@@ -13,6 +12,7 @@ import com.hulkdx.findprofessional.feature.developer.DeveloperNavigationScreen
 import com.hulkdx.findprofessional.feature.home.HomeNavigationScreen
 import com.hulkdx.findprofessional.feature.home.detail.HomeDetailNavigationScreen
 import com.hulkdx.findprofessional.feature.profile.ProfileNavigationScreen
+import com.hulkdx.findprofessional.feature.review.ReviewNavigationScreen
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
 
@@ -63,6 +63,7 @@ private fun NavigationScreen.toAndroidScreen(): String =
         is NavigationScreen.Developer -> DeveloperNavigationScreen().route
         is NavigationScreen.Splash -> SplashNavigationScreen().route
         is NavigationScreen.Profile -> ProfileNavigationScreen().route
+        is NavigationScreen.Review -> ReviewNavigationScreen().destination(professional)
     }
 
 private fun String?.toNavigationScreen(bundle: Bundle) =
@@ -74,6 +75,7 @@ private fun String?.toNavigationScreen(bundle: Bundle) =
         DeveloperNavigationScreen().route -> NavigationScreen.Developer
         SplashNavigationScreen().route -> NavigationScreen.Splash
         ProfileNavigationScreen().route -> NavigationScreen.Profile
+        ReviewNavigationScreen().route -> NavigationScreen.Review(ReviewNavigationScreen.professional(bundle))
         else -> throw RuntimeException("Route=$this is not defined")
     }
 

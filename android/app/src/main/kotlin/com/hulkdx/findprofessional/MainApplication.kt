@@ -10,6 +10,7 @@ import com.hulkdx.findprofessional.feature.developer.developerModule
 import com.hulkdx.findprofessional.feature.home.detail.homeDetailModule
 import com.hulkdx.findprofessional.feature.home.homeModule
 import com.hulkdx.findprofessional.feature.profile.profileModule
+import com.hulkdx.findprofessional.feature.review.reviewModule
 import org.koin.android.ext.koin.androidContext
 
 class MainApplication : Application() {
@@ -27,6 +28,7 @@ class MainApplication : Application() {
                 developerModule,
                 splashModule,
                 profileModule,
+                reviewModule,
             )
         }
 

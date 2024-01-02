@@ -25,4 +25,5 @@ include(":android:feature:developer")
 include(":android:feature:home")
 include(":android:feature:navigation")
 include(":android:feature:profile")
+include(":android:feature:review")
 

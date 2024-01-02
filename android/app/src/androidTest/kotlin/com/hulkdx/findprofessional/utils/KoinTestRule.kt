@@ -9,11 +9,10 @@ import com.hulkdx.findprofessional.feature.developer.developerModule
 import com.hulkdx.findprofessional.feature.home.detail.homeDetailModule
 import com.hulkdx.findprofessional.feature.home.homeModule
 import com.hulkdx.findprofessional.feature.profile.profileModule
+import com.hulkdx.findprofessional.feature.review.reviewModule
 import okio.Path.Companion.toOkioPath
 import org.junit.rules.ExternalResource
 import org.junit.rules.TemporaryFolder
-import org.junit.runner.Description
-import org.junit.runners.model.Statement
 import org.koin.core.context.loadKoinModules
 import org.koin.core.context.unloadKoinModules
 import org.koin.core.module.Module
@@ -45,6 +44,7 @@ class KoinTestRule(
                 developerModule,
                 splashModule,
                 profileModule,
+                reviewModule,
             )
         )
         loadKoinModules(testModules)
