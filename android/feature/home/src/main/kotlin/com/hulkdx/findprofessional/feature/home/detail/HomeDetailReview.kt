@@ -42,7 +42,7 @@ import kotlinx.datetime.Clock
 
 internal fun LazyListScope.Review(
     professional: Professional,
-    onShowMoreClicked: () -> Unit,
+    onShowMoreClick: () -> Unit,
 ) {
     if (professional.reviews.isEmpty()) return
 
@@ -50,7 +50,7 @@ internal fun LazyListScope.Review(
     items(professional.reviews) {
         ReviewContent(it)
     }
-    item { ShowMoreButton(onShowMoreClicked) }
+    item { ShowMoreButton(onShowMoreClick) }
 }
 
 @Composable

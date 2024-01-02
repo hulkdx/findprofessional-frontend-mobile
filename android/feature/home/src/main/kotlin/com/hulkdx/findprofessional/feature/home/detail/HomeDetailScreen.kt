@@ -55,7 +55,7 @@ fun HomeDetailScreen(
     HomeDetailScreen(
         professional,
         availability ?: return,
-        viewModel::onReviewShowMoreClicked,
+        viewModel::onShowMoreReviewClick,
         viewModel::onLikeClick,
         viewModel::onChatClick,
         viewModel::onBookClick,
@@ -68,7 +68,7 @@ fun HomeDetailScreen(
 fun HomeDetailScreen(
     professional: Professional,
     availability: AvailabilityData,
-    onReviewShowMoreClicked: () -> Unit,
+    onShowMoreReviewClick: () -> Unit,
     onLikeClick: () -> Unit,
     onChatClick: () -> Unit,
     onBookClicked: () -> Unit,
@@ -85,7 +85,7 @@ fun HomeDetailScreen(
         LazyColumn(Modifier.padding(bottom = bottomPartHeight.dp)) {
             item { TopHeader(professional) }
             Availability(availability, availabilityMonthMinusOne, availabilityMonthPlusOne)
-            Review(professional, onReviewShowMoreClicked)
+            Review(professional, onShowMoreReviewClick)
         }
         BottomPart(
             professional.isFav,

@@ -32,7 +32,7 @@ class HomeDetailViewModel(
     fun onBookClick() {
     }
 
-    fun onReviewShowMoreClicked() {
+    fun onShowMoreReviewClick() {
     }
 
     fun setError(error: StringDesc?) {
