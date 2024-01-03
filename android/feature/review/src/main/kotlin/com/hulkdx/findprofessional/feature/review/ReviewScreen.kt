@@ -37,6 +37,7 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 fun ReviewScreen(viewModel: ReviewViewModel = koinViewModel()) {
     val error by viewModel.error.collectAsStateWithLifecycle()
+    val reviews by viewModel.reviews.collectAsStateWithLifecycle()
 
     ReviewScreen(
         error = error?.localized(),
