@@ -181,9 +181,8 @@ object InMemoryApi {
     }
 
     object Pro : ProfessionalApi {
-        override suspend fun findAll(): List<Professional> {
-            return professionals
-        }
+        override suspend fun findAll() = professionals
+        override suspend fun findAllReviews(professionalId: Int) = emptyList<ProfessionalReview>()
     }
 
     fun loadKoinModules() {
