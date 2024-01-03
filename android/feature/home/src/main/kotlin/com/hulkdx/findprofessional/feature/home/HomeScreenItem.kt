@@ -30,7 +30,7 @@ import com.hulkdx.findprofessional.core.commonui.CUAsyncImage
 import com.hulkdx.findprofessional.core.commonui.icons.CULikeButton
 import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.core.theme.body2
-import com.hulkdx.findprofessional.core.theme.h1
+import com.hulkdx.findprofessional.core.theme.h1SemiBold
 import com.hulkdx.findprofessional.core.theme.h2Medium
 import com.hulkdx.findprofessional.core.utils.singleClick
 import com.hulkdx.findprofessional.resources.MR
@@ -174,7 +174,7 @@ fun Description(professional: Professional) {
 private fun Price(professional: Professional) {
     Row(Modifier.padding(top = 16.dp)) {
         Text(
-            style = h1,
+            style = h1SemiBold,
             maxLines = 1,
             text = professional.priceNumber.toString(),
         )

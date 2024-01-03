@@ -48,9 +48,7 @@ internal fun LazyListScope.Review(
     if (professional.reviews.isEmpty()) return
 
     item { ReviewHeader(professional.reviewSize) }
-    items(professional.reviews) {
-        ReviewContent(it)
-    }
+    items(professional.reviews, key = { it.id }) { ReviewContent(it) }
     item { ShowMoreButton(onShowMoreClick) }
 }
 
@@ -66,7 +64,7 @@ private fun ReviewHeader(reviewSize: String) {
 }
 
 @Composable
-private fun ReviewContent(reviewContent: ProfessionalReview) {
+fun ReviewContent(reviewContent: ProfessionalReview) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
