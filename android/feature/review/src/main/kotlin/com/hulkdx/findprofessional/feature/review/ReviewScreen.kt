@@ -24,7 +24,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.hulkdx.findprofessional.common.feature.authentication.model.User
 import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalReview
 import com.hulkdx.findprofessional.core.commonui.CUSnackBar
-import com.hulkdx.findprofessional.core.commonui.pagination.rememberIsLastItemVisible
+import com.hulkdx.findprofessional.core.commonui.pagination.SetupOnLastItemVisible
 import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.core.theme.h1Medium
 import com.hulkdx.findprofessional.feature.home.detail.ReviewContent
@@ -65,10 +65,7 @@ fun ReviewScreen(
             .testTag("ReviewScreen")
     ) {
         val state = rememberLazyListState()
-        val isLastItemVisible by rememberIsLastItemVisible(state)
-        if (isLastItemVisible) {
-            onLastItemVisible()
-        }
+        SetupOnLastItemVisible(state, onLastItemVisible)
         LazyColumn(state = state) {
             item { Header(reviewSize) }
             items(reviews, key = { it.id }) { ReviewContent(it) }
