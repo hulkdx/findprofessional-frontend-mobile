@@ -43,7 +43,7 @@ object InMemoryApi {
             updatedAt = Clock.System.now()
         ),
         ProfessionalReview(
-            id = 0,
+            id = 1,
             user = User(
                 email = "kasey.harper@example.com",
                 profileImage = "https://i.imgur.com/A755ZPz.jpeg",
@@ -182,7 +182,11 @@ object InMemoryApi {
 
     object Pro : ProfessionalApi {
         override suspend fun findAll() = professionals
-        override suspend fun findAllReviews(professionalId: Int) = emptyList<ProfessionalReview>()
+        override suspend fun findAllReviews(
+            professionalId: Int,
+            page: Int,
+            pageSize: Int,
+        ) = emptyList<ProfessionalReview>()
     }
 
     fun loadKoinModules() {

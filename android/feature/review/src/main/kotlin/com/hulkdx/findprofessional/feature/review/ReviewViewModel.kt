@@ -34,6 +34,10 @@ class ReviewViewModel(
         }
     }
 
+    fun onLastItemVisible() {
+        loadReviews()
+    }
+
     fun setError(error: StringDesc?) {
         savedStateHandle["error"] = error
     }

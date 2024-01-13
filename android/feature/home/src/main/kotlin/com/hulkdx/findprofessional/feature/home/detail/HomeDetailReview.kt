@@ -116,11 +116,12 @@ private fun ReviewName(fullName: String) {
 
 @Composable
 private fun ReviewStar(star: Int) {
+    val painter = painterResource(R.drawable.ic_star2)
     Row(Modifier.padding(top = 2.dp)) {
         for (i in 1..star) {
             Image(
                 modifier = Modifier,
-                painter = painterResource(R.drawable.ic_star2),
+                painter = painter,
                 contentDescription = "",
             )
         }

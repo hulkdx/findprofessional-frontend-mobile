@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -23,6 +24,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.hulkdx.findprofessional.common.feature.authentication.model.User
 import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalReview
 import com.hulkdx.findprofessional.core.commonui.CUSnackBar
+import com.hulkdx.findprofessional.core.commonui.pagination.rememberIsLastItemVisible
 import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.core.theme.h1Medium
 import com.hulkdx.findprofessional.feature.home.detail.ReviewContent
@@ -41,6 +43,7 @@ fun ReviewScreen(viewModel: ReviewViewModel = koinViewModel()) {
     ReviewScreen(
         reviewSize = professional.reviewSize,
         reviews = reviews,
+        onLastItemVisible = viewModel::onLastItemVisible,
         error = error?.localized(),
         onErrorDismissed = { viewModel.setError(null) },
     )
@@ -50,6 +53,7 @@ fun ReviewScreen(viewModel: ReviewViewModel = koinViewModel()) {
 fun ReviewScreen(
     reviewSize: String,
     reviews: List<ProfessionalReview>,
+    onLastItemVisible: () -> Unit,
     error: String?,
     onErrorDismissed: () -> Unit,
 ) {
@@ -60,7 +64,12 @@ fun ReviewScreen(
             .systemBarsPadding()
             .testTag("ReviewScreen")
     ) {
-        LazyColumn {
+        val state = rememberLazyListState()
+        val isLastItemVisible by rememberIsLastItemVisible(state)
+        if (isLastItemVisible) {
+            onLastItemVisible()
+        }
+        LazyColumn(state = state) {
             item { Header(reviewSize) }
             items(reviews, key = { it.id }) { ReviewContent(it) }
         }
@@ -121,6 +130,7 @@ private fun ReviewScreenPreview() {
                     updatedAt = Clock.System.now(),
                 )
             ),
+            onLastItemVisible = {},
             error = "",
             onErrorDismissed = {},
         )
