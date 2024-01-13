@@ -26,11 +26,10 @@ class ReviewViewModel(
     }
 
     private fun loadReviews() = viewModelScope.launch {
-        val (reviews, err) = useCase.findAll(professional.value.id)
-        if (err != null) {
-            setError(err)
-        } else {
-            setReviews(reviews)
+        when (val result = useCase.findAll(professional.value.id)) {
+            is ReviewUseCase.Result.DoNothing -> {}
+            is ReviewUseCase.Result.Error -> setError(result.message)
+            is ReviewUseCase.Result.Success -> setReviews(result.reviews)
         }
     }
 
