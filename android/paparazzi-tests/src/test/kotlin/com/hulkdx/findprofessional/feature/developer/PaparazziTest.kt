@@ -2,11 +2,15 @@ package com.hulkdx.findprofessional.feature.developer
 
 import app.cash.paparazzi.Paparazzi
 import com.hulkdx.findprofessional.InMemoryApi
+import com.hulkdx.findprofessional.common.feature.authentication.model.User
+import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalReview
 import com.hulkdx.findprofessional.feature.authentication.login.LoginScreen
 import com.hulkdx.findprofessional.feature.authentication.signup.SignUpScreen
 import com.hulkdx.findprofessional.feature.authentication.splash.Splash
 import com.hulkdx.findprofessional.feature.home.HomeScreen
-import com.hulkdx.findprofessional.feature.review.ProfileScreen
+import com.hulkdx.findprofessional.feature.profile.ProfileScreen
+import com.hulkdx.findprofessional.feature.review.ReviewScreen
+import kotlinx.datetime.Clock
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -83,6 +87,46 @@ class PaparazziTest {
         paparazzi.paparazziTest {
             ProfileScreen(
                 onLogoutClicked = {},
+                error = "",
+                onErrorDismissed = {},
+            )
+        }
+    }
+
+    @Test
+    fun `ReviewScreen paparazzi test`() {
+        paparazzi.paparazziTest {
+            ReviewScreen(
+                reviewSize = "150",
+                reviews = listOf(
+                    ProfessionalReview(
+                        id = 0,
+                        user = User(
+                            profileImage = null,
+                            firstName = "Stefan",
+                            lastName = "Holman",
+                            email = "",
+                        ),
+                        rate = 5,
+                        contentText = "He was a great coach for me!",
+                        createdAt = Clock.System.now(),
+                        updatedAt = Clock.System.now(),
+                    ),
+                    ProfessionalReview(
+                        id = 1,
+                        user = User(
+                            profileImage = null,
+                            firstName = "Bill",
+                            lastName = "Gates",
+                            email = "",
+                        ),
+                        rate = 1,
+                        contentText = "I love it, but it was bad.",
+                        createdAt = Clock.System.now(),
+                        updatedAt = Clock.System.now(),
+                    )
+                ),
+                onLastItemVisible = {},
                 error = "",
                 onErrorDismissed = {},
             )
