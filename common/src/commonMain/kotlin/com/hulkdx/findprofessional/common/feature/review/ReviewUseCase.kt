@@ -18,13 +18,7 @@ class ReviewUseCase(
             Result.DoNothing
         } else {
             isLoading = true
-            val res = Result.Success(
-                api.findAllReviews(
-                    professionalId,
-                    page,
-                    PAGE_SIZE,
-                )
-            )
+            val res = Result.Success(api.findAllReviews(professionalId, page, PAGE_SIZE))
             page++
             isLoading = false
             res

@@ -42,6 +42,6 @@ class ReviewViewModel(
     }
 
     private fun setReviews(reviews: List<ProfessionalReview>) {
-        savedStateHandle["reviews"] = reviews
+        savedStateHandle["reviews"] = this.reviews.value + reviews
     }
 }

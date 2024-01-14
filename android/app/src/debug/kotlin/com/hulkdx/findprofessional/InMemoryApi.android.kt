@@ -186,7 +186,21 @@ object InMemoryApi {
             professionalId: Int,
             page: Int,
             pageSize: Int,
-        ) = emptyList<ProfessionalReview>()
+        ) = (((page - 1) * pageSize)..<(page * pageSize)).map {
+            ProfessionalReview(
+                id = it.toLong(),
+                user = User(
+                    email = "$it@example.com",
+                    firstName = "$it",
+                    lastName = "$it",
+                    profileImage = "https://i.imgur.com/D99rBXe.jpeg"
+                ),
+                rate = 5,
+                contentText = "It was really great",
+                createdAt = Clock.System.now(),
+                updatedAt = Clock.System.now()
+            )
+        }
     }
 
     fun loadKoinModules() {

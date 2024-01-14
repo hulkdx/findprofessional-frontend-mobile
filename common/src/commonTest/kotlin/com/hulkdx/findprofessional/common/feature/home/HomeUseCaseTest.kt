@@ -46,8 +46,10 @@ class HomeUseCaseTest {
     private class ProApiMock : ProfessionalApi {
         var findAllResponse: List<Professional> = listOf()
 
+        // @formatter:off
         override suspend fun findAll() = findAllResponse
-        override suspend fun findAllReviews(professionalId: Int) = emptyList<ProfessionalReview>()
+        override suspend fun findAllReviews(professionalId: Int, page: Int, pageSize: Int): List<ProfessionalReview> = TODO()
+        // @formatter:on
     }
 
     // endregion
