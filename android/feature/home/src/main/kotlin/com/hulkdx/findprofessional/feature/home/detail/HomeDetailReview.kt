@@ -22,6 +22,7 @@ import androidx.compose.ui.Alignment.Companion.TopCenter
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -47,9 +48,7 @@ internal fun LazyListScope.Review(
     if (professional.reviews.isEmpty()) return
 
     item { ReviewHeader(professional.reviewSize) }
-    items(professional.reviews) {
-        ReviewContent(it)
-    }
+    items(professional.reviews, key = { it.id }) { ReviewContent(it) }
     item { ShowMoreButton(onShowMoreClick) }
 }
 
@@ -65,7 +64,7 @@ private fun ReviewHeader(reviewSize: String) {
 }
 
 @Composable
-private fun ReviewContent(reviewContent: ProfessionalReview) {
+fun ReviewContent(reviewContent: ProfessionalReview) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -161,6 +160,7 @@ private fun ShowMoreButton(onClick: () -> Unit) {
     ) {
         CUTextButton(
             modifier = Modifier
+                .testTag("showAllReviews")
                 .padding(top = 16.dp, bottom = 30.dp)
                 .padding(horizontal = 16.dp),
             text = stringResource(MR.strings.showAllReviews.resourceId),

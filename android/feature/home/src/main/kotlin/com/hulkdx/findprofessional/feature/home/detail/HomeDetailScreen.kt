@@ -83,7 +83,11 @@ fun HomeDetailScreen(
             .systemBarsPadding()
             .testTag("HomeDetailScreen")
     ) {
-        LazyColumn(Modifier.padding(bottom = bottomPartHeight.dp)) {
+        LazyColumn(
+            modifier = Modifier
+                .testTag("HomeDetailScreen.LazyColumn")
+                .padding(bottom = bottomPartHeight.dp)
+        ) {
             item { TopHeader(professional) }
             Availability(availability, availabilityMonthMinusOne, availabilityMonthPlusOne)
             Review(professional, onShowMoreReviewClick)

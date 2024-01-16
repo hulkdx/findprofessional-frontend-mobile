@@ -1,17 +1,14 @@
 package com.hulkdx.findprofessional
 
+import com.hulkdx.findprofessional.common.di.allModules
 import com.hulkdx.findprofessional.common.feature.authentication.login.LoginApi
-import com.hulkdx.findprofessional.common.feature.authentication.login.loginModule
-import com.hulkdx.findprofessional.common.feature.authentication.logout.logoutModule
 import com.hulkdx.findprofessional.common.feature.authentication.model.Auth
 import com.hulkdx.findprofessional.common.feature.authentication.model.Token
 import com.hulkdx.findprofessional.common.feature.authentication.model.User
 import com.hulkdx.findprofessional.common.feature.authentication.signup.SignUpApi
 import com.hulkdx.findprofessional.common.feature.authentication.signup.model.LoginRequest
 import com.hulkdx.findprofessional.common.feature.authentication.signup.model.RegisterRequest
-import com.hulkdx.findprofessional.common.feature.authentication.signup.signUpModule
 import com.hulkdx.findprofessional.common.feature.home.ProfessionalApi
-import com.hulkdx.findprofessional.common.feature.home.homeModule
 import com.hulkdx.findprofessional.common.feature.home.model.Professional
 import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalAvailability
 import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalReview
@@ -46,7 +43,7 @@ object InMemoryApi {
             updatedAt = Clock.System.now()
         ),
         ProfessionalReview(
-            id = 0,
+            id = 1,
             user = User(
                 email = "kasey.harper@example.com",
                 profileImage = "https://i.imgur.com/A755ZPz.jpeg",
@@ -184,8 +181,25 @@ object InMemoryApi {
     }
 
     object Pro : ProfessionalApi {
-        override suspend fun findAll(): List<Professional> {
-            return professionals
+        override suspend fun findAll() = professionals
+        override suspend fun findAllReviews(
+            professionalId: Int,
+            page: Int,
+            pageSize: Int,
+        ) = (((page - 1) * pageSize)..<(page * pageSize)).map {
+            ProfessionalReview(
+                id = it.toLong(),
+                user = User(
+                    email = "$it@example.com",
+                    firstName = "$it",
+                    lastName = "$it",
+                    profileImage = "https://i.imgur.com/D99rBXe.jpeg"
+                ),
+                rate = 5,
+                contentText = "It was really great",
+                createdAt = Clock.System.now(),
+                updatedAt = Clock.System.now()
+            )
         }
     }
 
@@ -196,14 +210,7 @@ object InMemoryApi {
     fun unloadKoinModules() {
         unloadKoinModules(module)
         // reload the api modules here
-        loadKoinModules(
-            listOf(
-                loginModule,
-                signUpModule,
-                logoutModule,
-                homeModule,
-            )
-        )
+        loadKoinModules(allModules())
     }
 
     fun setUser(email: String, password: String) {

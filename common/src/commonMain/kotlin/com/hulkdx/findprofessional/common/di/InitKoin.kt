@@ -7,6 +7,7 @@ import com.hulkdx.findprofessional.common.feature.authentication.login.loginModu
 import com.hulkdx.findprofessional.common.feature.authentication.logout.logoutModule
 import com.hulkdx.findprofessional.common.feature.authentication.signup.signUpModule
 import com.hulkdx.findprofessional.common.feature.home.homeModule
+import com.hulkdx.findprofessional.common.feature.review.reviewModule
 import org.koin.core.context.startKoin
 import org.koin.dsl.KoinAppDeclaration
 
@@ -16,15 +17,20 @@ fun initKoin(
     startKoin {
         appDeclaration()
         modules(
-            apiModule,
-            datastoreModule,
+            apiModule +
+                    datastoreModule +
 
-            loginModule,
-            signUpModule,
-            logoutModule,
-            homeModule,
+                    allModules()
         )
     }
 
     setupApiInterceptors()
 }
+
+fun allModules() = listOf(
+    loginModule,
+    signUpModule,
+    logoutModule,
+    homeModule,
+    reviewModule,
+)

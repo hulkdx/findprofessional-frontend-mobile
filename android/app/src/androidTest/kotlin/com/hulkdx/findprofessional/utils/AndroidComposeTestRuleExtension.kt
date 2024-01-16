@@ -4,11 +4,13 @@ import androidx.annotation.StringRes
 import androidx.compose.ui.test.ComposeTimeoutException
 import androidx.compose.ui.test.SemanticsNodeInteraction
 import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.junit4.AndroidComposeTestRule
 import androidx.compose.ui.test.onAllNodesWithTag
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.onRoot
+import androidx.compose.ui.test.performScrollToNode
 import androidx.test.espresso.Espresso
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import com.hulkdx.findprofessional.MainActivity
@@ -34,7 +36,7 @@ fun Rule.waitUntilAppear(
 ) {
     try {
         waitUntil(timeoutMillis) {
-            onAllNodesWithTag(testTag).fetchSemanticsNodes().size == 1
+            onAllNodesWithTag(testTag, true).fetchSemanticsNodes().size == 1
         }
     } catch (e: ComposeTimeoutException) {
         throw RuntimeException("cannot find a node with test tag : $testTag after 10 seconds.")
@@ -59,4 +61,14 @@ fun Rule.assertAppIsClosed(timeoutMillis: Long = 10_000) {
     } catch (e: ComposeTimeoutException) {
         throw RuntimeException("The app is not closed after 10 seconds.")
     }
+}
+
+fun Rule.lazyColumnScrollTo(
+    lazyColumnTestTag: String,
+    nodeTestTag: String,
+): SemanticsNodeInteraction {
+    onNodeWithTag(lazyColumnTestTag)
+        .assertIsDisplayed()
+        .performScrollToNode(hasTestTag(nodeTestTag))
+    return onNodeWithTag("showAllReviews")
 }

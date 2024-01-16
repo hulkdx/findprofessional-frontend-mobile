@@ -48,6 +48,7 @@ dependencies {
     implementation(project(":android:feature:developer"))
     implementation(project(":android:feature:profile"))
     implementation(project(":android:feature:navigation"))
+    implementation(project(":android:feature:review"))
 
     implementation(libs.androidx.activity.compose)
     implementation(libs.koin.core)

@@ -3,6 +3,7 @@
 package com.hulkdx.findprofessional.common.feature.home
 
 import com.hulkdx.findprofessional.common.feature.home.model.Professional
+import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalReview
 import com.hulkdx.findprofessional.common.utils.KoinTestUtil
 import com.hulkdx.findprofessional.common.utils.createProfessional
 import kotlinx.coroutines.test.runTest
@@ -45,9 +46,10 @@ class HomeUseCaseTest {
     private class ProApiMock : ProfessionalApi {
         var findAllResponse: List<Professional> = listOf()
 
-        override suspend fun findAll(): List<Professional> {
-            return findAllResponse
-        }
+        // @formatter:off
+        override suspend fun findAll() = findAllResponse
+        override suspend fun findAllReviews(professionalId: Int, page: Int, pageSize: Int): List<ProfessionalReview> = TODO()
+        // @formatter:on
     }
 
     // endregion

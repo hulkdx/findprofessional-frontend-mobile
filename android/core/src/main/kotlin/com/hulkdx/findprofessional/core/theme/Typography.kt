@@ -25,10 +25,13 @@ val interFamily = FontFamily(
 
 val h1 = TextStyle(
     fontFamily = interFamily,
-    fontWeight = FontWeight.SemiBold,
+    fontWeight = FontWeight.Normal,
     fontSize = 24.sp,
     lineHeight = 30.sp,
 )
+
+val h1Medium = h1.copy(fontWeight = FontWeight.Medium)
+val h1SemiBold = h1.copy(fontWeight = FontWeight.SemiBold)
 
 val h2 = TextStyle(
     fontFamily = interFamily,
