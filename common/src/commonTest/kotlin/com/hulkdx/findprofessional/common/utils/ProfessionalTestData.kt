@@ -1,7 +1,10 @@
 package com.hulkdx.findprofessional.common.utils
 
+import com.hulkdx.findprofessional.common.feature.authentication.model.User
 import com.hulkdx.findprofessional.common.feature.home.model.Professional
 import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalAvailability
+import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalReview
+import kotlinx.datetime.Clock
 
 
 fun createProfessional(
@@ -22,4 +25,18 @@ fun createProfessional(
     reviews = listOf(),
     createdAt = "",
     updatedAt = ""
+)
+
+fun createReview() = ProfessionalReview(
+    id = 6240,
+    user = User(
+        email = "stefan.contreras@example.com",
+        firstName = "Charley Farrell",
+        lastName = "Hubert Sweet",
+        profileImage = null
+    ),
+    rate = 1540,
+    contentText = null,
+    createdAt = Clock.System.now(),
+    updatedAt = Clock.System.now(),
 )

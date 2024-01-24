@@ -18,10 +18,12 @@ class ReviewUseCase(
             Result.DoNothing
         } else {
             isLoading = true
-            val res = Result.Success(api.findAllReviews(professionalId, page, PAGE_SIZE))
-            page++
+            val res = api.findAllReviews(professionalId, page, PAGE_SIZE)
+            if (res.isNotEmpty()) {
+                page++
+            }
             isLoading = false
-            res
+            Result.Success(res)
         }
     } catch (e: Exception) {
         Result.Error(e.generalError())
