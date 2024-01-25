@@ -8,6 +8,7 @@ import com.hulkdx.findprofessional.common.navigation.Navigator
 import com.hulkdx.findprofessional.feature.authentication.login.LoginNavigationScreen
 import com.hulkdx.findprofessional.feature.authentication.signup.SignUpNavigationScreen
 import com.hulkdx.findprofessional.feature.authentication.splash.SplashNavigationScreen
+import com.hulkdx.findprofessional.feature.book.BookNavigationScreen
 import com.hulkdx.findprofessional.feature.developer.DeveloperNavigationScreen
 import com.hulkdx.findprofessional.feature.home.HomeNavigationScreen
 import com.hulkdx.findprofessional.feature.home.detail.HomeDetailNavigationScreen
@@ -64,6 +65,7 @@ private fun NavigationScreen.toAndroidScreen(): String =
         is NavigationScreen.Splash -> SplashNavigationScreen().route
         is NavigationScreen.Profile -> ProfileNavigationScreen().route
         is NavigationScreen.Review -> ReviewNavigationScreen().destination(professional)
+        is NavigationScreen.Book -> BookNavigationScreen().destination(professional)
     }
 
 private fun String?.toNavigationScreen(bundle: Bundle) =
@@ -76,6 +78,7 @@ private fun String?.toNavigationScreen(bundle: Bundle) =
         SplashNavigationScreen().route -> NavigationScreen.Splash
         ProfileNavigationScreen().route -> NavigationScreen.Profile
         ReviewNavigationScreen().route -> NavigationScreen.Review(ReviewNavigationScreen.professional(bundle))
+        BookNavigationScreen().route -> NavigationScreen.Review(BookNavigationScreen.professional(bundle))
         else -> throw RuntimeException("Route=$this is not defined")
     }
 

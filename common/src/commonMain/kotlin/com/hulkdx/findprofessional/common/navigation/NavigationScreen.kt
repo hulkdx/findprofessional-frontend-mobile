@@ -15,7 +15,8 @@ sealed class NavigationScreen {
     data object SignUp : NavigationScreen()
     data object Home : NavigationScreen()
     data class HomeDetail(val professional: Professional) : NavigationScreen()
+    data class Review(val professional: Professional) : NavigationScreen()
+    data class Book(val professional: Professional) : NavigationScreen()
     data object Developer : NavigationScreen()
     data object Profile : NavigationScreen()
-    data class Review(val professional: Professional) : NavigationScreen()
 }

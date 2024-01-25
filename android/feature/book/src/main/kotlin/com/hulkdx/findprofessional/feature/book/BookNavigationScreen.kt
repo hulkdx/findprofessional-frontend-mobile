@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.feature.review
+package com.hulkdx.findprofessional.feature.book
 
 import android.os.Bundle
 import androidx.core.os.BundleCompat
@@ -10,8 +10,8 @@ import com.hulkdx.findprofessional.feature.navigation.screen.BasicNavigationScre
 import com.hulkdx.findprofessional.feature.navigation.screen.Content
 
 
-class ReviewNavigationScreen : BasicNavigationScreen() {
-    override val content: Content = { ReviewScreen() }
+class BookNavigationScreen : BasicNavigationScreen() {
+    override val content: Content = { BookScreen() }
 
     override val route: String
         get() = "${this.javaClass.name}/{$ARG1}"
@@ -34,7 +34,13 @@ class ReviewNavigationScreen : BasicNavigationScreen() {
 
         fun professional(bundle: Bundle?): Professional {
             requireNotNull(bundle)
-            return requireNotNull(BundleCompat.getParcelable(bundle, ARG1, Professional::class.java))
+            return requireNotNull(
+                BundleCompat.getParcelable(
+                    bundle,
+                    ARG1,
+                    Professional::class.java
+                )
+            )
         }
     }
 }
