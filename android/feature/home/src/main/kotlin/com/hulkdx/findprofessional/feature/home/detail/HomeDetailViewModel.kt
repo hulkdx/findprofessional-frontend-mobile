@@ -33,6 +33,7 @@ class HomeDetailViewModel(
     }
 
     fun onBookClick() {
+        navigator.navigate(NavigationScreen.Book(professional.value))
     }
 
     fun onShowMoreReviewClick() {

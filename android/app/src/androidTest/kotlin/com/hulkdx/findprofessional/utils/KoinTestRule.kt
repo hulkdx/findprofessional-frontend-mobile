@@ -5,6 +5,7 @@ import com.hulkdx.findprofessional.di.appModule
 import com.hulkdx.findprofessional.feature.authentication.login.loginModule
 import com.hulkdx.findprofessional.feature.authentication.signup.signUpModule
 import com.hulkdx.findprofessional.feature.authentication.splash.splashModule
+import com.hulkdx.findprofessional.feature.book.bookModule
 import com.hulkdx.findprofessional.feature.developer.developerModule
 import com.hulkdx.findprofessional.feature.home.detail.homeDetailModule
 import com.hulkdx.findprofessional.feature.home.homeModule
@@ -45,6 +46,7 @@ class KoinTestRule(
                 splashModule,
                 profileModule,
                 reviewModule,
+                bookModule,
             )
         )
         loadKoinModules(testModules)

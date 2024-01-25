@@ -5,11 +5,20 @@ import org.junit.Test
 
 class HomeDetailScreenTest : ScreenTest() {
     @Test
-    fun performHomeDetail() {
+    fun performReviewShowAll() {
         launchHomeDetailScreen(composeRule) {
             pressShowAllReview()
         }.verify {
             reviewScreenShown()
+        }
+    }
+
+    @Test
+    fun performBook() {
+        launchHomeDetailScreen(composeRule) {
+            pressBookButton()
+        }.verify {
+            bookScreenShown()
         }
     }
 }
