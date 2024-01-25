@@ -7,6 +7,7 @@ import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalReview
 import com.hulkdx.findprofessional.common.feature.review.ReviewUseCase.Result.DoNothing
 import com.hulkdx.findprofessional.common.feature.review.ReviewUseCase.Result.Success
 import com.hulkdx.findprofessional.common.utils.KoinTestUtil
+import com.hulkdx.findprofessional.common.utils.createReview
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.async
@@ -70,7 +71,7 @@ class ReviewUseCaseTest {
     @Test
     fun `if two findAll calls sequentially then page should be two`() = runTest {
         // Arrange
-        api.response = { listOf() }
+        api.response = { listOf(createReview()) }
         // Act
         val result1 = sut.findAll(1)
         val result2 = sut.findAll(1)
@@ -79,6 +80,19 @@ class ReviewUseCaseTest {
         assertEquals(true, result2 is Success)
         assertEquals(2, api.findAllReviewsCalled)
         assertEquals(2, api.findAllReviewsPage)
+    }
+
+    @Test
+    fun `if end reaches dont increment page`() = runTest {
+        // Arrange
+        val endReaches = { listOf<ProfessionalReview>() }
+        api.response = { endReaches.invoke() }
+        // Act
+        sut.findAll(1)
+        sut.findAll(1)
+        // Assert
+        assertEquals(2, api.findAllReviewsCalled)
+        assertEquals(1, api.findAllReviewsPage)
     }
 
     // region mock classes
