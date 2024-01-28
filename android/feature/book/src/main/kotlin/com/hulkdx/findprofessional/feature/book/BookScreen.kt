@@ -72,12 +72,16 @@ private fun BookScreen(
             items(BOOKING_TIMES) {
                 TimeItem(it)
             }
-            item { Bottom({}) }
         }
+        Bottom(
+            modifier = Modifier.align(Alignment.BottomCenter),
+            timesSelected = 1,
+            onClick = {},
+        )
         CUSnackBar(
             modifier = Modifier.align(Alignment.BottomCenter),
             message = error,
-            onDismiss = onErrorDismissed
+            onDismiss = onErrorDismissed,
         )
     }
 }
@@ -189,14 +193,18 @@ private fun RowScope.TimeItem(time: Pair<String, String>) {
 }
 
 @Composable
-private fun Bottom(onClick: () -> Unit) {
+private fun Bottom(
+    modifier: Modifier = Modifier,
+    timesSelected: Int,
+    onClick: () -> Unit,
+) {
     CUFilledButton(
-        modifier = Modifier
+        modifier = modifier
             .background(MaterialTheme.colorScheme.surfaceVariant)
             .border(1.dp, MaterialTheme.colorScheme.onPrimary)
             .padding(horizontal = 26.dp, vertical = 22.dp)
             .fillMaxWidth(),
-        text = stringResource(id = MR.strings.bookNow.resourceId),
+        text = "$timesSelected ${stringResource(id = MR.strings.itemsSelected.resourceId)}",
         colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.secondary),
         contentPadding = PaddingValues(0.dp),
         onClick = onClick,
