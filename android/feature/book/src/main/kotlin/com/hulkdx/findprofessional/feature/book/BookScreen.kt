@@ -31,6 +31,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.hulkdx.findprofessional.common.feature.book.TimesType
 import com.hulkdx.findprofessional.core.R
 import com.hulkdx.findprofessional.core.commonui.CUFilledButton
 import com.hulkdx.findprofessional.core.commonui.CUSnackBar
@@ -38,7 +39,6 @@ import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.core.theme.body2SemiBold
 import com.hulkdx.findprofessional.core.theme.body3Medium
 import com.hulkdx.findprofessional.core.theme.h2Medium
-import com.hulkdx.findprofessional.feature.book.utils.BOOKING_TIMES
 import com.hulkdx.findprofessional.resources.MR
 import dev.icerock.moko.resources.compose.localized
 import org.koin.androidx.compose.koinViewModel
@@ -49,6 +49,7 @@ fun BookScreen(viewModel: BookViewModel = koinViewModel()) {
     val error by viewModel.error.collectAsStateWithLifecycle()
 
     BookScreen(
+        times = viewModel.times,
         error = error?.localized(),
         onErrorDismissed = { viewModel.setError(null) },
     )
@@ -56,6 +57,7 @@ fun BookScreen(viewModel: BookViewModel = koinViewModel()) {
 
 @Composable
 private fun BookScreen(
+    times: TimesType,
     error: String?,
     onErrorDismissed: () -> Unit,
 ) {
@@ -69,7 +71,7 @@ private fun BookScreen(
         LazyColumn {
             item { Header() }
             item { AvailabilityCalendarTopHeader() }
-            items(BOOKING_TIMES) {
+            items(times) {
                 TimeItem(it)
             }
         }
@@ -216,6 +218,7 @@ private fun Bottom(
 private fun BookScreenPreview() {
     AppTheme {
         BookScreen(
+            times = listOf(),
             error = "",
             onErrorDismissed = {},
         )
