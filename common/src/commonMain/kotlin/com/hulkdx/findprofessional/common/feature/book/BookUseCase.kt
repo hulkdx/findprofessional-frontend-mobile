@@ -6,9 +6,16 @@ import com.hulkdx.findprofessional.common.feature.book.BookUiState.BookingTimes.
 import com.hulkdx.findprofessional.common.feature.home.model.Professional
 import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalAvailability
 import com.hulkdx.findprofessional.common.utils.NumberFormatter.twoDigits
+import com.hulkdx.findprofessional.common.utils.now
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.datetime.DateTimeUnit
+import kotlinx.datetime.LocalDate
+import kotlinx.datetime.minus
+import kotlinx.datetime.plus
 
 class BookUseCase {
+    private val date = MutableStateFlow(LocalDate.now())
 
     fun getUiState(professional: Professional): Flow<BookUiState> = TODO()
 
@@ -42,8 +49,10 @@ class BookUseCase {
     }
 
     fun dayMinusOne() {
+        date.value = date.value.minus(1, DateTimeUnit.DAY)
     }
 
     fun dayPlusOne() {
+        date.value = date.value.plus(1, DateTimeUnit.DAY)
     }
 }
