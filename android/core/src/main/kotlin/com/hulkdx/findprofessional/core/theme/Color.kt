@@ -6,6 +6,7 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.ui.graphics.Color
 
 private val Green = Color(0xFF00B262)
+private val DarkGreen = Color(0xFF006B3B)
 private val White = Color(0xFFFFFFFF)
 private val LightGray = Color(0xFFAEAEB6)
 private val DarkWhite = Color(0xFFF5F6FA)
@@ -25,6 +26,7 @@ internal val lightColorPalette = lightColorScheme(
     primary = Green,
     onPrimary = DarkWhite,
     secondary = Red,
+    tertiary = DarkGreen,
     onSurfaceVariant = LightGray,
     surfaceVariant = White,
     scrim = YellowStar,

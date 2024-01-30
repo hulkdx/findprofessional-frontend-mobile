@@ -31,6 +31,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.hulkdx.findprofessional.common.feature.book.BookingTimes
+import com.hulkdx.findprofessional.common.feature.book.BookingTimes.Type.Available
+import com.hulkdx.findprofessional.common.feature.book.BookingTimes.Type.Selected
+import com.hulkdx.findprofessional.common.feature.book.BookingTimes.Type.UnAvailable
 import com.hulkdx.findprofessional.common.feature.book.TimesType
 import com.hulkdx.findprofessional.core.R
 import com.hulkdx.findprofessional.core.commonui.CUFilledButton
@@ -52,12 +56,18 @@ fun BookScreen(viewModel: BookViewModel = koinViewModel()) {
         times = viewModel.times,
         error = error?.localized(),
         onErrorDismissed = { viewModel.setError(null) },
+        currentDate = currentDate,
+        dayMinusOne = viewModel::dayMinusOne,
+        dayPlusOne = viewModel::dayPlusOne,
     )
 }
 
 @Composable
 private fun BookScreen(
     times: TimesType,
+    currentDate: String,
+    dayMinusOne: () -> Unit,
+    dayPlusOne: () -> Unit,
     error: String?,
     onErrorDismissed: () -> Unit,
 ) {
@@ -70,9 +80,9 @@ private fun BookScreen(
     ) {
         LazyColumn {
             item { Header() }
-            item { AvailabilityCalendarTopHeader() }
-            items(times) {
-                TimeItem(it)
+            item { DayHeader(currentDate, dayPlusOne, dayMinusOne) }
+            items(times) { (first, second) ->
+                TimeItem(first, second)
             }
         }
         Bottom(
@@ -101,10 +111,10 @@ private fun Header() {
 }
 
 @Composable
-private fun AvailabilityCalendarTopHeader(
-//    availability: AvailabilityData,
-//    availabilityMonthMinusOne: () -> Unit,
-//    availabilityMonthPlusOne: () -> Unit,
+private fun DayHeader(
+    currentDate: String,
+    dayPlusOne: () -> Unit,
+    dayMinusOne: () -> Unit,
 ) {
     Row(
         Modifier
@@ -118,26 +128,25 @@ private fun AvailabilityCalendarTopHeader(
             .background(MaterialTheme.colorScheme.surfaceVariant)
             .padding(bottom = 12.dp)
     ) {
-        AvailabilityCalendarTopHeaderButton(
+        DayHeaderButton(
             icon = R.drawable.ic_calendar_left,
-//            onClick = availabilityMonthMinusOne,
-            onClick = {},
+            onClick = dayMinusOne,
         )
-        AvailabilityCalendarTopHeaderMainText("2020 January 10 , Monday")
-        AvailabilityCalendarTopHeaderButton(
+        DayHeaderText(currentDate)
+        DayHeaderButton(
             icon = R.drawable.ic_calendar_right,
-            onClick = { }
+            onClick = dayPlusOne
         )
     }
 }
 
 @Composable
-private fun RowScope.AvailabilityCalendarTopHeaderMainText(currentMonth: String) {
+private fun RowScope.DayHeaderText(text: String) {
     Text(
         modifier = Modifier
             .weight(1F)
             .align(Alignment.CenterVertically),
-        text = currentMonth,
+        text = text,
         style = body2SemiBold,
         color = Color(0xFF9D9CAC),
         textAlign = TextAlign.Center,
@@ -145,7 +154,7 @@ private fun RowScope.AvailabilityCalendarTopHeaderMainText(currentMonth: String)
 }
 
 @Composable
-private fun AvailabilityCalendarTopHeaderButton(
+private fun DayHeaderButton(
     icon: Int,
     onClick: () -> Unit,
 ) {
@@ -161,34 +170,42 @@ private fun AvailabilityCalendarTopHeaderButton(
 }
 
 @Composable
-private fun TimeItem(times: List<Pair<String, String>>) {
-    val (first, second) = times
+private fun TimeItem(first: BookingTimes, second: BookingTimes) {
     Row(
         Modifier
             .padding(horizontal = 16.dp)
             .background(MaterialTheme.colorScheme.surfaceVariant)
             .padding(end = 16.dp)
     ) {
-        TimeItem(first)
-        TimeItem(second)
+        TimeItem(Modifier.weight(1F), first)
+        TimeItem(Modifier.weight(1F), second)
     }
 }
 
 @Composable
-private fun RowScope.TimeItem(time: Pair<String, String>) {
-    val firstTime = time.first
-    val secondTime = time.second
-
+private fun TimeItem(
+    modifier: Modifier = Modifier,
+    data: BookingTimes,
+) {
+    val backgroundColor = when (data.type) {
+        Available -> MaterialTheme.colorScheme.primary
+        UnAvailable -> MaterialTheme.colorScheme.onPrimary
+        Selected -> MaterialTheme.colorScheme.tertiary
+    }
+    val textColor = when (data.type) {
+        Available -> MaterialTheme.colorScheme.surfaceVariant
+        UnAvailable -> MaterialTheme.colorScheme.errorContainer
+        Selected -> MaterialTheme.colorScheme.surfaceVariant
+    }
     Text(
-        modifier = Modifier
-            .weight(1F)
+        modifier = modifier
             .padding(start = 16.dp)
             .padding(bottom = 8.dp)
             .clip(shape = RoundedCornerShape(8.dp))
-            .background(Color(0xFF00B262))
+            .background(backgroundColor)
             .padding(vertical = 10.dp),
-        color = MaterialTheme.colorScheme.surfaceVariant,
-        text = "$firstTime - $secondTime",
+        color = textColor,
+        text = "${data.startTime} - ${data.endTime}",
         textAlign = TextAlign.Center,
         style = body3Medium,
     )
@@ -211,6 +228,51 @@ private fun Bottom(
         contentPadding = PaddingValues(0.dp),
         onClick = onClick,
     )
+}
+
+@Preview
+@Composable
+private fun AvailableTimeItemPreview() {
+    AppTheme {
+        TimeItem(
+            Modifier.fillMaxWidth(),
+            BookingTimes(
+                "00:00",
+                "00:30",
+                Available
+            )
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun UnAvailableTimeItemPreview() {
+    AppTheme {
+        TimeItem(
+            Modifier.fillMaxWidth(),
+            BookingTimes(
+                "00:00",
+                "00:30",
+                UnAvailable,
+            )
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun SelectedTimeItemPreview() {
+    AppTheme {
+        TimeItem(
+            Modifier.fillMaxWidth(),
+            BookingTimes(
+                "00:00",
+                "00:30",
+                Selected,
+            )
+        )
+    }
 }
 
 @Preview(heightDp = 1500)

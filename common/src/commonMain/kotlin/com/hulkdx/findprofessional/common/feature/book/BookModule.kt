@@ -6,5 +6,5 @@ import org.koin.dsl.module
 
 val bookModule: Module
     get() = module {
-        factoryOf(::BookingUseCase)
+        factoryOf(::BookUseCase)
     }
