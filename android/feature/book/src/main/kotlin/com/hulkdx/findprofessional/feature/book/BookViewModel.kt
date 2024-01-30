@@ -15,11 +15,11 @@ class BookViewModel(
     private val savedStateHandle: SavedStateHandle,
     private val useCase: BookUseCase,
 ) : ViewModel() {
-    val professional = requireNotNull(savedStateHandle.get<Professional>(ARG1))
+    private val professional = requireNotNull(savedStateHandle.get<Professional>(ARG1))
 
     val error = savedStateHandle.getStateFlow<StringDesc?>("error", null)
 
-    val times = useCase.getTimes(professional)
+    val uiState = useCase.getUiState(professional)
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), null)
 
     fun setError(error: StringDesc?) {

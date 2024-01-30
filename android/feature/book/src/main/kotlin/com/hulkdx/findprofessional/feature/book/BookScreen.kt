@@ -31,11 +31,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.hulkdx.findprofessional.common.feature.book.BookingTimes
-import com.hulkdx.findprofessional.common.feature.book.BookingTimes.Type.Available
-import com.hulkdx.findprofessional.common.feature.book.BookingTimes.Type.Selected
-import com.hulkdx.findprofessional.common.feature.book.BookingTimes.Type.UnAvailable
-import com.hulkdx.findprofessional.common.feature.book.TimesType
+import com.hulkdx.findprofessional.common.feature.book.BookUiState
+import com.hulkdx.findprofessional.common.feature.book.BookUiState.BookingTimes
+import com.hulkdx.findprofessional.common.feature.book.BookUiState.BookingTimes.Type.Available
+import com.hulkdx.findprofessional.common.feature.book.BookUiState.BookingTimes.Type.Selected
+import com.hulkdx.findprofessional.common.feature.book.BookUiState.BookingTimes.Type.UnAvailable
 import com.hulkdx.findprofessional.core.R
 import com.hulkdx.findprofessional.core.commonui.CUFilledButton
 import com.hulkdx.findprofessional.core.commonui.CUSnackBar
@@ -51,12 +51,12 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 fun BookScreen(viewModel: BookViewModel = koinViewModel()) {
     val error by viewModel.error.collectAsStateWithLifecycle()
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
     BookScreen(
-        times = viewModel.times,
+        uiState = uiState ?: return,
         error = error?.localized(),
         onErrorDismissed = { viewModel.setError(null) },
-        currentDate = currentDate,
         dayMinusOne = viewModel::dayMinusOne,
         dayPlusOne = viewModel::dayPlusOne,
     )
@@ -64,8 +64,7 @@ fun BookScreen(viewModel: BookViewModel = koinViewModel()) {
 
 @Composable
 private fun BookScreen(
-    times: TimesType,
-    currentDate: String,
+    uiState: BookUiState,
     dayMinusOne: () -> Unit,
     dayPlusOne: () -> Unit,
     error: String?,
@@ -80,8 +79,8 @@ private fun BookScreen(
     ) {
         LazyColumn {
             item { Header() }
-            item { DayHeader(currentDate, dayPlusOne, dayMinusOne) }
-            items(times) { (first, second) ->
+            item { DayHeader(uiState.currentDate, dayPlusOne, dayMinusOne) }
+            items(uiState.times) { (first, second) ->
                 TimeItem(first, second)
             }
         }
@@ -279,10 +278,11 @@ private fun SelectedTimeItemPreview() {
 @Composable
 private fun BookScreenPreview() {
     AppTheme {
-        BookScreen(
-            times = listOf(),
-            error = "",
-            onErrorDismissed = {},
-        )
+        // TODO:
+//        BookScreen(
+//            times = listOf(),
+//            error = "",
+//            onErrorDismissed = {},
+//        )
     }
 }
