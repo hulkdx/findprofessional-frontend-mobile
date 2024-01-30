@@ -9,6 +9,7 @@ import com.hulkdx.findprofessional.common.utils.NumberFormatter.twoDigits
 import com.hulkdx.findprofessional.common.utils.now
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.flow
 import kotlinx.datetime.DateTimeUnit
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.minus
@@ -17,7 +18,15 @@ import kotlinx.datetime.plus
 class BookUseCase {
     private val date = MutableStateFlow(LocalDate.now())
 
-    fun getUiState(professional: Professional): Flow<BookUiState> = TODO()
+    fun getUiState(professional: Professional): Flow<BookUiState> = flow {
+        // TODO:
+        emit(
+            BookUiState(
+                currentDate = getFormattedDate(),
+                times = getTimes(professional),
+            )
+        )
+    }
 
     fun getTimes(professional: Professional) =
         (0..24 * 60 step 30)
@@ -54,5 +63,10 @@ class BookUseCase {
 
     fun dayPlusOne() {
         date.value = date.value.plus(1, DateTimeUnit.DAY)
+    }
+
+    fun getFormattedDate(): String {
+        // TODO:
+        return date.value.toString()
     }
 }
