@@ -14,6 +14,7 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.datetime.DateTimeUnit
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.minus
+import kotlinx.datetime.number
 import kotlinx.datetime.plus
 
 class BookUseCase {
@@ -23,13 +24,21 @@ class BookUseCase {
         // TODO:
         emit(
             BookUiState(
-                currentDate = getFormattedCurrentDate(),
+                currentDate = currentDay(date.value),
                 times = getTimes(professional),
             )
         )
     }
 
-    fun getTimes(professional: Professional) =
+    fun dayMinusOne() {
+        date.value = date.value.minus(1, DateTimeUnit.DAY)
+    }
+
+    fun dayPlusOne() {
+        date.value = date.value.plus(1, DateTimeUnit.DAY)
+    }
+
+    internal fun getTimes(professional: Professional) =
         (0..24 * 60 step 30)
             .windowed(size = 2) { (start, end) ->
                 val startTime = "${twoDigits(start / 60)}:${twoDigits(start % 60)}"
@@ -49,7 +58,7 @@ class BookUseCase {
             }
             .chunked(2)
 
-    fun isAvailabilityIncludedInTimes(
+    internal fun isAvailabilityIncludedInTimes(
         availability: ProfessionalAvailability,
         from: Int,
         to: Int,
@@ -67,16 +76,7 @@ class BookUseCase {
                 availabilityTo >= to
     }
 
-    fun dayMinusOne() {
-        date.value = date.value.minus(1, DateTimeUnit.DAY)
-    }
-
-    fun dayPlusOne() {
-        date.value = date.value.plus(1, DateTimeUnit.DAY)
-    }
-
-    private fun getFormattedCurrentDate(): String {
-        // TODO:
-        return date.value.toString()
+    internal fun currentDay(now: LocalDate): String {
+        return "${now.dayOfMonth}.${now.month.number}.${now.year}"
     }
 }

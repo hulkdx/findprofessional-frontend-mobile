@@ -104,6 +104,16 @@ class BookUseCaseTest {
         assertEquals(result, expectedResult)
     }
 
+    @Test
+    fun `currentDay tests`() {
+        // Arrange
+        val now = LocalDate(2024, 1, 1)
+        // Act
+        val result = sut.currentDay(now)
+        // Assert
+        assertEquals("1.1.2024", result)
+    }
+
     private fun createProfessionalWithAvailability(vararg times: Pair<Int, Int>) =
         createProfessional(
             availability = times.map {
@@ -311,7 +321,6 @@ class BookUseCaseTest {
         )
     )
         .chunked(2)
-
 
     private fun allAvailable() = listOf(
         BookingTimes(
