@@ -7,6 +7,7 @@ import com.hulkdx.findprofessional.common.feature.home.model.Professional
 import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalAvailability
 import com.hulkdx.findprofessional.common.utils.NumberFormatter.twoDigits
 import com.hulkdx.findprofessional.common.utils.now
+import com.hulkdx.findprofessional.common.utils.toMinutesOfDay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.flow
@@ -22,7 +23,7 @@ class BookUseCase {
         // TODO:
         emit(
             BookUiState(
-                currentDate = getFormattedDate(),
+                currentDate = getFormattedCurrentDate(),
                 times = getTimes(professional),
             )
         )
@@ -53,8 +54,17 @@ class BookUseCase {
         from: Int,
         to: Int,
     ): Boolean {
-        return (availability.from.toSecondOfDay() / 60) <= from &&
-                (availability.to.toSecondOfDay() / 60) >= to
+        val availabilityFrom = availability.from.toMinutesOfDay()
+        val availabilityTo = availability.to.toMinutesOfDay().let { aT ->
+            if (aT == 0) {
+                24 * 60
+            } else {
+                aT
+            }
+        }
+
+        return availabilityFrom <= from &&
+                availabilityTo >= to
     }
 
     fun dayMinusOne() {
@@ -65,7 +75,7 @@ class BookUseCase {
         date.value = date.value.plus(1, DateTimeUnit.DAY)
     }
 
-    fun getFormattedDate(): String {
+    private fun getFormattedCurrentDate(): String {
         // TODO:
         return date.value.toString()
     }
