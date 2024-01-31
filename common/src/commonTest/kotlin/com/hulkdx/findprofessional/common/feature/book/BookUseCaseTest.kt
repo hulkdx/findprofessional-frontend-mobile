@@ -5,6 +5,9 @@ import com.hulkdx.findprofessional.common.feature.book.BookUiState.BookingTimes.
 import com.hulkdx.findprofessional.common.feature.book.BookUiState.BookingTimes.Type.UnAvailable
 import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalAvailability
 import com.hulkdx.findprofessional.common.utils.createProfessional
+import com.hulkdx.findprofessional.common.utils.now
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.test.runTest
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalTime
 import kotlin.test.BeforeTest
@@ -17,7 +20,7 @@ class BookUseCaseTest {
 
     @BeforeTest
     fun setUp() {
-        sut = BookUseCase()
+        sut = createSut()
     }
 
     @Test
@@ -113,6 +116,34 @@ class BookUseCaseTest {
         // Assert
         assertEquals("1.1.2024", result)
     }
+
+    @Test
+    fun `dayMinusOne tests`() = runTest {
+        // Arrange
+        val now = LocalDate(2024, 1, 2)
+        val pro = createProfessional()
+        val sut = createSut(now)
+        // Act
+        sut.dayMinusOne()
+        val result = sut.getUiState(pro).first().currentDate
+        // Assert
+        assertEquals("1.1.2024", result)
+    }
+
+    @Test
+    fun `dayPlusOne tests`() = runTest {
+        // Arrange
+        val now = LocalDate(2024, 1, 2)
+        val pro = createProfessional()
+        val sut = createSut(now)
+        // Act
+        sut.dayPlusOne()
+        val result = sut.getUiState(pro).first().currentDate
+        // Assert
+        assertEquals("3.1.2024", result)
+    }
+
+    private fun createSut(now: LocalDate = LocalDate.now()) = BookUseCase(now)
 
     private fun createProfessionalWithAvailability(vararg times: Pair<Int, Int>) =
         createProfessional(

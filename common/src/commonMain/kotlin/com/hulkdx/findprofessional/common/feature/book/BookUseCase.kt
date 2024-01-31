@@ -10,25 +10,25 @@ import com.hulkdx.findprofessional.common.utils.now
 import com.hulkdx.findprofessional.common.utils.toMinutesOfDay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.map
 import kotlinx.datetime.DateTimeUnit
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.minus
 import kotlinx.datetime.number
 import kotlinx.datetime.plus
 
-class BookUseCase {
-    private val date = MutableStateFlow(LocalDate.now())
+class BookUseCase(
+    now: LocalDate = LocalDate.now(),
+) {
+    private val date = MutableStateFlow(now)
 
-    fun getUiState(professional: Professional): Flow<BookUiState> = flow {
-        // TODO:
-        emit(
+    fun getUiState(professional: Professional): Flow<BookUiState> = date
+        .map {
             BookUiState(
-                currentDate = currentDay(date.value),
+                currentDate = currentDay(it),
                 times = getTimes(professional),
             )
-        )
-    }
+        }
 
     fun dayMinusOne() {
         date.value = date.value.minus(1, DateTimeUnit.DAY)
