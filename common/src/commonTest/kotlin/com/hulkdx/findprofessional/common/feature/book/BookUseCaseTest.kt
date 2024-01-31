@@ -74,7 +74,7 @@ class BookUseCaseTest {
         for (t in testData) {
             // Arrange
             val availability = ProfessionalAvailability(
-                date = LocalDate.fromEpochDays(100), // irrelevant
+                date = LocalDate.now(), // irrelevant
                 from = LocalTime.fromSecondOfDay(t.availabilityFrom * 60),
                 to = LocalTime.fromSecondOfDay(t.availabilityTo * 60),
             )
@@ -88,10 +88,11 @@ class BookUseCaseTest {
     @Test
     fun `getTimes when empty availability then result would be all unavailable times`() {
         // Arrange
+        val date = LocalDate.now()
         val professional = createProfessional(availability = listOf())
         val expectedResult = allUnavailable()
         // Act
-        val result = sut.getTimes(professional)
+        val result = sut.getTimes(professional, date)
         // Assert
         assertEquals(result, expectedResult)
     }
@@ -99,13 +100,35 @@ class BookUseCaseTest {
     @Test
     fun `getTimes when all times are available then result would be available`() {
         // Arrange
-        val professional = createProfessionalWithAvailability(0 to 0)
+        val date = LocalDate.now()
+        val professional = createProfessionalWithAvailability(date, 0 to 0)
         val expectedResult = allAvailable()
         // Act
-        val result = sut.getTimes(professional)
+        val result = sut.getTimes(professional, date)
         // Assert
         assertEquals(result, expectedResult)
     }
+
+    @Test
+    fun `getUiState when availability is for all way but wrong date should be all unavailable`() =
+        runTest {
+            // Arrange
+            val now = LocalDate(2024, 1, 1)
+            val sut = createSut(now)
+            val pro = createProfessional(
+                availability = listOf(
+                    ProfessionalAvailability(
+                        date = LocalDate(2024, 1, 2),
+                        from = LocalTime.fromSecondOfDay(0),
+                        to = LocalTime.fromSecondOfDay(0),
+                    )
+                )
+            )
+            // Act
+            val result = sut.getUiState(pro).first().times
+            // Assert
+            assertEquals(result, allUnavailable())
+        }
 
     @Test
     fun `currentDay tests`() {
@@ -145,11 +168,11 @@ class BookUseCaseTest {
 
     private fun createSut(now: LocalDate = LocalDate.now()) = BookUseCase(now)
 
-    private fun createProfessionalWithAvailability(vararg times: Pair<Int, Int>) =
+    private fun createProfessionalWithAvailability(date: LocalDate, vararg times: Pair<Int, Int>) =
         createProfessional(
             availability = times.map {
                 ProfessionalAvailability(
-                    date = LocalDate.fromEpochDays(100), // irrelevant
+                    date = date,
                     from = LocalTime.fromSecondOfDay(it.first * 60),
                     to = LocalTime.fromSecondOfDay(it.second * 60),
                 )

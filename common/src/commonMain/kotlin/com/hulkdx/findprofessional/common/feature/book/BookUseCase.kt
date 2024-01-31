@@ -26,7 +26,7 @@ class BookUseCase(
         .map {
             BookUiState(
                 currentDate = currentDay(it),
-                times = getTimes(professional),
+                times = getTimes(professional, it),
             )
         }
 
@@ -38,17 +38,17 @@ class BookUseCase(
         date.value = date.value.plus(1, DateTimeUnit.DAY)
     }
 
-    internal fun getTimes(professional: Professional) =
+    internal fun getTimes(professional: Professional, date: LocalDate) =
         (0..24 * 60 step 30)
             .windowed(size = 2) { (start, end) ->
                 val startTime = "${twoDigits(start / 60)}:${twoDigits(start % 60)}"
                 val endTime = "${twoDigits((end / 60) % 24)}:${twoDigits(end % 60)}"
 
-                val isAvailable =
-                    professional.availability.any { isAvailabilityIncludedInTimes(it, start, end) }
+                val isAvailable = professional.availability
+                    .filter { it.date == date }
+                    .any { isAvailabilityIncludedInTimes(it, start, end) }
 
-                val type =
-                    if (isAvailable) Available else UnAvailable
+                val type = if (isAvailable) Available else UnAvailable
 
                 BookingTimes(
                     startTime,

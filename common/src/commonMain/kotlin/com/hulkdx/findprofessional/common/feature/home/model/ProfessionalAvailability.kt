@@ -9,6 +9,9 @@ import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalTime
 import kotlinx.serialization.Serializable
 
+/**
+ * from 0 time to 0 time means its available the whole day
+ */
 @CommonParcelize
 @Serializable
 @CommonTypeParceler<LocalDate, LocalDateParceler>
