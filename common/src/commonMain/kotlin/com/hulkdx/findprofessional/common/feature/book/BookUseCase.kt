@@ -57,8 +57,11 @@ class BookUseCase(
         professional: Professional,
         date: LocalDate,
         selectedItems: Set<Int>,
-    ) =
-        (0..24 * 60 step 30)
+    ): List<List<BookingTime>> {
+        val availability = professional.availability
+            .filter { it.date == date }
+
+        return (0..24 * 60 step 30)
             .windowed(size = 2) { (start, end) ->
                 val startTime = "${twoDigits(start / 60)}:${twoDigits(start % 60)}"
                 val endTime = "${twoDigits((end / 60) % 24)}:${twoDigits(end % 60)}"
@@ -72,8 +75,7 @@ class BookUseCase(
                     )
                 }
 
-                val isAvailable = professional.availability
-                    .filter { it.date == date }
+                val isAvailable = availability
                     .any { isAvailabilityIncludedInTimes(it, start, end) }
 
                 val type = if (isAvailable) Available else UnAvailable
@@ -86,6 +88,7 @@ class BookUseCase(
                 )
             }
             .chunked(2)
+    }
 
     internal fun isAvailabilityIncludedInTimes(
         availability: ProfessionalAvailability,
