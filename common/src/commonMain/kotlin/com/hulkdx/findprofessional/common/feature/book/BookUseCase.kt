@@ -1,9 +1,9 @@
 package com.hulkdx.findprofessional.common.feature.book
 
-import com.hulkdx.findprofessional.common.feature.book.BookUiState.BookingTimes
-import com.hulkdx.findprofessional.common.feature.book.BookUiState.BookingTimes.Type.Available
-import com.hulkdx.findprofessional.common.feature.book.BookUiState.BookingTimes.Type.Selected
-import com.hulkdx.findprofessional.common.feature.book.BookUiState.BookingTimes.Type.UnAvailable
+import com.hulkdx.findprofessional.common.feature.book.BookUiState.BookingTime
+import com.hulkdx.findprofessional.common.feature.book.BookUiState.BookingTime.Type.Available
+import com.hulkdx.findprofessional.common.feature.book.BookUiState.BookingTime.Type.Selected
+import com.hulkdx.findprofessional.common.feature.book.BookUiState.BookingTime.Type.UnAvailable
 import com.hulkdx.findprofessional.common.feature.home.model.Professional
 import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalAvailability
 import com.hulkdx.findprofessional.common.utils.NumberFormatter.twoDigits
@@ -43,12 +43,12 @@ class BookUseCase(
         date.value = date.value.plus(1, DateTimeUnit.DAY)
     }
 
-    fun onTimeClicked(timeId: Int) {
+    fun onTimeClicked(item: BookingTime) {
         selectedItems.update {
-            if (it.contains(timeId)) {
-                it - timeId
+            if (it.contains(item.id)) {
+                it - item.id
             } else {
-                it + timeId
+                it + item.id
             }
         }
     }
@@ -64,7 +64,7 @@ class BookUseCase(
                 val endTime = "${twoDigits((end / 60) % 24)}:${twoDigits(end % 60)}"
 
                 if (selectedItems.contains(start)) {
-                    return@windowed BookingTimes(
+                    return@windowed BookingTime(
                         id = start,
                         startTime,
                         endTime,
@@ -78,7 +78,7 @@ class BookUseCase(
 
                 val type = if (isAvailable) Available else UnAvailable
 
-                BookingTimes(
+                BookingTime(
                     id = start,
                     startTime,
                     endTime,
