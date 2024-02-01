@@ -37,6 +37,7 @@ import com.hulkdx.findprofessional.common.feature.book.BookUiState.BookingTime
 import com.hulkdx.findprofessional.common.feature.book.BookUiState.BookingTime.Type.Available
 import com.hulkdx.findprofessional.common.feature.book.BookUiState.BookingTime.Type.Selected
 import com.hulkdx.findprofessional.common.feature.book.BookUiState.BookingTime.Type.UnAvailable
+import com.hulkdx.findprofessional.common.utils.now
 import com.hulkdx.findprofessional.core.R
 import com.hulkdx.findprofessional.core.commonui.CUFilledButton
 import com.hulkdx.findprofessional.core.commonui.CUSnackBar
@@ -46,6 +47,7 @@ import com.hulkdx.findprofessional.core.theme.body3Medium
 import com.hulkdx.findprofessional.core.theme.h2Medium
 import com.hulkdx.findprofessional.resources.MR
 import dev.icerock.moko.resources.compose.localized
+import kotlinx.datetime.LocalDate
 import org.koin.androidx.compose.koinViewModel
 
 
@@ -246,6 +248,7 @@ private fun AvailableTimeItemPreview() {
             modifier = Modifier.fillMaxWidth(),
             data = BookingTime(
                 0,
+                LocalDate.now(),
                 "00:00",
                 "00:30",
                 Available
@@ -263,6 +266,7 @@ private fun UnAvailableTimeItemPreview() {
             modifier = Modifier.fillMaxWidth(),
             data = BookingTime(
                 0,
+                LocalDate.now(),
                 "00:00",
                 "00:30",
                 UnAvailable,
@@ -280,6 +284,7 @@ private fun SelectedTimeItemPreview() {
             modifier = Modifier.fillMaxWidth(),
             data = BookingTime(
                 0,
+                LocalDate.now(),
                 "00:00",
                 "00:30",
                 Selected,

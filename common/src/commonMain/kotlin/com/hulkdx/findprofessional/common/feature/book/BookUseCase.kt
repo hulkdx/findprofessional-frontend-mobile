@@ -24,7 +24,7 @@ class BookUseCase(
     now: LocalDate = LocalDate.now(),
 ) {
     private val date = MutableStateFlow(now)
-    private val selectedItems = MutableStateFlow(setOf<Int>())
+    private val selectedItems = MutableStateFlow(mapOf<LocalDate, Set<Int>>())
 
     fun getUiState(professional: Professional): Flow<BookUiState> =
         combine(date, selectedItems, ::Pair)
@@ -45,29 +45,36 @@ class BookUseCase(
 
     fun onTimeClicked(item: BookingTime) {
         selectedItems.update {
-            if (it.contains(item.id)) {
-                it - item.id
-            } else {
-                it + item.id
-            }
+            it.toMutableMap()
+                .also { updatedMap ->
+                    val ids = updatedMap[date.value] ?: setOf()
+                    updatedMap[date.value] = if (ids.contains(item.id)) {
+                        ids - item.id
+                    } else {
+                        ids + item.id
+                    }
+                }
         }
     }
 
     internal fun getTimes(
         professional: Professional,
         date: LocalDate,
-        selectedItems: Set<Int>,
+        selectedItems: Map<LocalDate, Set<Int>>,
     ): List<List<BookingTime>> {
         val availability = professional.availability
             .filter { it.date == date }
+
+        val filteredSelectedItems = selectedItems[date] ?: setOf()
 
         return (0..24 * 60 step 30)
             .windowed(size = 2) { (start, end) ->
                 BookingTime(
                     id = start,
+                    date = date,
                     startTime = "${twoDigits(start / 60)}:${twoDigits(start % 60)}",
                     endTime = "${twoDigits((end / 60) % 24)}:${twoDigits(end % 60)}",
-                    type = getType(start, end, availability, selectedItems),
+                    type = getType(start, end, availability, filteredSelectedItems),
                 )
             }
             .chunked(2)
