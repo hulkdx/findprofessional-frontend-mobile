@@ -2,6 +2,7 @@ package com.hulkdx.findprofessional.common.feature.book
 
 import com.hulkdx.findprofessional.common.feature.book.BookUiState.BookingTimes
 import com.hulkdx.findprofessional.common.feature.book.BookUiState.BookingTimes.Type.Available
+import com.hulkdx.findprofessional.common.feature.book.BookUiState.BookingTimes.Type.Selected
 import com.hulkdx.findprofessional.common.feature.book.BookUiState.BookingTimes.Type.UnAvailable
 import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalAvailability
 import com.hulkdx.findprofessional.common.utils.createProfessional
@@ -164,6 +165,41 @@ class BookUseCaseTest {
         val result = sut.getUiState(pro).first().currentDate
         // Assert
         assertEquals("3.1.2024", result)
+    }
+
+    @Test
+    fun `onTimeClicked on available item then the type should be Selected`() = runTest {
+        // Arrange
+        val selectedTimeId = 30
+        val date = LocalDate.now()
+        val professional = createProfessionalWithAvailability(date, 0 to 0)
+        // Act
+        sut.onTimeClicked(selectedTimeId)
+        val result = sut.getUiState(professional).first().times
+        // Assert
+        val actual = result
+            .flatten()
+            .find { it.id == selectedTimeId }
+            ?.type
+        assertEquals(Selected, actual)
+    }
+
+    @Test
+    fun `double onTimeClicked on available item then the type should be Available`() = runTest {
+        // Arrange
+        val selectedTimeId = 30
+        val date = LocalDate.now()
+        val professional = createProfessionalWithAvailability(date, 0 to 0)
+        // Act
+        sut.onTimeClicked(selectedTimeId)
+        sut.onTimeClicked(selectedTimeId)
+        val result = sut.getUiState(professional).first().times
+        // Assert
+        val actual = result
+            .flatten()
+            .find { it.id == selectedTimeId }
+            ?.type
+        assertEquals(Available, actual)
     }
 
     private fun createSut(now: LocalDate = LocalDate.now()) = BookUseCase(now)
