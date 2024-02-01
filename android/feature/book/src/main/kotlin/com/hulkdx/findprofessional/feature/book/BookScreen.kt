@@ -3,6 +3,7 @@ package com.hulkdx.findprofessional.feature.book
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -59,6 +60,7 @@ fun BookScreen(viewModel: BookViewModel = koinViewModel()) {
         onErrorDismissed = { viewModel.setError(null) },
         dayMinusOne = viewModel::dayMinusOne,
         dayPlusOne = viewModel::dayPlusOne,
+        onTimeClicked = viewModel::onTimeClicked,
     )
 }
 
@@ -67,6 +69,7 @@ private fun BookScreen(
     uiState: BookUiState,
     dayMinusOne: () -> Unit,
     dayPlusOne: () -> Unit,
+    onTimeClicked: (Int) -> Unit,
     error: String?,
     onErrorDismissed: () -> Unit,
 ) {
@@ -81,7 +84,7 @@ private fun BookScreen(
             item { Header() }
             item { DayHeader(uiState.currentDate, dayPlusOne, dayMinusOne) }
             items(uiState.times) { (first, second) ->
-                TimeItem(first, second)
+                TimeItem(first, second, onTimeClicked)
             }
         }
         Bottom(
@@ -169,15 +172,19 @@ private fun DayHeaderButton(
 }
 
 @Composable
-private fun TimeItem(first: BookingTimes, second: BookingTimes) {
+private fun TimeItem(
+    first: BookingTimes,
+    second: BookingTimes,
+    onClick: (Int) -> Unit,
+) {
     Row(
         Modifier
             .padding(horizontal = 16.dp)
             .background(MaterialTheme.colorScheme.surfaceVariant)
             .padding(end = 16.dp)
     ) {
-        TimeItem(Modifier.weight(1F), first)
-        TimeItem(Modifier.weight(1F), second)
+        TimeItem(Modifier.weight(1F), first, onClick)
+        TimeItem(Modifier.weight(1F), second, onClick)
     }
 }
 
@@ -185,6 +192,7 @@ private fun TimeItem(first: BookingTimes, second: BookingTimes) {
 private fun TimeItem(
     modifier: Modifier = Modifier,
     data: BookingTimes,
+    onClick: (Int) -> Unit,
 ) {
     val backgroundColor = when (data.type) {
         Available -> MaterialTheme.colorScheme.primary
@@ -202,6 +210,7 @@ private fun TimeItem(
             .padding(bottom = 8.dp)
             .clip(shape = RoundedCornerShape(8.dp))
             .background(backgroundColor)
+            .clickable { onClick(data.id) }
             .padding(vertical = 10.dp),
         color = textColor,
         text = "${data.startTime} - ${data.endTime}",
@@ -234,12 +243,14 @@ private fun Bottom(
 private fun AvailableTimeItemPreview() {
     AppTheme {
         TimeItem(
-            Modifier.fillMaxWidth(),
-            BookingTimes(
+            modifier = Modifier.fillMaxWidth(),
+            data = BookingTimes(
+                0,
                 "00:00",
                 "00:30",
                 Available
-            )
+            ),
+            onClick = {},
         )
     }
 }
@@ -249,12 +260,14 @@ private fun AvailableTimeItemPreview() {
 private fun UnAvailableTimeItemPreview() {
     AppTheme {
         TimeItem(
-            Modifier.fillMaxWidth(),
-            BookingTimes(
+            modifier = Modifier.fillMaxWidth(),
+            data = BookingTimes(
+                0,
                 "00:00",
                 "00:30",
                 UnAvailable,
-            )
+            ),
+            onClick = {},
         )
     }
 }
@@ -264,12 +277,14 @@ private fun UnAvailableTimeItemPreview() {
 private fun SelectedTimeItemPreview() {
     AppTheme {
         TimeItem(
-            Modifier.fillMaxWidth(),
-            BookingTimes(
+            modifier = Modifier.fillMaxWidth(),
+            data = BookingTimes(
+                0,
                 "00:00",
                 "00:30",
                 Selected,
-            )
+            ),
+            onClick = {},
         )
     }
 }

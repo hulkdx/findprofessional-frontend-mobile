@@ -6,6 +6,7 @@ data class BookUiState(
 ) {
 
     data class BookingTimes(
+        val id: Int,
         val startTime: String,
         val endTime: String,
         val type: Type,

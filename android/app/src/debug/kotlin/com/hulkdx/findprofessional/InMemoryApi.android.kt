@@ -71,7 +71,7 @@ object InMemoryApi {
             "Former professional boxer who competed from 1985 to 2005",
             availability = listOf(
                 ProfessionalAvailability(
-                    date = "2023-11-09".toLocalDate(),
+                    date = "2024-01-31".toLocalDate(),
                     from = "08:00".toLocalTime(),
                     to = "09:00".toLocalTime(),
                 ),

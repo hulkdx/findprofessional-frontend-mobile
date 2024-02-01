@@ -34,4 +34,7 @@ class BookViewModel(
         useCase.dayPlusOne()
     }
 
+    fun onTimeClicked(b: Int) {
+        useCase.onTimeClicked(b)
+    }
 }

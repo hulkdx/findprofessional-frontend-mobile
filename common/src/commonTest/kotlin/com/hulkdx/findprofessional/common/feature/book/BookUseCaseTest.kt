@@ -92,7 +92,7 @@ class BookUseCaseTest {
         val professional = createProfessional(availability = listOf())
         val expectedResult = allUnavailable()
         // Act
-        val result = sut.getTimes(professional, date)
+        val result = sut.getTimes(professional, date, setOf())
         // Assert
         assertEquals(result, expectedResult)
     }
@@ -104,7 +104,7 @@ class BookUseCaseTest {
         val professional = createProfessionalWithAvailability(date, 0 to 0)
         val expectedResult = allAvailable()
         // Act
-        val result = sut.getTimes(professional, date)
+        val result = sut.getTimes(professional, date, setOf())
         // Assert
         assertEquals(result, expectedResult)
     }
@@ -181,194 +181,242 @@ class BookUseCaseTest {
 
     private fun allUnavailable() = listOf(
         BookingTimes(
+            id = 0,
             startTime = "00:00",
             endTime = "00:30",
             type = UnAvailable,
         ), BookingTimes(
+            id = 30,
             startTime = "00:30",
             endTime = "01:00",
             type = UnAvailable,
         ), BookingTimes(
+            id = 60,
             startTime = "01:00",
             endTime = "01:30",
             type = UnAvailable,
         ), BookingTimes(
+            id = 90,
             startTime = "01:30",
             endTime = "02:00",
             type = UnAvailable,
         ), BookingTimes(
+            id = 120,
             startTime = "02:00",
             endTime = "02:30",
             type = UnAvailable,
         ), BookingTimes(
+            id = 150,
             startTime = "02:30",
             endTime = "03:00",
             type = UnAvailable,
         ), BookingTimes(
+            id = 180,
             startTime = "03:00",
             endTime = "03:30",
             type = UnAvailable,
         ), BookingTimes(
+            id = 210,
             startTime = "03:30",
             endTime = "04:00",
             type = UnAvailable,
         ), BookingTimes(
+            id = 240,
             startTime = "04:00",
             endTime = "04:30",
             type = UnAvailable,
         ), BookingTimes(
+            id = 270,
             startTime = "04:30",
             endTime = "05:00",
             type = UnAvailable,
         ), BookingTimes(
+            id = 300,
             startTime = "05:00",
             endTime = "05:30",
             type = UnAvailable,
         ), BookingTimes(
+            id = 330,
             startTime = "05:30",
             endTime = "06:00",
             type = UnAvailable,
         ), BookingTimes(
+            id = 360,
             startTime = "06:00",
             endTime = "06:30",
             type = UnAvailable,
         ), BookingTimes(
+            id = 390,
             startTime = "06:30",
             endTime = "07:00",
             type = UnAvailable,
         ), BookingTimes(
+            id = 420,
             startTime = "07:00",
             endTime = "07:30",
             type = UnAvailable,
         ), BookingTimes(
+            id = 450,
             startTime = "07:30",
             endTime = "08:00",
             type = UnAvailable,
         ), BookingTimes(
+            id = 480,
             startTime = "08:00",
             endTime = "08:30",
             type = UnAvailable,
         ), BookingTimes(
+            id = 510,
             startTime = "08:30",
             endTime = "09:00",
             type = UnAvailable,
         ), BookingTimes(
+            id = 540,
             startTime = "09:00",
             endTime = "09:30",
             type = UnAvailable,
         ), BookingTimes(
+            id = 570,
             startTime = "09:30",
             endTime = "10:00",
             type = UnAvailable,
         ), BookingTimes(
+            id = 600,
             startTime = "10:00",
             endTime = "10:30",
             type = UnAvailable,
         ), BookingTimes(
+            id = 630,
             startTime = "10:30",
             endTime = "11:00",
             type = UnAvailable,
         ), BookingTimes(
+            id = 660,
             startTime = "11:00",
             endTime = "11:30",
             type = UnAvailable,
         ), BookingTimes(
+            id = 690,
             startTime = "11:30",
             endTime = "12:00",
             type = UnAvailable,
         ), BookingTimes(
+            id = 720,
             startTime = "12:00",
             endTime = "12:30",
             type = UnAvailable,
         ), BookingTimes(
+            id = 750,
             startTime = "12:30",
             endTime = "13:00",
             type = UnAvailable,
         ), BookingTimes(
+            id = 780,
             startTime = "13:00",
             endTime = "13:30",
             type = UnAvailable,
         ), BookingTimes(
+            id = 810,
             startTime = "13:30",
             endTime = "14:00",
             type = UnAvailable,
         ), BookingTimes(
+            id = 840,
             startTime = "14:00",
             endTime = "14:30",
             type = UnAvailable,
         ), BookingTimes(
+            id = 870,
             startTime = "14:30",
             endTime = "15:00",
             type = UnAvailable,
         ), BookingTimes(
+            id = 900,
             startTime = "15:00",
             endTime = "15:30",
             type = UnAvailable,
         ), BookingTimes(
+            id = 930,
             startTime = "15:30",
             endTime = "16:00",
             type = UnAvailable,
         ), BookingTimes(
+            id = 960,
             startTime = "16:00",
             endTime = "16:30",
             type = UnAvailable,
         ), BookingTimes(
+            id = 990,
             startTime = "16:30",
             endTime = "17:00",
             type = UnAvailable,
         ), BookingTimes(
+            id = 1020,
             startTime = "17:00",
             endTime = "17:30",
             type = UnAvailable,
         ), BookingTimes(
+            id = 1050,
             startTime = "17:30",
             endTime = "18:00",
             type = UnAvailable,
         ), BookingTimes(
+            id = 1080,
             startTime = "18:00",
             endTime = "18:30",
             type = UnAvailable,
         ), BookingTimes(
+            id = 1110,
             startTime = "18:30",
             endTime = "19:00",
             type = UnAvailable,
         ), BookingTimes(
+            id = 1140,
             startTime = "19:00",
             endTime = "19:30",
             type = UnAvailable,
         ), BookingTimes(
+            id = 1170,
             startTime = "19:30",
             endTime = "20:00",
             type = UnAvailable,
         ), BookingTimes(
+            id = 1200,
             startTime = "20:00",
             endTime = "20:30",
             type = UnAvailable,
         ), BookingTimes(
+            id = 1230,
             startTime = "20:30",
             endTime = "21:00",
             type = UnAvailable,
         ), BookingTimes(
+            id = 1260,
             startTime = "21:00",
             endTime = "21:30",
             type = UnAvailable,
         ), BookingTimes(
+            id = 1290,
             startTime = "21:30",
             endTime = "22:00",
             type = UnAvailable,
         ), BookingTimes(
+            id = 1320,
             startTime = "22:00",
             endTime = "22:30",
             type = UnAvailable,
         ), BookingTimes(
+            id = 1350,
             startTime = "22:30",
             endTime = "23:00",
             type = UnAvailable,
         ), BookingTimes(
+            id = 1380,
             startTime = "23:00",
             endTime = "23:30",
             type = UnAvailable,
         ), BookingTimes(
+            id = 1410,
             startTime = "23:30",
             endTime = "00:00",
             type = UnAvailable,
@@ -378,194 +426,242 @@ class BookUseCaseTest {
 
     private fun allAvailable() = listOf(
         BookingTimes(
+            id = 0,
             startTime = "00:00",
             endTime = "00:30",
             type = Available,
         ), BookingTimes(
+            id = 30,
             startTime = "00:30",
             endTime = "01:00",
             type = Available,
         ), BookingTimes(
+            id = 60,
             startTime = "01:00",
             endTime = "01:30",
             type = Available,
         ), BookingTimes(
+            id = 90,
             startTime = "01:30",
             endTime = "02:00",
             type = Available,
         ), BookingTimes(
+            id = 120,
             startTime = "02:00",
             endTime = "02:30",
             type = Available,
         ), BookingTimes(
+            id = 150,
             startTime = "02:30",
             endTime = "03:00",
             type = Available,
         ), BookingTimes(
+            id = 180,
             startTime = "03:00",
             endTime = "03:30",
             type = Available,
         ), BookingTimes(
+            id = 210,
             startTime = "03:30",
             endTime = "04:00",
             type = Available,
         ), BookingTimes(
+            id = 240,
             startTime = "04:00",
             endTime = "04:30",
             type = Available,
         ), BookingTimes(
+            id = 270,
             startTime = "04:30",
             endTime = "05:00",
             type = Available,
         ), BookingTimes(
+            id = 300,
             startTime = "05:00",
             endTime = "05:30",
             type = Available,
         ), BookingTimes(
+            id = 330,
             startTime = "05:30",
             endTime = "06:00",
             type = Available,
         ), BookingTimes(
+            id = 360,
             startTime = "06:00",
             endTime = "06:30",
             type = Available,
         ), BookingTimes(
+            id = 390,
             startTime = "06:30",
             endTime = "07:00",
             type = Available,
         ), BookingTimes(
+            id = 420,
             startTime = "07:00",
             endTime = "07:30",
             type = Available,
         ), BookingTimes(
+            id = 450,
             startTime = "07:30",
             endTime = "08:00",
             type = Available,
         ), BookingTimes(
+            id = 480,
             startTime = "08:00",
             endTime = "08:30",
             type = Available,
         ), BookingTimes(
+            id = 510,
             startTime = "08:30",
             endTime = "09:00",
             type = Available,
         ), BookingTimes(
+            id = 540,
             startTime = "09:00",
             endTime = "09:30",
             type = Available,
         ), BookingTimes(
+            id = 570,
             startTime = "09:30",
             endTime = "10:00",
             type = Available,
         ), BookingTimes(
+            id = 600,
             startTime = "10:00",
             endTime = "10:30",
             type = Available,
         ), BookingTimes(
+            id = 630,
             startTime = "10:30",
             endTime = "11:00",
             type = Available,
         ), BookingTimes(
+            id = 660,
             startTime = "11:00",
             endTime = "11:30",
             type = Available,
         ), BookingTimes(
+            id = 690,
             startTime = "11:30",
             endTime = "12:00",
             type = Available,
         ), BookingTimes(
+            id = 720,
             startTime = "12:00",
             endTime = "12:30",
             type = Available,
         ), BookingTimes(
+            id = 750,
             startTime = "12:30",
             endTime = "13:00",
             type = Available,
         ), BookingTimes(
+            id = 780,
             startTime = "13:00",
             endTime = "13:30",
             type = Available,
         ), BookingTimes(
+            id = 810,
             startTime = "13:30",
             endTime = "14:00",
             type = Available,
         ), BookingTimes(
+            id = 840,
             startTime = "14:00",
             endTime = "14:30",
             type = Available,
         ), BookingTimes(
+            id = 870,
             startTime = "14:30",
             endTime = "15:00",
             type = Available,
         ), BookingTimes(
+            id = 900,
             startTime = "15:00",
             endTime = "15:30",
             type = Available,
         ), BookingTimes(
+            id = 930,
             startTime = "15:30",
             endTime = "16:00",
             type = Available,
         ), BookingTimes(
+            id = 960,
             startTime = "16:00",
             endTime = "16:30",
             type = Available,
         ), BookingTimes(
+            id = 990,
             startTime = "16:30",
             endTime = "17:00",
             type = Available,
         ), BookingTimes(
+            id = 1020,
             startTime = "17:00",
             endTime = "17:30",
             type = Available,
         ), BookingTimes(
+            id = 1050,
             startTime = "17:30",
             endTime = "18:00",
             type = Available,
         ), BookingTimes(
+            id = 1080,
             startTime = "18:00",
             endTime = "18:30",
             type = Available,
         ), BookingTimes(
+            id = 1110,
             startTime = "18:30",
             endTime = "19:00",
             type = Available,
         ), BookingTimes(
+            id = 1140,
             startTime = "19:00",
             endTime = "19:30",
             type = Available,
         ), BookingTimes(
+            id = 1170,
             startTime = "19:30",
             endTime = "20:00",
             type = Available,
         ), BookingTimes(
+            id = 1200,
             startTime = "20:00",
             endTime = "20:30",
             type = Available,
         ), BookingTimes(
+            id = 1230,
             startTime = "20:30",
             endTime = "21:00",
             type = Available,
         ), BookingTimes(
+            id = 1260,
             startTime = "21:00",
             endTime = "21:30",
             type = Available,
         ), BookingTimes(
+            id = 1290,
             startTime = "21:30",
             endTime = "22:00",
             type = Available,
         ), BookingTimes(
+            id = 1320,
             startTime = "22:00",
             endTime = "22:30",
             type = Available,
         ), BookingTimes(
+            id = 1350,
             startTime = "22:30",
             endTime = "23:00",
             type = Available,
         ), BookingTimes(
+            id = 1380,
             startTime = "23:00",
             endTime = "23:30",
             type = Available,
         ), BookingTimes(
+            id = 1410,
             startTime = "23:30",
             endTime = "00:00",
             type = Available,
