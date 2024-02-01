@@ -63,28 +63,11 @@ class BookUseCase(
 
         return (0..24 * 60 step 30)
             .windowed(size = 2) { (start, end) ->
-                val startTime = "${twoDigits(start / 60)}:${twoDigits(start % 60)}"
-                val endTime = "${twoDigits((end / 60) % 24)}:${twoDigits(end % 60)}"
-
-                if (selectedItems.contains(start)) {
-                    return@windowed BookingTime(
-                        id = start,
-                        startTime,
-                        endTime,
-                        Selected,
-                    )
-                }
-
-                val isAvailable = availability
-                    .any { isAvailabilityIncludedInTimes(it, start, end) }
-
-                val type = if (isAvailable) Available else UnAvailable
-
                 BookingTime(
                     id = start,
-                    startTime,
-                    endTime,
-                    type,
+                    startTime = "${twoDigits(start / 60)}:${twoDigits(start % 60)}",
+                    endTime = "${twoDigits((end / 60) % 24)}:${twoDigits(end % 60)}",
+                    type = getType(start, end, availability, selectedItems),
                 )
             }
             .chunked(2)
@@ -110,5 +93,26 @@ class BookUseCase(
 
     internal fun currentDay(now: LocalDate): String {
         return "${now.dayOfMonth}.${now.month.number}.${now.year}"
+    }
+
+    private fun getType(
+        start: Int,
+        end: Int,
+        availability: List<ProfessionalAvailability>,
+        selectedItems: Set<Int>,
+    ): BookingTime.Type {
+        return when {
+            selectedItems.contains(start) -> {
+                Selected
+            }
+
+            availability.any { isAvailabilityIncludedInTimes(it, start, end) } -> {
+                Available
+            }
+
+            else -> {
+                UnAvailable
+            }
+        }
     }
 }
