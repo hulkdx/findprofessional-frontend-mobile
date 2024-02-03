@@ -59,6 +59,12 @@ object InMemoryApi {
         )
     )
 
+    val todayAvailableTime = ProfessionalAvailability(
+        date = LocalDate.now(),
+        from = "08:00".toLocalTime(),
+        to = "08:30".toLocalTime(),
+    )
+
     val professionals = listOf(
         Professional(
             1,
@@ -72,11 +78,7 @@ object InMemoryApi {
             "5.0",
             "Former professional boxer who competed from 1985 to 2005",
             availability = listOf(
-                ProfessionalAvailability(
-                    date = LocalDate.now(),
-                    from = "08:00".toLocalTime(),
-                    to = "09:00".toLocalTime(),
-                ),
+                todayAvailableTime,
                 ProfessionalAvailability(
                     date = "2023-11-10".toLocalDate(),
                     from = "07:00".toLocalTime(),

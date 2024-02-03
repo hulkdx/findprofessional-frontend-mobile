@@ -215,7 +215,13 @@ private fun TimeItem(
     val onClick = { onBookingClick(data) }
         .takeIf { data.type != UnAvailable }
 
-    TimeItem(modifier, backgroundColor, text, textColor, onClick)
+    TimeItem(
+        modifier.testTag(data.type.name),
+        backgroundColor,
+        text,
+        textColor,
+        onClick
+    )
 }
 
 @Composable
