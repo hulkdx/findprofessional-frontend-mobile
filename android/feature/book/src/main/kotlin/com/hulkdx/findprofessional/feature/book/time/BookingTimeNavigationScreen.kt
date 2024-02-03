@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.feature.book
+package com.hulkdx.findprofessional.feature.book.time
 
 import android.os.Bundle
 import androidx.core.os.BundleCompat
@@ -10,8 +10,8 @@ import com.hulkdx.findprofessional.feature.navigation.screen.BasicNavigationScre
 import com.hulkdx.findprofessional.feature.navigation.screen.Content
 
 
-class BookNavigationScreen : BasicNavigationScreen() {
-    override val content: Content = { BookScreen() }
+class BookingTimeNavigationScreen : BasicNavigationScreen() {
+    override val content: Content = { BookingTimeScreen() }
 
     override val route: String
         get() = "${this.javaClass.name}/{$ARG1}"

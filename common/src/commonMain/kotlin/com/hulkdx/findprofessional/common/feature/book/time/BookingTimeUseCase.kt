@@ -1,9 +1,9 @@
-package com.hulkdx.findprofessional.common.feature.book
+package com.hulkdx.findprofessional.common.feature.book.time
 
-import com.hulkdx.findprofessional.common.feature.book.BookUiState.BookingTime
-import com.hulkdx.findprofessional.common.feature.book.BookUiState.BookingTime.Type.Available
-import com.hulkdx.findprofessional.common.feature.book.BookUiState.BookingTime.Type.Selected
-import com.hulkdx.findprofessional.common.feature.book.BookUiState.BookingTime.Type.UnAvailable
+import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUiState.BookingTime
+import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUiState.BookingTime.Type.Available
+import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUiState.BookingTime.Type.Selected
+import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUiState.BookingTime.Type.UnAvailable
 import com.hulkdx.findprofessional.common.feature.home.model.Professional
 import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalAvailability
 import com.hulkdx.findprofessional.common.utils.NumberFormatter.twoDigits
@@ -20,16 +20,16 @@ import kotlinx.datetime.minus
 import kotlinx.datetime.number
 import kotlinx.datetime.plus
 
-class BookUseCase(
+class BookingTimeUseCase(
     now: LocalDate = LocalDate.now(),
 ) {
     private val date = MutableStateFlow(now)
     private val selectedItems = MutableStateFlow(mapOf<LocalDate, Set<Int>>())
 
-    fun getUiState(professional: Professional): Flow<BookUiState> =
+    fun getUiState(professional: Professional): Flow<BookingTimeUiState> =
         combine(date, selectedItems, ::Pair)
             .map { (date, selectedItems) ->
-                BookUiState(
+                BookingTimeUiState(
                     currentDate = currentDay(date),
                     times = getTimes(professional, date, selectedItems),
                 )

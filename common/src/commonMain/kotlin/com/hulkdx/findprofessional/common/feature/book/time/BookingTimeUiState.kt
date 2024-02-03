@@ -1,8 +1,8 @@
-package com.hulkdx.findprofessional.common.feature.book
+package com.hulkdx.findprofessional.common.feature.book.time
 
 import kotlinx.datetime.LocalDate
 
-data class BookUiState(
+data class BookingTimeUiState(
     val currentDate: String,
     val times: List<List<BookingTime>>,
 ) {

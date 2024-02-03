@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.feature.book
+package com.hulkdx.findprofessional.feature.book.time
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -35,11 +35,11 @@ import androidx.compose.ui.text.style.TextAlign.Companion.Center
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.hulkdx.findprofessional.common.feature.book.BookUiState
-import com.hulkdx.findprofessional.common.feature.book.BookUiState.BookingTime
-import com.hulkdx.findprofessional.common.feature.book.BookUiState.BookingTime.Type.Available
-import com.hulkdx.findprofessional.common.feature.book.BookUiState.BookingTime.Type.Selected
-import com.hulkdx.findprofessional.common.feature.book.BookUiState.BookingTime.Type.UnAvailable
+import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUiState
+import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUiState.BookingTime
+import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUiState.BookingTime.Type.Available
+import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUiState.BookingTime.Type.Selected
+import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUiState.BookingTime.Type.UnAvailable
 import com.hulkdx.findprofessional.common.utils.now
 import com.hulkdx.findprofessional.core.R
 import com.hulkdx.findprofessional.core.commonui.CUFilledButton
@@ -55,28 +55,30 @@ import org.koin.androidx.compose.koinViewModel
 
 
 @Composable
-fun BookScreen(viewModel: BookViewModel = koinViewModel()) {
+fun BookingTimeScreen(viewModel: BookingTimeViewModel = koinViewModel()) {
     val error by viewModel.error.collectAsStateWithLifecycle()
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
-    BookScreen(
+    BookingTimeScreen(
         uiState = uiState ?: return,
         error = error?.localized(),
         onErrorDismissed = { viewModel.setError(null) },
         dayMinusOne = viewModel::dayMinusOne,
         dayPlusOne = viewModel::dayPlusOne,
         onTimeClicked = viewModel::onTimeClicked,
+        onContinueClicked = viewModel::onContinueClicked,
     )
 }
 
 @Composable
-private fun BookScreen(
-    uiState: BookUiState,
+private fun BookingTimeScreen(
+    uiState: BookingTimeUiState,
     dayMinusOne: () -> Unit,
     dayPlusOne: () -> Unit,
     onTimeClicked: (BookingTime) -> Unit,
     error: String?,
     onErrorDismissed: () -> Unit,
+    onContinueClicked: () -> Unit,
 ) {
     Box(
         modifier = Modifier
@@ -93,9 +95,9 @@ private fun BookScreen(
             }
             item { Spacer(modifier = Modifier.height(90.dp)) }
         }
-        BottomPart(
+        ContinueButton(
             modifier = Modifier.align(Alignment.BottomCenter),
-            onClick = {},
+            onClick = onContinueClicked,
         )
         CUSnackBar(
             modifier = Modifier.align(Alignment.BottomCenter),
@@ -242,7 +244,7 @@ private fun TimeItem(
 }
 
 @Composable
-private fun BottomPart(
+private fun ContinueButton(
     modifier: Modifier = Modifier,
     onClick: () -> Unit,
 ) {
@@ -319,8 +321,8 @@ private fun SelectedTimeItemPreview() {
 @Composable
 private fun BookScreenPreview() {
     AppTheme {
-        BookScreen(
-            uiState = BookUiState(
+        BookingTimeScreen(
+            uiState = BookingTimeUiState(
                 currentDate = "3.2.2024",
                 times = listOf(),
             ),
@@ -329,6 +331,7 @@ private fun BookScreenPreview() {
             dayPlusOne = {},
             dayMinusOne = {},
             onTimeClicked = {},
+            onContinueClicked = {},
         )
     }
 }

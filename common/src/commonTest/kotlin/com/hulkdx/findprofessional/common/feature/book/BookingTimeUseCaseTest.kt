@@ -1,9 +1,10 @@
 package com.hulkdx.findprofessional.common.feature.book
 
-import com.hulkdx.findprofessional.common.feature.book.BookUiState.BookingTime
-import com.hulkdx.findprofessional.common.feature.book.BookUiState.BookingTime.Type.Available
-import com.hulkdx.findprofessional.common.feature.book.BookUiState.BookingTime.Type.Selected
-import com.hulkdx.findprofessional.common.feature.book.BookUiState.BookingTime.Type.UnAvailable
+import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUiState.BookingTime
+import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUiState.BookingTime.Type.Available
+import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUiState.BookingTime.Type.Selected
+import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUiState.BookingTime.Type.UnAvailable
+import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUseCase
 import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalAvailability
 import com.hulkdx.findprofessional.common.utils.createBookingTimes
 import com.hulkdx.findprofessional.common.utils.createProfessional
@@ -16,9 +17,9 @@ import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-class BookUseCaseTest {
+class BookingTimeUseCaseTest {
 
-    private lateinit var sut: BookUseCase
+    private lateinit var sut: BookingTimeUseCase
 
     @BeforeTest
     fun setUp() {
@@ -203,7 +204,7 @@ class BookUseCaseTest {
         assertEquals(Available, actual)
     }
 
-    private fun createSut(now: LocalDate = LocalDate.now()) = BookUseCase(now)
+    private fun createSut(now: LocalDate = LocalDate.now()) = BookingTimeUseCase(now)
 
     private fun createProfessionalWithAvailability(date: LocalDate, vararg times: Pair<Int, Int>) =
         createProfessional(
