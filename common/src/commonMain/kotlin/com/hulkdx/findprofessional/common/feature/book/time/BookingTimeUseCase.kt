@@ -24,14 +24,14 @@ class BookingTimeUseCase(
     now: LocalDate = LocalDate.now(),
 ) {
     private val date = MutableStateFlow(now)
-    private val selectedItems = MutableStateFlow(mapOf<LocalDate, Set<Int>>())
+    private val selectedItems = MutableStateFlow(SelectedTimes())
 
     fun getUiState(professional: Professional): Flow<BookingTimeUiState> =
         combine(date, selectedItems, ::Pair)
             .map { (date, selectedItems) ->
                 BookingTimeUiState(
                     currentDate = currentDay(date),
-                    times = getTimes(professional, date, selectedItems),
+                    times = getTimes(professional, date, selectedItems.items),
                 )
             }
 
@@ -45,7 +45,7 @@ class BookingTimeUseCase(
 
     fun onTimeClicked(item: BookingTime) {
         selectedItems.update {
-            it.toMutableMap()
+            val newItems = it.items.toMutableMap()
                 .also { updatedMap ->
                     val ids = updatedMap[date.value] ?: setOf()
                     updatedMap[date.value] = if (ids.contains(item.id)) {
@@ -54,6 +54,7 @@ class BookingTimeUseCase(
                         ids + item.id
                     }
                 }
+            SelectedTimes(newItems)
         }
     }
 
