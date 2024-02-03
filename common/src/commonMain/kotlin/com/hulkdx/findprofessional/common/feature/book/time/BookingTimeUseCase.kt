@@ -4,11 +4,12 @@ import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUiState.B
 import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUiState.BookingTime.Type.Available
 import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUiState.BookingTime.Type.Selected
 import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUiState.BookingTime.Type.UnAvailable
+import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUtils.currentDay
+import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUtils.isAvailabilityIncludedInTimes
 import com.hulkdx.findprofessional.common.feature.home.model.Professional
 import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalAvailability
 import com.hulkdx.findprofessional.common.utils.NumberFormatter.twoDigits
 import com.hulkdx.findprofessional.common.utils.now
-import com.hulkdx.findprofessional.common.utils.toMinutesOfDay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
@@ -17,7 +18,6 @@ import kotlinx.coroutines.flow.update
 import kotlinx.datetime.DateTimeUnit
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.minus
-import kotlinx.datetime.number
 import kotlinx.datetime.plus
 
 class BookingTimeUseCase(
@@ -78,28 +78,6 @@ class BookingTimeUseCase(
                 )
             }
             .chunked(2)
-    }
-
-    internal fun isAvailabilityIncludedInTimes(
-        availability: ProfessionalAvailability,
-        from: Int,
-        to: Int,
-    ): Boolean {
-        val availabilityFrom = availability.from.toMinutesOfDay()
-        val availabilityTo = availability.to.toMinutesOfDay().let { aT ->
-            if (aT == 0) {
-                24 * 60
-            } else {
-                aT
-            }
-        }
-
-        return availabilityFrom <= from &&
-                availabilityTo >= to
-    }
-
-    internal fun currentDay(now: LocalDate): String {
-        return "${now.dayOfMonth}.${now.month.number}.${now.year}"
     }
 
     private fun getType(
