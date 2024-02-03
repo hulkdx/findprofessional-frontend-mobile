@@ -9,6 +9,8 @@ import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUtils.for
 import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUtils.isAvailabilityIncludedInTimes
 import com.hulkdx.findprofessional.common.feature.home.model.Professional
 import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalAvailability
+import com.hulkdx.findprofessional.common.navigation.NavigationScreen
+import com.hulkdx.findprofessional.common.navigation.Navigator
 import com.hulkdx.findprofessional.common.utils.now
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -22,6 +24,7 @@ import kotlinx.datetime.plus
 
 class BookingTimeUseCase(
     now: LocalDate = LocalDate.now(),
+    private val navigator: Navigator,
 ) {
     private val date = MutableStateFlow(now)
     private val selectedItems = MutableStateFlow(SelectedTimes())
@@ -56,6 +59,10 @@ class BookingTimeUseCase(
                 }
             SelectedTimes(newItems)
         }
+    }
+
+    fun onContinueClicked(professional: Professional) {
+        navigator.navigate(NavigationScreen.BookingSummery(professional, selectedItems.value))
     }
 
     internal fun getTimes(

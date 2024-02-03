@@ -54,6 +54,6 @@ class HomeDetailScreenVerify(
     }
 
     fun bookScreenShown() {
-        rule.assertNodeIsDisplayed("BookScreen")
+        rule.assertNodeIsDisplayed("BookingTimeScreen")
     }
 }

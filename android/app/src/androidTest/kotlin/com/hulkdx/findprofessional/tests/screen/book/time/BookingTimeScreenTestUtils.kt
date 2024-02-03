@@ -1,10 +1,13 @@
 package com.hulkdx.findprofessional.tests.screen.book.time
 
-import androidx.compose.ui.test.SemanticsNodeInteraction
 import androidx.compose.ui.test.assert
+import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.hasTestTag
+import androidx.compose.ui.test.hasText
+import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
+import androidx.compose.ui.test.performScrollToNode
 import com.hulkdx.findprofessional.InMemoryApi
 import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUiState
 import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUtils.formattedTime
@@ -45,7 +48,11 @@ class BookingTimeScreenDsl(
     }
 
     fun pressTime(time: ProfessionalAvailability) {
-        rule.onNodeWithTime(time)
+        rule.onNodeWithTag("BookingTimeScreen.LazyColumn")
+            .assertIsDisplayed()
+            .performScrollToNode(hasText(time.toText()))
+
+        rule.onNodeWithText(time.toText())
             .performClick()
     }
 
@@ -61,16 +68,15 @@ class BookingTimeScreenVerify(
     }
 
     fun isHighlightedTime(time: ProfessionalAvailability) {
-        rule.onNodeWithTime(time)
+        rule.onNodeWithText(time.toText())
             .assert(
                 hasTestTag(BookingTimeUiState.BookingTime.Type.Selected.name)
             )
     }
 }
 
-private fun Rule.onNodeWithTime(time: ProfessionalAvailability): SemanticsNodeInteraction {
-    val startTime = formattedTime(time.from.toMinutesOfDay())
-    val endTime = formattedTime(time.to.toMinutesOfDay())
-    val text = "$startTime - $endTime"
-    return onNodeWithText(text)
+private fun ProfessionalAvailability.toText(): String {
+    val startTime = formattedTime(from.toMinutesOfDay())
+    val endTime = formattedTime(to.toMinutesOfDay())
+    return "$startTime - $endTime"
 }

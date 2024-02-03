@@ -85,9 +85,9 @@ private fun BookingTimeScreen(
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.onPrimary)
             .systemBarsPadding()
-            .testTag("BookScreen")
+            .testTag("BookingTimeScreen")
     ) {
-        LazyColumn {
+        LazyColumn(Modifier.testTag("BookingTimeScreen.LazyColumn")) {
             item { Header() }
             item { DayHeader(uiState.currentDate, dayPlusOne, dayMinusOne) }
             items(uiState.times) { (first, second) ->

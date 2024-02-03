@@ -80,6 +80,11 @@ object InMemoryApi {
             availability = listOf(
                 todayAvailableTime,
                 ProfessionalAvailability(
+                    date = LocalDate.now(),
+                    from = "09:00".toLocalTime(),
+                    to = "10:30".toLocalTime(),
+                ),
+                ProfessionalAvailability(
                     date = "2023-11-10".toLocalDate(),
                     from = "07:00".toLocalTime(),
                     to = "08:00".toLocalTime(),

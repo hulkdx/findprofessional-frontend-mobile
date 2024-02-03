@@ -7,6 +7,8 @@ import org.koin.dsl.module
 val bookModule: Module
     get() = module {
         factory {
-            BookingTimeUseCase()
+            BookingTimeUseCase(
+                navigator = get()
+            )
         }
     }

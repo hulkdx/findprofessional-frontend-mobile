@@ -6,8 +6,6 @@ import androidx.lifecycle.viewModelScope
 import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUiState.BookingTime
 import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUseCase
 import com.hulkdx.findprofessional.common.feature.home.model.Professional
-import com.hulkdx.findprofessional.common.navigation.NavigationScreen
-import com.hulkdx.findprofessional.common.navigation.Navigator
 import com.hulkdx.findprofessional.feature.book.time.BookingTimeNavigationScreen.Companion.ARG1
 import dev.icerock.moko.resources.desc.StringDesc
 import kotlinx.coroutines.flow.SharingStarted
@@ -16,7 +14,6 @@ import kotlinx.coroutines.flow.stateIn
 
 class BookingTimeViewModel(
     private val savedStateHandle: SavedStateHandle,
-    private val navigator: Navigator,
     private val useCase: BookingTimeUseCase,
 ) : ViewModel() {
     private val professional = requireNotNull(savedStateHandle.get<Professional>(ARG1))
@@ -39,7 +36,7 @@ class BookingTimeViewModel(
     }
 
     fun onContinueClicked() {
-        navigator.navigate(NavigationScreen.BookingSummery(professional))
+        useCase.onContinueClicked(professional)
     }
 
     fun setError(error: StringDesc?) {

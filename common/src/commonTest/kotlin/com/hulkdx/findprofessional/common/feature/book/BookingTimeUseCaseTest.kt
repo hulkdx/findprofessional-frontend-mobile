@@ -6,6 +6,7 @@ import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUiState.B
 import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUiState.BookingTime.Type.UnAvailable
 import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUseCase
 import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalAvailability
+import com.hulkdx.findprofessional.common.utils.StubNavigator
 import com.hulkdx.findprofessional.common.utils.createBookingTimes
 import com.hulkdx.findprofessional.common.utils.createProfessional
 import com.hulkdx.findprofessional.common.utils.now
@@ -20,6 +21,7 @@ import kotlin.test.assertEquals
 class BookingTimeUseCaseTest {
 
     private lateinit var sut: BookingTimeUseCase
+    private val navigator = StubNavigator()
 
     @BeforeTest
     fun setUp() {
@@ -132,7 +134,10 @@ class BookingTimeUseCaseTest {
         assertEquals(Available, actual)
     }
 
-    private fun createSut(now: LocalDate = LocalDate.now()) = BookingTimeUseCase(now)
+    private fun createSut(now: LocalDate = LocalDate.now()) = BookingTimeUseCase(
+        now = now,
+        navigator = navigator,
+    )
 
     private fun createProfessionalWithAvailability(date: LocalDate, vararg times: Pair<Int, Int>) =
         createProfessional(

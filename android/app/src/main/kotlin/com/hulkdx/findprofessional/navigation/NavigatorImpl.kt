@@ -67,7 +67,7 @@ private fun NavigationScreen.toAndroidScreen(): String =
         is NavigationScreen.Profile -> ProfileNavigationScreen().route
         is NavigationScreen.Review -> ReviewNavigationScreen().destination(professional)
         is NavigationScreen.BookingTime -> BookingTimeNavigationScreen().destination(professional)
-        is NavigationScreen.BookingSummery -> BookingSummeryNavigationScreen().destination(professional)
+        is NavigationScreen.BookingSummery -> BookingSummeryNavigationScreen().destination(professional, times)
     }
 
 private fun String?.toNavigationScreen(bundle: Bundle) =
@@ -80,8 +80,8 @@ private fun String?.toNavigationScreen(bundle: Bundle) =
         SplashNavigationScreen().route -> NavigationScreen.Splash
         ProfileNavigationScreen().route -> NavigationScreen.Profile
         ReviewNavigationScreen().route -> NavigationScreen.Review(ReviewNavigationScreen.professional(bundle))
-        BookingTimeNavigationScreen().route -> NavigationScreen.Review(BookingTimeNavigationScreen.professional(bundle))
-        BookingSummeryNavigationScreen().route -> NavigationScreen.Review(BookingSummeryNavigationScreen.professional(bundle))
+        BookingTimeNavigationScreen().route -> NavigationScreen.BookingTime(BookingTimeNavigationScreen.professional(bundle))
+        BookingSummeryNavigationScreen().route -> NavigationScreen.BookingSummery(BookingSummeryNavigationScreen.professional(bundle), BookingSummeryNavigationScreen.time(bundle))
         else -> throw RuntimeException("Route=$this is not defined")
     }
 
