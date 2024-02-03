@@ -8,8 +8,10 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -22,13 +24,14 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextAlign.Companion.Center
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -88,10 +91,10 @@ private fun BookScreen(
             items(uiState.times) { (first, second) ->
                 TimeItem(first, second, onTimeClicked)
             }
+            item { Spacer(modifier = Modifier.height(90.dp)) }
         }
-        Bottom(
+        BottomPart(
             modifier = Modifier.align(Alignment.BottomCenter),
-            timesSelected = 1,
             onClick = {},
         )
         CUSnackBar(
@@ -110,7 +113,7 @@ private fun Header() {
             .padding(top = 45.dp, bottom = 33.dp),
         text = stringResource(MR.strings.selectOneOrMoreItems.resourceId),
         style = h2Medium,
-        textAlign = TextAlign.Center,
+        textAlign = Center,
     )
 }
 
@@ -149,11 +152,11 @@ private fun RowScope.DayHeaderText(text: String) {
     Text(
         modifier = Modifier
             .weight(1F)
-            .align(Alignment.CenterVertically),
+            .align(CenterVertically),
         text = text,
         style = body2SemiBold,
-        color = Color(0xFF9D9CAC),
-        textAlign = TextAlign.Center,
+        color = MaterialTheme.colorScheme.errorContainer,
+        textAlign = Center,
     )
 }
 
@@ -168,7 +171,7 @@ private fun DayHeaderButton(
     ) {
         Image(
             painter = painterResource(icon),
-            contentDescription = "",
+            contentDescription = null,
         )
     }
 }
@@ -194,7 +197,7 @@ private fun TimeItem(
 private fun TimeItem(
     modifier: Modifier = Modifier,
     data: BookingTime,
-    onClick: (BookingTime) -> Unit,
+    onBookingClick: (BookingTime) -> Unit,
 ) {
     val backgroundColor = when (data.type) {
         Available -> MaterialTheme.colorScheme.primary
@@ -206,25 +209,41 @@ private fun TimeItem(
         UnAvailable -> MaterialTheme.colorScheme.errorContainer
         Selected -> MaterialTheme.colorScheme.surfaceVariant
     }
+    val text = "${data.startTime} - ${data.endTime}"
+    val onClick = { onBookingClick(data) }
+        .takeIf { data.type != UnAvailable }
+
+    TimeItem(modifier, backgroundColor, text, textColor, onClick)
+}
+
+@Composable
+private fun TimeItem(
+    modifier: Modifier,
+    backgroundColor: Color,
+    text: String,
+    textColor: Color,
+    onClick: (() -> Unit)?,
+) {
     Text(
         modifier = modifier
             .padding(start = 16.dp)
             .padding(bottom = 8.dp)
             .clip(shape = RoundedCornerShape(8.dp))
             .background(backgroundColor)
-            .clickable { onClick(data) }
+            .run {
+                onClick?.let { clickable(onClick = it) } ?: this
+            }
             .padding(vertical = 10.dp),
         color = textColor,
-        text = "${data.startTime} - ${data.endTime}",
-        textAlign = TextAlign.Center,
+        text = text,
+        textAlign = Center,
         style = body3Medium,
     )
 }
 
 @Composable
-private fun Bottom(
+private fun BottomPart(
     modifier: Modifier = Modifier,
-    timesSelected: Int,
     onClick: () -> Unit,
 ) {
     CUFilledButton(
@@ -233,12 +252,14 @@ private fun Bottom(
             .border(1.dp, MaterialTheme.colorScheme.onPrimary)
             .padding(horizontal = 26.dp, vertical = 22.dp)
             .fillMaxWidth(),
-        text = "$timesSelected ${stringResource(id = MR.strings.itemsSelected.resourceId)}",
+        text = stringResource(id = MR.strings.continue1.resourceId),
         colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.secondary),
         contentPadding = PaddingValues(0.dp),
         onClick = onClick,
     )
 }
+
+// region Previews
 
 @Preview
 @Composable
@@ -253,7 +274,7 @@ private fun AvailableTimeItemPreview() {
                 "00:30",
                 Available
             ),
-            onClick = {},
+            onBookingClick = {},
         )
     }
 }
@@ -271,7 +292,7 @@ private fun UnAvailableTimeItemPreview() {
                 "00:30",
                 UnAvailable,
             ),
-            onClick = {},
+            onBookingClick = {},
         )
     }
 }
@@ -289,7 +310,7 @@ private fun SelectedTimeItemPreview() {
                 "00:30",
                 Selected,
             ),
-            onClick = {},
+            onBookingClick = {},
         )
     }
 }
@@ -298,11 +319,18 @@ private fun SelectedTimeItemPreview() {
 @Composable
 private fun BookScreenPreview() {
     AppTheme {
-        // TODO:
-//        BookScreen(
-//            times = listOf(),
-//            error = "",
-//            onErrorDismissed = {},
-//        )
+        BookScreen(
+            uiState = BookUiState(
+                currentDate = "3.2.2024",
+                times = listOf(),
+            ),
+            error = "",
+            onErrorDismissed = {},
+            dayPlusOne = {},
+            dayMinusOne = {},
+            onTimeClicked = {},
+        )
     }
 }
+
+// endregion

@@ -27,4 +27,5 @@
     <string name="bookNow">Book now</string>
     <string name="selectOneOrMoreItems">Select one or more items</string>
     <string name="itemsSelected">items selected</string>
+    <string name="continue1">Continue</string>
 </resources>
