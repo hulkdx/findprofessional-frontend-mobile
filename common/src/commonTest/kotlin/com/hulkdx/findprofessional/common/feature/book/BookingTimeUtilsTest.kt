@@ -10,7 +10,7 @@ import kotlin.test.assertEquals
 
 class BookingTimeUtilsTest {
 
-    private lateinit var sut: BookingTimeUtils
+    private val sut = BookingTimeUtils
 
     @Test
     fun `isAvailabilityIncludedInTimes tests`() {

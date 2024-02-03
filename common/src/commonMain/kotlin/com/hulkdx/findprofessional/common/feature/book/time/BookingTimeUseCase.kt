@@ -5,10 +5,10 @@ import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUiState.B
 import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUiState.BookingTime.Type.Selected
 import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUiState.BookingTime.Type.UnAvailable
 import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUtils.currentDay
+import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUtils.formattedTime
 import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUtils.isAvailabilityIncludedInTimes
 import com.hulkdx.findprofessional.common.feature.home.model.Professional
 import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalAvailability
-import com.hulkdx.findprofessional.common.utils.NumberFormatter.twoDigits
 import com.hulkdx.findprofessional.common.utils.now
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -72,8 +72,8 @@ class BookingTimeUseCase(
                 BookingTime(
                     id = start,
                     date = date,
-                    startTime = "${twoDigits(start / 60)}:${twoDigits(start % 60)}",
-                    endTime = "${twoDigits((end / 60) % 24)}:${twoDigits(end % 60)}",
+                    startTime = formattedTime(start),
+                    endTime = formattedTime(end),
                     type = getType(start, end, availability, filteredSelectedItems),
                 )
             }
