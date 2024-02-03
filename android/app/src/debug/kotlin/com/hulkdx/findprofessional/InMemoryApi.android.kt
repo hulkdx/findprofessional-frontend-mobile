@@ -12,7 +12,9 @@ import com.hulkdx.findprofessional.common.feature.home.ProfessionalApi
 import com.hulkdx.findprofessional.common.feature.home.model.Professional
 import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalAvailability
 import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalReview
+import com.hulkdx.findprofessional.common.utils.now
 import kotlinx.datetime.Clock
+import kotlinx.datetime.LocalDate
 import kotlinx.datetime.toLocalDate
 import kotlinx.datetime.toLocalTime
 import org.koin.core.context.loadKoinModules
@@ -71,7 +73,7 @@ object InMemoryApi {
             "Former professional boxer who competed from 1985 to 2005",
             availability = listOf(
                 ProfessionalAvailability(
-                    date = "2023-11-09".toLocalDate(),
+                    date = LocalDate.now(),
                     from = "08:00".toLocalTime(),
                     to = "09:00".toLocalTime(),
                 ),
