@@ -2,7 +2,7 @@ package com.hulkdx.findprofessional.utils
 
 import android.os.Environment
 import androidx.test.platform.app.InstrumentationRegistry
-import androidx.test.uiautomator.UiDevice
+import androidx.test.uiautomator.UiDevice.getInstance
 import org.junit.rules.TestRule
 import org.junit.runner.Description
 import org.junit.runners.model.Statement
@@ -14,42 +14,44 @@ class ScreenshotOnFailureRule : TestRule {
         return object : Statement() {
             override fun evaluate() {
                 try {
-                    UiDeviceUtils.device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
+                    UiDeviceUtils.device = getInstance(InstrumentationRegistry.getInstrumentation())
                     base.evaluate()
                 } catch (e: Throwable) {
-                    runCatching { takeScreenshotIfTestFails(description) }
+                    runCatching { takeScreenshot(description.methodName) }
                     throw e
                 }
             }
         }
     }
 
-    private fun takeScreenshotIfTestFails(description: Description) {
-        // TODO: api 29 fails on this:
-        val methodName = description.methodName
-        val dir =
-            Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).path
+    companion object {
 
-        val screenshotsDir = "$dir/uitest-screenshot-failure"
-        val screenshotName = "$methodName.png"
+        fun takeScreenshot(fileName: String) {
+            // TODO: api 29 fails on this:
+            val dir =
+                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).path
 
-        val dir1 = File(screenshotsDir)
-        createDirIfNotExists(dir1)
-        val file = File("$screenshotsDir/$screenshotName")
-        createFileIfNotExists(file)
+            val screenshotsDir = "$dir/uitest-screenshot-failure"
+            val screenshotName = "$fileName.png"
 
-        UiDeviceUtils.device.takeScreenshot(file)
-    }
+            val dir1 = File(screenshotsDir)
+            createDirIfNotExists(dir1)
+            val file = File("$screenshotsDir/$screenshotName")
+            createFileIfNotExists(file)
 
-    private fun createFileIfNotExists(file: File) {
-        if (!file.exists()) {
-            file.createNewFile()
+            UiDeviceUtils.device.takeScreenshot(file)
         }
-    }
 
-    private fun createDirIfNotExists(dir: File) {
-        if (!dir.exists()) {
-            dir.mkdirs()
+        private fun createFileIfNotExists(file: File) {
+            if (!file.exists()) {
+                file.createNewFile()
+            }
+        }
+
+        private fun createDirIfNotExists(dir: File) {
+            if (!dir.exists()) {
+                dir.mkdirs()
+            }
         }
     }
 }

@@ -7,6 +7,7 @@ import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.junit4.AndroidComposeTestRule
 import androidx.compose.ui.test.onAllNodesWithTag
+import androidx.compose.ui.test.onAllNodesWithText
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.onRoot
@@ -36,10 +37,23 @@ fun Rule.waitUntilAppear(
 ) {
     try {
         waitUntil(timeoutMillis) {
-            onAllNodesWithTag(testTag, true).fetchSemanticsNodes().size == 1
+            onAllNodesWithTag(testTag, useUnmergedTree = true).fetchSemanticsNodes().size == 1
         }
     } catch (e: ComposeTimeoutException) {
         throw RuntimeException("cannot find a node with test tag : $testTag after 10 seconds.")
+    }
+}
+
+fun Rule.waitUntilAppearText(
+    text: String,
+    timeoutMillis: Long = 10_000,
+) {
+    try {
+        waitUntil(timeoutMillis) {
+            onAllNodesWithText(text, useUnmergedTree = true).fetchSemanticsNodes().size == 1
+        }
+    } catch (e: ComposeTimeoutException) {
+        throw RuntimeException("cannot find a node with text : $text after 10 seconds.")
     }
 }
 

@@ -16,8 +16,11 @@ import com.hulkdx.findprofessional.common.utils.toMinutesOfDay
 import com.hulkdx.findprofessional.resources.MR
 import com.hulkdx.findprofessional.tests.screen.home.detail.launchHomeDetailScreen
 import com.hulkdx.findprofessional.utils.Rule
+import com.hulkdx.findprofessional.utils.ScreenshotOnFailureRule
 import com.hulkdx.findprofessional.utils.assertNodeIsDisplayed
 import com.hulkdx.findprofessional.utils.onNodeWithTextRes
+import com.hulkdx.findprofessional.utils.waitUntilAppear
+import com.hulkdx.findprofessional.utils.waitUntilAppearText
 
 
 fun launchBookingTimeScreen(
@@ -48,12 +51,22 @@ class BookingTimeScreenDsl(
     }
 
     fun pressTime(time: ProfessionalAvailability) {
+        ScreenshotOnFailureRule.takeScreenshot("before_pressTime")
+
+        rule.waitUntilAppear(testTag = "BookingTimeScreen.LazyColumn")
+        rule.waitUntilAppearText(text = time.toText())
+
         rule.onNodeWithTag("BookingTimeScreen.LazyColumn")
             .assertIsDisplayed()
             .performScrollToNode(hasText(time.toText()))
 
+        ScreenshotOnFailureRule.takeScreenshot("before_pressTime_perform_click")
+
         rule.onNodeWithText(time.toText())
+            .assertIsDisplayed()
             .performClick()
+
+        ScreenshotOnFailureRule.takeScreenshot("after_pressTime_perform_click")
     }
 
     fun verify(block: BookingTimeScreenVerify.() -> Unit) =
@@ -68,7 +81,10 @@ class BookingTimeScreenVerify(
     }
 
     fun isHighlightedTime(time: ProfessionalAvailability) {
+        ScreenshotOnFailureRule.takeScreenshot("before_verify_isHighlightedTime")
+
         rule.onNodeWithText(time.toText())
+            .assertIsDisplayed()
             .assert(
                 hasTestTag(BookingTimeUiState.BookingTime.Type.Selected.name)
             )

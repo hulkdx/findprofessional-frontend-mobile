@@ -55,18 +55,18 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - api-level: 29 # Android 10
-            arch: x86
-            target: default
+#          - api-level: 29 # Android 10
+          #            arch: x86
+          #            target: default
           - api-level: 30 # Android 11
             arch: x86_64
             target: default
-          - api-level: 31 # Android 12
-            arch: x86_64
-            target: default
-          - api-level: 33 # Android 13
-            arch: x86_64
-            target: google_apis
+          #          - api-level: 31 # Android 12
+          #            arch: x86_64
+          #            target: default
+          #          - api-level: 33 # Android 13
+          #            arch: x86_64
+          #            target: google_apis
           # TODO: add api-level 34
 
     steps:
