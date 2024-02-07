@@ -7,6 +7,7 @@ import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
+import androidx.compose.ui.test.performScrollTo
 import androidx.compose.ui.test.performScrollToNode
 import com.hulkdx.findprofessional.InMemoryApi
 import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUiState
@@ -19,8 +20,6 @@ import com.hulkdx.findprofessional.utils.Rule
 import com.hulkdx.findprofessional.utils.ScreenshotOnFailureRule
 import com.hulkdx.findprofessional.utils.assertNodeIsDisplayed
 import com.hulkdx.findprofessional.utils.onNodeWithTextRes
-import com.hulkdx.findprofessional.utils.waitUntilAppear
-import com.hulkdx.findprofessional.utils.waitUntilAppearText
 
 
 fun launchBookingTimeScreen(
@@ -51,14 +50,12 @@ class BookingTimeScreenDsl(
     }
 
     fun pressTime(time: ProfessionalAvailability) {
-        rule.waitUntilAppear(testTag = "BookingTimeScreen.LazyColumn")
-        rule.waitUntilAppearText(text = time.toText())
-
         rule.onNodeWithTag("BookingTimeScreen.LazyColumn")
             .assertIsDisplayed()
             .performScrollToNode(hasText(time.toText()))
 
         rule.onNodeWithText(time.toText())
+            .performScrollTo()
             .assertIsDisplayed()
             .performClick()
     }
