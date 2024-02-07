@@ -1,6 +1,7 @@
 package com.hulkdx.findprofessional.tests.screen.login
 
 import androidx.compose.ui.test.performClick
+import androidx.compose.ui.test.performScrollTo
 import androidx.compose.ui.test.performTextInput
 import androidx.test.espresso.Espresso
 import com.hulkdx.findprofessional.resources.MR
@@ -25,21 +26,25 @@ class LoginDsl(
 ) {
     fun typeEmail(email: String) {
         rule.onNodeWithTextRes(MR.strings.email.resourceId)
+            .performScrollTo()
             .performTextInput(email)
     }
 
     fun typePassword(password: String) {
         rule.onNodeWithTextRes(MR.strings.password.resourceId)
+            .performScrollTo()
             .performTextInput(password)
     }
 
     fun pressSignUpButton() {
         rule.onNodeWithTagRes(MR.strings.signUp.resourceId)
+            .performScrollTo()
             .performClick()
     }
 
     fun pressSignInButton() {
         rule.onNodeWithTextRes(MR.strings.signIn.resourceId)
+            .performScrollTo()
             .performClick()
     }
 

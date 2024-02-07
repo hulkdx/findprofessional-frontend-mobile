@@ -8,19 +8,18 @@ import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performScrollToNode
+import androidx.compose.ui.test.performTouchInput
+import androidx.compose.ui.test.swipeUp
 import com.hulkdx.findprofessional.InMemoryApi
-import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUiState
+import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUiState.BookingTime.Type.Selected
 import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUtils.formattedTime
 import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalAvailability
 import com.hulkdx.findprofessional.common.utils.toMinutesOfDay
 import com.hulkdx.findprofessional.resources.MR
 import com.hulkdx.findprofessional.tests.screen.home.detail.launchHomeDetailScreen
 import com.hulkdx.findprofessional.utils.Rule
-import com.hulkdx.findprofessional.utils.ScreenshotOnFailureRule
 import com.hulkdx.findprofessional.utils.assertNodeIsDisplayed
 import com.hulkdx.findprofessional.utils.onNodeWithTextRes
-import com.hulkdx.findprofessional.utils.waitUntilAppear
-import com.hulkdx.findprofessional.utils.waitUntilAppearText
 
 
 fun launchBookingTimeScreen(
@@ -51,12 +50,10 @@ class BookingTimeScreenDsl(
     }
 
     fun pressTime(time: ProfessionalAvailability) {
-        rule.waitUntilAppear(testTag = "BookingTimeScreen.LazyColumn")
-        rule.waitUntilAppearText(text = time.toText())
-
         rule.onNodeWithTag("BookingTimeScreen.LazyColumn")
             .assertIsDisplayed()
             .performScrollToNode(hasText(time.toText()))
+            .performTouchInput { swipeUp(bottom, bottom - 200) }
 
         rule.onNodeWithText(time.toText())
             .assertIsDisplayed()
@@ -75,13 +72,8 @@ class BookingTimeScreenVerify(
     }
 
     fun isHighlightedTime(time: ProfessionalAvailability) {
-        ScreenshotOnFailureRule.takeScreenshot("before_verify_isHighlightedTime")
-
         rule.onNodeWithText(time.toText())
-            .assertIsDisplayed()
-            .assert(
-                hasTestTag(BookingTimeUiState.BookingTime.Type.Selected.name)
-            )
+            .assert(hasTestTag(Selected.name))
     }
 }
 

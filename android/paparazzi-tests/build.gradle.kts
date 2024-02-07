@@ -13,6 +13,7 @@ dependencies {
     implementation(project(":android:feature:home"))
     implementation(project(":android:feature:profile"))
     implementation(project(":android:feature:review"))
+    implementation(project(":android:feature:book"))
     implementation(project(":android:core"))
     implementation(project(":android:app"))
 
