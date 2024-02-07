@@ -13,6 +13,7 @@ class BookingTimeScreenTest : ScreenTest() {
             bookingSummeryShown()
         }
     }
+
     @Test
     fun performHighlightSomeTime() {
         launchBookingTimeScreen(composeRule) {

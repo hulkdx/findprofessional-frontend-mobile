@@ -50,11 +50,15 @@ class BookingTimeScreenDsl(
     }
 
     fun pressTime(time: ProfessionalAvailability) {
+        val text = time.toText()
+
         rule.onNodeWithTag("BookingTimeScreen.LazyColumn")
             .assertIsDisplayed()
-            .performScrollToNode(hasText(time.toText()))
+            .performScrollToNode(hasText(text))
 
-        rule.onNodeWithText(time.toText())
+        ScreenshotOnFailureRule.takeScreenshot("1_after_scroll")
+
+        rule.onNodeWithText(text)
             .performScrollTo()
             .assertIsDisplayed()
             .performClick()
@@ -72,7 +76,7 @@ class BookingTimeScreenVerify(
     }
 
     fun isHighlightedTime(time: ProfessionalAvailability) {
-        ScreenshotOnFailureRule.takeScreenshot("before_verify_isHighlightedTime")
+        ScreenshotOnFailureRule.takeScreenshot("2_before_verify_isHighlightedTime")
 
         rule.onNodeWithText(time.toText())
             .assertIsDisplayed()
