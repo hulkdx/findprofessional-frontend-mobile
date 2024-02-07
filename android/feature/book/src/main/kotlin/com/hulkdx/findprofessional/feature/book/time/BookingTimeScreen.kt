@@ -189,6 +189,7 @@ private fun TimeItem(
             .padding(horizontal = 16.dp)
             .background(MaterialTheme.colorScheme.surfaceVariant)
             .padding(end = 16.dp)
+            .testTag("Row_${first.startTime}")
     ) {
         TimeItem(Modifier.weight(1F), first, onClick)
         TimeItem(Modifier.weight(1F), second, onClick)
