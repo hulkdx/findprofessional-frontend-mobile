@@ -51,8 +51,6 @@ class BookingTimeScreenDsl(
     }
 
     fun pressTime(time: ProfessionalAvailability) {
-        ScreenshotOnFailureRule.takeScreenshot("before_pressTime")
-
         rule.waitUntilAppear(testTag = "BookingTimeScreen.LazyColumn")
         rule.waitUntilAppearText(text = time.toText())
 
@@ -60,13 +58,9 @@ class BookingTimeScreenDsl(
             .assertIsDisplayed()
             .performScrollToNode(hasText(time.toText()))
 
-        ScreenshotOnFailureRule.takeScreenshot("before_pressTime_perform_click")
-
         rule.onNodeWithText(time.toText())
             .assertIsDisplayed()
             .performClick()
-
-        ScreenshotOnFailureRule.takeScreenshot("after_pressTime_perform_click")
     }
 
     fun verify(block: BookingTimeScreenVerify.() -> Unit) =

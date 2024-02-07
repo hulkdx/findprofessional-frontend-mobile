@@ -222,6 +222,7 @@ object InMemoryApi {
         loadKoinModules(allModules())
     }
 
+    @Synchronized
     fun setUser(email: String, password: String) {
         user = RegisterRequest(email, password, firstName = "", lastName = "")
     }
