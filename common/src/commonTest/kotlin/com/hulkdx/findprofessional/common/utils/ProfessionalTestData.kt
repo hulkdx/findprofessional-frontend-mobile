@@ -1,7 +1,7 @@
 package com.hulkdx.findprofessional.common.utils
 
 import com.hulkdx.findprofessional.common.feature.authentication.model.User
-import com.hulkdx.findprofessional.common.feature.book.BookUiState.BookingTime
+import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUiState.BookingTime
 import com.hulkdx.findprofessional.common.feature.home.model.Professional
 import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalAvailability
 import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalReview

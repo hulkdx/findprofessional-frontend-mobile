@@ -1,14 +1,17 @@
-package com.hulkdx.findprofessional.common.feature.book
+package com.hulkdx.findprofessional.common.feature.book.time
 
-import com.hulkdx.findprofessional.common.feature.book.BookUiState.BookingTime
-import com.hulkdx.findprofessional.common.feature.book.BookUiState.BookingTime.Type.Available
-import com.hulkdx.findprofessional.common.feature.book.BookUiState.BookingTime.Type.Selected
-import com.hulkdx.findprofessional.common.feature.book.BookUiState.BookingTime.Type.UnAvailable
+import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUiState.BookingTime
+import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUiState.BookingTime.Type.Available
+import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUiState.BookingTime.Type.Selected
+import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUiState.BookingTime.Type.UnAvailable
+import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUtils.currentDay
+import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUtils.formattedTime
+import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUtils.isAvailabilityIncludedInTimes
 import com.hulkdx.findprofessional.common.feature.home.model.Professional
 import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalAvailability
-import com.hulkdx.findprofessional.common.utils.NumberFormatter.twoDigits
+import com.hulkdx.findprofessional.common.navigation.NavigationScreen
+import com.hulkdx.findprofessional.common.navigation.Navigator
 import com.hulkdx.findprofessional.common.utils.now
-import com.hulkdx.findprofessional.common.utils.toMinutesOfDay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
@@ -17,21 +20,21 @@ import kotlinx.coroutines.flow.update
 import kotlinx.datetime.DateTimeUnit
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.minus
-import kotlinx.datetime.number
 import kotlinx.datetime.plus
 
-class BookUseCase(
+class BookingTimeUseCase(
     now: LocalDate = LocalDate.now(),
+    private val navigator: Navigator,
 ) {
     private val date = MutableStateFlow(now)
-    private val selectedItems = MutableStateFlow(mapOf<LocalDate, Set<Int>>())
+    private val selectedItems = MutableStateFlow(SelectedTimes())
 
-    fun getUiState(professional: Professional): Flow<BookUiState> =
+    fun getUiState(professional: Professional): Flow<BookingTimeUiState> =
         combine(date, selectedItems, ::Pair)
             .map { (date, selectedItems) ->
-                BookUiState(
+                BookingTimeUiState(
                     currentDate = currentDay(date),
-                    times = getTimes(professional, date, selectedItems),
+                    times = getTimes(professional, date, selectedItems.items),
                 )
             }
 
@@ -45,7 +48,7 @@ class BookUseCase(
 
     fun onTimeClicked(item: BookingTime) {
         selectedItems.update {
-            it.toMutableMap()
+            val newItems = it.items.toMutableMap()
                 .also { updatedMap ->
                     val ids = updatedMap[date.value] ?: setOf()
                     updatedMap[date.value] = if (ids.contains(item.id)) {
@@ -54,7 +57,12 @@ class BookUseCase(
                         ids + item.id
                     }
                 }
+            SelectedTimes(newItems)
         }
+    }
+
+    fun onContinueClicked(professional: Professional) {
+        navigator.navigate(NavigationScreen.BookingSummery(professional, selectedItems.value))
     }
 
     internal fun getTimes(
@@ -72,34 +80,12 @@ class BookUseCase(
                 BookingTime(
                     id = start,
                     date = date,
-                    startTime = "${twoDigits(start / 60)}:${twoDigits(start % 60)}",
-                    endTime = "${twoDigits((end / 60) % 24)}:${twoDigits(end % 60)}",
+                    startTime = formattedTime(start),
+                    endTime = formattedTime(end),
                     type = getType(start, end, availability, filteredSelectedItems),
                 )
             }
             .chunked(2)
-    }
-
-    internal fun isAvailabilityIncludedInTimes(
-        availability: ProfessionalAvailability,
-        from: Int,
-        to: Int,
-    ): Boolean {
-        val availabilityFrom = availability.from.toMinutesOfDay()
-        val availabilityTo = availability.to.toMinutesOfDay().let { aT ->
-            if (aT == 0) {
-                24 * 60
-            } else {
-                aT
-            }
-        }
-
-        return availabilityFrom <= from &&
-                availabilityTo >= to
-    }
-
-    internal fun currentDay(now: LocalDate): String {
-        return "${now.dayOfMonth}.${now.month.number}.${now.year}"
     }
 
     private fun getType(

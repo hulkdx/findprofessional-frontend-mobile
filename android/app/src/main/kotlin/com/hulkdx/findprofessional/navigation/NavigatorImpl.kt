@@ -8,7 +8,8 @@ import com.hulkdx.findprofessional.common.navigation.Navigator
 import com.hulkdx.findprofessional.feature.authentication.login.LoginNavigationScreen
 import com.hulkdx.findprofessional.feature.authentication.signup.SignUpNavigationScreen
 import com.hulkdx.findprofessional.feature.authentication.splash.SplashNavigationScreen
-import com.hulkdx.findprofessional.feature.book.BookNavigationScreen
+import com.hulkdx.findprofessional.feature.book.summery.BookingSummeryNavigationScreen
+import com.hulkdx.findprofessional.feature.book.time.BookingTimeNavigationScreen
 import com.hulkdx.findprofessional.feature.developer.DeveloperNavigationScreen
 import com.hulkdx.findprofessional.feature.home.HomeNavigationScreen
 import com.hulkdx.findprofessional.feature.home.detail.HomeDetailNavigationScreen
@@ -65,7 +66,8 @@ private fun NavigationScreen.toAndroidScreen(): String =
         is NavigationScreen.Splash -> SplashNavigationScreen().route
         is NavigationScreen.Profile -> ProfileNavigationScreen().route
         is NavigationScreen.Review -> ReviewNavigationScreen().destination(professional)
-        is NavigationScreen.Book -> BookNavigationScreen().destination(professional)
+        is NavigationScreen.BookingTime -> BookingTimeNavigationScreen().destination(professional)
+        is NavigationScreen.BookingSummery -> BookingSummeryNavigationScreen().destination(professional, times)
     }
 
 private fun String?.toNavigationScreen(bundle: Bundle) =
@@ -78,7 +80,8 @@ private fun String?.toNavigationScreen(bundle: Bundle) =
         SplashNavigationScreen().route -> NavigationScreen.Splash
         ProfileNavigationScreen().route -> NavigationScreen.Profile
         ReviewNavigationScreen().route -> NavigationScreen.Review(ReviewNavigationScreen.professional(bundle))
-        BookNavigationScreen().route -> NavigationScreen.Review(BookNavigationScreen.professional(bundle))
+        BookingTimeNavigationScreen().route -> NavigationScreen.BookingTime(BookingTimeNavigationScreen.professional(bundle))
+        BookingSummeryNavigationScreen().route -> NavigationScreen.BookingSummery(BookingSummeryNavigationScreen.professional(bundle), BookingSummeryNavigationScreen.time(bundle))
         else -> throw RuntimeException("Route=$this is not defined")
     }
 

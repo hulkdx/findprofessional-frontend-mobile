@@ -1,5 +1,6 @@
 package com.hulkdx.findprofessional.common.navigation
 
+import com.hulkdx.findprofessional.common.feature.book.time.SelectedTimes
 import com.hulkdx.findprofessional.common.feature.home.model.Professional
 
 /**
@@ -9,6 +10,7 @@ import com.hulkdx.findprofessional.common.feature.home.model.Professional
  * Android: NavigatorImpl::navigate
  * iOS:     AppNavigationView::createScreens
  */
+// @formatter:off
 sealed class NavigationScreen {
     data object Splash : NavigationScreen()
     data object Login : NavigationScreen()
@@ -16,7 +18,9 @@ sealed class NavigationScreen {
     data object Home : NavigationScreen()
     data class HomeDetail(val professional: Professional) : NavigationScreen()
     data class Review(val professional: Professional) : NavigationScreen()
-    data class Book(val professional: Professional) : NavigationScreen()
+    data class BookingTime(val professional: Professional) : NavigationScreen()
+    data class BookingSummery(val professional: Professional, val times: SelectedTimes) : NavigationScreen()
     data object Developer : NavigationScreen()
     data object Profile : NavigationScreen()
 }
+// @formatter:on

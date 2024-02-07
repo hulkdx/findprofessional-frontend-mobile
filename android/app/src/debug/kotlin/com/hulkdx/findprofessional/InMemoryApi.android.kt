@@ -59,6 +59,12 @@ object InMemoryApi {
         )
     )
 
+    val todayAvailableTime = ProfessionalAvailability(
+        date = LocalDate.now(),
+        from = "08:00".toLocalTime(),
+        to = "08:30".toLocalTime(),
+    )
+
     val professionals = listOf(
         Professional(
             1,
@@ -72,10 +78,11 @@ object InMemoryApi {
             "5.0",
             "Former professional boxer who competed from 1985 to 2005",
             availability = listOf(
+                todayAvailableTime,
                 ProfessionalAvailability(
                     date = LocalDate.now(),
-                    from = "08:00".toLocalTime(),
-                    to = "09:00".toLocalTime(),
+                    from = "09:00".toLocalTime(),
+                    to = "10:30".toLocalTime(),
                 ),
                 ProfessionalAvailability(
                     date = "2023-11-10".toLocalDate(),
@@ -215,6 +222,7 @@ object InMemoryApi {
         loadKoinModules(allModules())
     }
 
+    @Synchronized
     fun setUser(email: String, password: String) {
         user = RegisterRequest(email, password, firstName = "", lastName = "")
     }

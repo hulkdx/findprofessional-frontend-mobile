@@ -5,12 +5,9 @@ import com.hulkdx.findprofessional.common.config.storage.RefreshTokenStorage
 import com.hulkdx.findprofessional.common.feature.authentication.login.LoginUseCaseTest.UserStorageFake
 import com.hulkdx.findprofessional.common.feature.authentication.model.Auth
 import com.hulkdx.findprofessional.common.feature.authentication.model.Token
-import com.hulkdx.findprofessional.common.feature.authentication.model.User
-import com.hulkdx.findprofessional.common.feature.authentication.signup.model.LoginRequest
 import com.hulkdx.findprofessional.common.feature.authentication.signup.model.RegisterRequest
-import com.hulkdx.findprofessional.common.navigation.NavigationScreen
-import com.hulkdx.findprofessional.common.navigation.Navigator
 import com.hulkdx.findprofessional.common.utils.KoinTestUtil
+import com.hulkdx.findprofessional.common.utils.StubNavigator
 import com.hulkdx.findprofessional.common.utils.newUser
 import kotlinx.coroutines.test.runTest
 import kotlin.test.AfterTest
@@ -23,7 +20,7 @@ class SignUpUseCaseTest {
     private lateinit var sut: SignUpUseCase
 
     private val loginApi = SignUpApiMock()
-    private val navigator = NavigatorMock()
+    private val navigator = StubNavigator()
     private val accessTokenStorage = AccessTokenStorageMock()
     private val refreshTokenStorage = RefreshTokenStorageMock()
 
@@ -70,24 +67,6 @@ class SignUpUseCaseTest {
 
         override suspend fun register(request: RegisterRequest): Auth {
             return registerReturns
-        }
-    }
-
-    private class NavigatorMock : Navigator {
-        override fun navigate(screen: NavigationScreen) {
-        }
-
-        override fun navigate(
-            screen: NavigationScreen,
-            popTo: NavigationScreen,
-            inclusive: Boolean,
-        ) {
-        }
-
-        override fun goBack() {}
-
-        override fun getCurrentScreen(): NavigationScreen {
-            throw RuntimeException()
         }
     }
 
