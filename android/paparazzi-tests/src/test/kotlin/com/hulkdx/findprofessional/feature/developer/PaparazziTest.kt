@@ -7,6 +7,9 @@ import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalReview
 import com.hulkdx.findprofessional.feature.authentication.login.LoginScreen
 import com.hulkdx.findprofessional.feature.authentication.signup.SignUpScreen
 import com.hulkdx.findprofessional.feature.authentication.splash.Splash
+import com.hulkdx.findprofessional.feature.book.summery.BookingSummeryScreen
+import com.hulkdx.findprofessional.feature.book.summery.BookingSummeryUiState
+import com.hulkdx.findprofessional.feature.book.summery.BookingSummeryUiState.Time
 import com.hulkdx.findprofessional.feature.home.HomeScreen
 import com.hulkdx.findprofessional.feature.profile.ProfileScreen
 import com.hulkdx.findprofessional.feature.review.ReviewScreen
@@ -129,6 +132,30 @@ class PaparazziTest {
                 onLastItemVisible = {},
                 error = "",
                 onErrorDismissed = {},
+            )
+        }
+    }
+
+    @Test
+    fun `BookingSummeryScreen paparazzi test`() {
+        paparazzi.paparazziTest {
+            BookingSummeryScreen(
+                error = "",
+                onErrorDismissed = {},
+                uiState = BookingSummeryUiState(
+                    userEmail = "test@gmail.com", times = listOf(
+                        Time(
+                            duration = "16:30 - 17:00",
+                            date = "JAN 10, 2022",
+                            day = "MON",
+                        ),
+                        Time(
+                            duration = "17:30 - 18:00",
+                            date = "JAN 10, 2022",
+                            day = "MON",
+                        ),
+                    ), totalPrices = "100 €"
+                ),
             )
         }
     }

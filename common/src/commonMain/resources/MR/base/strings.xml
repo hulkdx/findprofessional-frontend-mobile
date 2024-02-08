@@ -28,4 +28,12 @@
     <string name="selectOneOrMoreItems">Select one or more items</string>
     <string name="itemsSelected">items selected</string>
     <string name="continue1">Continue</string>
+
+    <string name="yourRequest">Your request</string>
+    <string name="dateAndTime">Date and Time</string>
+    <string name="connection">Connection</string>
+    <string name="skypeId">Your Skype ID</string>
+    <string name="total">Total</string>
+    <string name="checkout">Checkout</string>
+
 </resources>
