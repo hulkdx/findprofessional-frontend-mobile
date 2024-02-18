@@ -28,6 +28,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.hulkdx.findprofessional.common.feature.book.summery.BookingSummeryUiState
 import com.hulkdx.findprofessional.core.R
 import com.hulkdx.findprofessional.core.commonui.CUFilledButton
 import com.hulkdx.findprofessional.core.commonui.CUSnackBar
@@ -46,7 +47,7 @@ fun BookingSummeryScreen(viewModel: BookingSummeryViewModel = koinViewModel()) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
     BookingSummeryScreen(
-        uiState = uiState,
+        uiState = uiState ?: return,
         error = error?.localized(),
         onErrorDismissed = { viewModel.setError(null) }
     )

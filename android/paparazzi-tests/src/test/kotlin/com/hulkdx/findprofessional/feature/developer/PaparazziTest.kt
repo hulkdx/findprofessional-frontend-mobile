@@ -8,8 +8,8 @@ import com.hulkdx.findprofessional.feature.authentication.login.LoginScreen
 import com.hulkdx.findprofessional.feature.authentication.signup.SignUpScreen
 import com.hulkdx.findprofessional.feature.authentication.splash.Splash
 import com.hulkdx.findprofessional.feature.book.summery.BookingSummeryScreen
-import com.hulkdx.findprofessional.feature.book.summery.BookingSummeryUiState
-import com.hulkdx.findprofessional.feature.book.summery.BookingSummeryUiState.Time
+import com.hulkdx.findprofessional.common.feature.book.summery.BookingSummeryUiState
+import com.hulkdx.findprofessional.common.feature.book.summery.BookingSummeryUiState.Time
 import com.hulkdx.findprofessional.feature.home.HomeScreen
 import com.hulkdx.findprofessional.feature.profile.ProfileScreen
 import com.hulkdx.findprofessional.feature.review.ReviewScreen

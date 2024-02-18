@@ -1,5 +1,4 @@
-package com.hulkdx.findprofessional.feature.book.summery
-
+package com.hulkdx.findprofessional.common.feature.book.summery
 
 data class BookingSummeryUiState(
     val times: List<Time>,

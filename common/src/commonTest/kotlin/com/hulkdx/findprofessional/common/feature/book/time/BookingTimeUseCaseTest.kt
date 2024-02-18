@@ -1,10 +1,9 @@
-package com.hulkdx.findprofessional.common.feature.book
+package com.hulkdx.findprofessional.common.feature.book.time
 
 import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUiState.BookingTime
 import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUiState.BookingTime.Type.Available
 import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUiState.BookingTime.Type.Selected
 import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUiState.BookingTime.Type.UnAvailable
-import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUseCase
 import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalAvailability
 import com.hulkdx.findprofessional.common.utils.StubNavigator
 import com.hulkdx.findprofessional.common.utils.createBookingTimes
