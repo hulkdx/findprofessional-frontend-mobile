@@ -72,7 +72,7 @@ fun BookingSummeryScreen(
             items(uiState.times) {
                 TimeItem(it)
             }
-            item { Connection(uiState.userEmail) }
+            item { Connection(uiState.userSkypeId) }
         }
         Bottom(
             modifier = Modifier.align(Alignment.BottomStart),
@@ -226,7 +226,7 @@ private fun BookingSummeryScreenPreview() {
             error = "",
             onErrorDismissed = {},
             uiState = BookingSummeryUiState(
-                userEmail = "test@gmail.com",
+                userSkypeId = "test@gmail.com",
                 times = listOf(
                     BookingSummeryUiState.Time(
                         duration = "16:30 - 17:00",

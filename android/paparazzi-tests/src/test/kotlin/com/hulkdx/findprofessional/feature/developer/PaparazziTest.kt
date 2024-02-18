@@ -143,7 +143,7 @@ class PaparazziTest {
                 error = "",
                 onErrorDismissed = {},
                 uiState = BookingSummeryUiState(
-                    userEmail = "test@gmail.com", times = listOf(
+                    userSkypeId = "test@gmail.com", times = listOf(
                         Time(
                             duration = "16:30 - 17:00",
                             date = "1.1.2024",
