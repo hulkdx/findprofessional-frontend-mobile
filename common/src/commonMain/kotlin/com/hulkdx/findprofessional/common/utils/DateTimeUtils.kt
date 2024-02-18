@@ -40,3 +40,13 @@ fun LocalDate.lengthOfMonth(): Int {
 fun LocalDate.Companion.now(): LocalDate {
     return Clock.System.todayIn(TimeZone.UTC)
 }
+
+fun LocalDate.shortDayOfWeeks(): String {
+    return dayOfWeek.name.capitalize()
+        .take(3)
+}
+
+private fun String.capitalize(): String {
+    return lowercase()
+        .replaceFirstChar { if (it.isLowerCase()) it.titlecase() else it.toString() }
+}

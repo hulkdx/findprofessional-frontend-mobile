@@ -18,15 +18,14 @@ class BookingSummeryTimeMapperTest {
     fun `map times tests`() {
         // Arrange
         val date = LocalDate(2024, 1, 1)
-        val startTimes = setOf(0)
-        val item = date to startTimes
+        val startTime = 0
         val expectedResult = BookingSummeryUiState.Time(
             duration = "00:00 - 00:30",
-            date = "JAN 10, 2024",
-            day = "MON",
+            date = "1.1.2024",
+            day = "Mon",
         )
         // Act
-        val result = sut.map(item)
+        val result = sut.map(date, startTime)
         // Assert
         assertEquals(result, expectedResult)
     }

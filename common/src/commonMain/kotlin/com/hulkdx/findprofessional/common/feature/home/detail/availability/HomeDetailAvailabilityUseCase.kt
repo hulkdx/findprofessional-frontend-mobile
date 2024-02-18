@@ -3,6 +3,7 @@ package com.hulkdx.findprofessional.common.feature.home.detail.availability
 import com.hulkdx.findprofessional.common.feature.home.model.Professional
 import com.hulkdx.findprofessional.common.utils.lengthOfMonth
 import com.hulkdx.findprofessional.common.utils.now
+import com.hulkdx.findprofessional.common.utils.shortDayOfWeeks
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -47,9 +48,7 @@ class HomeDetailAvailabilityUseCase {
 
     internal fun firstDay(now: LocalDate): String {
         val date = LocalDate(now.year, now.monthNumber, 1)
-        return date
-            .dayOfWeek.name.capitalize()
-            .take(3)
+        return date.shortDayOfWeeks()
     }
 
     internal fun firstDayInt(now: LocalDate): Int {

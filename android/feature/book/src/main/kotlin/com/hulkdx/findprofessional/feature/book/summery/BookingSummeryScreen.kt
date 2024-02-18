@@ -230,13 +230,13 @@ private fun BookingSummeryScreenPreview() {
                 times = listOf(
                     BookingSummeryUiState.Time(
                         duration = "16:30 - 17:00",
-                        date = "JAN 10, 2022",
-                        day = "MON",
+                        date = "1.1.2024",
+                        day = "Mon",
                     ),
                     BookingSummeryUiState.Time(
                         duration = "17:30 - 18:00",
-                        date = "JAN 10, 2022",
-                        day = "MON",
+                        date = "1.1.2024",
+                        day = "Mon",
                     ),
                 ),
                 totalPrices = "100 €"
