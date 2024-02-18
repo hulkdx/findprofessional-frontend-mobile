@@ -2,7 +2,7 @@ package com.hulkdx.findprofessional.common.feature.book.summery
 
 data class BookingSummeryUiState(
     val times: List<Time>,
-    val userSkypeId: String,
+    val userSkypeId: String?,
     val totalPrices: String,
 ) {
 
