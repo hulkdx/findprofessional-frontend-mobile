@@ -2,7 +2,7 @@
 
 kotlin = "1.9.21"
 # https://developer.android.com/studio/releases/gradle-plugin
-androidGradlePlugin = "8.2.0"
+androidGradlePlugin = "8.2.2"
 
 # https://developer.android.com/jetpack/androidx/releases/activity
 androidxActivity = "1.8.1"
