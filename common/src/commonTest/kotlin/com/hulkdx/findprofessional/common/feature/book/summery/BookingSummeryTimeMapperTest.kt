@@ -1,6 +1,7 @@
 package com.hulkdx.findprofessional.common.feature.book.summery
 
 import com.hulkdx.findprofessional.common.feature.book.time.SelectedTimes
+import com.hulkdx.findprofessional.common.utils.createProfessional
 import kotlinx.datetime.LocalDate
 import kotlin.test.BeforeTest
 import kotlin.test.Test
@@ -61,5 +62,43 @@ class BookingSummeryTimeMapperTest {
         val result = sut.map(selectedTimes)
         // Assert
         assertEquals(result, expectedResult)
+    }
+
+    @Test
+    fun `calculateTotalPrices tests`() {
+        data class TestData(
+            val priceCurrency: String,
+            val priceNumber: Int,
+            val size: Int,
+            val expectedResult: String,
+        )
+
+        val testData = listOf(
+            TestData(
+                priceCurrency = "USD",
+                priceNumber = 50,
+                size = 2,
+                expectedResult = "1.00 $",
+            ),
+            TestData(
+                priceCurrency = "EUR",
+                priceNumber = 60,
+                size = 3,
+                expectedResult = "1.80 €",
+            )
+        )
+        for (t in testData) {
+            // Arrange
+            // Act
+            val result = sut.calculateTotalPrices(
+                createProfessional(
+                    priceCurrency = t.priceCurrency,
+                    priceNumber = t.priceNumber,
+                ),
+                t.size,
+            )
+            // Assert
+            assertEquals(t.expectedResult, result)
+        }
     }
 }

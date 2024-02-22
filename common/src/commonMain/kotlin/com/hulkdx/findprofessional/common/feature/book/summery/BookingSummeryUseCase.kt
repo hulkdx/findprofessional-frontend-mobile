@@ -2,6 +2,7 @@ package com.hulkdx.findprofessional.common.feature.book.summery
 
 import com.hulkdx.findprofessional.common.config.storage.datastore.UserStorageDataStore
 import com.hulkdx.findprofessional.common.feature.book.time.SelectedTimes
+import com.hulkdx.findprofessional.common.feature.home.model.Professional
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.flow.combine
@@ -14,11 +15,14 @@ class BookingSummeryUseCase(
     private val bookingSummeryTimeMapper: BookingSummeryTimeMapper,
     private val userStore: UserStorageDataStore,
 ) {
-    fun getUiState(times: SelectedTimes) =
+    fun getUiState(professional: Professional, times: SelectedTimes) =
         combine(getTimes(times), getUser(), ::Pair)
             .map { (uiTimes, user) ->
-                // TODO: totalPrices
-                BookingSummeryUiState(uiTimes, user.skypeId, "")
+                BookingSummeryUiState(
+                    uiTimes,
+                    user.skypeId,
+                    bookingSummeryTimeMapper.calculateTotalPrices(professional, uiTimes.size)
+                )
             }
 
     private fun getTimes(times: SelectedTimes) =
@@ -27,5 +31,4 @@ class BookingSummeryUseCase(
     private fun getUser() = flow { emit(userStore.get()) }
         .mapNotNull { it }
         .flowOn(Dispatchers.IO)
-
 }

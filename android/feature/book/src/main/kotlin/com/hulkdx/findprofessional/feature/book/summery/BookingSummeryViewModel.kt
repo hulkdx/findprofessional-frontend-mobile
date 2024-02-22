@@ -19,7 +19,7 @@ class BookingSummeryViewModel(
     private val professional = requireNotNull(savedStateHandle.get<Professional>(ARG1))
     private val times = requireNotNull(savedStateHandle.get<SelectedTimes>(ARG2))
 
-    val uiState = useCase.getUiState(times)
+    val uiState = useCase.getUiState(professional, times)
         .stateIn(viewModelScope, WhileSubscribed(5_000), null)
 
     val error = savedStateHandle.getStateFlow<StringDesc?>("error", null)
