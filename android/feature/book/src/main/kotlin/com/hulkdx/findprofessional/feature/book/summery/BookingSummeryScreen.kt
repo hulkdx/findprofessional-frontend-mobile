@@ -142,7 +142,7 @@ private fun TimeItem(data: BookingSummeryUiState.Time) {
 }
 
 @Composable
-private fun Connection(userEmail: String) {
+private fun Connection(skypeId: String?) {
     Column {
         Text(
             modifier = Modifier
@@ -167,7 +167,8 @@ private fun Connection(userEmail: String) {
             )
             Spacer(Modifier.weight(2F))
             Text(
-                text = userEmail,
+                // TODO: what should happen if id is null
+                text = skypeId ?: "",
                 style = body2,
             )
             Spacer(Modifier.weight(1F))

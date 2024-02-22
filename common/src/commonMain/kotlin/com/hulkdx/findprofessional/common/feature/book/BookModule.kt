@@ -1,5 +1,6 @@
 package com.hulkdx.findprofessional.common.feature.book
 
+import com.hulkdx.findprofessional.common.feature.book.summery.BookingSummeryTimeMapper
 import com.hulkdx.findprofessional.common.feature.book.summery.BookingSummeryUseCase
 import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUseCase
 import org.koin.core.module.Module
@@ -15,4 +16,5 @@ val bookModule: Module
         }
 
         factoryOf(::BookingSummeryUseCase)
+        factoryOf(::BookingSummeryTimeMapper)
     }

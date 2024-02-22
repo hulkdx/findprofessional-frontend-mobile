@@ -18,7 +18,6 @@ class BookingSummeryUseCase(
         combine(getTimes(times), getUser(), ::Pair)
             .map { (uiTimes, user) ->
                 // TODO: totalPrices
-                // TODO: test with api for skypeId
                 BookingSummeryUiState(uiTimes, user.skypeId, "")
             }
 
