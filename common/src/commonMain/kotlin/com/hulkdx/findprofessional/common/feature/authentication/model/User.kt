@@ -11,6 +11,7 @@ data class User(
     val firstName: String,
     val lastName: String,
     val profileImage: String? = null,
+    val skypeId: String? = null,
 ): CommonParcelable {
     val fullName: String
         get() = "$firstName $lastName"

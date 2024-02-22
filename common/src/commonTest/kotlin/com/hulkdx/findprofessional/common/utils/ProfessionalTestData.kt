@@ -11,14 +11,16 @@ import kotlinx.datetime.LocalDate
 
 fun createProfessional(
     availability: List<ProfessionalAvailability> = listOf(),
+    priceNumber: Int? = null,
+    priceCurrency: String? = null,
 ) = Professional(
     id = 0,
     email = "",
     firstName = null,
     lastName = null,
     coachType = null,
-    priceNumber = null,
-    priceCurrency = null,
+    priceNumber = priceNumber,
+    priceCurrency = priceCurrency,
     profileImageUrl = null,
     rating = null,
     description = null,

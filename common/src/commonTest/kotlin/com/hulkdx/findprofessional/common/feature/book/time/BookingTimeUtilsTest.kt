@@ -1,6 +1,5 @@
-package com.hulkdx.findprofessional.common.feature.book
+package com.hulkdx.findprofessional.common.feature.book.time
 
-import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUtils
 import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalAvailability
 import com.hulkdx.findprofessional.common.utils.now
 import kotlinx.datetime.LocalDate

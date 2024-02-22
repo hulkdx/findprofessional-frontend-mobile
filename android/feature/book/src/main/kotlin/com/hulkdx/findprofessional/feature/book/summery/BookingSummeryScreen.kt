@@ -28,6 +28,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.hulkdx.findprofessional.common.feature.book.summery.BookingSummeryUiState
 import com.hulkdx.findprofessional.core.R
 import com.hulkdx.findprofessional.core.commonui.CUFilledButton
 import com.hulkdx.findprofessional.core.commonui.CUSnackBar
@@ -46,7 +47,7 @@ fun BookingSummeryScreen(viewModel: BookingSummeryViewModel = koinViewModel()) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
     BookingSummeryScreen(
-        uiState = uiState,
+        uiState = uiState ?: return,
         error = error?.localized(),
         onErrorDismissed = { viewModel.setError(null) }
     )
@@ -71,7 +72,7 @@ fun BookingSummeryScreen(
             items(uiState.times) {
                 TimeItem(it)
             }
-            item { Connection(uiState.userEmail) }
+            item { Connection(uiState.userSkypeId) }
         }
         Bottom(
             modifier = Modifier.align(Alignment.BottomStart),
@@ -141,7 +142,7 @@ private fun TimeItem(data: BookingSummeryUiState.Time) {
 }
 
 @Composable
-private fun Connection(userEmail: String) {
+private fun Connection(skypeId: String?) {
     Column {
         Text(
             modifier = Modifier
@@ -166,7 +167,8 @@ private fun Connection(userEmail: String) {
             )
             Spacer(Modifier.weight(2F))
             Text(
-                text = userEmail,
+                // TODO: what should happen if id is null
+                text = skypeId ?: "",
                 style = body2,
             )
             Spacer(Modifier.weight(1F))
@@ -225,17 +227,17 @@ private fun BookingSummeryScreenPreview() {
             error = "",
             onErrorDismissed = {},
             uiState = BookingSummeryUiState(
-                userEmail = "test@gmail.com",
+                userSkypeId = "test@gmail.com",
                 times = listOf(
                     BookingSummeryUiState.Time(
                         duration = "16:30 - 17:00",
-                        date = "JAN 10, 2022",
-                        day = "MON",
+                        date = "1.1.2024",
+                        day = "Mon",
                     ),
                     BookingSummeryUiState.Time(
                         duration = "17:30 - 18:00",
-                        date = "JAN 10, 2022",
-                        day = "MON",
+                        date = "1.1.2024",
+                        day = "Mon",
                     ),
                 ),
                 totalPrices = "100 €"

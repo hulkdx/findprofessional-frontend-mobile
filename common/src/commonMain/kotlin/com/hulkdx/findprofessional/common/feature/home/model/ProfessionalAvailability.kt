@@ -20,4 +20,6 @@ data class ProfessionalAvailability(
     val date: LocalDate,
     val from: LocalTime,
     val to: LocalTime,
+    val createdAt: String = "",
+    val updatedAt: String = "",
 ) : CommonParcelable
