@@ -32,7 +32,7 @@ internal fun AppNavigationBarInternal(
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .height(84.dp)
+            .height(AppNavigationBarDimens.Height.dp)
             .background(MaterialTheme.colorScheme.surfaceVariant),
     ) {
         items.forEachIndexed { index, item ->
