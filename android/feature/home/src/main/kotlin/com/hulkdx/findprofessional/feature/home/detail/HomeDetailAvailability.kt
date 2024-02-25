@@ -75,6 +75,7 @@ private fun AvailabilityCalendar(
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = outerHorizontalPadding.dp)
+            .padding(bottom = 32.dp)
             .clip(shape = RoundedCornerShape(10.dp))
             .background(MaterialTheme.colorScheme.surfaceVariant)
             .padding(bottom = 8.dp)
