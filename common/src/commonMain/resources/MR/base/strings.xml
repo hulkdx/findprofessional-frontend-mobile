@@ -18,7 +18,10 @@
     <string name="perHour">Per hour</string>
 
     <string name="explorer">Explorer</string>
+
     <string name="profile">Your Profile</string>
+    <string name="logout">Logout</string>
+
     <string name="rating">Rating</string>
     <string name="availability">Availability</string>
     <string name="reviews">Reviews</string>

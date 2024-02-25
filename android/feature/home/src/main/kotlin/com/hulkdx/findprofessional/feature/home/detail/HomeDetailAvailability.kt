@@ -56,8 +56,8 @@ private fun AvailabilityHeader() {
     Text(
         modifier = Modifier
             .padding(
-                top = 16.dp,
-                bottom = 8.dp,
+                top = 32.dp,
+                bottom = 16.dp,
                 start = outerHorizontalPadding.dp,
             ),
         style = body1Medium,
