@@ -31,10 +31,6 @@ class BookingSummeryTimeMapper {
     ): String {
         val cents = professional.priceNumber
         val currency = professional.priceCurrencySymbol
-        if (cents == null || currency == null) {
-            // TODO: hide a professional that has no-price set in backend
-            TODO()
-        }
         val total = cents * sizeOfItemsSelected
         val a = (total / 100)
         val b = NumberFormatter.twoDigits(total % 100)
