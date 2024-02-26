@@ -3,8 +3,10 @@ package com.hulkdx.findprofessional.feature.home
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -20,6 +22,7 @@ import com.hulkdx.findprofessional.common.feature.home.model.Professional
 import com.hulkdx.findprofessional.core.commonui.CUSearchField
 import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.feature.navigation.navbar.AppNavBarContainer
+import com.hulkdx.findprofessional.feature.navigation.navbar.AppNavigationBarDimens
 import dev.icerock.moko.resources.compose.localized
 import org.koin.androidx.compose.koinViewModel
 
@@ -100,10 +103,12 @@ private fun ColumnScope.HomeScreenItemList(
 ) {
     LazyColumn(
         modifier = Modifier
-            .padding(16.dp)
+            .padding(horizontal = 16.dp)
+            .padding(bottom = AppNavigationBarDimens.Height.dp)
             .weight(1F, true),
         verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
+        item { Spacer(Modifier.height(16.dp)) }
         items(
             professionals,
             key = { it.id },
@@ -114,6 +119,7 @@ private fun ColumnScope.HomeScreenItemList(
                 onItemClick = onItemClick,
             )
         }
+        item { Spacer(Modifier.height(16.dp)) }
     }
 }
 
