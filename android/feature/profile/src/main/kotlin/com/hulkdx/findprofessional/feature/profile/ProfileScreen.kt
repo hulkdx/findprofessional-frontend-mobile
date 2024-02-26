@@ -5,13 +5,10 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.material3.Icon
@@ -31,6 +28,7 @@ import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.core.theme.body1
 import com.hulkdx.findprofessional.core.theme.h1Medium
 import com.hulkdx.findprofessional.feature.navigation.navbar.AppNavBarContainer
+import com.hulkdx.findprofessional.feature.navigation.navbar.AppNavigationBarDimens
 import com.hulkdx.findprofessional.resources.MR
 import dev.icerock.moko.resources.compose.localized
 import org.koin.androidx.compose.koinViewModel
@@ -59,7 +57,9 @@ fun ProfileScreen(
         onErrorDismissed = onErrorDismissed,
     ) {
         LazyColumn(
-            modifier = Modifier.fillMaxHeight()
+            modifier = Modifier
+                .fillMaxHeight()
+                .padding(bottom = AppNavigationBarDimens.Height.dp)
         ) {
             item { Header() }
             item {
