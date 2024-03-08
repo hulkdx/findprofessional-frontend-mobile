@@ -10,7 +10,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.KeyboardArrowRight
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -64,8 +64,8 @@ fun ProfileScreen(
             item { Header() }
             item {
                 ProfileItem(
-                    text = "Logout",
-                    icon = Icons.Filled.KeyboardArrowRight,
+                    text = stringResource(id = MR.strings.logout.resourceId),
+                    icon = Icons.AutoMirrored.Filled.KeyboardArrowRight,
                     onClick = onLogoutClicked,
                 )
             }
