@@ -20,6 +20,20 @@ dependencies {
     testImplementation(platform(libs.androidx.compose.bom))
     testImplementation("androidx.compose.runtime:runtime")
     testImplementation("junit:junit:4.13.2")
+
+    // For issues:
+    // https://github.com/cashapp/paparazzi/issues/906 | https://github.com/cashapp/paparazzi/releases/tag/1.3.2
+    // https://github.com/google/guava/issues/6801
+    constraints {
+        testImplementation("com.google.guava:guava") {
+            attributes {
+                attribute(
+                    TargetJvmEnvironment.TARGET_JVM_ENVIRONMENT_ATTRIBUTE,
+                    objects.named(TargetJvmEnvironment.STANDARD_JVM)
+                )
+            }
+        }
+    }
 }
 
 // Disable release build type
