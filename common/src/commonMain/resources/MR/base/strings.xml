@@ -21,6 +21,7 @@
 
     <string name="profile">Your Profile</string>
     <string name="logout">Logout</string>
+    <string name="becomeCoach">Become a coach</string>
 
     <string name="rating">Rating</string>
     <string name="availability">Availability</string>

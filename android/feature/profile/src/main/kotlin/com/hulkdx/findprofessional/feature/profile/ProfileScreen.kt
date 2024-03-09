@@ -39,6 +39,7 @@ fun ProfileScreen(viewModel: ProfileViewModel = koinViewModel()) {
     val error by viewModel.error.collectAsStateWithLifecycle()
 
     ProfileScreen(
+        onBecomeCoachClicked = viewModel::onBecomeCoachClicked,
         onLogoutClicked = viewModel::onLogoutClicked,
         error = error?.localized(),
         onErrorDismissed = { viewModel.setError(null) },
@@ -48,6 +49,7 @@ fun ProfileScreen(viewModel: ProfileViewModel = koinViewModel()) {
 @Composable
 fun ProfileScreen(
     onLogoutClicked: () -> Unit,
+    onBecomeCoachClicked: () -> Unit,
     error: String?,
     onErrorDismissed: () -> Unit,
 ) {
@@ -63,6 +65,11 @@ fun ProfileScreen(
         ) {
             item { Header() }
             item {
+                ProfileItem(
+                    text = stringResource(id = MR.strings.becomeCoach.resourceId),
+                    icon = Icons.AutoMirrored.Filled.KeyboardArrowRight,
+                    onClick = onBecomeCoachClicked,
+                )
                 ProfileItem(
                     text = stringResource(id = MR.strings.logout.resourceId),
                     icon = Icons.AutoMirrored.Filled.KeyboardArrowRight,
@@ -119,6 +126,7 @@ private fun ProfileItem(
 private fun ProfileScreenPreview() {
     AppTheme {
         ProfileScreen(
+            onBecomeCoachClicked = {},
             onLogoutClicked = {},
             error = "",
             onErrorDismissed = {},
