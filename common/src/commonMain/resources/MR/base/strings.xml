@@ -36,8 +36,21 @@
     <string name="yourRequest">Your request</string>
     <string name="dateAndTime">Date and Time</string>
     <string name="connection">Connection</string>
-    <string name="skypeId">Your Skype ID</string>
+    <string name="yourSkypeId">Your Skype ID</string>
     <string name="total">Total</string>
     <string name="checkout">Checkout</string>
 
+    <string name="coachRegistration">Skype ID</string>
+    <string name="skypeId">Skype ID</string>
+    <string name="aboutMe">About Me</string>
+    <string name="headerForNames">Please ensure that the details you provide match those on your
+        government-issued ID.
+    </string>
+    <string name="headerForPhotos">Your photo will be shown to the other users in coach page.
+
+        * At least 250*250 pixels
+        * JPG, PNG and BMP formats only
+        * Maximum size of 2MB
+    </string>
+    <string name="addProfilePicture">Add profile picture</string>
 </resources>
