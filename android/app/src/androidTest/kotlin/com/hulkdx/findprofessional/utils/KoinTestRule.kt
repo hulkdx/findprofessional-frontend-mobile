@@ -3,6 +3,7 @@ package com.hulkdx.findprofessional.utils
 import androidx.datastore.preferences.core.PreferenceDataStoreFactory
 import com.hulkdx.findprofessional.di.appModule
 import com.hulkdx.findprofessional.feature.authentication.login.loginModule
+import com.hulkdx.findprofessional.feature.authentication.pro.signup.signUpProModule
 import com.hulkdx.findprofessional.feature.authentication.signup.signUpModule
 import com.hulkdx.findprofessional.feature.authentication.splash.splashModule
 import com.hulkdx.findprofessional.feature.book.bookModule
@@ -47,6 +48,7 @@ class KoinTestRule(
                 profileModule,
                 reviewModule,
                 bookModule,
+                signUpProModule,
             )
         )
         loadKoinModules(testModules)

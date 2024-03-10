@@ -56,8 +56,8 @@ private fun AvailabilityHeader() {
     Text(
         modifier = Modifier
             .padding(
-                top = 16.dp,
-                bottom = 8.dp,
+                top = 32.dp,
+                bottom = 16.dp,
                 start = outerHorizontalPadding.dp,
             ),
         style = body1Medium,
@@ -75,6 +75,7 @@ private fun AvailabilityCalendar(
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = outerHorizontalPadding.dp)
+            .padding(bottom = 32.dp)
             .clip(shape = RoundedCornerShape(10.dp))
             .background(MaterialTheme.colorScheme.surfaceVariant)
             .padding(bottom = 8.dp)
