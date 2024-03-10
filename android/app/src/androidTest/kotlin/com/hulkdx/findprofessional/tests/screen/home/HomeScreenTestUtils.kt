@@ -4,9 +4,11 @@ import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performClick
 import com.hulkdx.findprofessional.InMemoryApi
 import com.hulkdx.findprofessional.common.feature.home.model.Professional
+import com.hulkdx.findprofessional.resources.MR
 import com.hulkdx.findprofessional.tests.screen.login.launchLoginScreen
 import com.hulkdx.findprofessional.utils.Rule
 import com.hulkdx.findprofessional.utils.assertNodeIsDisplayed
+import com.hulkdx.findprofessional.utils.onNodeWithTextRes
 
 
 fun launchHomeScreen(
@@ -42,6 +44,11 @@ class HomeScreenDsl(
             .performClick()
     }
 
+    fun pressProfile() {
+        rule.onNodeWithTextRes(MR.strings.profile.resourceId)
+            .performClick()
+    }
+
     fun verify(block: HomeScreenVerify.() -> Unit) = HomeScreenVerify(rule).apply(block)
 }
 
@@ -50,5 +57,9 @@ class HomeScreenVerify(
 ) {
     fun homeDetailScreenShown() {
         rule.assertNodeIsDisplayed("HomeDetailScreen")
+    }
+
+    fun profileScreenShown() {
+        rule.assertNodeIsDisplayed("ProfileScreen")
     }
 }

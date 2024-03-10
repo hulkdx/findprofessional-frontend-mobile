@@ -12,4 +12,13 @@ class HomeScreenTest : ScreenTest() {
             homeDetailScreenShown()
         }
     }
+
+    @Test
+    fun navigateToProfile() {
+        launchHomeScreen(composeRule) {
+            pressProfile()
+        }.verify {
+            profileScreenShown()
+        }
+    }
 }

@@ -72,7 +72,7 @@ fun SignUpProScreen(
         modifier = Modifier
             .systemBarsPadding()
             .imePadding()
-            .testTag("SignUpScreen"),
+            .testTag("SignUpProScreen"),
     ) {
         Column(
             modifier = Modifier

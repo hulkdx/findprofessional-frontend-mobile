@@ -92,6 +92,7 @@ class PaparazziTest {
                 onLogoutClicked = {},
                 error = "",
                 onErrorDismissed = {},
+                onBecomeCoachClicked = {},
             )
         }
     }
