@@ -1,5 +1,6 @@
 package com.hulkdx.findprofessional.core.commonui
 
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -15,17 +16,18 @@ import com.hulkdx.findprofessional.core.theme.body1
 
 @Composable
 fun CUTextField(
-    modifier: Modifier,
+    modifier: Modifier = Modifier,
     hint: String,
     visualTransformation: VisualTransformation = VisualTransformation.None,
     value: String,
     onValueChanged: (String) -> (Unit),
+    singleLine: Boolean = true,
 ) {
     TextField(
         modifier = modifier,
         value = value,
         onValueChange = onValueChanged,
-        singleLine = true,
+        singleLine = singleLine,
         shape = RoundedCornerShape(8.dp),
         placeholder = {
             Text(
@@ -44,7 +46,7 @@ fun CUTextField(
 
 @Preview
 @Composable
-private fun CUTextField() {
+private fun CUTextFieldPreview() {
     AppTheme {
         CUTextField(
             modifier = Modifier,
@@ -58,7 +60,7 @@ private fun CUTextField() {
 
 @Preview
 @Composable
-private fun CUTextFieldValue() {
+private fun CUTextFieldValuePreview() {
     AppTheme {
         CUTextField(
             modifier = Modifier,
@@ -66,6 +68,21 @@ private fun CUTextFieldValue() {
             visualTransformation = VisualTransformation.None,
             value = "Value",
             onValueChanged = {}
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun CUTextFieldLongTextPreview() {
+    AppTheme {
+        CUTextField(
+            modifier = Modifier.height(200.dp),
+            hint = "This is a long hint, This is a long hint, This is a long hint, This is a long hint, This is a long hint, This is a long hint, This is a long hint, This is a long hint, This is a long hint, This is a long hint, This is a long hint, ",
+            visualTransformation = VisualTransformation.None,
+            value = "",
+            onValueChanged = {},
+            singleLine = false,
         )
     }
 }
