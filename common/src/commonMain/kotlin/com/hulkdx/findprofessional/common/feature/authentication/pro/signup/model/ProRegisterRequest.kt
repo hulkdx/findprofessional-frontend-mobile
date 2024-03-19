@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.common.feature.authentication.signup.model
+package com.hulkdx.findprofessional.common.feature.authentication.pro.signup.model
 
 import com.hulkdx.findprofessional.common.utils.CommonParcelable
 import com.hulkdx.findprofessional.common.utils.CommonParcelize

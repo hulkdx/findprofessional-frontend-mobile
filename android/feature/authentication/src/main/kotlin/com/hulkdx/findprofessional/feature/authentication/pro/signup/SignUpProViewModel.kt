@@ -3,7 +3,7 @@ package com.hulkdx.findprofessional.feature.authentication.pro.signup
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.hulkdx.findprofessional.common.feature.authentication.signup.model.ProRegisterRequest
+import com.hulkdx.findprofessional.common.feature.authentication.pro.signup.model.ProRegisterRequest
 import dev.icerock.moko.resources.desc.StringDesc
 import kotlinx.coroutines.launch
 
