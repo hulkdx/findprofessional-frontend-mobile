@@ -162,7 +162,7 @@ private fun Connection(skypeId: String?) {
                 .padding(16.dp),
         ) {
             Text(
-                text = stringResource(id = MR.strings.skypeId.resourceId),
+                text = stringResource(id = MR.strings.yourSkypeId.resourceId),
                 style = body2,
             )
             Spacer(Modifier.weight(2F))
