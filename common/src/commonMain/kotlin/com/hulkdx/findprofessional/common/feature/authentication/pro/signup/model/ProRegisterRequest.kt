@@ -7,10 +7,10 @@ import kotlinx.serialization.Serializable
 @Serializable
 @CommonParcelize
 data class ProRegisterRequest(
-    val email: String,
-    val password: String,
-    val firstName: String,
-    val lastName: String,
-    val skypeId: String,
-    val aboutMe: String,
+    val email: String = "",
+    val password: String = "",
+    val firstName: String = "",
+    val lastName: String = "",
+    val skypeId: String = "",
+    val aboutMe: String = "",
 ) : CommonParcelable
