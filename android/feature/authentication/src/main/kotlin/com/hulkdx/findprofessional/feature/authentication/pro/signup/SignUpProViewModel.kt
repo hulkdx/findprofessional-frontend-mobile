@@ -3,6 +3,7 @@ package com.hulkdx.findprofessional.feature.authentication.pro.signup
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.hulkdx.findprofessional.common.feature.authentication.pro.signup.SignUpProUseCase
 import com.hulkdx.findprofessional.common.feature.authentication.pro.signup.model.ProRegisterRequest
 import dev.icerock.moko.resources.desc.StringDesc
 import kotlinx.coroutines.launch
@@ -12,26 +13,16 @@ private const val KEY_ERROR = "key_error"
 
 class SignUpProViewModel(
     private val savedStateHandle: SavedStateHandle,
-    /*private val useCase: SignUpUseCase,*/
+    private val useCase: SignUpProUseCase,
 ) : ViewModel() {
-    val uiState = savedStateHandle.getStateFlow(
-        KEY_STATE,
-        ProRegisterRequest(
-            email = "",
-            password = "",
-            firstName = "",
-            lastName = "",
-            aboutMe = "",
-            skypeId = "",
-        )
-    )
+    val uiState = savedStateHandle.getStateFlow(KEY_STATE, ProRegisterRequest())
     val error = savedStateHandle.getStateFlow<StringDesc?>(KEY_ERROR, null)
 
     fun onSubmitClicked() = viewModelScope.launch {
-//        val err = useCase.onSubmitClicked(uiState.value)
-//        if (err != null) {
-//            setError(err)
-//        }
+        val err = useCase.onSubmitClicked(uiState.value)
+        if (err != null) {
+            setError(err)
+        }
     }
 
     fun setError(error: StringDesc?) {
