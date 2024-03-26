@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.hulkdx.android.library.compose)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.moko)
+    alias(libs.plugins.jetbrains.compose)
 
     id(libs.plugins.kotlin.parcelize.get().pluginId)
 }
@@ -24,6 +25,8 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
+                implementation(compose.runtime)
+
                 api(libs.moko.resources)
                 implementation(libs.androidx.dataStore.core)
                 implementation(libs.koin.core)

@@ -22,6 +22,8 @@ androidxNavigation = "2.7.7"
 androidxUiautomator = "2.3.0"
 # https://github.com/coil-kt/coil
 coil = "2.6.0"
+# TODO
+compose-plugin = "1.6.0"
 # https://github.com/junit-team/junit5
 junit5 = "5.10.2"
 # https://github.com/InsertKoinIO/koin
@@ -79,6 +81,7 @@ android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", ver
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
 android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
+jetbrains-compose = { id = "org.jetbrains.compose", version.ref = "compose-plugin" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
