@@ -26,6 +26,11 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(compose.runtime)
+                implementation(compose.foundation)
+                implementation(compose.material)
+                implementation(compose.ui)
+                api(compose.components.resources)
+                implementation(compose.components.uiToolingPreview)
 
                 api(libs.moko.resources)
                 implementation(libs.androidx.dataStore.core)
@@ -77,8 +82,16 @@ android {
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     sourceSets["main"].res.srcDir(File(buildDir, "generated/moko/androidMain/res"))
     sourceSets["main"].java.srcDirs("build/generated/moko/androidMain/src")
+
+    sourceSets["main"].res.srcDirs("src/androidMain/res")
+    sourceSets["main"].resources.srcDirs("src/commonMain/resources")
 }
 
 multiplatformResources {
     multiplatformResourcesPackage = "com.hulkdx.findprofessional.resources"
+}
+
+compose.resources {
+    publicResClass = true
+    packageOfResClass = "com.hulkdx.findprofessional.common.resources"
 }

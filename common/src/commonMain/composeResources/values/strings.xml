@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="signUp">Sign Up</string>
+
+    <string name="signIn">Login</string>
+    <string name="forgotYourPassword">Forgot your password?</string>
+    <string name="dontHaveAnAccount">Don’t have an account?</string>
+    <string name="firstName">First name</string>
+    <string name="lastName">Last name</string>
+
+    <string name="emailExists">Email already exists!</string>
+    <string name="generalError">Error please try again</string>
+
+    <string name="professionals">Professionals</string>
+
+    <string name="perHour">Per hour</string>
+
+    <string name="explorer">Explorer</string>
+
+    <string name="profile">Your Profile</string>
+    <string name="logout">Logout</string>
+    <string name="becomeCoach">Become a coach</string>
+
+    <string name="rating">Rating</string>
+    <string name="availability">Availability</string>
+    <string name="reviews">Reviews</string>
+    <string name="showAllReviews">Show all reviews</string>
+    <string name="videos">Videos</string>
+    <string name="bookNow">Book now</string>
+    <string name="selectOneOrMoreItems">Select one or more items</string>
+    <string name="itemsSelected">items selected</string>
+    <string name="continue1">Continue</string>
+
+    <string name="yourRequest">Your request</string>
+    <string name="dateAndTime">Date and Time</string>
+    <string name="connection">Connection</string>
+    <string name="yourSkypeId">Your Skype ID</string>
+    <string name="total">Total</string>
+    <string name="checkout">Checkout</string>
+
+    <string name="coachRegistration">Skype ID</string>
+    <string name="skypeId">Skype ID</string>
+    <string name="aboutMe">About Me</string>
+    <string name="headerForNames">Please ensure that the details you provide match those on your
+        government-issued ID.
+    </string>
+    <string name="headerForPhotos">Your photo will be shown to the other users in coach page.
+
+        * At least 250*250 pixels
+        * JPG, PNG and BMP formats only
+        * Maximum size of 2MB
+    </string>
+    <string name="addProfilePicture">Add profile picture</string>
+</resources>
