@@ -4,7 +4,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hulkdx.findprofessional.common.feature.authentication.pro.signup.model.ProRegisterRequest
-import dev.icerock.moko.resources.desc.StringDesc
+import com.hulkdx.findprofessional.common.utils.StringOrRes
 import kotlinx.coroutines.launch
 
 private const val KEY_STATE = "key_ui_state"
@@ -25,7 +25,7 @@ class SignUpProViewModel(
             skypeId = "",
         )
     )
-    val error = savedStateHandle.getStateFlow<StringDesc?>(KEY_ERROR, null)
+    val error = savedStateHandle.getStateFlow<StringOrRes?>(KEY_ERROR, null)
 
     fun onSubmitClicked() = viewModelScope.launch {
 //        val err = useCase.onSubmitClicked(uiState.value)
@@ -34,7 +34,7 @@ class SignUpProViewModel(
 //        }
     }
 
-    fun setError(error: StringDesc?) {
+    fun setError(error: StringOrRes?) {
         savedStateHandle[KEY_ERROR] = error
     }
 

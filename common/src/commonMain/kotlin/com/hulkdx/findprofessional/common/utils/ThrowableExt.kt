@@ -1,19 +1,18 @@
 package com.hulkdx.findprofessional.common.utils
 
 import com.hulkdx.findprofessional.common.config.isDebug
-import com.hulkdx.findprofessional.resources.MR
-import dev.icerock.moko.resources.desc.StringDesc
-import dev.icerock.moko.resources.desc.desc
+import com.hulkdx.findprofessional.common.resources.Res
+import com.hulkdx.findprofessional.common.resources.generalError
 import io.ktor.client.plugins.ClientRequestException
 
-fun Throwable.generalError(): StringDesc {
+fun Throwable.generalError(): StringOrRes {
     return if (isDebug()) {
         if (this is ClientRequestException) {
-            message.desc()
+            message.toStringOrRes()
         } else {
-            stackTraceToString().desc()
+            stackTraceToString().toStringOrRes()
         }
     } else {
-        MR.strings.generalError.desc()
+        Res.string.generalError.toStringOrRes()
     }
 }
