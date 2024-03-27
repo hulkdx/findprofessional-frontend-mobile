@@ -19,18 +19,21 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.hulkdx.findprofessional.common.resources.Res
+import com.hulkdx.findprofessional.common.resources.becomeCoach
+import com.hulkdx.findprofessional.common.resources.logout
+import com.hulkdx.findprofessional.common.resources.profile
 import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.core.theme.body1
 import com.hulkdx.findprofessional.core.theme.h1Medium
 import com.hulkdx.findprofessional.feature.navigation.navbar.AppNavBarContainer
 import com.hulkdx.findprofessional.feature.navigation.navbar.AppNavigationBarDimens
-import com.hulkdx.findprofessional.resources.MR
 import dev.icerock.moko.resources.compose.localized
+import org.jetbrains.compose.resources.stringResource
 import org.koin.androidx.compose.koinViewModel
 
 
@@ -66,12 +69,12 @@ fun ProfileScreen(
             item { Header() }
             item {
                 ProfileItem(
-                    text = stringResource(id = MR.strings.becomeCoach.resourceId),
+                    text = stringResource(Res.string.becomeCoach),
                     icon = Icons.AutoMirrored.Filled.KeyboardArrowRight,
                     onClick = onBecomeCoachClicked,
                 )
                 ProfileItem(
-                    text = stringResource(id = MR.strings.logout.resourceId),
+                    text = stringResource(Res.string.logout),
                     icon = Icons.AutoMirrored.Filled.KeyboardArrowRight,
                     onClick = onLogoutClicked,
                 )
@@ -88,7 +91,7 @@ private fun Header() {
             .padding(top = 70.dp, bottom = 32.dp),
         style = h1Medium,
         textAlign = TextAlign.Center,
-        text = stringResource(MR.strings.profile.resourceId),
+        text = stringResource(Res.string.profile),
     )
 }
 

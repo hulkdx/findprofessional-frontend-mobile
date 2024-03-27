@@ -24,12 +24,14 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.hulkdx.findprofessional.common.feature.authentication.model.User
 import com.hulkdx.findprofessional.common.feature.home.model.Professional
 import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalReview
+import com.hulkdx.findprofessional.common.resources.Res
+import com.hulkdx.findprofessional.common.resources.reviews
+import com.hulkdx.findprofessional.common.resources.showAllReviews
 import com.hulkdx.findprofessional.core.R
 import com.hulkdx.findprofessional.core.commonui.CUAsyncImage
 import com.hulkdx.findprofessional.core.commonui.CUTextButton
@@ -37,9 +39,8 @@ import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.core.theme.body1
 import com.hulkdx.findprofessional.core.theme.body1Medium
 import com.hulkdx.findprofessional.core.theme.body3
-import com.hulkdx.findprofessional.resources.MR
 import kotlinx.datetime.Clock
-
+import org.jetbrains.compose.resources.stringResource
 
 internal fun LazyListScope.Review(
     professional: Professional,
@@ -58,7 +59,7 @@ private fun ReviewHeader(reviewSize: String) {
         Text(
             modifier = Modifier.padding(start = 8.dp),
             style = body1Medium,
-            text = "$reviewSize ${stringResource(MR.strings.reviews.resourceId)}",
+            text = "$reviewSize ${stringResource(Res.string.reviews)}",
         )
     }
 }
@@ -163,7 +164,7 @@ private fun ShowMoreButton(onClick: () -> Unit) {
                 .testTag("showAllReviews")
                 .padding(top = 16.dp, bottom = 30.dp)
                 .padding(horizontal = 16.dp),
-            text = stringResource(MR.strings.showAllReviews.resourceId),
+            text = stringResource(Res.string.showAllReviews),
             onClick = onClick,
         )
     }

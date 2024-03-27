@@ -24,7 +24,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.testTag
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -32,6 +31,7 @@ import com.hulkdx.findprofessional.common.feature.authentication.model.User
 import com.hulkdx.findprofessional.common.feature.home.detail.availability.AvailabilityData
 import com.hulkdx.findprofessional.common.feature.home.model.Professional
 import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalReview
+import com.hulkdx.findprofessional.common.resources.*
 import com.hulkdx.findprofessional.core.commonui.CUFilledButton
 import com.hulkdx.findprofessional.core.commonui.icons.CUChatButton
 import com.hulkdx.findprofessional.core.commonui.icons.CULikeButton
@@ -41,9 +41,9 @@ import com.hulkdx.findprofessional.feature.home.Description
 import com.hulkdx.findprofessional.feature.home.TopRow
 import com.hulkdx.findprofessional.feature.home.detail.HomeScreenDimens.bottomPartHeight
 import com.hulkdx.findprofessional.feature.home.detail.HomeScreenDimens.outerHorizontalPadding
-import com.hulkdx.findprofessional.resources.MR
 import kotlinx.datetime.Clock
 import kotlinx.datetime.LocalDate
+import org.jetbrains.compose.resources.stringResource
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -134,7 +134,7 @@ private fun BoxScope.BottomPart(
             modifier = Modifier
                 .weight(1F)
                 .padding(end = 24.dp),
-            text = stringResource(id = MR.strings.bookNow.resourceId),
+            text = stringResource(Res.string.bookNow),
             colors = buttonColors(containerColor = MaterialTheme.colorScheme.secondary),
             contentPadding = PaddingValues(0.dp),
             onClick = onBookClicked,

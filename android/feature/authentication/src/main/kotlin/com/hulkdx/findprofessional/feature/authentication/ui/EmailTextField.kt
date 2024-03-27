@@ -3,9 +3,9 @@ package com.hulkdx.findprofessional.feature.authentication.ui
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
+import com.hulkdx.findprofessional.common.resources.*
 import com.hulkdx.findprofessional.core.commonui.CUTextField
-import com.hulkdx.findprofessional.resources.MR
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun EmailTextField(
@@ -15,7 +15,7 @@ fun EmailTextField(
 ) {
     CUTextField(
         modifier = modifier.fillMaxWidth(),
-        hint = stringResource(id = MR.strings.email.resourceId),
+        hint = stringResource(Res.string.email),
         value = value,
         onValueChanged = onValueChanged,
     )

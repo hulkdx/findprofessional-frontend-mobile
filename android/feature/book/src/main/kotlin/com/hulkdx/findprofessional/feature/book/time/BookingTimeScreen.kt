@@ -30,7 +30,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign.Companion.Center
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -40,6 +39,9 @@ import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUiState.B
 import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUiState.BookingTime.Type.Available
 import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUiState.BookingTime.Type.Selected
 import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUiState.BookingTime.Type.UnAvailable
+import com.hulkdx.findprofessional.common.resources.Res
+import com.hulkdx.findprofessional.common.resources.continue1
+import com.hulkdx.findprofessional.common.resources.selectOneOrMoreItems
 import com.hulkdx.findprofessional.common.utils.now
 import com.hulkdx.findprofessional.core.R
 import com.hulkdx.findprofessional.core.commonui.CUFilledButton
@@ -48,9 +50,9 @@ import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.core.theme.body2SemiBold
 import com.hulkdx.findprofessional.core.theme.body3Medium
 import com.hulkdx.findprofessional.core.theme.h2Medium
-import com.hulkdx.findprofessional.resources.MR
 import dev.icerock.moko.resources.compose.localized
 import kotlinx.datetime.LocalDate
+import org.jetbrains.compose.resources.stringResource
 import org.koin.androidx.compose.koinViewModel
 
 
@@ -113,7 +115,7 @@ private fun Header() {
         modifier = Modifier
             .fillMaxWidth()
             .padding(top = 45.dp, bottom = 33.dp),
-        text = stringResource(MR.strings.selectOneOrMoreItems.resourceId),
+        text = stringResource(Res.string.selectOneOrMoreItems),
         style = h2Medium,
         textAlign = Center,
     )
@@ -261,7 +263,7 @@ private fun ContinueButton(
             .border(1.dp, MaterialTheme.colorScheme.onPrimary)
             .padding(horizontal = 26.dp, vertical = 22.dp)
             .fillMaxWidth(),
-        text = stringResource(id = MR.strings.continue1.resourceId),
+        text = stringResource(Res.string.continue1),
         colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.secondary),
         contentPadding = PaddingValues(0.dp),
         onClick = onClick,

@@ -23,12 +23,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.hulkdx.findprofessional.common.feature.book.summery.BookingSummeryUiState
+import com.hulkdx.findprofessional.common.resources.*
 import com.hulkdx.findprofessional.core.R
 import com.hulkdx.findprofessional.core.commonui.CUFilledButton
 import com.hulkdx.findprofessional.core.commonui.CUSnackBar
@@ -36,8 +36,8 @@ import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.core.theme.body1Medium
 import com.hulkdx.findprofessional.core.theme.body2
 import com.hulkdx.findprofessional.core.theme.h1Medium
-import com.hulkdx.findprofessional.resources.MR
 import dev.icerock.moko.resources.compose.localized
+import org.jetbrains.compose.resources.stringResource
 import org.koin.androidx.compose.koinViewModel
 
 
@@ -93,7 +93,7 @@ private fun YourRequest() {
         modifier = Modifier
             .padding(top = 100.dp)
             .fillMaxWidth(),
-        text = stringResource(id = MR.strings.yourRequest.resourceId),
+        text = stringResource(Res.string.yourRequest),
         textAlign = TextAlign.Center,
         style = h1Medium,
     )
@@ -107,7 +107,7 @@ private fun DateAndTime() {
                 top = 32.dp,
                 start = 26.dp
             ),
-        text = stringResource(id = MR.strings.dateAndTime.resourceId),
+        text = stringResource(Res.string.dateAndTime),
         style = body1Medium,
     )
 }
@@ -150,7 +150,7 @@ private fun Connection(skypeId: String?) {
                     top = 32.dp,
                     start = 26.dp
                 ),
-            text = stringResource(id = MR.strings.connection.resourceId),
+            text = stringResource(Res.string.connection),
             style = body1Medium,
         )
         Row(
@@ -162,7 +162,7 @@ private fun Connection(skypeId: String?) {
                 .padding(16.dp),
         ) {
             Text(
-                text = stringResource(id = MR.strings.yourSkypeId.resourceId),
+                text = stringResource(Res.string.yourSkypeId),
                 style = body2,
             )
             Spacer(Modifier.weight(2F))
@@ -195,7 +195,7 @@ private fun Bottom(
                 .padding(horizontal = 4.dp)
         ) {
             Text(
-                text = stringResource(id = MR.strings.total.resourceId),
+                text = stringResource(Res.string.total),
                 style = body1Medium,
             )
             Spacer(modifier = Modifier.weight(1F))
@@ -212,7 +212,7 @@ private fun Bottom(
 private fun CheckoutButton(onClick: () -> Unit) {
     CUFilledButton(
         modifier = Modifier.fillMaxWidth(),
-        text = stringResource(id = MR.strings.checkout.resourceId),
+        text = stringResource(Res.string.checkout),
         colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.secondary),
         contentPadding = PaddingValues(0.dp),
         onClick = onClick,
