@@ -22,8 +22,8 @@ androidxNavigation = "2.7.7"
 androidxUiautomator = "2.3.0"
 # https://github.com/coil-kt/coil
 coil = "2.6.0"
-# TODO
-compose-plugin = "1.6.0"
+# https://github.com/JetBrains/compose-multiplatform
+compose-plugin = "1.6.10-dev1551"
 # https://github.com/junit-team/junit5
 junit5 = "5.10.2"
 # https://github.com/InsertKoinIO/koin
@@ -77,6 +77,7 @@ moko-resources-compose = { group = "dev.icerock.moko", name = "resources-compose
 
 # build-logic dependencies
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }
+kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
