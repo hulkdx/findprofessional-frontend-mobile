@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.hulkdx.findprofessional.common.feature.authentication.login.LoginUseCase
 import com.hulkdx.findprofessional.common.feature.authentication.signup.model.LoginRequest
 import com.hulkdx.findprofessional.common.utils.StringOrRes
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 
 class LoginViewModel(
@@ -14,7 +15,7 @@ class LoginViewModel(
 ) : ViewModel() {
     val email = savedStateHandle.getStateFlow("email", "")
     val password = savedStateHandle.getStateFlow("password", "")
-    val error = savedStateHandle.getStateFlow<StringOrRes?>("error", null)
+    val error = MutableStateFlow<StringOrRes?>(null)
 
     fun onSignUpClicked() {
         loginUseCase.onSignUpClicked()
@@ -32,7 +33,7 @@ class LoginViewModel(
     }
 
     fun setError(error: StringOrRes?) {
-        savedStateHandle["error"] = error
+        this.error.value = error
     }
 
     fun setPassword(password: String) {

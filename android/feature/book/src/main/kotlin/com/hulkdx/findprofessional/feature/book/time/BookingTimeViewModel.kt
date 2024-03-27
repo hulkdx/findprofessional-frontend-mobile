@@ -8,6 +8,7 @@ import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUseCase
 import com.hulkdx.findprofessional.common.feature.home.model.Professional
 import com.hulkdx.findprofessional.common.utils.StringOrRes
 import com.hulkdx.findprofessional.feature.book.time.BookingTimeNavigationScreen.Companion.ARG1
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.stateIn
 
@@ -18,7 +19,7 @@ class BookingTimeViewModel(
 ) : ViewModel() {
     private val professional = requireNotNull(savedStateHandle.get<Professional>(ARG1))
 
-    val error = savedStateHandle.getStateFlow<StringOrRes?>("error", null)
+    val error = MutableStateFlow<StringOrRes?>(null)
 
     val uiState = useCase.getUiState(professional)
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), null)
@@ -40,6 +41,6 @@ class BookingTimeViewModel(
     }
 
     fun setError(error: StringOrRes?) {
-        savedStateHandle["error"] = error
+        this.error.value = error
     }
 }

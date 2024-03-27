@@ -10,6 +10,7 @@ import com.hulkdx.findprofessional.common.navigation.Navigator
 import com.hulkdx.findprofessional.common.utils.StringOrRes
 import com.hulkdx.findprofessional.core.utils.getStateFlow
 import com.hulkdx.findprofessional.feature.home.detail.HomeDetailNavigationScreen.Companion.ARG1
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted.Companion.WhileSubscribed
 import kotlinx.coroutines.flow.stateIn
 
@@ -21,7 +22,7 @@ class HomeDetailViewModel(
 ) : ViewModel() {
 
     val professional = savedStateHandle.getStateFlow<Professional>(ARG1)
-    val error = savedStateHandle.getStateFlow<StringOrRes?>("error", null)
+    val error = MutableStateFlow<StringOrRes?>(null)
 
     val availability = availabilityUseCase.getAvailabilityData(professional)
         .stateIn(viewModelScope, WhileSubscribed(5_000), null)
@@ -41,7 +42,7 @@ class HomeDetailViewModel(
     }
 
     fun setError(error: StringOrRes?) {
-        savedStateHandle["error"] = error
+        this.error.value = error
     }
 
     fun availabilityMonthMinusOne() {

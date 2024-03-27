@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.hulkdx.findprofessional.common.feature.authentication.signup.SignUpUseCase
 import com.hulkdx.findprofessional.common.feature.authentication.signup.model.RegisterRequest
 import com.hulkdx.findprofessional.common.utils.StringOrRes
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 
 private const val KEY_STATE = "key_ui_state"
@@ -24,7 +25,7 @@ class SignUpViewModel(
             lastName = "",
         )
     )
-    val error = savedStateHandle.getStateFlow<StringOrRes?>(KEY_ERROR, null)
+    val error = MutableStateFlow<StringOrRes?>(null)
 
     fun onSubmitClicked() = viewModelScope.launch {
         val err = useCase.onSubmitClicked(uiState.value)
@@ -34,7 +35,7 @@ class SignUpViewModel(
     }
 
     fun setError(error: StringOrRes?) {
-        savedStateHandle[KEY_ERROR] = error
+        this.error.value = error
     }
 
     fun setPassword(password: String) {
