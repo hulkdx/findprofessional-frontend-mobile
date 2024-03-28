@@ -1,11 +1,11 @@
 package com.hulkdx.findprofessional.tests.screen.signuppro
 
+import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.test.espresso.Espresso
 import com.hulkdx.findprofessional.utils.Rule
 import com.hulkdx.findprofessional.utils.assertAppIsClosed
 import com.hulkdx.findprofessional.utils.assertNodeIsDisplayed
-import com.hulkdx.findprofessional.utils.onNodeWithTextRes
 import com.hulkdx.findprofessional.utils.pressBackButton
 
 fun launchSignUpProScreen(
@@ -19,7 +19,7 @@ class SignUpProDsl(
     private val rule: Rule,
 ) {
     fun pressSignUpButton() {
-        rule.onNodeWithTextRes(MR.strings.signUp.resourceId)
+        rule.onNodeWithText("Sign Up")
             .performClick()
     }
 

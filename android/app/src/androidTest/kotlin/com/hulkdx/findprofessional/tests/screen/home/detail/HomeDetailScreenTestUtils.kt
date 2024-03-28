@@ -1,12 +1,12 @@
 package com.hulkdx.findprofessional.tests.screen.home.detail
 
+import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import com.hulkdx.findprofessional.InMemoryApi
 import com.hulkdx.findprofessional.tests.screen.home.launchHomeScreen
 import com.hulkdx.findprofessional.utils.Rule
 import com.hulkdx.findprofessional.utils.assertNodeIsDisplayed
 import com.hulkdx.findprofessional.utils.lazyColumnScrollTo
-import com.hulkdx.findprofessional.utils.onNodeWithTextRes
 
 
 fun launchHomeDetailScreen(
@@ -38,7 +38,7 @@ class HomeDetailScreenDsl(
     }
 
     fun pressBookButton() {
-        rule.onNodeWithTextRes(MR.strings.bookNow.resourceId)
+        rule.onNodeWithText("Book now")
             .performClick()
     }
 

@@ -10,6 +10,7 @@ import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performScrollToNode
 import androidx.compose.ui.test.performTouchInput
 import androidx.compose.ui.test.swipeUp
+import androidx.compose.ui.unit.Dp
 import com.hulkdx.findprofessional.InMemoryApi
 import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUiState.BookingTime.Type.Selected
 import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUtils.formattedTime
@@ -18,7 +19,6 @@ import com.hulkdx.findprofessional.common.utils.toMinutesOfDay
 import com.hulkdx.findprofessional.tests.screen.home.detail.launchHomeDetailScreen
 import com.hulkdx.findprofessional.utils.Rule
 import com.hulkdx.findprofessional.utils.assertNodeIsDisplayed
-import com.hulkdx.findprofessional.utils.onNodeWithTextRes
 
 
 fun launchBookingTimeScreen(
@@ -44,7 +44,7 @@ class BookingTimeScreenDsl(
 ) {
 
     fun pressContinue() {
-        rule.onNodeWithTextRes(MR.strings.continue1.resourceId)
+        rule.onNodeWithText("Continue")
             .performClick()
     }
 
@@ -52,7 +52,7 @@ class BookingTimeScreenDsl(
         rule.onNodeWithTag("BookingTimeScreen.LazyColumn")
             .assertIsDisplayed()
             .performScrollToNode(hasText(time.toText()))
-            .performTouchInput { swipeUp(bottom, bottom - 200) }
+            .performTouchInput { swipeUp(bottom, bottom - (Dp(50F).toPx())) }
 
         rule.onNodeWithText(time.toText())
             .assertIsDisplayed()
