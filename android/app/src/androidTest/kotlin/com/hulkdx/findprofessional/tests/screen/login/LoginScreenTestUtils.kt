@@ -4,7 +4,6 @@ import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performScrollTo
 import androidx.compose.ui.test.performTextInput
 import androidx.test.espresso.Espresso
-import com.hulkdx.findprofessional.resources.MR
 import com.hulkdx.findprofessional.utils.Rule
 import com.hulkdx.findprofessional.utils.assertAppIsClosed
 import com.hulkdx.findprofessional.utils.assertNodeIsDisplayed

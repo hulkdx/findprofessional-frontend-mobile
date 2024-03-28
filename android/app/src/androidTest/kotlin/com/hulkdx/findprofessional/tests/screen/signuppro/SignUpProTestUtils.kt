@@ -2,7 +2,6 @@ package com.hulkdx.findprofessional.tests.screen.signuppro
 
 import androidx.compose.ui.test.performClick
 import androidx.test.espresso.Espresso
-import com.hulkdx.findprofessional.resources.MR
 import com.hulkdx.findprofessional.utils.Rule
 import com.hulkdx.findprofessional.utils.assertAppIsClosed
 import com.hulkdx.findprofessional.utils.assertNodeIsDisplayed
