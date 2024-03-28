@@ -21,11 +21,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.hulkdx.findprofessional.common.config.isDebug
+import com.hulkdx.findprofessional.common.resources.Res
+import com.hulkdx.findprofessional.common.resources.dontHaveAnAccount
+import com.hulkdx.findprofessional.common.resources.forgotYourPassword
+import com.hulkdx.findprofessional.common.resources.signIn
+import com.hulkdx.findprofessional.common.resources.signUp
 import com.hulkdx.findprofessional.core.commonui.CUFilledButton
 import com.hulkdx.findprofessional.core.commonui.CUSnackBar
 import com.hulkdx.findprofessional.core.commonui.CUTextButton
@@ -34,8 +38,8 @@ import com.hulkdx.findprofessional.core.utils.singleClick
 import com.hulkdx.findprofessional.feature.authentication.ui.EmailTextField
 import com.hulkdx.findprofessional.feature.authentication.ui.LogoImage
 import com.hulkdx.findprofessional.feature.authentication.ui.PasswordTextField
-import com.hulkdx.findprofessional.resources.MR
 import dev.icerock.moko.resources.compose.localized
+import org.jetbrains.compose.resources.stringResource
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -159,7 +163,7 @@ fun LoginButton(
 ) {
     CUFilledButton(
         modifier = modifier.fillMaxWidth(),
-        text = stringResource(id = MR.strings.signIn.resourceId),
+        text = stringResource(Res.string.signIn),
         onClick = onClick,
     )
 }
@@ -171,7 +175,7 @@ fun ForgotPasswordButton(
 ) {
     CUTextButton(
         modifier = modifier,
-        text = stringResource(id = MR.strings.forgotYourPassword.resourceId),
+        text = stringResource(Res.string.forgotYourPassword),
         onClick = singleClick(onClick),
     )
 }
@@ -183,8 +187,8 @@ fun SignUpButton(
 ) {
     CUTextButton(
         modifier = modifier
-            .testTag(stringResource(id = MR.strings.signUp.resourceId)),
-        text = stringResource(id = MR.strings.dontHaveAnAccount.resourceId),
+            .testTag(stringResource(Res.string.signUp)),
+        text = stringResource(Res.string.dontHaveAnAccount),
         onClick = singleClick(onClick),
     )
 }

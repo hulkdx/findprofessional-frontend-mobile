@@ -6,9 +6,10 @@ import androidx.lifecycle.viewModelScope
 import com.hulkdx.findprofessional.common.feature.home.model.Professional
 import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalReview
 import com.hulkdx.findprofessional.common.feature.review.ReviewUseCase
+import com.hulkdx.findprofessional.common.utils.StringOrRes
 import com.hulkdx.findprofessional.core.utils.getStateFlow
 import com.hulkdx.findprofessional.feature.review.ReviewNavigationScreen.Companion.ARG1
-import dev.icerock.moko.resources.desc.StringDesc
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 
 
@@ -18,7 +19,7 @@ class ReviewViewModel(
 ) : ViewModel() {
 
     val professional = savedStateHandle.getStateFlow<Professional>(ARG1)
-    val error = savedStateHandle.getStateFlow<StringDesc?>("error", null)
+    val error = MutableStateFlow<StringOrRes?>(null)
     val reviews = savedStateHandle.getStateFlow<List<ProfessionalReview>>("reviews", listOf())
 
     init {
@@ -37,8 +38,8 @@ class ReviewViewModel(
         loadReviews()
     }
 
-    fun setError(error: StringDesc?) {
-        savedStateHandle["error"] = error
+    fun setError(error: StringOrRes?) {
+        this.error.value = error
     }
 
     private fun setReviews(reviews: List<ProfessionalReview>) {

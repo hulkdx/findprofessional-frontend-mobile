@@ -2,8 +2,8 @@ package com.hulkdx.findprofessional.common.feature.review
 
 import com.hulkdx.findprofessional.common.feature.home.ProfessionalApi
 import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalReview
+import com.hulkdx.findprofessional.common.utils.StringOrRes
 import com.hulkdx.findprofessional.common.utils.generalError
-import dev.icerock.moko.resources.desc.StringDesc
 
 const val PAGE_SIZE = 10
 
@@ -32,6 +32,6 @@ class ReviewUseCase(
     sealed interface Result {
         data object DoNothing : Result
         data class Success(val reviews: List<ProfessionalReview>) : Result
-        data class Error(val message: StringDesc? = null) : Result
+        data class Error(val message: StringOrRes? = null) : Result
     }
 }

@@ -10,10 +10,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
+import com.hulkdx.findprofessional.common.utils.StringOrRes
 import com.hulkdx.findprofessional.core.commonui.CUSnackBar
 import com.hulkdx.findprofessional.core.theme.AppTheme
 import dev.icerock.moko.resources.compose.localized
-import dev.icerock.moko.resources.desc.StringDesc
 
 @Composable
 fun AppNavBarContainer(
@@ -43,7 +43,7 @@ fun AppNavBarContainer(
 fun AppNavBarContainer(
     modifier: Modifier = Modifier,
     testTag: String,
-    error: StringDesc?,
+    error: StringOrRes?,
     onErrorDismissed: () -> Unit,
     content: @Composable () -> Unit,
 ) {

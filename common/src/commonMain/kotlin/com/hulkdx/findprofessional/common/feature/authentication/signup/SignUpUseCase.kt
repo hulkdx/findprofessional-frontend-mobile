@@ -8,11 +8,12 @@ import com.hulkdx.findprofessional.common.config.storage.UserStorage
 import com.hulkdx.findprofessional.common.feature.authentication.signup.model.RegisterRequest
 import com.hulkdx.findprofessional.common.navigation.NavigationScreen
 import com.hulkdx.findprofessional.common.navigation.Navigator
+import com.hulkdx.findprofessional.common.resources.Res
+import com.hulkdx.findprofessional.common.resources.emailExists
 import com.hulkdx.findprofessional.common.utils.generalError
-import com.hulkdx.findprofessional.resources.MR
-import dev.icerock.moko.resources.desc.desc
-import io.ktor.client.plugins.*
-import io.ktor.http.*
+import com.hulkdx.findprofessional.common.utils.toStringOrRes
+import io.ktor.client.plugins.ClientRequestException
+import io.ktor.http.HttpStatusCode
 
 class SignUpUseCase(
     private val navigator: Navigator,
@@ -33,7 +34,7 @@ class SignUpUseCase(
     } catch (e: Throwable) {
         val statusCode = (e as? ClientRequestException)?.response?.status
         when (statusCode) {
-            HttpStatusCode.Conflict -> MR.strings.emailExists.desc()
+            HttpStatusCode.Conflict -> Res.string.emailExists.toStringOrRes()
             else -> e.generalError()
         }
     }
