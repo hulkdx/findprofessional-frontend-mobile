@@ -32,7 +32,6 @@ import com.hulkdx.findprofessional.core.theme.body1
 import com.hulkdx.findprofessional.core.theme.h1Medium
 import com.hulkdx.findprofessional.feature.navigation.navbar.AppNavBarContainer
 import com.hulkdx.findprofessional.feature.navigation.navbar.AppNavigationBarDimens
-import dev.icerock.moko.resources.compose.localized
 import org.jetbrains.compose.resources.stringResource
 import org.koin.androidx.compose.koinViewModel
 

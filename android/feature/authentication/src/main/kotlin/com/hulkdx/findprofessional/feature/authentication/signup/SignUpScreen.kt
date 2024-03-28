@@ -30,7 +30,6 @@ import com.hulkdx.findprofessional.core.commonui.CUTextField
 import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.feature.authentication.ui.EmailTextField
 import com.hulkdx.findprofessional.feature.authentication.ui.PasswordTextField
-import dev.icerock.moko.resources.compose.localized
 import org.jetbrains.compose.resources.stringResource
 import org.koin.androidx.compose.koinViewModel
 

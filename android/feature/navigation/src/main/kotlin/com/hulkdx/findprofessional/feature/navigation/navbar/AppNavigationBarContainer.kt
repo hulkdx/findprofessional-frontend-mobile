@@ -13,7 +13,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.hulkdx.findprofessional.common.utils.StringOrRes
 import com.hulkdx.findprofessional.core.commonui.CUSnackBar
 import com.hulkdx.findprofessional.core.theme.AppTheme
-import dev.icerock.moko.resources.compose.localized
 
 @Composable
 fun AppNavBarContainer(

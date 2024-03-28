@@ -38,7 +38,6 @@ import com.hulkdx.findprofessional.core.utils.singleClick
 import com.hulkdx.findprofessional.feature.authentication.ui.EmailTextField
 import com.hulkdx.findprofessional.feature.authentication.ui.LogoImage
 import com.hulkdx.findprofessional.feature.authentication.ui.PasswordTextField
-import dev.icerock.moko.resources.compose.localized
 import org.jetbrains.compose.resources.stringResource
 import org.koin.androidx.compose.koinViewModel
 

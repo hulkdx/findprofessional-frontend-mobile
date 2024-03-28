@@ -2,7 +2,6 @@ package com.hulkdx.findprofessional.tests.screen.home.detail
 
 import androidx.compose.ui.test.performClick
 import com.hulkdx.findprofessional.InMemoryApi
-import com.hulkdx.findprofessional.resources.MR
 import com.hulkdx.findprofessional.tests.screen.home.launchHomeScreen
 import com.hulkdx.findprofessional.utils.Rule
 import com.hulkdx.findprofessional.utils.assertNodeIsDisplayed

@@ -23,7 +23,6 @@ import com.hulkdx.findprofessional.core.commonui.CUSearchField
 import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.feature.navigation.navbar.AppNavBarContainer
 import com.hulkdx.findprofessional.feature.navigation.navbar.AppNavigationBarDimens
-import dev.icerock.moko.resources.compose.localized
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
