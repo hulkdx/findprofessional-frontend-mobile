@@ -8,7 +8,7 @@ struct PasswordTextField: View {
         CommonTextField(
             value: value,
             leadingIcon: "Password",
-            hint: MR.strings().password.desc().localized(),
+            hint: Res.string().password.localized(),
             isSecure: true,
             accessibilityIdentifier: "Password"
         )
