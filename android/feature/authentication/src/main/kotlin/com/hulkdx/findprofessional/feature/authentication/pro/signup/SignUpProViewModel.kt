@@ -10,7 +10,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 
 private const val KEY_STATE = "key_ui_state"
-private const val KEY_ERROR = "key_error"
 
 class SignUpProViewModel(
     private val savedStateHandle: SavedStateHandle,
