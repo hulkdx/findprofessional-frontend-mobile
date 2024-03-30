@@ -28,6 +28,7 @@ import com.hulkdx.findprofessional.common.resources.Res
 import com.hulkdx.findprofessional.common.resources.aboutMe
 import com.hulkdx.findprofessional.common.resources.addProfilePicture
 import com.hulkdx.findprofessional.common.resources.coachRegistration
+import com.hulkdx.findprofessional.common.resources.coachType
 import com.hulkdx.findprofessional.common.resources.firstName
 import com.hulkdx.findprofessional.common.resources.headerForNames
 import com.hulkdx.findprofessional.common.resources.headerForPhotos
@@ -64,6 +65,8 @@ fun SignUpProScreen(
         onPasswordChanged = viewModel::setPassword,
         skypeId = data.skypeId,
         onSkypeIdChanged = viewModel::setSkypeId,
+        coachType = data.coachType,
+        onCoachTypeChanged = viewModel::setCoachType,
         aboutMe = data.aboutMe,
         onAboutMeChanged = viewModel::setAboutMe,
         onSubmitClicked = viewModel::onSubmitClicked,
@@ -84,6 +87,8 @@ fun SignUpProScreen(
     onPasswordChanged: (String) -> Unit,
     skypeId: String,
     onSkypeIdChanged: (String) -> Unit,
+    coachType: String,
+    onCoachTypeChanged: (String) -> Unit,
     aboutMe: String,
     onAboutMeChanged: (String) -> Unit,
     onSubmitClicked: () -> Unit,
@@ -106,6 +111,7 @@ fun SignUpProScreen(
             item { Email(email, onEmailChanged) }
             item { Password(password, onPasswordChanged) }
             item { SkypeID(skypeId, onSkypeIdChanged) }
+            item { CoachType(coachType, onCoachTypeChanged) }
 
             item { HeaderForNames() }
             item { FirstName(firstName, onFirstNameChanged) }
@@ -170,6 +176,21 @@ private fun SkypeID(
             .fillMaxWidth()
             .padding(top = 8.dp),
         hint = stringResource(Res.string.skypeId),
+        value = value,
+        onValueChanged = onValueChanged,
+    )
+}
+
+@Composable
+private fun CoachType(
+    value: String,
+    onValueChanged: (String) -> (Unit),
+) {
+    CUTextField(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 8.dp),
+        hint = stringResource(Res.string.coachType),
         value = value,
         onValueChanged = onValueChanged,
     )
@@ -274,7 +295,9 @@ private fun SubmitButton(
     onClick: () -> Unit,
 ) {
     CUFilledButton(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 16.dp),
         text = stringResource(Res.string.signUp),
         onClick = onClick,
     )
@@ -286,20 +309,22 @@ private fun SignUpScreenPreview() {
     AppTheme {
         SignUpProScreen(
             firstName = "",
-            onFirstNameChanged = {},
             lastName = "",
-            onLastNameChanged = {},
             email = "",
-            onEmailChanged = {},
             password = "",
+            skypeId = "",
+            aboutMe = "",
+            error = "",
+            coachType = "",
+            onFirstNameChanged = {},
+            onLastNameChanged = {},
+            onEmailChanged = {},
             onPasswordChanged = {},
             onSubmitClicked = {},
-            error = "",
             onErrorDismissed = {},
-            skypeId = "",
             onSkypeIdChanged = {},
-            aboutMe = "",
             onAboutMeChanged = {},
+            onCoachTypeChanged = {},
         )
     }
 }

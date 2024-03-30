@@ -42,6 +42,7 @@
 
     <string name="coachRegistration">Skype ID</string>
     <string name="skypeId">Skype ID</string>
+    <string name="coachType">Coach Type</string>
     <string name="aboutMe">About Me</string>
     <string name="headerForNames">Please ensure that the details you provide match those on your
         government-issued ID.

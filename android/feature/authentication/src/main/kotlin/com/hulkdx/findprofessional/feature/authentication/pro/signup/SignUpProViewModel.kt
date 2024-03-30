@@ -53,4 +53,8 @@ class SignUpProViewModel(
     fun setAboutMe(value: String) {
         savedStateHandle[KEY_STATE] = uiState.value.copy(aboutMe = value)
     }
+
+    fun setCoachType(value: String) {
+        savedStateHandle[KEY_STATE] = uiState.value.copy(coachType = value)
+    }
 }
