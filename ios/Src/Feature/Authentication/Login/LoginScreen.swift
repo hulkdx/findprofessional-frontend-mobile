@@ -38,7 +38,7 @@ private struct SignInButton: View {
     let action: () async -> Void
     
     var body: some View {
-        FilledButton(text: MR.strings().signIn.desc().localized(), action: action)
+        FilledButton(text: Res.string().signIn.localized(), action: action)
     }
 }
 
@@ -48,7 +48,7 @@ private struct SignUpButton: View {
     
     var body: some View {
         Button(action: action, label: {
-            Text("\(MR.strings().dontHaveAnAccount.desc().localized()) **\(MR.strings().signUp.desc().localized())**")
+            Text("\(Res.string().dontHaveAnAccount.localized()) **\(Res.string().signUp.localized())**")
                 .font(AppFont.body1)
                 .padding()
                 .foregroundColor(AppColor.Green)

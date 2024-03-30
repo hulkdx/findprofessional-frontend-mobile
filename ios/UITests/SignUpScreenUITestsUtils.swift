@@ -11,7 +11,7 @@ struct SignUpBuilder {
     let app: XCUIApplication
     
     func pressSignUpButton() -> SignUpBuilder {
-        app.buttons[MR.strings().signUp.desc().localized()].tap()
+        app.buttons["Sign Up"].tap()
         return self
     }
     

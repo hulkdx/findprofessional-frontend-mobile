@@ -10,14 +10,14 @@ struct LoginBuilder {
     let app: XCUIApplication
     
     func typeEmail(_ email: String) -> LoginBuilder {
-        let element = app.textFields[MR.strings().email.desc().localized()]
+        let element = app.textFields["Email"]
         element.tap()
         element.typeText(email)
         return self
     }
 
     func typePassword(_ password: String) -> LoginBuilder {
-        let element = app.secureTextFields[MR.strings().password.desc().localized()]
+        let element = app.secureTextFields["Password"]
         element.tap()
         element.typeText(password)
         return self
@@ -30,7 +30,7 @@ struct LoginBuilder {
     }
     
     func pressSignInButton() -> LoginBuilder {
-        app.buttons[MR.strings().signIn.desc().localized()].tap()
+        app.buttons["Login"].tap()
         return self
     }
     

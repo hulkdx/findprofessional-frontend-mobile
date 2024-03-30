@@ -1,11 +1,10 @@
 package com.hulkdx.findprofessional.tests.screen.profile
 
+import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
-import com.hulkdx.findprofessional.resources.MR
 import com.hulkdx.findprofessional.tests.screen.home.launchHomeScreen
 import com.hulkdx.findprofessional.utils.Rule
 import com.hulkdx.findprofessional.utils.assertNodeIsDisplayed
-import com.hulkdx.findprofessional.utils.onNodeWithTextRes
 
 
 fun launchProfileScreen(
@@ -30,7 +29,7 @@ class ProfileDsl(
     private val rule: Rule,
 ) {
     fun pressBecomeCoachButton() {
-        rule.onNodeWithTextRes(MR.strings.becomeCoach.resourceId)
+        rule.onNodeWithText("Become a coach")
             .performClick()
     }
 

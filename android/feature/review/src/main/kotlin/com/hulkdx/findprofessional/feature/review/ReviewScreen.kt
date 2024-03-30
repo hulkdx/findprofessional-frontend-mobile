@@ -22,16 +22,16 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.hulkdx.findprofessional.common.feature.authentication.model.User
 import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalReview
+import com.hulkdx.findprofessional.common.resources.Res
+import com.hulkdx.findprofessional.common.resources.reviews
 import com.hulkdx.findprofessional.core.commonui.CUSnackBar
 import com.hulkdx.findprofessional.core.commonui.pagination.SetupOnLastItemVisible
 import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.core.theme.h1Medium
 import com.hulkdx.findprofessional.feature.home.detail.ReviewContent
-import dev.icerock.moko.resources.compose.localized
 import kotlinx.datetime.Clock
 import org.jetbrains.compose.resources.stringResource
 import org.koin.androidx.compose.koinViewModel
-import com.hulkdx.findprofessional.common.resources.*
 
 @Composable
 fun ReviewScreen(viewModel: ReviewViewModel = koinViewModel()) {
