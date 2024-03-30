@@ -8,7 +8,7 @@ import com.hulkdx.findprofessional.common.config.storage.UserStorage
 import com.hulkdx.findprofessional.common.feature.authentication.pro.signup.model.ProRegisterRequest
 import com.hulkdx.findprofessional.common.feature.authentication.signup.SignUpApi
 import com.hulkdx.findprofessional.common.navigation.Navigator
-import dev.icerock.moko.resources.desc.StringDesc
+import com.hulkdx.findprofessional.common.utils.StringOrRes
 
 class SignUpProUseCase(
     private val navigator: Navigator,
@@ -18,7 +18,7 @@ class SignUpProUseCase(
     private val userStorage: UserStorage,
 ) {
 
-    suspend fun onSubmitClicked(request: ProRegisterRequest): StringDesc? = TODO()
+    suspend fun onSubmitClicked(request: ProRegisterRequest): StringOrRes? = TODO()
 //    = try {
 //        val (token, user) = signUpApi.registerPro(request)
 //        val (accessToken, refreshToken) = token

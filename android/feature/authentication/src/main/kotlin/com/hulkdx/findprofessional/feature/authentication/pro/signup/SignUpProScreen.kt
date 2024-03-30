@@ -112,7 +112,8 @@ fun SignUpProScreen(
             item { LastName(lastName, onLastNameChanged) }
 
             item { HeaderForPhotos() }
-            item { AddProfilePictureContent(onClick = {}) }
+            // TODO:
+            // item { AddProfilePictureContent(onClick = {}) }
             item { AboutMe(aboutMe, onAboutMeChanged) }
             item { SubmitButton(onSubmitClicked) }
         }
