@@ -110,7 +110,7 @@ fun SignUpProScreen(
             item { FirstName(uiState.firstName, onFirstNameChanged) }
             item { LastName(uiState.lastName, onLastNameChanged) }
 
-            item { HeaderForPhotos() }
+            item { PhotoHeader() }
             // TODO:
             // item { AddProfilePictureContent(onClick = {}) }
             item { AboutMe(uiState.aboutMe, onAboutMeChanged) }
@@ -194,6 +194,19 @@ private fun CoachType(
 }
 
 @Composable
+private fun NameHeader() {
+    Text(
+        modifier = Modifier
+            .padding(
+                top = 48.dp,
+                bottom = 8.dp,
+            ),
+        text = stringResource(Res.string.headerForNames),
+        style = body3Medium,
+    )
+}
+
+@Composable
 private fun FirstName(
     value: String,
     onValueChanged: (String) -> (Unit),
@@ -224,20 +237,7 @@ private fun LastName(
 }
 
 @Composable
-private fun NameHeader() {
-    Text(
-        modifier = Modifier
-            .padding(
-                top = 48.dp,
-                bottom = 8.dp,
-            ),
-        text = stringResource(Res.string.headerForNames),
-        style = body3Medium,
-    )
-}
-
-@Composable
-private fun HeaderForPhotos() {
+private fun PhotoHeader() {
     Text(
         modifier = Modifier
             .padding(
@@ -289,7 +289,6 @@ private fun AboutMe(
 
 @Composable
 fun PriceHeader() {
-
 }
 
 @Composable
