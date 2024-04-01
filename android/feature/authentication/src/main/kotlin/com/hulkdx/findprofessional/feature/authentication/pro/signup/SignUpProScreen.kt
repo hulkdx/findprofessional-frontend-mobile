@@ -24,6 +24,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.hulkdx.findprofessional.common.feature.authentication.pro.signup.model.ProRegisterRequest
 import com.hulkdx.findprofessional.common.resources.Res
 import com.hulkdx.findprofessional.common.resources.aboutMe
 import com.hulkdx.findprofessional.common.resources.addProfilePicture
@@ -51,23 +52,17 @@ import org.koin.androidx.compose.koinViewModel
 fun SignUpProScreen(
     viewModel: SignUpProViewModel = koinViewModel(),
 ) {
-    val data by viewModel.uiState.collectAsStateWithLifecycle()
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val error by viewModel.error.collectAsStateWithLifecycle()
 
     SignUpProScreen(
-        firstName = data.firstName,
+        uiState = uiState,
         onFirstNameChanged = viewModel::setFirstName,
-        lastName = data.lastName,
         onLastNameChanged = viewModel::setLastName,
-        email = data.email,
         onEmailChanged = viewModel::setEmail,
-        password = data.password,
         onPasswordChanged = viewModel::setPassword,
-        skypeId = data.skypeId,
         onSkypeIdChanged = viewModel::setSkypeId,
-        coachType = data.coachType,
         onCoachTypeChanged = viewModel::setCoachType,
-        aboutMe = data.aboutMe,
         onAboutMeChanged = viewModel::setAboutMe,
         onSubmitClicked = viewModel::onSubmitClicked,
         error = error?.localized(),
@@ -77,19 +72,13 @@ fun SignUpProScreen(
 
 @Composable
 fun SignUpProScreen(
-    firstName: String,
+    uiState: ProRegisterRequest,
     onFirstNameChanged: (String) -> Unit,
-    lastName: String,
     onLastNameChanged: (String) -> Unit,
-    email: String,
     onEmailChanged: (String) -> Unit,
-    password: String,
     onPasswordChanged: (String) -> Unit,
-    skypeId: String,
     onSkypeIdChanged: (String) -> Unit,
-    coachType: String,
     onCoachTypeChanged: (String) -> Unit,
-    aboutMe: String,
     onAboutMeChanged: (String) -> Unit,
     onSubmitClicked: () -> Unit,
     error: String?,
@@ -108,19 +97,19 @@ fun SignUpProScreen(
                 .padding(horizontal = 24.dp),
         ) {
             item { Header() }
-            item { Email(email, onEmailChanged) }
-            item { Password(password, onPasswordChanged) }
-            item { SkypeID(skypeId, onSkypeIdChanged) }
-            item { CoachType(coachType, onCoachTypeChanged) }
+            item { Email(uiState.email, onEmailChanged) }
+            item { Password(uiState.password, onPasswordChanged) }
+            item { SkypeID(uiState.skypeId, onSkypeIdChanged) }
+            item { CoachType(uiState.coachType, onCoachTypeChanged) }
 
             item { HeaderForNames() }
-            item { FirstName(firstName, onFirstNameChanged) }
-            item { LastName(lastName, onLastNameChanged) }
+            item { FirstName(uiState.firstName, onFirstNameChanged) }
+            item { LastName(uiState.lastName, onLastNameChanged) }
 
             item { HeaderForPhotos() }
             // TODO:
             // item { AddProfilePictureContent(onClick = {}) }
-            item { AboutMe(aboutMe, onAboutMeChanged) }
+            item { AboutMe(uiState.aboutMe, onAboutMeChanged) }
             item { SubmitButton(onSubmitClicked) }
         }
         CUSnackBar(
@@ -308,14 +297,8 @@ private fun SubmitButton(
 private fun SignUpScreenPreview() {
     AppTheme {
         SignUpProScreen(
-            firstName = "",
-            lastName = "",
-            email = "",
-            password = "",
-            skypeId = "",
-            aboutMe = "",
-            error = "",
-            coachType = "",
+            uiState = ProRegisterRequest(),
+            error = null,
             onFirstNameChanged = {},
             onLastNameChanged = {},
             onEmailChanged = {},
