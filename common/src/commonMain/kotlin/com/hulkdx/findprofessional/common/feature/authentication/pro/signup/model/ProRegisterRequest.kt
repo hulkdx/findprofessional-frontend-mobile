@@ -14,4 +14,6 @@ data class ProRegisterRequest(
     val skypeId: String = "",
     val aboutMe: String = "",
     val coachType: String = "",
+    val price: String = "",
+    val priceCurrency: String = "EUR",
 ) : CommonParcelable

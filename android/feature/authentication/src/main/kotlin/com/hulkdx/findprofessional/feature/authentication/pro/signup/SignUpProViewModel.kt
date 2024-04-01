@@ -56,4 +56,12 @@ class SignUpProViewModel(
     fun setCoachType(value: String) {
         savedStateHandle[KEY_STATE] = uiState.value.copy(coachType = value)
     }
+
+    fun onPriceChanged(value: String) {
+        savedStateHandle[KEY_STATE] = uiState.value.copy(price = value)
+    }
+
+    fun onCurrencyChanged(value: String) {
+        savedStateHandle[KEY_STATE] = uiState.value.copy(priceCurrency = value)
+    }
 }

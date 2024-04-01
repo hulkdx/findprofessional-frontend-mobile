@@ -65,6 +65,8 @@ fun SignUpProScreen(
         onCoachTypeChanged = viewModel::setCoachType,
         onAboutMeChanged = viewModel::setAboutMe,
         onSubmitClicked = viewModel::onSubmitClicked,
+        onPriceChanged = viewModel::onPriceChanged,
+        onCurrencyChanged = viewModel::onCurrencyChanged,
         error = error?.localized(),
         onErrorDismissed = { viewModel.setError(null) }
     )
@@ -80,6 +82,8 @@ fun SignUpProScreen(
     onSkypeIdChanged: (String) -> Unit,
     onCoachTypeChanged: (String) -> Unit,
     onAboutMeChanged: (String) -> Unit,
+    onPriceChanged: (String) -> Unit,
+    onCurrencyChanged: (String) -> Unit,
     onSubmitClicked: () -> Unit,
     error: String?,
     onErrorDismissed: () -> Unit,
@@ -102,7 +106,7 @@ fun SignUpProScreen(
             item { SkypeID(uiState.skypeId, onSkypeIdChanged) }
             item { CoachType(uiState.coachType, onCoachTypeChanged) }
 
-            item { HeaderForNames() }
+            item { NameHeader() }
             item { FirstName(uiState.firstName, onFirstNameChanged) }
             item { LastName(uiState.lastName, onLastNameChanged) }
 
@@ -110,6 +114,10 @@ fun SignUpProScreen(
             // TODO:
             // item { AddProfilePictureContent(onClick = {}) }
             item { AboutMe(uiState.aboutMe, onAboutMeChanged) }
+
+            item { PriceHeader() }
+            item { Price(uiState.price, onPriceChanged, uiState.priceCurrency, onCurrencyChanged) }
+
             item { SubmitButton(onSubmitClicked) }
         }
         CUSnackBar(
@@ -216,7 +224,7 @@ private fun LastName(
 }
 
 @Composable
-private fun HeaderForNames() {
+private fun NameHeader() {
     Text(
         modifier = Modifier
             .padding(
@@ -271,12 +279,26 @@ private fun AboutMe(
         modifier = Modifier
             .padding(top = 32.dp)
             .fillMaxWidth()
-            .height(200.dp),
+            .height(160.dp),
         hint = stringResource(Res.string.aboutMe),
         value = value,
         onValueChanged = onValueChanged,
         singleLine = false,
     )
+}
+
+@Composable
+fun PriceHeader() {
+
+}
+
+@Composable
+fun Price(
+    price: String,
+    onPriceChanged: (String) -> (Unit),
+    priceCurrency: String,
+    onPriceCurrencyChanged: (String) -> (Unit),
+) {
 }
 
 @Composable
@@ -308,6 +330,8 @@ private fun SignUpScreenPreview() {
             onSkypeIdChanged = {},
             onAboutMeChanged = {},
             onCoachTypeChanged = {},
+            onPriceChanged = {},
+            onCurrencyChanged = {},
         )
     }
 }
