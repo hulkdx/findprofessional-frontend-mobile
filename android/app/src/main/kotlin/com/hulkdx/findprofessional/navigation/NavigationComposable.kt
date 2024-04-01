@@ -9,8 +9,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.hulkdx.findprofessional.feature.authentication.pro.signup.SignUpProNavigationScreen
 import com.hulkdx.findprofessional.feature.navigation.screen.AndroidNavigationScreen
+import com.hulkdx.findprofessional.feature.authentication.splash.SplashNavigationScreen
 import org.koin.compose.getKoin
 import org.koin.compose.koinInject
 
@@ -23,7 +23,7 @@ fun NavigationComposable() {
 
 @Composable
 private fun CreateScreens(navController: NavHostController) {
-    val startDestination = SignUpProNavigationScreen().route
+    val startDestination = SplashNavigationScreen().route
     val navigationScreens: List<AndroidNavigationScreen> = getKoin().getAll()
 
     NavHost(navController = navController, startDestination = startDestination) {
