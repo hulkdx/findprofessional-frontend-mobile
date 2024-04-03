@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -20,6 +21,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -30,10 +32,13 @@ import com.hulkdx.findprofessional.common.resources.aboutMe
 import com.hulkdx.findprofessional.common.resources.addProfilePicture
 import com.hulkdx.findprofessional.common.resources.coachRegistration
 import com.hulkdx.findprofessional.common.resources.coachType
+import com.hulkdx.findprofessional.common.resources.currency
 import com.hulkdx.findprofessional.common.resources.firstName
 import com.hulkdx.findprofessional.common.resources.headerForNames
 import com.hulkdx.findprofessional.common.resources.headerForPhotos
 import com.hulkdx.findprofessional.common.resources.lastName
+import com.hulkdx.findprofessional.common.resources.price
+import com.hulkdx.findprofessional.common.resources.priceHeader
 import com.hulkdx.findprofessional.common.resources.signUp
 import com.hulkdx.findprofessional.common.resources.skypeId
 import com.hulkdx.findprofessional.core.R
@@ -289,6 +294,15 @@ private fun AboutMe(
 
 @Composable
 fun PriceHeader() {
+    Text(
+        modifier = Modifier
+            .padding(
+                top = 48.dp,
+                bottom = 8.dp,
+            ),
+        text = stringResource(Res.string.priceHeader),
+        style = body3Medium,
+    )
 }
 
 @Composable
@@ -298,6 +312,28 @@ fun Price(
     priceCurrency: String,
     onPriceCurrencyChanged: (String) -> (Unit),
 ) {
+    Column {
+        CUTextField(
+            modifier = Modifier
+                .padding(top = 32.dp)
+                .fillMaxWidth(),
+            hint = stringResource(Res.string.price),
+            value = price,
+            onValueChanged = onPriceChanged,
+            singleLine = false,
+            keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
+        )
+        CUTextField(
+            modifier = Modifier
+                .padding(top = 8.dp)
+                .fillMaxWidth(),
+            hint = stringResource(Res.string.currency),
+            value = priceCurrency,
+            onValueChanged = onPriceCurrencyChanged,
+            singleLine = false,
+            enabled = false,
+        )
+    }
 }
 
 @Composable

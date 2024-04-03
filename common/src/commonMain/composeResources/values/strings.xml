@@ -54,4 +54,7 @@
         * Maximum size of 2MB
     </string>
     <string name="addProfilePicture">Add profile picture</string>
+    <string name="priceHeader">Add your own price per 30 minutes</string>
+    <string name="price">Price</string>
+    <string name="currency">Currency</string>
 </resources>
