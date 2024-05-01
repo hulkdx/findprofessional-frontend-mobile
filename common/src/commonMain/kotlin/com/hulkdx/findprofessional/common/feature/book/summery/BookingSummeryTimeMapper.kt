@@ -4,6 +4,7 @@ import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUtils.cur
 import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUtils.formattedTime
 import com.hulkdx.findprofessional.common.feature.book.time.SelectedTimes
 import com.hulkdx.findprofessional.common.feature.home.model.Professional
+import com.hulkdx.findprofessional.common.utils.CurrencyFormatter
 import com.hulkdx.findprofessional.common.utils.NumberFormatter
 import com.hulkdx.findprofessional.common.utils.shortDayOfWeeks
 import kotlinx.datetime.LocalDate
@@ -30,7 +31,7 @@ class BookingSummeryTimeMapper {
         sizeOfItemsSelected: Int,
     ): String {
         val cents = professional.priceNumber
-        val currency = professional.priceCurrencySymbol
+        val currency = CurrencyFormatter.toSymbol(professional.priceCurrency)
         val total = cents * sizeOfItemsSelected
         val a = (total / 100)
         val b = NumberFormatter.twoDigits(total % 100)

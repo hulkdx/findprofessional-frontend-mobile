@@ -26,6 +26,7 @@ import androidx.compose.ui.unit.dp
 import com.hulkdx.findprofessional.common.feature.home.model.Professional
 import com.hulkdx.findprofessional.common.resources.Res
 import com.hulkdx.findprofessional.common.resources.perHour
+import com.hulkdx.findprofessional.common.utils.CurrencyFormatter
 import com.hulkdx.findprofessional.core.R
 import com.hulkdx.findprofessional.core.commonui.CUAsyncImage
 import com.hulkdx.findprofessional.core.commonui.icons.CULikeButton
@@ -185,7 +186,7 @@ private fun Price(professional: Professional) {
                 .align(Bottom),
             style = body2,
             maxLines = 1,
-            text = " ${professional.priceCurrencySymbol} ",
+            text = " ${CurrencyFormatter.toSymbol(professional.priceCurrency)} ",
             color = MaterialTheme.colorScheme.errorContainer,
         )
         Text(

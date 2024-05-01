@@ -15,5 +15,5 @@ data class ProRegisterRequest(
     val aboutMe: String = "",
     val coachType: String = "",
     val price: String = "",
-    val priceCurrency: String = "EUR",
+    val priceCurrency: String = "",
 ) : CommonParcelable

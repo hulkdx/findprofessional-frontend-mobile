@@ -24,13 +24,13 @@ data class Professional(
     val createdAt: String = "",
     val updatedAt: String = "",
 ) : CommonParcelable {
+
     val fullName: String
         get() = "$firstName $lastName"
+
     val price: String
         get() = "$priceCurrency $priceNumber"
-    val priceCurrencySymbol = priceCurrency?.let {
-        CurrencyFormatter.toSymbol(it)
-    }
+
     // TODO:
     val isFav = false
 }
