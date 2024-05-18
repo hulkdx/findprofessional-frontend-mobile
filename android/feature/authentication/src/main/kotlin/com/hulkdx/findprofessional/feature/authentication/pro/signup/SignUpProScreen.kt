@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -20,18 +21,24 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.hulkdx.findprofessional.common.feature.authentication.pro.signup.model.ProRegisterRequest
 import com.hulkdx.findprofessional.common.resources.Res
 import com.hulkdx.findprofessional.common.resources.aboutMe
 import com.hulkdx.findprofessional.common.resources.addProfilePicture
 import com.hulkdx.findprofessional.common.resources.coachRegistration
+import com.hulkdx.findprofessional.common.resources.coachType
+import com.hulkdx.findprofessional.common.resources.currency
 import com.hulkdx.findprofessional.common.resources.firstName
 import com.hulkdx.findprofessional.common.resources.headerForNames
 import com.hulkdx.findprofessional.common.resources.headerForPhotos
 import com.hulkdx.findprofessional.common.resources.lastName
+import com.hulkdx.findprofessional.common.resources.price
+import com.hulkdx.findprofessional.common.resources.priceHeader
 import com.hulkdx.findprofessional.common.resources.signUp
 import com.hulkdx.findprofessional.common.resources.skypeId
 import com.hulkdx.findprofessional.core.R
@@ -50,23 +57,21 @@ import org.koin.androidx.compose.koinViewModel
 fun SignUpProScreen(
     viewModel: SignUpProViewModel = koinViewModel(),
 ) {
-    val data by viewModel.uiState.collectAsStateWithLifecycle()
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val error by viewModel.error.collectAsStateWithLifecycle()
 
     SignUpProScreen(
-        firstName = data.firstName,
+        uiState = uiState,
         onFirstNameChanged = viewModel::setFirstName,
-        lastName = data.lastName,
         onLastNameChanged = viewModel::setLastName,
-        email = data.email,
         onEmailChanged = viewModel::setEmail,
-        password = data.password,
         onPasswordChanged = viewModel::setPassword,
-        skypeId = data.skypeId,
         onSkypeIdChanged = viewModel::setSkypeId,
-        aboutMe = data.aboutMe,
+        onCoachTypeChanged = viewModel::setCoachType,
         onAboutMeChanged = viewModel::setAboutMe,
         onSubmitClicked = viewModel::onSubmitClicked,
+        onPriceChanged = viewModel::onPriceChanged,
+        onCurrencyChanged = viewModel::onCurrencyChanged,
         error = error?.localized(),
         onErrorDismissed = { viewModel.setError(null) }
     )
@@ -74,18 +79,16 @@ fun SignUpProScreen(
 
 @Composable
 fun SignUpProScreen(
-    firstName: String,
+    uiState: ProRegisterRequest,
     onFirstNameChanged: (String) -> Unit,
-    lastName: String,
     onLastNameChanged: (String) -> Unit,
-    email: String,
     onEmailChanged: (String) -> Unit,
-    password: String,
     onPasswordChanged: (String) -> Unit,
-    skypeId: String,
     onSkypeIdChanged: (String) -> Unit,
-    aboutMe: String,
+    onCoachTypeChanged: (String) -> Unit,
     onAboutMeChanged: (String) -> Unit,
+    onPriceChanged: (String) -> Unit,
+    onCurrencyChanged: (String) -> Unit,
     onSubmitClicked: () -> Unit,
     error: String?,
     onErrorDismissed: () -> Unit,
@@ -103,17 +106,23 @@ fun SignUpProScreen(
                 .padding(horizontal = 24.dp),
         ) {
             item { Header() }
-            item { Email(email, onEmailChanged) }
-            item { Password(password, onPasswordChanged) }
-            item { SkypeID(skypeId, onSkypeIdChanged) }
+            item { Email(uiState.email, onEmailChanged) }
+            item { Password(uiState.password, onPasswordChanged) }
+            item { SkypeID(uiState.skypeId, onSkypeIdChanged) }
+            item { CoachType(uiState.coachType, onCoachTypeChanged) }
 
-            item { HeaderForNames() }
-            item { FirstName(firstName, onFirstNameChanged) }
-            item { LastName(lastName, onLastNameChanged) }
+            item { NameHeader() }
+            item { FirstName(uiState.firstName, onFirstNameChanged) }
+            item { LastName(uiState.lastName, onLastNameChanged) }
 
-            item { HeaderForPhotos() }
-            item { AddProfilePictureContent(onClick = {}) }
-            item { AboutMe(aboutMe, onAboutMeChanged) }
+            item { PhotoHeader() }
+            // TODO:
+            // item { AddProfilePictureContent(onClick = {}) }
+            item { AboutMe(uiState.aboutMe, onAboutMeChanged) }
+
+            item { PriceHeader() }
+            item { Price(uiState.price, onPriceChanged, uiState.priceCurrency, onCurrencyChanged) }
+
             item { SubmitButton(onSubmitClicked) }
         }
         CUSnackBar(
@@ -175,6 +184,34 @@ private fun SkypeID(
 }
 
 @Composable
+private fun CoachType(
+    value: String,
+    onValueChanged: (String) -> (Unit),
+) {
+    CUTextField(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 8.dp),
+        hint = stringResource(Res.string.coachType),
+        value = value,
+        onValueChanged = onValueChanged,
+    )
+}
+
+@Composable
+private fun NameHeader() {
+    Text(
+        modifier = Modifier
+            .padding(
+                top = 48.dp,
+                bottom = 8.dp,
+            ),
+        text = stringResource(Res.string.headerForNames),
+        style = body3Medium,
+    )
+}
+
+@Composable
 private fun FirstName(
     value: String,
     onValueChanged: (String) -> (Unit),
@@ -205,20 +242,7 @@ private fun LastName(
 }
 
 @Composable
-private fun HeaderForNames() {
-    Text(
-        modifier = Modifier
-            .padding(
-                top = 48.dp,
-                bottom = 8.dp,
-            ),
-        text = stringResource(Res.string.headerForNames),
-        style = body3Medium,
-    )
-}
-
-@Composable
-private fun HeaderForPhotos() {
+private fun PhotoHeader() {
     Text(
         modifier = Modifier
             .padding(
@@ -260,7 +284,7 @@ private fun AboutMe(
         modifier = Modifier
             .padding(top = 32.dp)
             .fillMaxWidth()
-            .height(200.dp),
+            .height(160.dp),
         hint = stringResource(Res.string.aboutMe),
         value = value,
         onValueChanged = onValueChanged,
@@ -269,11 +293,57 @@ private fun AboutMe(
 }
 
 @Composable
+fun PriceHeader() {
+    Text(
+        modifier = Modifier
+            .padding(
+                top = 48.dp,
+                bottom = 8.dp,
+            ),
+        text = stringResource(Res.string.priceHeader),
+        style = body3Medium,
+    )
+}
+
+@Composable
+fun Price(
+    price: String,
+    onPriceChanged: (String) -> (Unit),
+    priceCurrency: String,
+    onPriceCurrencyChanged: (String) -> (Unit),
+) {
+    Column {
+        CUTextField(
+            modifier = Modifier
+                .padding(top = 32.dp)
+                .fillMaxWidth(),
+            hint = stringResource(Res.string.price),
+            value = price,
+            onValueChanged = onPriceChanged,
+            singleLine = false,
+            keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
+        )
+        CUTextField(
+            modifier = Modifier
+                .padding(top = 8.dp)
+                .fillMaxWidth(),
+            hint = stringResource(Res.string.currency),
+            value = priceCurrency,
+            onValueChanged = onPriceCurrencyChanged,
+            singleLine = false,
+            enabled = false,
+        )
+    }
+}
+
+@Composable
 private fun SubmitButton(
     onClick: () -> Unit,
 ) {
     CUFilledButton(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 16.dp),
         text = stringResource(Res.string.signUp),
         onClick = onClick,
     )
@@ -284,21 +354,19 @@ private fun SubmitButton(
 private fun SignUpScreenPreview() {
     AppTheme {
         SignUpProScreen(
-            firstName = "",
+            uiState = ProRegisterRequest(),
+            error = null,
             onFirstNameChanged = {},
-            lastName = "",
             onLastNameChanged = {},
-            email = "",
             onEmailChanged = {},
-            password = "",
             onPasswordChanged = {},
             onSubmitClicked = {},
-            error = "",
             onErrorDismissed = {},
-            skypeId = "",
             onSkypeIdChanged = {},
-            aboutMe = "",
             onAboutMeChanged = {},
+            onCoachTypeChanged = {},
+            onPriceChanged = {},
+            onCurrencyChanged = {},
         )
     }
 }
