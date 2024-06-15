@@ -1,6 +1,6 @@
 [versions]
 
-kotlin = "1.9.23"
+kotlin = "2.0.0"
 # https://developer.android.com/studio/releases/gradle-plugin
 androidGradlePlugin = "8.5.0"
 
@@ -8,8 +8,6 @@ androidGradlePlugin = "8.5.0"
 androidxActivity = "1.9.0"
 # https://developer.android.com/jetpack/compose/bom/bom-mapping
 androidxComposeBom = "2024.06.00"
-# https://developer.android.com/jetpack/androidx/releases/compose
-androidxComposeCompiler = "1.5.11"
 # https://developer.android.com/jetpack/androidx/releases/datastore
 androidxDataStore = "1.1.1"
 # https://developer.android.com/jetpack/androidx/releases/test
@@ -23,7 +21,7 @@ androidxUiautomator = "2.3.0"
 # https://github.com/coil-kt/coil
 coil = "2.6.0"
 # https://github.com/JetBrains/compose-multiplatform
-compose-plugin = "1.6.10-dev1551"
+compose-plugin = "1.6.11"
 # https://github.com/junit-team/junit5
 junit5 = "5.10.2"
 # https://github.com/InsertKoinIO/koin
@@ -78,11 +76,12 @@ kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-pl
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
 android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 jetbrains-compose = { id = "org.jetbrains.compose", version.ref = "compose-plugin" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
-kotlin-parcelize = { id = "kotlin-parcelize" }
+kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
 paparazzi = { id = "app.cash.paparazzi", version.ref = "paparazziGradlePlugin" }
 
 # build-logic

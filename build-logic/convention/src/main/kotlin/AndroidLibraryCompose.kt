@@ -8,6 +8,8 @@ class AndroidLibraryCompose : Plugin<Project> {
         with(target) {
             with(pluginManager) {
                 apply("com.android.library")
+                apply(libs.findPluginId("compose-compiler"))
+                apply(libs.findPluginId("jetbrains-compose"))
             }
             configureAndroidCompose(extensions.getByType<LibraryExtension>())
         }
