@@ -129,31 +129,40 @@ jobs:
           java-version: ${{ env.JAVA_VERSION }}
           cache: 'gradle'
 
-      - uses: actions/cache@v3
-        with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-          restore-keys: |
-            ${{ runner.os }}-gradle-
+      # - uses: actions/cache@v3
+      #   with:
+      #     path: |
+      #       ~/.gradle/caches
+      #       ~/.gradle/wrapper
+      #     key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-gradle-
 
-      - name: Get cached Swift Packages managed by Xcode
-        uses: actions/cache@v3
-        with:
-          path: ~/Library/Developer/Xcode/DerivedData/**/SourcePackages/
-          key: ${{ runner.os }}-spm-${{ hashFiles('**/Package.resolved') }}
-          restore-keys: |
-            ${{ runner.os }}-spm-
+      # - name: Get cached Swift Packages managed by Xcode
+      #   uses: actions/cache@v3
+      #   with:
+      #     path: ~/Library/Developer/Xcode/DerivedData/**/SourcePackages/
+      #     key: ${{ runner.os }}-spm-${{ hashFiles('**/Package.resolved') }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-spm-
 
       - name: Build and Test
-        run: xcodebuild
+        run: xcodebuild test
           -workspace ios/FindProffessional.xcodeproj/project.xcworkspace
           -scheme FindProfessional
           -configuration Debug
           -sdk iphonesimulator
-          -destination 'platform=iOS Simulator,name=${{ env.XCODE_IPHONE_VERSION }}'
+          -destination 'platform=iOS Simulator,name=${{ env.XCODE_IPHONE_VERSION }},OS=latest'
+          -resultBundlePath ios-test-reports.xcresult
           clean build test
           ONLY_ACTIVE_ARCH=YES
           CODE_SIGNING_REQUIRED=NO
+          CODE_SIGNING_ALLOWED=NO
           CODE_SIGN_IDENTITY=""
+
+      - name: Upload test reports
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ios-test-reports.xcresult
+          path: ios-test-reports.xcresult
