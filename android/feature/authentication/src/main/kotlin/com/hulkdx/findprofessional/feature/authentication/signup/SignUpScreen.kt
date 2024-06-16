@@ -24,6 +24,7 @@ import com.hulkdx.findprofessional.common.resources.Res
 import com.hulkdx.findprofessional.common.resources.firstName
 import com.hulkdx.findprofessional.common.resources.lastName
 import com.hulkdx.findprofessional.common.resources.signUp
+import com.hulkdx.findprofessional.common.utils.localized
 import com.hulkdx.findprofessional.core.commonui.CUFilledButton
 import com.hulkdx.findprofessional.core.commonui.CUSnackBar
 import com.hulkdx.findprofessional.core.commonui.CUTextField

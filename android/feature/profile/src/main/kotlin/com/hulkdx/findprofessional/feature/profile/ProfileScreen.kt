@@ -27,6 +27,7 @@ import com.hulkdx.findprofessional.common.resources.Res
 import com.hulkdx.findprofessional.common.resources.becomeCoach
 import com.hulkdx.findprofessional.common.resources.logout
 import com.hulkdx.findprofessional.common.resources.profile
+import com.hulkdx.findprofessional.common.utils.localized
 import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.core.theme.body1
 import com.hulkdx.findprofessional.core.theme.h1Medium

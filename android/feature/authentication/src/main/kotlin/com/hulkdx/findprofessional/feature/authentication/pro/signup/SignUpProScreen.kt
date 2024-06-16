@@ -41,6 +41,7 @@ import com.hulkdx.findprofessional.common.resources.price
 import com.hulkdx.findprofessional.common.resources.priceHeader
 import com.hulkdx.findprofessional.common.resources.signUp
 import com.hulkdx.findprofessional.common.resources.skypeId
+import com.hulkdx.findprofessional.common.utils.localized
 import com.hulkdx.findprofessional.core.R
 import com.hulkdx.findprofessional.core.commonui.CUFilledButton
 import com.hulkdx.findprofessional.core.commonui.CUSnackBar

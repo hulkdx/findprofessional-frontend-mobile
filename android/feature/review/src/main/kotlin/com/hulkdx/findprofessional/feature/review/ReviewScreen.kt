@@ -24,6 +24,7 @@ import com.hulkdx.findprofessional.common.feature.authentication.model.User
 import com.hulkdx.findprofessional.common.feature.home.model.ProfessionalReview
 import com.hulkdx.findprofessional.common.resources.Res
 import com.hulkdx.findprofessional.common.resources.reviews
+import com.hulkdx.findprofessional.common.utils.localized
 import com.hulkdx.findprofessional.core.commonui.CUSnackBar
 import com.hulkdx.findprofessional.core.commonui.pagination.SetupOnLastItemVisible
 import com.hulkdx.findprofessional.core.theme.AppTheme
