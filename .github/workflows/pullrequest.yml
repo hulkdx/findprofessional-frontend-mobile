@@ -7,7 +7,7 @@ on:
 env:
   JAVA_VERSION: 17
   JAVA_DIST: "zulu"
-  XCODE_VERSION: "15.2"
+  XCODE_VERSION: "15.4"
   XCODE_IPHONE_VERSION: "iPhone 15 Pro"
 
 jobs:
@@ -103,7 +103,7 @@ jobs:
   #           exit 1)
 
   #     - name: Upload test reports
-  #       if: always()
+  #       if: failure()
   #       uses: actions/upload-artifact@v3
   #       with:
   #         name: android-integration-test-reports-${{ matrix.api-level }}
@@ -145,6 +145,9 @@ jobs:
       #     key: ${{ runner.os }}-spm-${{ hashFiles('**/Package.resolved') }}
       #     restore-keys: |
       #       ${{ runner.os }}-spm-
+
+      - name: Disable iOS hardware keyboard
+        run: defaults write com.apple.iphonesimulator ConnectHardwareKeyboard 0
 
       - name: Build and Test
         run: xcodebuild test
