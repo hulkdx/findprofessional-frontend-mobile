@@ -1,29 +1,14 @@
 [versions]
-
+# https://github.com/JetBrains/kotlin
 kotlin = "2.0.0"
 # https://developer.android.com/studio/releases/gradle-plugin
 androidGradlePlugin = "8.5.0"
-
 # https://developer.android.com/jetpack/androidx/releases/activity
 androidxActivity = "1.9.0"
-# https://developer.android.com/jetpack/compose/bom/bom-mapping
-androidxComposeBom = "2024.06.00"
 # https://developer.android.com/jetpack/androidx/releases/datastore
 androidxDataStore = "1.1.1"
-# https://developer.android.com/jetpack/androidx/releases/test
-androidxEspresso = "3.5.1"
-# https://developer.android.com/jetpack/androidx/releases/lifecycle
-androidxLifecycle = "2.8.2"
-# https://developer.android.com/jetpack/androidx/releases/navigation
-androidxNavigation = "2.7.7"
-# https://developer.android.com/jetpack/androidx/releases/test-uiautomator
-androidxUiautomator = "2.3.0"
-# https://github.com/coil-kt/coil
-coil = "2.6.0"
 # https://github.com/JetBrains/compose-multiplatform
 compose-plugin = "1.6.11"
-# https://github.com/junit-team/junit5
-junit5 = "5.10.2"
 # https://github.com/InsertKoinIO/koin
 koin = "3.5.6"
 # https://github.com/Kotlin/kotlinx-datetime
@@ -37,25 +22,11 @@ leakcanary = "2.14"
 # https://github.com/cashapp/paparazzi
 paparazziGradlePlugin = "1.3.4"
 
+
 [libraries]
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "androidxActivity" }
-androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "androidxComposeBom" }
-androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
-androidx-compose-ui-test = { group = "androidx.compose.ui", name = "ui-test-junit4" }
-androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
-androidx-compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
-androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
-androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "androidxEspresso" }
 androidx-dataStore-core = { group = "androidx.datastore", name = "datastore-preferences-core", version.ref = "androidxDataStore" }
-androidx-lifecycle-runtimeCompose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidxLifecycle" }
-androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "androidxNavigation" }
-androidx-uiautomator = { group = "androidx.test.uiautomator", name = "uiautomator", version.ref = "androidxUiautomator" }
-coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
-junit5-bom = { group = "org.junit", name = "junit-bom", version.ref = "junit5" }
-junit5-jupiter = { group = "org.junit.jupiter", name = "junit-jupiter" }
 koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin" }
-koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koin" }
-koin-androidx-compose = { group = "io.insert-koin", name = "koin-androidx-compose", version.ref = "koin" }
 koin-test = { group = "io.insert-koin", name = "koin-test", version.ref = "koin" }
 kotlinx-datetime = { group = "org.jetbrains.kotlinx", name = "kotlinx-datetime", version.ref = "kotlinxDatetime" }
 ktor-core = { group = "io.ktor", name = "ktor-client-core", version.ref = "ktor" }
@@ -64,7 +35,6 @@ ktor-darwin = { group = "io.ktor", name = "ktor-client-darwin", version.ref = "k
 ktor-content-negotiation = { group = "io.ktor", name = "ktor-client-content-negotiation", version.ref = "ktor" }
 ktor-logging = { group = "io.ktor", name = "ktor-client-logging", version.ref = "ktor" }
 ktor-serialization = { group = "io.ktor", name = "ktor-serialization-kotlinx-json", version.ref = "ktor" }
-ktor-mock = { group = "io.ktor", name = "ktor-client-mock", version.ref = "ktor" }
 kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "kotlinxCoroutines" }
 kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinxCoroutines" }
 leakcanary = { group = "com.squareup.leakcanary", name = "leakcanary-android", version.ref = "leakcanary" }
@@ -72,6 +42,7 @@ leakcanary = { group = "com.squareup.leakcanary", name = "leakcanary-android", v
 # build-logic dependencies
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }
 kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
