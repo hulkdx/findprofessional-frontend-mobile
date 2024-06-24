@@ -30,6 +30,7 @@ kotlin {
                 api(compose.components.resources)
                 implementation(compose.components.uiToolingPreview)
 
+                implementation(libs.navigation.compose)
                 implementation(libs.androidx.dataStore.core)
                 implementation(libs.koin.core)
                 implementation(libs.kotlinx.coroutines.core)
