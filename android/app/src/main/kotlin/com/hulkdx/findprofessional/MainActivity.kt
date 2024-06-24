@@ -8,10 +8,6 @@ import com.hulkdx.findprofessional.common.App
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-//        enableEdgeToEdge()
-//        window.navigationBarColor = Color.BLACK
-
         setContent {
             App()
         }
