@@ -42,25 +42,7 @@ tasks.withType<Test> {
 }
 
 dependencies {
-    implementation(project(":android:feature:authentication"))
-    implementation(project(":android:feature:home"))
-    implementation(project(":android:feature:developer"))
-    implementation(project(":android:feature:profile"))
-    implementation(project(":android:feature:navigation"))
-    implementation(project(":android:feature:review"))
-    implementation(project(":android:feature:book"))
+    implementation(project(":composeApp"))
 
     implementation(libs.androidx.activity.compose)
-    implementation(libs.koin.core)
-    implementation(libs.koin.android)
-    implementation(libs.androidx.uiautomator)
-
-    debugImplementation(libs.leakcanary)
-
-    androidTestImplementation(platform(libs.androidx.compose.bom))
-    androidTestImplementation(libs.androidx.compose.ui.test)
-    debugImplementation(libs.androidx.compose.ui.test.manifest)
-    androidTestImplementation(libs.ktor.mock)
-    androidTestImplementation(libs.androidx.dataStore.core)
-    androidTestImplementation(libs.androidx.espresso.core)
 }
