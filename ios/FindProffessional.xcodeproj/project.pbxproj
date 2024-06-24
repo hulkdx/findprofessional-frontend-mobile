@@ -18,10 +18,6 @@
 		058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2152FB032600AC8F00CF470E /* MainApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainApp.swift; sourceTree = "<group>"; };
 		4664CED02C29EB3200E5B673 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		46EBF93B280C41AB001D635A /* inter_bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = inter_bold.ttf; sourceTree = "<group>"; };
-		46EBF93D280C41D0001D635A /* inter_regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = inter_regular.ttf; sourceTree = "<group>"; };
-		46EBF93E280C41D0001D635A /* inter_medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = inter_medium.ttf; sourceTree = "<group>"; };
-		46EBF93F280C41D0001D635A /* inter_light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = inter_light.ttf; sourceTree = "<group>"; };
 		7555FF7B242A565900829871 /* FindProfessional.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindProfessional.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -49,21 +45,9 @@
 			isa = PBXGroup;
 			children = (
 				46905BA9298BDA6B005D4292 /* Preview Content */,
-				46EBF92C280C400B001D635A /* Font */,
 				058557BA273AAA24004C7B11 /* Assets.xcassets */,
 			);
 			path = Res;
-			sourceTree = "<group>";
-		};
-		46EBF92C280C400B001D635A /* Font */ = {
-			isa = PBXGroup;
-			children = (
-				46EBF93B280C41AB001D635A /* inter_bold.ttf */,
-				46EBF93F280C41D0001D635A /* inter_light.ttf */,
-				46EBF93E280C41D0001D635A /* inter_medium.ttf */,
-				46EBF93D280C41D0001D635A /* inter_regular.ttf */,
-			);
-			path = Font;
 			sourceTree = "<group>";
 		};
 		7555FF72242A565900829871 = {
