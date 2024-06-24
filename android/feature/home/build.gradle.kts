@@ -11,7 +11,6 @@ android {
 }
 
 dependencies {
-    implementation(project(":android:core"))
     implementation(project(":android:feature:navigation"))
 
     testImplementation(platform(libs.junit5.bom))

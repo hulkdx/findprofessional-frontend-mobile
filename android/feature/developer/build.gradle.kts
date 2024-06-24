@@ -8,7 +8,6 @@ android {
 }
 
 dependencies {
-    implementation(project(":android:core"))
     implementation(project(":android:feature:navigation"))
 
     implementation(libs.androidx.activity.compose)
