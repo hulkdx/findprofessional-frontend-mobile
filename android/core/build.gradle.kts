@@ -8,8 +8,8 @@ android {
 }
 
 dependencies {
-    api(project(":common"))
 
+    api(project(":composeApp"))
     implementation(libs.coil.compose)
 
     api(platform(libs.androidx.compose.bom))
