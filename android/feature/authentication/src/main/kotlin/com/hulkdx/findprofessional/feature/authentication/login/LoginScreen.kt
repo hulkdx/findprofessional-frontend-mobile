@@ -30,6 +30,7 @@ import com.hulkdx.findprofessional.common.resources.dontHaveAnAccount
 import com.hulkdx.findprofessional.common.resources.forgotYourPassword
 import com.hulkdx.findprofessional.common.resources.signIn
 import com.hulkdx.findprofessional.common.resources.signUp
+import com.hulkdx.findprofessional.common.utils.localized
 import com.hulkdx.findprofessional.core.commonui.CUFilledButton
 import com.hulkdx.findprofessional.core.commonui.CUSnackBar
 import com.hulkdx.findprofessional.core.commonui.CUTextButton

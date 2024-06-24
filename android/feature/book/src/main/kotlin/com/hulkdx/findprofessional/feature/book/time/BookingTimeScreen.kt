@@ -42,6 +42,7 @@ import com.hulkdx.findprofessional.common.feature.book.time.BookingTimeUiState.B
 import com.hulkdx.findprofessional.common.resources.Res
 import com.hulkdx.findprofessional.common.resources.continue1
 import com.hulkdx.findprofessional.common.resources.selectOneOrMoreItems
+import com.hulkdx.findprofessional.common.utils.localized
 import com.hulkdx.findprofessional.common.utils.now
 import com.hulkdx.findprofessional.core.R
 import com.hulkdx.findprofessional.core.commonui.CUFilledButton

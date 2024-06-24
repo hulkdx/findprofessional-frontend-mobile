@@ -28,7 +28,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.hulkdx.findprofessional.common.feature.book.summery.BookingSummeryUiState
-import com.hulkdx.findprofessional.common.resources.*
+import com.hulkdx.findprofessional.common.resources.Res
+import com.hulkdx.findprofessional.common.resources.checkout
+import com.hulkdx.findprofessional.common.resources.connection
+import com.hulkdx.findprofessional.common.resources.dateAndTime
+import com.hulkdx.findprofessional.common.resources.total
+import com.hulkdx.findprofessional.common.resources.yourRequest
+import com.hulkdx.findprofessional.common.resources.yourSkypeId
+import com.hulkdx.findprofessional.common.utils.localized
 import com.hulkdx.findprofessional.core.R
 import com.hulkdx.findprofessional.core.commonui.CUFilledButton
 import com.hulkdx.findprofessional.core.commonui.CUSnackBar

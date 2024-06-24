@@ -5,11 +5,9 @@ import android.os.Parcelable
 import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalTime
-import kotlinx.parcelize.Parcelize
 import kotlinx.parcelize.Parceler
 import kotlinx.parcelize.TypeParceler
 
-actual typealias CommonParcelize = Parcelize
 actual typealias CommonParcelable = Parcelable
 actual typealias CommonParceler<T> = Parceler<T>
 actual typealias CommonTypeParceler<T, P> = TypeParceler<T, P>
