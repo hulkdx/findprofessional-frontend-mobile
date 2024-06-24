@@ -72,7 +72,7 @@ kotlin {
 }
 
 android {
-    namespace = "com.hulkdx.findprofessional.common"
+    namespace = "com.hulkdx.findprofessional"
 
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     sourceSets["main"].res.srcDirs("src/androidMain/res")

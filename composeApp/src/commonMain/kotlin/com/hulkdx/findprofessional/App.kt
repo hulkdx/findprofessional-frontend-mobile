@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.common
+package com.hulkdx.findprofessional
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Column
