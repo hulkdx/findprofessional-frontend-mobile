@@ -33,6 +33,7 @@ kotlin {
                 implementation(libs.navigation.compose)
                 implementation(libs.androidx.dataStore.core)
                 implementation(libs.koin.core)
+                implementation(libs.koin.compose)
                 implementation(libs.kotlinx.coroutines.core)
                 implementation(libs.ktor.core)
                 implementation(libs.ktor.content.negotiation)
