@@ -15,7 +15,6 @@ dependencyResolutionManagement {
     }
 }
 
-include(":android:app")
 include(":ios")
 include(":composeApp")
 

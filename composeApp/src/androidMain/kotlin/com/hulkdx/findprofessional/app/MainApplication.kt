@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional
+package com.hulkdx.findprofessional.app
 
 import android.app.Application
 

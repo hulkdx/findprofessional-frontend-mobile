@@ -1,10 +1,9 @@
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
-    alias(libs.plugins.hulkdx.android.library.compose)
+    alias(libs.plugins.hulkdx.android.application.compose)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.jetbrains.compose)
 
-    alias(libs.plugins.kotlin.parcelize)
 }
 
 kotlin {
@@ -42,11 +41,7 @@ kotlin {
                 api(libs.kotlinx.datetime)
             }
         }
-        val androidMain by getting {
-            dependencies {
-                implementation(libs.ktor.okhttp)
-            }
-        }
+        val androidMain by getting {}
         val iosX64Main by getting
         val iosArm64Main by getting
         val iosSimulatorArm64Main by getting
@@ -73,11 +68,44 @@ kotlin {
 }
 
 android {
-    namespace = "com.hulkdx.findprofessional"
+    namespace = "com.hulkdx.findprofessional.app"
 
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     sourceSets["main"].res.srcDirs("src/androidMain/res")
     sourceSets["main"].resources.srcDirs("src/commonMain/resources")
+
+    defaultConfig {
+        applicationId = namespace
+        targetSdk = 34
+        versionCode = 3
+        versionName = "1.0"
+
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        debug {
+            isDebuggable = true
+            isMinifyEnabled = false
+            isShrinkResources = false
+        }
+        release {
+            isDebuggable = false
+            isMinifyEnabled = true
+            isShrinkResources = true
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro",
+            )
+        }
+    }
+
+    dependencies {
+        implementation(libs.androidx.activity.compose)
+        implementation(libs.ktor.okhttp)
+
+        debugImplementation(libs.leakcanary)
+    }
 }
 
 compose.resources {
