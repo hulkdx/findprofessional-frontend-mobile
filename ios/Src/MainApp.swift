@@ -3,9 +3,13 @@ import shared
 
 @main
 struct MainApp: App {
-	var body: some Scene {
-		WindowGroup {
+    init() {
+        InitKoinKt.doInitKoin()
+    }
+
+    var body: some Scene {
+        WindowGroup {
             ContentView()
-		}
-	}
+        }
+    }
 }
