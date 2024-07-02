@@ -14,7 +14,6 @@ dependencies {
     implementation(project(":android:feature:profile"))
     implementation(project(":android:feature:review"))
     implementation(project(":android:feature:book"))
-    implementation(project(":android:core"))
     implementation(project(":android:app"))
 
     testImplementation(platform(libs.androidx.compose.bom))
