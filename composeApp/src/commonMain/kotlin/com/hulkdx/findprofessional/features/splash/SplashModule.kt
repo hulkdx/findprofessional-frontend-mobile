@@ -11,4 +11,5 @@ val splashModule: Module
     get() = module {
         factory(startDestinationRouteQualifier) { SplashNavigationScreen().route }
         factoryOf(::SplashNavigationScreen) bind NavHostScreen::class
+        factoryOf(::SplashViewModel)
     }

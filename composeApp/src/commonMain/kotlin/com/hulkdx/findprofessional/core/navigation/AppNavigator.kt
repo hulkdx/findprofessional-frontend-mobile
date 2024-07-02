@@ -6,17 +6,17 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.hulkdx.findprofessional.core.di.startDestinationRouteQualifier
-import org.koin.compose.getKoin
+import org.koin.androidx.compose.koinInjectAll
+import org.koin.compose.koinInject
 
 @Composable
 fun AppNavigator() {
-    val koin = getKoin()
     val navController = rememberNavController()
 
     SetupNavHost(
         navController = navController,
-        startDestinationRoute = koin.get(startDestinationRouteQualifier),
-        screens = koin.getAll(),
+        startDestinationRoute = koinInject(startDestinationRouteQualifier),
+        screens = koinInjectAll(),
     )
 }
 
