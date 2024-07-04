@@ -16,6 +16,12 @@ A push to `main` branch will release it to [Google Play](https://play.google.com
 ### CI
 Under development
 
+### Xcode
+If you want to run the code in xcode and java version mismatches, run the following line:
+```sh
+echo JAVA_HOME=\'/Applications/Android Studio.app/Contents/jbr/Contents/Home\' > ios/.env
+```
+
 ## Code
 
 ### Structure
