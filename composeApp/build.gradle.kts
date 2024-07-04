@@ -73,8 +73,6 @@ android {
 
     dependencies {
         implementation(libs.androidx.activity.compose)
-        implementation(libs.ktor.okhttp)
-
         debugImplementation(libs.leakcanary)
     }
 }
