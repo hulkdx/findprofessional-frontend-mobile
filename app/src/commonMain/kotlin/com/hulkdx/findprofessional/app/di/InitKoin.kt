@@ -1,7 +1,6 @@
 package com.hulkdx.findprofessional.app.di
 
-import com.hulkdx.findprofessional.app.di.module.apiModule
-import com.hulkdx.findprofessional.app.di.module.setupApiInterceptors
+import com.hulkdx.findprofessional.common.apiModule
 import com.hulkdx.findprofessional.common.config.storage.datastore.datastoreModule
 import com.hulkdx.findprofessional.common.feature.authentication.login.loginModule
 import com.hulkdx.findprofessional.common.feature.authentication.logout.logoutModule
@@ -11,14 +10,17 @@ import com.hulkdx.findprofessional.common.feature.home.homeModule
 import com.hulkdx.findprofessional.common.feature.review.reviewModule
 import com.hulkdx.findprofessional.common.navigation.NavigationScreen
 import com.hulkdx.findprofessional.common.navigation.Navigator
+import com.hulkdx.findprofessional.common.setupApiInterceptors
 import com.hulkdx.findprofessional.feature.authentication.splash.splashModule
 import org.koin.core.context.startKoin
 import org.koin.core.module.Module
+import org.koin.dsl.bind
 import org.koin.dsl.module
 
 fun initKoin() {
     startKoin {
         modules(
+            testModule,
             apiModule,
             datastoreModule,
             loginModule,
@@ -28,7 +30,6 @@ fun initKoin() {
             reviewModule,
             bookModule,
             splashModule,
-            testModule,
         )
     }
 
@@ -56,5 +57,5 @@ val testModule: Module
                     TODO()
                 }
             }
-        }
+        } bind Navigator::class
     }

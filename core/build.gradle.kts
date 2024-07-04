@@ -5,6 +5,9 @@ plugins {
 
 kotlin {
     sourceSets {
+        androidMain.dependencies {
+            implementation(libs.ktor.okhttp)
+        }
         commonMain.dependencies {
             api(libs.koin.core)
             api(libs.koin.compose)
@@ -19,6 +22,9 @@ kotlin {
             implementation(libs.ktor.content.negotiation)
             implementation(libs.ktor.serialization)
             implementation(libs.ktor.logging)
+        }
+        iosMain.dependencies {
+            implementation(libs.ktor.darwin)
         }
     }
 }
