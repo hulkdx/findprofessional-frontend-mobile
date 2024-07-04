@@ -6,6 +6,5 @@ import org.koin.dsl.module
 
 val splashModule: Module
     get() = module {
-        // factoryOf(::SplashNavigationScreen) bind AndroidNavigationScreen::class
         factoryOf(::SplashViewModel)
     }

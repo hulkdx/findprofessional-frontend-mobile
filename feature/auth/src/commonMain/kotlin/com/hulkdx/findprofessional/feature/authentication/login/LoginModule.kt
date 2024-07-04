@@ -6,6 +6,5 @@ import org.koin.dsl.module
 
 val loginModule: Module
     get() = module {
-//        factoryOf(::LoginNavigationScreen) bind AndroidNavigationScreen::class
         factoryOf(::LoginViewModel)
     }
