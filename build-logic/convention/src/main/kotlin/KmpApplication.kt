@@ -13,7 +13,6 @@ class KmpApplication : Plugin<Project> {
                 apply(libs.findPluginId("compose-compiler"))
                 apply(libs.findPluginId("jetbrains-compose"))
             }
-
             kotlin(extensions.getByType<KotlinMultiplatformExtension>())
             android(extensions.getByType<ApplicationExtension>())
         }

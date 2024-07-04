@@ -1,6 +1,14 @@
 plugins {
-    alias(libs.plugins.hulkdx.android.application.kmp)
+    alias(libs.plugins.hulkdx.kmp.application)
     alias(libs.plugins.kotlin.serialization)
+}
+
+kotlin {
+    sourceSets {
+        commonMain.dependencies {
+            implementation(projects.core)
+        }
+    }
 }
 
 android {

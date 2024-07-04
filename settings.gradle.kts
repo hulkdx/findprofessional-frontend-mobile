@@ -20,6 +20,4 @@ enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 include(":ios")
 include(":app")
-
-// TODO: revert it back
-//  include(":android:paparazzi-tests")
+include(":core")
