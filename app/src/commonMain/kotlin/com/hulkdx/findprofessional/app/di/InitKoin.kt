@@ -15,23 +15,17 @@ import org.koin.core.context.startKoin
 fun initKoin() {
     startKoin {
         modules(
-            // @formatter:off
-            apiModule +
-            datastoreModule +
-            allModules()
-            // @formatter:on
+            apiModule,
+            datastoreModule,
+            loginModule,
+            signUpModule,
+            logoutModule,
+            homeModule,
+            reviewModule,
+            bookModule,
+            splashModule,
         )
     }
 
     setupApiInterceptors()
 }
-
-fun allModules() = listOf(
-    loginModule,
-    signUpModule,
-    logoutModule,
-    homeModule,
-    reviewModule,
-    bookModule,
-    splashModule,
-)
