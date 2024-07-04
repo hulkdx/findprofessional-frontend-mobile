@@ -9,8 +9,12 @@ import com.hulkdx.findprofessional.common.feature.authentication.signup.signUpMo
 import com.hulkdx.findprofessional.common.feature.book.bookModule
 import com.hulkdx.findprofessional.common.feature.home.homeModule
 import com.hulkdx.findprofessional.common.feature.review.reviewModule
+import com.hulkdx.findprofessional.common.navigation.NavigationScreen
+import com.hulkdx.findprofessional.common.navigation.Navigator
 import com.hulkdx.findprofessional.feature.authentication.splash.splashModule
 import org.koin.core.context.startKoin
+import org.koin.core.module.Module
+import org.koin.dsl.module
 
 fun initKoin() {
     startKoin {
@@ -24,8 +28,33 @@ fun initKoin() {
             reviewModule,
             bookModule,
             splashModule,
+            testModule,
         )
     }
 
     setupApiInterceptors()
 }
+
+val testModule: Module
+    get() = module {
+        factory {
+            object : Navigator {
+                override fun navigate(screen: NavigationScreen) {
+                }
+
+                override fun navigate(
+                    screen: NavigationScreen,
+                    popTo: NavigationScreen,
+                    inclusive: Boolean,
+                ) {
+                }
+
+                override fun goBack() {
+                }
+
+                override fun getCurrentScreen(): NavigationScreen {
+                    TODO()
+                }
+            }
+        }
+    }
