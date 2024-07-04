@@ -17,20 +17,20 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.hulkdx.findprofessional.common.resources.Res
-import com.hulkdx.findprofessional.common.resources.firstName
-import com.hulkdx.findprofessional.common.resources.lastName
-import com.hulkdx.findprofessional.common.resources.signUp
 import com.hulkdx.findprofessional.core.commonui.CUFilledButton
 import com.hulkdx.findprofessional.core.commonui.CUSnackBar
 import com.hulkdx.findprofessional.core.commonui.CUTextField
+import com.hulkdx.findprofessional.core.resources.Res
+import com.hulkdx.findprofessional.core.resources.firstName
+import com.hulkdx.findprofessional.core.resources.lastName
+import com.hulkdx.findprofessional.core.resources.signUp
 import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.feature.authentication.ui.EmailTextField
 import com.hulkdx.findprofessional.feature.authentication.ui.PasswordTextField
 import org.jetbrains.compose.resources.stringResource
+import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
