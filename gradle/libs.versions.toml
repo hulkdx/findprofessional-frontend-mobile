@@ -52,7 +52,6 @@ leakcanary = { group = "com.squareup.leakcanary", name = "leakcanary-android", v
 # build-logic dependencies
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }
 kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
-navigation-compose = { module = "org.jetbrains.androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
 
 
 [plugins]
@@ -66,5 +65,5 @@ kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", versi
 paparazzi = { id = "app.cash.paparazzi", version.ref = "paparazziGradlePlugin" }
 
 # build-logic
-hulkdx-android-application-compose = { id = "com.hulkdx.findprofessional.application.compose", version = "unspecified" }
-hulkdx-android-library-compose = { id = "com.hulkdx.findprofessional.library.compose", version = "unspecified" }
+hulkdx-android-application-kmp = { id = "com.hulkdx.findprofessional.kmp.application", version = "unspecified" }
+hulkdx-android-library-kmp = { id = "com.hulkdx.findprofessional.kmp.library", version = "unspecified" }

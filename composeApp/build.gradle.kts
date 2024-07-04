@@ -1,8 +1,7 @@
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
-    alias(libs.plugins.hulkdx.android.application.compose)
+    alias(libs.plugins.hulkdx.android.application.kmp)
     alias(libs.plugins.kotlin.serialization)
-    alias(libs.plugins.jetbrains.compose)
 
 }
 
@@ -22,6 +21,8 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
+            implementation(compose.runtime)
+            implementation(compose.material3)
         }
 
         iosMain.dependencies {
