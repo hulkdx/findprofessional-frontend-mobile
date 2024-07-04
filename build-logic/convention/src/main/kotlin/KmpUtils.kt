@@ -9,5 +9,5 @@ internal val Project.libs
 internal fun VersionCatalog.findPluginId(alias: String): String =
     findPlugin(alias).get().get().pluginId
 
-internal val Project.composeLibs
+internal val Project.compose
     get() = org.jetbrains.compose.ComposePlugin.Dependencies(this)

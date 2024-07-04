@@ -16,8 +16,12 @@ internal fun Project.kotlin(ext: KotlinMultiplatformExtension) = with(ext) {
     }
 
     sourceSets.commonMain.dependencies {
-        implementation(composeLibs.runtime)
-        implementation(composeLibs.material3)
+        implementation(compose.runtime)
+        implementation(compose.foundation)
+        implementation(compose.material3)
+        implementation(compose.ui)
+        implementation(compose.components.resources)
+        implementation(compose.components.uiToolingPreview)
     }
     sourceSets.androidMain.dependencies {
     }
