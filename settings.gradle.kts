@@ -19,7 +19,7 @@ dependencyResolutionManagement {
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 include(":ios")
-include(":composeApp")
+include(":app")
 
 // TODO: revert it back
 //  include(":android:paparazzi-tests")
