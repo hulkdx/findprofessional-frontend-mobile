@@ -8,14 +8,14 @@ class KmpApplication : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             with(pluginManager) {
-                apply("com.android.application")
+                apply(libs.findPluginId("android-application"))
+                apply(libs.findPluginId("kotlin-multiplatform"))
                 apply(libs.findPluginId("compose-compiler"))
                 apply(libs.findPluginId("jetbrains-compose"))
             }
 
-            with(extensions.getByType<KotlinMultiplatformExtension>()) {
-            }
-            configureAndroidCompose(extensions.getByType<ApplicationExtension>())
+            kotlin(extensions.getByType<KotlinMultiplatformExtension>())
+            android(extensions.getByType<ApplicationExtension>())
         }
     }
 }

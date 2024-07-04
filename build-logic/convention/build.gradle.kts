@@ -10,6 +10,7 @@ java {
 dependencies {
     compileOnly(libs.android.gradlePlugin)
     compileOnly(libs.kotlin.gradlePlugin)
+    compileOnly(libs.compose.gradlePlugin)
 }
 
 gradlePlugin {
@@ -20,7 +21,7 @@ gradlePlugin {
         }
         register("kmpLibrary") {
             id = "com.hulkdx.findprofessional.kmp.library"
-            implementationClass = "AndroidLibraryCompose"
+            implementationClass = "KmpLibrary"
         }
     }
 }

@@ -1,36 +1,6 @@
 plugins {
-    alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.hulkdx.android.application.kmp)
     alias(libs.plugins.kotlin.serialization)
-
-}
-
-kotlin {
-    androidTarget()
-
-    listOf(
-        iosX64(),
-        iosArm64(),
-        iosSimulatorArm64(),
-    ).forEach {
-        it.binaries.framework {
-            baseName = "shared"
-            isStatic = true
-        }
-    }
-
-    sourceSets {
-        commonMain.dependencies {
-            implementation(compose.runtime)
-            implementation(compose.material3)
-        }
-
-        iosMain.dependencies {
-        }
-
-        commonTest.dependencies {
-        }
-    }
 }
 
 android {
@@ -76,9 +46,4 @@ android {
         implementation(libs.androidx.activity.compose)
         debugImplementation(libs.leakcanary)
     }
-}
-
-compose.resources {
-    publicResClass = true
-    packageOfResClass = "com.hulkdx.findprofessional.common.resources"
 }

@@ -11,7 +11,7 @@ class KmpLibrary : Plugin<Project> {
                 apply(libs.findPluginId("compose-compiler"))
                 apply(libs.findPluginId("jetbrains-compose"))
             }
-            configureAndroidCompose(extensions.getByType<LibraryExtension>())
+            android(extensions.getByType<LibraryExtension>())
         }
     }
 }
