@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.common
+package com.hulkdx.findprofessional.app
 
 import androidx.compose.ui.window.ComposeUIViewController
 import com.hulkdx.findprofessional.App
