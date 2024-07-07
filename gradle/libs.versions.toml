@@ -20,6 +20,8 @@ koin = "3.5.6"
 koin-compose = "1.1.5"
 # https://github.com/Kotlin/kotlinx-datetime
 kotlinxDatetime = "0.6.0"
+# https://github.com/Kotlin/kotlinx.serialization
+kotlinxSerializationJson = "1.7.1"
 # https://github.com/ktorio/ktor
 ktor = "2.3.11"
 # https://github.com/Kotlin/kotlinx.coroutines
@@ -37,6 +39,7 @@ koin-compose = { group = "io.insert-koin", name = "koin-compose", version.ref = 
 koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin" }
 koin-test = { group = "io.insert-koin", name = "koin-test", version.ref = "koin" }
 kotlinx-datetime = { group = "org.jetbrains.kotlinx", name = "kotlinx-datetime", version.ref = "kotlinxDatetime" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
 ktor-core = { group = "io.ktor", name = "ktor-client-core", version.ref = "ktor" }
 ktor-okhttp = { group = "io.ktor", name = "ktor-client-okhttp", version.ref = "ktor" }
 ktor-darwin = { group = "io.ktor", name = "ktor-client-darwin", version.ref = "ktor" }
