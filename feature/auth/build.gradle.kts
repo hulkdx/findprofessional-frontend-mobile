@@ -7,7 +7,8 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(projects.core)
-            implementation(libs.lifecycle.viewmodel.compose)
+
+            implementation(libs.ktor.core)
         }
     }
 }
