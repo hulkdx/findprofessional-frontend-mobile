@@ -8,6 +8,17 @@ kotlin {
         commonMain.dependencies {
             implementation(projects.core)
             implementation(projects.feature.auth)
+
+            implementation(libs.ktor.core)
+            implementation(libs.ktor.content.negotiation)
+            implementation(libs.ktor.serialization)
+            implementation(libs.ktor.logging)
+        }
+        androidMain.dependencies {
+            implementation(libs.ktor.okhttp)
+        }
+        iosMain.dependencies {
+            implementation(libs.ktor.darwin)
         }
     }
 }

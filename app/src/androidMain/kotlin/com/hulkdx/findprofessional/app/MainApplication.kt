@@ -7,6 +7,8 @@ import com.hulkdx.findprofessional.app.di.initKoin
 class MainApplication : Application() {
     override fun onCreate() {
         super.onCreate()
-        initKoin(androidAppModule)
+        initKoin(
+            androidAppModule(this)
+        )
     }
 }
