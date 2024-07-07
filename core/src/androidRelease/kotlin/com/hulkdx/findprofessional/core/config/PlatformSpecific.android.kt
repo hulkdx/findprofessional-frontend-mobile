@@ -4,6 +4,8 @@ class PlatformSpecificAndroid(
     private val appContext: Context,
 ) : PlatformSpecific {
 
+    override fun isDebug() = com.hulkdx.findprofessional.core.config.isDebug()
+    
     override fun localhostUrl() = ""
 
     override fun appDirectoryPath(): String {

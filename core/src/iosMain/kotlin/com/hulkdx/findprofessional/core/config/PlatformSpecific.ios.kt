@@ -9,6 +9,8 @@ import kotlin.experimental.ExperimentalNativeApi
 
 class PlatformSpecificIOS : PlatformSpecific {
 
+    override fun isDebug() = com.hulkdx.findprofessional.core.config.isDebug()
+
     override fun localhostUrl() = "localhost"
 
     override fun appDirectoryPath(): String {
