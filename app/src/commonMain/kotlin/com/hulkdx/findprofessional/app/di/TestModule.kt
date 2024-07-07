@@ -1,8 +1,8 @@
 package com.hulkdx.findprofessional.app.di
 
 import com.hulkdx.findprofessional.common.config.PlatformSpecific
-import com.hulkdx.findprofessional.common.navigation.NavigationScreen
-import com.hulkdx.findprofessional.common.navigation.Navigator
+import com.hulkdx.findprofessional.core.navigation.NavigationScreen
+import com.hulkdx.findprofessional.core.navigation.Navigator
 import org.koin.core.module.Module
 import org.koin.dsl.bind
 import org.koin.dsl.module
