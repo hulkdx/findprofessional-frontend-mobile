@@ -13,6 +13,8 @@ kotlin {
             api(libs.kotlinx.serialization.json)
 
             api(libs.lifecycle.viewmodel.compose)
+
+            implementation(libs.androidx.dataStore.core)
         }
     }
 }

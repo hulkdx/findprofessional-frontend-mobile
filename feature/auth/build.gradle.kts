@@ -9,6 +9,8 @@ kotlin {
             implementation(projects.core)
 
             implementation(libs.ktor.core)
+
+            implementation(libs.androidx.dataStore.core)
         }
     }
 }
