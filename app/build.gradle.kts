@@ -7,6 +7,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(projects.core)
+            implementation(projects.libs.navigationDecompose)
             implementation(projects.feature.auth)
 
             implementation(libs.ktor.core)

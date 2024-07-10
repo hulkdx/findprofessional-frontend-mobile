@@ -21,4 +21,7 @@ enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 include(":ios")
 include(":app")
 include(":core")
+
+include(":libs:navigation-decompose")
+
 include(":feature:auth")

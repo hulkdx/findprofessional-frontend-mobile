@@ -1,6 +1,9 @@
 package com.hulkdx.findprofessional.core.navigation
 
+import kotlinx.serialization.Serializable
+
 // @formatter:off
+@Serializable
 sealed class NavigationScreen {
     data object Splash : NavigationScreen()
     data object Login : NavigationScreen()
