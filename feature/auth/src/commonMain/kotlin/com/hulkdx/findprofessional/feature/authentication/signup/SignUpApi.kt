@@ -1,7 +1,7 @@
-package com.hulkdx.findprofessional.feature.authentication.login
+package com.hulkdx.findprofessional.feature.authentication.signup
 
-import com.hulkdx.findprofessional.feature.authentication.login.model.LoginRequest
 import com.hulkdx.findprofessional.feature.authentication.login.model.UserData
+import com.hulkdx.findprofessional.feature.authentication.signup.model.RegisterRequest
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.post
@@ -10,16 +10,17 @@ import io.ktor.client.request.url
 import io.ktor.http.ContentType
 import io.ktor.http.contentType
 
-interface LoginApi {
-    suspend fun login(request: LoginRequest): UserData
+interface SignUpApi {
+    suspend fun register(request: RegisterRequest): UserData
 }
 
-class LoginApiImpl(
+class SignUpApiImpl(
     private val client: HttpClient,
-) : LoginApi {
-    override suspend fun login(request: LoginRequest): UserData {
+) : SignUpApi {
+
+    override suspend fun register(request: RegisterRequest): UserData {
         return client.post {
-            url(urlString)
+            url(URL)
             contentType(ContentType.Application.Json)
             setBody(request)
         }
@@ -27,6 +28,6 @@ class LoginApiImpl(
     }
 
     companion object {
-        const val urlString = "auth/login"
+        const val URL = "auth/register"
     }
 }

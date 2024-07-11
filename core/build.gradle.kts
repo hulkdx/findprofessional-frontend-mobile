@@ -14,6 +14,8 @@ kotlin {
 
             api(libs.lifecycle.viewmodel.compose)
 
+            api(libs.ktor.core)
+
             implementation(libs.androidx.dataStore.core)
         }
     }
