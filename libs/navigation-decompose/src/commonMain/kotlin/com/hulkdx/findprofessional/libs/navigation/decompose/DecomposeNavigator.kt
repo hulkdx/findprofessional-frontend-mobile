@@ -19,10 +19,10 @@ class DecomposeNavigator(
     }
 
     override fun navigate(screen: NavigationScreen, popTo: NavigationScreen, inclusive: Boolean) {
-        navController.navigate { stack ->
+        navController.navigate a@{ stack ->
             val popToIndex = stack.indexOf(popTo)
             if (popToIndex == -1) {
-                return@navigate stack + screen
+                return@a stack + screen
             }
             val newStack = if (inclusive) {
                 stack.take(popToIndex)
