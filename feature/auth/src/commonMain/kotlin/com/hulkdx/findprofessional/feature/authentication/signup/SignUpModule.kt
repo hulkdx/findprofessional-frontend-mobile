@@ -9,4 +9,5 @@ val signUpModule: Module
     get() = module {
         factoryOf(::SignUpApiImpl) bind SignUpApi::class
         factoryOf(::SignUpUseCase)
+        factoryOf(::SignUpViewModel)
     }
