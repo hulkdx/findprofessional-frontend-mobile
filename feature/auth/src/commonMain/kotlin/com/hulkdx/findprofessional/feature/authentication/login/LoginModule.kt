@@ -12,4 +12,7 @@ val loginModule: Module
     get() = module {
         factoryOf(::GetUserUseCase)
         factoryOf(::UserStorageDataStore) bind UserStorage::class
+        factoryOf(::LoginViewModel)
+        factoryOf(::LoginUseCase)
+        factoryOf(::LoginApiImpl) bind LoginApi::class
     }
