@@ -9,10 +9,9 @@ import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 
 // TODO: remove componentContext
 internal class RootComponent(
+    navigation: StackNavigation<NavigationScreen>,
     componentContext: ComponentContext,
 ) : ComponentContext by componentContext {
-    val navigation = StackNavigation<NavigationScreen>()
-
     val stack: Value<ChildStack<*, NavigationScreen>> =
         childStack(
             source = navigation,
@@ -21,4 +20,5 @@ internal class RootComponent(
             handleBackButton = true,
             childFactory = { screen, _ -> screen },
         )
+    
 }

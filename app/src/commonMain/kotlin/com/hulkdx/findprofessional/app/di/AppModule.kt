@@ -12,7 +12,4 @@ val appModule
 
         splashModule,
         loginModule,
-
-        // TODO: fix
-        testModule,
     )
