@@ -1,3 +1,5 @@
+@file:Suppress("PropertyName")
+
 package com.hulkdx.findprofessional.libs.navigation.decompose
 
 import com.arkivanov.decompose.router.stack.StackNavigation
