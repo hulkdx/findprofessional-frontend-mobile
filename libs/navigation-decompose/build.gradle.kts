@@ -11,8 +11,8 @@ kotlin {
         commonMain.dependencies {
             implementation(projects.core)
 
-            implementation("com.arkivanov.decompose:decompose:3.1.0")
-            implementation("com.arkivanov.decompose:extensions-compose:3.1.0")
+            implementation(libs.decompose)
+            implementation(libs.decompose.extensions.compose)
         }
     }
 }
