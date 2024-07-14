@@ -1,9 +1,26 @@
+@file:OptIn(ExperimentalKotlinGradlePluginApi::class, ExperimentalComposeLibrary::class)
+
+import org.jetbrains.compose.ExperimentalComposeLibrary
+import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
+import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSetTree
+
 plugins {
     alias(libs.plugins.hulkdx.kmp.application)
     alias(libs.plugins.kotlin.serialization)
 }
 
 kotlin {
+    androidTarget {
+        // https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-test.html
+        instrumentedTestVariant {
+            sourceSetTree.set(KotlinSourceSetTree.test)
+            dependencies {
+                implementation(libs.androidx.ui.test.junit4.android)
+                debugImplementation(libs.androidx.ui.test.manifest)
+            }
+        }
+    }
+
     sourceSets {
         commonMain.dependencies {
             implementation(projects.core)
@@ -20,6 +37,15 @@ kotlin {
         }
         iosMain.dependencies {
             implementation(libs.ktor.darwin)
+        }
+        commonTest.dependencies {
+            implementation(kotlin("test"))
+            implementation(kotlin("test-common"))
+            implementation(kotlin("test-annotations-common"))
+            implementation(libs.koin.test)
+            implementation(compose.uiTest)
+            implementation(libs.decompose)
+            implementation(libs.decompose.extensions.compose)
         }
     }
 }
