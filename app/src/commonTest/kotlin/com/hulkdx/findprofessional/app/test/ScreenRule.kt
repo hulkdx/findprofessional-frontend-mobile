@@ -2,13 +2,9 @@
 
 package com.hulkdx.findprofessional.app.test
 
-import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.test.ComposeUiTest
 import androidx.compose.ui.test.ExperimentalTestApi
 import androidx.compose.ui.test.runComposeUiTest
-import androidx.lifecycle.ViewModelStore
-import androidx.lifecycle.ViewModelStoreOwner
-import androidx.lifecycle.viewmodel.compose.LocalViewModelStoreOwner
 import com.arkivanov.decompose.DefaultComponentContext
 import com.arkivanov.essenty.lifecycle.LifecycleRegistry
 import com.arkivanov.essenty.lifecycle.resume
@@ -37,16 +33,8 @@ fun runAppUiTest(
 
 fun ComposeUiTest.setAppContent() {
     setContent {
-        CompositionLocalProvider(
-            LocalViewModelStoreOwner provides object : ViewModelStoreOwner {
-                override val viewModelStore: ViewModelStore
-                    get() = ViewModelStore()
-
-            }
-        ) {
-            val lifecycle = LifecycleRegistry()
-            App(ComponentContext(DefaultComponentContext(lifecycle = lifecycle)))
-            lifecycle.resume()
-        }
+        val lifecycle = LifecycleRegistry()
+        App(ComponentContext(DefaultComponentContext(lifecycle = lifecycle)))
+        lifecycle.resume()
     }
 }
