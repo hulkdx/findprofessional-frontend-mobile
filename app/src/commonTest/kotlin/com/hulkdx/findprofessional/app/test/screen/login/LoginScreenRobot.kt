@@ -1,15 +1,17 @@
+@file:OptIn(ExperimentalTestApi::class)
+
 package com.hulkdx.findprofessional.app.test.screen.login
 
+import androidx.compose.ui.test.ExperimentalTestApi
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performScrollTo
 import androidx.compose.ui.test.performTextInput
-import androidx.test.espresso.Espresso
-import com.hulkdx.findprofessional.utils.Rule
-import com.hulkdx.findprofessional.utils.assertAppIsClosed
-import com.hulkdx.findprofessional.utils.assertNodeIsDisplayed
-import com.hulkdx.findprofessional.utils.pressBackButton
+import com.hulkdx.findprofessional.app.test.utils.Rule
+import com.hulkdx.findprofessional.app.test.utils.assertAppIsClosed
+import com.hulkdx.findprofessional.app.test.utils.assertNodeIsDisplayed
+import com.hulkdx.findprofessional.app.test.utils.pressBackButton
 
 fun launchLoginScreen(
     rule: Rule,
@@ -48,7 +50,7 @@ class LoginDsl(
     }
 
     fun pressBackButton() {
-        Espresso.closeSoftKeyboard()
+//        Espresso.closeSoftKeyboard()
         rule.pressBackButton()
     }
 
