@@ -25,7 +25,9 @@ kotlin {
         commonMain.dependencies {
             implementation(projects.core)
             implementation(projects.libs.navigationDecompose)
+
             implementation(projects.feature.auth)
+            implementation(projects.feature.home)
 
             implementation(libs.ktor.core)
             implementation(libs.ktor.content.negotiation)

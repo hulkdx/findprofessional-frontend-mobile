@@ -25,3 +25,4 @@ include(":core")
 include(":libs:navigation-decompose")
 
 include(":feature:auth")
+include(":feature:home")

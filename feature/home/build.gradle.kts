@@ -7,6 +7,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(projects.core)
+            implementation(projects.feature.auth)
 
             implementation(libs.ktor.core)
             implementation(libs.androidx.dataStore.core)
@@ -15,5 +16,5 @@ kotlin {
 }
 
 android {
-    namespace = "com.hulkdx.findprofessional.feature.authentication"
+    namespace = "com.hulkdx.findprofessional.feature.home"
 }
