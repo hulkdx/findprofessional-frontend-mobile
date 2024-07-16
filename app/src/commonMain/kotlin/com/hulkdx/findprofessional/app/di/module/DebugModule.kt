@@ -10,7 +10,7 @@ import org.koin.dsl.module
 
 
 fun debugModule() = provideDebugModule {
-    factory { InMemoryApiImpl() } bind InMemoryApi::class
+    single { InMemoryApiImpl() } bind InMemoryApi::class
 }
 
 fun provideDebugModule(moduleDeclaration: ModuleDeclaration): Module {
