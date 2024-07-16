@@ -6,12 +6,7 @@ import org.koin.dsl.module
 
 val testModule
     get() = module {
-        factory { TestPlatformSpecific() } bind PlatformSpecific::class
+        factory { testPlatformSpecific() } bind PlatformSpecific::class
     }
 
-
-class TestPlatformSpecific : PlatformSpecific {
-    override fun isDebug() = true
-    override fun localhostUrl() = ""
-    override fun appDirectoryPath() = ""
-}
+expect fun testPlatformSpecific(): PlatformSpecific
