@@ -33,9 +33,6 @@ kotlin {
             implementation(libs.ktor.content.negotiation)
             implementation(libs.ktor.serialization)
             implementation(libs.ktor.logging)
-
-            implementation("com.squareup.okio:okio:3.9.0")
-            
         }
         androidMain.dependencies {
             implementation(libs.ktor.okhttp)
