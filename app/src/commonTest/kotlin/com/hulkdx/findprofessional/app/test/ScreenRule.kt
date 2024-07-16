@@ -7,6 +7,7 @@ import androidx.compose.ui.test.ExperimentalTestApi
 import androidx.compose.ui.test.runComposeUiTest
 import com.arkivanov.decompose.DefaultComponentContext
 import com.arkivanov.essenty.lifecycle.LifecycleRegistry
+import com.arkivanov.essenty.lifecycle.destroy
 import com.arkivanov.essenty.lifecycle.resume
 import com.hulkdx.findprofessional.app.App
 import com.hulkdx.findprofessional.app.test.utils.inMemoryApi
@@ -22,17 +23,18 @@ fun runAppUiTest(
 ) {
     loadKoinModules(testModule)
     inMemoryApi.loadKoinModules()
+    val lifecycle = LifecycleRegistry()
+    lifecycle.resume()
     runComposeUiTest(effectContext) {
-        setAppContent()
+        setAppContent(lifecycle)
         block()
     }
+    lifecycle.destroy()
     inMemoryApi.unloadKoinModules()
 }
 
-fun ComposeUiTest.setAppContent() {
+fun ComposeUiTest.setAppContent(lifecycle: LifecycleRegistry) {
     setContent {
-        val lifecycle = LifecycleRegistry()
         App(ComponentContext(DefaultComponentContext(lifecycle = lifecycle)))
-        lifecycle.resume()
     }
 }
