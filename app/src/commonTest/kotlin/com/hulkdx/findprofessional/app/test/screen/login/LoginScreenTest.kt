@@ -9,7 +9,7 @@ import kotlin.test.Test
 
 class LoginScreenTest {
 
-    //    @Test
+    @Test
     fun performSignUp() = runAppUiTest {
         launchLoginScreen(this) {
             pressSignUpButton()

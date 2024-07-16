@@ -9,11 +9,9 @@ import com.arkivanov.decompose.DefaultComponentContext
 import com.arkivanov.essenty.lifecycle.LifecycleRegistry
 import com.arkivanov.essenty.lifecycle.resume
 import com.hulkdx.findprofessional.app.App
-import com.hulkdx.findprofessional.app.di.appModule
 import com.hulkdx.findprofessional.app.test.utils.inMemoryApi
 import com.hulkdx.findprofessional.libs.navigation.decompose.ComponentContext
-import org.koin.core.context.startKoin
-import org.koin.core.context.stopKoin
+import org.koin.core.context.loadKoinModules
 import kotlin.coroutines.CoroutineContext
 import kotlin.coroutines.EmptyCoroutineContext
 
@@ -22,10 +20,7 @@ fun runAppUiTest(
     effectContext: CoroutineContext = EmptyCoroutineContext,
     block: ComposeUiTest.() -> Unit,
 ) {
-    stopKoin()
-    startKoin {
-        modules(appModule + testModule)
-    }
+    loadKoinModules(testModule)
     inMemoryApi.loadKoinModules()
     runComposeUiTest(effectContext) {
         setAppContent()

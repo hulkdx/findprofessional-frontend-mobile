@@ -1,6 +1,9 @@
 package com.hulkdx.findprofessional.app
 
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.feature.authentication.login.LoginScreen
@@ -22,6 +25,7 @@ private fun RenderScreen(screen: NavigationScreen) {
         NavigationScreen.Splash -> SplashScreen()
         NavigationScreen.Login -> LoginScreen()
         NavigationScreen.SignUp -> SignUpScreen()
+        NavigationScreen.Home -> Text("HomeScreen", Modifier.testTag("HomeScreen"))
         else -> TODO()
     }
 }
