@@ -14,10 +14,6 @@ kotlin {
         // https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-test.html
         instrumentedTestVariant {
             sourceSetTree.set(KotlinSourceSetTree.test)
-            dependencies {
-                implementation(libs.androidx.ui.test.junit4.android)
-                debugImplementation(libs.androidx.ui.test.manifest)
-            }
         }
     }
 
@@ -95,5 +91,8 @@ android {
     dependencies {
         implementation(libs.androidx.activity.compose)
         debugImplementation(libs.leakcanary)
+
+        debugImplementation(libs.androidx.ui.test.junit4.android)
+        debugImplementation(libs.androidx.ui.test.manifest)
     }
 }
