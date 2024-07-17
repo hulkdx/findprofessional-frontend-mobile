@@ -5,6 +5,7 @@ import platform.Foundation.NSDocumentDirectory
 import platform.Foundation.NSFileManager
 import platform.Foundation.NSURL
 import platform.Foundation.NSUserDomainMask
+import platform.posix.exit
 import kotlin.experimental.ExperimentalNativeApi
 
 class PlatformSpecificIOS : PlatformSpecific {
@@ -29,4 +30,8 @@ class PlatformSpecificIOS : PlatformSpecific {
 @OptIn(ExperimentalNativeApi::class)
 actual fun isDebug(): Boolean {
     return Platform.isDebugBinary
+}
+
+actual fun closeApp() {
+    exit(0)
 }

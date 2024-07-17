@@ -1,6 +1,7 @@
 package com.hulkdx.findprofessional.core.config
 
 import android.content.Context
+import kotlin.system.exitProcess
 
 class PlatformSpecificAndroid(
     private val appContext: Context,
@@ -17,4 +18,8 @@ class PlatformSpecificAndroid(
 
 actual fun isDebug(): Boolean {
     return true
+}
+
+actual fun closeApp() {
+    exitProcess(0)
 }

@@ -8,3 +8,5 @@ interface PlatformSpecific {
 }
 
 expect fun isDebug(): Boolean
+
+expect fun closeApp()
