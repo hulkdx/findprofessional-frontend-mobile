@@ -48,7 +48,7 @@ jobs:
           arch: ${{ matrix.arch }}
           target: ${{ matrix.target }}
           disable-animations: false
-          emulator-build: 11596452
+          emulator-build: 11834374
           emulator-options: -no-snapshot -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -camera-front none
           script: >
             ./gradlew connectedAndroidTest ||
