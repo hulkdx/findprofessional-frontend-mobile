@@ -21,16 +21,19 @@ fun runAppUiTest(
     effectContext: CoroutineContext = EmptyCoroutineContext,
     block: ComposeUiTest.() -> Unit,
 ) {
-    loadKoinModules(testModule)
-    inMemoryApi.loadKoinModules()
     val lifecycle = LifecycleRegistry()
-    lifecycle.resume()
-    runComposeUiTest(effectContext) {
-        setAppContent(lifecycle)
-        block()
+    try {
+        loadKoinModules(testModule)
+        inMemoryApi.loadKoinModules()
+        lifecycle.resume()
+        runComposeUiTest(effectContext) {
+            setAppContent(lifecycle)
+            block()
+        }
+    } finally {
+        lifecycle.destroy()
+        inMemoryApi.unloadKoinModules()
     }
-    lifecycle.destroy()
-    inMemoryApi.unloadKoinModules()
 }
 
 fun ComposeUiTest.setAppContent(lifecycle: LifecycleRegistry) {
