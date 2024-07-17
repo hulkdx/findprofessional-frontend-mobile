@@ -9,9 +9,7 @@ import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performScrollTo
 import androidx.compose.ui.test.performTextInput
 import com.hulkdx.findprofessional.app.test.utils.Rule
-import com.hulkdx.findprofessional.app.test.utils.assertAppIsClosed
 import com.hulkdx.findprofessional.app.test.utils.assertNodeIsDisplayed
-import com.hulkdx.findprofessional.app.test.utils.pressBackButton
 
 fun launchLoginScreen(
     rule: Rule,
@@ -49,11 +47,6 @@ class LoginDsl(
             .performClick()
     }
 
-    fun pressBackButton() {
-//        Espresso.closeSoftKeyboard()
-        rule.pressBackButton()
-    }
-
     fun verify(block: LoginVerify.() -> Unit) = LoginVerify(rule).apply(block)
 }
 
@@ -66,10 +59,6 @@ class LoginVerify(
 
     fun homeScreenShown() {
         rule.assertNodeIsDisplayed("HomeScreen")
-    }
-
-    fun appIsClosed() {
-        rule.assertAppIsClosed()
     }
 
     fun then(block: LoginDsl.() -> Unit) = LoginDsl(rule).apply(block)

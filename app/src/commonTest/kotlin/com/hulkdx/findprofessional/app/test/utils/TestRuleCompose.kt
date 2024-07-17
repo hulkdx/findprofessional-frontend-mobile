@@ -48,10 +48,6 @@ fun Rule.assertNodeIsDisplayed(testTag: String) {
         .assertIsDisplayed()
 }
 
-fun Rule.pressBackButton() {
-    // Espresso.pressBackUnconditionally()
-}
-
 fun Rule.assertAppIsClosed(timeoutMillis: Long = 10_000) {
     try {
         waitUntil(timeoutMillis) {
