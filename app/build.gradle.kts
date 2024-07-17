@@ -36,6 +36,7 @@ kotlin {
         }
         androidMain.dependencies {
             implementation(libs.ktor.okhttp)
+            implementation(libs.koin.android)
         }
         iosMain.dependencies {
             implementation(libs.ktor.darwin)

@@ -20,5 +20,4 @@ internal class RootComponent(
             handleBackButton = true,
             childFactory = { screen, _ -> screen },
         )
-    
 }
