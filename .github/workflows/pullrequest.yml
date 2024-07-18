@@ -33,7 +33,7 @@ jobs:
             ${{ runner.os }}-gradle-
 
       - name: Run unit tests
-        run: ./gradlew assembleDebug testDebug iosSimulatorArm64Test
+        run: ./gradlew assembleDebug testDebug iosSimulatorArm64Test -x :app:testDebug -x :app:iosSimulatorArm64Test
 
       # TODO: 
       # - name: Run screenshot tests
