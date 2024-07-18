@@ -8,7 +8,6 @@ env:
   JAVA_VERSION: 17
   JAVA_DIST: "zulu"
   IOS_XCODE_VERSION: "15.0.1"
-  IOS_DESTINATION: "OS=17.0,name=iPhone 15 Pro"
 
 jobs:
   android-integration-tests:
@@ -92,15 +91,13 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradle-
 
-      - name: Run Android instrumentation tests
+      - name: Run IOS instrumentation tests
         run: ./gradlew :app:iosSimulatorArm64Test
 
-      - name: Upload Android test reports
+      - name: Upload IOS test reports
         if: failure()
         uses: actions/upload-artifact@v3
         with:
-          name: android-integration-test-reports-${{ matrix.api-level }}
+          name: ios-integration-test-reports-${{ matrix.api-level }}
           path: |
             **/build/reports/tests
-            **/build/reports/androidTests/connected
-            uitest-screenshot-failure
