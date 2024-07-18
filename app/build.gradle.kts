@@ -30,10 +30,6 @@ kotlin {
             implementation(libs.ktor.serialization)
             implementation(libs.ktor.logging)
         }
-        androidMain.dependencies {
-            implementation(libs.ktor.okhttp)
-            implementation(libs.koin.android)
-        }
         iosMain.dependencies {
             implementation(libs.ktor.darwin)
         }
@@ -89,6 +85,8 @@ android {
     }
 
     dependencies {
+        implementation(libs.ktor.okhttp)
+        implementation(libs.koin.android)
         implementation(libs.androidx.activity.compose)
         debugImplementation(libs.leakcanary)
 
