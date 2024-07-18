@@ -42,6 +42,8 @@ kotlin {
             implementation(compose.uiTest)
             implementation(libs.decompose)
             implementation(libs.decompose.extensions.compose)
+            implementation(libs.lifecycle.viewmodel.compose)
+            implementation(libs.kotlinx.io.core)
         }
     }
 }
