@@ -8,14 +8,10 @@ kotlin {
         commonMain.dependencies {
             api(libs.koin.core)
             api(libs.koin.compose)
-
-            api(libs.kotlinx.datetime)
             api(libs.kotlinx.serialization.json)
-
-            api(libs.lifecycle.viewmodel.compose)
-
-            api(libs.ktor.core)
-
+            implementation(libs.kotlinx.datetime)
+            implementation(libs.lifecycle.viewmodel.compose)
+            implementation(libs.ktor.core)
             implementation(libs.androidx.dataStore.core)
         }
     }

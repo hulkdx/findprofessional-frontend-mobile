@@ -25,6 +25,7 @@ kotlin {
             implementation(projects.feature.auth)
             implementation(projects.feature.home)
 
+            implementation(libs.kotlinx.datetime)
             implementation(libs.ktor.core)
             implementation(libs.ktor.content.negotiation)
             implementation(libs.ktor.serialization)

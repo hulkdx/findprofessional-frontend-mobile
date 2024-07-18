@@ -10,7 +10,8 @@ kotlin {
             implementation(projects.feature.auth)
 
             implementation(libs.ktor.core)
-            implementation(libs.androidx.dataStore.core)
+            implementation(libs.lifecycle.viewmodel.compose)
+            implementation(libs.kotlinx.datetime)
         }
     }
 }
