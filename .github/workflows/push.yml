@@ -9,7 +9,7 @@ env:
   JAVA_DIST: "zulu"
 
 jobs:
-  deploy:
+  Deploy-To-Google-Play:
     runs-on: ubuntu-latest
 
     steps:
@@ -30,7 +30,7 @@ jobs:
       - name: Version bump
         uses: chkfung/android-version-actions@v1.1
         with:
-          gradlePath: android/app/build.gradle.kts
+          gradlePath: app/build.gradle.kts
           versionCode: ${{ env.RELEASE_VERSION }}
 
       - name: Build release bundle
@@ -39,7 +39,7 @@ jobs:
       - name: Sign release bundle
         uses: r0adkll/sign-android-release@v1
         with:
-          releaseDirectory: android/app/build/outputs/bundle/release
+          releaseDirectory: app/build/outputs/bundle/release
           signingKeyBase64: ${{ secrets.KEYSTORE }}
           alias: ${{ secrets.KEYSTORE_ALIAS }}
           keyStorePassword: ${{ secrets.KEYSTORE_PASSWORD }}
@@ -50,7 +50,7 @@ jobs:
       #      with:
       #        name: artifacts
       #        path: |
-      #          android/app/build/outputs/bundle/release/app-release.aab
+      #          app/build/outputs/bundle/release/app-release.aab
 
       - name: Setup authorization with GooglePlay Store
         run: echo '${{ secrets.GOOGLE_SERVICES_API }}' > service_account.json
@@ -60,6 +60,6 @@ jobs:
         with:
           serviceAccountJson: service_account.json
           packageName: com.hulkdx.findprofessional
-          releaseFiles: android/app/build/outputs/bundle/release/app-release.aab
+          releaseFiles: app/build/outputs/bundle/release/app-release.aab
           track: internal
           whatsNewDirectory: .github/whatsNewDirectory

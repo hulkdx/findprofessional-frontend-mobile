@@ -46,7 +46,7 @@ kotlin {
 }
 
 android {
-    namespace = "com.hulkdx.findprofessional.app"
+    namespace = "com.hulkdx.findprofessional"
 
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     sourceSets["main"].res.srcDirs("src/androidMain/res")
@@ -72,6 +72,7 @@ android {
             isDebuggable = true
             isMinifyEnabled = false
             isShrinkResources = false
+            applicationIdSuffix = ".debug"
         }
         release {
             isDebuggable = false
