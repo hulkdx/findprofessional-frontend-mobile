@@ -92,7 +92,7 @@ android {
         implementation(libs.androidx.activity.compose)
         debugImplementation(libs.leakcanary)
 
-        debugImplementation(libs.androidx.ui.test.junit4.android)
+        androidTestImplementation(libs.androidx.ui.test.junit4.android)
         debugImplementation(libs.androidx.ui.test.manifest)
     }
 }
