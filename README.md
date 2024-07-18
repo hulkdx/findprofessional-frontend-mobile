@@ -1,4 +1,4 @@
-[![kotlin](https://img.shields.io/badge/kotlin-1.9.23-blue.svg?logo=kotlin&style=for-the-badge)](http://kotlinlang.org)
+[![kotlin](https://img.shields.io/badge/kotlin-2.0.0-blue.svg?logo=kotlin&style=for-the-badge)](http://kotlinlang.org)
 [![deploy](https://img.shields.io/github/actions/workflow/status/hulkdx/findprofessional-frontend-mobile/push.yml?style=for-the-badge)](https://github.com/hulkdx/findprofessional-frontend-mobile/actions/workflows/push.yml)
 
 # Find Professional

@@ -30,10 +30,6 @@ kotlin {
             implementation(libs.ktor.serialization)
             implementation(libs.ktor.logging)
         }
-        androidMain.dependencies {
-            implementation(libs.ktor.okhttp)
-            implementation(libs.koin.android)
-        }
         iosMain.dependencies {
             implementation(libs.ktor.darwin)
         }
@@ -50,7 +46,7 @@ kotlin {
 }
 
 android {
-    namespace = "com.hulkdx.findprofessional.app"
+    namespace = "com.hulkdx.findprofessional"
 
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     sourceSets["main"].res.srcDirs("src/androidMain/res")
@@ -76,6 +72,7 @@ android {
             isDebuggable = true
             isMinifyEnabled = false
             isShrinkResources = false
+            applicationIdSuffix = ".debug"
         }
         release {
             isDebuggable = false
@@ -89,6 +86,8 @@ android {
     }
 
     dependencies {
+        implementation(libs.ktor.okhttp)
+        implementation(libs.koin.android)
         implementation(libs.androidx.activity.compose)
         debugImplementation(libs.leakcanary)
 
