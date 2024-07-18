@@ -16,13 +16,13 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.hulkdx.findprofessional.core.commonui.CUFilledButton
 import com.hulkdx.findprofessional.core.commonui.CUSnackBar
 import com.hulkdx.findprofessional.core.commonui.CUTextButton
@@ -45,9 +45,9 @@ import org.koin.androidx.compose.koinViewModel
 fun LoginScreen(
     viewModel: LoginViewModel = koinViewModel(),
 ) {
-    val email by viewModel.email.collectAsStateWithLifecycle()
-    val password by viewModel.password.collectAsStateWithLifecycle()
-    val error by viewModel.error.collectAsStateWithLifecycle()
+    val email by viewModel.email.collectAsState()
+    val password by viewModel.password.collectAsState()
+    val error by viewModel.error.collectAsState()
 
     val showDeveloper = isDebug()
 
