@@ -12,8 +12,10 @@ val datastoreModule: Module
     get() = module {
         single {
             val platformSpecific = get<PlatformSpecific>()
-            val appDirectoryPath = platformSpecific.appDirectoryPath()
-            val file = "$appDirectoryPath/$FILE_NAME"
-            PreferenceDataStoreFactory.createWithPath(produceFile = { file.toPath() })
+            PreferenceDataStoreFactory.createWithPath(produceFile = {
+                platformSpecific.dataStoreFile().toPath()
+            })
         }
     }
+
+fun PlatformSpecific.dataStoreFile() = "${appDirectoryPath()}/$FILE_NAME"

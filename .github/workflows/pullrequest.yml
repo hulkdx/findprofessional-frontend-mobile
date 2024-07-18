@@ -2,7 +2,7 @@ name: Tests
 
 on:
   pull_request:
-    branches: [main]
+    branches: [ main ]
 
 env:
   JAVA_VERSION: 17
@@ -12,6 +12,7 @@ env:
 
 jobs:
   android-integration-tests:
+    name: Android Integration tests
     runs-on: macos-12
     timeout-minutes: 30
     strategy:
@@ -54,6 +55,45 @@ jobs:
             ./gradlew connectedAndroidTest ||
             (adb pull sdcard/Download/uitest-screenshot-failure &&
             exit 1)
+
+      - name: Upload Android test reports
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: android-integration-test-reports-${{ matrix.api-level }}
+          path: |
+            **/build/reports/tests
+            **/build/reports/androidTests/connected
+            uitest-screenshot-failure
+
+  ios-integration-tests:
+    name: IOS Integration tests
+    runs-on: macos-14
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Select Xcode
+        run: sudo xcode-select -switch /Applications/Xcode_${{ env.IOS_XCODE_VERSION }}.app
+
+      - uses: actions/setup-java@v3
+        with:
+          distribution: ${{ env.JAVA_DIST }}
+          java-version: ${{ env.JAVA_VERSION }}
+          cache: 'gradle'
+
+      - uses: actions/cache@v3
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Run Android instrumentation tests
+        run: ./gradlew :app:iosSimulatorArm64Test
 
       - name: Upload Android test reports
         if: failure()

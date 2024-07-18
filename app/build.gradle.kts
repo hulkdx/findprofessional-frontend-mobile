@@ -25,6 +25,7 @@ kotlin {
             implementation(projects.feature.auth)
             implementation(projects.feature.home)
 
+            implementation(libs.kotlinx.datetime)
             implementation(libs.ktor.core)
             implementation(libs.ktor.content.negotiation)
             implementation(libs.ktor.serialization)
@@ -41,6 +42,8 @@ kotlin {
             implementation(compose.uiTest)
             implementation(libs.decompose)
             implementation(libs.decompose.extensions.compose)
+            implementation(libs.lifecycle.viewmodel.compose)
+            implementation(libs.kotlinx.io.core)
         }
     }
 }
@@ -91,7 +94,7 @@ android {
         implementation(libs.androidx.activity.compose)
         debugImplementation(libs.leakcanary)
 
-        debugImplementation(libs.androidx.ui.test.junit4.android)
+        androidTestImplementation(libs.androidx.ui.test.junit4.android)
         debugImplementation(libs.androidx.ui.test.manifest)
     }
 }
