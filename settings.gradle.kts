@@ -7,6 +7,7 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
+
 dependencyResolutionManagement {
     repositories {
         maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
@@ -15,18 +16,13 @@ dependencyResolutionManagement {
     }
 }
 
-include(":android:app")
-include(":android:core")
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
 include(":ios")
-include(":common")
+include(":app")
+include(":core")
 
-include(":android:paparazzi-tests")
+include(":libs:navigation-decompose")
 
-include(":android:feature:authentication")
-include(":android:feature:developer")
-include(":android:feature:home")
-include(":android:feature:navigation")
-include(":android:feature:profile")
-include(":android:feature:review")
-include(":android:feature:book")
-
+include(":feature:auth")
+include(":feature:home")

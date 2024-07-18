@@ -3,20 +3,13 @@ import shared
 
 @main
 struct MainApp: App {
-    
     init() {
-        InitKoinIOSKt.doInitKoinIOS(
-            navigator:  { _, _ in NavigatorImpl() }
-        )
-
-#if DEBUG
-        handleUiTestArguments()
-#endif
+        KoinFactoryIos().doInitKoin()
     }
-    
-	var body: some Scene {
-		WindowGroup {
-            AppNavigationView()
-		}
-	}
+
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+        }
+    }
 }

@@ -10,17 +10,18 @@ java {
 dependencies {
     compileOnly(libs.android.gradlePlugin)
     compileOnly(libs.kotlin.gradlePlugin)
+    compileOnly(libs.compose.gradlePlugin)
 }
 
 gradlePlugin {
     plugins {
-        register("androidApplicationCompose") {
-            id = "com.hulkdx.findprofessional.application.compose"
-            implementationClass = "AndroidApplicationCompose"
+        register("kmpApplication") {
+            id = "com.hulkdx.findprofessional.kmp.application"
+            implementationClass = "KmpApplication"
         }
-        register("androidLibraryCompose") {
-            id = "com.hulkdx.findprofessional.library.compose"
-            implementationClass = "AndroidLibraryCompose"
+        register("kmpLibrary") {
+            id = "com.hulkdx.findprofessional.kmp.library"
+            implementationClass = "KmpLibrary"
         }
     }
 }
