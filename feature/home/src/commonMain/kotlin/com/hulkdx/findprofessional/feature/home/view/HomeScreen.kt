@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.feature.home
+package com.hulkdx.findprofessional.feature.home.view
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -18,10 +18,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.hulkdx.findprofessional.core.commonui.CUSearchField
+import com.hulkdx.findprofessional.core.commonui.navbar.AppNavBarContainer
+import com.hulkdx.findprofessional.core.commonui.navbar.AppNavigationBarDimens
 import com.hulkdx.findprofessional.core.theme.AppTheme
+import com.hulkdx.findprofessional.feature.home.HomeViewModel
 import com.hulkdx.findprofessional.feature.home.model.Professional
-import com.hulkdx.findprofessional.feature.navigation.navbar.AppNavBarContainer
-import com.hulkdx.findprofessional.feature.navigation.navbar.AppNavigationBarDimens
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.androidx.compose.koinViewModel
 

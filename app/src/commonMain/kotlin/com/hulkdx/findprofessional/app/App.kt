@@ -6,7 +6,7 @@ import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.feature.authentication.login.LoginScreen
 import com.hulkdx.findprofessional.feature.authentication.signup.SignUpScreen
 import com.hulkdx.findprofessional.feature.authentication.splash.SplashScreen
-import com.hulkdx.findprofessional.feature.home.HomeScreen
+import com.hulkdx.findprofessional.feature.home.view.HomeScreen
 import com.hulkdx.findprofessional.libs.navigation.decompose.RootComponent
 import com.hulkdx.findprofessional.libs.navigation.decompose.RootContent
 
