@@ -3,37 +3,34 @@
 
 # Find Professional
 
+## Architecture
+
+### Tech stack
+
+- [Compose Multiplatform](https://github.com/JetBrains/compose-multiplatform); for shared UI
+- [Decompose](https://github.com/arkivanov/Decompose); for navigation
+- [Ktor](https://github.com/ktorio/ktor); for networking
+- [Koin](https://github.com/InsertKoinIO/koin); for dependency injection
+
 ## Design
 https://www.figma.com/file/59wAYmh2zv94mUeA7udBzc/Login-Screen?node-id=0%3A1
 
-## Android
+## CI
 
-### CI
+### Android
 A push to `main` branch will release it to [Google Play](https://play.google.com/store/apps/details?id=com.hulkdx.findprofessional)
 
 ## iOS
-
-### CI
 Under development
 
-### Xcode
+## Troubleshooting
+
+### Running in Xcode - Java mismatch
 If you want to run the code in xcode and java version mismatches, run the following line:
 ```sh
 echo JAVA_HOME=\'/Applications/Android Studio.app/Contents/jbr/Contents/Home\' > ios/.env
 ```
 
-## Code
+## TODO
 
-### Structure
-
-View: Jetpack compose function for Android and SwiftUI for iOS.
-
-ViewModel: Android / iOS specific ViewModels act only as a proxy between view and usecase, should not contain login in it.
-
-UseCase: The domain layer; encapsulates the business logic of our app and requests data from the repositories. It is a common code (KMM) for both android and iOS.
-
-Repository: Fetches data either from a remote or local data source and exposes them to our domain layer. It only talks to abstractions so that it won’t violate the Dependency Inversion Principle. It is a common code (KMM) for both android and iOS.
-
-# TODO
-
-Move the compose functions into common module when [multiplatform iOS](https://github.com/JetBrains/compose-multiplatform-ios-android-template) is stable.
+- Add screenshot tests
