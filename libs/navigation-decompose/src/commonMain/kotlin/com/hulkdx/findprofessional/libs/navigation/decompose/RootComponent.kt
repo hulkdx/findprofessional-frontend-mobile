@@ -7,7 +7,7 @@ import com.arkivanov.decompose.router.stack.childStack
 import com.arkivanov.decompose.value.Value
 import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 
-internal class RootComponent(
+class RootComponent(
     navigation: StackNavigation<NavigationScreen>,
     componentContext: ComponentContext,
 ) : ComponentContext by componentContext {
