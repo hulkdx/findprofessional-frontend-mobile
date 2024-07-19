@@ -1,12 +1,11 @@
 package com.hulkdx.findprofessional.app.test.utils
 
-import com.hulkdx.findprofessional.core.config.PlatformSpecific
-import com.hulkdx.findprofessional.core.storage.dataStoreFile
-import kotlinx.io.files.Path
-import kotlinx.io.files.SystemFileSystem
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.edit
+import kotlinx.coroutines.runBlocking
 
 
 fun deleteDataStoreFile() {
-    val ps = get<PlatformSpecific>()
-    SystemFileSystem.delete(Path(ps.dataStoreFile()), false)
+    runBlocking { get<DataStore<Preferences>>().edit { it.clear() } }
 }
