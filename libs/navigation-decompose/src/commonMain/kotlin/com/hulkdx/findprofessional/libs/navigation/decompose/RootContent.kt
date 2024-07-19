@@ -9,10 +9,9 @@ import org.koin.compose.koinInject
 
 @Composable
 fun RootContent(
-    componentContext: ComponentContext,
+    component: RootComponent,
     screenContent: @Composable (NavigationScreen) -> Unit,
 ) {
-    val component = RootComponent(koinInject(), componentContext.impl)
     Children(
         stack = component.stack,
         animation = stackAnimation(slide()),

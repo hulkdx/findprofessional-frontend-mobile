@@ -9,13 +9,13 @@ import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.feature.authentication.login.LoginScreen
 import com.hulkdx.findprofessional.feature.authentication.signup.SignUpScreen
 import com.hulkdx.findprofessional.feature.authentication.splash.SplashScreen
-import com.hulkdx.findprofessional.libs.navigation.decompose.ComponentContext
+import com.hulkdx.findprofessional.libs.navigation.decompose.RootComponent
 import com.hulkdx.findprofessional.libs.navigation.decompose.RootContent
 
 @Composable
-fun App(componentContext: ComponentContext) {
+fun App(component: RootComponent) {
     AppTheme {
-        RootContent(componentContext) { RenderScreen(it) }
+        RootContent(component) { RenderScreen(it) }
     }
 }
 

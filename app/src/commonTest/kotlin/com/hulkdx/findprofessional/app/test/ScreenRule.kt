@@ -17,9 +17,10 @@ import com.arkivanov.essenty.lifecycle.resume
 import com.hulkdx.findprofessional.app.App
 import com.hulkdx.findprofessional.app.di.appModule
 import com.hulkdx.findprofessional.app.test.utils.deleteDataStoreFile
+import com.hulkdx.findprofessional.app.test.utils.get
 import com.hulkdx.findprofessional.app.test.utils.inMemoryApi
 import com.hulkdx.findprofessional.app.test.utils.isIOS
-import com.hulkdx.findprofessional.libs.navigation.decompose.ComponentContext
+import com.hulkdx.findprofessional.libs.navigation.decompose.RootComponent
 import org.koin.core.context.loadKoinModules
 import org.koin.core.context.startKoin
 import kotlin.coroutines.CoroutineContext
@@ -50,9 +51,10 @@ fun runAppUiTest(
 }
 
 fun ComposeUiTest.setAppContent(lifecycle: LifecycleRegistry) {
+    val root = RootComponent(get(), DefaultComponentContext(lifecycle = lifecycle))
     setContent {
         provideViewModelStoreForIOS {
-            App(ComponentContext(DefaultComponentContext(lifecycle = lifecycle)))
+            App(root)
         }
     }
 }
