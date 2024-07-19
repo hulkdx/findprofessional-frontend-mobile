@@ -71,6 +71,7 @@ fun SignUpScreen(
 ) {
     Box(
         modifier = Modifier
+            .background(MaterialTheme.colorScheme.onPrimary)
             .systemBarsPadding()
             .imePadding()
             .testTag("SignUpScreen"),
