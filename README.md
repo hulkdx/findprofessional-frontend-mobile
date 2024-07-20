@@ -30,7 +30,6 @@ echo JAVA_HOME=\'/Applications/Android Studio.app/Contents/jbr/Contents/Home\' >
 
 ## TODO
 
-- TokenInterceptor add tests
 - HomeScreen nav bar is not working
 - HomeScreen image is not loaded in android
 - Test HomeScreen on IOS
