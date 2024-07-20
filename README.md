@@ -33,5 +33,7 @@ echo JAVA_HOME=\'/Applications/Android Studio.app/Contents/jbr/Contents/Home\' >
 
 ## TODO
 
+- Back button on IOS
+- TokenInterceptor add tests
 - Add screenshot tests
 - Check landscape orientation design 

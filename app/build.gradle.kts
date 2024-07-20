@@ -22,14 +22,18 @@ kotlin {
             implementation(projects.core)
             implementation(projects.libs.navigationDecompose)
 
-            implementation(projects.feature.auth)
-            implementation(projects.feature.home)
+            with(projects.feature) {
+                implementation(auth)
+                implementation(home)
+                implementation(developer)
+            }
 
             implementation(libs.kotlinx.datetime)
             implementation(libs.ktor.core)
             implementation(libs.ktor.content.negotiation)
             implementation(libs.ktor.serialization)
             implementation(libs.ktor.logging)
+            implementation(libs.androidx.dataStore.core)
         }
         iosMain.dependencies {
             implementation(libs.ktor.darwin)
