@@ -10,6 +10,7 @@ import com.arkivanov.essenty.lifecycle.stop
 import com.hulkdx.findprofessional.libs.navigation.decompose.RootComponent
 
 
+@Suppress("unused") // used in swift
 fun getRoot(): RootComponent {
     val root = RootComponent(
         navigation = get(),
@@ -22,7 +23,14 @@ fun getRoot(): RootComponent {
     return root
 }
 
+@Suppress("unused") // used in swift
 fun RootComponent.destroy() = (lifecycle as LifecycleRegistry).destroy()
+
+@Suppress("unused") // used in swift
 fun RootComponent.resume() = (lifecycle as LifecycleRegistry).resume()
+
+@Suppress("unused") // used in swift
 fun RootComponent.stop() = (lifecycle as LifecycleRegistry).stop()
+
+@Suppress("unused") // used in swift
 fun RootComponent.pause() = (lifecycle as LifecycleRegistry).pause()
