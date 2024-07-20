@@ -9,7 +9,7 @@ import org.koin.dsl.bind
 import org.koin.dsl.module
 import org.koin.mp.KoinPlatformTools
 
-
+@Suppress("unused") // used in swift
 class KoinFactoryIos {
     fun initKoin() {
         initKoin(iOSModule)
