@@ -8,6 +8,7 @@ import com.hulkdx.findprofessional.feature.authentication.login.model.User
 import com.hulkdx.findprofessional.feature.authentication.login.model.UserData
 import com.hulkdx.findprofessional.feature.authentication.signup.SignUpApi
 import com.hulkdx.findprofessional.feature.authentication.signup.model.RegisterRequest
+import com.hulkdx.findprofessional.feature.developer.InMemoryApi
 import com.hulkdx.findprofessional.feature.home.api.ProfessionalApi
 import com.hulkdx.findprofessional.feature.home.model.Professional
 import com.hulkdx.findprofessional.feature.home.model.ProfessionalAvailability

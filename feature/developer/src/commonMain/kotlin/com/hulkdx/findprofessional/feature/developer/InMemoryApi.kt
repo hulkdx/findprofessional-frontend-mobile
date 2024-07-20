@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.app.config.api
+package com.hulkdx.findprofessional.feature.developer
 
 import com.hulkdx.findprofessional.feature.authentication.signup.model.RegisterRequest
 
