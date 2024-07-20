@@ -13,6 +13,7 @@ kotlin {
             implementation(libs.lifecycle.viewmodel.compose)
             implementation(libs.ktor.core)
             implementation(libs.androidx.dataStore.core)
+            implementation(libs.coil.compose)
         }
     }
 }

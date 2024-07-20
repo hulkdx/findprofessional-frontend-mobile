@@ -34,3 +34,4 @@ echo JAVA_HOME=\'/Applications/Android Studio.app/Contents/jbr/Contents/Home\' >
 ## TODO
 
 - Add screenshot tests
+- Check landscape orientation design 
