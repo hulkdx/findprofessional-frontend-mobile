@@ -19,6 +19,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
+import com.hulkdx.findprofessional.core.commonui.CUBackButton
 import com.hulkdx.findprofessional.core.commonui.CUFilledButton
 import com.hulkdx.findprofessional.core.commonui.CUSnackBar
 import com.hulkdx.findprofessional.core.commonui.CUTextField
@@ -112,6 +113,7 @@ fun SignUpScreen(
                 onClick = onSubmitClicked,
             )
         }
+        CUBackButton(modifier = Modifier.align(Alignment.TopStart))
         CUSnackBar(
             modifier = Modifier.align(Alignment.BottomCenter),
             message = error,
@@ -150,6 +152,18 @@ private fun LastNameTextField(
 }
 
 @Composable
+private fun SubmitButton(
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit,
+) {
+    CUFilledButton(
+        modifier = modifier.fillMaxWidth(),
+        text = stringResource(Res.string.signUp),
+        onClick = onClick,
+    )
+}
+
+@Composable
 @Preview
 private fun SignUpScreenPreview() {
     AppTheme {
@@ -167,16 +181,4 @@ private fun SignUpScreenPreview() {
             onErrorDismissed = {}
         )
     }
-}
-
-@Composable
-private fun SubmitButton(
-    modifier: Modifier = Modifier,
-    onClick: () -> Unit,
-) {
-    CUFilledButton(
-        modifier = modifier.fillMaxWidth(),
-        text = stringResource(Res.string.signUp),
-        onClick = onClick,
-    )
 }
