@@ -12,9 +12,6 @@
 - [Ktor](https://github.com/ktorio/ktor); for networking
 - [Koin](https://github.com/InsertKoinIO/koin); for dependency injection
 
-## Design
-https://www.figma.com/file/59wAYmh2zv94mUeA7udBzc/Login-Screen?node-id=0%3A1
-
 ## CI
 
 ### Android
