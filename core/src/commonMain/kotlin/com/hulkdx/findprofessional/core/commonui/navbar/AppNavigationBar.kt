@@ -26,7 +26,7 @@ fun BoxScope.AppNavigationBar(
     modifier: Modifier = Modifier,
     navigator: Navigator = getNavigator(),
 ) {
-    AppNavigationBar(
+    com.hulkdx.findprofessional.core.commonui.navbar.AppNavigationBar(
         modifier = modifier.align(Alignment.BottomCenter),
         navigator = navigator,
     )
