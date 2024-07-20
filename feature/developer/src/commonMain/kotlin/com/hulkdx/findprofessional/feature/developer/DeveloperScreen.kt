@@ -16,8 +16,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import com.hulkdx.findprofessional.core.theme.AppTheme
-import com.hulkdx.findprofessional.feature.authentication.login.storage.DeveloperStorage
-import com.hulkdx.findprofessional.feature.authentication.login.storage.DeveloperStorage.Key.MockData
+import com.hulkdx.findprofessional.feature.developer.storage.DeveloperStorage
+import com.hulkdx.findprofessional.feature.developer.storage.DeveloperStorage.Key.MockData
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.koinInject

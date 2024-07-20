@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.feature.authentication.login.storage
+package com.hulkdx.findprofessional.feature.developer.storage
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.runBlocking

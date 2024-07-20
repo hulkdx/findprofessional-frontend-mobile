@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.feature.authentication.login.storage.datastore
+package com.hulkdx.findprofessional.feature.developer.storage
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
@@ -7,8 +7,7 @@ import com.hulkdx.findprofessional.core.storage.getAsBoolean
 import com.hulkdx.findprofessional.core.storage.getFlow
 import com.hulkdx.findprofessional.core.storage.removeBoolean
 import com.hulkdx.findprofessional.core.storage.setAsBoolean
-import com.hulkdx.findprofessional.feature.authentication.login.storage.DeveloperStorage
-import com.hulkdx.findprofessional.feature.authentication.login.storage.DeveloperStorage.Key
+import com.hulkdx.findprofessional.feature.developer.storage.DeveloperStorage.Key
 
 
 class DeveloperStorageDataStore(
