@@ -1,6 +1,7 @@
 package com.hulkdx.findprofessional.app
 
 import com.arkivanov.decompose.DefaultComponentContext
+import com.arkivanov.essenty.backhandler.BackDispatcher
 import com.arkivanov.essenty.lifecycle.LifecycleRegistry
 import com.arkivanov.essenty.lifecycle.destroy
 import com.arkivanov.essenty.lifecycle.pause
@@ -12,7 +13,10 @@ import com.hulkdx.findprofessional.libs.navigation.decompose.RootComponent
 fun getRoot(): RootComponent {
     val root = RootComponent(
         navigation = get(),
-        componentContext = DefaultComponentContext(LifecycleRegistry()),
+        componentContext = DefaultComponentContext(
+            lifecycle = LifecycleRegistry(),
+            backHandler = BackDispatcher(),
+        ),
     )
 
     return root
