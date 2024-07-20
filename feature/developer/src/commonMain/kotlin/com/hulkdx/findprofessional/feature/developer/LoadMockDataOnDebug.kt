@@ -8,10 +8,10 @@ import org.koin.mp.KoinPlatformTools
 
 fun loadMockDataOnDebug() {
     if (isDebug()) {
-        val d: DeveloperStorage = KoinPlatformTools.defaultContext().get().get()
-        if (d.isMockData()) {
-            val inMemoryApi: InMemoryApi = KoinPlatformTools.defaultContext().get().get()
-            inMemoryApi.loadKoinModules()
+        if (get<DeveloperStorage>().isMockData()) {
+            get<InMemoryApi>().loadKoinModules()
         }
     }
 }
+
+private inline fun <reified T : Any> get() = KoinPlatformTools.defaultContext().get().get<T>()

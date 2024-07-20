@@ -35,5 +35,6 @@ echo JAVA_HOME=\'/Applications/Android Studio.app/Contents/jbr/Contents/Home\' >
 
 - Back button on IOS
 - TokenInterceptor add tests
+- HomeScreen nav bar is not working
 - Add screenshot tests
 - Check landscape orientation design 
