@@ -9,6 +9,7 @@ import com.hulkdx.findprofessional.feature.authentication.splash.SplashScreen
 import com.hulkdx.findprofessional.feature.developer.DeveloperScreen
 import com.hulkdx.findprofessional.feature.home.detail.HomeDetailScreen
 import com.hulkdx.findprofessional.feature.home.main.view.HomeScreen
+import com.hulkdx.findprofessional.feature.review.ReviewScreen
 import com.hulkdx.findprofessional.libs.navigation.decompose.RootComponent
 import com.hulkdx.findprofessional.libs.navigation.decompose.RootContent
 
@@ -28,6 +29,7 @@ private fun RenderScreen(screen: NavigationScreen) {
         is NavigationScreen.SignUp -> SignUpScreen()
         is NavigationScreen.Home -> HomeScreen()
         is NavigationScreen.HomeDetail -> HomeDetailScreen(screen.professional)
+        is NavigationScreen.Review -> ReviewScreen(screen.professional)
         else -> TODO()
     }
 }
