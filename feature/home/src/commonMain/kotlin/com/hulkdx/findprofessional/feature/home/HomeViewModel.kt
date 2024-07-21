@@ -3,6 +3,7 @@ package com.hulkdx.findprofessional.feature.home
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hulkdx.findprofessional.core.model.pro.Professional
+import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import com.hulkdx.findprofessional.core.navigation.Navigator
 import com.hulkdx.findprofessional.core.utils.StringOrRes
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -40,8 +41,7 @@ class HomeViewModel(
     }
 
     fun onItemClick(professional: Professional) {
-        // TODO:
-//        navigator.navigate(NavigationScreen.HomeDetail(professional))
+        navigator.navigate(NavigationScreen.HomeDetail(professional))
     }
 
     fun setError(error: StringOrRes?) {
