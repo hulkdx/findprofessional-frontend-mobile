@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBarsPadding
@@ -93,6 +94,7 @@ fun LoginScreen(
                 .verticalScroll(rememberScrollState()),
         ) {
 
+            Spacer(modifier = Modifier.height(16.dp))
             Spacer(modifier = Modifier.weight(2.5F))
 
             LogoImage(

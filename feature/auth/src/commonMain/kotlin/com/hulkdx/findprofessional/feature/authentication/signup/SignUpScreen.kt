@@ -4,8 +4,10 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBarsPadding
@@ -19,6 +21,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
+import com.hulkdx.findprofessional.core.commonui.BACK_BUTTON_HEIGHT
 import com.hulkdx.findprofessional.core.commonui.CUBackButton
 import com.hulkdx.findprofessional.core.commonui.CUFilledButton
 import com.hulkdx.findprofessional.core.commonui.CUSnackBar
@@ -85,6 +88,8 @@ fun SignUpScreen(
                 .padding(horizontal = 24.dp),
             verticalArrangement = Arrangement.Center,
         ) {
+            Spacer(modifier = Modifier.height(BACK_BUTTON_HEIGHT.dp))
+
             FirstNameTextField(
                 value = firstName,
                 onValueChanged = onFirstNameChanged
@@ -112,6 +117,8 @@ fun SignUpScreen(
                 modifier = Modifier.padding(top = 16.dp),
                 onClick = onSubmitClicked,
             )
+
+            Spacer(modifier = Modifier.height(BACK_BUTTON_HEIGHT.dp))
         }
         CUBackButton(modifier = Modifier.align(Alignment.TopStart))
         CUSnackBar(
