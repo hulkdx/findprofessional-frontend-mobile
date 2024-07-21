@@ -32,5 +32,5 @@ private fun SetupCurrentScreenNavigator(
     child: NavigationScreen,
     navigator: DecomposeNavigator = koinInject(),
 ) {
-    navigator._currentScreen = child
+    navigator.setCurrentScreen(child)
 }
