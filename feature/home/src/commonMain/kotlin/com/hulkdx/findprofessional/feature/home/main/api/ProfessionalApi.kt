@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.feature.home.api
+package com.hulkdx.findprofessional.feature.home.main.api
 
 import com.hulkdx.findprofessional.core.model.pro.Professional
 import com.hulkdx.findprofessional.core.model.pro.ProfessionalReview

@@ -11,7 +11,7 @@ import com.hulkdx.findprofessional.feature.authentication.login.api.LoginApi
 import com.hulkdx.findprofessional.feature.authentication.login.model.LoginRequest
 import com.hulkdx.findprofessional.feature.authentication.signup.SignUpApi
 import com.hulkdx.findprofessional.feature.authentication.signup.model.RegisterRequest
-import com.hulkdx.findprofessional.feature.home.api.ProfessionalApi
+import com.hulkdx.findprofessional.feature.home.main.api.ProfessionalApi
 import kotlinx.datetime.Clock
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalTime

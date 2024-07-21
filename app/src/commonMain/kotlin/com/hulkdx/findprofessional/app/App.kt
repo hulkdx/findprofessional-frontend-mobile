@@ -7,7 +7,8 @@ import com.hulkdx.findprofessional.feature.authentication.login.LoginScreen
 import com.hulkdx.findprofessional.feature.authentication.signup.SignUpScreen
 import com.hulkdx.findprofessional.feature.authentication.splash.SplashScreen
 import com.hulkdx.findprofessional.feature.developer.DeveloperScreen
-import com.hulkdx.findprofessional.feature.home.view.HomeScreen
+import com.hulkdx.findprofessional.feature.home.detail.HomeDetailScreen
+import com.hulkdx.findprofessional.feature.home.main.view.HomeScreen
 import com.hulkdx.findprofessional.libs.navigation.decompose.RootComponent
 import com.hulkdx.findprofessional.libs.navigation.decompose.RootContent
 
@@ -21,11 +22,12 @@ fun App(component: RootComponent) {
 @Composable
 private fun RenderScreen(screen: NavigationScreen) {
     when (screen) {
-        NavigationScreen.Splash -> SplashScreen()
-        NavigationScreen.Login -> LoginScreen()
-        NavigationScreen.SignUp -> SignUpScreen()
-        NavigationScreen.Home -> HomeScreen()
-        NavigationScreen.Developer -> DeveloperScreen()
+        is NavigationScreen.Developer -> DeveloperScreen()
+        is NavigationScreen.Splash -> SplashScreen()
+        is NavigationScreen.Login -> LoginScreen()
+        is NavigationScreen.SignUp -> SignUpScreen()
+        is NavigationScreen.Home -> HomeScreen()
+        is NavigationScreen.HomeDetail -> HomeDetailScreen(screen.professional)
         else -> TODO()
     }
 }

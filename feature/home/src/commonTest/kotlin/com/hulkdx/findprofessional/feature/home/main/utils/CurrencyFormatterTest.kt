@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.feature.home.utils
+package com.hulkdx.findprofessional.feature.home.main.utils
 
 import kotlin.test.Test
 import kotlin.test.assertEquals
