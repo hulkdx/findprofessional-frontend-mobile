@@ -22,6 +22,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.core.theme.body3
+import com.hulkdx.findprofessional.core.utils.borderTop
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
@@ -35,6 +36,7 @@ internal fun AppNavigationBarInternal(
         modifier = modifier
             .fillMaxWidth()
             .background(MaterialTheme.colorScheme.surfaceVariant)
+            .borderTop(0.5.dp, MaterialTheme.colorScheme.onTertiary)
             .navigationBarsPadding()
             .height(AppNavigationBarDimens.Height.dp),
     ) {

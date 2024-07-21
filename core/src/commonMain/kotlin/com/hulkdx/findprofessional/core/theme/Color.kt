@@ -22,11 +22,14 @@ private val TextColorGray = Color(0xFF9D9CAC)
 
 private val CalendarSelectedColor = Color(0xFF33C181)
 
+private val BorderColor = Color(0xFFE6EAEE)
+
 internal val lightColorPalette = lightColorScheme(
     primary = Green,
     onPrimary = DarkWhite,
     secondary = Red,
     tertiary = DarkGreen,
+    onTertiary = BorderColor,
     onSurfaceVariant = LightGray,
     surfaceVariant = White,
     scrim = YellowStar,
