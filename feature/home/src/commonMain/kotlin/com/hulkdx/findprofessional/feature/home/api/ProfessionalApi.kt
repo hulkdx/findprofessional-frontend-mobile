@@ -1,9 +1,9 @@
 package com.hulkdx.findprofessional.feature.home.api
 
+import com.hulkdx.findprofessional.core.model.pro.Professional
+import com.hulkdx.findprofessional.core.model.pro.ProfessionalReview
+import com.hulkdx.findprofessional.core.storage.UserStorage
 import com.hulkdx.findprofessional.core.utils.AccessTokenNotFoundException
-import com.hulkdx.findprofessional.feature.authentication.login.storage.UserStorage
-import com.hulkdx.findprofessional.feature.home.model.Professional
-import com.hulkdx.findprofessional.feature.home.model.ProfessionalReview
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.HttpRequestBuilder

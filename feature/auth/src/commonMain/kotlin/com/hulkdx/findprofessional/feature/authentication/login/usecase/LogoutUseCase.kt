@@ -2,7 +2,7 @@ package com.hulkdx.findprofessional.feature.authentication.login.usecase
 
 import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import com.hulkdx.findprofessional.core.navigation.Navigator
-import com.hulkdx.findprofessional.feature.authentication.login.storage.UserStorage
+import com.hulkdx.findprofessional.core.storage.UserStorage
 
 
 interface LogoutUseCase {

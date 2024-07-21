@@ -23,6 +23,7 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import com.hulkdx.findprofessional.core.commonui.CUAsyncImage
 import com.hulkdx.findprofessional.core.commonui.icons.CULikeButton
+import com.hulkdx.findprofessional.core.model.pro.Professional
 import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.ic_star
 import com.hulkdx.findprofessional.core.resources.perHour
@@ -31,7 +32,6 @@ import com.hulkdx.findprofessional.core.theme.body2
 import com.hulkdx.findprofessional.core.theme.h1SemiBold
 import com.hulkdx.findprofessional.core.theme.h2Medium
 import com.hulkdx.findprofessional.core.utils.singleClick
-import com.hulkdx.findprofessional.feature.home.model.Professional
 import com.hulkdx.findprofessional.feature.home.utils.CurrencyFormatter
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource

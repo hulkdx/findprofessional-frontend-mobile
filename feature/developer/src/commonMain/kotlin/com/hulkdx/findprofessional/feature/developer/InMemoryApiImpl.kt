@@ -1,17 +1,17 @@
 package com.hulkdx.findprofessional.feature.developer
 
+import com.hulkdx.findprofessional.core.model.pro.Professional
+import com.hulkdx.findprofessional.core.model.pro.ProfessionalAvailability
+import com.hulkdx.findprofessional.core.model.pro.ProfessionalReview
+import com.hulkdx.findprofessional.core.model.user.Token
+import com.hulkdx.findprofessional.core.model.user.User
+import com.hulkdx.findprofessional.core.model.user.UserData
 import com.hulkdx.findprofessional.core.utils.now
 import com.hulkdx.findprofessional.feature.authentication.login.api.LoginApi
 import com.hulkdx.findprofessional.feature.authentication.login.model.LoginRequest
-import com.hulkdx.findprofessional.feature.authentication.login.model.Token
-import com.hulkdx.findprofessional.feature.authentication.login.model.User
-import com.hulkdx.findprofessional.feature.authentication.login.model.UserData
 import com.hulkdx.findprofessional.feature.authentication.signup.SignUpApi
 import com.hulkdx.findprofessional.feature.authentication.signup.model.RegisterRequest
 import com.hulkdx.findprofessional.feature.home.api.ProfessionalApi
-import com.hulkdx.findprofessional.feature.home.model.Professional
-import com.hulkdx.findprofessional.feature.home.model.ProfessionalAvailability
-import com.hulkdx.findprofessional.feature.home.model.ProfessionalReview
 import kotlinx.datetime.Clock
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalTime

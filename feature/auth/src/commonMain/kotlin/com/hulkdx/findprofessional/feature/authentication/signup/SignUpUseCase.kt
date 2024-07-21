@@ -4,9 +4,9 @@ package com.hulkdx.findprofessional.feature.authentication.signup
 
 import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.emailExists
+import com.hulkdx.findprofessional.core.storage.UserStorage
 import com.hulkdx.findprofessional.core.utils.generalError
 import com.hulkdx.findprofessional.core.utils.toStringOrRes
-import com.hulkdx.findprofessional.feature.authentication.login.storage.UserStorage
 import com.hulkdx.findprofessional.feature.authentication.signup.model.RegisterRequest
 import io.ktor.client.plugins.ClientRequestException
 import io.ktor.http.HttpStatusCode

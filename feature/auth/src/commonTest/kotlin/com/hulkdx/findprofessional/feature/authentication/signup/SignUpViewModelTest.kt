@@ -2,9 +2,9 @@
 
 package com.hulkdx.findprofessional.feature.authentication.signup
 
-import com.hulkdx.findprofessional.feature.authentication.login.model.Token
-import com.hulkdx.findprofessional.feature.authentication.login.model.UserData
-import com.hulkdx.findprofessional.feature.authentication.login.storage.UserStorage
+import com.hulkdx.findprofessional.core.model.user.Token
+import com.hulkdx.findprofessional.core.model.user.UserData
+import com.hulkdx.findprofessional.core.storage.UserStorage
 import com.hulkdx.findprofessional.feature.authentication.signup.model.RegisterRequest
 import com.hulkdx.findprofessional.feature.utils.StubNavigator
 import com.hulkdx.findprofessional.feature.utils.newUser

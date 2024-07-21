@@ -1,6 +1,6 @@
 package com.hulkdx.findprofessional.feature.utils
 
-import com.hulkdx.findprofessional.feature.authentication.login.model.User
+import com.hulkdx.findprofessional.core.model.user.User
 
 
 fun newUser(

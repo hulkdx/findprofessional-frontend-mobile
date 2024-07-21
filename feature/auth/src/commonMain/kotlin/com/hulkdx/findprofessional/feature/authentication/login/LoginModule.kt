@@ -1,10 +1,10 @@
 package com.hulkdx.findprofessional.feature.authentication.login
 
+import com.hulkdx.findprofessional.core.storage.UserStorage
 import com.hulkdx.findprofessional.feature.authentication.login.api.LoginApi
 import com.hulkdx.findprofessional.feature.authentication.login.api.LoginApiImpl
 import com.hulkdx.findprofessional.feature.authentication.login.api.RefreshTokenApi
 import com.hulkdx.findprofessional.feature.authentication.login.api.RefreshTokenApiImpl
-import com.hulkdx.findprofessional.feature.authentication.login.storage.UserStorage
 import com.hulkdx.findprofessional.feature.authentication.login.storage.datastore.UserStorageDataStore
 import com.hulkdx.findprofessional.feature.authentication.login.usecase.GetUserUseCase
 import com.hulkdx.findprofessional.feature.authentication.login.usecase.LogoutUseCase

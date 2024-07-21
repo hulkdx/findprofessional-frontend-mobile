@@ -1,9 +1,9 @@
 package com.hulkdx.findprofessional.feature.authentication.login
 
+import com.hulkdx.findprofessional.core.storage.UserStorage
 import com.hulkdx.findprofessional.core.utils.generalError
 import com.hulkdx.findprofessional.feature.authentication.login.api.LoginApi
 import com.hulkdx.findprofessional.feature.authentication.login.model.LoginRequest
-import com.hulkdx.findprofessional.feature.authentication.login.storage.UserStorage
 
 class LoginUseCase(
     private val api: LoginApi,

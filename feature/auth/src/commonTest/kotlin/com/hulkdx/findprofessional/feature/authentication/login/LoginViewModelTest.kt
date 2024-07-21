@@ -2,11 +2,11 @@
 
 package com.hulkdx.findprofessional.feature.authentication.login
 
+import com.hulkdx.findprofessional.core.model.user.Token
+import com.hulkdx.findprofessional.core.model.user.UserData
+import com.hulkdx.findprofessional.core.storage.UserStorage
 import com.hulkdx.findprofessional.feature.authentication.login.api.LoginApi
 import com.hulkdx.findprofessional.feature.authentication.login.model.LoginRequest
-import com.hulkdx.findprofessional.feature.authentication.login.model.Token
-import com.hulkdx.findprofessional.feature.authentication.login.model.UserData
-import com.hulkdx.findprofessional.feature.authentication.login.storage.UserStorage
 import com.hulkdx.findprofessional.feature.utils.StubNavigator
 import com.hulkdx.findprofessional.feature.utils.newUser
 import kotlinx.coroutines.Dispatchers

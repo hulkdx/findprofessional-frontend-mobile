@@ -2,9 +2,9 @@ package com.hulkdx.findprofessional.feature.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.hulkdx.findprofessional.core.model.pro.Professional
 import com.hulkdx.findprofessional.core.navigation.Navigator
 import com.hulkdx.findprofessional.core.utils.StringOrRes
-import com.hulkdx.findprofessional.feature.home.model.Professional
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
