@@ -7,6 +7,7 @@ import com.hulkdx.findprofessional.feature.authentication.login.loginModule
 import com.hulkdx.findprofessional.feature.authentication.signup.signUpModule
 import com.hulkdx.findprofessional.feature.authentication.splash.splashModule
 import com.hulkdx.findprofessional.feature.home.homeModule
+import com.hulkdx.findprofessional.feature.profile.profileModule
 import com.hulkdx.findprofessional.feature.review.reviewModule
 import com.hulkdx.findprofessional.libs.navigation.decompose.decomposeModule
 import org.koin.core.module.Module
@@ -25,5 +26,6 @@ val appModule: List<Module>
             signUpModule,
             homeModule,
             reviewModule,
+            profileModule,
         )
         // @formatter:on

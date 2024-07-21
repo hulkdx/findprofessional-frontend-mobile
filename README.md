@@ -30,4 +30,5 @@ echo JAVA_HOME=\'/Applications/Android Studio.app/Contents/jbr/Contents/Home\' >
 
 ## TODO
 
+- Fix the crash causing by app navbar
 - Add screenshot tests
