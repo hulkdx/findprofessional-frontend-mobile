@@ -14,6 +14,7 @@ kotlin {
             implementation(libs.ktor.core)
             implementation(libs.androidx.dataStore.core)
             implementation(libs.coil.compose)
+            implementation(libs.coil.network.ktor)
         }
     }
 }
