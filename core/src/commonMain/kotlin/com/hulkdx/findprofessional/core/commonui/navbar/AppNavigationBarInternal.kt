@@ -36,7 +36,7 @@ internal fun AppNavigationBarInternal(
             .height(AppNavigationBarDimens.Height.dp)
             .background(MaterialTheme.colorScheme.surfaceVariant),
     ) {
-        items.forEachIndexed { index, item ->
+        items.forEach { item ->
             AppNavBarItem(
                 text = item.text,
                 icon = item.icon,
@@ -52,7 +52,7 @@ private fun RowScope.AppNavBarItem(
     text: String,
     icon: DrawableResource,
     selected: Boolean,
-    onClick: () -> Unit,
+    onClick: (() -> Unit)?,
 ) {
     val color = if (selected) {
         Color.Black
@@ -63,7 +63,11 @@ private fun RowScope.AppNavBarItem(
         Modifier
             .weight(1F)
             .fillMaxHeight()
-            .clickable(onClick = onClick),
+            .run {
+                if (onClick != null) {
+                    clickable(onClick = onClick)
+                } else this
+            },
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {

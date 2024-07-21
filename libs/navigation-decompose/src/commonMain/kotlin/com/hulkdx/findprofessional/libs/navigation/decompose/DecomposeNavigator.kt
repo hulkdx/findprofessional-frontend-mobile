@@ -15,7 +15,7 @@ class DecomposeNavigator(
     private val navController: StackNavigation<NavigationScreen>,
 ) : Navigator {
 
-    var _currentScreen: NavigationScreen = NavigationScreen.Splash
+    private var _currentScreen: NavigationScreen = NavigationScreen.Splash
 
     override fun navigate(screen: NavigationScreen) {
         navController.push(screen)
@@ -44,6 +44,12 @@ class DecomposeNavigator(
         })
     }
 
-    override fun getCurrentScreen() = _currentScreen
+    fun setCurrentScreen(screen: NavigationScreen) {
+        _currentScreen = screen
+    }
+
+    override fun getCurrentScreen(): NavigationScreen {
+        return _currentScreen
+    }
 }
 

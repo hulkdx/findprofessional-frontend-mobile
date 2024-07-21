@@ -11,15 +11,7 @@ import com.hulkdx.findprofessional.core.resources.explorer
 import com.hulkdx.findprofessional.core.resources.ic_nav_explorer
 import com.hulkdx.findprofessional.core.resources.ic_nav_profile
 import com.hulkdx.findprofessional.core.resources.profile
-import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.stringResource
-
-internal data class NavData(
-    val text: String,
-    val icon: DrawableResource,
-    val selected: Boolean,
-    val onClick: () -> Unit,
-)
 
 @Composable
 fun BoxScope.AppNavigationBar(
@@ -40,17 +32,19 @@ fun AppNavigationBar(
     val currentScreen = navigator.getCurrentScreen()
 
     val items = listOf(
-        NavData(
+        NavData.create(
             text = stringResource(Res.string.explorer),
             icon = Res.drawable.ic_nav_explorer,
-            selected = currentScreen == NavigationScreen.Home,
-            onClick = { navigator.navigate(NavigationScreen.Home) }
+            screen = NavigationScreen.Home,
+            currentScreen,
+            navigator,
         ),
-        NavData(
+        NavData.create(
             text = stringResource(Res.string.profile),
             icon = Res.drawable.ic_nav_profile,
-            selected = currentScreen == NavigationScreen.Profile,
-            onClick = { navigator.navigate(NavigationScreen.Profile) }
+            screen = NavigationScreen.Profile,
+            currentScreen,
+            navigator,
         )
     )
 
