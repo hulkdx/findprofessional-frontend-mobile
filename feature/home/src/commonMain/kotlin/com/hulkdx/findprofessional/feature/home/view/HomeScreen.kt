@@ -119,7 +119,7 @@ private fun ColumnScope.HomeScreenItemList(
                 onItemClick = onItemClick,
             )
         }
-        item { Spacer(Modifier.height(16.dp)) }
+        item { Spacer(Modifier.height(32.dp)) }
     }
 }
 
