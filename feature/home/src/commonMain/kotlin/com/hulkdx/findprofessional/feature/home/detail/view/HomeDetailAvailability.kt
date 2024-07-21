@@ -37,8 +37,8 @@ import com.hulkdx.findprofessional.core.theme.body1
 import com.hulkdx.findprofessional.core.theme.body1Medium
 import com.hulkdx.findprofessional.core.theme.h3Medium
 import com.hulkdx.findprofessional.feature.home.detail.HomeDetailAvailabilityUseCase.Companion.weekNumberMap
-import com.hulkdx.findprofessional.feature.home.detail.HomeScreenDimens.outerHorizontalPadding
 import com.hulkdx.findprofessional.feature.home.detail.model.AvailabilityData
+import com.hulkdx.findprofessional.feature.home.detail.view.HomeScreenDimens.outerHorizontalPadding
 import kotlinx.datetime.LocalDate
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
