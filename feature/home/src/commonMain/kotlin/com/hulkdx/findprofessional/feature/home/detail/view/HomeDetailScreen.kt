@@ -47,11 +47,12 @@ import kotlinx.datetime.LocalDate
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.androidx.compose.koinViewModel
+import org.koin.core.parameter.parametersOf
 
 @Composable
 fun HomeDetailScreen(
     professional: Professional,
-    viewModel: HomeDetailViewModel = koinViewModel(),
+    viewModel: HomeDetailViewModel = koinViewModel { parametersOf(professional) },
 ) {
     val availability by viewModel.availability.collectAsState()
 
