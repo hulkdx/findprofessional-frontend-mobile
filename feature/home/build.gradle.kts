@@ -13,7 +13,6 @@ kotlin {
             implementation(libs.kotlinx.datetime)
         }
         commonTest.dependencies {
-            implementation(project(":core"))
             implementation(kotlin("test"))
             implementation(kotlin("test-common"))
             implementation(kotlin("test-annotations-common"))
