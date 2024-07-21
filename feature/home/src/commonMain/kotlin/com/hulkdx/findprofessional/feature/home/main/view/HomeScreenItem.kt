@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.feature.home.view
+package com.hulkdx.findprofessional.feature.home.main.view
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -32,7 +32,7 @@ import com.hulkdx.findprofessional.core.theme.body2
 import com.hulkdx.findprofessional.core.theme.h1SemiBold
 import com.hulkdx.findprofessional.core.theme.h2Medium
 import com.hulkdx.findprofessional.core.utils.singleClick
-import com.hulkdx.findprofessional.feature.home.utils.CurrencyFormatter
+import com.hulkdx.findprofessional.feature.home.main.utils.CurrencyFormatter
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview

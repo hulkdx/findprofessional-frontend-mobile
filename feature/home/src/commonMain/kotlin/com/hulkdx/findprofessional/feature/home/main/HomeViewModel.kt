@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.feature.home
+package com.hulkdx.findprofessional.feature.home.main
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
