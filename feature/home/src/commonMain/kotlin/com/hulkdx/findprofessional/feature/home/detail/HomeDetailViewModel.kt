@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.hulkdx.findprofessional.core.model.pro.Professional
 import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import com.hulkdx.findprofessional.core.navigation.Navigator
+import com.hulkdx.findprofessional.feature.home.detail.availability.HomeDetailAvailabilityUseCase
 import kotlinx.coroutines.flow.SharingStarted.Companion.WhileSubscribed
 import kotlinx.coroutines.flow.stateIn
 

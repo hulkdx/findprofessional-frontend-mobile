@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.feature.home.detail.model
+package com.hulkdx.findprofessional.feature.home.detail.availability
 
 import kotlinx.datetime.LocalDate
 import kotlin.math.ceil

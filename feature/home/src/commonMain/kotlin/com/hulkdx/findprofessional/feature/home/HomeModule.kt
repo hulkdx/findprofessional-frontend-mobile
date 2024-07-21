@@ -1,7 +1,7 @@
 package com.hulkdx.findprofessional.feature.home
 
-import com.hulkdx.findprofessional.feature.home.detail.HomeDetailAvailabilityUseCase
 import com.hulkdx.findprofessional.feature.home.detail.HomeDetailViewModel
+import com.hulkdx.findprofessional.feature.home.detail.availability.HomeDetailAvailabilityUseCase
 import com.hulkdx.findprofessional.feature.home.main.HomeViewModel
 import com.hulkdx.findprofessional.feature.home.main.ProfessionalUseCase
 import com.hulkdx.findprofessional.feature.home.main.api.ProfessionalApi

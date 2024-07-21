@@ -2,8 +2,8 @@ package com.hulkdx.findprofessional.feature.home.detail.utils
 
 import com.hulkdx.findprofessional.core.utils.lengthOfMonth
 import com.hulkdx.findprofessional.core.utils.shortDayOfWeeks
-import com.hulkdx.findprofessional.feature.home.detail.HomeDetailAvailabilityUseCase.Companion.weekNumberMap
-import com.hulkdx.findprofessional.feature.home.detail.capitalize
+import com.hulkdx.findprofessional.feature.home.detail.availability.HomeDetailAvailabilityUseCase.Companion.weekNumberMap
+import com.hulkdx.findprofessional.feature.home.detail.availability.capitalize
 import kotlinx.datetime.LocalDate
 
 

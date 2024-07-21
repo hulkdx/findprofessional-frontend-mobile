@@ -1,6 +1,6 @@
 @file:Suppress("FunctionName")
 
-package com.hulkdx.findprofessional.feature.home.detail.view
+package com.hulkdx.findprofessional.feature.home.detail.review
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background

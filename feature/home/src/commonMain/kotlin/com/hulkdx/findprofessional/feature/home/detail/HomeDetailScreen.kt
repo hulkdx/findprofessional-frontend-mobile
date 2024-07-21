@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.feature.home.detail.view
+package com.hulkdx.findprofessional.feature.home.detail
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -36,10 +36,11 @@ import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.bookNow
 import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.core.theme.body2SemiBold
-import com.hulkdx.findprofessional.feature.home.detail.HomeDetailViewModel
-import com.hulkdx.findprofessional.feature.home.detail.model.AvailabilityData
-import com.hulkdx.findprofessional.feature.home.detail.view.HomeScreenDimens.bottomPartHeight
-import com.hulkdx.findprofessional.feature.home.detail.view.HomeScreenDimens.outerHorizontalPadding
+import com.hulkdx.findprofessional.feature.home.detail.availability.Availability
+import com.hulkdx.findprofessional.feature.home.detail.availability.AvailabilityData
+import com.hulkdx.findprofessional.feature.home.detail.review.Review
+import com.hulkdx.findprofessional.feature.home.detail.utils.HomeScreenDimens.BOTTOM_PART_HEIGHT
+import com.hulkdx.findprofessional.feature.home.detail.utils.HomeScreenDimens.OUTER_HORIZONTAL_PADDING
 import com.hulkdx.findprofessional.feature.home.main.view.Description
 import com.hulkdx.findprofessional.feature.home.main.view.TopRow
 import kotlinx.datetime.Clock
@@ -89,7 +90,7 @@ fun HomeDetailScreen(
         LazyColumn(
             modifier = Modifier
                 .testTag("HomeDetailScreen.LazyColumn")
-                .padding(bottom = bottomPartHeight.dp)
+                .padding(bottom = BOTTOM_PART_HEIGHT.dp)
         ) {
             item { TopHeader(professional) }
             Availability(availability, availabilityMonthMinusOne, availabilityMonthPlusOne)
@@ -114,7 +115,7 @@ private fun BoxScope.BottomPart(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .height(bottomPartHeight.dp)
+            .height(BOTTOM_PART_HEIGHT.dp)
             .align(Alignment.BottomStart)
             .border(1.dp, MaterialTheme.colorScheme.onPrimary)
             .background(MaterialTheme.colorScheme.surfaceVariant),
@@ -151,7 +152,7 @@ private fun TopHeader(professional: Professional) {
         modifier = Modifier
             .fillMaxWidth()
             .padding(top = 49.dp)
-            .padding(horizontal = outerHorizontalPadding.dp)
+            .padding(horizontal = OUTER_HORIZONTAL_PADDING.dp)
             .clip(shape = RoundedCornerShape(10.dp))
             .background(MaterialTheme.colorScheme.surfaceVariant)
             .padding(24.dp)

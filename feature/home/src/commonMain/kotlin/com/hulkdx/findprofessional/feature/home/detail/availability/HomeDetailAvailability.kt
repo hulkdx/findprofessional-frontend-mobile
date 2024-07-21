@@ -1,6 +1,6 @@
 @file:Suppress("FunctionName")
 
-package com.hulkdx.findprofessional.feature.home.detail.view
+package com.hulkdx.findprofessional.feature.home.detail.availability
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -36,9 +36,8 @@ import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.core.theme.body1
 import com.hulkdx.findprofessional.core.theme.body1Medium
 import com.hulkdx.findprofessional.core.theme.h3Medium
-import com.hulkdx.findprofessional.feature.home.detail.HomeDetailAvailabilityUseCase.Companion.weekNumberMap
-import com.hulkdx.findprofessional.feature.home.detail.model.AvailabilityData
-import com.hulkdx.findprofessional.feature.home.detail.view.HomeScreenDimens.outerHorizontalPadding
+import com.hulkdx.findprofessional.feature.home.detail.availability.HomeDetailAvailabilityUseCase.Companion.weekNumberMap
+import com.hulkdx.findprofessional.feature.home.detail.utils.HomeScreenDimens.OUTER_HORIZONTAL_PADDING
 import kotlinx.datetime.LocalDate
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
@@ -61,7 +60,7 @@ private fun AvailabilityHeader() {
             .padding(
                 top = 32.dp,
                 bottom = 16.dp,
-                start = outerHorizontalPadding.dp,
+                start = OUTER_HORIZONTAL_PADDING.dp,
             ),
         style = body1Medium,
         text = stringResource(Res.string.availability),
@@ -77,7 +76,7 @@ private fun AvailabilityCalendar(
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = outerHorizontalPadding.dp)
+            .padding(horizontal = OUTER_HORIZONTAL_PADDING.dp)
             .padding(bottom = 32.dp)
             .clip(shape = RoundedCornerShape(10.dp))
             .background(MaterialTheme.colorScheme.surfaceVariant)

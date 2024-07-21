@@ -1,5 +1,6 @@
-package com.hulkdx.findprofessional.feature.home.detail.model
+package com.hulkdx.findprofessional.feature.home.detail
 
+import com.hulkdx.findprofessional.feature.home.detail.availability.AvailabilityData
 import kotlinx.datetime.LocalDate
 import kotlin.test.Test
 import kotlin.test.assertEquals

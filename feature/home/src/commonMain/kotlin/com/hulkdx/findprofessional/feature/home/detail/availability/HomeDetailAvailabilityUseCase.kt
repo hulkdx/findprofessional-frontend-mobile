@@ -1,8 +1,7 @@
-package com.hulkdx.findprofessional.feature.home.detail
+package com.hulkdx.findprofessional.feature.home.detail.availability
 
 import com.hulkdx.findprofessional.core.model.pro.Professional
 import com.hulkdx.findprofessional.core.utils.now
-import com.hulkdx.findprofessional.feature.home.detail.model.AvailabilityData
 import com.hulkdx.findprofessional.feature.home.detail.utils.DateUtils.currentMonth
 import com.hulkdx.findprofessional.feature.home.detail.utils.DateUtils.firstDayInt
 import com.hulkdx.findprofessional.feature.home.detail.utils.DateUtils.lengthOfMonth
