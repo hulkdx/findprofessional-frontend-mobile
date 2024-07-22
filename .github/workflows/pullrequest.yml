@@ -12,7 +12,8 @@ env:
 jobs:
   unit-tests-android-and-ios:
     name: Unit test on Android and IOS
-    runs-on: macos-12
+    runs-on: macos-14
+    timeout-minutes: 30
     steps:
       - name: Checkout
         uses: actions/checkout@v3

@@ -26,6 +26,9 @@ kotlin {
                 implementation(auth)
                 implementation(home)
                 implementation(developer)
+                implementation(book)
+                implementation(profile)
+                implementation(review)
             }
 
             implementation(libs.kotlinx.datetime)
