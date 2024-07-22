@@ -22,6 +22,8 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
@@ -32,6 +34,7 @@ import androidx.compose.ui.text.style.TextAlign.Companion.Center
 import androidx.compose.ui.unit.dp
 import com.hulkdx.findprofessional.core.commonui.CUFilledButton
 import com.hulkdx.findprofessional.core.commonui.CUSnackBar
+import com.hulkdx.findprofessional.core.model.pro.Professional
 import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.continue1
 import com.hulkdx.findprofessional.core.resources.ic_calendar_left
@@ -51,13 +54,17 @@ import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
+import org.koin.androidx.compose.koinViewModel
+import org.koin.core.parameter.parametersOf
 
-/*
 @Composable
-fun BookingTimeScreen(viewModel: BookingTimeViewModel = koinViewModel()) {
+fun BookingTimeScreen(
+    professional: Professional,
+    viewModel: BookingTimeViewModel = koinViewModel { parametersOf(professional) },
+) {
 
-    val error by viewModel.error.collectAsStateWithLifecycle()
-    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    val error by viewModel.error.collectAsState()
+    val uiState by viewModel.uiState.collectAsState()
 
     BookingTimeScreen(
         uiState = uiState ?: return,
@@ -70,7 +77,6 @@ fun BookingTimeScreen(viewModel: BookingTimeViewModel = koinViewModel()) {
     )
 
 }
-*/
 
 @Composable
 fun BookingTimeScreen(
