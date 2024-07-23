@@ -1,6 +1,7 @@
-package com.hulkdx.findprofessional.feature.home.main.utils
+package com.hulkdx.findprofessional.core.utils
 
-import com.hulkdx.findprofessional.feature.home.main.model.Currency
+import com.hulkdx.findprofessional.core.model.home.Currency
+
 
 object CurrencyFormatter {
     fun toSymbol(currency: String?): String {

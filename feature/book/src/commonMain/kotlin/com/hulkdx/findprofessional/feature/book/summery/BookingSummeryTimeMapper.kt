@@ -3,11 +3,11 @@ package com.hulkdx.findprofessional.feature.book.summery
 import androidx.annotation.VisibleForTesting
 import com.hulkdx.findprofessional.core.model.book.SelectedTimes
 import com.hulkdx.findprofessional.core.model.pro.Professional
+import com.hulkdx.findprofessional.core.utils.CurrencyFormatter
 import com.hulkdx.findprofessional.core.utils.NumberFormatter
 import com.hulkdx.findprofessional.core.utils.shortDayOfWeeks
 import com.hulkdx.findprofessional.feature.book.time.utils.BookingTimeUtils.currentDay
 import com.hulkdx.findprofessional.feature.book.time.utils.BookingTimeUtils.formattedTime
-import com.hulkdx.findprofessional.feature.home.main.utils.CurrencyFormatter
 import kotlinx.datetime.LocalDate
 
 class BookingSummeryTimeMapper {
