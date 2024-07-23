@@ -30,5 +30,4 @@ echo JAVA_HOME=\'/Applications/Android Studio.app/Contents/jbr/Contents/Home\' >
 
 ## TODO
 
-- ViewModel does not work the best with decompose
 - Add screenshot tests
