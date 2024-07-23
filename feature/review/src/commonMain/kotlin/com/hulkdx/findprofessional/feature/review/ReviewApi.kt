@@ -1,7 +1,7 @@
-package com.hulkdx.findprofessional.feature.home.main.api
+package com.hulkdx.findprofessional.feature.review
 
 import com.hulkdx.findprofessional.core.api.auth
-import com.hulkdx.findprofessional.core.model.pro.Professional
+import com.hulkdx.findprofessional.core.model.pro.ProfessionalReview
 import com.hulkdx.findprofessional.core.storage.UserStorage
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
@@ -10,19 +10,23 @@ import io.ktor.client.request.url
 import io.ktor.http.ContentType
 import io.ktor.http.contentType
 
-interface ProfessionalApi {
-    suspend fun findAll(): List<Professional>
+interface ReviewApi {
+    suspend fun findAll(professionalId: Int, page: Int, pageSize: Int): List<ProfessionalReview>
 }
 
-class ProfessionalApiImpl(
+class ReviewApiImpl(
     private val client: HttpClient,
     private val userStorage: UserStorage,
-) : ProfessionalApi {
+) : ReviewApi {
 
-    override suspend fun findAll(): List<Professional> {
+    override suspend fun findAll(
+        professionalId: Int,
+        page: Int,
+        pageSize: Int,
+    ): List<ProfessionalReview> {
         return client.get {
             auth(userStorage)
-            url("professional")
+            url("professional/$professionalId/review?page=$page&pageSize=$pageSize")
             contentType(ContentType.Application.Json)
         }
             .body()

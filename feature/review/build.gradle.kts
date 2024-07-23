@@ -7,12 +7,6 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(projects.core)
-            implementation(projects.feature.auth)
-
-            with(projects.feature) {
-                implementation(auth)
-                implementation(home)
-            }
 
             implementation(libs.ktor.core)
             implementation(libs.lifecycle.viewmodel.compose)
