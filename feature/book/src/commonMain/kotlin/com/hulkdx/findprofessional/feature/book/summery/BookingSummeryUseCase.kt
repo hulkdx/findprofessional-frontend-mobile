@@ -2,11 +2,11 @@ package com.hulkdx.findprofessional.feature.book.summery
 
 import com.hulkdx.findprofessional.core.model.book.SelectedTimes
 import com.hulkdx.findprofessional.core.model.pro.Professional
-import com.hulkdx.findprofessional.feature.authentication.login.storage.datastore.UserStorageDataStore
+import com.hulkdx.findprofessional.core.storage.UserStorage
 
 class BookingSummeryUseCase(
     private val bookingSummeryTimeMapper: BookingSummeryTimeMapper,
-    private val userStore: UserStorageDataStore,
+    private val userStore: UserStorage,
 ) {
     suspend fun getUiState(
         professional: Professional,
