@@ -28,7 +28,12 @@ If you want to run the code in xcode and java version mismatches, run the follow
 echo JAVA_HOME=\'/Applications/Android Studio.app/Contents/jbr/Contents/Home\' > ios/.env
 ```
 
-## TODO
+## Improvement idea
 
 - Use [this](https://arkivanov.github.io/Decompose/tips-tricks/composable-viewmodel/#composable-functions-with-viewmodels-with-savedstatehandle) guide if you need SavedStateHandle in ViewModel of Decompose.
+
+## TODO
+
+- Transfer all tests from old projects
+- SignUpPro
 - Add screenshot tests

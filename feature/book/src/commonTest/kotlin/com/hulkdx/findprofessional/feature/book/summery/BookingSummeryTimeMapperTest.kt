@@ -1,7 +1,7 @@
 package com.hulkdx.findprofessional.feature.book.summery
 
 import com.hulkdx.findprofessional.core.model.book.SelectedTimes
-import com.hulkdx.findprofessional.feature.book.createProfessional
+import com.hulkdx.findprofessional.libs.common.tests.createProfessional
 import kotlinx.datetime.LocalDate
 import kotlin.test.BeforeTest
 import kotlin.test.Test
