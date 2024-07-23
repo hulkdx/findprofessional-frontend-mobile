@@ -30,4 +30,5 @@ echo JAVA_HOME=\'/Applications/Android Studio.app/Contents/jbr/Contents/Home\' >
 
 ## TODO
 
+- Use [this](https://arkivanov.github.io/Decompose/tips-tricks/composable-viewmodel/#composable-functions-with-viewmodels-with-savedstatehandle) guide if you need SavedStateHandle in ViewModel of Decompose.
 - Add screenshot tests
