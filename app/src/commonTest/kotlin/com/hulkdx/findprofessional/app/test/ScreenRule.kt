@@ -29,7 +29,9 @@ import kotlin.coroutines.EmptyCoroutineContext
 
 fun runAppUiTest(
     effectContext: CoroutineContext = EmptyCoroutineContext,
-    block: ComposeUiTest.() -> Unit,
+    before: () -> Unit = {},
+    after: () -> Unit = {},
+    test: ComposeUiTest.() -> Unit,
 ) {
     val lifecycle = LifecycleRegistry()
     try {
@@ -40,10 +42,13 @@ fun runAppUiTest(
         deleteDataStoreFile()
         inMemoryApi.loadKoinModules()
         lifecycle.resume()
+
+        before()
         runComposeUiTest(effectContext) {
             setAppContent(lifecycle)
-            block()
+            test()
         }
+        after()
     } finally {
         lifecycle.destroy()
         inMemoryApi.unloadKoinModules()

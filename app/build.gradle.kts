@@ -41,6 +41,7 @@ kotlin {
             implementation(libs.ktor.darwin)
         }
         commonTest.dependencies {
+            implementation(projects.libs.commonTests)
             implementation(kotlin("test"))
             implementation(kotlin("test-common"))
             implementation(kotlin("test-annotations-common"))
@@ -50,6 +51,7 @@ kotlin {
             implementation(libs.decompose.extensions.compose)
             implementation(libs.lifecycle.viewmodel.compose)
             implementation(libs.kotlinx.io.core)
+            implementation(libs.ktor.mock)
         }
     }
 }

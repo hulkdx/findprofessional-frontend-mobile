@@ -6,6 +6,8 @@ import io.ktor.client.request.HttpRequestBuilder
 import io.ktor.client.request.bearerAuth
 
 suspend fun HttpRequestBuilder.auth(userStorage: UserStorage) {
-    val accessToken = userStorage.get()?.token?.accessToken ?: throw AccessTokenNotFoundException()
-    bearerAuth(accessToken)
+    bearerAuth(userStorage.getAccessToken())
 }
+
+suspend fun UserStorage.getAccessToken() =
+    get()?.token?.accessToken ?: throw AccessTokenNotFoundException()

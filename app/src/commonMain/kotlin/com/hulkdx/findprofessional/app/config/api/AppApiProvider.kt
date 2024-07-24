@@ -13,21 +13,23 @@ import io.ktor.serialization.kotlinx.json.json
 object AppApiProvider {
 
     fun httpClient(ps: PlatformSpecific): HttpClient {
-        return HttpClient {
-            install(ContentNegotiation) {
-                json()
-            }
+        return HttpClient(getConfig(ps))
+    }
 
-            install(DefaultRequest) {
-                url(baseUrl(ps))
-            }
+    fun getConfig(ps: PlatformSpecific): HttpClientConfig<*>.() -> Unit = {
+        install(ContentNegotiation) {
+            json()
+        }
 
-            // throws exception when request is not successful:
-            expectSuccess = true
+        install(DefaultRequest) {
+            url(baseUrl(ps))
+        }
 
-            if (ps.isDebug()) {
-                debugClientConfig()
-            }
+        // throws exception when request is not successful:
+        expectSuccess = true
+
+        if (ps.isDebug()) {
+            debugClientConfig()
         }
     }
 
