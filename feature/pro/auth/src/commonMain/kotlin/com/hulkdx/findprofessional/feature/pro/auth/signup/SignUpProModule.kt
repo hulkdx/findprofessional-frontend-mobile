@@ -7,4 +7,5 @@ import org.koin.dsl.module
 val signUpProModule: Module
     get() = module {
         factoryOf(::SignUpProViewModel)
+        factoryOf(::SignUpProUseCase)
     }
