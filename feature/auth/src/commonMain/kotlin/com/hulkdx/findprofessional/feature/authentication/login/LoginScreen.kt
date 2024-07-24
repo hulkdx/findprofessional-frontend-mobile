@@ -24,7 +24,10 @@ import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
+import com.hulkdx.findprofessional.core.commonui.CUEmailTextField
 import com.hulkdx.findprofessional.core.commonui.CUFilledButton
+import com.hulkdx.findprofessional.core.commonui.CULogoImage
+import com.hulkdx.findprofessional.core.commonui.CUPasswordTextField
 import com.hulkdx.findprofessional.core.commonui.CUSnackBar
 import com.hulkdx.findprofessional.core.commonui.CUTextButton
 import com.hulkdx.findprofessional.core.config.isDebug
@@ -35,9 +38,6 @@ import com.hulkdx.findprofessional.core.resources.signIn
 import com.hulkdx.findprofessional.core.resources.signUp
 import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.core.utils.singleClick
-import com.hulkdx.findprofessional.feature.authentication.ui.EmailTextField
-import com.hulkdx.findprofessional.feature.authentication.ui.LogoImage
-import com.hulkdx.findprofessional.feature.authentication.ui.PasswordTextField
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.androidx.compose.koinViewModel
@@ -97,13 +97,13 @@ fun LoginScreen(
             Spacer(modifier = Modifier.height(16.dp))
             Spacer(modifier = Modifier.weight(2.5F))
 
-            LogoImage(
+            CULogoImage(
                 modifier = Modifier
                     .width(110.dp)
                     .align(CenterHorizontally)
             )
 
-            EmailTextField(
+            CUEmailTextField(
                 modifier = Modifier
                     .padding(top = 50.dp)
                     .padding(horizontal = 24.dp),
@@ -111,7 +111,7 @@ fun LoginScreen(
                 onValueChanged = onEmailChanged,
             )
 
-            PasswordTextField(
+            CUPasswordTextField(
                 modifier = Modifier
                     .padding(top = 16.dp)
                     .padding(horizontal = 24.dp),

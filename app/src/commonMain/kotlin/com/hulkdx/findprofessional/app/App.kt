@@ -11,6 +11,7 @@ import com.hulkdx.findprofessional.feature.book.time.BookingTimeScreen
 import com.hulkdx.findprofessional.feature.developer.DeveloperScreen
 import com.hulkdx.findprofessional.feature.home.detail.HomeDetailScreen
 import com.hulkdx.findprofessional.feature.home.main.view.HomeScreen
+import com.hulkdx.findprofessional.feature.pro.auth.signup.SignUpProScreen
 import com.hulkdx.findprofessional.feature.profile.ProfileScreen
 import com.hulkdx.findprofessional.feature.review.ReviewScreen
 import com.hulkdx.findprofessional.libs.navigation.decompose.RootComponent
@@ -37,7 +38,7 @@ private fun RenderScreen(screen: NavigationScreen) {
         is NavigationScreen.Profile -> ProfileScreen()
         is NavigationScreen.BookingTime -> BookingTimeScreen(screen.professional)
         is NavigationScreen.BookingSummery -> BookingSummeryScreen(screen.professional, screen.times)
-        is NavigationScreen.SignUpPro -> TODO()
+        is NavigationScreen.SignUpPro -> SignUpProScreen()
     }
     // @formatter:on
 }
