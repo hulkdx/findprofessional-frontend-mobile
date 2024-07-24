@@ -2,13 +2,13 @@ package com.hulkdx.findprofessional.feature.book.time
 
 import com.hulkdx.findprofessional.core.model.pro.ProfessionalAvailability
 import com.hulkdx.findprofessional.core.utils.now
-import com.hulkdx.findprofessional.feature.book.createBookingTimes
-import com.hulkdx.findprofessional.feature.book.createProfessional
 import com.hulkdx.findprofessional.feature.book.time.BookingTimeUiState.BookingTime
 import com.hulkdx.findprofessional.feature.book.time.BookingTimeUiState.BookingTime.Type.Available
 import com.hulkdx.findprofessional.feature.book.time.BookingTimeUiState.BookingTime.Type.Selected
 import com.hulkdx.findprofessional.feature.book.time.BookingTimeUiState.BookingTime.Type.UnAvailable
-import com.hulkdx.findprofessional.feature.book.time.utils.StubNavigator
+import com.hulkdx.findprofessional.libs.common.tests.StubNavigator
+import com.hulkdx.findprofessional.libs.common.tests.createBookingTimes
+import com.hulkdx.findprofessional.libs.common.tests.createProfessional
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.runTest
 import kotlinx.datetime.LocalDate

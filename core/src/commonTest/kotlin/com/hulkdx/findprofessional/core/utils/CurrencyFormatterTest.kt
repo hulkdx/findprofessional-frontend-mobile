@@ -1,6 +1,5 @@
-package com.hulkdx.findprofessional.feature.home.main.utils
+package com.hulkdx.findprofessional.core.utils
 
-import com.hulkdx.findprofessional.core.utils.CurrencyFormatter
 import kotlin.test.Test
 import kotlin.test.assertEquals
 

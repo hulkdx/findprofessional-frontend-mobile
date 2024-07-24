@@ -37,7 +37,7 @@ private fun RenderScreen(screen: NavigationScreen) {
         is NavigationScreen.Profile -> ProfileScreen()
         is NavigationScreen.BookingTime -> BookingTimeScreen(screen.professional)
         is NavigationScreen.BookingSummery -> BookingSummeryScreen(screen.professional, screen.times)
-        else -> TODO()
+        is NavigationScreen.SignUpPro -> TODO()
     }
     // @formatter:on
 }

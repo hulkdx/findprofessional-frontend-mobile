@@ -22,14 +22,12 @@ kotlin {
             implementation(projects.core)
             implementation(projects.libs.navigationDecompose)
 
-            with(projects.feature) {
-                implementation(auth)
-                implementation(home)
-                implementation(developer)
-                implementation(book)
-                implementation(profile)
-                implementation(review)
-            }
+            implementation(projects.feature.auth)
+            implementation(projects.feature.home)
+            implementation(projects.feature.developer)
+            implementation(projects.feature.book)
+            implementation(projects.feature.profile)
+            implementation(projects.feature.review)
 
             implementation(libs.kotlinx.datetime)
             implementation(libs.ktor.core)

@@ -4,10 +4,9 @@
 package com.hulkdx.findprofessional.feature.home.main
 
 import com.hulkdx.findprofessional.core.model.pro.Professional
-import com.hulkdx.findprofessional.core.model.pro.ProfessionalReview
 import com.hulkdx.findprofessional.feature.home.main.api.ProfessionalApi
-import com.hulkdx.findprofessional.feature.home.main.utils.createProfessional
-import com.hulkdx.findprofessional.feature.utils.StubNavigator
+import com.hulkdx.findprofessional.libs.common.tests.StubNavigator
+import com.hulkdx.findprofessional.libs.common.tests.createProfessional
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
@@ -60,11 +59,7 @@ class HomeViewModelTest {
 
     private class ProApiMock : ProfessionalApi {
         var findAllResponse: List<Professional> = listOf()
-
-        // @formatter:off
         override suspend fun findAll() = findAllResponse
-        override suspend fun findAllReviews(professionalId: Int, page: Int, pageSize: Int): List<ProfessionalReview> = TODO()
-        // @formatter:on
     }
 
     // endregion

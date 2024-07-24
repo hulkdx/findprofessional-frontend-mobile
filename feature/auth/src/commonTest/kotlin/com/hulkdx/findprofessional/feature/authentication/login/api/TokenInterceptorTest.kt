@@ -6,7 +6,7 @@ import com.hulkdx.findprofessional.core.model.user.Token
 import com.hulkdx.findprofessional.core.model.user.UserData
 import com.hulkdx.findprofessional.core.storage.UserStorage
 import com.hulkdx.findprofessional.feature.authentication.login.usecase.LogoutUseCase
-import com.hulkdx.findprofessional.feature.utils.newUserData
+import com.hulkdx.findprofessional.libs.common.tests.newUserData
 import io.ktor.client.HttpClient
 import io.ktor.client.call.HttpClientCall
 import io.ktor.client.plugins.Sender

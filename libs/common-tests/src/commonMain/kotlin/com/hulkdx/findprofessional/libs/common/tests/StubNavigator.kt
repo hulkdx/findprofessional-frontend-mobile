@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.feature.book.time.utils
+package com.hulkdx.findprofessional.libs.common.tests
 
 import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import com.hulkdx.findprofessional.core.navigation.Navigator

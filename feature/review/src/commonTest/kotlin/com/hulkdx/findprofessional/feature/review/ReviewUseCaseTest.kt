@@ -3,7 +3,6 @@
 package com.hulkdx.findprofessional.feature.review
 
 import com.hulkdx.findprofessional.core.model.pro.ProfessionalReview
-import com.hulkdx.findprofessional.feature.home.main.api.ProfessionalApi
 import com.hulkdx.findprofessional.feature.review.ReviewUseCase.Result.DoNothing
 import com.hulkdx.findprofessional.feature.review.ReviewUseCase.Result.Success
 import kotlinx.coroutines.Dispatchers
@@ -21,7 +20,7 @@ class ReviewUseCaseTest {
 
     private lateinit var sut: ReviewUseCase
 
-    private val api = ProApiMock()
+    private val api = ReviewApiMock()
 
     @BeforeTest
     fun setUp() {
@@ -93,14 +92,13 @@ class ReviewUseCaseTest {
 
     // region mock classes
 
-    private class ProApiMock : ProfessionalApi {
+    private class ReviewApiMock : ReviewApi {
         var response: suspend () -> List<ProfessionalReview> = { TODO() }
         var findAllReviewsCalled = 0
         var findAllReviewsPage = -1000
 
         // @formatter:off
-        override suspend fun findAll() = TODO()
-        override suspend fun findAllReviews(professionalId: Int, page: Int, pageSize: Int):List<ProfessionalReview>  {
+        override suspend fun findAll(professionalId: Int, page: Int, pageSize: Int):List<ProfessionalReview>  {
             findAllReviewsCalled++
             findAllReviewsPage = page
             return response()

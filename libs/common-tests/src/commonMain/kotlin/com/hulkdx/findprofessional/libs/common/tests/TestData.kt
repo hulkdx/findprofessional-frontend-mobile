@@ -1,10 +1,15 @@
-package com.hulkdx.findprofessional.feature.home.main.utils
+package com.hulkdx.findprofessional.libs.common.tests
 
 import com.hulkdx.findprofessional.core.model.pro.Professional
 import com.hulkdx.findprofessional.core.model.pro.ProfessionalAvailability
 import com.hulkdx.findprofessional.core.model.pro.ProfessionalReview
+import com.hulkdx.findprofessional.core.model.user.Token
 import com.hulkdx.findprofessional.core.model.user.User
+import com.hulkdx.findprofessional.core.model.user.UserData
+import com.hulkdx.findprofessional.core.utils.now
+import com.hulkdx.findprofessional.feature.book.time.BookingTimeUiState
 import kotlinx.datetime.Clock
+import kotlinx.datetime.LocalDate
 
 
 fun createProfessional(
@@ -41,4 +46,30 @@ fun createReview() = ProfessionalReview(
     contentText = null,
     createdAt = Clock.System.now(),
     updatedAt = Clock.System.now(),
+)
+
+fun createBookingTimes(id: Int) = BookingTimeUiState.BookingTime(
+    id = id,
+    startTime = "mentitum",
+    endTime = "interdum",
+    type = BookingTimeUiState.BookingTime.Type.UnAvailable,
+    date = LocalDate.now(),
+)
+
+
+fun newUser(
+    email: String = "lucy.mueller@example.com",
+    firstName: String = "Whitney Johns",
+    lastName: String = "Clifton Haynes",
+    profileImage: String? = null,
+) = User(
+    email = email,
+    firstName = firstName,
+    lastName = lastName,
+    profileImage = profileImage
+)
+
+fun newUserData(accessToken: String = "non empty", refreshToken: String = "non empty") = UserData(
+    Token(accessToken, refreshToken),
+    newUser()
 )

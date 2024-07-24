@@ -6,8 +6,8 @@ import com.hulkdx.findprofessional.core.model.user.Token
 import com.hulkdx.findprofessional.core.model.user.UserData
 import com.hulkdx.findprofessional.core.storage.UserStorage
 import com.hulkdx.findprofessional.feature.authentication.signup.model.RegisterRequest
-import com.hulkdx.findprofessional.feature.utils.StubNavigator
-import com.hulkdx.findprofessional.feature.utils.newUser
+import com.hulkdx.findprofessional.libs.common.tests.StubNavigator
+import com.hulkdx.findprofessional.libs.common.tests.newUser
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.resetMain

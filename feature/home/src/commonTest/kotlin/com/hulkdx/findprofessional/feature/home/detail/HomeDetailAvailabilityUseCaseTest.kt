@@ -4,7 +4,7 @@ package com.hulkdx.findprofessional.feature.home.detail
 
 import com.hulkdx.findprofessional.core.model.pro.ProfessionalAvailability
 import com.hulkdx.findprofessional.feature.home.detail.availability.HomeDetailAvailabilityUseCase
-import com.hulkdx.findprofessional.feature.home.main.utils.createProfessional
+import com.hulkdx.findprofessional.libs.common.tests.createProfessional
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.runTest
 import kotlinx.datetime.LocalDate

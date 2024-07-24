@@ -12,6 +12,7 @@ import com.hulkdx.findprofessional.feature.authentication.login.model.LoginReque
 import com.hulkdx.findprofessional.feature.authentication.signup.SignUpApi
 import com.hulkdx.findprofessional.feature.authentication.signup.model.RegisterRequest
 import com.hulkdx.findprofessional.feature.home.main.api.ProfessionalApi
+import com.hulkdx.findprofessional.feature.review.ReviewApi
 import kotlinx.datetime.Clock
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalTime
@@ -22,6 +23,7 @@ internal class InMemoryApiImpl : InMemoryApi {
         single<SignUpApi> { Signup() }
         single<LoginApi> { Login() }
         single<ProfessionalApi> { Pro() }
+        single<ReviewApi> { Review() }
     }
 
     private var user: RegisterRequest? = null
@@ -217,7 +219,10 @@ internal class InMemoryApiImpl : InMemoryApi {
 
     private inner class Pro : ProfessionalApi {
         override suspend fun findAll() = professionals
-        override suspend fun findAllReviews(
+    }
+
+    private inner class Review : ReviewApi {
+        override suspend fun findAll(
             professionalId: Int,
             page: Int,
             pageSize: Int,

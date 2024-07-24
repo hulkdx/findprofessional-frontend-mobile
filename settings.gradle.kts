@@ -23,6 +23,7 @@ include(":app")
 include(":core")
 
 include(":libs:navigation-decompose")
+include(":libs:common-tests")
 
 include(":feature:auth")
 include(":feature:home")
