@@ -32,7 +32,7 @@ class DecomposeNavigator(
             } else {
                 stack.take(popToIndex + 1)
             }
-            newStack + screen
+            newStack - screen + screen
         }
     }
 

@@ -23,7 +23,9 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import com.hulkdx.findprofessional.core.commonui.BACK_BUTTON_HEIGHT
 import com.hulkdx.findprofessional.core.commonui.CUBackButton
+import com.hulkdx.findprofessional.core.commonui.CUEmailTextField
 import com.hulkdx.findprofessional.core.commonui.CUFilledButton
+import com.hulkdx.findprofessional.core.commonui.CUPasswordTextField
 import com.hulkdx.findprofessional.core.commonui.CUSnackBar
 import com.hulkdx.findprofessional.core.commonui.CUTextField
 import com.hulkdx.findprofessional.core.resources.Res
@@ -31,8 +33,6 @@ import com.hulkdx.findprofessional.core.resources.firstName
 import com.hulkdx.findprofessional.core.resources.lastName
 import com.hulkdx.findprofessional.core.resources.signUp
 import com.hulkdx.findprofessional.core.theme.AppTheme
-import com.hulkdx.findprofessional.feature.authentication.ui.EmailTextField
-import com.hulkdx.findprofessional.feature.authentication.ui.PasswordTextField
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.androidx.compose.koinViewModel
@@ -101,13 +101,13 @@ fun SignUpScreen(
                 onValueChanged = onLastNameChanged
             )
 
-            EmailTextField(
+            CUEmailTextField(
                 modifier = Modifier.padding(top = 8.dp),
                 value = email,
                 onValueChanged = onEmailChanged
             )
 
-            PasswordTextField(
+            CUPasswordTextField(
                 modifier = Modifier.padding(top = 8.dp),
                 value = password,
                 onValueChanged = onPasswordChanged

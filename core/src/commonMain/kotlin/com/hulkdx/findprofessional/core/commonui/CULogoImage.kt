@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.feature.authentication.ui
+package com.hulkdx.findprofessional.core.commonui
 
 import androidx.compose.foundation.Image
 import androidx.compose.runtime.Composable
@@ -8,7 +8,7 @@ import com.hulkdx.findprofessional.core.resources.logo
 import org.jetbrains.compose.resources.painterResource
 
 @Composable
-fun LogoImage(
+fun CULogoImage(
     modifier: Modifier = Modifier,
 ) {
     Image(
