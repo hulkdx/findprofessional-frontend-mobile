@@ -57,13 +57,7 @@ internal class InMemoryApiImpl : InMemoryApi {
         )
     )
 
-    private val todayAvailableTime = ProfessionalAvailability(
-        date = LocalDate.now(),
-        from = LocalTime.parse("08:00"),
-        to = LocalTime.parse("08:30"),
-    )
-
-    private val professionals = listOf(
+    private var professionals = listOf(
         Professional(
             1,
             "test@email.com",
@@ -76,7 +70,11 @@ internal class InMemoryApiImpl : InMemoryApi {
             "5.0",
             "Former professional boxer who competed from 1985 to 2005",
             availability = listOf(
-                todayAvailableTime,
+                ProfessionalAvailability(
+                    date = LocalDate.now(),
+                    from = LocalTime.parse("08:00"),
+                    to = LocalTime.parse("08:30"),
+                ),
                 ProfessionalAvailability(
                     date = LocalDate.now(),
                     from = LocalTime.parse("09:00"),
@@ -253,5 +251,9 @@ internal class InMemoryApiImpl : InMemoryApi {
 
     override fun setUser(user: RegisterRequest) {
         this.user = user
+    }
+
+    override fun setProfessionals(pro: List<Professional>) {
+        this.professionals = pro
     }
 }
