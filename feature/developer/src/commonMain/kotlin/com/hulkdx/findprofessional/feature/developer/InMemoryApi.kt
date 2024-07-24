@@ -8,4 +8,5 @@ interface InMemoryApi {
     fun unloadKoinModules()
     fun setUser(user: RegisterRequest)
     fun setProfessionals(pro: List<Professional>)
+    fun resetProfessionals()
 }

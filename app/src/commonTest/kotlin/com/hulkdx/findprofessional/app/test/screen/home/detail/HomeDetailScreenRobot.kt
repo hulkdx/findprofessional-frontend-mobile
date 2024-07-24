@@ -16,7 +16,7 @@ fun launchHomeDetailScreen(
     rule: Rule,
     email: String = "test@email.com",
     password: String = "somepass",
-    professionalId: Int = 0,
+    professionalId: Int = 1,
     block: HomeDetailScreenDsl.() -> Unit,
 ): HomeDetailScreenDsl {
     setUser(email, password)

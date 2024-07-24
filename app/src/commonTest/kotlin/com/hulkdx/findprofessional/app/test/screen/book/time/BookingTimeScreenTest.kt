@@ -10,9 +10,15 @@ import com.hulkdx.findprofessional.core.model.pro.ProfessionalAvailability
 import com.hulkdx.findprofessional.core.utils.now
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalTime
+import kotlin.test.AfterTest
 import kotlin.test.Test
 
 class BookingTimeScreenTest {
+
+    @AfterTest
+    fun tearDown() {
+        inMemoryApi.resetProfessionals()
+    }
 
     @Test
     fun performContinue() = runAppUiTest {

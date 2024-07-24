@@ -35,7 +35,7 @@ fun launchHomeScreen(
 class HomeScreenDsl(
     private val rule: Rule,
 ) {
-    fun pressProfessional(professionalId: Int = 0) {
+    fun pressProfessional(professionalId: Int = 1) {
         rule.onNodeWithTag("pro-${professionalId}")
             .performClick()
     }

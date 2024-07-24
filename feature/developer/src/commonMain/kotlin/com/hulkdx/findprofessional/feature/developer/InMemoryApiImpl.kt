@@ -57,7 +57,7 @@ internal class InMemoryApiImpl : InMemoryApi {
         )
     )
 
-    private var professionals = listOf(
+    private val defaultProfessionals = listOf(
         Professional(
             1,
             "test@email.com",
@@ -177,6 +177,8 @@ internal class InMemoryApiImpl : InMemoryApi {
         )
     )
 
+    private var professionals = defaultProfessionals
+
     private inner class Signup : SignUpApi {
         override suspend fun register(request: RegisterRequest): UserData {
             user = request
@@ -254,6 +256,10 @@ internal class InMemoryApiImpl : InMemoryApi {
     }
 
     override fun setProfessionals(pro: List<Professional>) {
-        this.professionals = pro
+        professionals = pro
+    }
+
+    override fun resetProfessionals() {
+        professionals = defaultProfessionals
     }
 }
