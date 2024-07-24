@@ -24,7 +24,6 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.hulkdx.findprofessional.common.feature.authentication.pro.signup.model.ProRegisterRequest
 import com.hulkdx.findprofessional.core.commonui.CUEmailTextField
 import com.hulkdx.findprofessional.core.commonui.CUFilledButton
 import com.hulkdx.findprofessional.core.commonui.CUPasswordTextField
@@ -48,6 +47,7 @@ import com.hulkdx.findprofessional.core.resources.skypeId
 import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.core.theme.body3Medium
 import com.hulkdx.findprofessional.core.theme.h1Medium
+import com.hulkdx.findprofessional.feature.pro.auth.signup.model.ProRegisterRequest
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview

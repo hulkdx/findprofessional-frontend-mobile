@@ -1,11 +1,8 @@
-package com.hulkdx.findprofessional.common.feature.authentication.pro.signup.model
+package com.hulkdx.findprofessional.feature.pro.auth.signup.model
 
-import com.hulkdx.findprofessional.common.utils.CommonParcelable
-import com.hulkdx.findprofessional.common.utils.CommonParcelize
 import kotlinx.serialization.Serializable
 
 @Serializable
-@CommonParcelize
 data class ProRegisterRequest(
     val email: String = "",
     val password: String = "",
@@ -16,4 +13,4 @@ data class ProRegisterRequest(
     val coachType: String = "",
     val price: String = "",
     val priceCurrency: String = "",
-) : CommonParcelable
+)

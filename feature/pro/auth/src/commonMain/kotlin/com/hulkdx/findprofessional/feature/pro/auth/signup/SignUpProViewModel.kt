@@ -2,8 +2,8 @@ package com.hulkdx.findprofessional.feature.pro.auth.signup
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.hulkdx.findprofessional.common.feature.authentication.pro.signup.model.ProRegisterRequest
 import com.hulkdx.findprofessional.core.utils.StringOrRes
+import com.hulkdx.findprofessional.feature.pro.auth.signup.model.ProRegisterRequest
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
