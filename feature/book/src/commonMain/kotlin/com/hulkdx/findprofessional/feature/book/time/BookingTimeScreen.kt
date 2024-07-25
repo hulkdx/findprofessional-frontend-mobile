@@ -32,6 +32,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.style.TextAlign.Companion.Center
 import androidx.compose.ui.unit.dp
+import com.hulkdx.findprofessional.core.commonui.CUBackButton
 import com.hulkdx.findprofessional.core.commonui.CUFilledButton
 import com.hulkdx.findprofessional.core.commonui.CUSnackBar
 import com.hulkdx.findprofessional.core.model.pro.Professional
@@ -62,7 +63,6 @@ fun BookingTimeScreen(
     professional: Professional,
     viewModel: BookingTimeViewModel = koinViewModel { parametersOf(professional) },
 ) {
-
     val error by viewModel.error.collectAsState()
     val uiState by viewModel.uiState.collectAsState()
 
@@ -95,7 +95,10 @@ fun BookingTimeScreen(
             .systemBarsPadding()
             .testTag("BookingTimeScreen")
     ) {
-        LazyColumn(Modifier.testTag("BookingTimeScreen.LazyColumn")) {
+        LazyColumn(
+            Modifier.testTag("BookingTimeScreen.LazyColumn")
+                .padding(top = 64.dp)
+        ) {
             item { Header() }
             item { DayHeader(uiState.currentDate, dayPlusOne, dayMinusOne) }
             items(uiState.times) { (first, second) ->
@@ -103,6 +106,8 @@ fun BookingTimeScreen(
             }
             item { Spacer(modifier = Modifier.height(90.dp)) }
         }
+        CUBackButton(modifier = Modifier.align(Alignment.TopStart))
+
         ContinueButton(
             modifier = Modifier.align(Alignment.BottomCenter),
             onClick = onContinueClicked,
@@ -120,7 +125,7 @@ private fun Header() {
     Text(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(top = 45.dp, bottom = 33.dp),
+            .padding(bottom = 33.dp),
         text = stringResource(Res.string.selectOneOrMoreItems),
         style = h2Medium,
         textAlign = Center,

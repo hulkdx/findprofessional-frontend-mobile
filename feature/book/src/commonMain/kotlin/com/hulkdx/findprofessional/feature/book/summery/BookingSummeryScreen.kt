@@ -25,6 +25,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.hulkdx.findprofessional.core.commonui.CUBackButton
 import com.hulkdx.findprofessional.core.commonui.CUFilledButton
 import com.hulkdx.findprofessional.core.commonui.CUSnackBar
 import com.hulkdx.findprofessional.core.model.book.SelectedTimes
@@ -77,7 +78,7 @@ fun BookingSummeryScreen(
             .systemBarsPadding()
             .testTag("BookingSummeryScreen")
     ) {
-        LazyColumn {
+        LazyColumn(Modifier.padding(top = 100.dp)) {
             item { YourRequest() }
             item { DateAndTime() }
             items(uiState.times) {
@@ -85,6 +86,7 @@ fun BookingSummeryScreen(
             }
             item { Connection(uiState.userSkypeId) }
         }
+        CUBackButton(modifier = Modifier.align(Alignment.TopStart))
         Bottom(
             modifier = Modifier.align(Alignment.BottomStart),
             totalPrices = uiState.totalPrices,
@@ -102,7 +104,6 @@ fun BookingSummeryScreen(
 private fun YourRequest() {
     Text(
         modifier = Modifier
-            .padding(top = 100.dp)
             .fillMaxWidth(),
         text = stringResource(Res.string.yourRequest),
         textAlign = TextAlign.Center,

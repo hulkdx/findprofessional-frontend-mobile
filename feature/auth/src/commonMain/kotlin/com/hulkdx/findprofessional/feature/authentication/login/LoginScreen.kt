@@ -70,15 +70,15 @@ fun LoginScreen(
 @Composable
 fun LoginScreen(
     email: String,
-    onEmailChanged: (String) -> Unit,
     password: String,
+    showDeveloper: Boolean,
+    error: String?,
+    onEmailChanged: (String) -> Unit,
     onPasswordChanged: (String) -> Unit,
     onSignInClicked: () -> Unit,
     onSignUpClicked: () -> Unit,
     onForgotPasswordClicked: () -> Unit,
-    error: String?,
     onErrorDismissed: () -> Unit,
-    showDeveloper: Boolean,
     onDevClicked: () -> Unit,
 ) {
     Box(
