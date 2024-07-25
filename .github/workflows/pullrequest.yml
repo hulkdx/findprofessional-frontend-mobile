@@ -11,7 +11,7 @@ env:
 
 jobs:
   unit-tests-android-and-ios:
-    name: Unit test on Android and IOS
+    name: Android unit tests
     runs-on: macos-14
     timeout-minutes: 30
     steps:
@@ -34,11 +34,10 @@ jobs:
             ${{ runner.os }}-gradle-
 
       - name: Run unit tests
-        run: ./gradlew assembleDebug testDebug iosSimulatorArm64Test -x :app:testDebug -x :app:iosSimulatorArm64Test
+        run: ./gradlew assembleDebug testDebug -x :app:testDebug
 
-      # TODO: 
-      # - name: Run screenshot tests
-      #   run: ./gradlew :android:paparazzi-tests:verifyPaparazziDebug
+      - name: Run screenshot tests
+        run: ./gradlew :screenshot-tests:verifyPaparazziDebug
 
       - name: Upload test reports
         if: always()
@@ -51,7 +50,7 @@ jobs:
             uitest-screenshot-failure
 
   android-integration-tests:
-    name: Android Integration tests
+    name: Android integration tests
     runs-on: macos-12
     timeout-minutes: 30
     strategy:
@@ -107,7 +106,7 @@ jobs:
 
 
   ios-integration-tests:
-    name: IOS Integration tests
+    name: IOS unit and integration tests
     runs-on: macos-14
     timeout-minutes: 30
     steps:
@@ -133,7 +132,7 @@ jobs:
             ${{ runner.os }}-gradle-
 
       - name: Run IOS instrumentation tests
-        run: ./gradlew :app:iosSimulatorArm64Test
+        run: ./gradlew iosSimulatorArm64Test
 
       - name: Upload IOS test reports
         if: failure()
