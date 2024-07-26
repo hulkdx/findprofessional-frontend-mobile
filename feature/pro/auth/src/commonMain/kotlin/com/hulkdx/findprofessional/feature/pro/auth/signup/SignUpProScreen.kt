@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -121,7 +122,13 @@ fun SignUpProScreen(
             item { AboutMe(uiState.aboutMe, onAboutMeChanged) }
 
             item { PriceHeader() }
-            item { Price(uiState.price, onPriceChanged, uiState.priceCurrency, onCurrencyChanged) }
+            item {
+                Price(
+                    uiState.price, onPriceChanged,
+                    uiState.priceCurrency, onCurrencyChanged,
+                    onKeyboardDone = onSubmitClicked,
+                )
+            }
 
             item { SubmitButton(onSubmitClicked) }
         }
@@ -154,7 +161,12 @@ private fun Email(
     onValueChanged: (String) -> (Unit),
 ) {
     CUEmailTextField(
-        modifier = Modifier.padding(top = 8.dp), value = value, onValueChanged = onValueChanged
+        modifier = Modifier.padding(top = 8.dp),
+        value = value,
+        onValueChanged = onValueChanged,
+        keyboardOptions = KeyboardOptions.Default.copy(
+            imeAction = ImeAction.Next,
+        ),
     )
 }
 
@@ -164,7 +176,12 @@ private fun Password(
     onValueChanged: (String) -> (Unit),
 ) {
     CUPasswordTextField(
-        modifier = Modifier.padding(top = 8.dp), value = value, onValueChanged = onValueChanged
+        modifier = Modifier.padding(top = 8.dp),
+        value = value,
+        onValueChanged = onValueChanged,
+        keyboardOptions = KeyboardOptions.Default.copy(
+            imeAction = ImeAction.Next,
+        ),
     )
 }
 
@@ -180,6 +197,9 @@ private fun SkypeID(
         hint = stringResource(Res.string.skypeId),
         value = value,
         onValueChanged = onValueChanged,
+        keyboardOptions = KeyboardOptions.Default.copy(
+            imeAction = ImeAction.Next,
+        ),
     )
 }
 
@@ -195,6 +215,9 @@ private fun CoachType(
         hint = stringResource(Res.string.coachType),
         value = value,
         onValueChanged = onValueChanged,
+        keyboardOptions = KeyboardOptions.Default.copy(
+            imeAction = ImeAction.Next,
+        ),
     )
 }
 
@@ -223,6 +246,9 @@ private fun FirstName(
         hint = stringResource(Res.string.firstName),
         value = value,
         onValueChanged = onValueChanged,
+        keyboardOptions = KeyboardOptions.Default.copy(
+            imeAction = ImeAction.Next,
+        ),
     )
 }
 
@@ -238,6 +264,9 @@ private fun LastName(
         hint = stringResource(Res.string.lastName),
         value = value,
         onValueChanged = onValueChanged,
+        keyboardOptions = KeyboardOptions.Default.copy(
+            imeAction = ImeAction.Next,
+        ),
     )
 }
 
@@ -311,6 +340,7 @@ fun Price(
     onPriceChanged: (String) -> (Unit),
     priceCurrency: String,
     onPriceCurrencyChanged: (String) -> (Unit),
+    onKeyboardDone: () -> Unit,
 ) {
     Column {
         CUTextField(
@@ -334,6 +364,7 @@ fun Price(
             value = priceCurrency,
             onValueChanged = onPriceCurrencyChanged,
             singleLine = true,
+            keyboardActions = KeyboardActions(onDone = { onKeyboardDone() })
         )
     }
 }
