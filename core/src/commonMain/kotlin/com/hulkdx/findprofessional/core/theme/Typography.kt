@@ -1,10 +1,8 @@
 package com.hulkdx.findprofessional.core.theme
 
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.sp
 import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.inter_black
 import com.hulkdx.findprofessional.core.resources.inter_bold
@@ -31,68 +29,25 @@ val interFamily
         Font(Res.font.inter_black, FontWeight.Black),
     )
 
-val h1
-    @Composable get() = TextStyle(
-        fontFamily = interFamily,
-        fontWeight = FontWeight.Normal,
-        fontSize = 24.sp,
-        lineHeight = 30.sp,
-    )
+val h1 @Composable get() = LocalAppTypography.current.h1
+val h1Medium @Composable get() = LocalAppTypography.current.h1Medium
+val h1SemiBold @Composable get() = LocalAppTypography.current.h1SemiBold
 
-val h1Medium @Composable get() = h1.copy(fontWeight = FontWeight.Medium)
-val h1SemiBold @Composable get() = h1.copy(fontWeight = FontWeight.SemiBold)
+val h2 @Composable get() = LocalAppTypography.current.h2
+val h2Medium @Composable get() = LocalAppTypography.current.h2Medium
 
-val h2
-    @Composable get() = TextStyle(
-        fontFamily = interFamily,
-        fontWeight = FontWeight.Normal,
-        fontSize = 20.sp,
-        lineHeight = 24.sp,
-    )
+val h3 @Composable get() = LocalAppTypography.current.h3
+val h3Medium @Composable get() = LocalAppTypography.current.h3Medium
 
-val h2Medium @Composable get() = h2.copy(fontWeight = FontWeight.Medium)
+val body1 @Composable get() = LocalAppTypography.current.body1
+val body1Medium @Composable get() = LocalAppTypography.current.body1Medium
 
-val h3
-    @Composable get() = TextStyle(
-        fontFamily = interFamily,
-        fontWeight = FontWeight.Normal,
-        fontSize = 18.sp,
-        lineHeight = 24.sp,
-    )
+val body2 @Composable get() = LocalAppTypography.current.body2
+val body2Medium @Composable get() = LocalAppTypography.current.body2Medium
+val body2SemiBold @Composable get() = LocalAppTypography.current.body2SemiBold
+val body2Bold @Composable get() = LocalAppTypography.current.body2Bold
 
-val h3Medium @Composable get() = h3.copy(fontWeight = FontWeight.Medium)
-
-val body1
-    @Composable get() = TextStyle(
-        fontFamily = interFamily,
-        fontWeight = FontWeight.Normal,
-        fontSize = 16.sp,
-        lineHeight = 20.sp,
-    )
-
-val body1Medium @Composable get() = body1.copy(fontWeight = FontWeight.Medium)
-
-val body2
-    @Composable get() = TextStyle(
-        fontFamily = interFamily,
-        fontWeight = FontWeight.Normal,
-        fontSize = 14.sp,
-        lineHeight = 17.sp,
-    )
-
-val body2Medium @Composable get() = body2.copy(fontWeight = FontWeight.Medium)
-val body2SemiBold @Composable get() = body2.copy(fontWeight = FontWeight.SemiBold)
-val body2Bold @Composable get() = body2.copy(fontWeight = FontWeight.Bold)
-
-val body3
-    @Composable get() = TextStyle(
-        fontFamily = interFamily,
-        fontWeight = FontWeight.Normal,
-        fontSize = 12.sp,
-    )
-
-val body3Medium @Composable get() = body3.copy(fontWeight = FontWeight.Medium)
-
-val body3Bold @Composable get() = body3.copy(fontWeight = FontWeight.Bold)
-
-val body3SemiBold @Composable get() = body3.copy(fontWeight = FontWeight.SemiBold)
+val body3 @Composable get() = LocalAppTypography.current.body3
+val body3Medium @Composable get() = LocalAppTypography.current.body3Medium
+val body3Bold @Composable get() = LocalAppTypography.current.body3Bold
+val body3SemiBold @Composable get() = LocalAppTypography.current.body3SemiBold
