@@ -35,5 +35,4 @@ echo JAVA_HOME=\'/Applications/Android Studio.app/Contents/jbr/Contents/Home\' >
 ## TODO
 
 - iOS looks a bit strange status-bar
-- Is it ok way the way that I added FontFamily in Typography.kt ?
 - Add screenshot tests

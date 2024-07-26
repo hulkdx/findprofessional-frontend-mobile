@@ -3,6 +3,7 @@ package com.hulkdx.findprofessional.core.theme
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 
 @Composable
 fun AppTheme(
@@ -15,8 +16,10 @@ fun AppTheme(
         lightColorPalette
     }
 
-    MaterialTheme(
-        colorScheme = colors,
-        content = content,
-    )
+    CompositionLocalProvider(LocalAppTypography provides appTypography(interFamily)) {
+        MaterialTheme(
+            colorScheme = colors,
+            content = content,
+        )
+    }
 }
