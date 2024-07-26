@@ -2,6 +2,7 @@ package com.hulkdx.findprofessional.core.commonui
 
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -24,6 +25,7 @@ fun CUTextField(
     onValueChanged: (String) -> (Unit),
     singleLine: Boolean = true,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
+    keyboardActions: KeyboardActions = KeyboardActions.Default,
     enabled: Boolean = true,
 ) {
     TextField(
@@ -45,6 +47,7 @@ fun CUTextField(
         ),
         visualTransformation = visualTransformation,
         keyboardOptions = keyboardOptions,
+        keyboardActions = keyboardActions,
         enabled = enabled,
     )
 }

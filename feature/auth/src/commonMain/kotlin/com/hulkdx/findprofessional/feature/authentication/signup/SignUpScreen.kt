@@ -12,6 +12,8 @@ import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -20,6 +22,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import com.hulkdx.findprofessional.core.commonui.BACK_BUTTON_HEIGHT
 import com.hulkdx.findprofessional.core.commonui.CUBackButton
@@ -104,13 +107,17 @@ fun SignUpScreen(
             CUEmailTextField(
                 modifier = Modifier.padding(top = 8.dp),
                 value = email,
-                onValueChanged = onEmailChanged
+                onValueChanged = onEmailChanged,
+                keyboardOptions = KeyboardOptions.Default.copy(
+                    imeAction = ImeAction.Next,
+                ),
             )
 
             CUPasswordTextField(
                 modifier = Modifier.padding(top = 8.dp),
                 value = password,
-                onValueChanged = onPasswordChanged
+                onValueChanged = onPasswordChanged,
+                keyboardActions = KeyboardActions(onDone = { onSubmitClicked() })
             )
 
             SubmitButton(
@@ -141,6 +148,9 @@ private fun FirstNameTextField(
         hint = stringResource(Res.string.firstName),
         value = value,
         onValueChanged = onValueChanged,
+        keyboardOptions = KeyboardOptions.Default.copy(
+            imeAction = ImeAction.Next,
+        ),
     )
 }
 
@@ -155,6 +165,9 @@ private fun LastNameTextField(
         hint = stringResource(Res.string.lastName),
         value = value,
         onValueChanged = onValueChanged,
+        keyboardOptions = KeyboardOptions.Default.copy(
+            imeAction = ImeAction.Next,
+        ),
     )
 }
 

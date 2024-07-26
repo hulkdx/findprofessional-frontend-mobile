@@ -21,6 +21,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -116,8 +117,7 @@ fun SignUpProScreen(
             item { LastName(uiState.lastName, onLastNameChanged) }
 
             item { PhotoHeader() }
-            // TODO:
-            // item { AddProfilePictureContent(onClick = {}) }
+            item { AddProfilePictureContent(onClick = {}) }
             item { AboutMe(uiState.aboutMe, onAboutMeChanged) }
 
             item { PriceHeader() }
@@ -320,8 +320,11 @@ fun Price(
             hint = stringResource(Res.string.price),
             value = price,
             onValueChanged = onPriceChanged,
-            singleLine = false,
-            keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
+            singleLine = true,
+            keyboardOptions = KeyboardOptions.Default.copy(
+                keyboardType = KeyboardType.Number,
+                imeAction = ImeAction.Next,
+            ),
         )
         CUTextField(
             modifier = Modifier
@@ -330,8 +333,7 @@ fun Price(
             hint = stringResource(Res.string.currency),
             value = priceCurrency,
             onValueChanged = onPriceCurrencyChanged,
-            singleLine = false,
-            enabled = false,
+            singleLine = true,
         )
     }
 }
