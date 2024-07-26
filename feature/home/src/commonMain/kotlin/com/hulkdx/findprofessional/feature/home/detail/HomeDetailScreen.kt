@@ -26,6 +26,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
+import com.hulkdx.findprofessional.core.commonui.CUBackButton
 import com.hulkdx.findprofessional.core.commonui.CUFilledButton
 import com.hulkdx.findprofessional.core.commonui.icons.CUChatButton
 import com.hulkdx.findprofessional.core.commonui.icons.CULikeButton
@@ -87,10 +88,12 @@ fun HomeDetailScreen(
             .systemBarsPadding()
             .testTag("HomeDetailScreen")
     ) {
+        CUBackButton(modifier = Modifier.align(Alignment.TopStart))
         LazyColumn(
             modifier = Modifier
                 .testTag("HomeDetailScreen.LazyColumn")
                 .padding(bottom = BOTTOM_PART_HEIGHT.dp)
+                .padding(top = 59.dp)
         ) {
             item { TopHeader(professional) }
             Availability(availability, availabilityMonthMinusOne, availabilityMonthPlusOne)
@@ -151,7 +154,6 @@ private fun TopHeader(professional: Professional) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(top = 49.dp)
             .padding(horizontal = OUTER_HORIZONTAL_PADDING.dp)
             .clip(shape = RoundedCornerShape(10.dp))
             .background(MaterialTheme.colorScheme.surfaceVariant)

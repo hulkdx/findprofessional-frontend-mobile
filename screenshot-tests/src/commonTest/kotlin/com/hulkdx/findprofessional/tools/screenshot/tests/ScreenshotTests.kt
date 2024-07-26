@@ -5,9 +5,13 @@ import com.hulkdx.findprofessional.feature.authentication.signup.SignUpScreen
 import com.hulkdx.findprofessional.feature.authentication.splash.Splash
 import com.hulkdx.findprofessional.feature.book.summery.BookingSummeryScreen
 import com.hulkdx.findprofessional.feature.book.summery.BookingSummeryUiState
+import com.hulkdx.findprofessional.feature.book.time.BookingTimeScreen
+import com.hulkdx.findprofessional.feature.home.detail.HomeDetailScreen
+import com.hulkdx.findprofessional.feature.home.detail.availability.AvailabilityData
 import com.hulkdx.findprofessional.feature.home.main.view.HomeScreen
 import com.hulkdx.findprofessional.feature.profile.ProfileScreen
 import com.hulkdx.findprofessional.feature.review.ReviewScreen
+import kotlinx.datetime.LocalDate
 import kotlin.test.Test
 
 class ScreenshotTests {
@@ -25,16 +29,9 @@ class ScreenshotTests {
         screenShotTests(className, "loginScreen") {
             LoginScreen(
                 email = "",
-                onEmailChanged = {},
                 password = "",
-                onPasswordChanged = {},
-                onSignInClicked = {},
-                onSignUpClicked = {},
-                error = "",
-                onErrorDismissed = {},
-                onForgotPasswordClicked = {},
-                onDevClicked = {},
-                showDeveloper = true,
+                showDeveloper = false,
+                "", {}, {}, {}, {}, {}, {}, {}
             )
         }
     }
@@ -73,14 +70,30 @@ class ScreenshotTests {
     }
 
     @Test
+    fun homeDetailScreen() {
+        screenShotTests(className, "homeDetailScreen") {
+            HomeDetailScreen(
+                professional = professionals[0],
+                availability = AvailabilityData(
+                    "January 2022",
+                    5,
+                    31,
+                    LocalDate(2022, 1, 6),
+                    listOf(
+                        LocalDate(2022, 1, 6),
+                        LocalDate(2022, 1, 7),
+                        LocalDate(2022, 1, 12),
+                    )
+                ),
+                {}, {}, {}, {}, {}, {}
+            )
+        }
+    }
+
+    @Test
     fun `ProfileScreen paparazzi test`() {
         screenShotTests(className, "SplashScreen paparazzi test") {
-            ProfileScreen(
-                onLogoutClicked = {},
-                error = "",
-                onErrorDismissed = {},
-                onBecomeCoachClicked = {},
-            )
+            ProfileScreen({}, {}, "", {})
         }
     }
 
@@ -90,10 +103,15 @@ class ScreenshotTests {
             ReviewScreen(
                 reviewSize = "150",
                 reviews = reviews,
-                onLastItemVisible = {},
-                error = "",
-                onErrorDismissed = {},
+                {}, "", {},
             )
+        }
+    }
+
+    @Test
+    fun bookingTimeScreen() {
+        screenShotTests(className, "bookingTimeScreen") {
+            BookingTimeScreen(bookingTime, {}, {}, {}, "", {}, {})
         }
     }
 

@@ -10,9 +10,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.systemBarsPadding
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
@@ -28,8 +26,9 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.hulkdx.findprofessional.core.commonui.CUAsyncImage
+import com.hulkdx.findprofessional.core.commonui.CUBackButton
 import com.hulkdx.findprofessional.core.commonui.CUSnackBar
-import com.hulkdx.findprofessional.core.commonui.pagination.SetupOnLastItemVisible
+import com.hulkdx.findprofessional.core.commonui.pagination.LazyColumnWithLastItem
 import com.hulkdx.findprofessional.core.model.pro.Professional
 import com.hulkdx.findprofessional.core.model.pro.ProfessionalReview
 import com.hulkdx.findprofessional.core.model.user.User
@@ -80,12 +79,14 @@ fun ReviewScreen(
             .systemBarsPadding()
             .testTag("ReviewScreen")
     ) {
-        val state = rememberLazyListState()
-        SetupOnLastItemVisible(state, onLastItemVisible)
-        LazyColumn(state = state) {
+        LazyColumnWithLastItem(
+            modifier = Modifier.padding(top = 64.dp),
+            onLastItemVisible = onLastItemVisible,
+        ) {
             item { ReviewHeader(reviewSize) }
             items(reviews, key = { it.id }) { ReviewContent(it) }
         }
+        CUBackButton(modifier = Modifier.align(Alignment.TopStart))
         CUSnackBar(
             modifier = Modifier.align(Alignment.BottomCenter),
             message = error,
@@ -99,10 +100,7 @@ fun ReviewHeader(reviewSize: String) {
     Text(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(
-                top = 45.dp,
-                bottom = 32.dp,
-            ),
+            .padding(bottom = 32.dp),
         style = h1Medium,
         textAlign = TextAlign.Center,
         text = "$reviewSize ${stringResource(Res.string.reviews)}",
