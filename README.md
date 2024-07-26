@@ -34,5 +34,5 @@ echo JAVA_HOME=\'/Applications/Android Studio.app/Contents/jbr/Contents/Home\' >
 
 ## TODO
 
-- iOS looks a bit strange status-bar
 - Add screenshot tests
+- TestFlight setup
