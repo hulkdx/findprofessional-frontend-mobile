@@ -1,10 +1,11 @@
 package com.hulkdx.findprofessional.core.model.proauth
 
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.Transient
 
 @Serializable
-data class SignUpProUiState(
-    val step: Int = 1,
+data class SignUpProRequest(
+    @Transient val step: Int = 1,
     val email: String = "",
     val password: String = "",
     val firstName: String = "",
@@ -14,8 +15,8 @@ data class SignUpProUiState(
     val coachType: String = "",
     val price: String = "",
     val priceCurrency: String = "",
-    val webcamConsentChecked: Boolean = false,
-    val idConsentChecked: Boolean = false,
+    @Transient val webcamConsentChecked: Boolean = false,
+    @Transient val idConsentChecked: Boolean = false,
 ) {
     fun isConsentChecked() = webcamConsentChecked && idConsentChecked
 }

@@ -36,7 +36,7 @@ class LoginDsl(
     }
 
     fun pressSignUpButton() {
-        rule.onNodeWithTag("Sign Up")
+        rule.onNodeWithTag("Register")
             .performScrollTo()
             .performClick()
     }

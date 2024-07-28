@@ -138,11 +138,4 @@ class ScreenshotTests {
             )
         }
     }
-
-    @Test
-    fun signUpProScreen() {
-        screenShotTests(className, "signUpProScreen") {
-            // TODO: SignUpProScreen()
-        }
-    }
 }

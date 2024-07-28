@@ -19,7 +19,7 @@ import androidx.compose.ui.unit.dp
 import com.hulkdx.findprofessional.core.commonui.BACK_BUTTON_HEIGHT
 import com.hulkdx.findprofessional.core.commonui.CUBackButton
 import com.hulkdx.findprofessional.core.commonui.CUSnackBar
-import com.hulkdx.findprofessional.core.model.proauth.SignUpProUiState
+import com.hulkdx.findprofessional.core.model.proauth.SignUpProRequest
 import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import com.hulkdx.findprofessional.core.navigation.Navigator
 import org.koin.androidx.compose.koinViewModel
@@ -28,7 +28,7 @@ import org.koin.core.parameter.parametersOf
 
 @Composable
 fun SignUpProScreen(
-    initialUiState: SignUpProUiState,
+    initialUiState: SignUpProRequest,
     viewModel: SignUpProViewModel = koinViewModel { parametersOf(initialUiState) },
 ) {
     val uiState by viewModel.uiState.collectAsState()
@@ -55,7 +55,7 @@ fun SignUpProScreen(
 
 @Composable
 fun SignUpProScreen(
-    uiState: SignUpProUiState,
+    uiState: SignUpProRequest,
     onFirstNameChanged: (String) -> Unit,
     onLastNameChanged: (String) -> Unit,
     onEmailChanged: (String) -> Unit,
