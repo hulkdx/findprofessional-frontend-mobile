@@ -31,6 +31,7 @@ import com.hulkdx.findprofessional.core.resources.priceHeader
 import com.hulkdx.findprofessional.core.resources.signUp
 import com.hulkdx.findprofessional.core.resources.skypeId
 import com.hulkdx.findprofessional.core.theme.body3Medium
+import com.hulkdx.findprofessional.core.utils.singleClick
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
@@ -62,7 +63,7 @@ fun SignUpProScreenStep2(
         { Price(uiState.price, onPriceChanged, uiState.priceCurrency, onCurrencyChanged) },
         { WebcamConsent(uiState.webcamConsentChecked, onWebcamConsentCheckedChange) },
         { IdConsent(uiState.idConsentChecked, onIdConsentCheckedChange) },
-        { RegisterButton(onRegisterClicked) },
+        { RegisterButton(uiState, onRegisterClicked) },
     )
 }
 
@@ -231,6 +232,7 @@ fun IdConsent(
 
 @Composable
 private fun RegisterButton(
+    uiState: SignUpProUiState,
     onClick: () -> Unit,
 ) {
     CUFilledButton(
@@ -238,6 +240,11 @@ private fun RegisterButton(
             .fillMaxWidth()
             .padding(vertical = 32.dp),
         text = stringResource(Res.string.signUp),
-        onClick = onClick,
+        onClick = singleClick {
+            if (!uiState.isConsentChecked()) {
+                return@singleClick
+            }
+            onClick()
+        },
     )
 }

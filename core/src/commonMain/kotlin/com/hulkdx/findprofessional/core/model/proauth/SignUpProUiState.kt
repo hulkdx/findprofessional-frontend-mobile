@@ -16,4 +16,6 @@ data class SignUpProUiState(
     val priceCurrency: String = "",
     val webcamConsentChecked: Boolean = false,
     val idConsentChecked: Boolean = false,
-)
+) {
+    fun isConsentChecked() = webcamConsentChecked && idConsentChecked
+}

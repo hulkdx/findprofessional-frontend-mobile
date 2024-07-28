@@ -19,7 +19,11 @@ class SignUpProViewModel(
     val error = _error.asStateFlow()
 
     fun onRegisterClicked() = viewModelScope.launch {
-        val err = useCase.register(uiState.value)
+        val uiState = uiState.value
+        if (!uiState.isConsentChecked()) {
+            return@launch
+        }
+        val err = useCase.register(uiState)
         if (err != null) {
             setError(err)
         }
