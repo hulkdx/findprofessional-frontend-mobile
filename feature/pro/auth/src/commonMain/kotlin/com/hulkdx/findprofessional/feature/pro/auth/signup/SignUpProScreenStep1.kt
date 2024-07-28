@@ -80,8 +80,8 @@ private fun LastName(
 private fun NameHeader() {
     Text(
         modifier = Modifier
-            .padding(top = 16.dp, bottom = 44.dp)
-            .padding(horizontal = 16.dp),
+            .padding(top = 8.dp)
+            .padding(8.dp),
         text = stringResource(Res.string.headerForNames),
         color = MaterialTheme.colorScheme.errorContainer,
         style = body3Medium,

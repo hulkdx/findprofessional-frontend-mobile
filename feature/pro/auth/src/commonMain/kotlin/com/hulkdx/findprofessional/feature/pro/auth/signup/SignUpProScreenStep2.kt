@@ -10,6 +10,7 @@ import androidx.compose.material3.Checkbox
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
@@ -133,19 +134,6 @@ private fun CoachType(
 }
 
 @Composable
-private fun RegisterButton(
-    onClick: () -> Unit,
-) {
-    CUFilledButton(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(vertical = 16.dp),
-        text = stringResource(Res.string.signUp),
-        onClick = onClick,
-    )
-}
-
-@Composable
 private fun AboutMe(
     value: String,
     onValueChanged: (String) -> (Unit),
@@ -166,7 +154,7 @@ private fun AboutMe(
 @Composable
 fun PriceHeader() {
     Text(
-        modifier = Modifier.padding(vertical = 8.dp),
+        modifier = Modifier.padding(top = 8.dp).padding(8.dp),
         color = MaterialTheme.colorScheme.errorContainer,
         text = stringResource(Res.string.priceHeader),
         style = body3Medium,
@@ -183,7 +171,6 @@ fun Price(
     Column {
         CUTextField(
             modifier = Modifier
-                .padding(top = 32.dp)
                 .fillMaxWidth(),
             hint = stringResource(Res.string.price),
             value = price,
@@ -211,10 +198,15 @@ fun WebcamConsent(
     checked: Boolean,
     onCheckedChange: ((Boolean) -> Unit)?,
 ) {
-    Row {
+    Row(
+        Modifier.padding(top = 32.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
         Checkbox(checked, onCheckedChange)
         Text(
-            text = stringResource(Res.string.consentWebcam)
+            text = stringResource(Res.string.consentWebcam),
+            color = MaterialTheme.colorScheme.errorContainer,
+            style = body3Medium,
         )
     }
 }
@@ -224,10 +216,28 @@ fun IdConsent(
     checked: Boolean,
     onCheckedChange: ((Boolean) -> Unit)?,
 ) {
-    Row {
+    Row(
+        Modifier,
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
         Checkbox(checked, onCheckedChange)
         Text(
-            text = stringResource(Res.string.consentID)
+            text = stringResource(Res.string.consentID),
+            color = MaterialTheme.colorScheme.errorContainer,
+            style = body3Medium,
         )
     }
+}
+
+@Composable
+private fun RegisterButton(
+    onClick: () -> Unit,
+) {
+    CUFilledButton(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 32.dp),
+        text = stringResource(Res.string.signUp),
+        onClick = onClick,
+    )
 }
