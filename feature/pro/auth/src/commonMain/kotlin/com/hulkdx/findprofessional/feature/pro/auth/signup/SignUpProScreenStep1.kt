@@ -11,18 +11,18 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import com.hulkdx.findprofessional.core.commonui.CUFilledButton
 import com.hulkdx.findprofessional.core.commonui.CUTextField
+import com.hulkdx.findprofessional.core.model.proauth.SignUpProUiState
 import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.firstName
 import com.hulkdx.findprofessional.core.resources.headerForNames
 import com.hulkdx.findprofessional.core.resources.lastName
 import com.hulkdx.findprofessional.core.resources.next
 import com.hulkdx.findprofessional.core.theme.body3Medium
-import com.hulkdx.findprofessional.feature.pro.auth.signup.model.ProRegisterRequest
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun SignUpProScreenStep1(
-    uiState: ProRegisterRequest,
+    uiState: SignUpProUiState,
     onFirstNameChanged: (String) -> Unit,
     onLastNameChanged: (String) -> Unit,
     onNextClicked: () -> Unit,

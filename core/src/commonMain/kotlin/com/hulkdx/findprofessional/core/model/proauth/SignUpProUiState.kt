@@ -1,9 +1,10 @@
-package com.hulkdx.findprofessional.feature.pro.auth.signup.model
+package com.hulkdx.findprofessional.core.model.proauth
 
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class ProRegisterRequest(
+data class SignUpProUiState(
+    val step: Int = 1,
     val email: String = "",
     val password: String = "",
     val firstName: String = "",

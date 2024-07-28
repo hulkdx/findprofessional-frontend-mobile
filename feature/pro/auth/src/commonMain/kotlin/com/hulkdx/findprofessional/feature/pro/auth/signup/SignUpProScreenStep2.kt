@@ -19,6 +19,7 @@ import com.hulkdx.findprofessional.core.commonui.CUEmailTextField
 import com.hulkdx.findprofessional.core.commonui.CUFilledButton
 import com.hulkdx.findprofessional.core.commonui.CUPasswordTextField
 import com.hulkdx.findprofessional.core.commonui.CUTextField
+import com.hulkdx.findprofessional.core.model.proauth.SignUpProUiState
 import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.aboutMe
 import com.hulkdx.findprofessional.core.resources.coachType
@@ -30,12 +31,11 @@ import com.hulkdx.findprofessional.core.resources.priceHeader
 import com.hulkdx.findprofessional.core.resources.signUp
 import com.hulkdx.findprofessional.core.resources.skypeId
 import com.hulkdx.findprofessional.core.theme.body3Medium
-import com.hulkdx.findprofessional.feature.pro.auth.signup.model.ProRegisterRequest
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun SignUpProScreenStep2(
-    uiState: ProRegisterRequest,
+    uiState: SignUpProUiState,
     onEmailChanged: (String) -> Unit,
     onPasswordChanged: (String) -> Unit,
     onSkypeIdChanged: (String) -> Unit,

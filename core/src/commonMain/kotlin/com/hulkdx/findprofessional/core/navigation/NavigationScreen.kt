@@ -2,6 +2,7 @@ package com.hulkdx.findprofessional.core.navigation
 
 import com.hulkdx.findprofessional.core.model.book.SelectedTimes
 import com.hulkdx.findprofessional.core.model.pro.Professional
+import com.hulkdx.findprofessional.core.model.proauth.SignUpProUiState
 import kotlinx.serialization.Serializable
 
 // @formatter:off
@@ -18,6 +19,6 @@ sealed class NavigationScreen {
     @Serializable data object Developer : NavigationScreen()
     @Serializable data object Profile : NavigationScreen()
 
-    @Serializable data class SignUpPro(val step: Int): NavigationScreen()
+    @Serializable data class SignUpPro(val uiState: SignUpProUiState = SignUpProUiState()): NavigationScreen()
 }
 // @formatter:on

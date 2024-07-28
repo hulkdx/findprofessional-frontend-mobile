@@ -2,17 +2,18 @@ package com.hulkdx.findprofessional.feature.pro.auth.signup
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.hulkdx.findprofessional.core.model.proauth.SignUpProUiState
 import com.hulkdx.findprofessional.core.utils.StringOrRes
-import com.hulkdx.findprofessional.feature.pro.auth.signup.model.ProRegisterRequest
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class SignUpProViewModel(
+    initialUiState: SignUpProUiState,
     private val useCase: SignUpProUseCase,
 ) : ViewModel() {
-    private val _uiState = MutableStateFlow(ProRegisterRequest())
+    private val _uiState = MutableStateFlow(initialUiState)
     val uiState = _uiState.asStateFlow()
     private val _error = MutableStateFlow<StringOrRes?>(null)
     val error = _error.asStateFlow()

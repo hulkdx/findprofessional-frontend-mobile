@@ -19,22 +19,22 @@ import androidx.compose.ui.unit.dp
 import com.hulkdx.findprofessional.core.commonui.BACK_BUTTON_HEIGHT
 import com.hulkdx.findprofessional.core.commonui.CUBackButton
 import com.hulkdx.findprofessional.core.commonui.CUSnackBar
+import com.hulkdx.findprofessional.core.model.proauth.SignUpProUiState
 import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import com.hulkdx.findprofessional.core.navigation.Navigator
-import com.hulkdx.findprofessional.feature.pro.auth.signup.model.ProRegisterRequest
 import org.koin.androidx.compose.koinViewModel
 import org.koin.compose.koinInject
+import org.koin.core.parameter.parametersOf
 
 @Composable
 fun SignUpProScreen(
-    step: Int,
-    viewModel: SignUpProViewModel = koinViewModel(),
+    initialUiState: SignUpProUiState,
+    viewModel: SignUpProViewModel = koinViewModel { parametersOf(initialUiState) },
 ) {
     val uiState by viewModel.uiState.collectAsState()
     val error by viewModel.error.collectAsState()
 
     SignUpProScreen(
-        step = step,
         uiState = uiState,
         onFirstNameChanged = viewModel::setFirstName,
         onLastNameChanged = viewModel::setLastName,
@@ -55,8 +55,7 @@ fun SignUpProScreen(
 
 @Composable
 fun SignUpProScreen(
-    step: Int,
-    uiState: ProRegisterRequest,
+    uiState: SignUpProUiState,
     onFirstNameChanged: (String) -> Unit,
     onLastNameChanged: (String) -> Unit,
     onEmailChanged: (String) -> Unit,
@@ -74,12 +73,12 @@ fun SignUpProScreen(
 ) {
     val navigator: Navigator = koinInject()
 
-    when (step) {
+    when (uiState.step) {
         1 -> SignUpProScreenStep1(
             uiState,
             onFirstNameChanged,
             onLastNameChanged,
-            onNextClicked = { navigator.navigate(NavigationScreen.SignUpPro(step = 2)) },
+            onNextClicked = { navigator.navigate(NavigationScreen.SignUpPro(uiState.copy(step = 2))) },
             error,
             onErrorDismissed,
         )
