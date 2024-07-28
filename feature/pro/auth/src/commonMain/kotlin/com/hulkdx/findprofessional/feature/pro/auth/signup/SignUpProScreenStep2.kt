@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Checkbox
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -151,7 +152,7 @@ private fun AboutMe(
 ) {
     CUTextField(
         modifier = Modifier
-            .padding(top = 32.dp)
+            .padding(top = 8.dp)
             .fillMaxWidth()
             .height(160.dp),
         hint = stringResource(Res.string.aboutMe),
@@ -165,11 +166,8 @@ private fun AboutMe(
 @Composable
 fun PriceHeader() {
     Text(
-        modifier = Modifier
-            .padding(
-                top = 48.dp,
-                bottom = 8.dp,
-            ),
+        modifier = Modifier.padding(vertical = 8.dp),
+        color = MaterialTheme.colorScheme.errorContainer,
         text = stringResource(Res.string.priceHeader),
         style = body3Medium,
     )

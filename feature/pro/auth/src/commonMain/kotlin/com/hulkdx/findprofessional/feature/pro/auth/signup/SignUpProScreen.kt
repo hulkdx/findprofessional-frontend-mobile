@@ -16,6 +16,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.hulkdx.findprofessional.core.commonui.BACK_BUTTON_HEIGHT
 import com.hulkdx.findprofessional.core.commonui.CUBackButton
 import com.hulkdx.findprofessional.core.commonui.CUSnackBar
 import com.hulkdx.findprofessional.core.navigation.NavigationScreen
@@ -117,7 +118,8 @@ fun SignUpProScreenLayout(
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(horizontal = 24.dp),
+                .padding(horizontal = 24.dp)
+                .padding(top = BACK_BUTTON_HEIGHT.dp),
             verticalArrangement = Arrangement.Center,
         ) {
             contents.forEach { content ->
