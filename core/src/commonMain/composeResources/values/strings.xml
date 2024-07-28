@@ -51,4 +51,5 @@
 
     <string name="consentWebcam">I have a webcam and I can offer video-based lessons.</string>
     <string name="consentID">I agree to allow this app or its third-party vendor to perform an ID verification check in order to teach on it.</string>
+    <string name="pleaseCheckConsent">Please check the consents</string>
 </resources>

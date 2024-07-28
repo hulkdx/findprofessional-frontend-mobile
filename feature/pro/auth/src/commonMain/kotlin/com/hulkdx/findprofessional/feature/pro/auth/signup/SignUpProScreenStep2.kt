@@ -63,7 +63,7 @@ fun SignUpProScreenStep2(
         { Price(uiState.price, onPriceChanged, uiState.priceCurrency, onCurrencyChanged) },
         { WebcamConsent(uiState.webcamConsentChecked, onWebcamConsentCheckedChange) },
         { IdConsent(uiState.idConsentChecked, onIdConsentCheckedChange) },
-        { RegisterButton(uiState, onRegisterClicked) },
+        { RegisterButton(onRegisterClicked) },
     )
 }
 
@@ -232,7 +232,6 @@ fun IdConsent(
 
 @Composable
 private fun RegisterButton(
-    uiState: SignUpProUiState,
     onClick: () -> Unit,
 ) {
     CUFilledButton(
@@ -240,11 +239,6 @@ private fun RegisterButton(
             .fillMaxWidth()
             .padding(vertical = 32.dp),
         text = stringResource(Res.string.signUp),
-        onClick = singleClick {
-            if (!uiState.isConsentChecked()) {
-                return@singleClick
-            }
-            onClick()
-        },
+        onClick = singleClick(onClick),
     )
 }

@@ -3,7 +3,10 @@ package com.hulkdx.findprofessional.feature.pro.auth.signup
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hulkdx.findprofessional.core.model.proauth.SignUpProUiState
+import com.hulkdx.findprofessional.core.resources.Res
+import com.hulkdx.findprofessional.core.resources.pleaseCheckConsent
 import com.hulkdx.findprofessional.core.utils.StringOrRes
+import com.hulkdx.findprofessional.core.utils.toStringOrRes
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
@@ -21,6 +24,7 @@ class SignUpProViewModel(
     fun onRegisterClicked() = viewModelScope.launch {
         val uiState = uiState.value
         if (!uiState.isConsentChecked()) {
+            _error.value = Res.string.pleaseCheckConsent.toStringOrRes()
             return@launch
         }
         val err = useCase.register(uiState)

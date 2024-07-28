@@ -18,6 +18,7 @@ import com.hulkdx.findprofessional.core.resources.headerForNames
 import com.hulkdx.findprofessional.core.resources.lastName
 import com.hulkdx.findprofessional.core.resources.next
 import com.hulkdx.findprofessional.core.theme.body3Medium
+import com.hulkdx.findprofessional.core.utils.singleClick
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
@@ -97,6 +98,6 @@ private fun NextButton(
             .fillMaxWidth()
             .padding(vertical = 16.dp),
         text = stringResource(Res.string.next),
-        onClick = onClick,
+        onClick = singleClick(onClick),
     )
 }
