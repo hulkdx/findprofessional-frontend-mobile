@@ -10,7 +10,6 @@ sealed class NavigationScreen {
     @Serializable data object Splash : NavigationScreen()
     @Serializable data object Login : NavigationScreen()
     @Serializable data object SignUp : NavigationScreen()
-    @Serializable data object SignUpPro : NavigationScreen()
     @Serializable data object Home : NavigationScreen()
     @Serializable data class HomeDetail(val professional: Professional) : NavigationScreen()
     @Serializable data class Review(val professional: Professional) : NavigationScreen()
@@ -18,5 +17,7 @@ sealed class NavigationScreen {
     @Serializable data class BookingSummery(val professional: Professional, val times: SelectedTimes) : NavigationScreen()
     @Serializable data object Developer : NavigationScreen()
     @Serializable data object Profile : NavigationScreen()
+
+    @Serializable data class SignUpPro(val step: Int): NavigationScreen()
 }
 // @formatter:on

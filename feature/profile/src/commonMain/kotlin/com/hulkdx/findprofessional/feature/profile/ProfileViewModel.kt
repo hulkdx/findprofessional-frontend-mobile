@@ -21,7 +21,7 @@ class ProfileViewModel(
     }
 
     fun onBecomeCoachClicked() {
-        navigator.navigate(NavigationScreen.SignUpPro)
+        navigator.navigate(NavigationScreen.SignUpPro(step = 1))
     }
 
     fun setError(error: StringOrRes?) {

@@ -13,4 +13,6 @@ data class ProRegisterRequest(
     val coachType: String = "",
     val price: String = "",
     val priceCurrency: String = "",
+    val webcamConsentChecked: Boolean = false,
+    val idConsentChecked: Boolean = false,
 )

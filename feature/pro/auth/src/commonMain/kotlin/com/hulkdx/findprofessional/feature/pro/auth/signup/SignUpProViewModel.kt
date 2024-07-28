@@ -17,7 +17,7 @@ class SignUpProViewModel(
     private val _error = MutableStateFlow<StringOrRes?>(null)
     val error = _error.asStateFlow()
 
-    fun onSubmitClicked() = viewModelScope.launch {
+    fun onRegisterClicked() = viewModelScope.launch {
         val err = useCase.register(uiState.value)
         if (err != null) {
             setError(err)
@@ -62,5 +62,13 @@ class SignUpProViewModel(
 
     fun onCurrencyChanged(value: String) {
         _uiState.update { it.copy(priceCurrency = value) }
+    }
+
+    fun onWebcamConsentCheckedChange(value: Boolean) {
+        _uiState.update { it.copy(webcamConsentChecked = value) }
+    }
+
+    fun onIdConsentCheckedChange(value: Boolean) {
+        _uiState.update { it.copy(idConsentChecked = value) }
     }
 }
