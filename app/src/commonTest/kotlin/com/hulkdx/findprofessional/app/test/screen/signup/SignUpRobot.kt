@@ -23,7 +23,7 @@ class SignUpDsl(
     private val rule: Rule,
 ) {
     fun pressSignUpButton() {
-        rule.onNodeWithText("Sign Up")
+        rule.onNodeWithText("Register")
             .performClick()
     }
 

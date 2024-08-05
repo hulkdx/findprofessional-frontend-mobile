@@ -38,7 +38,7 @@ private fun RenderScreen(screen: NavigationScreen) {
         is NavigationScreen.Profile -> ProfileScreen()
         is NavigationScreen.BookingTime -> BookingTimeScreen(screen.professional)
         is NavigationScreen.BookingSummery -> BookingSummeryScreen(screen.professional, screen.times)
-        is NavigationScreen.SignUpPro -> SignUpProScreen()
+        is NavigationScreen.SignUpPro -> SignUpProScreen(screen.uiState)
     }
     // @formatter:on
 }

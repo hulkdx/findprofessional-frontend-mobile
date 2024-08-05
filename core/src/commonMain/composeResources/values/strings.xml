@@ -2,7 +2,7 @@
 <resources>
     <string name="email">Email</string>
     <string name="password">Password</string>
-    <string name="signUp">Sign Up</string>
+    <string name="signUp">Register</string>
 
     <string name="signIn">Login</string>
     <string name="forgotYourPassword">Forgot your password?</string>
@@ -40,21 +40,16 @@
     <string name="total">Total</string>
     <string name="checkout">Checkout</string>
 
-    <string name="coachRegistration">Skype ID</string>
     <string name="skypeId">Skype ID</string>
     <string name="coachType">Coach Type</string>
     <string name="aboutMe">About Me</string>
-    <string name="headerForNames">Please ensure that the details you provide match those on your
-        government-issued ID.
-    </string>
-    <string name="headerForPhotos">Your photo will be shown to the other users in coach page.
-
-        * At least 250*250 pixels
-        * JPG, PNG and BMP formats only
-        * Maximum size of 2MB
-    </string>
-    <string name="addProfilePicture">Add profile picture</string>
+    <string name="headerForNames">Please ensure that the details you provide match those on your government-issued ID.</string>
     <string name="priceHeader">Add your own price per 30 minutes</string>
     <string name="price">Price</string>
     <string name="currency">Currency</string>
+    <string name="next">Next</string>
+
+    <string name="consentWebcam">I have a webcam and I can offer video-based lessons.</string>
+    <string name="consentID">I agree to allow this app or its third-party vendor to perform an ID verification check in order to teach on it.</string>
+    <string name="pleaseCheckConsent">Please check the consents</string>
 </resources>
