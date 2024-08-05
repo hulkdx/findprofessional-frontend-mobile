@@ -1,5 +1,6 @@
 package com.hulkdx.findprofessional.tools.screenshot.tests
 
+import com.hulkdx.findprofessional.core.model.proauth.SignUpProRequest
 import com.hulkdx.findprofessional.feature.authentication.login.LoginScreen
 import com.hulkdx.findprofessional.feature.authentication.signup.SignUpScreen
 import com.hulkdx.findprofessional.feature.authentication.splash.Splash
@@ -9,6 +10,8 @@ import com.hulkdx.findprofessional.feature.book.time.BookingTimeScreen
 import com.hulkdx.findprofessional.feature.home.detail.HomeDetailScreen
 import com.hulkdx.findprofessional.feature.home.detail.availability.AvailabilityData
 import com.hulkdx.findprofessional.feature.home.main.view.HomeScreen
+import com.hulkdx.findprofessional.feature.pro.auth.signup.SignUpProScreenStep1
+import com.hulkdx.findprofessional.feature.pro.auth.signup.SignUpProScreenStep2
 import com.hulkdx.findprofessional.feature.profile.ProfileScreen
 import com.hulkdx.findprofessional.feature.review.ReviewScreen
 import kotlinx.datetime.LocalDate
@@ -135,6 +138,26 @@ class ScreenshotTests {
                         ),
                     ), totalPrices = "100 €"
                 ),
+            )
+        }
+    }
+
+    @Test
+    fun signUpProScreenStep1() {
+        screenShotTests(className, "SignUpProScreenStep1") {
+            SignUpProScreenStep1(
+                uiState = SignUpProRequest(),
+                {}, {}, {}, "", {},
+            )
+        }
+    }
+
+    @Test
+    fun signUpProScreenStep2() {
+        screenShotTests(className, "SignUpProScreenStep2") {
+            SignUpProScreenStep2(
+                uiState = SignUpProRequest(),
+                {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, "", {},
             )
         }
     }

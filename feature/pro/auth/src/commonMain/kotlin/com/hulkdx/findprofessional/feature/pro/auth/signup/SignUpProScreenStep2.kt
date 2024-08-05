@@ -12,6 +12,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
@@ -51,6 +52,7 @@ fun SignUpProScreenStep2(
     onErrorDismissed: () -> Unit,
 ) {
     SignUpProScreenLayout(
+        modifier = Modifier.testTag("SignUpProScreen-Step2"),
         error = error,
         onErrorDismissed = onErrorDismissed,
 

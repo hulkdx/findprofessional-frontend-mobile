@@ -19,14 +19,10 @@ class SignUpProApiImpl(
 
     override suspend fun register(request: SignUpProRequest) {
         return client.put {
-            url(URL)
+            url("professional")
             contentType(ContentType.Application.Json)
             setBody(request)
         }
             .body()
-    }
-
-    companion object {
-        const val URL = "auth/register"
     }
 }

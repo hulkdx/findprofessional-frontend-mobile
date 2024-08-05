@@ -103,12 +103,13 @@ fun SignUpProScreen(
 
 @Composable
 fun SignUpProScreenLayout(
+    modifier: Modifier = Modifier,
     error: String?,
     onErrorDismissed: () -> Unit,
     vararg contents: @Composable LazyItemScope.() -> Unit,
 ) {
     Box(
-        modifier = Modifier
+        modifier = modifier
             .background(MaterialTheme.colorScheme.onPrimary)
             .fillMaxSize()
             .systemBarsPadding()
