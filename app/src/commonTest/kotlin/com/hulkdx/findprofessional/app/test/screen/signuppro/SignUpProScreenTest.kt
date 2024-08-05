@@ -19,6 +19,10 @@ class SignUpProScreenTest {
     @Test
     fun performRegister() = runAppUiTest {
         launchSignUpProScreen(this) {
+            pressNextButton()
+        }.verify {
+            signUpProStepTwoScreenShown()
+        }.then {
             pressRegisterButton()
         }.verify {
             // TODO: what should happens?

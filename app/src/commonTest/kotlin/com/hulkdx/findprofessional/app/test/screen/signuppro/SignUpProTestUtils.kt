@@ -3,8 +3,12 @@
 package com.hulkdx.findprofessional.app.test.screen.signuppro
 
 import androidx.compose.ui.test.ExperimentalTestApi
+import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.hasText
+import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
+import androidx.compose.ui.test.performScrollToNode
 import com.hulkdx.findprofessional.app.test.screen.profile.launchProfileScreen
 import com.hulkdx.findprofessional.app.test.utils.Rule
 import com.hulkdx.findprofessional.app.test.utils.assertNodeIsDisplayed
@@ -34,7 +38,10 @@ class SignUpProDsl(
     }
 
     fun pressRegisterButton() {
-        rule.onNodeWithText("Register").performClick()
+        rule.onNodeWithTag("SignUpProScreen.LazyColumn")
+            .assertIsDisplayed()
+            .performScrollToNode(hasText("Register"))
+            .performClick()
     }
 }
 
@@ -44,4 +51,6 @@ class SignUpProVerify(
     fun signUpProStepTwoScreenShown() {
         rule.assertNodeIsDisplayed("SignUpProScreen-Step2")
     }
+
+    fun then(block: SignUpProDsl.() -> Unit) = SignUpProDsl(rule).apply(block)
 }

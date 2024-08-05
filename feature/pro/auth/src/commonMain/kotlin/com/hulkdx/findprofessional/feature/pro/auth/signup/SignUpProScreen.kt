@@ -15,6 +15,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import com.hulkdx.findprofessional.core.commonui.BACK_BUTTON_HEIGHT
 import com.hulkdx.findprofessional.core.commonui.CUBackButton
@@ -117,6 +118,7 @@ fun SignUpProScreenLayout(
     ) {
         LazyColumn(
             modifier = Modifier
+                .testTag("SignUpProScreen.LazyColumn")
                 .fillMaxSize()
                 .padding(horizontal = 24.dp)
                 .padding(top = BACK_BUTTON_HEIGHT.dp),
