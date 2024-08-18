@@ -2,6 +2,7 @@ package com.hulkdx.findprofessional.feature.book.summery
 
 import com.hulkdx.findprofessional.core.model.book.SelectedTimes
 import com.hulkdx.findprofessional.core.model.pro.Professional
+import com.hulkdx.findprofessional.core.model.user.User
 import com.hulkdx.findprofessional.core.storage.UserStorage
 
 class BookingSummeryUseCase(
@@ -13,7 +14,7 @@ class BookingSummeryUseCase(
         times: SelectedTimes,
     ): BookingSummeryUiState {
         val uiTimes = bookingSummeryTimeMapper.map(times)
-        val user = userStore.get()?.user
+        val user = userStore.get()?.user as? User
 
         return BookingSummeryUiState(
             times = uiTimes,

@@ -8,6 +8,6 @@ class GetUserUseCase(
     private val userStorage: UserStorage,
 ) {
     suspend fun execute(): User? {
-        return userStorage.get()?.user
+        return userStorage.get()?.user as? User
     }
 }
