@@ -27,11 +27,12 @@ class LoginViewModel(
 
     fun onSignInClicked() = viewModelScope.launch {
         val err = loginUseCase.login(LoginRequest(email.value, password.value))
-        if (err == null) {
-            navigator.navigate(NavigationScreen.Home, popTo = NavigationScreen.Login, inclusive = true)
-        } else {
+        if (err != null) {
             setError(err)
+            return@launch
         }
+
+        navigator.navigate(NavigationScreen.Home, popTo = NavigationScreen.Login, inclusive = true)
     }
 
     fun onDevClicked() {
