@@ -29,6 +29,7 @@ kotlin {
             implementation(projects.feature.profile)
             implementation(projects.feature.review)
             implementation(projects.feature.pro.auth)
+            implementation(projects.feature.pro.home)
 
             implementation(libs.kotlinx.datetime)
             implementation(libs.ktor.core)
