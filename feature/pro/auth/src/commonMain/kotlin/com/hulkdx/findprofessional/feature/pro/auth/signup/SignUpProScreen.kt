@@ -79,7 +79,7 @@ fun SignUpProScreen(
             uiState,
             onFirstNameChanged,
             onLastNameChanged,
-            onNextClicked = { navigator.navigate(NavigationScreen.SignUpPro(uiState.copy(step = 2))) },
+            onNextClicked = { navigator.navigate(NavigationScreen.ProSignUp(uiState.copy(step = 2))) },
             error,
             onErrorDismissed,
         )
