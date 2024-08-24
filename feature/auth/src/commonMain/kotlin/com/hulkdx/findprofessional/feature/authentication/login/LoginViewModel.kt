@@ -2,6 +2,7 @@ package com.hulkdx.findprofessional.feature.authentication.login
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.hulkdx.findprofessional.core.model.user.ProUser
 import com.hulkdx.findprofessional.core.model.user.User
 import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import com.hulkdx.findprofessional.core.navigation.Navigator
@@ -33,7 +34,11 @@ class LoginViewModel(
             return@launch
         }
 
-        val screen = if (userData?.user is User) NavigationScreen.Home else NavigationScreen.ProHome
+        val screen = when (userData?.user) {
+            is ProUser -> NavigationScreen.ProHome
+            is User -> NavigationScreen.Home
+            null -> return@launch
+        }
         navigator.navigate(screen, popTo = NavigationScreen.Login, inclusive = true)
     }
 

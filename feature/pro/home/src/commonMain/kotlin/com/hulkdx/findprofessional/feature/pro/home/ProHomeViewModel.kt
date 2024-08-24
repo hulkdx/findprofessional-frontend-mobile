@@ -10,9 +10,6 @@ class ProHomeViewModel(
     private val _error = MutableStateFlow<StringOrRes?>(null)
     val error = _error.asStateFlow()
 
-    init {
-    }
-
     fun setError(error: StringOrRes?) {
         _error.value = error
     }
