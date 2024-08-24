@@ -51,7 +51,6 @@ kotlin {
             implementation(libs.decompose)
             implementation(libs.decompose.extensions.compose)
             implementation(libs.lifecycle.viewmodel.compose)
-            implementation(libs.kotlinx.io.core)
             implementation(libs.ktor.mock)
         }
     }
