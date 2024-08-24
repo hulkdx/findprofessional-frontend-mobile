@@ -47,7 +47,7 @@ object AppApiProvider {
 
     private fun baseUrl(ps: PlatformSpecific): String = with(ps) {
         return if (isDebug()) {
-            "http://${localhostUrl()}:8081/"
+            "http://${localhostUrl()}:8080/"
         } else {
             "http://api.sabajafarzadeh.com:30000/"
         }

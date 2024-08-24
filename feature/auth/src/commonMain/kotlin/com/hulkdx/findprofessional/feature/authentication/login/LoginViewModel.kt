@@ -2,6 +2,8 @@ package com.hulkdx.findprofessional.feature.authentication.login
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.hulkdx.findprofessional.core.model.user.ProUser
+import com.hulkdx.findprofessional.core.model.user.User
 import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import com.hulkdx.findprofessional.core.navigation.Navigator
 import com.hulkdx.findprofessional.core.utils.StringOrRes
@@ -26,12 +28,18 @@ class LoginViewModel(
     }
 
     fun onSignInClicked() = viewModelScope.launch {
-        val err = loginUseCase.login(LoginRequest(email.value, password.value))
-        if (err == null) {
-            navigator.navigate(NavigationScreen.Home, popTo = NavigationScreen.Login, inclusive = true)
-        } else {
+        val (err, userData) = loginUseCase.login(LoginRequest(email.value, password.value))
+        if (err != null) {
             setError(err)
+            return@launch
         }
+
+        val screen = when (userData?.user) {
+            is ProUser -> NavigationScreen.ProHome
+            is User -> NavigationScreen.Home
+            null -> return@launch
+        }
+        navigator.navigate(screen, popTo = NavigationScreen.Login, inclusive = true)
     }
 
     fun onDevClicked() {

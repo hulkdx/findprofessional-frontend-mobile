@@ -19,6 +19,7 @@ sealed class NavigationScreen {
     @Serializable data object Developer : NavigationScreen()
     @Serializable data object Profile : NavigationScreen()
 
-    @Serializable data class SignUpPro(val uiState: SignUpProRequest = SignUpProRequest()): NavigationScreen()
+    @Serializable data class ProSignUp(val uiState: SignUpProRequest = SignUpProRequest()): NavigationScreen()
+    @Serializable data object ProHome: NavigationScreen()
 }
 // @formatter:on

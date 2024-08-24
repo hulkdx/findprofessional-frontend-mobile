@@ -8,17 +8,12 @@ kotlin {
         commonMain.dependencies {
             implementation(projects.core)
 
-            implementation(projects.feature.auth)
-            implementation(projects.feature.home)
-            implementation(projects.feature.review)
-            implementation(projects.feature.pro.auth)
-
             implementation(libs.ktor.core)
             implementation(libs.lifecycle.viewmodel.compose)
             implementation(libs.kotlinx.datetime)
-            implementation(libs.androidx.dataStore.core)
         }
         commonTest.dependencies {
+            implementation(projects.libs.commonTests)
             implementation(kotlin("test"))
             implementation(kotlin("test-common"))
             implementation(kotlin("test-annotations-common"))
@@ -28,5 +23,5 @@ kotlin {
 }
 
 android {
-    namespace = "com.hulkdx.findprofessional.feature.developer"
+    namespace = "com.hulkdx.findprofessional.feature.pro.home"
 }

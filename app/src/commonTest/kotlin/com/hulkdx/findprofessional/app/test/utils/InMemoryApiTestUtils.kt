@@ -10,3 +10,6 @@ fun setUser(email: String, password: String) {
         RegisterRequest(email, password, firstName = "", lastName = "")
     )
 }
+
+fun setProUser(email: String, password: String) =
+    inMemoryApi.setProUser(RegisterRequest(email, password, "", ""))

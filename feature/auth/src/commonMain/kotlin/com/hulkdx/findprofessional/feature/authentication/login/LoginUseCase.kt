@@ -12,8 +12,8 @@ class LoginUseCase(
     suspend fun login(request: LoginRequest) = try {
         val userData = api.login(request)
         userStorage.set(userData)
-        null
+        null to userData
     } catch (e: Throwable) {
-        e.generalError()
+        e.generalError() to null
     }
 }

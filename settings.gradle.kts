@@ -32,5 +32,6 @@ include(":feature:book")
 include(":feature:profile")
 include(":feature:review")
 include(":feature:pro:auth")
+include(":feature:pro:home")
 
 include(":screenshot-tests")

@@ -3,6 +3,8 @@ package com.hulkdx.findprofessional.feature.developer
 import com.hulkdx.findprofessional.core.model.pro.Professional
 import com.hulkdx.findprofessional.core.model.pro.ProfessionalAvailability
 import com.hulkdx.findprofessional.core.model.pro.ProfessionalReview
+import com.hulkdx.findprofessional.core.model.proauth.SignUpProRequest
+import com.hulkdx.findprofessional.core.model.user.ProUser
 import com.hulkdx.findprofessional.core.model.user.Token
 import com.hulkdx.findprofessional.core.model.user.User
 import com.hulkdx.findprofessional.core.model.user.UserData
@@ -12,6 +14,7 @@ import com.hulkdx.findprofessional.feature.authentication.login.model.LoginReque
 import com.hulkdx.findprofessional.feature.authentication.signup.SignUpApi
 import com.hulkdx.findprofessional.feature.authentication.signup.model.RegisterRequest
 import com.hulkdx.findprofessional.feature.home.main.api.ProfessionalApi
+import com.hulkdx.findprofessional.feature.pro.auth.signup.SignUpProApi
 import com.hulkdx.findprofessional.feature.review.ReviewApi
 import kotlinx.datetime.Clock
 import kotlinx.datetime.LocalDate
@@ -24,9 +27,11 @@ internal class InMemoryApiImpl : InMemoryApi {
         single<LoginApi> { Login() }
         single<ProfessionalApi> { Pro() }
         single<ReviewApi> { Review() }
+        single<SignUpProApi> { SignUpPro() }
     }
 
     private var user: RegisterRequest? = null
+    private var proUser: RegisterRequest? = null
 
     private val reviews = listOf(
         ProfessionalReview(
@@ -188,9 +193,9 @@ internal class InMemoryApiImpl : InMemoryApi {
                     "uiTestRefreshToken",
                 ),
                 User(
-                    "uiTestEmail",
-                    firstName = "uiTestFirstName",
-                    lastName = "uiTestLastName",
+                    request.email,
+                    request.firstName,
+                    request.lastName,
                     profileImage = null,
                 ),
             )
@@ -199,17 +204,40 @@ internal class InMemoryApiImpl : InMemoryApi {
 
     private inner class Login : LoginApi {
         override suspend fun login(request: LoginRequest): UserData {
-            if (request == LoginRequest(user?.email ?: "", user?.password ?: "")) {
+            if (user?.email == request.email &&
+                user?.password == request.password
+            ) {
                 return UserData(
                     Token(
                         "uiTestAccessToken",
                         "uiTestRefreshToken",
                     ),
                     User(
-                        "uiTestEmail",
+                        request.email,
                         firstName = "uiTestFirstName",
                         lastName = "uiTestLastName",
                         profileImage = null,
+                    ),
+                )
+            } else if (
+                proUser?.email == request.email &&
+                proUser?.password == request.password
+            ) {
+                return UserData(
+                    Token(
+                        "uiTestAccessToken",
+                        "uiTestRefreshToken",
+                    ),
+                    ProUser(
+                        email = request.email,
+                        firstName = "uiTestFirstName",
+                        lastName = "uiTestLastName",
+                        coachType = "Life coach",
+                        priceNumber = null,
+                        priceCurrency = null,
+                        profileImageUrl = null,
+                        description = null,
+                        skypeId = null,
                     ),
                 )
             }
@@ -243,6 +271,11 @@ internal class InMemoryApiImpl : InMemoryApi {
         }
     }
 
+    private inner class SignUpPro : SignUpProApi {
+        override suspend fun register(request: SignUpProRequest) {
+        }
+    }
+
     override fun loadKoinModules() {
         org.koin.core.context.loadKoinModules(module)
     }
@@ -253,6 +286,11 @@ internal class InMemoryApiImpl : InMemoryApi {
 
     override fun setUser(user: RegisterRequest) {
         this.user = user
+    }
+
+    override fun setProUser(proUser: RegisterRequest) {
+        this.user = null
+        this.proUser = proUser
     }
 
     override fun setProfessionals(pro: List<Professional>) {

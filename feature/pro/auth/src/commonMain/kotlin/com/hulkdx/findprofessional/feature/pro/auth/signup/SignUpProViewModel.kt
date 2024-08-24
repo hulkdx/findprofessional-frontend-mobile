@@ -3,6 +3,8 @@ package com.hulkdx.findprofessional.feature.pro.auth.signup
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hulkdx.findprofessional.core.model.proauth.SignUpProRequest
+import com.hulkdx.findprofessional.core.navigation.NavigationScreen
+import com.hulkdx.findprofessional.core.navigation.Navigator
 import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.pleaseCheckConsent
 import com.hulkdx.findprofessional.core.utils.StringOrRes
@@ -15,6 +17,7 @@ import kotlinx.coroutines.launch
 class SignUpProViewModel(
     initialUiState: SignUpProRequest,
     private val useCase: SignUpProUseCase,
+    private val navigator: Navigator,
 ) : ViewModel() {
     private val _uiState = MutableStateFlow(initialUiState)
     val uiState = _uiState.asStateFlow()
@@ -30,7 +33,9 @@ class SignUpProViewModel(
         val err = useCase.register(uiState)
         if (err != null) {
             setError(err)
+            return@launch
         }
+        navigator.navigate(NavigationScreen.ProHome, NavigationScreen.Home, true)
     }
 
     fun setError(error: StringOrRes?) {

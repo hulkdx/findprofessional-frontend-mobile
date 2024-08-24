@@ -4,6 +4,7 @@ package com.hulkdx.findprofessional.app.test.screen.signuppro
 
 import androidx.compose.ui.test.ExperimentalTestApi
 import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
@@ -37,10 +38,30 @@ class SignUpProDsl(
         rule.onNodeWithText("Next").performClick()
     }
 
+    fun checkWebcamConsent() {
+        rule.onNodeWithTag("SignUpProScreen.LazyColumn")
+            .assertIsDisplayed()
+            .performScrollToNode(hasTestTag("WebcamConsent"))
+
+        rule.onNodeWithTag("WebcamConsent")
+            .performClick()
+    }
+
+    fun checkIdConsent() {
+        rule.onNodeWithTag("SignUpProScreen.LazyColumn")
+            .assertIsDisplayed()
+            .performScrollToNode(hasTestTag("IdConsent"))
+
+        rule.onNodeWithTag("IdConsent")
+            .performClick()
+    }
+
     fun pressRegisterButton() {
         rule.onNodeWithTag("SignUpProScreen.LazyColumn")
             .assertIsDisplayed()
             .performScrollToNode(hasText("Register"))
+
+        rule.onNodeWithText("Register")
             .performClick()
     }
 }
@@ -50,6 +71,10 @@ class SignUpProVerify(
 ) {
     fun signUpProStepTwoScreenShown() {
         rule.assertNodeIsDisplayed("SignUpProScreen-Step2")
+    }
+
+    fun proHomeScreenShown() {
+        rule.assertNodeIsDisplayed("ProHomeScreen")
     }
 
     fun then(block: SignUpProDsl.() -> Unit) = SignUpProDsl(rule).apply(block)

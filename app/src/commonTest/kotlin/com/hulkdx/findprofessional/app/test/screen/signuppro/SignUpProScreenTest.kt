@@ -23,9 +23,11 @@ class SignUpProScreenTest {
         }.verify {
             signUpProStepTwoScreenShown()
         }.then {
+            checkWebcamConsent()
+            checkIdConsent()
             pressRegisterButton()
         }.verify {
-            // TODO: what should happens?
+            proHomeScreenShown()
         }
     }
 }
