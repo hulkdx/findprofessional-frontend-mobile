@@ -4,6 +4,7 @@ package com.hulkdx.findprofessional.app.test.screen.login
 
 import androidx.compose.ui.test.ExperimentalTestApi
 import com.hulkdx.findprofessional.app.test.runAppUiTest
+import com.hulkdx.findprofessional.app.test.utils.setProUser
 import com.hulkdx.findprofessional.app.test.utils.setUser
 import kotlin.test.Test
 
@@ -28,6 +29,19 @@ class LoginScreenTest {
             pressSignInButton()
         }.verify {
             homeScreenShown()
+        }
+    }
+
+    @Test
+    fun performProLogin() = runAppUiTest {
+        setProUser("test@email.com", "somepass")
+
+        launchLoginScreen(this) {
+            typeEmail("test@email.com")
+            typePassword("somepass")
+            pressSignInButton()
+        }.verify {
+            proHomeScreenShown()
         }
     }
 }

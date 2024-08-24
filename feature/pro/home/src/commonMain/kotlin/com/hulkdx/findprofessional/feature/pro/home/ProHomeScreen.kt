@@ -4,6 +4,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -21,5 +23,8 @@ fun ProHomeScreen(
     error: String?,
     onErrorDismissed: () -> Unit,
 ) {
-    Text("ProHomeScreen")
+    Text(
+        modifier = Modifier.testTag("ProHomeScreen"),
+        text = "ProHomeScreen",
+    )
 }

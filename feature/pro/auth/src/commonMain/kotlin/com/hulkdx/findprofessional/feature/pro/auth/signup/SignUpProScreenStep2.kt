@@ -205,7 +205,11 @@ fun WebcamConsent(
         Modifier.padding(top = 32.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        Checkbox(checked, onCheckedChange)
+        Checkbox(
+            modifier = Modifier.testTag("WebcamConsent"),
+            checked = checked,
+            onCheckedChange = onCheckedChange,
+        )
         Text(
             text = stringResource(Res.string.consentWebcam),
             color = MaterialTheme.colorScheme.errorContainer,
@@ -223,7 +227,11 @@ fun IdConsent(
         Modifier,
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        Checkbox(checked, onCheckedChange)
+        Checkbox(
+            modifier = Modifier.testTag("IdConsent"),
+            checked = checked,
+            onCheckedChange = onCheckedChange,
+        )
         Text(
             text = stringResource(Res.string.consentID),
             color = MaterialTheme.colorScheme.errorContainer,
