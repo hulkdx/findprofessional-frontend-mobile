@@ -28,7 +28,7 @@ kotlinxDatetime = "0.6.0"
 # https://github.com/Kotlin/kotlinx.serialization
 kotlinxSerializationJson = "1.7.1"
 # https://github.com/Kotlin/kotlinx-io
-kotlinxIoCore = "0.5.1"
+kotlinxIoCore = "0.5.3"
 # https://github.com/ktorio/ktor
 ktor = "2.3.12"
 # https://github.com/Kotlin/kotlinx.coroutines
