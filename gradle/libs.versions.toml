@@ -30,7 +30,7 @@ kotlinxSerializationJson = "1.7.1"
 # https://github.com/ktorio/ktor
 ktor = "2.3.12"
 # https://github.com/Kotlin/kotlinx.coroutines
-kotlinxCoroutines = "1.9.0-RC.2"
+kotlinxCoroutines = "1.9.0"
 # https://github.com/square/leakcanary
 leakcanary = "2.14"
 # https://central.sonatype.com/artifact/org.jetbrains.androidx.lifecycle/lifecycle-viewmodel-compose/versions
