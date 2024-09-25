@@ -13,7 +13,7 @@ data class SignUpProRequest(
     val skypeId: String = "",
     val aboutMe: String = "",
     val coachType: String = "",
-    val price: String = "",
+    val price: Int? = null,
     val priceCurrency: String = "",
     @Transient val webcamConsentChecked: Boolean = false,
     @Transient val idConsentChecked: Boolean = false,
