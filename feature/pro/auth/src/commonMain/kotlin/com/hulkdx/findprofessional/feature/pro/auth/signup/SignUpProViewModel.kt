@@ -71,7 +71,7 @@ class SignUpProViewModel(
     }
 
     fun onPriceChanged(value: String) {
-        _uiState.update { it.copy(price = value.toInt()) }
+        _uiState.update { it.copy(price = value) }
     }
 
     fun onCurrencyChanged(value: String) {
