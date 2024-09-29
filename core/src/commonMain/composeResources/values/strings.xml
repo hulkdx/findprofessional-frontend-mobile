@@ -3,6 +3,7 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="signUp">Register</string>
+    <string name="somethingWentWrong">Something went wrong</string>
 
     <string name="signIn">Login</string>
     <string name="forgotYourPassword">Forgot your password?</string>

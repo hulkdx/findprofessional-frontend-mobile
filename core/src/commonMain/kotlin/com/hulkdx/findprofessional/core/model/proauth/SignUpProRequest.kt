@@ -13,10 +13,12 @@ data class SignUpProRequest(
     val skypeId: String = "",
     val aboutMe: String = "",
     val coachType: String = "",
-    val price: String = "",
+    @Transient val priceString: String = "",
     val priceCurrency: String = "",
     @Transient val webcamConsentChecked: Boolean = false,
     @Transient val idConsentChecked: Boolean = false,
 ) {
+    val price = priceString.toFloatOrNull()?.times(100)?.toInt()
+
     fun isConsentChecked() = webcamConsentChecked && idConsentChecked
 }
