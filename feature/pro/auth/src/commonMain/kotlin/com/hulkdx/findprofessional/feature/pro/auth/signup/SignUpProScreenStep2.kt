@@ -62,7 +62,7 @@ fun SignUpProScreenStep2(
         { CoachType(uiState.coachType, onCoachTypeChanged) },
         { AboutMe(uiState.aboutMe, onAboutMeChanged) },
         { PriceHeader() },
-        { Price(uiState.price, onPriceChanged, uiState.priceCurrency, onCurrencyChanged) },
+        { Price(uiState.priceString, onPriceChanged, uiState.priceCurrency, onCurrencyChanged) },
         { WebcamConsent(uiState.webcamConsentChecked, onWebcamConsentCheckedChange) },
         { IdConsent(uiState.idConsentChecked, onIdConsentCheckedChange) },
         { RegisterButton(onRegisterClicked) },
