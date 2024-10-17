@@ -7,7 +7,7 @@ on:
 env:
   JAVA_VERSION: 21
   JAVA_DIST: "zulu"
-  IOS_XCODE_VERSION: "15.0.1"
+  IOS_XCODE_VERSION: "16.0"
 
 jobs:
   unit-tests-android-and-ios:
