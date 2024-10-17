@@ -272,7 +272,24 @@ internal class InMemoryApiImpl : InMemoryApi {
     }
 
     private inner class SignUpPro : SignUpProApi {
-        override suspend fun register(request: SignUpProRequest) {
+        override suspend fun register(request: SignUpProRequest): UserData {
+            return UserData(
+                token = Token(
+                    accessToken = "esse",
+                    refreshToken = "penatibus"
+                ),
+                user = ProUser(
+                    email = "sherri.hodges@example.com",
+                    firstName = "Abby Higgins",
+                    lastName = "Jeannie Cortez",
+                    coachType = "netus",
+                    priceNumber = 500,
+                    priceCurrency = "EUR",
+                    profileImageUrl = "imgur",
+                    description = "Some description",
+                    skypeId = "sherri.hodges12",
+                ),
+            )
         }
     }
 
