@@ -18,7 +18,7 @@ coil = "3.0.0-alpha08"
 # https://github.com/JetBrains/compose-multiplatform
 compose-plugin = "1.7.0"
 # https://github.com/arkivanov/Decompose
-decompose = "3.1.0"
+decompose = "3.2.0"
 # https://github.com/InsertKoinIO/koin
 koin = "4.0.0"
 # https://central.sonatype.com/artifact/io.insert-koin/koin-compose/versions
