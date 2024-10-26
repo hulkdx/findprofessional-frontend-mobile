@@ -16,7 +16,7 @@ androidxDataStore = "1.1.1"
 # https://github.com/coil-kt/coil
 coil = "3.0.0-alpha08"
 # https://github.com/JetBrains/compose-multiplatform
-compose-plugin = "1.6.11"
+compose-plugin = "1.7.0"
 # https://github.com/arkivanov/Decompose
 decompose = "3.1.0"
 # https://github.com/InsertKoinIO/koin
@@ -36,7 +36,7 @@ leakcanary = "2.14"
 # https://central.sonatype.com/artifact/org.jetbrains.androidx.lifecycle/lifecycle-viewmodel-compose/versions
 lifecycle = "2.8.2"
 # https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-compatibility-and-versioning.html#jetpack-compose-and-compose-multiplatform-release-cycles
-test-composeUi = "1.6.8"
+test-composeUi = "1.7.0"
 
 
 [libraries]
