@@ -21,7 +21,7 @@ fun Rule.waitUntilAppear(
     timeoutMillis: Long = 10_000,
 ) {
     try {
-        waitUntil(timeoutMillis) {
+        waitUntil(timeoutMillis = timeoutMillis) {
             onAllNodesWithTag(testTag, useUnmergedTree = true).fetchSemanticsNodes().size == 1
         }
     } catch (e: ComposeTimeoutException) {
@@ -34,7 +34,7 @@ fun Rule.waitUntilAppearText(
     timeoutMillis: Long = 10_000,
 ) {
     try {
-        waitUntil(timeoutMillis) {
+        waitUntil(timeoutMillis = timeoutMillis) {
             onAllNodesWithText(text, useUnmergedTree = true).fetchSemanticsNodes().size == 1
         }
     } catch (e: ComposeTimeoutException) {
@@ -50,7 +50,7 @@ fun Rule.assertNodeIsDisplayed(testTag: String) {
 
 fun Rule.assertAppIsClosed(timeoutMillis: Long = 10_000) {
     try {
-        waitUntil(timeoutMillis) {
+        waitUntil(timeoutMillis = timeoutMillis) {
             runCatching { onRoot().assertDoesNotExist() }.isSuccess
         }
     } catch (e: ComposeTimeoutException) {
