@@ -20,8 +20,8 @@ import io.ktor.http.HttpHeaders
 import io.ktor.http.HttpProtocolVersion
 import io.ktor.http.HttpStatusCode
 import io.ktor.http.headersOf
-import io.ktor.util.InternalAPI
 import io.ktor.util.date.GMTDate
+import io.ktor.utils.io.InternalAPI
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import kotlin.coroutines.coroutineContext
