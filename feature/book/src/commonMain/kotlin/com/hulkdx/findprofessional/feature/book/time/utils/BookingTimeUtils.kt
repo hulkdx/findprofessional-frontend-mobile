@@ -29,7 +29,4 @@ object BookingTimeUtils {
     fun currentDay(now: LocalDate): String {
         return "${now.dayOfMonth}.${now.month.number}.${now.year}"
     }
-
-    fun formattedTime(minute: Int) =
-        "${twoDigits((minute / 60) % 24)}:${twoDigits(minute % 60)}"
 }
