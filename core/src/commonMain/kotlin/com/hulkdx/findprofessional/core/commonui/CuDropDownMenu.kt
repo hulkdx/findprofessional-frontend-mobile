@@ -24,7 +24,7 @@ fun CuDropDownMenu(
     options: List<String>,
     modifier: Modifier = Modifier,
 ) {
-    var expanded by remember { mutableStateOf(true) }
+    var expanded by remember { mutableStateOf(false) }
     var text by remember { mutableStateOf(options[0]) }
 
     ExposedDropdownMenuBox(
@@ -34,7 +34,6 @@ fun CuDropDownMenu(
     ) {
         TextField(
             modifier = Modifier
-                .fillMaxWidth()
                 .menuAnchor(MenuAnchorType.PrimaryNotEditable),
             value = text,
             onValueChange = {},
