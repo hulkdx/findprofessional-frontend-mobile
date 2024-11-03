@@ -55,4 +55,5 @@
     <string name="pleaseCheckConsent">Please check the consents</string>
 
     <string name="editAvailableTime">Edit Available Time</string>
+    <string name="addNewTime">Add New Time</string>
 </resources>
