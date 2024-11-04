@@ -51,4 +51,12 @@ class EditAvailableTimeViewModel(
     fun onAddNewTimeSlotClicked() {
         _timeSlots.update { it + TimeSlot("00:00", "00:00") }
     }
+
+    fun onApplyClicked() {
+        // TODO:
+    }
+
+    fun onApplyToAllClicked() {
+        // TODO:
+    }
 }

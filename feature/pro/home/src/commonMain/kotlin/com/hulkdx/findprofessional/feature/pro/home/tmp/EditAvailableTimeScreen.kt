@@ -51,6 +51,8 @@ fun EditAvailableTimeScreen(
         onFromSelected = viewModel::onFromSelected,
         onToSelected = viewModel::onToSelected,
         onAddNewTimeSlotClicked = viewModel::onAddNewTimeSlotClicked,
+        onApplyClicked = viewModel::onApplyClicked,
+        onApplyToAllClicked = viewModel::onApplyToAllClicked,
     )
 }
 
@@ -64,6 +66,8 @@ private fun EditAvailableTimeScreen(
     onAddNewTimeSlotClicked: () -> Unit,
     applyButtonText: String,
     dayOfWeek: String,
+    onApplyClicked: () -> Unit,
+    onApplyToAllClicked: () -> Unit,
 ) {
     // TODO: use LazyColumn
     Column(
@@ -81,8 +85,8 @@ private fun EditAvailableTimeScreen(
             onToSelected,
             onAddNewTimeSlotClicked,
         )
-        ApplyButton(applyButtonText, onCLick = {})
-        ApplyToAllButton(dayOfWeek, onCLick = {})
+        ApplyButton(applyButtonText, onApplyClicked)
+        ApplyToAllButton(dayOfWeek, onApplyToAllClicked)
     }
 }
 
