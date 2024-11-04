@@ -9,6 +9,7 @@ import kotlinx.datetime.LocalDate
 
 class EditAvailableTimeViewModel(
     selectedDate: LocalDate,
+    selectedTimeSlot: List<TimeSlot>,
 ) : ViewModel() {
     val availableTime: List<String> = (0..<24 * 60 step 30).map { TimeUtils.formattedTime(it) }
 
@@ -24,7 +25,7 @@ class EditAvailableTimeViewModel(
         "$month $day"
     }
 
-    private val _timeSlots = MutableStateFlow<List<TimeSlot>>(emptyList())
+    private val _timeSlots = MutableStateFlow(selectedTimeSlot)
     val timeSlots = _timeSlots.asStateFlow()
 
     fun onDeleteClicked(index: Int) {

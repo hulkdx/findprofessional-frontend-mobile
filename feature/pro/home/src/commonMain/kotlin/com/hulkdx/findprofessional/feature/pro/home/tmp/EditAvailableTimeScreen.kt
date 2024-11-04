@@ -36,8 +36,9 @@ import org.koin.core.parameter.parametersOf
 
 @Composable
 fun EditAvailableTimeScreen(
-    selectedDate: LocalDate = LocalDate(2024, 11, 3),
-    viewModel: EditAvailableTimeViewModel = koinViewModel { parametersOf(selectedDate) }
+    selectedDate: LocalDate = LocalDate(2024, 11, 3), // TODO: get it from previous screen
+    selectedTimeSlot: List<TimeSlot> = emptyList(), // TODO: get it from previous screen
+    viewModel: EditAvailableTimeViewModel = koinViewModel { parametersOf(selectedDate, selectedTimeSlot) }
 ) {
     val timeSlots by viewModel.timeSlots.collectAsState()
 
