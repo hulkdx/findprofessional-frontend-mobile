@@ -1,3 +1,5 @@
+@file:Suppress("FunctionName")
+
 package com.hulkdx.findprofessional.feature.pro.home.tmp
 
 import androidx.compose.foundation.background
@@ -7,6 +9,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBarsPadding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListScope
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.Icon
@@ -69,14 +75,13 @@ private fun EditAvailableTimeScreen(
     onApplyClicked: () -> Unit,
     onApplyToAllClicked: () -> Unit,
 ) {
-    // TODO: use LazyColumn
-    Column(
+    LazyColumn(
         modifier = Modifier
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.onPrimary)
             .systemBarsPadding()
     ) {
-        Title()
+        item { Title() }
         TimeSlotSection(
             timeSlots,
             availableTime,
@@ -85,8 +90,8 @@ private fun EditAvailableTimeScreen(
             onToSelected,
             onAddNewTimeSlotClicked,
         )
-        ApplyButton(applyButtonText, onApplyClicked)
-        ApplyToAllButton(dayOfWeek, onApplyToAllClicked)
+        item { ApplyButton(applyButtonText, onApplyClicked) }
+        item { ApplyToAllButton(dayOfWeek, onApplyToAllClicked) }
     }
 }
 
@@ -102,8 +107,7 @@ private fun Title() {
     )
 }
 
-@Composable
-private fun TimeSlotSection(
+private fun LazyListScope.TimeSlotSection(
     timeSlots: List<TimeSlot>,
     availableTime: List<String>,
     onDeleteClicked: (Int) -> Unit,
@@ -111,7 +115,7 @@ private fun TimeSlotSection(
     onToSelected: (Int, String) -> Unit,
     onAddNewTimeSlotClicked: () -> Unit,
 ) {
-    for ((index, timeSlot) in timeSlots.withIndex()) {
+    itemsIndexed(timeSlots) { index, timeSlot ->
         TimeSlotView(
             timeSlot = timeSlot,
             availableTime = availableTime,
@@ -121,7 +125,7 @@ private fun TimeSlotSection(
         )
     }
 
-    AddNewTimeButton(onCLick = onAddNewTimeSlotClicked)
+    item { AddNewTimeButton(onCLick = onAddNewTimeSlotClicked) }
 }
 
 @Composable
