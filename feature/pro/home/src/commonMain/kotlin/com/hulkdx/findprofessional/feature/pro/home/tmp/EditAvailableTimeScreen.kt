@@ -14,10 +14,10 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.capitalize
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.hulkdx.findprofessional.core.commonui.CUTextButton
@@ -29,41 +29,40 @@ import com.hulkdx.findprofessional.core.resources.applyToOnly
 import com.hulkdx.findprofessional.core.resources.editAvailableTime
 import com.hulkdx.findprofessional.core.theme.h2
 import com.hulkdx.findprofessional.core.theme.h3Medium
-import com.hulkdx.findprofessional.core.utils.TimeUtils
 import kotlinx.datetime.LocalDate
 import org.jetbrains.compose.resources.stringResource
+import org.koin.androidx.compose.koinViewModel
+import org.koin.core.parameter.parametersOf
 
 @Composable
-fun EditAvailableTimeScreen() {
-    // TODO: get it from previous screen
-    val selectedDate = LocalDate(2024, 11, 3)
-
-    // TODO: move to viewmodel
-    val availableTime = remember { (0..<24 * 60 step 30).map { TimeUtils.formattedTime(it) } }
-    val dayOfWeek = selectedDate.dayOfWeek.name
-        .lowercase()
-        .replaceFirstChar { if (it.isLowerCase()) it.titlecase() else it.toString() }
-    val applyAllButtonText = stringResource(Res.string.applyToAll, dayOfWeek)
-
-    val month = selectedDate.month.name
-        .lowercase()
-        .replaceFirstChar { if (it.isLowerCase()) it.titlecase() else it.toString() }
-
-    val day = selectedDate.dayOfMonth
-    val applyButtonText = stringResource(Res.string.applyToOnly, "$month $day")
+fun EditAvailableTimeScreen(
+    selectedDate: LocalDate = LocalDate(2024, 11, 3),
+    viewModel: EditAvailableTimeViewModel = koinViewModel { parametersOf(selectedDate) }
+) {
+    val timeSlots by viewModel.timeSlots.collectAsState()
 
     EditAvailableTimeScreen(
-        availableTime = availableTime,
-        applyButtonText = applyButtonText,
-        applyAllButtonText = applyAllButtonText,
+        availableTime = viewModel.availableTime,
+        dayOfWeek = viewModel.dayOfWeek,
+        applyButtonText = viewModel.applyButtonText,
+        timeSlots = timeSlots,
+        onDeleteClicked = viewModel::onDeleteClicked,
+        onFromSelected = viewModel::onFromSelected,
+        onToSelected = viewModel::onToSelected,
+        onAddNewTimeSlotClicked = viewModel::onAddNewTimeSlotClicked,
     )
 }
 
 @Composable
 private fun EditAvailableTimeScreen(
+    timeSlots: List<TimeSlot>,
     availableTime: List<String>,
+    onDeleteClicked: (Int) -> Unit,
+    onFromSelected: (Int) -> Unit,
+    onToSelected: (Int) -> Unit,
+    onAddNewTimeSlotClicked: () -> Unit,
     applyButtonText: String,
-    applyAllButtonText: String,
+    dayOfWeek: String,
 ) {
     // TODO: use LazyColumn
     Column(
@@ -73,13 +72,16 @@ private fun EditAvailableTimeScreen(
             .systemBarsPadding()
     ) {
         Title()
-        TimeSlot(
-            availableTime = availableTime,
-            onDeleteClicked = {}
+        TimeSlotSection(
+            timeSlots,
+            availableTime,
+            onDeleteClicked,
+            onFromSelected,
+            onToSelected,
+            onAddNewTimeSlotClicked,
         )
-        AddNewTimeButton(onCLick = {})
         ApplyButton(applyButtonText, onCLick = {})
-        ApplyToAllButton(applyAllButtonText, onCLick = {})
+        ApplyToAllButton(dayOfWeek, onCLick = {})
     }
 }
 
@@ -96,14 +98,41 @@ private fun Title() {
 }
 
 @Composable
-private fun TimeSlot(
+private fun TimeSlotSection(
+    timeSlots: List<TimeSlot>,
+    availableTime: List<String>,
+    onDeleteClicked: (Int) -> Unit,
+    onFromSelected: (Int) -> Unit,
+    onToSelected: (Int) -> Unit,
+    onAddNewTimeSlotClicked: () -> Unit,
+) {
+    for ((index, timeSlot) in timeSlots.withIndex()) {
+        TimeSlotView(
+            timeSlot = timeSlot,
+            availableTime = availableTime,
+            onDeleteClicked = { onDeleteClicked(index) },
+            onFromSelected = { onFromSelected(index) },
+            onToSelected = { onToSelected(index) },
+        )
+    }
+
+    AddNewTimeButton(onCLick = onAddNewTimeSlotClicked)
+}
+
+@Composable
+private fun TimeSlotView(
+    timeSlot: TimeSlot,
     availableTime: List<String>,
     onDeleteClicked: () -> Unit,
+    onFromSelected: (String) -> Unit,
+    onToSelected: (String) -> Unit,
 ) {
     Row(Modifier.padding(start = 24.dp)) {
         CuDropDownMenu(
+            initialValue = timeSlot.from,
             modifier = Modifier.weight(1F),
             options = availableTime,
+            onValueChanged = onFromSelected,
         )
         Text(
             modifier = Modifier.align(CenterVertically)
@@ -112,8 +141,10 @@ private fun TimeSlot(
             style = h3Medium,
         )
         CuDropDownMenu(
+            initialValue = timeSlot.to,
             modifier = Modifier.weight(1F),
             options = availableTime,
+            onValueChanged = onToSelected,
         )
         IconButton(onClick = onDeleteClicked) {
             Icon(
@@ -130,7 +161,7 @@ private fun AddNewTimeButton(onCLick: () -> Unit) {
     CUTextButton(
         modifier = Modifier.padding(horizontal = 24.dp),
         text = stringResource(Res.string.addNewTime),
-        onClick = {},
+        onClick = onCLick,
     )
 }
 
@@ -138,16 +169,16 @@ private fun AddNewTimeButton(onCLick: () -> Unit) {
 private fun ApplyButton(applyButtonText: String, onCLick: () -> Unit) {
     CUTextButton(
         modifier = Modifier.padding(horizontal = 24.dp),
-        text =  applyButtonText,
+        text = stringResource(Res.string.applyToOnly, applyButtonText),
         onClick = onCLick,
     )
 }
 
 @Composable
-private fun ApplyToAllButton(applyAllButtonText: String, onCLick: () -> Unit) {
+private fun ApplyToAllButton(dayOfWeek: String, onCLick: () -> Unit) {
     CUTextButton(
         modifier = Modifier.padding(horizontal = 24.dp),
-        text =  applyAllButtonText,
+        text = stringResource(Res.string.applyToAll, dayOfWeek),
         onClick = onCLick,
     )
 }

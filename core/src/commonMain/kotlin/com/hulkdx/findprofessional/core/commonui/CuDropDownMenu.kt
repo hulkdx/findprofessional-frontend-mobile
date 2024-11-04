@@ -1,6 +1,5 @@
 package com.hulkdx.findprofessional.core.commonui
 
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuBox
@@ -11,6 +10,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -21,11 +21,17 @@ import androidx.compose.ui.graphics.Color
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CuDropDownMenu(
+    initialValue: String,
     options: List<String>,
+    onValueChanged: (String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     var expanded by remember { mutableStateOf(false) }
-    var text by remember { mutableStateOf(options[0]) }
+    var text by remember { mutableStateOf(initialValue) }
+
+    LaunchedEffect(text) {
+        onValueChanged(text)
+    }
 
     ExposedDropdownMenuBox(
         modifier = modifier,
@@ -33,8 +39,7 @@ fun CuDropDownMenu(
         onExpandedChange = { expanded = it },
     ) {
         TextField(
-            modifier = Modifier
-                .menuAnchor(MenuAnchorType.PrimaryNotEditable),
+            modifier = Modifier.menuAnchor(MenuAnchorType.PrimaryNotEditable),
             value = text,
             onValueChange = {},
             readOnly = true,
