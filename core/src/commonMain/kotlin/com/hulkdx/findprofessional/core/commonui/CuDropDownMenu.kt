@@ -27,7 +27,7 @@ fun CuDropDownMenu(
     modifier: Modifier = Modifier,
 ) {
     var expanded by remember { mutableStateOf(false) }
-    var text by remember { mutableStateOf(initialValue) }
+    var text by remember(initialValue) { mutableStateOf(initialValue) }
 
     LaunchedEffect(text) {
         onValueChanged(text)
