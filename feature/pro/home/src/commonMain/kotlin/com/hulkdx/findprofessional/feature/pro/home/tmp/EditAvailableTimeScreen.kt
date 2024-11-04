@@ -58,8 +58,8 @@ private fun EditAvailableTimeScreen(
     timeSlots: List<TimeSlot>,
     availableTime: List<String>,
     onDeleteClicked: (Int) -> Unit,
-    onFromSelected: (Int) -> Unit,
-    onToSelected: (Int) -> Unit,
+    onFromSelected: (Int, String) -> Unit,
+    onToSelected: (Int, String) -> Unit,
     onAddNewTimeSlotClicked: () -> Unit,
     applyButtonText: String,
     dayOfWeek: String,
@@ -102,8 +102,8 @@ private fun TimeSlotSection(
     timeSlots: List<TimeSlot>,
     availableTime: List<String>,
     onDeleteClicked: (Int) -> Unit,
-    onFromSelected: (Int) -> Unit,
-    onToSelected: (Int) -> Unit,
+    onFromSelected: (Int, String) -> Unit,
+    onToSelected: (Int, String) -> Unit,
     onAddNewTimeSlotClicked: () -> Unit,
 ) {
     for ((index, timeSlot) in timeSlots.withIndex()) {
@@ -111,8 +111,8 @@ private fun TimeSlotSection(
             timeSlot = timeSlot,
             availableTime = availableTime,
             onDeleteClicked = { onDeleteClicked(index) },
-            onFromSelected = { onFromSelected(index) },
-            onToSelected = { onToSelected(index) },
+            onFromSelected = { onFromSelected(index, it) },
+            onToSelected = { onToSelected(index, it) },
         )
     }
 
@@ -127,7 +127,7 @@ private fun TimeSlotView(
     onFromSelected: (String) -> Unit,
     onToSelected: (String) -> Unit,
 ) {
-    Row(Modifier.padding(start = 24.dp)) {
+    Row(Modifier.padding(start = 24.dp, bottom = 8.dp)) {
         CuDropDownMenu(
             initialValue = timeSlot.from,
             modifier = Modifier.weight(1F),
