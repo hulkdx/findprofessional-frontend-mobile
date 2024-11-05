@@ -16,6 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import com.hulkdx.findprofessional.core.commonui.CUSearchField
 import com.hulkdx.findprofessional.core.commonui.navbar.AppNavBarContainer
@@ -51,7 +52,7 @@ fun HomeScreen(
     onSearchClick: (String) -> Unit,
 ) {
     AppNavBarContainer(
-        testTag = "HomeScreen",
+        modifier = Modifier.testTag("HomeScreen"),
         error = error,
         onErrorDismissed = onErrorDismissed,
     ) {

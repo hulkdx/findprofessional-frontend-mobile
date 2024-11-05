@@ -17,7 +17,6 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 @Composable
 fun AppNavBarContainer(
     modifier: Modifier = Modifier,
-    testTag: String,
     error: String?,
     onErrorDismissed: () -> Unit,
     content: @Composable () -> Unit,
@@ -26,7 +25,6 @@ fun AppNavBarContainer(
         modifier = modifier
             .background(MaterialTheme.colorScheme.onPrimary)
             .statusBarsPadding()
-            .testTag(testTag)
     ) {
         content()
         CUSnackBar(
@@ -38,31 +36,13 @@ fun AppNavBarContainer(
     }
 }
 
-@Composable
-fun AppNavBarContainer(
-    modifier: Modifier = Modifier,
-    testTag: String,
-    error: StringOrRes?,
-    onErrorDismissed: () -> Unit,
-    content: @Composable () -> Unit,
-) {
-    AppNavBarContainer(
-        modifier,
-        testTag,
-        error?.localized(),
-        onErrorDismissed,
-        content,
-    )
-}
-
 @Preview
 @Composable
 private fun AppNavBarContainerPreview() {
     AppTheme {
         AppNavBarContainer(
             modifier = Modifier,
-            testTag = "",
-            error = null as String?,
+            error = null,
             onErrorDismissed = {},
         ) {
             Box(modifier = Modifier.fillMaxSize())

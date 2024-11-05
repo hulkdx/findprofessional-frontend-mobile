@@ -20,6 +20,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.hulkdx.findprofessional.core.commonui.navbar.AppNavBarContainer
@@ -56,7 +57,7 @@ fun ProfileScreen(
     onErrorDismissed: () -> Unit,
 ) {
     AppNavBarContainer(
-        testTag = "ProfileScreen",
+        modifier = Modifier.testTag("ProfileScreen"),
         error = error,
         onErrorDismissed = onErrorDismissed,
     ) {
