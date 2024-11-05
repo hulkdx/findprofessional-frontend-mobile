@@ -1,39 +1,35 @@
 package com.hulkdx.findprofessional.core.commonui.navbar
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import com.hulkdx.findprofessional.core.commonui.CUSnackBar
 import com.hulkdx.findprofessional.core.navigation.NavigationScreen
-import com.hulkdx.findprofessional.core.navigation.Navigator
 import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.explorer
 import com.hulkdx.findprofessional.core.resources.ic_nav_explorer
 import com.hulkdx.findprofessional.core.resources.ic_nav_profile
 import com.hulkdx.findprofessional.core.resources.profile
+import com.hulkdx.findprofessional.core.utils.getNavigator
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
-fun AppNavigationBar(
+fun ProAppNavBarContainer(
     modifier: Modifier = Modifier,
-    navigator: Navigator = getNavigator(),
+    error: String?,
+    onErrorDismissed: () -> Unit,
+    content: @Composable () -> Unit,
 ) {
+    val navigator = getNavigator()
     val currentScreen = navigator.getCurrentScreen()
 
-    val items = listOf(
-        NavData.create(
-            text = stringResource(Res.string.explorer),
-            icon = Res.drawable.ic_nav_explorer,
-            screen = NavigationScreen.Home,
-            currentScreen,
-            navigator,
-        ),
-        NavData.create(
-            text = stringResource(Res.string.profile),
-            icon = Res.drawable.ic_nav_profile,
-            screen = NavigationScreen.Profile,
-            currentScreen,
-            navigator,
-        )
-    )
+    // TODO:
+    val items = listOf<NavData>()
 
-    AppNavigationBarInternal(modifier, items)
+    AppNavBarContainerInternal(modifier, error, items, onErrorDismissed, content)
 }
+

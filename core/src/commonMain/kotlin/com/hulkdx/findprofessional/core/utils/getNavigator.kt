@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.core.commonui.navbar
+package com.hulkdx.findprofessional.core.utils
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalInspectionMode

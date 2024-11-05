@@ -1,18 +1,15 @@
 package com.hulkdx.findprofessional.core.commonui.navbar
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.statusBarsPadding
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.testTag
-import com.hulkdx.findprofessional.core.commonui.CUSnackBar
-import com.hulkdx.findprofessional.core.theme.AppTheme
-import com.hulkdx.findprofessional.core.utils.StringOrRes
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import com.hulkdx.findprofessional.core.navigation.NavigationScreen
+import com.hulkdx.findprofessional.core.resources.Res
+import com.hulkdx.findprofessional.core.resources.explorer
+import com.hulkdx.findprofessional.core.resources.ic_nav_explorer
+import com.hulkdx.findprofessional.core.resources.ic_nav_profile
+import com.hulkdx.findprofessional.core.resources.profile
+import com.hulkdx.findprofessional.core.utils.getNavigator
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun AppNavBarContainer(
@@ -21,31 +18,25 @@ fun AppNavBarContainer(
     onErrorDismissed: () -> Unit,
     content: @Composable () -> Unit,
 ) {
-    Box(
-        modifier = modifier
-            .background(MaterialTheme.colorScheme.onPrimary)
-            .statusBarsPadding()
-    ) {
-        content()
-        CUSnackBar(
-            modifier = Modifier.align(Alignment.BottomCenter),
-            message = error,
-            onDismiss = onErrorDismissed
-        )
-        AppNavigationBar(Modifier.align(Alignment.BottomCenter))
-    }
-}
+    val navigator = getNavigator()
+    val currentScreen = navigator.getCurrentScreen()
 
-@Preview
-@Composable
-private fun AppNavBarContainerPreview() {
-    AppTheme {
-        AppNavBarContainer(
-            modifier = Modifier,
-            error = null,
-            onErrorDismissed = {},
-        ) {
-            Box(modifier = Modifier.fillMaxSize())
-        }
-    }
+    val items = listOf(
+        NavData.create(
+            text = stringResource(Res.string.explorer),
+            icon = Res.drawable.ic_nav_explorer,
+            screen = NavigationScreen.Home,
+            currentScreen,
+            navigator,
+        ),
+        NavData.create(
+            text = stringResource(Res.string.profile),
+            icon = Res.drawable.ic_nav_profile,
+            screen = NavigationScreen.Profile,
+            currentScreen,
+            navigator,
+        )
+    )
+
+    AppNavBarContainerInternal(modifier, error, items, onErrorDismissed, content)
 }

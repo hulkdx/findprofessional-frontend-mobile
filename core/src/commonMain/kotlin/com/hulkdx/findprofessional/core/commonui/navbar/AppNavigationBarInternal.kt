@@ -89,11 +89,3 @@ private fun RowScope.AppNavBarItem(
         )
     }
 }
-
-@Preview
-@Composable
-private fun AppNavigationBarPreview() {
-    AppTheme {
-        AppNavigationBar()
-    }
-}
