@@ -1,8 +1,6 @@
 package com.hulkdx.findprofessional.core.commonui.navbar
 
-import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import com.hulkdx.findprofessional.core.navigation.Navigator
@@ -12,17 +10,6 @@ import com.hulkdx.findprofessional.core.resources.ic_nav_explorer
 import com.hulkdx.findprofessional.core.resources.ic_nav_profile
 import com.hulkdx.findprofessional.core.resources.profile
 import org.jetbrains.compose.resources.stringResource
-
-@Composable
-fun BoxScope.AppNavigationBar(
-    modifier: Modifier = Modifier,
-    navigator: Navigator = getNavigator(),
-) {
-    com.hulkdx.findprofessional.core.commonui.navbar.AppNavigationBar(
-        modifier = modifier.align(Alignment.BottomCenter),
-        navigator = navigator,
-    )
-}
 
 @Composable
 fun AppNavigationBar(

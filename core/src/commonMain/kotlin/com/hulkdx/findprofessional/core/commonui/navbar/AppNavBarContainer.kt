@@ -32,7 +32,7 @@ fun AppNavBarContainer(
             message = error,
             onDismiss = onErrorDismissed
         )
-        AppNavigationBar()
+        AppNavigationBar(Modifier.align(Alignment.BottomCenter))
     }
 }
 
