@@ -3,6 +3,9 @@ package com.hulkdx.findprofessional.core.commonui.navbar
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccessTime
+import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -16,6 +19,18 @@ import com.hulkdx.findprofessional.core.resources.ic_nav_profile
 import com.hulkdx.findprofessional.core.resources.profile
 import com.hulkdx.findprofessional.core.utils.getNavigator
 import org.jetbrains.compose.resources.stringResource
+import androidx.compose.material.icons.filled.Event
+import androidx.compose.material.icons.filled.Face
+import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.People
+import androidx.compose.material.icons.outlined.AccountCircle
+import androidx.compose.material.icons.outlined.Face
+import androidx.compose.material.icons.outlined.Person2
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
+import com.hulkdx.findprofessional.core.resources.availability
+import com.hulkdx.findprofessional.core.resources.schedule
+import org.jetbrains.compose.resources.painterResource
 
 @Composable
 fun ProAppNavBarContainer(
@@ -27,8 +42,29 @@ fun ProAppNavBarContainer(
     val navigator = getNavigator()
     val currentScreen = navigator.getCurrentScreen()
 
-    // TODO:
-    val items = listOf<NavData>()
+    val items = listOf(
+        NavData.create(
+            text = stringResource(Res.string.schedule),
+            icon = rememberVectorPainter(Icons.Filled.Event),
+            screen = NavigationScreen.Home, // TODO:
+            currentScreen,
+            navigator,
+        ),
+        NavData.create(
+            text = stringResource(Res.string.availability),
+            icon = rememberVectorPainter(Icons.Filled.AccessTime),
+            screen = NavigationScreen.Home, // TODO:
+            currentScreen,
+            navigator,
+        ),
+        NavData.create(
+            text = stringResource(Res.string.profile),
+            icon = rememberVectorPainter(Icons.Outlined.AccountCircle),
+            screen = NavigationScreen.Profile, // TODO:
+            currentScreen,
+            navigator,
+        ),
+    )
 
     AppNavBarContainerInternal(modifier, error, items, onErrorDismissed, content)
 }

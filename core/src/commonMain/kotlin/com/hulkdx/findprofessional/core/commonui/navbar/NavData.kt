@@ -1,19 +1,20 @@
 package com.hulkdx.findprofessional.core.commonui.navbar
 
+import androidx.compose.ui.graphics.painter.Painter
 import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import com.hulkdx.findprofessional.core.navigation.Navigator
 import org.jetbrains.compose.resources.DrawableResource
 
 internal data class NavData(
     val text: String,
-    val icon: DrawableResource,
+    val icon: Painter,
     val selected: Boolean,
     val onClick: (() -> Unit)?,
 ) {
     companion object {
         fun create(
             text: String,
-            icon: DrawableResource,
+            icon: Painter,
             screen: NavigationScreen,
             currentScreen: NavigationScreen,
             navigator: Navigator,

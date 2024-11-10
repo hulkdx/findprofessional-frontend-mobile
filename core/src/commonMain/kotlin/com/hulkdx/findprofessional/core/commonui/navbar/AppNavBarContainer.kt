@@ -9,6 +9,7 @@ import com.hulkdx.findprofessional.core.resources.ic_nav_explorer
 import com.hulkdx.findprofessional.core.resources.ic_nav_profile
 import com.hulkdx.findprofessional.core.resources.profile
 import com.hulkdx.findprofessional.core.utils.getNavigator
+import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
@@ -24,14 +25,14 @@ fun AppNavBarContainer(
     val items = listOf(
         NavData.create(
             text = stringResource(Res.string.explorer),
-            icon = Res.drawable.ic_nav_explorer,
+            icon = painterResource(Res.drawable.ic_nav_explorer),
             screen = NavigationScreen.Home,
             currentScreen,
             navigator,
         ),
         NavData.create(
             text = stringResource(Res.string.profile),
-            icon = Res.drawable.ic_nav_profile,
+            icon = painterResource(Res.drawable.ic_nav_profile),
             screen = NavigationScreen.Profile,
             currentScreen,
             navigator,

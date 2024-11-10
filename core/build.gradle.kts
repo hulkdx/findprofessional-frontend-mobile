@@ -6,6 +6,8 @@ plugins {
 kotlin {
     sourceSets {
         commonMain.dependencies {
+            implementation(compose.materialIconsExtended)
+
             api(libs.koin.core)
             api(libs.koin.compose)
             api(libs.kotlinx.serialization.json)

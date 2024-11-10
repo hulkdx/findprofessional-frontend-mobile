@@ -58,4 +58,6 @@
     <string name="addNewTime">Add New Time</string>
     <string name="applyToAll">Apply to all %1$s</string>
     <string name="applyToOnly">Apply to %1$s only</string>
+
+    <string name="schedule">Schedule</string>
 </resources>

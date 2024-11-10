@@ -65,7 +65,7 @@ fun ComposeUiTest.setAppContent(lifecycle: LifecycleRegistry) {
 }
 
 @Composable
-private inline fun provideViewModelStoreForIOS(noinline content: @Composable () -> Unit) {
+private fun provideViewModelStoreForIOS(content: @Composable () -> Unit) {
     if (isIOS()) {
         val a = object : ViewModelStoreOwner {
             override val viewModelStore = ViewModelStore()
