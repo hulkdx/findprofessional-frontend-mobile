@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.hulkdx.kmp.library)
     alias(libs.plugins.kotlin.serialization)
-    id("app.cash.paparazzi") version "1.3.4"
+    id("app.cash.paparazzi") version "1.3.5"
 }
 
 kotlin {
