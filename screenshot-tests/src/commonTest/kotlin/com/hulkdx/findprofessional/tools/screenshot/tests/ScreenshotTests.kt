@@ -1,6 +1,7 @@
 package com.hulkdx.findprofessional.tools.screenshot.tests
 
 import com.hulkdx.findprofessional.core.model.proauth.SignUpProRequest
+import com.hulkdx.findprofessional.core.model.user.ProUser
 import com.hulkdx.findprofessional.feature.authentication.login.LoginScreen
 import com.hulkdx.findprofessional.feature.authentication.signup.SignUpScreen
 import com.hulkdx.findprofessional.feature.authentication.splash.Splash
@@ -13,6 +14,8 @@ import com.hulkdx.findprofessional.feature.home.main.view.HomeScreen
 import com.hulkdx.findprofessional.feature.pro.auth.signup.SignUpProScreenStep1
 import com.hulkdx.findprofessional.feature.pro.auth.signup.SignUpProScreenStep2
 import com.hulkdx.findprofessional.feature.pro.profile.ProProfileScreen
+import com.hulkdx.findprofessional.feature.pro.profile.ProProfileViewModel
+import com.hulkdx.findprofessional.feature.pro.profile.edit.EditProProfileScreen
 import com.hulkdx.findprofessional.feature.profile.ProfileScreen
 import com.hulkdx.findprofessional.feature.review.ReviewScreen
 import kotlinx.datetime.LocalDate
@@ -170,6 +173,24 @@ class ScreenshotTests {
                 "Mosh Asphalt",
                 "",
                 {}, {}, "", {},
+            )
+        }
+    }
+
+    @Test
+    fun proEditProfileScreen() {
+        screenShotTests(className, "proEditProfileScreen") {
+            EditProProfileScreen(
+                ProUser(
+                    firstName = "Mosh",
+                    lastName = "Asphalt",
+                    email = "mosh.ashphalt@gmail.com",
+                    coachType = "Life Coach",
+                    description = "Hi, I'm a life coach",
+                    priceNumber = 500,
+                    skypeId = "mosh.asphalt",
+                ),
+                "", {}, {}, {}, {}, {}, {}, {}, {}, {}
             )
         }
     }

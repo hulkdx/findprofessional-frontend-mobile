@@ -121,7 +121,7 @@ jobs:
   ios-integration-tests:
     name: IOS unit and integration tests
     runs-on: macos-15
-    timeout-minutes: 30
+    timeout-minutes: 45
     steps:
       - name: Checkout
         uses: actions/checkout@v3

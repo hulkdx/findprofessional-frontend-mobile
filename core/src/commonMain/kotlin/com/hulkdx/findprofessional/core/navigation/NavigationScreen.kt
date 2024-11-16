@@ -23,5 +23,6 @@ sealed class NavigationScreen {
     @Serializable data object ProSchedule: NavigationScreen()
     @Serializable data object ProAvailability: NavigationScreen()
     @Serializable data object ProProfile: NavigationScreen()
+    @Serializable data object EditProProfile: NavigationScreen()
 }
 // @formatter:on
