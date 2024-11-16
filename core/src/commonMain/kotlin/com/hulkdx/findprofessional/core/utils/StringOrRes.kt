@@ -9,7 +9,7 @@ data class StringOrRes(
     val res: StringResource? = null,
 ) {
     @Composable
-    inline fun localized(): String {
+    fun localized(): String {
         return string ?: stringResource(res!!)
     }
 }

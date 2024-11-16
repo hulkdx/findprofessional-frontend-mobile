@@ -3,13 +3,6 @@ package com.hulkdx.findprofessional.core.utils
 import kotlinx.datetime.Clock
 import kotlinx.datetime.DateTimeUnit
 import kotlinx.datetime.DayOfWeek
-import kotlinx.datetime.DayOfWeek.FRIDAY
-import kotlinx.datetime.DayOfWeek.MONDAY
-import kotlinx.datetime.DayOfWeek.SATURDAY
-import kotlinx.datetime.DayOfWeek.SUNDAY
-import kotlinx.datetime.DayOfWeek.THURSDAY
-import kotlinx.datetime.DayOfWeek.TUESDAY
-import kotlinx.datetime.DayOfWeek.WEDNESDAY
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.TimeZone
@@ -20,13 +13,13 @@ import kotlinx.datetime.until
 
 fun DayOfWeek.toShort(): String {
     return when (this) {
-        MONDAY -> "Mon"
-        TUESDAY -> "Tue"
-        WEDNESDAY -> "Wed"
-        THURSDAY -> "Thu"
-        FRIDAY -> "Fri"
-        SATURDAY -> "Sat"
-        SUNDAY -> "Sun"
+        DayOfWeek.MONDAY -> "Mon"
+        DayOfWeek.TUESDAY -> "Tue"
+        DayOfWeek.WEDNESDAY -> "Wed"
+        DayOfWeek.THURSDAY -> "Thu"
+        DayOfWeek.FRIDAY -> "Fri"
+        DayOfWeek.SATURDAY -> "Sat"
+        DayOfWeek.SUNDAY -> "Sun"
         else -> throw RuntimeException("Invalid")
     }
 }

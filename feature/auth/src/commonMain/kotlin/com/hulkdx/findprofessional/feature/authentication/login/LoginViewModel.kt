@@ -35,7 +35,7 @@ class LoginViewModel(
         }
 
         val screen = when (userData?.user) {
-            is ProUser -> NavigationScreen.ProHome
+            is ProUser -> NavigationScreen.ProSchedule
             is User -> NavigationScreen.Home
             null -> return@launch
         }

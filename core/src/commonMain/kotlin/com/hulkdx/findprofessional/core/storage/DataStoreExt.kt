@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
-inline fun <T> DataStore<Preferences>.getFlow(pref: Preferences.Key<T>) =
+fun <T> DataStore<Preferences>.getFlow(pref: Preferences.Key<T>) =
     data.map { it[pref] }
 
 fun DataStore<Preferences>.getFlowAsString(key: String) =

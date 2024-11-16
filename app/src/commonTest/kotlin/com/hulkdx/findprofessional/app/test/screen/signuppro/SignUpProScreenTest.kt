@@ -27,7 +27,7 @@ class SignUpProScreenTest {
             checkIdConsent()
             pressRegisterButton()
         }.verify {
-            proHomeScreenShown()
+            proScheduleScreenShown()
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.feature.pro.home.tmp
+package com.hulkdx.findprofessional.feature.pro.availability.time
 
 import androidx.lifecycle.ViewModel
 import com.hulkdx.findprofessional.core.utils.TimeUtils

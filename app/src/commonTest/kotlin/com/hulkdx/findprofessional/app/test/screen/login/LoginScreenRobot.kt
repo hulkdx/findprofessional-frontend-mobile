@@ -61,8 +61,8 @@ class LoginVerify(
         rule.assertNodeIsDisplayed("HomeScreen")
     }
 
-    fun proHomeScreenShown() {
-        rule.assertNodeIsDisplayed("ProHomeScreen")
+    fun proScheduleScreenShown() {
+        rule.assertNodeIsDisplayed("ProScheduleScreen")
     }
 
     fun then(block: LoginDsl.() -> Unit) = LoginDsl(rule).apply(block)

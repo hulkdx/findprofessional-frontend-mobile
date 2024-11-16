@@ -46,21 +46,21 @@ fun ProAppNavBarContainer(
         NavData.create(
             text = stringResource(Res.string.schedule),
             icon = rememberVectorPainter(Icons.Filled.Event),
-            screen = NavigationScreen.Home, // TODO:
+            screen = NavigationScreen.ProSchedule,
             currentScreen,
             navigator,
         ),
         NavData.create(
             text = stringResource(Res.string.availability),
             icon = rememberVectorPainter(Icons.Filled.AccessTime),
-            screen = NavigationScreen.Home, // TODO:
+            screen = NavigationScreen.ProAvailability,
             currentScreen,
             navigator,
         ),
         NavData.create(
             text = stringResource(Res.string.profile),
             icon = rememberVectorPainter(Icons.Outlined.AccountCircle),
-            screen = NavigationScreen.Profile, // TODO:
+            screen = NavigationScreen.ProProfile,
             currentScreen,
             navigator,
         ),

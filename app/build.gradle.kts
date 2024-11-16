@@ -29,7 +29,9 @@ kotlin {
             implementation(projects.feature.profile)
             implementation(projects.feature.review)
             implementation(projects.feature.pro.auth)
-            implementation(projects.feature.pro.home)
+            implementation(projects.feature.pro.schedule)
+            implementation(projects.feature.pro.availability)
+            implementation(projects.feature.pro.profile)
 
             implementation(libs.kotlinx.datetime)
             implementation(libs.ktor.core)
