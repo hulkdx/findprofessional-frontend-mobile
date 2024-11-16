@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.feature.pro.home.tmp
+package com.hulkdx.findprofessional.feature.pro.availability
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -40,7 +40,7 @@ import kotlinx.datetime.toLocalDateTime
 
 
 @Composable
-fun ProHomeCalendarView(onDateSelected: (LocalDate) -> Unit) {
+fun ProAvailabilityCalendarView(onDateSelected: (LocalDate) -> Unit) {
     var instant by remember { mutableStateOf(Clock.System.now()) }
     val localDateTime = remember(instant) { instant.toLocalDateTime(TimeZone.currentSystemDefault()) }
 

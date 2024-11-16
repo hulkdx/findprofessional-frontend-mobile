@@ -41,7 +41,7 @@ class LoginScreenTest {
             typePassword("somepass")
             pressSignInButton()
         }.verify {
-            proHomeScreenShown()
+            proScheduleScreenShown()
         }
     }
 }

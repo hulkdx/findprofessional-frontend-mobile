@@ -9,7 +9,9 @@ import com.hulkdx.findprofessional.feature.authentication.splash.splashModule
 import com.hulkdx.findprofessional.feature.book.bookModule
 import com.hulkdx.findprofessional.feature.home.homeModule
 import com.hulkdx.findprofessional.feature.pro.auth.signup.signUpProModule
-import com.hulkdx.findprofessional.feature.pro.home.proHomeModule
+import com.hulkdx.findprofessional.feature.pro.availability.proAvailabilityModule
+import com.hulkdx.findprofessional.feature.pro.profile.proProfileModule
+import com.hulkdx.findprofessional.feature.pro.schedule.proScheduleModule
 import com.hulkdx.findprofessional.feature.profile.profileModule
 import com.hulkdx.findprofessional.feature.review.reviewModule
 import com.hulkdx.findprofessional.libs.navigation.decompose.decomposeModule
@@ -33,6 +35,8 @@ val appModule: List<Module>
             bookModule,
 
             signUpProModule,
-            proHomeModule,
+            proScheduleModule,
+            proProfileModule,
+            proAvailabilityModule,
         )
         // @formatter:on

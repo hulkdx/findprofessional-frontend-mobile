@@ -22,7 +22,7 @@ class SplashViewModel(
         val user = getUserUseCase.execute()
         val dest = when (user) {
             is User -> NavigationScreen.Home
-            is ProUser -> NavigationScreen.ProHome
+            is ProUser -> NavigationScreen.ProSchedule
             null -> NavigationScreen.Login
         }
         navigator.navigate(screen = dest, popTo = NavigationScreen.Splash, inclusive = true)

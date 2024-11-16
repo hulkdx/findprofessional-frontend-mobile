@@ -73,8 +73,8 @@ class SignUpProVerify(
         rule.assertNodeIsDisplayed("SignUpProScreen-Step2")
     }
 
-    fun proHomeScreenShown() {
-        rule.assertNodeIsDisplayed("ProHomeScreen")
+    fun proScheduleScreenShown() {
+        rule.assertNodeIsDisplayed("ProScheduleScreen")
     }
 
     fun then(block: SignUpProDsl.() -> Unit) = SignUpProDsl(rule).apply(block)

@@ -23,5 +23,5 @@ kotlin {
 }
 
 android {
-    namespace = "com.hulkdx.findprofessional.feature.pro.home"
+    namespace = "com.hulkdx.findprofessional.feature.pro.schedule"
 }

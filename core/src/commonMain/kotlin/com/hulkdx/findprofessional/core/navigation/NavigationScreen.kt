@@ -20,6 +20,8 @@ sealed class NavigationScreen {
     @Serializable data object Profile : NavigationScreen()
 
     @Serializable data class ProSignUp(val uiState: SignUpProRequest = SignUpProRequest()): NavigationScreen()
-    @Serializable data object ProHome: NavigationScreen()
+    @Serializable data object ProSchedule: NavigationScreen()
+    @Serializable data object ProAvailability: NavigationScreen()
+    @Serializable data object ProProfile: NavigationScreen()
 }
 // @formatter:on
