@@ -19,6 +19,7 @@ class LogoutUseCaseImpl(
         val refreshToken = userData?.token?.refreshToken
         val isAlreadyLoggedOut = accessToken == null && refreshToken == null
         if (isAlreadyLoggedOut) {
+            userStorage.remove()
             return
         }
         userStorage.remove()

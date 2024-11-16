@@ -23,6 +23,8 @@ import io.ktor.http.headersOf
 import io.ktor.util.date.GMTDate
 import io.ktor.utils.io.InternalAPI
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.test.runTest
 import kotlin.coroutines.coroutineContext
 import kotlin.test.AfterTest
@@ -157,6 +159,7 @@ class TokenInterceptorTest {
         }
 
         override suspend fun remove() {}
+        override fun getFlow(): Flow<UserData?> = flow {}
     }
 
     private class RefreshTokenApiMock : RefreshTokenApi {

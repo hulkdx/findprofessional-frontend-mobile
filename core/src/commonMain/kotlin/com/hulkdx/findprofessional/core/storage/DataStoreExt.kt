@@ -16,6 +16,10 @@ fun <T> DataStore<Preferences>.getFlow(pref: Preferences.Key<T>) =
 fun DataStore<Preferences>.getFlowAsString(key: String) =
     getFlow(stringPreferencesKey(key))
 
+inline fun <reified T> DataStore<Preferences>.getFlowAsSerializable(key: String) =
+    getFlow(stringPreferencesKey(key))
+        .map { it?.run { Json.decodeFromString<T>(this) } }
+
 suspend fun DataStore<Preferences>.getAsString(key: String) =
     getFlowAsString(key).firstOrNull()
 

@@ -5,8 +5,11 @@ import androidx.datastore.preferences.core.Preferences
 import com.hulkdx.findprofessional.core.model.user.UserData
 import com.hulkdx.findprofessional.core.storage.UserStorage
 import com.hulkdx.findprofessional.core.storage.getAsSerializable
+import com.hulkdx.findprofessional.core.storage.getFlowAsSerializable
+import com.hulkdx.findprofessional.core.storage.getFlowAsString
 import com.hulkdx.findprofessional.core.storage.removeString
 import com.hulkdx.findprofessional.core.storage.setAsSerializable
+import kotlinx.coroutines.flow.Flow
 
 
 class UserStorageDataStore(
@@ -17,4 +20,6 @@ class UserStorageDataStore(
     override suspend fun get() = dataStore.getAsSerializable<UserData>(key)
     override suspend fun set(value: UserData) = dataStore.setAsSerializable(key, value)
     override suspend fun remove() = dataStore.removeString(key)
+
+    override fun getFlow(): Flow<UserData?> = dataStore.getFlowAsSerializable(key)
 }

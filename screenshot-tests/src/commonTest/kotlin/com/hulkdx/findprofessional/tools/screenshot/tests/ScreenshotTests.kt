@@ -12,6 +12,7 @@ import com.hulkdx.findprofessional.feature.home.detail.availability.Availability
 import com.hulkdx.findprofessional.feature.home.main.view.HomeScreen
 import com.hulkdx.findprofessional.feature.pro.auth.signup.SignUpProScreenStep1
 import com.hulkdx.findprofessional.feature.pro.auth.signup.SignUpProScreenStep2
+import com.hulkdx.findprofessional.feature.pro.profile.ProProfileScreen
 import com.hulkdx.findprofessional.feature.profile.ProfileScreen
 import com.hulkdx.findprofessional.feature.review.ReviewScreen
 import kotlinx.datetime.LocalDate
@@ -158,6 +159,17 @@ class ScreenshotTests {
             SignUpProScreenStep2(
                 uiState = SignUpProRequest(),
                 {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, "", {},
+            )
+        }
+    }
+
+    @Test
+    fun proProfileScreen() {
+        screenShotTests(className, "proProfileScreen") {
+            ProProfileScreen(
+                "Mosh Asphalt",
+                "",
+                {}, {}, "", {},
             )
         }
     }

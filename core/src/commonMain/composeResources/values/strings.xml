@@ -60,4 +60,6 @@
     <string name="applyToOnly">Apply to %1$s only</string>
 
     <string name="schedule">Schedule</string>
+    <string name="editProfile">Edit Profile</string>
+
 </resources>
