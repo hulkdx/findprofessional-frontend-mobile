@@ -10,6 +10,8 @@ import com.hulkdx.findprofessional.libs.common.tests.StubNavigator
 import com.hulkdx.findprofessional.libs.common.tests.newUser
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
@@ -75,6 +77,7 @@ class SignUpViewModelTest {
         }
 
         override suspend fun remove() {}
+        override fun getFlow(): Flow<UserData?> = flow {}
     }
 
     // endregion
