@@ -11,6 +11,7 @@ import kotlinx.datetime.DayOfWeek.THURSDAY
 import kotlinx.datetime.DayOfWeek.TUESDAY
 import kotlinx.datetime.DayOfWeek.WEDNESDAY
 import kotlinx.datetime.LocalDate
+import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.plus
 import kotlinx.datetime.todayIn
@@ -32,6 +33,12 @@ fun DayOfWeek.toShort(): String {
 
 // From: https://github.com/Kotlin/kotlinx-datetime/issues/184
 fun LocalDate.lengthOfMonth(): Int {
+    val start = LocalDate(year, month, 1)
+    val end = start.plus(1, DateTimeUnit.MONTH)
+    return start.until(end, DateTimeUnit.DAY)
+}
+
+fun LocalDateTime.lengthOfMonth(): Int {
     val start = LocalDate(year, month, 1)
     val end = start.plus(1, DateTimeUnit.MONTH)
     return start.until(end, DateTimeUnit.DAY)

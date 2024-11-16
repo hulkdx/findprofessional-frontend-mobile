@@ -11,7 +11,7 @@ import com.hulkdx.findprofessional.feature.book.time.BookingTimeUiState.BookingT
 import com.hulkdx.findprofessional.feature.book.time.BookingTimeUiState.BookingTime.Type.Selected
 import com.hulkdx.findprofessional.feature.book.time.BookingTimeUiState.BookingTime.Type.UnAvailable
 import com.hulkdx.findprofessional.feature.book.time.utils.BookingTimeUtils.currentDay
-import com.hulkdx.findprofessional.feature.book.time.utils.BookingTimeUtils.formattedTime
+import com.hulkdx.findprofessional.core.utils.TimeUtils.formattedTime
 import com.hulkdx.findprofessional.feature.book.time.utils.BookingTimeUtils.isAvailabilityIncludedInTimes
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow

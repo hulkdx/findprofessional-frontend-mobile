@@ -16,7 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.unit.dp
-import com.hulkdx.findprofessional.core.commonui.navbar.getNavigator
+import com.hulkdx.findprofessional.core.utils.getNavigator
 
 const val BACK_BUTTON_INNER_PADDING = 8
 const val BACK_BUTTON_OUTER_PADDING = 16

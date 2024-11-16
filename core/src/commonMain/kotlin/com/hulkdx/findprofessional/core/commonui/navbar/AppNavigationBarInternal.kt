@@ -19,6 +19,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.unit.dp
 import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.core.theme.body3
@@ -54,7 +55,7 @@ internal fun AppNavigationBarInternal(
 @Composable
 private fun RowScope.AppNavBarItem(
     text: String,
-    icon: DrawableResource,
+    icon: Painter,
     selected: Boolean,
     onClick: (() -> Unit)?,
 ) {
@@ -77,7 +78,7 @@ private fun RowScope.AppNavBarItem(
     ) {
         Icon(
             modifier = Modifier.size(30.dp),
-            painter = painterResource(icon),
+            painter = icon,
             contentDescription = text,
             tint = color
         )
@@ -87,13 +88,5 @@ private fun RowScope.AppNavBarItem(
             color = color,
             style = body3,
         )
-    }
-}
-
-@Preview
-@Composable
-private fun AppNavigationBarPreview() {
-    AppTheme {
-        AppNavigationBar()
     }
 }

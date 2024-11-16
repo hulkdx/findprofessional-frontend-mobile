@@ -20,7 +20,7 @@
 
     <string name="explorer">Explorer</string>
 
-    <string name="profile">Your Profile</string>
+    <string name="profile">Profile</string>
     <string name="logout">Logout</string>
     <string name="becomeCoach">Become a coach</string>
 
@@ -53,4 +53,11 @@
     <string name="consentWebcam">I have a webcam and I can offer video-based lessons.</string>
     <string name="consentID">I agree to allow this app or its third-party vendor to perform an ID verification check in order to teach on it.</string>
     <string name="pleaseCheckConsent">Please check the consents</string>
+
+    <string name="editAvailableTime">Edit Available Time</string>
+    <string name="addNewTime">Add New Time</string>
+    <string name="applyToAll">Apply to all %1$s</string>
+    <string name="applyToOnly">Apply to %1$s only</string>
+
+    <string name="schedule">Schedule</string>
 </resources>

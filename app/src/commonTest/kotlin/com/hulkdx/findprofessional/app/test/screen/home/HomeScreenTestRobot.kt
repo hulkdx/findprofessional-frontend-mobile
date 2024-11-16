@@ -41,7 +41,7 @@ class HomeScreenDsl(
     }
 
     fun pressProfile() {
-        rule.onNodeWithText("Your Profile")
+        rule.onNodeWithText("Profile")
             .performClick()
     }
 

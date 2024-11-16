@@ -21,7 +21,7 @@ import com.hulkdx.findprofessional.app.test.utils.setUser
 import com.hulkdx.findprofessional.core.model.pro.ProfessionalAvailability
 import com.hulkdx.findprofessional.core.utils.toMinutesOfDay
 import com.hulkdx.findprofessional.feature.book.time.BookingTimeUiState.BookingTime.Type.Selected
-import com.hulkdx.findprofessional.feature.book.time.utils.BookingTimeUtils.formattedTime
+import com.hulkdx.findprofessional.core.utils.TimeUtils.formattedTime
 
 
 fun launchBookingTimeScreen(
