@@ -10,9 +10,9 @@ env:
   IOS_XCODE_VERSION: "16.0"
 
 jobs:
-  unit-tests-android-and-ios:
-    name: Unit tests
-    runs-on: macos-15
+  android-unit-test:
+    name: Android unit tests
+    runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
       - name: Checkout
@@ -118,7 +118,7 @@ jobs:
             uitest-screenshot-failure
 
 
-  ios-integration-tests:
+  ios-tests:
     name: IOS unit and integration tests
     runs-on: macos-15
     timeout-minutes: 30
