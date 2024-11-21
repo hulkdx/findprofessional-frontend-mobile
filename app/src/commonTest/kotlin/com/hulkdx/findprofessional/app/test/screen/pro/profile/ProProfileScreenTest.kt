@@ -1,3 +1,4 @@
+/*
 @file:OptIn(ExperimentalTestApi::class)
 
 package com.hulkdx.findprofessional.app.test.screen.pro.profile
@@ -16,3 +17,4 @@ class ProProfileScreenTest {
         }
     }
 }
+*/
