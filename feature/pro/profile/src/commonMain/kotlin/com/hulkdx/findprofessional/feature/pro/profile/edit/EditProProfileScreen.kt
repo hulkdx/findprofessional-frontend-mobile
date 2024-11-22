@@ -106,7 +106,7 @@ private fun EditProProfileScreenContent(
             .padding(horizontal = 16.dp),
         horizontalAlignment = CenterHorizontally,
     ) {
-        item { ProProfileImage(uiState.profileImageUrl) }
+        item { ProProfileImage(uiState.profileImageUrl ?: "") }
         item { ProProfileName(uiState.fullName) }
         item {
             EditProProfileItem(
