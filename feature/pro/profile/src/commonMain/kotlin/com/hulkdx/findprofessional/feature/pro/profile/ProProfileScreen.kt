@@ -5,6 +5,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -20,6 +21,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
+import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.testTag
@@ -80,20 +82,26 @@ private fun ProProfileScreenContent(
     ) {
         ProProfileImage(profileImageUrl)
         ProProfileName(name)
-        ProfileItem(stringResource(Res.string.editProfile), onEditProfileClicked)
-        ProfileItem(stringResource(Res.string.logout), onLogoutClicked)
+        ProProfileItem(stringResource(Res.string.editProfile), onEditProfileClicked)
+        ProProfileItem(stringResource(Res.string.logout), onLogoutClicked)
     }
 }
 
 @Composable
-internal fun ProProfileImage(url: String) {
-    CUAsyncImage(
-        modifier = Modifier
-            .padding(top = 53.dp)
-            .size(75.dp)
-            .clip(shape = CircleShape),
-        url = url,
-    )
+internal fun ProProfileImage(url: String?) {
+    val modifier = Modifier
+        .padding(top = 53.dp)
+        .size(75.dp)
+        .clip(shape = CircleShape)
+
+    if (url.isNullOrBlank()) {
+        Spacer(modifier = modifier)
+    } else {
+        CUAsyncImage(
+            modifier = modifier,
+            url = url,
+        )
+    }
 }
 
 @Composable
@@ -107,7 +115,7 @@ internal fun ProProfileName(name: String) {
 }
 
 @Composable
-private fun ProfileItem(
+private fun ProProfileItem(
     text: String,
     onClick: () -> Unit,
 ) {
@@ -123,7 +131,7 @@ private fun ProfileItem(
             .padding(16.dp),
     ) {
         Text(
-            modifier = Modifier,
+            modifier = Modifier.align(CenterVertically),
             text = text,
             style = body2,
         )
