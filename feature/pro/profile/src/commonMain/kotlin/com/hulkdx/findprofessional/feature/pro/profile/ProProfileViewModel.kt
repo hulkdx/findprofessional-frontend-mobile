@@ -2,6 +2,7 @@ package com.hulkdx.findprofessional.feature.pro.profile
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import com.hulkdx.findprofessional.core.navigation.Navigator
 import com.hulkdx.findprofessional.core.utils.StringOrRes
 import com.hulkdx.findprofessional.feature.authentication.login.usecase.LogoutUseCase
@@ -34,8 +35,7 @@ class ProProfileViewModel(
     val error = _error.asStateFlow()
 
     fun onEditProfileClicked() {
-        // TODO: Navigate to edit profile screen
-        // navigator.navigate()
+        navigator.navigate(NavigationScreen.EditProProfile)
     }
 
     fun onLogoutClicked() {

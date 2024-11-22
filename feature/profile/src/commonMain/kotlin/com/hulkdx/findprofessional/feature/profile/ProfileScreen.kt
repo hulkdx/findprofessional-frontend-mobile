@@ -17,6 +17,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -113,7 +114,7 @@ private fun ProfileItem(
             .padding(16.dp),
     ) {
         Text(
-            modifier = Modifier,
+            modifier = Modifier.align(CenterVertically),
             text = text,
             style = body1,
         )
