@@ -30,8 +30,7 @@ internal class InMemoryApiImpl : InMemoryApi {
         single<SignUpProApi> { SignUpPro() }
     }
 
-    private var user: RegisterRequest? = null
-    private var proUser: RegisterRequest? = null
+    private var users = mutableListOf<UserData>()
 
     private val reviews = listOf(
         ProfessionalReview(
@@ -186,62 +185,30 @@ internal class InMemoryApiImpl : InMemoryApi {
 
     private inner class Signup : SignUpApi {
         override suspend fun register(request: RegisterRequest): UserData {
-            user = request
-            return UserData(
-                Token(
-                    "uiTestAccessToken",
-                    "uiTestRefreshToken",
-                ),
-                User(
-                    request.email,
-                    request.firstName,
-                    request.lastName,
-                    profileImage = null,
-                ),
-            )
-        }
-    }
-
-    private inner class Login : LoginApi {
-        override suspend fun login(request: LoginRequest): UserData {
-            if (user?.email == request.email &&
-                user?.password == request.password
-            ) {
-                return UserData(
+            users.add(
+                UserData(
                     Token(
                         "uiTestAccessToken",
                         "uiTestRefreshToken",
                     ),
                     User(
                         request.email,
-                        firstName = "uiTestFirstName",
-                        lastName = "uiTestLastName",
+                        request.firstName,
+                        request.lastName,
                         profileImage = null,
                     ),
                 )
-            } else if (
-                proUser?.email == request.email &&
-                proUser?.password == request.password
-            ) {
-                return UserData(
-                    Token(
-                        "uiTestAccessToken",
-                        "uiTestRefreshToken",
-                    ),
-                    ProUser(
-                        email = request.email,
-                        firstName = "uiTestFirstName",
-                        lastName = "uiTestLastName",
-                        coachType = "Life coach",
-                        priceNumber = null,
-                        priceCurrency = null,
-                        profileImageUrl = null,
-                        description = null,
-                        skypeId = null,
-                    ),
-                )
+            )
+            return users.last()
+        }
+    }
+
+    private inner class Login : LoginApi {
+        override suspend fun login(request: LoginRequest): UserData {
+            return users.first {
+                val userEmail = (it.user as? ProUser)?.email ?: (it.user as? User)?.email
+                userEmail == request.email
             }
-            throw RuntimeException("user not found")
         }
     }
 
@@ -301,13 +268,9 @@ internal class InMemoryApiImpl : InMemoryApi {
         org.koin.core.context.unloadKoinModules(module)
     }
 
-    override fun setUser(user: RegisterRequest) {
-        this.user = user
-    }
-
-    override fun setProUser(proUser: RegisterRequest) {
-        this.user = null
-        this.proUser = proUser
+    override fun setUserData(userData: UserData) {
+        this.users.clear()
+        this.users.add(userData)
     }
 
     override fun setProfessionals(pro: List<Professional>) {
