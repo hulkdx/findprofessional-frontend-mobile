@@ -4,7 +4,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hulkdx.findprofessional.core.model.user.ProUser
 import com.hulkdx.findprofessional.feature.pro.auth.signup.usecase.GetProUserUseCase
-import com.hulkdx.findprofessional.feature.pro.auth.signup.usecase.SaveProUserUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
