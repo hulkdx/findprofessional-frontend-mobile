@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hulkdx.findprofessional.core.model.user.ProUser
 import com.hulkdx.findprofessional.feature.pro.auth.signup.usecase.GetProUserUseCase
+import com.hulkdx.findprofessional.feature.pro.auth.signup.usecase.SaveProUserUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
@@ -11,6 +12,7 @@ import kotlinx.coroutines.launch
 
 class EditProProfileViewModel(
     private val getProUserUseCase: GetProUserUseCase,
+    private val saveProUserUseCase: SaveProUserUseCase,
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(ProUser())
@@ -23,7 +25,7 @@ class EditProProfileViewModel(
     }
 
     fun onSaveButtonClicked() {
-        // TODO:
+        saveProUserUseCase.save(_uiState.value)
     }
 
     private fun updateState(update: ProUser.() -> ProUser) {
