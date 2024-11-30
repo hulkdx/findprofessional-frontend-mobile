@@ -11,8 +11,8 @@ import com.hulkdx.findprofessional.feature.book.time.BookingTimeScreen
 import com.hulkdx.findprofessional.feature.home.detail.HomeDetailScreen
 import com.hulkdx.findprofessional.feature.home.detail.availability.AvailabilityData
 import com.hulkdx.findprofessional.feature.home.main.view.HomeScreen
-import com.hulkdx.findprofessional.feature.pro.auth.signup.SignUpProScreenStep1
-import com.hulkdx.findprofessional.feature.pro.auth.signup.SignUpProScreenStep2
+import com.hulkdx.findprofessional.feature.pro.auth.signup.view.SignUpProScreenStep1
+import com.hulkdx.findprofessional.feature.pro.auth.signup.view.SignUpProScreenStep2
 import com.hulkdx.findprofessional.feature.pro.profile.ProProfileScreen
 import com.hulkdx.findprofessional.feature.pro.profile.edit.EditProProfileScreen
 import com.hulkdx.findprofessional.feature.profile.ProfileScreen
