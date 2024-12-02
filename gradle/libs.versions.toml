@@ -14,7 +14,7 @@ androidxActivity = "1.9.3"
 # https://developer.android.com/jetpack/androidx/releases/datastore
 androidxDataStore = "1.1.1"
 # https://github.com/coil-kt/coil
-coil = "3.0.3"
+coil = "3.0.4"
 # https://github.com/JetBrains/compose-multiplatform
 compose-plugin = "1.7.0"
 # https://github.com/arkivanov/Decompose
