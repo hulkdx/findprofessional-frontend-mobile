@@ -4,6 +4,7 @@ import com.hulkdx.findprofessional.core.config.PlatformSpecific
 import io.ktor.client.HttpClient
 import io.ktor.client.HttpClientConfig
 import io.ktor.client.plugins.DefaultRequest
+import io.ktor.client.plugins.HttpTimeout
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.logging.LogLevel
 import io.ktor.client.plugins.logging.Logger
@@ -19,6 +20,12 @@ object AppApiProvider {
     fun getConfig(ps: PlatformSpecific): HttpClientConfig<*>.() -> Unit = {
         install(ContentNegotiation) {
             json()
+        }
+
+        install(HttpTimeout) {
+            socketTimeoutMillis = 10_000
+            requestTimeoutMillis =  10_000
+            connectTimeoutMillis = 10_000
         }
 
         install(DefaultRequest) {
