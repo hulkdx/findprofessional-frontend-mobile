@@ -1,6 +1,7 @@
-package com.hulkdx.findprofessional.feature.pro.auth.signup
+package com.hulkdx.findprofessional.feature.pro.auth.signup.api
 
 import com.hulkdx.findprofessional.core.model.proauth.SignUpProRequest
+import com.hulkdx.findprofessional.core.model.user.ProUser
 import com.hulkdx.findprofessional.core.model.user.UserData
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
@@ -12,6 +13,7 @@ import io.ktor.http.contentType
 
 interface SignUpProApi {
     suspend fun register(request: SignUpProRequest): UserData
+    suspend fun update(proUser: ProUser)
 }
 
 class SignUpProApiImpl(
@@ -24,5 +26,8 @@ class SignUpProApiImpl(
             setBody(request)
         }
             .body()
+    }
+
+    override suspend fun update(proUser: ProUser) {
     }
 }

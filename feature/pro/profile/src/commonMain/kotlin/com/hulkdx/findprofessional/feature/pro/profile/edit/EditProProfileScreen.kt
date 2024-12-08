@@ -37,11 +37,12 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 fun EditProProfileScreen(viewModel: EditProProfileViewModel = koinViewModel()) {
     val uiState by viewModel.uiState.collectAsState()
+    val error by viewModel.error.collectAsState()
 
     EditProProfileScreen(
         uiState = uiState,
-        error = null,
-        onErrorDismissed = {},
+        error = error?.localized(),
+        onErrorDismissed = { viewModel.setError(null) },
         onFirstNameChange = viewModel::onFirstNameChange,
         onLastNameChange = viewModel::onLastNameChange,
         onSkypeIdChange = viewModel::onSkypeIdChange,
