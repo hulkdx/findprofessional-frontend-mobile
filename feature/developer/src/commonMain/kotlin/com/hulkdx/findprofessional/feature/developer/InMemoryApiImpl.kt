@@ -246,11 +246,10 @@ internal class InMemoryApiImpl : InMemoryApi {
                         "uiTestAccessToken",
                         "uiTestRefreshToken",
                     ),
-                    User(
+                    ProUser(
                         request.email,
                         request.firstName,
                         request.lastName,
-                        profileImage = null,
                     ),
                 )
             )

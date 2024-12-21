@@ -8,13 +8,13 @@ class PriceUtilsTest {
     fun testToPriceNumber() {
         val testData = listOf(
             "" to null,
-            "0" to 0,
-            "50" to 5000,
-            "100" to 10000,
-            "200" to 20000,
-            "50.25" to 5025,
-            "50.252" to 5025,
-            "50.259" to 5025,
+            "0" to 0L,
+            "50" to 5000L,
+            "100" to 10000L,
+            "200" to 20000L,
+            "50.25" to 5025L,
+            "50.252" to 5025L,
+            "50.259" to 5025L,
         )
 
         testData.forEach { (priceString, expected) ->
@@ -29,11 +29,11 @@ class PriceUtilsTest {
     @Test
     fun testToPriceString() {
         val testData = listOf(
-            0 to "0",
-            5000 to "50",
-            10000 to "100",
-            20000 to "200",
-            5025 to "50.25",
+            0L to "0",
+            5000L to "50",
+            10000L to "100",
+            20000L to "200",
+            5025L to "50.25",
         )
 
         testData.forEach { (priceNumber, expected) ->
