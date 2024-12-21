@@ -4,6 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hulkdx.findprofessional.core.model.proauth.PriceUtils
 import com.hulkdx.findprofessional.core.model.user.ProUser
+import com.hulkdx.findprofessional.core.navigation.NavigationScreen
+import com.hulkdx.findprofessional.core.navigation.Navigator
 import com.hulkdx.findprofessional.core.utils.StringOrRes
 import com.hulkdx.findprofessional.feature.pro.auth.signup.usecase.GetProUserUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -14,6 +16,7 @@ import kotlinx.coroutines.launch
 class EditProProfileViewModel(
     private val getProUserUseCase: GetProUserUseCase,
     private val saveProUserUseCase: SaveProUserUseCase,
+    private val navigator: Navigator,
 ) : ViewModel() {
 
     private val _error: MutableStateFlow<StringOrRes?> = MutableStateFlow(null)
@@ -31,6 +34,7 @@ class EditProProfileViewModel(
     fun onSaveButtonClicked() {
         viewModelScope.launch {
             _error.value = saveProUserUseCase.save(_uiState.value)
+            navigator.navigate(NavigationScreen.ProProfile)
         }
     }
 
