@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.feature.pro.auth.signup
+package com.hulkdx.findprofessional.feature.pro.auth.signup.view
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -23,6 +23,7 @@ import com.hulkdx.findprofessional.core.commonui.CUSnackBar
 import com.hulkdx.findprofessional.core.model.proauth.SignUpProRequest
 import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import com.hulkdx.findprofessional.core.navigation.Navigator
+import com.hulkdx.findprofessional.feature.pro.auth.signup.SignUpProViewModel
 import org.koin.androidx.compose.koinViewModel
 import org.koin.compose.koinInject
 import org.koin.core.parameter.parametersOf

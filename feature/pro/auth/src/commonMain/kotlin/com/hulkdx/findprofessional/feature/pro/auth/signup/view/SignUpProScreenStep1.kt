@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.feature.pro.auth.signup
+package com.hulkdx.findprofessional.feature.pro.auth.signup.view
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
