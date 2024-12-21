@@ -2,6 +2,7 @@ package com.hulkdx.findprofessional.feature.pro.profile.edit
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.hulkdx.findprofessional.core.model.proauth.PriceUtils
 import com.hulkdx.findprofessional.core.model.user.ProUser
 import com.hulkdx.findprofessional.core.utils.StringOrRes
 import com.hulkdx.findprofessional.feature.pro.auth.signup.usecase.GetProUserUseCase
@@ -42,6 +43,6 @@ class EditProProfileViewModel(
     fun onEmailChange(value: String) = updateState { copy(email = value) }
     fun onCoachTypeChange(value: String) = updateState { copy(coachType = value) }
     fun onAboutMeChange(value: String) = updateState { copy(description = value) }
-    fun onPriceChange(value: String) = updateState { copy(priceNumber = value.toLongOrNull()) }
+    fun onPriceChange(value: String) = updateState { copy(priceNumber = PriceUtils.toPriceNumber(value)) }
     fun setError(error: StringOrRes?) { _error.value = error }
 }

@@ -18,7 +18,8 @@ data class SignUpProRequest(
     @Transient val webcamConsentChecked: Boolean = false,
     @Transient val idConsentChecked: Boolean = false,
 ) {
-    val price = priceString.toFloatOrNull()?.times(100)?.toInt()
+    @Suppress("unused") // it will send to the api
+    val price = PriceUtils.toPriceNumber(priceString)
 
     fun isConsentChecked() = webcamConsentChecked && idConsentChecked
 }

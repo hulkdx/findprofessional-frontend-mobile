@@ -155,7 +155,7 @@ private fun EditProProfileScreenContent(
         item {
             EditProProfileItem(
                 hint = stringResource(Res.string.price),
-                value = uiState.priceNumber?.toString() ?: "",
+                value = uiState.priceString,
                 onValueChanged = onPriceChange,
             )
         }
