@@ -130,13 +130,14 @@ private fun EditProProfileScreenContent(
                 onValueChanged = onSkypeIdChange,
             )
         }
-        item {
-            EditProProfileItem(
-                hint = stringResource(Res.string.email),
-                value = uiState.email,
-                onValueChanged = onEmailChange,
-            )
-        }
+//        TODO: add email
+//        item {
+//            EditProProfileItem(
+//                hint = stringResource(Res.string.email),
+//                value = uiState.email,
+//                onValueChanged = onEmailChange,
+//            )
+//        }
         item {
             EditProProfileItem(
                 hint = stringResource(Res.string.coachType),
