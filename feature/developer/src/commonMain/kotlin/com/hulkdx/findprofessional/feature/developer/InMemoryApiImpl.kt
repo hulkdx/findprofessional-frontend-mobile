@@ -14,7 +14,7 @@ import com.hulkdx.findprofessional.feature.authentication.login.model.LoginReque
 import com.hulkdx.findprofessional.feature.authentication.signup.SignUpApi
 import com.hulkdx.findprofessional.feature.authentication.signup.model.RegisterRequest
 import com.hulkdx.findprofessional.feature.home.main.api.ProfessionalApi
-import com.hulkdx.findprofessional.feature.pro.auth.signup.SignUpProApi
+import com.hulkdx.findprofessional.feature.pro.auth.signup.api.SignUpProApi
 import com.hulkdx.findprofessional.feature.review.ReviewApi
 import kotlinx.datetime.Clock
 import kotlinx.datetime.LocalDate
@@ -240,22 +240,32 @@ internal class InMemoryApiImpl : InMemoryApi {
 
     private inner class SignUpPro : SignUpProApi {
         override suspend fun register(request: SignUpProRequest): UserData {
-            return UserData(
-                token = Token(
-                    accessToken = "esse",
-                    refreshToken = "penatibus"
-                ),
-                user = ProUser(
-                    email = "sherri.hodges@example.com",
-                    firstName = "Abby",
-                    lastName = "Cortez",
-                    coachType = "netus",
-                    priceNumber = 500,
-                    priceCurrency = "EUR",
-                    profileImageUrl = "https://i.imgur.com/FVABZOc.jpeg",
-                    description = "Some description",
-                    skypeId = "sherri.hodges12",
-                ),
+            users.add(
+                UserData(
+                    Token(
+                        "uiTestAccessToken",
+                        "uiTestRefreshToken",
+                    ),
+                    ProUser(
+                        request.email,
+                        request.firstName,
+                        request.lastName,
+                    ),
+                )
+            )
+            return users.last()
+        }
+
+        override suspend fun update(proUser: ProUser) {
+            users.removeLast()
+            users.add(
+                UserData(
+                    Token(
+                        "uiTestAccessToken",
+                        "uiTestRefreshToken",
+                    ),
+                    proUser,
+                )
             )
         }
     }

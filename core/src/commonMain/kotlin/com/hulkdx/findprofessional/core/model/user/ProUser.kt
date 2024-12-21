@@ -1,7 +1,9 @@
 package com.hulkdx.findprofessional.core.model.user
 
+import com.hulkdx.findprofessional.core.model.proauth.PriceUtils
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.Transient
 
 @Serializable
 @SerialName("pro")
@@ -16,6 +18,8 @@ data class ProUser(
     val description: String? = null,
     val skypeId: String? = null,
 ) : UserType() {
+    @Transient val priceString  = priceNumber?.let { PriceUtils.toPriceString(priceNumber) } ?: ""
+
     val fullName: String
         get() = "$firstName $lastName"
 }

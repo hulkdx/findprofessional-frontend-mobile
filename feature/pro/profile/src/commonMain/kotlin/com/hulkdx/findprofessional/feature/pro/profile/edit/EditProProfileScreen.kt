@@ -37,11 +37,12 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 fun EditProProfileScreen(viewModel: EditProProfileViewModel = koinViewModel()) {
     val uiState by viewModel.uiState.collectAsState()
+    val error by viewModel.error.collectAsState()
 
     EditProProfileScreen(
         uiState = uiState,
-        error = null,
-        onErrorDismissed = {},
+        error = error?.localized(),
+        onErrorDismissed = { viewModel.setError(null) },
         onFirstNameChange = viewModel::onFirstNameChange,
         onLastNameChange = viewModel::onLastNameChange,
         onSkypeIdChange = viewModel::onSkypeIdChange,
@@ -129,13 +130,14 @@ private fun EditProProfileScreenContent(
                 onValueChanged = onSkypeIdChange,
             )
         }
-        item {
-            EditProProfileItem(
-                hint = stringResource(Res.string.email),
-                value = uiState.email,
-                onValueChanged = onEmailChange,
-            )
-        }
+//        TODO: add email
+//        item {
+//            EditProProfileItem(
+//                hint = stringResource(Res.string.email),
+//                value = uiState.email,
+//                onValueChanged = onEmailChange,
+//            )
+//        }
         item {
             EditProProfileItem(
                 hint = stringResource(Res.string.coachType),
@@ -154,7 +156,7 @@ private fun EditProProfileScreenContent(
         item {
             EditProProfileItem(
                 hint = stringResource(Res.string.price),
-                value = uiState.priceNumber?.toString() ?: "",
+                value = uiState.priceString,
                 onValueChanged = onPriceChange,
             )
         }
