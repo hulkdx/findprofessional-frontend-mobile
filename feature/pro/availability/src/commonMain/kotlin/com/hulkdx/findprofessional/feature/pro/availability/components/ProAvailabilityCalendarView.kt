@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.feature.pro.availability
+package com.hulkdx.findprofessional.feature.pro.availability.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
