@@ -1,16 +1,21 @@
-package com.hulkdx.findprofessional.feature.home.detail.utils
+package com.hulkdx.findprofessional.core.utils
 
-import com.hulkdx.findprofessional.core.utils.lengthOfMonth
-import com.hulkdx.findprofessional.core.utils.shortDayOfWeeks
-import com.hulkdx.findprofessional.feature.home.detail.availability.HomeDetailAvailabilityUseCase.Companion.weekNumberMap
-import com.hulkdx.findprofessional.feature.home.detail.availability.capitalize
 import kotlinx.datetime.LocalDate
 
-
 object DateUtils {
-    fun currentMonth(now: LocalDate): String {
-        val month = now.month.name.capitalize()
-        val year = now.year
+    val weekNumberMap = mapOf(
+        0 to "Mon",
+        1 to "Tue",
+        2 to "Wed",
+        3 to "Thu",
+        4 to "Fri",
+        5 to "Sat",
+        6 to "Sun",
+    )
+
+    fun formatToMonthsAndYear(time: LocalDate): String {
+        val month = time.month.name.replaceFirstChar { if (it.isLowerCase()) it.titlecase() else it.toString() }
+        val year = time.year
         return "$month $year"
     }
 

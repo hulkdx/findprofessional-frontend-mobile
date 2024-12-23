@@ -2,7 +2,6 @@
 
 package com.hulkdx.findprofessional.feature.home.detail
 
-import com.hulkdx.findprofessional.feature.home.detail.utils.DateUtils
 import kotlinx.datetime.LocalDate
 import kotlin.test.BeforeTest
 import kotlin.test.Test

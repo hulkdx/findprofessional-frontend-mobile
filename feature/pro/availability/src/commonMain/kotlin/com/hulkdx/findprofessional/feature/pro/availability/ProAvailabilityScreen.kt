@@ -19,7 +19,8 @@ fun ProAvailabilityScreen(viewModel: ProAvailabilityViewModel = koinViewModel())
     ProAvailabilityScreen(
         error = error?.localized(),
         onErrorDismissed = viewModel::onErrorDismissed,
-        onDateSelected = {},
+        onDateClicked = viewModel::onDateClicked,
+        isSelectedDay = viewModel::isAvailableDay
     )
 }
 
@@ -27,7 +28,8 @@ fun ProAvailabilityScreen(viewModel: ProAvailabilityViewModel = koinViewModel())
 fun ProAvailabilityScreen(
     error: String?,
     onErrorDismissed: () -> Unit,
-    onDateSelected: (LocalDate) -> Unit,
+    onDateClicked: (LocalDate) -> Unit,
+    isSelectedDay : (Int) -> Boolean,
 ) {
     ProAppNavBarContainer(
         modifier = Modifier.testTag("ProAvailabilityScreen"),
@@ -38,7 +40,10 @@ fun ProAvailabilityScreen(
             modifier = Modifier
                 .fillMaxSize()
         ) {
-            ProAvailabilityCalendarView(onDateSelected = onDateSelected)
+            ProAvailabilityCalendarView(
+                onDateClicked,
+                isSelectedDay,
+            )
         }
     }
 }

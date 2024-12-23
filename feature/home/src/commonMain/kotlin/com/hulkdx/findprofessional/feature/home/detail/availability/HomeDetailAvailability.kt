@@ -17,10 +17,12 @@ import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -36,7 +38,7 @@ import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.core.theme.body1
 import com.hulkdx.findprofessional.core.theme.body1Medium
 import com.hulkdx.findprofessional.core.theme.h3Medium
-import com.hulkdx.findprofessional.feature.home.detail.availability.HomeDetailAvailabilityUseCase.Companion.weekNumberMap
+import com.hulkdx.findprofessional.core.utils.DateUtils.weekNumberMap
 import com.hulkdx.findprofessional.feature.home.detail.utils.HomeScreenDimens.OUTER_HORIZONTAL_PADDING
 import kotlinx.datetime.LocalDate
 import org.jetbrains.compose.resources.DrawableResource
@@ -165,12 +167,7 @@ private fun RowScope.DayColumn(
 
 @Composable
 private fun DayText(dayIndex: Int) {
-    val text = requireNotNull(weekNumberMap[dayIndex])
-    DayText(text)
-}
-
-@Composable
-private fun DayText(text: String) {
+    val text = remember(dayIndex) { requireNotNull(weekNumberMap[dayIndex]) }
     Text(
         modifier = Modifier.fillMaxWidth(),
         text = text,
@@ -181,7 +178,7 @@ private fun DayText(text: String) {
 
 @Composable
 private fun DayDivider() {
-    Divider(
+    HorizontalDivider(
         modifier = Modifier.padding(vertical = 8.dp),
         thickness = 0.5.dp,
         color = MaterialTheme.colorScheme.errorContainer

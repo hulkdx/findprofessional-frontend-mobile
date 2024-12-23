@@ -1,10 +1,8 @@
 package com.hulkdx.findprofessional.feature.home.detail.availability
 
 import com.hulkdx.findprofessional.core.model.pro.Professional
+import com.hulkdx.findprofessional.core.utils.DateUtils
 import com.hulkdx.findprofessional.core.utils.now
-import com.hulkdx.findprofessional.feature.home.detail.utils.DateUtils.currentMonth
-import com.hulkdx.findprofessional.feature.home.detail.utils.DateUtils.firstDayInt
-import com.hulkdx.findprofessional.feature.home.detail.utils.DateUtils.lengthOfMonth
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.distinctUntilChanged
@@ -21,9 +19,9 @@ class HomeDetailAvailabilityUseCase {
         return date
             .map { date ->
                 AvailabilityData(
-                    currentMonth = currentMonth(date),
-                    firstDay = firstDayInt(date),
-                    lengthOfMonth = lengthOfMonth(date),
+                    currentMonth = DateUtils.formatToMonthsAndYear(date),
+                    firstDay = DateUtils.firstDayInt(date),
+                    lengthOfMonth = DateUtils.lengthOfMonth(date),
                     now = date,
                     professionalAvailabilityDates = professional.availability.map { it.date },
                 )
@@ -37,18 +35,6 @@ class HomeDetailAvailabilityUseCase {
 
     fun monthPlusOne() {
         date.value = date.value.plus(1, MONTH)
-    }
-
-    companion object {
-        val weekNumberMap = mapOf(
-            0 to "Mon",
-            1 to "Tue",
-            2 to "Wed",
-            3 to "Thu",
-            4 to "Fri",
-            5 to "Sat",
-            6 to "Sun",
-        )
     }
 }
 
