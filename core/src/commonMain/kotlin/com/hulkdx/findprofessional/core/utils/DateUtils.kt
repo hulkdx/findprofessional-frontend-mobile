@@ -14,7 +14,9 @@ object DateUtils {
     )
 
     fun formatToMonthsAndYear(time: LocalDate): String {
-        val month = time.month.name.replaceFirstChar { if (it.isLowerCase()) it.titlecase() else it.toString() }
+        val month = time.month.name
+            .lowercase()
+            .replaceFirstChar { if (it.isLowerCase()) it.titlecase() else it.toString() }
         val year = time.year
         return "$month $year"
     }
@@ -34,4 +36,5 @@ object DateUtils {
     fun lengthOfMonth(now: LocalDate): Int {
         return now.lengthOfMonth()
     }
+
 }

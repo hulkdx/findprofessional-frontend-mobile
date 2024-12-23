@@ -1,6 +1,6 @@
 @file:Suppress("PrivatePropertyName")
 
-package com.hulkdx.findprofessional.feature.home.detail
+package com.hulkdx.findprofessional.core.utils
 
 import kotlinx.datetime.LocalDate
 import kotlin.test.BeforeTest
@@ -16,11 +16,11 @@ class DateUtilsTest {
     }
 
     @Test
-    fun currentMonthTest() {
+    fun formatToMonthsAndYearTest() {
         // Arrange
         val now = LocalDate(2022, 1, 1)
         // Act
-        val result = DateUtils.currentMonth(now)
+        val result = sut.formatToMonthsAndYear(now)
         // Assert
         assertEquals("January 2022", result)
     }
@@ -30,7 +30,7 @@ class DateUtilsTest {
         // Arrange
         val now = LocalDate(2023, 12, 21)
         // Act
-        val result = DateUtils.firstDay(now)
+        val result = sut.firstDay(now)
         // Assert
         assertEquals("Fri", result)
     }
@@ -41,7 +41,7 @@ class DateUtilsTest {
         val now = LocalDate(2023, 12, 21)
         val expected = 4
         // Act
-        val result = DateUtils.firstDayInt(now)
+        val result = sut.firstDayInt(now)
         // Assert
         assertEquals(expected, result)
     }
@@ -52,7 +52,7 @@ class DateUtilsTest {
         val now = LocalDate(2023, 12, 21)
         val expected = 31
         // Act
-        val result = DateUtils.lengthOfMonth(now)
+        val result = sut.lengthOfMonth(now)
         // Assert
         assertEquals(expected, result)
     }

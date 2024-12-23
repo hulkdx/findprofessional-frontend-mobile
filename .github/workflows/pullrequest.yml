@@ -34,7 +34,7 @@ jobs:
             ${{ runner.os }}-gradle-
 
       - name: Run unit tests
-        run: ./gradlew assembleDebug testDebug -x :app:testDebug
+        run: ./gradlew assembleDebug testDebug -x :app:testDebug -x :screenshot-tests:testDebug
 
       - name: Run screenshot tests
         run: ./gradlew :screenshot-tests:verifyPaparazziDebug

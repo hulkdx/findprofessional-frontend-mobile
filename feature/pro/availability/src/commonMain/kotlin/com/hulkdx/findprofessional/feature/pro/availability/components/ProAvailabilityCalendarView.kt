@@ -3,6 +3,7 @@ package com.hulkdx.findprofessional.feature.pro.availability.components
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -37,6 +38,7 @@ import com.hulkdx.findprofessional.core.theme.h3Medium
 import com.hulkdx.findprofessional.core.utils.DateUtils
 import com.hulkdx.findprofessional.core.utils.DateUtils.weekNumberMap
 import com.hulkdx.findprofessional.core.utils.now
+import com.hulkdx.findprofessional.core.utils.singleClick
 import kotlinx.datetime.DateTimeUnit.Companion.MONTH
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.minus
@@ -47,10 +49,10 @@ import org.jetbrains.compose.resources.painterResource
 @Composable
 fun ProAvailabilityCalendarView(
     onDateClicked: (LocalDate) -> Unit,
-    isSelectedDay : (Int) -> Boolean,
+    isSelectedDay: (Int) -> Boolean,
 ) {
     var date by remember { mutableStateOf(LocalDate.now()) }
-    var state by remember(date) {
+    val state by remember(date) {
         mutableStateOf(
             AvailabilityState(
                 currentMonth = DateUtils.formatToMonthsAndYear(date),
@@ -68,7 +70,10 @@ fun ProAvailabilityCalendarView(
         availabilityMonthPlusOne = {
             date = date.plus(1, MONTH)
         },
-        isSelectedDay,
+        isSelectedDay = isSelectedDay,
+        onDateClicked = singleClick<Int> {
+            onDateClicked(LocalDate(date.year, date.month, it))
+        },
     )
 }
 
@@ -78,7 +83,8 @@ private fun AvailabilityCalendar(
     state: AvailabilityState,
     availabilityMonthMinusOne: () -> Unit,
     availabilityMonthPlusOne: () -> Unit,
-    isSelectedDay : (Int) -> Boolean,
+    isSelectedDay: (Int) -> Boolean,
+    onDateClicked: (Int) -> Unit,
 ) {
     Column(
         modifier = Modifier
@@ -94,7 +100,7 @@ private fun AvailabilityCalendar(
             availabilityMonthMinusOne,
             availabilityMonthPlusOne
         )
-        AvailabilityCalendarMainContent(state, isSelectedDay)
+        AvailabilityCalendarMainContent(state, isSelectedDay, onDateClicked)
     }
 }
 
@@ -148,11 +154,12 @@ private fun RowScope.AvailabilityCalendarTopHeaderMainText(currentMonth: String)
 @Composable
 private fun AvailabilityCalendarMainContent(
     availability: AvailabilityState,
-    isSelectedDay : (Int) -> Boolean,
+    isSelectedDay: (Int) -> Boolean,
+    onDateClicked: (Int) -> Unit,
 ) {
     Row(Modifier.padding(horizontal = 8.dp)) {
         for (dayIndex in 0..<7) {
-            DayColumn(dayIndex, availability, isSelectedDay)
+            DayColumn(dayIndex, availability, isSelectedDay, onDateClicked)
         }
     }
 }
@@ -161,13 +168,14 @@ private fun AvailabilityCalendarMainContent(
 private fun RowScope.DayColumn(
     dayIndex: Int,
     availability: AvailabilityState,
-    isSelectedDay : (Int) -> Boolean,
+    isSelectedDay: (Int) -> Boolean,
+    onDateClicked: (Int) -> Unit,
 ) {
     Column(modifier = Modifier.weight(1F)) {
         DayText(dayIndex)
         DayDivider()
         for (weekIndex in 0..<availability.perWeek) {
-            Day(availability, dayIndex, weekIndex, isSelectedDay)
+            Day(availability, dayIndex, weekIndex, isSelectedDay, onDateClicked)
         }
     }
 }
@@ -198,7 +206,8 @@ private fun Day(
     availability: AvailabilityState,
     dayIndex: Int,
     weekIndex: Int,
-    isSelectedDay : (Int) -> Boolean,
+    isSelectedDay: (Int) -> Boolean,
+    onDateClicked: (Int) -> Unit,
 ) {
     val lastDay = availability.lengthOfMonth
     val firstDay = availability.firstDay
@@ -208,9 +217,9 @@ private fun Day(
     if (isEmptyDay) {
         EmptyDay()
     } else if (isSelectedDay(day)) {
-        SelectedDay(day)
+        SelectedDay(day, onDateClicked)
     } else {
-        NormalDay(day)
+        NormalDay(day, onDateClicked)
     }
 }
 
@@ -220,25 +229,26 @@ private fun EmptyDay() {
 }
 
 @Composable
-private fun NormalDay(day: Int) {
+private fun NormalDay(day: Int, onDateClicked: (Int) -> Unit) {
     CommonDay(
-        modifier = Modifier.border(
-            width = 1.dp,
-            color = MaterialTheme.colorScheme.errorContainer,
-            shape = CircleShape,
-        ),
+        modifier = Modifier
+            .border(
+                width = 1.dp,
+                color = MaterialTheme.colorScheme.errorContainer,
+                shape = CircleShape,
+            )
+            .clickable { onDateClicked(day) },
         text = day.toString(),
         textColor = MaterialTheme.colorScheme.errorContainer,
     )
 }
 
 @Composable
-private fun SelectedDay(day: Int) {
+private fun SelectedDay(day: Int, onDateClicked: (Int) -> Unit) {
     val backgroundColor = MaterialTheme.colorScheme.outlineVariant
     CommonDay(
-        modifier = Modifier.drawBehind {
-            drawCircle(backgroundColor)
-        },
+        modifier = Modifier.drawBehind { drawCircle(backgroundColor) }
+            .clickable { onDateClicked(day) },
         text = day.toString(),
         textColor = MaterialTheme.colorScheme.surfaceVariant,
     )

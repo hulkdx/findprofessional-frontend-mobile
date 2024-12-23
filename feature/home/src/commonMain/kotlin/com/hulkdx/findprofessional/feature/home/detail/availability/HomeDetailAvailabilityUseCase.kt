@@ -37,8 +37,3 @@ class HomeDetailAvailabilityUseCase {
         date.value = date.value.plus(1, MONTH)
     }
 }
-
-internal fun String.capitalize(): String {
-    return lowercase()
-        .replaceFirstChar { if (it.isLowerCase()) it.titlecase() else it.toString() }
-}
