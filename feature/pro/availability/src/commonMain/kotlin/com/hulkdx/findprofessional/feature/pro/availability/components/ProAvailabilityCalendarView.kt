@@ -1,10 +1,9 @@
-@file:Suppress("FunctionName")
-
-package com.hulkdx.findprofessional.feature.home.detail.availability
+package com.hulkdx.findprofessional.feature.pro.availability.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -12,17 +11,17 @@ import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Divider
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -31,71 +30,83 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.hulkdx.findprofessional.core.resources.Res
-import com.hulkdx.findprofessional.core.resources.availability
 import com.hulkdx.findprofessional.core.resources.ic_calendar_left
 import com.hulkdx.findprofessional.core.resources.ic_calendar_right
-import com.hulkdx.findprofessional.core.theme.AppTheme
 import com.hulkdx.findprofessional.core.theme.body1
 import com.hulkdx.findprofessional.core.theme.body1Medium
 import com.hulkdx.findprofessional.core.theme.h3Medium
+import com.hulkdx.findprofessional.core.utils.DateUtils
 import com.hulkdx.findprofessional.core.utils.DateUtils.weekNumberMap
-import com.hulkdx.findprofessional.feature.home.detail.utils.HomeScreenDimens.OUTER_HORIZONTAL_PADDING
+import com.hulkdx.findprofessional.core.utils.now
+import com.hulkdx.findprofessional.core.utils.singleClick
+import kotlinx.datetime.DateTimeUnit.Companion.MONTH
 import kotlinx.datetime.LocalDate
+import kotlinx.datetime.minus
+import kotlinx.datetime.plus
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
-import org.jetbrains.compose.resources.stringResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
-
-internal fun LazyListScope.Availability(
-    availability: AvailabilityData,
-    availabilityMonthMinusOne: () -> Unit,
-    availabilityMonthPlusOne: () -> Unit,
-) {
-    item { AvailabilityHeader() }
-    item { AvailabilityCalendar(availability, availabilityMonthMinusOne, availabilityMonthPlusOne) }
-}
 
 @Composable
-private fun AvailabilityHeader() {
-    Text(
-        modifier = Modifier
-            .padding(
-                top = 32.dp,
-                bottom = 16.dp,
-                start = OUTER_HORIZONTAL_PADDING.dp,
-            ),
-        style = body1Medium,
-        text = stringResource(Res.string.availability),
+fun ProAvailabilityCalendarView(
+    onDateClicked: (LocalDate) -> Unit,
+    isSelectedDay: (Int) -> Boolean,
+) {
+    var date by remember { mutableStateOf(LocalDate.now()) }
+    val state by remember(date) {
+        mutableStateOf(
+            AvailabilityState(
+                currentMonth = DateUtils.formatToMonthsAndYear(date),
+                firstDay = DateUtils.firstDayInt(date),
+                lengthOfMonth = DateUtils.lengthOfMonth(date),
+            )
+        )
+    }
+
+    AvailabilityCalendar(
+        state,
+        availabilityMonthMinusOne = {
+            date = date.minus(1, MONTH)
+        },
+        availabilityMonthPlusOne = {
+            date = date.plus(1, MONTH)
+        },
+        isSelectedDay = isSelectedDay,
+        onDateClicked = singleClick<Int> {
+            onDateClicked(LocalDate(date.year, date.month, it))
+        },
     )
 }
 
+
 @Composable
 private fun AvailabilityCalendar(
-    availability: AvailabilityData,
+    state: AvailabilityState,
     availabilityMonthMinusOne: () -> Unit,
     availabilityMonthPlusOne: () -> Unit,
+    isSelectedDay: (Int) -> Boolean,
+    onDateClicked: (Int) -> Unit,
 ) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = OUTER_HORIZONTAL_PADDING.dp)
+            .padding(horizontal = 24.dp)
             .padding(bottom = 32.dp)
             .clip(shape = RoundedCornerShape(10.dp))
             .background(MaterialTheme.colorScheme.surfaceVariant)
             .padding(bottom = 8.dp)
     ) {
         AvailabilityCalendarTopHeader(
-            availability,
+            state,
             availabilityMonthMinusOne,
             availabilityMonthPlusOne
         )
-        AvailabilityCalendarMainContent(availability)
+        AvailabilityCalendarMainContent(state, isSelectedDay, onDateClicked)
     }
 }
 
 @Composable
 private fun AvailabilityCalendarTopHeader(
-    availability: AvailabilityData,
+    availability: AvailabilityState,
     availabilityMonthMinusOne: () -> Unit,
     availabilityMonthPlusOne: () -> Unit,
 ) {
@@ -110,18 +121,6 @@ private fun AvailabilityCalendarTopHeader(
             onClick = availabilityMonthPlusOne
         )
     }
-}
-
-@Composable
-private fun RowScope.AvailabilityCalendarTopHeaderMainText(currentMonth: String) {
-    Text(
-        modifier = Modifier
-            .weight(1F)
-            .align(Alignment.CenterVertically),
-        text = currentMonth,
-        style = h3Medium,
-        textAlign = TextAlign.Center,
-    )
 }
 
 @Composable
@@ -141,12 +140,26 @@ private fun AvailabilityCalendarTopHeaderButton(
 }
 
 @Composable
+private fun RowScope.AvailabilityCalendarTopHeaderMainText(currentMonth: String) {
+    Text(
+        modifier = Modifier
+            .weight(1F)
+            .align(Alignment.CenterVertically),
+        text = currentMonth,
+        style = h3Medium,
+        textAlign = TextAlign.Center,
+    )
+}
+
+@Composable
 private fun AvailabilityCalendarMainContent(
-    availability: AvailabilityData,
+    availability: AvailabilityState,
+    isSelectedDay: (Int) -> Boolean,
+    onDateClicked: (Int) -> Unit,
 ) {
     Row(Modifier.padding(horizontal = 8.dp)) {
         for (dayIndex in 0..<7) {
-            DayColumn(dayIndex, availability)
+            DayColumn(dayIndex, availability, isSelectedDay, onDateClicked)
         }
     }
 }
@@ -154,16 +167,19 @@ private fun AvailabilityCalendarMainContent(
 @Composable
 private fun RowScope.DayColumn(
     dayIndex: Int,
-    availability: AvailabilityData,
+    availability: AvailabilityState,
+    isSelectedDay: (Int) -> Boolean,
+    onDateClicked: (Int) -> Unit,
 ) {
     Column(modifier = Modifier.weight(1F)) {
         DayText(dayIndex)
         DayDivider()
         for (weekIndex in 0..<availability.perWeek) {
-            Day(availability, dayIndex, weekIndex)
+            Day(availability, dayIndex, weekIndex, isSelectedDay, onDateClicked)
         }
     }
 }
+
 
 @Composable
 private fun DayText(dayIndex: Int) {
@@ -187,9 +203,11 @@ private fun DayDivider() {
 
 @Composable
 private fun Day(
-    availability: AvailabilityData,
+    availability: AvailabilityState,
     dayIndex: Int,
     weekIndex: Int,
+    isSelectedDay: (Int) -> Boolean,
+    onDateClicked: (Int) -> Unit,
 ) {
     val lastDay = availability.lengthOfMonth
     val firstDay = availability.firstDay
@@ -198,10 +216,10 @@ private fun Day(
 
     if (isEmptyDay) {
         EmptyDay()
-    } else if (availability.isSelectedDay(day)) {
-        SelectedDay(day)
+    } else if (isSelectedDay(day)) {
+        SelectedDay(day, onDateClicked)
     } else {
-        NormalDay(day)
+        NormalDay(day, onDateClicked)
     }
 }
 
@@ -211,27 +229,28 @@ private fun EmptyDay() {
 }
 
 @Composable
-private fun SelectedDay(day: Int) {
-    val backgroundColor = MaterialTheme.colorScheme.outlineVariant
+private fun NormalDay(day: Int, onDateClicked: (Int) -> Unit) {
     CommonDay(
-        modifier = Modifier.drawBehind {
-            drawCircle(backgroundColor)
-        },
+        modifier = Modifier
+            .border(
+                width = 1.dp,
+                color = MaterialTheme.colorScheme.errorContainer,
+                shape = CircleShape,
+            )
+            .clickable { onDateClicked(day) },
         text = day.toString(),
-        textColor = MaterialTheme.colorScheme.surfaceVariant,
+        textColor = MaterialTheme.colorScheme.errorContainer,
     )
 }
 
 @Composable
-private fun NormalDay(day: Int) {
+private fun SelectedDay(day: Int, onDateClicked: (Int) -> Unit) {
+    val backgroundColor = MaterialTheme.colorScheme.outlineVariant
     CommonDay(
-        modifier = Modifier.border(
-            width = 1.dp,
-            color = MaterialTheme.colorScheme.errorContainer,
-            shape = CircleShape,
-        ),
+        modifier = Modifier.drawBehind { drawCircle(backgroundColor) }
+            .clickable { onDateClicked(day) },
         text = day.toString(),
-        textColor = MaterialTheme.colorScheme.errorContainer,
+        textColor = MaterialTheme.colorScheme.surfaceVariant,
     )
 }
 
@@ -253,29 +272,5 @@ private fun CommonDay(
             style = body1,
             color = textColor
         )
-    }
-}
-
-@Preview
-@Composable
-fun AvailabilityPreview() {
-    AppTheme {
-        LazyColumn(Modifier.background(MaterialTheme.colorScheme.onPrimary)) {
-            Availability(
-                AvailabilityData(
-                    "January 2022",
-                    5,
-                    31,
-                    LocalDate(2022, 1, 1),
-                    listOf(
-                        LocalDate(2022, 1, 6),
-                        LocalDate(2022, 1, 7),
-                        LocalDate(2022, 1, 12),
-                    ),
-                ),
-                {},
-                {}
-            )
-        }
     }
 }
