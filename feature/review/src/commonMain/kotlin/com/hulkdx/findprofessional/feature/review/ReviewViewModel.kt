@@ -15,7 +15,8 @@ class ReviewViewModel(
     private val useCase: ReviewUseCase,
 ) : ViewModel() {
 
-    val error = MutableStateFlow<StringOrRes?>(null)
+    private val _error = MutableStateFlow<StringOrRes?>(null)
+    val error = _error.asStateFlow()
     private val _reviews = MutableStateFlow(listOf<ProfessionalReview>())
     val reviews = _reviews.asStateFlow()
 
@@ -35,11 +36,6 @@ class ReviewViewModel(
         loadReviews()
     }
 
-    fun setError(error: StringOrRes?) {
-        this.error.value = error
-    }
-
-    private fun setReviews(reviews: List<ProfessionalReview>) {
-        _reviews.update { it + reviews }
-    }
+    fun setError(error: StringOrRes?) = _error.update { error }
+    private fun setReviews(reviews: List<ProfessionalReview>) = _reviews.update { it + reviews }
 }

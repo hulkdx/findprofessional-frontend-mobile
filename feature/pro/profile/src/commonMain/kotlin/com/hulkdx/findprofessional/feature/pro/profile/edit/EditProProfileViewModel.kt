@@ -2,7 +2,7 @@ package com.hulkdx.findprofessional.feature.pro.profile.edit
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.hulkdx.findprofessional.core.model.proauth.PriceUtils
+import com.hulkdx.findprofessional.core.model.proauth.PriceUtils.toPriceNumber
 import com.hulkdx.findprofessional.core.model.user.ProUser
 import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import com.hulkdx.findprofessional.core.navigation.Navigator
@@ -38,15 +38,13 @@ class EditProProfileViewModel(
         }
     }
 
-    private fun updateState(update: ProUser.() -> ProUser) {
-        _uiState.update { it.update() }
-    }
-    fun onFirstNameChange(value: String) = updateState { copy(firstName = value) }
-    fun onLastNameChange(value: String) = updateState { copy(lastName = value) }
-    fun onSkypeIdChange(value: String) = updateState { copy(skypeId = value) }
-    fun onEmailChange(value: String) = updateState { copy(email = value) }
-    fun onCoachTypeChange(value: String) = updateState { copy(coachType = value) }
-    fun onAboutMeChange(value: String) = updateState { copy(description = value) }
-    fun onPriceChange(value: String) = updateState { copy(priceNumber = PriceUtils.toPriceNumber(value)) }
+    private fun updateState(update: ProUser.() -> ProUser) = _uiState.update { it.update() }
+    fun setFirstName(value: String) = updateState { copy(firstName = value) }
+    fun setLastName(value: String) = updateState { copy(lastName = value) }
+    fun setSkypeId(value: String) = updateState { copy(skypeId = value) }
+    fun setEmail(value: String) = updateState { copy(email = value) }
+    fun setCoachType(value: String) = updateState { copy(coachType = value) }
+    fun setAboutMe(value: String) = updateState { copy(description = value) }
+    fun setPrice(value: String) = updateState { copy(priceNumber = toPriceNumber(value)) }
     fun setError(error: StringOrRes?) { _error.value = error }
 }

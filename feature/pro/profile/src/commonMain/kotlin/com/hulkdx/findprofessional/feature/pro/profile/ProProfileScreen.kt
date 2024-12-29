@@ -47,7 +47,7 @@ fun ProProfileScreen(viewModel: ProProfileViewModel = koinViewModel()) {
         onEditProfileClicked = viewModel::onEditProfileClicked,
         onLogoutClicked = viewModel::onLogoutClicked,
         error = error?.localized(),
-        onErrorDismissed = viewModel::onErrorDismissed,
+        onErrorDismissed = { viewModel.setError(null) },
     )
 }
 
