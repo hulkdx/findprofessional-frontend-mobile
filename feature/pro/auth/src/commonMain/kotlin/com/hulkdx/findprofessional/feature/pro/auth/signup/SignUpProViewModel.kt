@@ -39,51 +39,16 @@ class SignUpProViewModel(
         navigator.navigate(NavigationScreen.ProSchedule, NavigationScreen.Home, true)
     }
 
-    fun setError(error: StringOrRes?) {
-        _error.value = error
-    }
-
-    fun setPassword(password: String) {
-        _uiState.update { it.copy(password = password) }
-    }
-
-    fun setEmail(email: String) {
-        _uiState.update { it.copy(email = email) }
-    }
-
-    fun setFirstName(firstName: String) {
-        _uiState.update { it.copy(firstName = firstName) }
-    }
-
-    fun setLastName(lastName: String) {
-        _uiState.update { it.copy(lastName = lastName) }
-    }
-
-    fun setSkypeId(value: String) {
-        _uiState.update { it.copy(skypeId = value) }
-    }
-
-    fun setAboutMe(value: String) {
-        _uiState.update { it.copy(aboutMe = value) }
-    }
-
-    fun setCoachType(value: String) {
-        _uiState.update { it.copy(coachType = value) }
-    }
-
-    fun onPriceChanged(value: String) {
-        _uiState.update { it.copy(priceString = value) }
-    }
-
-    fun onCurrencyChanged(value: String) {
-        _uiState.update { it.copy(priceCurrency = value) }
-    }
-
-    fun onWebcamConsentCheckedChange(value: Boolean) {
-        _uiState.update { it.copy(webcamConsentChecked = value) }
-    }
-
-    fun onIdConsentCheckedChange(value: Boolean) {
-        _uiState.update { it.copy(idConsentChecked = value) }
-    }
+    fun setError(error: StringOrRes?) = _error.update { error }
+    fun setPassword(password: String) = _uiState.update { it.copy(password = password) }
+    fun setEmail(email: String) = _uiState.update { it.copy(email = email) }
+    fun setFirstName(firstName: String) = _uiState.update { it.copy(firstName = firstName) }
+    fun setLastName(lastName: String) = _uiState.update { it.copy(lastName = lastName) }
+    fun setSkypeId(value: String) = _uiState.update { it.copy(skypeId = value) }
+    fun setAboutMe(value: String) = _uiState.update { it.copy(aboutMe = value) }
+    fun setCoachType(value: String) = _uiState.update { it.copy(coachType = value) }
+    fun setPrice(value: String) = _uiState.update { it.copy(priceString = value) }
+    fun setCurrency(value: String) = _uiState.update { it.copy(priceCurrency = value) }
+    fun setWebcamConsent(value: Boolean) = _uiState.update { it.copy(webcamConsentChecked = value) }
+    fun setIdConsent(value: Boolean) = _uiState.update { it.copy(idConsentChecked = value) }
 }

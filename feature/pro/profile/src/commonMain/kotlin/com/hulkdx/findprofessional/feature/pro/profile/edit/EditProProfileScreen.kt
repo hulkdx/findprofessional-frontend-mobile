@@ -1,6 +1,5 @@
 package com.hulkdx.findprofessional.feature.pro.profile.edit
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.navigationBarsPadding
@@ -22,7 +21,6 @@ import com.hulkdx.findprofessional.core.model.user.ProUser
 import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.aboutMe
 import com.hulkdx.findprofessional.core.resources.coachType
-import com.hulkdx.findprofessional.core.resources.email
 import com.hulkdx.findprofessional.core.resources.firstName
 import com.hulkdx.findprofessional.core.resources.lastName
 import com.hulkdx.findprofessional.core.resources.price
@@ -43,13 +41,13 @@ fun EditProProfileScreen(viewModel: EditProProfileViewModel = koinViewModel()) {
         uiState = uiState,
         error = error?.localized(),
         onErrorDismissed = { viewModel.setError(null) },
-        onFirstNameChange = viewModel::onFirstNameChange,
-        onLastNameChange = viewModel::onLastNameChange,
-        onSkypeIdChange = viewModel::onSkypeIdChange,
-        onEmailChange = viewModel::onEmailChange,
-        onCoachTypeChange = viewModel::onCoachTypeChange,
-        onAboutMeChange = viewModel::onAboutMeChange,
-        onPriceChange = viewModel::onPriceChange,
+        onFirstNameChange = viewModel::setFirstName,
+        onLastNameChange = viewModel::setLastName,
+        onSkypeIdChange = viewModel::setSkypeId,
+        onEmailChange = viewModel::setEmail,
+        onCoachTypeChange = viewModel::setCoachType,
+        onAboutMeChange = viewModel::setAboutMe,
+        onPriceChange = viewModel::setPrice,
         onSaveButtonClicked = viewModel::onSaveButtonClicked
     )
 }

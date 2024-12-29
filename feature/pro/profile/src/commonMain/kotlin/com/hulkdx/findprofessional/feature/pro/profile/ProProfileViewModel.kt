@@ -44,9 +44,7 @@ class ProProfileViewModel(
         }
     }
 
-    fun onErrorDismissed() {
-        _error.update { null }
-    }
+    fun setError(error: StringOrRes?) = _error.update { error }
 
     data class UiState(
         val name: String = "",

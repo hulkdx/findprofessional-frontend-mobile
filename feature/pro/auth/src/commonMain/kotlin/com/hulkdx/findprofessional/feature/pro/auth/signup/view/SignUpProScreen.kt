@@ -46,10 +46,10 @@ fun SignUpProScreen(
         onCoachTypeChanged = viewModel::setCoachType,
         onAboutMeChanged = viewModel::setAboutMe,
         onRegisterClicked = viewModel::onRegisterClicked,
-        onPriceChanged = viewModel::onPriceChanged,
-        onCurrencyChanged = viewModel::onCurrencyChanged,
-        onWebcamConsentCheckedChange = viewModel::onWebcamConsentCheckedChange,
-        onIdConsentCheckedChange = viewModel::onIdConsentCheckedChange,
+        onPriceChanged = viewModel::setPrice,
+        onCurrencyChanged = viewModel::setCurrency,
+        onWebcamConsentCheckedChange = viewModel::setWebcamConsent,
+        onIdConsentCheckedChange = viewModel::setIdConsent,
         error = error?.localized(),
         onErrorDismissed = { viewModel.setError(null) }
     )
