@@ -1,6 +1,6 @@
 package com.hulkdx.findprofessional.core.model.user
 
-import com.hulkdx.findprofessional.core.model.proauth.PriceUtils
+import com.hulkdx.findprofessional.core.utils.PriceUtils
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.Transient

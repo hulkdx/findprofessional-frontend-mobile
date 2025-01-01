@@ -2,7 +2,7 @@ package com.hulkdx.findprofessional.feature.pro.profile.edit
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.hulkdx.findprofessional.core.model.proauth.PriceUtils.toPriceNumber
+import com.hulkdx.findprofessional.core.utils.PriceUtils.toPriceNumber
 import com.hulkdx.findprofessional.core.model.user.ProUser
 import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import com.hulkdx.findprofessional.core.navigation.Navigator

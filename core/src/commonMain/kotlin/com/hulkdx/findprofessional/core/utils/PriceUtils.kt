@@ -1,6 +1,4 @@
-package com.hulkdx.findprofessional.core.model.proauth
-
-import com.hulkdx.findprofessional.core.utils.NumberFormatter
+package com.hulkdx.findprofessional.core.utils
 
 object PriceUtils {
     fun toPriceString(priceNumber: Long): String {

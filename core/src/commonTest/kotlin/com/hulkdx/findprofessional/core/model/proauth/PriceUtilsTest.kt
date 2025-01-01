@@ -1,5 +1,6 @@
 package com.hulkdx.findprofessional.core.model.proauth
 
+import com.hulkdx.findprofessional.core.utils.PriceUtils
 import kotlin.test.Test
 import kotlin.test.assertEquals
 

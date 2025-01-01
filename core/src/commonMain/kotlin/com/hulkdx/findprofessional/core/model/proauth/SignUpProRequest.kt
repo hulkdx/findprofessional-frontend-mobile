@@ -1,5 +1,6 @@
 package com.hulkdx.findprofessional.core.model.proauth
 
+import com.hulkdx.findprofessional.core.utils.PriceUtils
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.Transient
 
