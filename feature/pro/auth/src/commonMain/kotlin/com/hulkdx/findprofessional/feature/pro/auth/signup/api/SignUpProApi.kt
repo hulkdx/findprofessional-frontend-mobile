@@ -1,6 +1,6 @@
 package com.hulkdx.findprofessional.feature.pro.auth.signup.api
 
-import com.hulkdx.findprofessional.core.api.auth
+import com.hulkdx.findprofessional.core.utils.auth
 import com.hulkdx.findprofessional.core.model.proauth.SignUpProRequest
 import com.hulkdx.findprofessional.core.model.user.ProUser
 import com.hulkdx.findprofessional.core.model.user.UserData

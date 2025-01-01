@@ -11,10 +11,10 @@ import com.hulkdx.findprofessional.app.test.utils.assertNodeIsDisplayed
 import com.hulkdx.findprofessional.app.test.utils.get
 import com.hulkdx.findprofessional.app.test.utils.getAll
 import com.hulkdx.findprofessional.core.api.ApiInterceptor
-import com.hulkdx.findprofessional.core.api.getAccessToken
 import com.hulkdx.findprofessional.core.model.user.Token
 import com.hulkdx.findprofessional.core.model.user.UserData
 import com.hulkdx.findprofessional.core.storage.UserStorage
+import com.hulkdx.findprofessional.core.storage.getAccessToken
 import com.hulkdx.findprofessional.feature.authentication.login.api.LoginApi
 import com.hulkdx.findprofessional.feature.authentication.login.api.RefreshTokenApi
 import com.hulkdx.findprofessional.feature.authentication.login.model.LoginRequest

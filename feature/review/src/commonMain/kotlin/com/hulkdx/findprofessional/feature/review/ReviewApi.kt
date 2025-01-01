@@ -1,6 +1,6 @@
 package com.hulkdx.findprofessional.feature.review
 
-import com.hulkdx.findprofessional.core.api.auth
+import com.hulkdx.findprofessional.core.utils.auth
 import com.hulkdx.findprofessional.core.model.pro.ProfessionalReview
 import com.hulkdx.findprofessional.core.storage.UserStorage
 import io.ktor.client.HttpClient
