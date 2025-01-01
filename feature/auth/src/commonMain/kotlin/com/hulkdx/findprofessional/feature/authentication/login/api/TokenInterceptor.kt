@@ -1,6 +1,5 @@
 package com.hulkdx.findprofessional.feature.authentication.login.api
 
-import com.hulkdx.findprofessional.core.api.ApiInterceptor
 import com.hulkdx.findprofessional.core.model.user.Token
 import com.hulkdx.findprofessional.core.storage.UserStorage
 import com.hulkdx.findprofessional.feature.authentication.login.usecase.LogoutUseCase
@@ -18,7 +17,7 @@ class TokenInterceptor(
     private val api: RefreshTokenApi,
     private val userStorage: UserStorage,
     private val logoutUseCase: LogoutUseCase,
-) : ApiInterceptor {
+) {
 
     private val filterUrl = listOf(
         "/${RefreshTokenApiImpl.URL}",
@@ -26,7 +25,7 @@ class TokenInterceptor(
         "/${SignUpApiImpl.URL}",
     )
 
-    override suspend fun intercept(sender: Sender, request: HttpRequestBuilder): HttpClientCall {
+    suspend fun intercept(sender: Sender, request: HttpRequestBuilder): HttpClientCall {
         val original = sender.execute(request)
 
         val requestUrl = original.request.url.encodedPath

@@ -1,7 +1,6 @@
 package com.hulkdx.findprofessional.app.di.module
 
 import com.hulkdx.findprofessional.app.config.api.AppApiProvider
-import com.hulkdx.findprofessional.core.api.ApiInterceptor
 import com.hulkdx.findprofessional.feature.authentication.login.api.TokenInterceptor
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.HttpSend
@@ -16,7 +15,7 @@ val apiModule: Module
     get() = module {
         single { AppApiProvider.httpClient(get()) }
 
-        factoryOf(::TokenInterceptor) bind ApiInterceptor::class
+        factoryOf(::TokenInterceptor)
     }
 
 // Needs to be done after startKoin so we can access koin
@@ -24,10 +23,8 @@ val apiModule: Module
 fun setupApiInterceptors() {
     val koin = KoinPlatformTools.defaultContext().get()
     val httpClient: HttpClient = koin.get()
-    val interceptors: List<ApiInterceptor> = koin.getAll()
+    val tokenInterceptor: TokenInterceptor = koin.get()
     httpClient.plugin(HttpSend).apply {
-        for (interceptor in interceptors) {
-            intercept(interceptor::intercept)
-        }
+        intercept(tokenInterceptor::intercept)
     }
 }

@@ -9,14 +9,13 @@ import com.hulkdx.findprofessional.app.test.screen.login.launchLoginScreen
 import com.hulkdx.findprofessional.app.test.utils.Rule
 import com.hulkdx.findprofessional.app.test.utils.assertNodeIsDisplayed
 import com.hulkdx.findprofessional.app.test.utils.get
-import com.hulkdx.findprofessional.app.test.utils.getAll
-import com.hulkdx.findprofessional.core.api.ApiInterceptor
 import com.hulkdx.findprofessional.core.model.user.Token
 import com.hulkdx.findprofessional.core.model.user.UserData
 import com.hulkdx.findprofessional.core.storage.UserStorage
 import com.hulkdx.findprofessional.core.storage.getAccessToken
 import com.hulkdx.findprofessional.feature.authentication.login.api.LoginApi
 import com.hulkdx.findprofessional.feature.authentication.login.api.RefreshTokenApi
+import com.hulkdx.findprofessional.feature.authentication.login.api.TokenInterceptor
 import com.hulkdx.findprofessional.feature.authentication.login.model.LoginRequest
 import com.hulkdx.findprofessional.libs.common.tests.newUser
 import io.ktor.client.HttpClient
@@ -65,7 +64,7 @@ class RefreshTokenTest {
         before = {
             loadKoinModules(module)
             userStorage = get()
-            randomApi = RandomTestRefreshTokenApi(getHttpClientConfig(), getAll(), userStorage)
+            randomApi = RandomTestRefreshTokenApi(getHttpClientConfig(), get(), userStorage)
         },
         test = {
             // Arrange
@@ -89,7 +88,7 @@ class RefreshTokenTest {
             before = {
                 loadKoinModules(module)
                 userStorage = get()
-                randomApi = RandomTestRefreshTokenApi(getHttpClientConfig(), getAll(), userStorage)
+                randomApi = RandomTestRefreshTokenApi(getHttpClientConfig(), get(), userStorage)
             },
             test = {
                 // Arrange
@@ -176,7 +175,7 @@ class RefreshTokenTest {
 
     private class RandomTestRefreshTokenApi(
         private val config: HttpClientConfig<*>.() -> Unit,
-        private val interceptors: List<ApiInterceptor>,
+        private val tokenInterceptor: TokenInterceptor,
         private val userStorage: UserStorage,
     ) {
         suspend fun randomApi(): String {
@@ -196,9 +195,7 @@ class RefreshTokenTest {
             }
             val client = HttpClient(mockEngine, config).apply {
                 plugin(HttpSend).apply {
-                    for (interceptor in interceptors) {
-                        intercept(interceptor::intercept)
-                    }
+                    intercept(tokenInterceptor::intercept)
                 }
             }
             return client
