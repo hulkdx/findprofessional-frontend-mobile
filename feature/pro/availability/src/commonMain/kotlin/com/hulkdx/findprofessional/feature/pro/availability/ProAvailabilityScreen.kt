@@ -7,7 +7,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
-import com.hulkdx.findprofessional.core.commonui.navbar.ProAppNavBarContainer
+import com.hulkdx.findprofessional.core.ui.commonui.navbar.ProAppNavBarContainer
 import com.hulkdx.findprofessional.feature.pro.availability.components.ProAvailabilityCalendarView
 import kotlinx.datetime.LocalDate
 import org.koin.androidx.compose.koinViewModel
@@ -29,7 +29,7 @@ fun ProAvailabilityScreen(
     error: String?,
     onErrorDismissed: () -> Unit,
     onDateClicked: (LocalDate) -> Unit,
-    isSelectedDay : (Int) -> Boolean,
+    isSelectedDay: (Int) -> Boolean,
 ) {
     ProAppNavBarContainer(
         modifier = Modifier.testTag("ProAvailabilityScreen"),

@@ -25,9 +25,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.hulkdx.findprofessional.core.commonui.CUBackButton
-import com.hulkdx.findprofessional.core.commonui.CUFilledButton
-import com.hulkdx.findprofessional.core.commonui.CUSnackBar
 import com.hulkdx.findprofessional.core.features.book.SelectedTimes
 import com.hulkdx.findprofessional.core.features.pro.Professional
 import com.hulkdx.findprofessional.core.resources.Res
@@ -38,6 +35,9 @@ import com.hulkdx.findprofessional.core.resources.ic_edit_request
 import com.hulkdx.findprofessional.core.resources.total
 import com.hulkdx.findprofessional.core.resources.yourRequest
 import com.hulkdx.findprofessional.core.resources.yourSkypeId
+import com.hulkdx.findprofessional.core.ui.commonui.CUBackButton
+import com.hulkdx.findprofessional.core.ui.commonui.CUFilledButton
+import com.hulkdx.findprofessional.core.ui.commonui.CUSnackBar
 import com.hulkdx.findprofessional.core.ui.theme.AppTheme
 import com.hulkdx.findprofessional.core.ui.theme.body1Medium
 import com.hulkdx.findprofessional.core.ui.theme.body2

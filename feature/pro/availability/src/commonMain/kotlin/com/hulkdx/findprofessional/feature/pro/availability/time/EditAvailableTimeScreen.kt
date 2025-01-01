@@ -24,13 +24,13 @@ import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.hulkdx.findprofessional.core.commonui.CUTextButton
-import com.hulkdx.findprofessional.core.commonui.CuDropDownMenu
 import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.addNewTime
 import com.hulkdx.findprofessional.core.resources.applyToAll
 import com.hulkdx.findprofessional.core.resources.applyToOnly
 import com.hulkdx.findprofessional.core.resources.editAvailableTime
+import com.hulkdx.findprofessional.core.ui.commonui.CUTextButton
+import com.hulkdx.findprofessional.core.ui.commonui.CuDropDownMenu
 import com.hulkdx.findprofessional.core.ui.theme.h2
 import com.hulkdx.findprofessional.core.ui.theme.h3Medium
 import kotlinx.datetime.LocalDate
@@ -42,7 +42,12 @@ import org.koin.core.parameter.parametersOf
 fun EditAvailableTimeScreen(
     selectedDate: LocalDate = LocalDate(2024, 11, 3), // TODO: get it from previous screen
     selectedTimeSlot: List<TimeSlot> = emptyList(), // TODO: get it from previous screen
-    viewModel: EditAvailableTimeViewModel = koinViewModel { parametersOf(selectedDate, selectedTimeSlot) }
+    viewModel: EditAvailableTimeViewModel = koinViewModel {
+        parametersOf(
+            selectedDate,
+            selectedTimeSlot
+        )
+    }
 ) {
     val timeSlots by viewModel.timeSlots.collectAsState()
 

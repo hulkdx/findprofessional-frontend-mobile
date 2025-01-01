@@ -17,12 +17,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
-import com.hulkdx.findprofessional.core.commonui.BACK_BUTTON_HEIGHT
-import com.hulkdx.findprofessional.core.commonui.CUBackButton
-import com.hulkdx.findprofessional.core.commonui.CUSnackBar
 import com.hulkdx.findprofessional.core.features.proauth.SignUpProRequest
 import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import com.hulkdx.findprofessional.core.navigation.Navigator
+import com.hulkdx.findprofessional.core.ui.commonui.BACK_BUTTON_HEIGHT
+import com.hulkdx.findprofessional.core.ui.commonui.CUBackButton
+import com.hulkdx.findprofessional.core.ui.commonui.CUSnackBar
 import com.hulkdx.findprofessional.feature.pro.auth.signup.SignUpProViewModel
 import org.koin.androidx.compose.koinViewModel
 import org.koin.compose.koinInject
