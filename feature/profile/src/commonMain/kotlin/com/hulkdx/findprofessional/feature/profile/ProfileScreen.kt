@@ -24,12 +24,12 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.hulkdx.findprofessional.core.commonui.navbar.AppNavBarContainer
-import com.hulkdx.findprofessional.core.commonui.navbar.AppNavigationBarDimens
 import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.becomeCoach
 import com.hulkdx.findprofessional.core.resources.logout
 import com.hulkdx.findprofessional.core.resources.profile
+import com.hulkdx.findprofessional.core.ui.commonui.navbar.AppNavBarContainer
+import com.hulkdx.findprofessional.core.ui.commonui.navbar.AppNavigationBarDimens
 import com.hulkdx.findprofessional.core.ui.theme.AppTheme
 import com.hulkdx.findprofessional.core.ui.theme.body1
 import com.hulkdx.findprofessional.core.ui.theme.h1Medium

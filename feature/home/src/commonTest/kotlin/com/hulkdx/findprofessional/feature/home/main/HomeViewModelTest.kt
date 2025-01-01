@@ -4,11 +4,15 @@
 package com.hulkdx.findprofessional.feature.home.main
 
 import com.hulkdx.findprofessional.core.features.pro.Professional
-import com.hulkdx.findprofessional.feature.home.main.api.ProfessionalApi
+import com.hulkdx.findprofessional.core.features.pro.api.ProfessionalApi
+import com.hulkdx.findprofessional.core.features.proauth.SignUpProRequest
+import com.hulkdx.findprofessional.core.features.user.ProUser
+import com.hulkdx.findprofessional.core.features.user.UserData
 import com.hulkdx.findprofessional.libs.common.tests.StubNavigator
 import com.hulkdx.findprofessional.libs.common.tests.createProfessional
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.Runnable
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runTest
@@ -60,6 +64,9 @@ class HomeViewModelTest {
     private class ProApiMock : ProfessionalApi {
         var findAllResponse: List<Professional> = listOf()
         override suspend fun findAll() = findAllResponse
+        override suspend fun register(request: SignUpProRequest): UserData =
+            throw RuntimeException("irrelevant")
+        override suspend fun update(proUser: ProUser) {}
     }
 
     // endregion

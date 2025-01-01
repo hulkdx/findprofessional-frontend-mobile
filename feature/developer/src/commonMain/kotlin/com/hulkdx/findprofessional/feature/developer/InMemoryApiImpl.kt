@@ -13,8 +13,7 @@ import com.hulkdx.findprofessional.feature.authentication.login.api.LoginApi
 import com.hulkdx.findprofessional.feature.authentication.login.model.LoginRequest
 import com.hulkdx.findprofessional.feature.authentication.signup.SignUpApi
 import com.hulkdx.findprofessional.feature.authentication.signup.model.RegisterRequest
-import com.hulkdx.findprofessional.feature.home.main.api.ProfessionalApi
-import com.hulkdx.findprofessional.feature.pro.auth.signup.api.SignUpProApi
+import com.hulkdx.findprofessional.core.features.pro.api.ProfessionalApi
 import com.hulkdx.findprofessional.feature.review.ReviewApi
 import kotlinx.datetime.Clock
 import kotlinx.datetime.LocalDate
@@ -27,7 +26,6 @@ internal class InMemoryApiImpl : InMemoryApi {
         single<LoginApi> { Login() }
         single<ProfessionalApi> { Pro() }
         single<ReviewApi> { Review() }
-        single<SignUpProApi> { SignUpPro() }
     }
 
     private var users = mutableListOf<UserData>()
@@ -214,31 +212,7 @@ internal class InMemoryApiImpl : InMemoryApi {
 
     private inner class Pro : ProfessionalApi {
         override suspend fun findAll() = professionals
-    }
 
-    private inner class Review : ReviewApi {
-        override suspend fun findAll(
-            professionalId: Int,
-            page: Int,
-            pageSize: Int,
-        ) = (((page - 1) * pageSize)..<(page * pageSize)).map {
-            ProfessionalReview(
-                id = it.toLong(),
-                user = User(
-                    email = "$it@example.com",
-                    firstName = "$it",
-                    lastName = "$it",
-                    profileImage = "https://i.imgur.com/D99rBXe.jpeg"
-                ),
-                rate = 5,
-                contentText = "It was really great",
-                createdAt = Clock.System.now(),
-                updatedAt = Clock.System.now()
-            )
-        }
-    }
-
-    private inner class SignUpPro : SignUpProApi {
         override suspend fun register(request: SignUpProRequest): UserData {
             users.add(
                 UserData(
@@ -266,6 +240,28 @@ internal class InMemoryApiImpl : InMemoryApi {
                     ),
                     proUser,
                 )
+            )
+        }
+    }
+
+    private inner class Review : ReviewApi {
+        override suspend fun findAll(
+            professionalId: Int,
+            page: Int,
+            pageSize: Int,
+        ) = (((page - 1) * pageSize)..<(page * pageSize)).map {
+            ProfessionalReview(
+                id = it.toLong(),
+                user = User(
+                    email = "$it@example.com",
+                    firstName = "$it",
+                    lastName = "$it",
+                    profileImage = "https://i.imgur.com/D99rBXe.jpeg"
+                ),
+                rate = 5,
+                contentText = "It was really great",
+                createdAt = Clock.System.now(),
+                updatedAt = Clock.System.now()
             )
         }
     }

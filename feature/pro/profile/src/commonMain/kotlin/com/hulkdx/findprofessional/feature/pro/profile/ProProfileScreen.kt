@@ -26,11 +26,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
-import com.hulkdx.findprofessional.core.commonui.CUAsyncImage
-import com.hulkdx.findprofessional.core.commonui.navbar.ProAppNavBarContainer
 import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.editProfile
 import com.hulkdx.findprofessional.core.resources.logout
+import com.hulkdx.findprofessional.core.ui.commonui.CUAsyncImage
+import com.hulkdx.findprofessional.core.ui.commonui.navbar.ProAppNavBarContainer
 import com.hulkdx.findprofessional.core.ui.theme.body1Medium
 import com.hulkdx.findprofessional.core.ui.theme.body2
 import org.jetbrains.compose.resources.stringResource

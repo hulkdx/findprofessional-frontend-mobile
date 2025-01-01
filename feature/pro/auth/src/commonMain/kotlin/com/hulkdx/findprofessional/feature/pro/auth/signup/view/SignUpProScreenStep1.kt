@@ -10,14 +10,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
-import com.hulkdx.findprofessional.core.commonui.CUFilledButton
-import com.hulkdx.findprofessional.core.commonui.CUTextField
 import com.hulkdx.findprofessional.core.features.proauth.SignUpProRequest
 import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.firstName
 import com.hulkdx.findprofessional.core.resources.headerForNames
 import com.hulkdx.findprofessional.core.resources.lastName
 import com.hulkdx.findprofessional.core.resources.next
+import com.hulkdx.findprofessional.core.ui.commonui.CUFilledButton
+import com.hulkdx.findprofessional.core.ui.commonui.CUTextField
 import com.hulkdx.findprofessional.core.ui.theme.body3Medium
 import com.hulkdx.findprofessional.core.utils.singleClick
 import org.jetbrains.compose.resources.stringResource

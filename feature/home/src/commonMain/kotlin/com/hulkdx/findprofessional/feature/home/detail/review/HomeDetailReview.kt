@@ -24,8 +24,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
-import com.hulkdx.findprofessional.core.commonui.CUAsyncImage
-import com.hulkdx.findprofessional.core.commonui.CUTextButton
 import com.hulkdx.findprofessional.core.features.pro.Professional
 import com.hulkdx.findprofessional.core.features.pro.ProfessionalReview
 import com.hulkdx.findprofessional.core.features.user.User
@@ -33,6 +31,8 @@ import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.ic_star2
 import com.hulkdx.findprofessional.core.resources.reviews
 import com.hulkdx.findprofessional.core.resources.showAllReviews
+import com.hulkdx.findprofessional.core.ui.commonui.CUAsyncImage
+import com.hulkdx.findprofessional.core.ui.commonui.CUTextButton
 import com.hulkdx.findprofessional.core.ui.theme.AppTheme
 import com.hulkdx.findprofessional.core.ui.theme.body1
 import com.hulkdx.findprofessional.core.ui.theme.body1Medium
