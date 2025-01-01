@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.core.commonui.icons
+package com.hulkdx.findprofessional.core.ui.commonui.icons
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.size
@@ -8,7 +8,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.ic_chat
-import com.hulkdx.findprofessional.core.theme.AppTheme
+import com.hulkdx.findprofessional.core.ui.theme.AppTheme
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 

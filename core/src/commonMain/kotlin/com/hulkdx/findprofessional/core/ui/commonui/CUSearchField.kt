@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.core.commonui
+package com.hulkdx.findprofessional.core.ui.commonui
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActionScope
@@ -20,7 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
-import com.hulkdx.findprofessional.core.theme.body2Medium
+import com.hulkdx.findprofessional.core.ui.theme.body2Medium
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable

@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.core.commonui
+package com.hulkdx.findprofessional.core.ui.commonui
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -9,8 +9,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.hulkdx.findprofessional.core.theme.AppTheme
-import com.hulkdx.findprofessional.core.theme.body1Medium
+import com.hulkdx.findprofessional.core.ui.theme.AppTheme
+import com.hulkdx.findprofessional.core.ui.theme.body1Medium
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable

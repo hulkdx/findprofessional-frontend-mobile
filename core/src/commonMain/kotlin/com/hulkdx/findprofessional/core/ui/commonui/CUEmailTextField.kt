@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.core.commonui
+package com.hulkdx.findprofessional.core.ui.commonui
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.text.KeyboardActions

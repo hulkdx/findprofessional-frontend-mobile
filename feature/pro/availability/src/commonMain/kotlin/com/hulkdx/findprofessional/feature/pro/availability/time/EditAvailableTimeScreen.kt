@@ -31,8 +31,8 @@ import com.hulkdx.findprofessional.core.resources.addNewTime
 import com.hulkdx.findprofessional.core.resources.applyToAll
 import com.hulkdx.findprofessional.core.resources.applyToOnly
 import com.hulkdx.findprofessional.core.resources.editAvailableTime
-import com.hulkdx.findprofessional.core.theme.h2
-import com.hulkdx.findprofessional.core.theme.h3Medium
+import com.hulkdx.findprofessional.core.ui.theme.h2
+import com.hulkdx.findprofessional.core.ui.theme.h3Medium
 import kotlinx.datetime.LocalDate
 import org.jetbrains.compose.resources.stringResource
 import org.koin.androidx.compose.koinViewModel

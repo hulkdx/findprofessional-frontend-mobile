@@ -41,10 +41,10 @@ import com.hulkdx.findprofessional.core.resources.continue1
 import com.hulkdx.findprofessional.core.resources.ic_calendar_left
 import com.hulkdx.findprofessional.core.resources.ic_calendar_right
 import com.hulkdx.findprofessional.core.resources.selectOneOrMoreItems
-import com.hulkdx.findprofessional.core.theme.AppTheme
-import com.hulkdx.findprofessional.core.theme.body2SemiBold
-import com.hulkdx.findprofessional.core.theme.body3Medium
-import com.hulkdx.findprofessional.core.theme.h2Medium
+import com.hulkdx.findprofessional.core.ui.theme.AppTheme
+import com.hulkdx.findprofessional.core.ui.theme.body2SemiBold
+import com.hulkdx.findprofessional.core.ui.theme.body3Medium
+import com.hulkdx.findprofessional.core.ui.theme.h2Medium
 import com.hulkdx.findprofessional.core.utils.now
 import com.hulkdx.findprofessional.feature.book.time.BookingTimeUiState.BookingTime
 import com.hulkdx.findprofessional.feature.book.time.BookingTimeUiState.BookingTime.Type.Available

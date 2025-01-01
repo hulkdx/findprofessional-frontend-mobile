@@ -8,7 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.hulkdx.findprofessional.core.commonui.CULogoImage
-import com.hulkdx.findprofessional.core.theme.AppTheme
+import com.hulkdx.findprofessional.core.ui.theme.AppTheme
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.androidx.compose.koinViewModel
 

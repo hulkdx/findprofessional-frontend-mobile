@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.core.commonui
+package com.hulkdx.findprofessional.core.ui.commonui
 
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -12,8 +12,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
-import com.hulkdx.findprofessional.core.theme.AppTheme
-import com.hulkdx.findprofessional.core.theme.body1
+import com.hulkdx.findprofessional.core.ui.theme.AppTheme
+import com.hulkdx.findprofessional.core.ui.theme.body1
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable

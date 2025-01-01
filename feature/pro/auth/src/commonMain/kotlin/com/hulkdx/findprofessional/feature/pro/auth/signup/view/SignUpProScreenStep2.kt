@@ -31,7 +31,7 @@ import com.hulkdx.findprofessional.core.resources.price
 import com.hulkdx.findprofessional.core.resources.priceHeader
 import com.hulkdx.findprofessional.core.resources.signUp
 import com.hulkdx.findprofessional.core.resources.skypeId
-import com.hulkdx.findprofessional.core.theme.body3Medium
+import com.hulkdx.findprofessional.core.ui.theme.body3Medium
 import com.hulkdx.findprofessional.core.utils.singleClick
 import org.jetbrains.compose.resources.stringResource
 

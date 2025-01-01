@@ -34,10 +34,10 @@ import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.availability
 import com.hulkdx.findprofessional.core.resources.ic_calendar_left
 import com.hulkdx.findprofessional.core.resources.ic_calendar_right
-import com.hulkdx.findprofessional.core.theme.AppTheme
-import com.hulkdx.findprofessional.core.theme.body1
-import com.hulkdx.findprofessional.core.theme.body1Medium
-import com.hulkdx.findprofessional.core.theme.h3Medium
+import com.hulkdx.findprofessional.core.ui.theme.AppTheme
+import com.hulkdx.findprofessional.core.ui.theme.body1
+import com.hulkdx.findprofessional.core.ui.theme.body1Medium
+import com.hulkdx.findprofessional.core.ui.theme.h3Medium
 import com.hulkdx.findprofessional.core.utils.DateUtils.weekNumberMap
 import com.hulkdx.findprofessional.feature.home.detail.utils.HomeScreenDimens.OUTER_HORIZONTAL_PADDING
 import kotlinx.datetime.LocalDate

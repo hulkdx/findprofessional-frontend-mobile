@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.core.commonui.navbar
+package com.hulkdx.findprofessional.core.ui.commonui.navbar
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box

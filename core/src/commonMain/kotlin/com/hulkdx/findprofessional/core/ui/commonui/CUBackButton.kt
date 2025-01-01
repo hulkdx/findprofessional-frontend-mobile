@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.core.commonui
+package com.hulkdx.findprofessional.core.ui.commonui
 
 
 import androidx.compose.foundation.Image

@@ -35,8 +35,8 @@ import com.hulkdx.findprofessional.core.model.pro.ProfessionalReview
 import com.hulkdx.findprofessional.core.model.user.User
 import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.bookNow
-import com.hulkdx.findprofessional.core.theme.AppTheme
-import com.hulkdx.findprofessional.core.theme.body2SemiBold
+import com.hulkdx.findprofessional.core.ui.theme.AppTheme
+import com.hulkdx.findprofessional.core.ui.theme.body2SemiBold
 import com.hulkdx.findprofessional.feature.home.detail.availability.Availability
 import com.hulkdx.findprofessional.feature.home.detail.availability.AvailabilityData
 import com.hulkdx.findprofessional.feature.home.detail.review.Review

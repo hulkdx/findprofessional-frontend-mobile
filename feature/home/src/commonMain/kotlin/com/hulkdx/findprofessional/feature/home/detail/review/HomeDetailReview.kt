@@ -33,10 +33,10 @@ import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.ic_star2
 import com.hulkdx.findprofessional.core.resources.reviews
 import com.hulkdx.findprofessional.core.resources.showAllReviews
-import com.hulkdx.findprofessional.core.theme.AppTheme
-import com.hulkdx.findprofessional.core.theme.body1
-import com.hulkdx.findprofessional.core.theme.body1Medium
-import com.hulkdx.findprofessional.core.theme.body3
+import com.hulkdx.findprofessional.core.ui.theme.AppTheme
+import com.hulkdx.findprofessional.core.ui.theme.body1
+import com.hulkdx.findprofessional.core.ui.theme.body1Medium
+import com.hulkdx.findprofessional.core.ui.theme.body3
 import kotlinx.datetime.Clock
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource

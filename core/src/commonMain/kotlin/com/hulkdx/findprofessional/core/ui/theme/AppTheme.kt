@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.core.theme
+package com.hulkdx.findprofessional.core.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme

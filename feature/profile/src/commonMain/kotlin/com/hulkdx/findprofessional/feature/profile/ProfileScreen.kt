@@ -30,9 +30,9 @@ import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.becomeCoach
 import com.hulkdx.findprofessional.core.resources.logout
 import com.hulkdx.findprofessional.core.resources.profile
-import com.hulkdx.findprofessional.core.theme.AppTheme
-import com.hulkdx.findprofessional.core.theme.body1
-import com.hulkdx.findprofessional.core.theme.h1Medium
+import com.hulkdx.findprofessional.core.ui.theme.AppTheme
+import com.hulkdx.findprofessional.core.ui.theme.body1
+import com.hulkdx.findprofessional.core.ui.theme.h1Medium
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.androidx.compose.koinViewModel

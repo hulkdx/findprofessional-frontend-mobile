@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.core.commonui.pagination
+package com.hulkdx.findprofessional.core.ui.commonui.pagination
 
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListScope

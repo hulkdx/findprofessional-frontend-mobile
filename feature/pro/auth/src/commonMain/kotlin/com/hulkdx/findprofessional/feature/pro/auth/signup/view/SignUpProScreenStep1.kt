@@ -18,7 +18,7 @@ import com.hulkdx.findprofessional.core.resources.firstName
 import com.hulkdx.findprofessional.core.resources.headerForNames
 import com.hulkdx.findprofessional.core.resources.lastName
 import com.hulkdx.findprofessional.core.resources.next
-import com.hulkdx.findprofessional.core.theme.body3Medium
+import com.hulkdx.findprofessional.core.ui.theme.body3Medium
 import com.hulkdx.findprofessional.core.utils.singleClick
 import org.jetbrains.compose.resources.stringResource
 

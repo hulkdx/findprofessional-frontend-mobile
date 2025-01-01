@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.core.commonui.navbar
+package com.hulkdx.findprofessional.core.ui.commonui.navbar
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -9,7 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.hulkdx.findprofessional.core.commonui.CUSnackBar
-import com.hulkdx.findprofessional.core.theme.AppTheme
+import com.hulkdx.findprofessional.core.ui.theme.AppTheme
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable

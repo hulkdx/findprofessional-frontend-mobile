@@ -35,7 +35,7 @@ import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.firstName
 import com.hulkdx.findprofessional.core.resources.lastName
 import com.hulkdx.findprofessional.core.resources.signUp
-import com.hulkdx.findprofessional.core.theme.AppTheme
+import com.hulkdx.findprofessional.core.ui.theme.AppTheme
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.androidx.compose.koinViewModel

@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.core.theme
+package com.hulkdx.findprofessional.core.ui.theme
 
 import androidx.compose.runtime.ProvidableCompositionLocal
 import androidx.compose.runtime.staticCompositionLocalOf

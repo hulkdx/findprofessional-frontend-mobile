@@ -15,7 +15,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
-import com.hulkdx.findprofessional.core.theme.AppTheme
+import com.hulkdx.findprofessional.core.ui.theme.AppTheme
 import com.hulkdx.findprofessional.feature.developer.storage.DeveloperStorage
 import com.hulkdx.findprofessional.feature.developer.storage.DeveloperStorage.Key.MockData
 import kotlinx.coroutines.launch

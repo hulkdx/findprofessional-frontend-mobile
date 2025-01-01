@@ -39,7 +39,7 @@ import com.hulkdx.findprofessional.core.resources.dontHaveAnAccount
 import com.hulkdx.findprofessional.core.resources.forgotYourPassword
 import com.hulkdx.findprofessional.core.resources.signIn
 import com.hulkdx.findprofessional.core.resources.signUp
-import com.hulkdx.findprofessional.core.theme.AppTheme
+import com.hulkdx.findprofessional.core.ui.theme.AppTheme
 import com.hulkdx.findprofessional.core.utils.singleClick
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview

@@ -22,7 +22,7 @@ import com.hulkdx.findprofessional.core.commonui.CUSearchField
 import com.hulkdx.findprofessional.core.commonui.navbar.AppNavBarContainer
 import com.hulkdx.findprofessional.core.commonui.navbar.AppNavigationBarDimens
 import com.hulkdx.findprofessional.core.model.pro.Professional
-import com.hulkdx.findprofessional.core.theme.AppTheme
+import com.hulkdx.findprofessional.core.ui.theme.AppTheme
 import com.hulkdx.findprofessional.feature.home.main.HomeViewModel
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.androidx.compose.koinViewModel

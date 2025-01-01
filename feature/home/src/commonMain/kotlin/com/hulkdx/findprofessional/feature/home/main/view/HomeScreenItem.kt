@@ -27,10 +27,10 @@ import com.hulkdx.findprofessional.core.model.pro.Professional
 import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.ic_star
 import com.hulkdx.findprofessional.core.resources.perHour
-import com.hulkdx.findprofessional.core.theme.AppTheme
-import com.hulkdx.findprofessional.core.theme.body2
-import com.hulkdx.findprofessional.core.theme.h1SemiBold
-import com.hulkdx.findprofessional.core.theme.h2Medium
+import com.hulkdx.findprofessional.core.ui.theme.AppTheme
+import com.hulkdx.findprofessional.core.ui.theme.body2
+import com.hulkdx.findprofessional.core.ui.theme.h1SemiBold
+import com.hulkdx.findprofessional.core.ui.theme.h2Medium
 import com.hulkdx.findprofessional.core.utils.CurrencyFormatter
 import com.hulkdx.findprofessional.core.utils.singleClick
 import org.jetbrains.compose.resources.painterResource

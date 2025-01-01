@@ -38,10 +38,10 @@ import com.hulkdx.findprofessional.core.resources.ic_edit_request
 import com.hulkdx.findprofessional.core.resources.total
 import com.hulkdx.findprofessional.core.resources.yourRequest
 import com.hulkdx.findprofessional.core.resources.yourSkypeId
-import com.hulkdx.findprofessional.core.theme.AppTheme
-import com.hulkdx.findprofessional.core.theme.body1Medium
-import com.hulkdx.findprofessional.core.theme.body2
-import com.hulkdx.findprofessional.core.theme.h1Medium
+import com.hulkdx.findprofessional.core.ui.theme.AppTheme
+import com.hulkdx.findprofessional.core.ui.theme.body1Medium
+import com.hulkdx.findprofessional.core.ui.theme.body2
+import com.hulkdx.findprofessional.core.ui.theme.h1Medium
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
