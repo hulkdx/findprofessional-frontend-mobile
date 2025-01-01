@@ -1,7 +1,7 @@
 package com.hulkdx.findprofessional.core.storage
 
 import androidx.datastore.preferences.core.PreferenceDataStoreFactory
-import com.hulkdx.findprofessional.core.config.PlatformSpecific
+import com.hulkdx.findprofessional.core.platform.PlatformSpecific
 import okio.Path.Companion.toPath
 import org.koin.core.module.Module
 import org.koin.dsl.module

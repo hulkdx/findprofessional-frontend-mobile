@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.core.config
+package com.hulkdx.findprofessional.core.platform
 
 import android.content.Context
 import kotlin.system.exitProcess
@@ -7,7 +7,7 @@ class PlatformSpecificAndroid(
     private val appContext: Context,
 ) : PlatformSpecific {
 
-    override fun isDebug() = com.hulkdx.findprofessional.core.config.isDebug()
+    override fun isDebug() = com.hulkdx.findprofessional.core.platform.isDebug()
 
     override fun localhostUrl() = "10.0.2.2"
 

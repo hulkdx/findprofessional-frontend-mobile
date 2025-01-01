@@ -1,6 +1,6 @@
 package com.hulkdx.findprofessional.app.config.api
 
-import com.hulkdx.findprofessional.core.config.PlatformSpecific
+import com.hulkdx.findprofessional.core.platform.PlatformSpecific
 import io.ktor.client.HttpClient
 import io.ktor.client.HttpClientConfig
 import io.ktor.client.plugins.DefaultRequest

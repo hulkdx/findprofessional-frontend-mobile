@@ -1,6 +1,6 @@
 package com.hulkdx.findprofessional.core.utils
 
-import com.hulkdx.findprofessional.core.config.isDebug
+import com.hulkdx.findprofessional.core.platform.isDebug
 import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.generalError
 

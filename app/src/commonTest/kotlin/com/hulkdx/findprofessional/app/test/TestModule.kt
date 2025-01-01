@@ -1,6 +1,6 @@
 package com.hulkdx.findprofessional.app.test
 
-import com.hulkdx.findprofessional.core.config.PlatformSpecific
+import com.hulkdx.findprofessional.core.platform.PlatformSpecific
 import org.koin.dsl.bind
 import org.koin.dsl.module
 

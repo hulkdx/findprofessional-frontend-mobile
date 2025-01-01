@@ -9,7 +9,7 @@ import coil3.compose.LocalPlatformContext
 import coil3.compose.SubcomposeAsyncImage
 import coil3.request.ImageRequest
 import coil3.util.DebugLogger
-import com.hulkdx.findprofessional.core.config.isDebug
+import com.hulkdx.findprofessional.core.platform.isDebug
 
 @Composable
 fun CUAsyncImage(

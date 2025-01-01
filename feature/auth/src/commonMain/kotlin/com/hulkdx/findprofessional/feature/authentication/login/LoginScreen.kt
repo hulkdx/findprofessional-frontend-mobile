@@ -33,7 +33,7 @@ import com.hulkdx.findprofessional.core.commonui.CULogoImage
 import com.hulkdx.findprofessional.core.commonui.CUPasswordTextField
 import com.hulkdx.findprofessional.core.commonui.CUSnackBar
 import com.hulkdx.findprofessional.core.commonui.CUTextButton
-import com.hulkdx.findprofessional.core.config.isDebug
+import com.hulkdx.findprofessional.core.platform.isDebug
 import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.dontHaveAnAccount
 import com.hulkdx.findprofessional.core.resources.forgotYourPassword

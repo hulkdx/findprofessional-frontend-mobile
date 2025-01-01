@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.core.config
+package com.hulkdx.findprofessional.core.platform
 
 import kotlinx.cinterop.ExperimentalForeignApi
 import platform.Foundation.NSDocumentDirectory
@@ -10,7 +10,7 @@ import kotlin.experimental.ExperimentalNativeApi
 
 class PlatformSpecificIOS : PlatformSpecific {
 
-    override fun isDebug() = com.hulkdx.findprofessional.core.config.isDebug()
+    override fun isDebug() = com.hulkdx.findprofessional.core.platform.isDebug()
 
     override fun localhostUrl() = "localhost"
 

@@ -2,7 +2,7 @@ package com.hulkdx.findprofessional.core.utils
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalInspectionMode
-import com.hulkdx.findprofessional.core.config.isDebug
+import com.hulkdx.findprofessional.core.platform.isDebug
 import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import com.hulkdx.findprofessional.core.navigation.Navigator
 import org.koin.compose.koinInject

@@ -1,7 +1,7 @@
 package com.hulkdx.findprofessional.app.test
 
 import androidx.test.platform.app.InstrumentationRegistry
-import com.hulkdx.findprofessional.core.config.PlatformSpecific
+import com.hulkdx.findprofessional.core.platform.PlatformSpecific
 
 actual fun testPlatformSpecific(): PlatformSpecific {
     return TestPlatformSpecificAndroid()
@@ -10,7 +10,7 @@ actual fun testPlatformSpecific(): PlatformSpecific {
 private class TestPlatformSpecificAndroid : PlatformSpecific {
     private val context = InstrumentationRegistry.getInstrumentation().targetContext
 
-    override fun isDebug() = com.hulkdx.findprofessional.core.config.isDebug()
+    override fun isDebug() = com.hulkdx.findprofessional.core.platform.isDebug()
 
     override fun localhostUrl() = "10.0.2.2"
 

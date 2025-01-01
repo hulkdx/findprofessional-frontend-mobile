@@ -1,6 +1,6 @@
 package com.hulkdx.findprofessional.app.test
 
-import com.hulkdx.findprofessional.core.config.PlatformSpecific
+import com.hulkdx.findprofessional.core.platform.PlatformSpecific
 import kotlinx.cinterop.ExperimentalForeignApi
 import platform.Foundation.NSDocumentDirectory
 import platform.Foundation.NSFileManager
@@ -13,7 +13,7 @@ actual fun testPlatformSpecific(): PlatformSpecific {
 
 private class TestPlatformSpecificIOS : PlatformSpecific {
 
-    override fun isDebug() = com.hulkdx.findprofessional.core.config.isDebug()
+    override fun isDebug() = com.hulkdx.findprofessional.core.platform.isDebug()
 
     override fun localhostUrl() = "localhost"
 
