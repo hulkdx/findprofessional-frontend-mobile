@@ -1,6 +1,6 @@
 package com.hulkdx.findprofessional.feature.authentication.login.api
 
-import com.hulkdx.findprofessional.core.model.user.UserData
+import com.hulkdx.findprofessional.core.features.user.UserData
 import com.hulkdx.findprofessional.feature.authentication.login.model.LoginRequest
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body

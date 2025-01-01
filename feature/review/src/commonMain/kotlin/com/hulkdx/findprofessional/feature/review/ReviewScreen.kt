@@ -29,9 +29,9 @@ import com.hulkdx.findprofessional.core.commonui.CUAsyncImage
 import com.hulkdx.findprofessional.core.commonui.CUBackButton
 import com.hulkdx.findprofessional.core.commonui.CUSnackBar
 import com.hulkdx.findprofessional.core.commonui.pagination.LazyColumnWithLastItem
-import com.hulkdx.findprofessional.core.model.pro.Professional
-import com.hulkdx.findprofessional.core.model.pro.ProfessionalReview
-import com.hulkdx.findprofessional.core.model.user.User
+import com.hulkdx.findprofessional.core.features.pro.Professional
+import com.hulkdx.findprofessional.core.features.pro.ProfessionalReview
+import com.hulkdx.findprofessional.core.features.user.User
 import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.ic_star2
 import com.hulkdx.findprofessional.core.resources.reviews

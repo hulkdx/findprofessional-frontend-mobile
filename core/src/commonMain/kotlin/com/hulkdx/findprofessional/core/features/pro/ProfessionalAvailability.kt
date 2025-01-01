@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.core.model.pro
+package com.hulkdx.findprofessional.core.features.pro
 
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalTime

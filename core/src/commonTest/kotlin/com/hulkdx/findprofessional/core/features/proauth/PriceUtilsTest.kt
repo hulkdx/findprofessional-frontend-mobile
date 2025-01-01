@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.core.model.proauth
+package com.hulkdx.findprofessional.core.features.proauth
 
 import com.hulkdx.findprofessional.core.utils.PriceUtils
 import kotlin.test.Test

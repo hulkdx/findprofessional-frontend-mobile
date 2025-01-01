@@ -20,7 +20,7 @@ import com.hulkdx.findprofessional.core.commonui.CUEmailTextField
 import com.hulkdx.findprofessional.core.commonui.CUFilledButton
 import com.hulkdx.findprofessional.core.commonui.CUPasswordTextField
 import com.hulkdx.findprofessional.core.commonui.CUTextField
-import com.hulkdx.findprofessional.core.model.proauth.SignUpProRequest
+import com.hulkdx.findprofessional.core.features.proauth.SignUpProRequest
 import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.aboutMe
 import com.hulkdx.findprofessional.core.resources.coachType

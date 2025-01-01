@@ -17,7 +17,7 @@ import com.hulkdx.findprofessional.core.commonui.CUFilledButton
 import com.hulkdx.findprofessional.core.commonui.CUTextField
 import com.hulkdx.findprofessional.core.commonui.navbar.AppNavigationBarDimens
 import com.hulkdx.findprofessional.core.commonui.navbar.ProAppNavBarContainer
-import com.hulkdx.findprofessional.core.model.user.ProUser
+import com.hulkdx.findprofessional.core.features.user.ProUser
 import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.aboutMe
 import com.hulkdx.findprofessional.core.resources.coachType

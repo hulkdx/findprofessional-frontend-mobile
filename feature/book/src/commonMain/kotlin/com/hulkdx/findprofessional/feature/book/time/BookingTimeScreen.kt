@@ -35,7 +35,7 @@ import androidx.compose.ui.unit.dp
 import com.hulkdx.findprofessional.core.commonui.CUBackButton
 import com.hulkdx.findprofessional.core.commonui.CUFilledButton
 import com.hulkdx.findprofessional.core.commonui.CUSnackBar
-import com.hulkdx.findprofessional.core.model.pro.Professional
+import com.hulkdx.findprofessional.core.features.pro.Professional
 import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.continue1
 import com.hulkdx.findprofessional.core.resources.ic_calendar_left

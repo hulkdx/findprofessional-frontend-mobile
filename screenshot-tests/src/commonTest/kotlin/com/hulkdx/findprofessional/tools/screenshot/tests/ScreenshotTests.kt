@@ -1,7 +1,7 @@
 package com.hulkdx.findprofessional.tools.screenshot.tests
 
-import com.hulkdx.findprofessional.core.model.proauth.SignUpProRequest
-import com.hulkdx.findprofessional.core.model.user.ProUser
+import com.hulkdx.findprofessional.core.features.proauth.SignUpProRequest
+import com.hulkdx.findprofessional.core.features.user.ProUser
 import com.hulkdx.findprofessional.feature.authentication.login.LoginScreen
 import com.hulkdx.findprofessional.feature.authentication.signup.SignUpScreen
 import com.hulkdx.findprofessional.feature.authentication.splash.Splash

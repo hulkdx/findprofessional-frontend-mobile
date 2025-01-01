@@ -1,6 +1,6 @@
 package com.hulkdx.findprofessional.core.utils
 
-import com.hulkdx.findprofessional.core.model.home.Currency
+import com.hulkdx.findprofessional.core.features.home.Currency
 
 
 object CurrencyFormatter {

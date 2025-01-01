@@ -18,7 +18,7 @@ import com.hulkdx.findprofessional.app.test.screen.home.detail.launchHomeDetailS
 import com.hulkdx.findprofessional.app.test.utils.Rule
 import com.hulkdx.findprofessional.app.test.utils.assertNodeIsDisplayed
 import com.hulkdx.findprofessional.app.test.utils.setUser
-import com.hulkdx.findprofessional.core.model.pro.ProfessionalAvailability
+import com.hulkdx.findprofessional.core.features.pro.ProfessionalAvailability
 import com.hulkdx.findprofessional.core.utils.toMinutesOfDay
 import com.hulkdx.findprofessional.feature.book.time.BookingTimeUiState.BookingTime.Type.Selected
 import com.hulkdx.findprofessional.core.utils.TimeUtils.formattedTime

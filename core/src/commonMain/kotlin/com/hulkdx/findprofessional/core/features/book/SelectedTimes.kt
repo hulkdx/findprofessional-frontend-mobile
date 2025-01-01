@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.core.model.book
+package com.hulkdx.findprofessional.core.features.book
 
 import kotlinx.datetime.LocalDate
 import kotlinx.serialization.Serializable

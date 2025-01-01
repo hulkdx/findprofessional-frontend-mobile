@@ -23,7 +23,7 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import com.hulkdx.findprofessional.core.commonui.CUAsyncImage
 import com.hulkdx.findprofessional.core.commonui.icons.CULikeButton
-import com.hulkdx.findprofessional.core.model.pro.Professional
+import com.hulkdx.findprofessional.core.features.pro.Professional
 import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.ic_star
 import com.hulkdx.findprofessional.core.resources.perHour

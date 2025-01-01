@@ -1,9 +1,9 @@
 package com.hulkdx.findprofessional.tools.screenshot.tests
 
-import com.hulkdx.findprofessional.core.model.pro.Professional
-import com.hulkdx.findprofessional.core.model.pro.ProfessionalAvailability
-import com.hulkdx.findprofessional.core.model.pro.ProfessionalReview
-import com.hulkdx.findprofessional.core.model.user.User
+import com.hulkdx.findprofessional.core.features.pro.Professional
+import com.hulkdx.findprofessional.core.features.pro.ProfessionalAvailability
+import com.hulkdx.findprofessional.core.features.pro.ProfessionalReview
+import com.hulkdx.findprofessional.core.features.user.User
 import com.hulkdx.findprofessional.feature.book.time.BookingTimeUiState
 import kotlinx.datetime.Clock
 import kotlinx.datetime.LocalDate

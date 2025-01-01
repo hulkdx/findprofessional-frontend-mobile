@@ -1,6 +1,6 @@
 package com.hulkdx.findprofessional.feature.home.detail.availability
 
-import com.hulkdx.findprofessional.core.model.pro.Professional
+import com.hulkdx.findprofessional.core.features.pro.Professional
 import com.hulkdx.findprofessional.core.utils.DateUtils
 import com.hulkdx.findprofessional.core.utils.now
 import kotlinx.coroutines.flow.Flow

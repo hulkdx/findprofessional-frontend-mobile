@@ -1,8 +1,8 @@
 package com.hulkdx.findprofessional.core.navigation
 
-import com.hulkdx.findprofessional.core.model.book.SelectedTimes
-import com.hulkdx.findprofessional.core.model.pro.Professional
-import com.hulkdx.findprofessional.core.model.proauth.SignUpProRequest
+import com.hulkdx.findprofessional.core.features.book.SelectedTimes
+import com.hulkdx.findprofessional.core.features.pro.Professional
+import com.hulkdx.findprofessional.core.features.proauth.SignUpProRequest
 import kotlinx.serialization.Serializable
 
 // @formatter:off

@@ -30,9 +30,9 @@ import com.hulkdx.findprofessional.core.commonui.CUBackButton
 import com.hulkdx.findprofessional.core.commonui.CUFilledButton
 import com.hulkdx.findprofessional.core.commonui.icons.CUChatButton
 import com.hulkdx.findprofessional.core.commonui.icons.CULikeButton
-import com.hulkdx.findprofessional.core.model.pro.Professional
-import com.hulkdx.findprofessional.core.model.pro.ProfessionalReview
-import com.hulkdx.findprofessional.core.model.user.User
+import com.hulkdx.findprofessional.core.features.pro.Professional
+import com.hulkdx.findprofessional.core.features.pro.ProfessionalReview
+import com.hulkdx.findprofessional.core.features.user.User
 import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.bookNow
 import com.hulkdx.findprofessional.core.ui.theme.AppTheme

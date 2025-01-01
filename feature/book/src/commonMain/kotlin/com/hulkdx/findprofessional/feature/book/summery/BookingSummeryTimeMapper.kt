@@ -1,8 +1,8 @@
 package com.hulkdx.findprofessional.feature.book.summery
 
 import androidx.annotation.VisibleForTesting
-import com.hulkdx.findprofessional.core.model.book.SelectedTimes
-import com.hulkdx.findprofessional.core.model.pro.Professional
+import com.hulkdx.findprofessional.core.features.book.SelectedTimes
+import com.hulkdx.findprofessional.core.features.pro.Professional
 import com.hulkdx.findprofessional.core.utils.CurrencyFormatter
 import com.hulkdx.findprofessional.core.utils.NumberFormatter
 import com.hulkdx.findprofessional.core.utils.shortDayOfWeeks

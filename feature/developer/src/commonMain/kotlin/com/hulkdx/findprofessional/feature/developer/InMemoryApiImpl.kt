@@ -1,13 +1,13 @@
 package com.hulkdx.findprofessional.feature.developer
 
-import com.hulkdx.findprofessional.core.model.pro.Professional
-import com.hulkdx.findprofessional.core.model.pro.ProfessionalAvailability
-import com.hulkdx.findprofessional.core.model.pro.ProfessionalReview
-import com.hulkdx.findprofessional.core.model.proauth.SignUpProRequest
-import com.hulkdx.findprofessional.core.model.user.ProUser
-import com.hulkdx.findprofessional.core.model.user.Token
-import com.hulkdx.findprofessional.core.model.user.User
-import com.hulkdx.findprofessional.core.model.user.UserData
+import com.hulkdx.findprofessional.core.features.pro.Professional
+import com.hulkdx.findprofessional.core.features.pro.ProfessionalAvailability
+import com.hulkdx.findprofessional.core.features.pro.ProfessionalReview
+import com.hulkdx.findprofessional.core.features.proauth.SignUpProRequest
+import com.hulkdx.findprofessional.core.features.user.ProUser
+import com.hulkdx.findprofessional.core.features.user.Token
+import com.hulkdx.findprofessional.core.features.user.User
+import com.hulkdx.findprofessional.core.features.user.UserData
 import com.hulkdx.findprofessional.core.utils.now
 import com.hulkdx.findprofessional.feature.authentication.login.api.LoginApi
 import com.hulkdx.findprofessional.feature.authentication.login.model.LoginRequest

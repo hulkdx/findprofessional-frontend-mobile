@@ -1,8 +1,7 @@
 package com.hulkdx.findprofessional.feature.developer
 
-import com.hulkdx.findprofessional.core.model.pro.Professional
-import com.hulkdx.findprofessional.core.model.user.UserData
-import com.hulkdx.findprofessional.feature.authentication.signup.model.RegisterRequest
+import com.hulkdx.findprofessional.core.features.pro.Professional
+import com.hulkdx.findprofessional.core.features.user.UserData
 
 interface InMemoryApi {
     fun loadKoinModules()

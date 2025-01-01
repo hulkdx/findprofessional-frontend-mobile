@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.core.model.home
+package com.hulkdx.findprofessional.core.features.home
 
 
 enum class Currency(

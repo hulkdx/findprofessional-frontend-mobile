@@ -5,8 +5,8 @@ package com.hulkdx.findprofessional.app.test.screen.book.time
 import androidx.compose.ui.test.ExperimentalTestApi
 import com.hulkdx.findprofessional.app.test.runAppUiTest
 import com.hulkdx.findprofessional.app.test.utils.inMemoryApi
-import com.hulkdx.findprofessional.core.model.pro.Professional
-import com.hulkdx.findprofessional.core.model.pro.ProfessionalAvailability
+import com.hulkdx.findprofessional.core.features.pro.Professional
+import com.hulkdx.findprofessional.core.features.pro.ProfessionalAvailability
 import com.hulkdx.findprofessional.core.utils.now
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalTime

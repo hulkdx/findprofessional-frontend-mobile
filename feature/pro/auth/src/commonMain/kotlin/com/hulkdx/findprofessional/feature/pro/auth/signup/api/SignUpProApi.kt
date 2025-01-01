@@ -1,9 +1,9 @@
 package com.hulkdx.findprofessional.feature.pro.auth.signup.api
 
 import com.hulkdx.findprofessional.core.utils.auth
-import com.hulkdx.findprofessional.core.model.proauth.SignUpProRequest
-import com.hulkdx.findprofessional.core.model.user.ProUser
-import com.hulkdx.findprofessional.core.model.user.UserData
+import com.hulkdx.findprofessional.core.features.proauth.SignUpProRequest
+import com.hulkdx.findprofessional.core.features.user.ProUser
+import com.hulkdx.findprofessional.core.features.user.UserData
 import com.hulkdx.findprofessional.core.storage.UserStorage
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body

@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.core.model.user
+package com.hulkdx.findprofessional.core.features.user
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
