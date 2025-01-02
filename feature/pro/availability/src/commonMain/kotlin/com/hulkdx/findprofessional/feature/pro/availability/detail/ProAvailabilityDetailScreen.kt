@@ -1,6 +1,6 @@
 @file:Suppress("FunctionName")
 
-package com.hulkdx.findprofessional.feature.pro.availability.time
+package com.hulkdx.findprofessional.feature.pro.availability.detail
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Row
@@ -39,10 +39,10 @@ import org.koin.androidx.compose.koinViewModel
 import org.koin.core.parameter.parametersOf
 
 @Composable
-fun EditAvailableTimeScreen(
+fun ProAvailabilityScreen(
     selectedDate: LocalDate = LocalDate(2024, 11, 3), // TODO: get it from previous screen
     selectedTimeSlot: List<TimeSlot> = emptyList(), // TODO: get it from previous screen
-    viewModel: EditAvailableTimeViewModel = koinViewModel {
+    viewModel: ProAvailabilityDetailViewModel = koinViewModel {
         parametersOf(
             selectedDate,
             selectedTimeSlot
@@ -51,7 +51,7 @@ fun EditAvailableTimeScreen(
 ) {
     val timeSlots by viewModel.timeSlots.collectAsState()
 
-    EditAvailableTimeScreen(
+    ProAvailabilityScreen(
         availableTime = viewModel.availableTime,
         dayOfWeek = viewModel.dayOfWeek,
         applyButtonText = viewModel.applyButtonText,
@@ -66,7 +66,7 @@ fun EditAvailableTimeScreen(
 }
 
 @Composable
-private fun EditAvailableTimeScreen(
+private fun ProAvailabilityScreen(
     timeSlots: List<TimeSlot>,
     availableTime: List<String>,
     onDeleteClicked: (Int) -> Unit,

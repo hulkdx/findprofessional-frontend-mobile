@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.feature.pro.availability.time
+package com.hulkdx.findprofessional.feature.pro.availability.detail
 
 import androidx.lifecycle.ViewModel
 import com.hulkdx.findprofessional.core.utils.TimeUtils
@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.datetime.LocalDate
 
-class EditAvailableTimeViewModel(
+class ProAvailabilityDetailViewModel(
     selectedDate: LocalDate,
     selectedTimeSlot: List<TimeSlot>,
 ) : ViewModel() {

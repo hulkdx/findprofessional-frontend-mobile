@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.feature.pro.availability
+package com.hulkdx.findprofessional.feature.pro.availability.main
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -8,28 +8,32 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import com.hulkdx.findprofessional.core.ui.commonui.navbar.ProAppNavBarContainer
-import com.hulkdx.findprofessional.feature.pro.availability.components.ProAvailabilityCalendarView
+import com.hulkdx.findprofessional.core.utils.now
+import com.hulkdx.findprofessional.feature.pro.availability.main.components.ProAvailabilityCalendarView
 import kotlinx.datetime.LocalDate
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun ProAvailabilityScreen(viewModel: ProAvailabilityViewModel = koinViewModel()) {
+
+    val availabilities by viewModel.availabilities.collectAsState()
     val error by viewModel.error.collectAsState()
 
     ProAvailabilityScreen(
+        availabilities,
         error = error?.localized(),
-        onErrorDismissed = viewModel::onErrorDismissed,
+        onErrorDismissed = { viewModel.setError(null) },
         onDateClicked = viewModel::onDateClicked,
-        isSelectedDay = viewModel::isAvailableDay
     )
 }
 
 @Composable
 fun ProAvailabilityScreen(
+    availabilities: List<LocalDate>,
+    now: LocalDate = LocalDate.now(),
     error: String?,
     onErrorDismissed: () -> Unit,
     onDateClicked: (LocalDate) -> Unit,
-    isSelectedDay: (Int) -> Boolean,
 ) {
     ProAppNavBarContainer(
         modifier = Modifier.testTag("ProAvailabilityScreen"),
@@ -41,8 +45,9 @@ fun ProAvailabilityScreen(
                 .fillMaxSize()
         ) {
             ProAvailabilityCalendarView(
+                now,
+                availabilities,
                 onDateClicked,
-                isSelectedDay,
             )
         }
     }
