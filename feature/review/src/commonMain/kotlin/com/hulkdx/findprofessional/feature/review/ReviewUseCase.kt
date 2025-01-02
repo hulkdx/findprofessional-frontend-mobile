@@ -1,6 +1,6 @@
 package com.hulkdx.findprofessional.feature.review
 
-import com.hulkdx.findprofessional.core.features.pro.ProfessionalReview
+import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalReview
 import com.hulkdx.findprofessional.core.utils.StringOrRes
 import com.hulkdx.findprofessional.core.utils.generalError
 

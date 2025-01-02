@@ -1,7 +1,8 @@
 package com.hulkdx.findprofessional.feature.home.main.api
 
 import com.hulkdx.findprofessional.core.utils.auth
-import com.hulkdx.findprofessional.core.features.pro.Professional
+import com.hulkdx.findprofessional.core.features.pro.model.Professional
+import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalAvailability
 import com.hulkdx.findprofessional.core.features.pro.api.ProfessionalApi
 import com.hulkdx.findprofessional.core.features.proauth.SignUpProRequest
 import com.hulkdx.findprofessional.core.features.user.ProUser
@@ -47,5 +48,13 @@ class ProfessionalApiImpl(
             contentType(ContentType.Application.Json)
             setBody(proUser)
         }
+    }
+
+    override suspend fun getAvailability(): List<ProfessionalAvailability> {
+        return client.get {
+            auth(userStorage)
+            url("professional/availability")
+            contentType(ContentType.Application.Json)
+        }.body()
     }
 }

@@ -2,7 +2,7 @@ package com.hulkdx.findprofessional.feature.book.time
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.hulkdx.findprofessional.core.features.pro.Professional
+import com.hulkdx.findprofessional.core.features.pro.model.Professional
 import com.hulkdx.findprofessional.core.utils.StringOrRes
 import com.hulkdx.findprofessional.feature.book.time.BookingTimeUiState.BookingTime
 import kotlinx.coroutines.flow.MutableStateFlow

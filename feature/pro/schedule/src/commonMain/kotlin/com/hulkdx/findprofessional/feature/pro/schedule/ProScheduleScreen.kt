@@ -8,13 +8,16 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import com.hulkdx.findprofessional.core.ui.commonui.navbar.ProAppNavBarContainer
+import com.hulkdx.findprofessional.feature.pro.schedule.model.ScheduleUiState
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun ProScheduleScreen(viewModel: ProScheduleViewModel = koinViewModel()) {
+    val state by viewModel.state.collectAsState()
     val error by viewModel.error.collectAsState()
 
     ProScheduleScreen(
+        state,
         error = error?.localized(),
         onErrorDismissed = { viewModel.setError(null) },
     )
@@ -22,6 +25,7 @@ fun ProScheduleScreen(viewModel: ProScheduleViewModel = koinViewModel()) {
 
 @Composable
 fun ProScheduleScreen(
+    state: ScheduleUiState,
     error: String?,
     onErrorDismissed: () -> Unit,
 ) {

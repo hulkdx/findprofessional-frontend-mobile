@@ -1,5 +1,6 @@
 package com.hulkdx.findprofessional.core.features.pro
 
+import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalReview
 import com.hulkdx.findprofessional.core.features.user.User
 import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant

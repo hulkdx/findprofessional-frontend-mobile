@@ -11,6 +11,8 @@ kotlin {
             implementation(libs.ktor.core)
             implementation(libs.lifecycle.viewmodel.compose)
             implementation(libs.kotlinx.datetime)
+
+            implementation(libs.androidx.dataStore.core)
         }
         commonTest.dependencies {
             implementation(projects.libs.commonTests)

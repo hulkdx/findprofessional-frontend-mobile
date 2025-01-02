@@ -1,6 +1,6 @@
 package com.hulkdx.findprofessional.feature.book.time
 
-import com.hulkdx.findprofessional.core.features.pro.ProfessionalAvailability
+import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalAvailability
 import com.hulkdx.findprofessional.core.utils.now
 import com.hulkdx.findprofessional.feature.book.time.BookingTimeUiState.BookingTime
 import com.hulkdx.findprofessional.feature.book.time.BookingTimeUiState.BookingTime.Type.Available
