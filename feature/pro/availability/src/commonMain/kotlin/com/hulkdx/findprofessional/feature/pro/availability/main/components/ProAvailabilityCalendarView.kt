@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.feature.pro.availability.components
+package com.hulkdx.findprofessional.feature.pro.availability.main.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -39,6 +39,7 @@ import com.hulkdx.findprofessional.core.utils.DateUtils
 import com.hulkdx.findprofessional.core.utils.DateUtils.weekNumberMap
 import com.hulkdx.findprofessional.core.utils.now
 import com.hulkdx.findprofessional.core.utils.singleClick
+import com.hulkdx.findprofessional.feature.pro.availability.main.model.AvailabilityState
 import kotlinx.datetime.DateTimeUnit.Companion.MONTH
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.minus
@@ -48,8 +49,8 @@ import org.jetbrains.compose.resources.painterResource
 
 @Composable
 fun ProAvailabilityCalendarView(
+    availabilities: List<LocalDate>,
     onDateClicked: (LocalDate) -> Unit,
-    isSelectedDay: (Int) -> Boolean,
 ) {
     var date by remember { mutableStateOf(LocalDate.now()) }
     val state by remember(date) {
@@ -60,6 +61,12 @@ fun ProAvailabilityCalendarView(
                 lengthOfMonth = DateUtils.lengthOfMonth(date),
             )
         )
+    }
+    val isSelectedDay: @Composable (Int) -> Boolean = { day ->
+        remember(day, date) {
+            val checkDay = LocalDate(date.year, date.month, day)
+            availabilities.contains(checkDay)
+        }
     }
 
     AvailabilityCalendar(
@@ -83,7 +90,7 @@ private fun AvailabilityCalendar(
     state: AvailabilityState,
     availabilityMonthMinusOne: () -> Unit,
     availabilityMonthPlusOne: () -> Unit,
-    isSelectedDay: (Int) -> Boolean,
+    isSelectedDay: @Composable (Int) -> Boolean,
     onDateClicked: (Int) -> Unit,
 ) {
     Column(
@@ -154,7 +161,7 @@ private fun RowScope.AvailabilityCalendarTopHeaderMainText(currentMonth: String)
 @Composable
 private fun AvailabilityCalendarMainContent(
     availability: AvailabilityState,
-    isSelectedDay: (Int) -> Boolean,
+    isSelectedDay: @Composable (Int) -> Boolean,
     onDateClicked: (Int) -> Unit,
 ) {
     Row(Modifier.padding(horizontal = 8.dp)) {
@@ -168,7 +175,7 @@ private fun AvailabilityCalendarMainContent(
 private fun RowScope.DayColumn(
     dayIndex: Int,
     availability: AvailabilityState,
-    isSelectedDay: (Int) -> Boolean,
+    isSelectedDay: @Composable (Int) -> Boolean,
     onDateClicked: (Int) -> Unit,
 ) {
     Column(modifier = Modifier.weight(1F)) {
@@ -206,7 +213,7 @@ private fun Day(
     availability: AvailabilityState,
     dayIndex: Int,
     weekIndex: Int,
-    isSelectedDay: (Int) -> Boolean,
+    isSelectedDay: @Composable (Int) -> Boolean,
     onDateClicked: (Int) -> Unit,
 ) {
     val lastDay = availability.lengthOfMonth
