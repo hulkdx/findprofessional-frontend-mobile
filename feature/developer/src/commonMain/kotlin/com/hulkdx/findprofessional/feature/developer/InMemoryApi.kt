@@ -1,6 +1,6 @@
 package com.hulkdx.findprofessional.feature.developer
 
-import com.hulkdx.findprofessional.core.features.pro.Professional
+import com.hulkdx.findprofessional.core.features.pro.model.Professional
 import com.hulkdx.findprofessional.core.features.user.UserData
 
 interface InMemoryApi {

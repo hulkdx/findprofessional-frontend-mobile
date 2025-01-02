@@ -1,7 +1,7 @@
 package com.hulkdx.findprofessional.feature.book.summery
 
 import com.hulkdx.findprofessional.core.features.book.SelectedTimes
-import com.hulkdx.findprofessional.core.features.pro.Professional
+import com.hulkdx.findprofessional.core.features.pro.model.Professional
 import com.hulkdx.findprofessional.core.storage.UserStorage
 import com.hulkdx.findprofessional.core.storage.getNormalUser
 

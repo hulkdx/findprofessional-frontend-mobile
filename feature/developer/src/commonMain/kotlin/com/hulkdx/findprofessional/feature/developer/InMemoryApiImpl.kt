@@ -1,8 +1,8 @@
 package com.hulkdx.findprofessional.feature.developer
 
-import com.hulkdx.findprofessional.core.features.pro.Professional
-import com.hulkdx.findprofessional.core.features.pro.ProfessionalAvailability
-import com.hulkdx.findprofessional.core.features.pro.ProfessionalReview
+import com.hulkdx.findprofessional.core.features.pro.model.Professional
+import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalAvailability
+import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalReview
 import com.hulkdx.findprofessional.core.features.proauth.SignUpProRequest
 import com.hulkdx.findprofessional.core.features.user.ProUser
 import com.hulkdx.findprofessional.core.features.user.Token
@@ -241,6 +241,10 @@ internal class InMemoryApiImpl : InMemoryApi {
                     proUser,
                 )
             )
+        }
+
+        override suspend fun getAvailability(): List<ProfessionalAvailability> {
+            return listOf()
         }
     }
 

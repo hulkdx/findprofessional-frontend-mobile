@@ -1,8 +1,8 @@
 package com.hulkdx.findprofessional.libs.common.tests
 
-import com.hulkdx.findprofessional.core.features.pro.Professional
-import com.hulkdx.findprofessional.core.features.pro.ProfessionalAvailability
-import com.hulkdx.findprofessional.core.features.pro.ProfessionalReview
+import com.hulkdx.findprofessional.core.features.pro.model.Professional
+import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalAvailability
+import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalReview
 import com.hulkdx.findprofessional.core.features.user.Token
 import com.hulkdx.findprofessional.core.features.user.User
 import com.hulkdx.findprofessional.core.features.user.UserData

@@ -1,8 +1,8 @@
 package com.hulkdx.findprofessional.feature.book.time
 
 import com.hulkdx.findprofessional.core.features.book.SelectedTimes
-import com.hulkdx.findprofessional.core.features.pro.Professional
-import com.hulkdx.findprofessional.core.features.pro.ProfessionalAvailability
+import com.hulkdx.findprofessional.core.features.pro.model.Professional
+import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalAvailability
 import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import com.hulkdx.findprofessional.core.navigation.Navigator
 import com.hulkdx.findprofessional.core.utils.now

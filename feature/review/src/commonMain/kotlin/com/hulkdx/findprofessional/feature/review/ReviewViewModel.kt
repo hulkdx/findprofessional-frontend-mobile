@@ -2,8 +2,8 @@ package com.hulkdx.findprofessional.feature.review
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.hulkdx.findprofessional.core.features.pro.Professional
-import com.hulkdx.findprofessional.core.features.pro.ProfessionalReview
+import com.hulkdx.findprofessional.core.features.pro.model.Professional
+import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalReview
 import com.hulkdx.findprofessional.core.utils.StringOrRes
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

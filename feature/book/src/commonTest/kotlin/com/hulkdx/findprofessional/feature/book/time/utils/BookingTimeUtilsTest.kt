@@ -1,6 +1,6 @@
 package com.hulkdx.findprofessional.feature.book.time.utils
 
-import com.hulkdx.findprofessional.core.features.pro.ProfessionalAvailability
+import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalAvailability
 import com.hulkdx.findprofessional.core.utils.now
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalTime

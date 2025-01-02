@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.core.features.pro
+package com.hulkdx.findprofessional.core.features.pro.model
 
 import com.hulkdx.findprofessional.core.features.user.User
 import kotlinx.datetime.Instant
