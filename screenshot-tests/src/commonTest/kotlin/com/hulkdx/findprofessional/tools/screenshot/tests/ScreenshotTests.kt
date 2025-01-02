@@ -2,6 +2,7 @@ package com.hulkdx.findprofessional.tools.screenshot.tests
 
 import com.hulkdx.findprofessional.core.features.proauth.SignUpProRequest
 import com.hulkdx.findprofessional.core.features.user.ProUser
+import com.hulkdx.findprofessional.core.utils.now
 import com.hulkdx.findprofessional.feature.authentication.login.LoginScreen
 import com.hulkdx.findprofessional.feature.authentication.signup.SignUpScreen
 import com.hulkdx.findprofessional.feature.authentication.splash.Splash
@@ -13,6 +14,7 @@ import com.hulkdx.findprofessional.feature.home.detail.availability.Availability
 import com.hulkdx.findprofessional.feature.home.main.view.HomeScreen
 import com.hulkdx.findprofessional.feature.pro.auth.signup.view.SignUpProScreenStep1
 import com.hulkdx.findprofessional.feature.pro.auth.signup.view.SignUpProScreenStep2
+import com.hulkdx.findprofessional.feature.pro.availability.main.ProAvailabilityScreen
 import com.hulkdx.findprofessional.feature.pro.profile.ProProfileScreen
 import com.hulkdx.findprofessional.feature.pro.profile.edit.EditProProfileScreen
 import com.hulkdx.findprofessional.feature.profile.ProfileScreen
@@ -190,6 +192,23 @@ class ScreenshotTests {
                     skypeId = "mosh.asphalt",
                 ),
                 "", {}, {}, {}, {}, {}, {}, {}, {}, {}
+            )
+        }
+    }
+
+    @Test
+    fun proAvailabilityScreen() {
+        val now = LocalDate(2024, 4, 1)
+        screenShotTests(className, "proAvailabilityScreen") {
+            ProAvailabilityScreen(
+                listOf(
+                    LocalDate(2024, 4, 20),
+                    LocalDate(2024, 4, 5),
+                    LocalDate(2024, 4, 4),
+                    LocalDate(2024, 4, 3),
+                ),
+                now = now,
+                "", {}, {}
             )
         }
     }

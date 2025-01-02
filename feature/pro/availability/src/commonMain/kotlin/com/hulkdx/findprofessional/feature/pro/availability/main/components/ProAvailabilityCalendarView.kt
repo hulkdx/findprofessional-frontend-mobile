@@ -49,10 +49,11 @@ import org.jetbrains.compose.resources.painterResource
 
 @Composable
 fun ProAvailabilityCalendarView(
+    now: LocalDate,
     availabilities: List<LocalDate>,
     onDateClicked: (LocalDate) -> Unit,
 ) {
-    var date by remember { mutableStateOf(LocalDate.now()) }
+    var date by remember { mutableStateOf(now) }
     val state by remember(date) {
         mutableStateOf(
             AvailabilityState(

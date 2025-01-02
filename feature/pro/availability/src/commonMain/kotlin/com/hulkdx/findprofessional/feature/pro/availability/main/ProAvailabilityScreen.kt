@@ -8,6 +8,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import com.hulkdx.findprofessional.core.ui.commonui.navbar.ProAppNavBarContainer
+import com.hulkdx.findprofessional.core.utils.now
 import com.hulkdx.findprofessional.feature.pro.availability.main.components.ProAvailabilityCalendarView
 import kotlinx.datetime.LocalDate
 import org.koin.androidx.compose.koinViewModel
@@ -29,6 +30,7 @@ fun ProAvailabilityScreen(viewModel: ProAvailabilityViewModel = koinViewModel())
 @Composable
 fun ProAvailabilityScreen(
     availabilities: List<LocalDate>,
+    now: LocalDate = LocalDate.now(),
     error: String?,
     onErrorDismissed: () -> Unit,
     onDateClicked: (LocalDate) -> Unit,
@@ -43,6 +45,7 @@ fun ProAvailabilityScreen(
                 .fillMaxSize()
         ) {
             ProAvailabilityCalendarView(
+                now,
                 availabilities,
                 onDateClicked,
             )
