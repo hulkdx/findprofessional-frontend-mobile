@@ -41,6 +41,10 @@ fun LocalDate.Companion.now(): LocalDate {
     return Clock.System.todayIn(TimeZone.UTC)
 }
 
+fun LocalDate.Companion.now(clockProvider: ClockProvider): LocalDate {
+    return clockProvider.clock().todayIn(TimeZone.UTC)
+}
+
 fun LocalDate.shortDayOfWeeks(): String {
     return dayOfWeek.name.capitalize()
         .take(3)
