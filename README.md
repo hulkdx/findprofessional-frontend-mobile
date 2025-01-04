@@ -31,3 +31,4 @@ echo JAVA_HOME=\'/Applications/Android Studio.app/Contents/jbr/Contents/Home\' >
 ## Improvement idea
 
 - Use [this](https://arkivanov.github.io/Decompose/tips-tricks/composable-viewmodel/#composable-functions-with-viewmodels-with-savedstatehandle) guide if you need SavedStateHandle in ViewModel of Decompose.
+- Use [compose-navigation](https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-navigation-routing.html) once its not `experimental` anymore.
