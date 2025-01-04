@@ -22,6 +22,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.hulkdx.findprofessional.core.resources.Res
@@ -39,8 +40,8 @@ import org.koin.androidx.compose.koinViewModel
 import org.koin.core.parameter.parametersOf
 
 @Composable
-fun ProAvailabilityScreen(
-    selectedDate: LocalDate = LocalDate(2024, 11, 3), // TODO: get it from previous screen
+fun ProAvailabilityDetailScreen(
+    selectedDate: LocalDate,
     selectedTimeSlot: List<TimeSlot> = emptyList(), // TODO: get it from previous screen
     viewModel: ProAvailabilityDetailViewModel = koinViewModel {
         parametersOf(
@@ -51,7 +52,7 @@ fun ProAvailabilityScreen(
 ) {
     val timeSlots by viewModel.timeSlots.collectAsState()
 
-    ProAvailabilityScreen(
+    ProAvailabilityDetailScreen(
         availableTime = viewModel.availableTime,
         dayOfWeek = viewModel.dayOfWeek,
         applyButtonText = viewModel.applyButtonText,
@@ -66,7 +67,7 @@ fun ProAvailabilityScreen(
 }
 
 @Composable
-private fun ProAvailabilityScreen(
+private fun ProAvailabilityDetailScreen(
     timeSlots: List<TimeSlot>,
     availableTime: List<String>,
     onDeleteClicked: (Int) -> Unit,
@@ -80,6 +81,7 @@ private fun ProAvailabilityScreen(
 ) {
     LazyColumn(
         modifier = Modifier
+            .testTag("ProAvailabilityDetailScreen")
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.onPrimary)
             .systemBarsPadding()

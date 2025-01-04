@@ -37,9 +37,8 @@ import com.hulkdx.findprofessional.core.ui.theme.body1Medium
 import com.hulkdx.findprofessional.core.ui.theme.h3Medium
 import com.hulkdx.findprofessional.core.utils.DateUtils
 import com.hulkdx.findprofessional.core.utils.DateUtils.weekNumberMap
-import com.hulkdx.findprofessional.core.utils.now
 import com.hulkdx.findprofessional.core.utils.singleClick
-import com.hulkdx.findprofessional.feature.pro.availability.main.model.AvailabilityState
+import com.hulkdx.findprofessional.feature.pro.availability.main.model.ProAvailabilityState
 import kotlinx.datetime.DateTimeUnit.Companion.MONTH
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.minus
@@ -56,7 +55,7 @@ fun ProAvailabilityCalendarView(
     var date by remember { mutableStateOf(now) }
     val state by remember(date) {
         mutableStateOf(
-            AvailabilityState(
+            ProAvailabilityState(
                 currentMonth = DateUtils.formatToMonthsAndYear(date),
                 firstDay = DateUtils.firstDayInt(date),
                 lengthOfMonth = DateUtils.lengthOfMonth(date),
@@ -88,7 +87,7 @@ fun ProAvailabilityCalendarView(
 
 @Composable
 private fun AvailabilityCalendar(
-    state: AvailabilityState,
+    state: ProAvailabilityState,
     availabilityMonthMinusOne: () -> Unit,
     availabilityMonthPlusOne: () -> Unit,
     isSelectedDay: @Composable (Int) -> Boolean,
@@ -114,7 +113,7 @@ private fun AvailabilityCalendar(
 
 @Composable
 private fun AvailabilityCalendarTopHeader(
-    availability: AvailabilityState,
+    availability: ProAvailabilityState,
     availabilityMonthMinusOne: () -> Unit,
     availabilityMonthPlusOne: () -> Unit,
 ) {
@@ -161,7 +160,7 @@ private fun RowScope.AvailabilityCalendarTopHeaderMainText(currentMonth: String)
 
 @Composable
 private fun AvailabilityCalendarMainContent(
-    availability: AvailabilityState,
+    availability: ProAvailabilityState,
     isSelectedDay: @Composable (Int) -> Boolean,
     onDateClicked: (Int) -> Unit,
 ) {
@@ -175,7 +174,7 @@ private fun AvailabilityCalendarMainContent(
 @Composable
 private fun RowScope.DayColumn(
     dayIndex: Int,
-    availability: AvailabilityState,
+    availability: ProAvailabilityState,
     isSelectedDay: @Composable (Int) -> Boolean,
     onDateClicked: (Int) -> Unit,
 ) {
@@ -211,7 +210,7 @@ private fun DayDivider() {
 
 @Composable
 private fun Day(
-    availability: AvailabilityState,
+    availability: ProAvailabilityState,
     dayIndex: Int,
     weekIndex: Int,
     isSelectedDay: @Composable (Int) -> Boolean,

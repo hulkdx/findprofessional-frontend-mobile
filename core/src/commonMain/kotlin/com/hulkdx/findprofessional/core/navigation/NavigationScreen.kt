@@ -3,6 +3,7 @@ package com.hulkdx.findprofessional.core.navigation
 import com.hulkdx.findprofessional.core.features.book.SelectedTimes
 import com.hulkdx.findprofessional.core.features.pro.model.Professional
 import com.hulkdx.findprofessional.core.features.proauth.SignUpProRequest
+import kotlinx.datetime.LocalDate
 import kotlinx.serialization.Serializable
 
 // @formatter:off
@@ -22,6 +23,7 @@ sealed class NavigationScreen {
     @Serializable data class ProSignUp(val uiState: SignUpProRequest = SignUpProRequest()): NavigationScreen()
     @Serializable data object ProSchedule: NavigationScreen()
     @Serializable data object ProAvailability: NavigationScreen()
+    @Serializable data class ProAvailabilityDetail(val date: LocalDate): NavigationScreen()
     @Serializable data object ProProfile: NavigationScreen()
     @Serializable data object EditProProfile: NavigationScreen()
 }
