@@ -134,6 +134,7 @@ jobs:
           distribution: ${{ env.JAVA_DIST }}
           java-version: ${{ env.JAVA_VERSION }}
           cache: 'gradle'
+        continue-on-error: true
 
       - uses: actions/cache@v4
         with:
@@ -143,6 +144,8 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
+
+          continue-on-error: true
 
       - name: Run IOS instrumentation tests
         run: ./gradlew iosSimulatorArm64Test
