@@ -25,7 +25,7 @@ import com.hulkdx.findprofessional.core.ui.commonui.navbar.AppNavigationBarDimen
 import com.hulkdx.findprofessional.core.ui.theme.AppTheme
 import com.hulkdx.findprofessional.feature.home.main.HomeViewModel
 import org.jetbrains.compose.ui.tooling.preview.Preview
-import org.koin.androidx.compose.koinViewModel
+import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun HomeScreen(viewModel: HomeViewModel = koinViewModel()) {

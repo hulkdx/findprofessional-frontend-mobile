@@ -4,13 +4,13 @@ import com.hulkdx.findprofessional.feature.pro.profile.edit.EditProProfileViewMo
 import com.hulkdx.findprofessional.feature.pro.profile.edit.SaveProUserUseCase
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.factoryOf
+import org.koin.core.module.dsl.viewModelOf
 import org.koin.dsl.module
-
 
 val proProfileModule: Module
     get() = module {
-        factoryOf(::ProProfileViewModel)
-        factoryOf(::EditProProfileViewModel)
+        viewModelOf(::ProProfileViewModel)
+        viewModelOf(::EditProProfileViewModel)
 
         factoryOf(::SaveProUserUseCase)
     }

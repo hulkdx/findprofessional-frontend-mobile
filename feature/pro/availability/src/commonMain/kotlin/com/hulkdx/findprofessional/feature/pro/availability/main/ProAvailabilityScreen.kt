@@ -12,7 +12,7 @@ import com.hulkdx.findprofessional.core.utils.ClockProvider
 import com.hulkdx.findprofessional.core.utils.now
 import com.hulkdx.findprofessional.feature.pro.availability.main.components.ProAvailabilityCalendarView
 import kotlinx.datetime.LocalDate
-import org.koin.androidx.compose.koinViewModel
+import org.koin.compose.viewmodel.koinViewModel
 import org.koin.compose.koinInject
 
 @Composable

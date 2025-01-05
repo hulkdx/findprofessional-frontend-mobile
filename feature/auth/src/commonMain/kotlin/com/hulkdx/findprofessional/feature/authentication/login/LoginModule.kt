@@ -11,6 +11,7 @@ import com.hulkdx.findprofessional.feature.authentication.login.usecase.LogoutUs
 import com.hulkdx.findprofessional.feature.authentication.login.usecase.LogoutUseCaseImpl
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.factoryOf
+import org.koin.core.module.dsl.viewModelOf
 import org.koin.dsl.bind
 import org.koin.dsl.module
 
@@ -18,7 +19,7 @@ val loginModule: Module
     get() = module {
         factoryOf(::GetUserUseCase)
         factoryOf(::UserStorageDataStore) bind UserStorage::class
-        factoryOf(::LoginViewModel)
+        viewModelOf(::LoginViewModel)
         factoryOf(::LoginUseCase)
         factoryOf(::LogoutUseCaseImpl) bind LogoutUseCase::class
         factoryOf(::LoginApiImpl) bind LoginApi::class

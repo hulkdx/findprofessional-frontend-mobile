@@ -9,7 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import com.hulkdx.findprofessional.core.ui.commonui.navbar.ProAppNavBarContainer
 import com.hulkdx.findprofessional.feature.pro.schedule.model.ScheduleUiState
-import org.koin.androidx.compose.koinViewModel
+import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun ProScheduleScreen(viewModel: ProScheduleViewModel = koinViewModel()) {

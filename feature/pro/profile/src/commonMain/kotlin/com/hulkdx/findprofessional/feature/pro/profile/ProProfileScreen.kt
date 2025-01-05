@@ -34,7 +34,7 @@ import com.hulkdx.findprofessional.core.ui.commonui.navbar.ProAppNavBarContainer
 import com.hulkdx.findprofessional.core.ui.theme.body1Medium
 import com.hulkdx.findprofessional.core.ui.theme.body2
 import org.jetbrains.compose.resources.stringResource
-import org.koin.androidx.compose.koinViewModel
+import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun ProProfileScreen(viewModel: ProProfileViewModel = koinViewModel()) {

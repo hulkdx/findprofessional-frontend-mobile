@@ -24,7 +24,7 @@ import com.hulkdx.findprofessional.core.ui.commonui.BACK_BUTTON_HEIGHT
 import com.hulkdx.findprofessional.core.ui.commonui.CUBackButton
 import com.hulkdx.findprofessional.core.ui.commonui.CUSnackBar
 import com.hulkdx.findprofessional.feature.pro.auth.signup.SignUpProViewModel
-import org.koin.androidx.compose.koinViewModel
+import org.koin.compose.viewmodel.koinViewModel
 import org.koin.compose.koinInject
 import org.koin.core.parameter.parametersOf
 

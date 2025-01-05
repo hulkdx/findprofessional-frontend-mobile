@@ -36,7 +36,7 @@ import com.hulkdx.findprofessional.core.ui.theme.h2
 import com.hulkdx.findprofessional.core.ui.theme.h3Medium
 import kotlinx.datetime.LocalDate
 import org.jetbrains.compose.resources.stringResource
-import org.koin.androidx.compose.koinViewModel
+import org.koin.compose.viewmodel.koinViewModel
 import org.koin.core.parameter.parametersOf
 
 @Composable
