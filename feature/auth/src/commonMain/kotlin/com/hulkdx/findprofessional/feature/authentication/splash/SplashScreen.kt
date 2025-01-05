@@ -10,7 +10,7 @@ import androidx.compose.ui.Modifier
 import com.hulkdx.findprofessional.core.ui.commonui.CULogoImage
 import com.hulkdx.findprofessional.core.ui.theme.AppTheme
 import org.jetbrains.compose.ui.tooling.preview.Preview
-import org.koin.androidx.compose.koinViewModel
+import org.koin.compose.viewmodel.koinViewModel
 
 @Suppress("UNUSED_PARAMETER")
 @Composable

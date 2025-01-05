@@ -30,7 +30,7 @@ import com.hulkdx.findprofessional.core.utils.singleClick
 import com.hulkdx.findprofessional.feature.pro.profile.ProProfileImage
 import com.hulkdx.findprofessional.feature.pro.profile.ProProfileName
 import org.jetbrains.compose.resources.stringResource
-import org.koin.androidx.compose.koinViewModel
+import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun EditProProfileScreen(viewModel: EditProProfileViewModel = koinViewModel()) {

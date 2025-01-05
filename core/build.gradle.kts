@@ -10,6 +10,7 @@ kotlin {
 
             api(libs.koin.core)
             api(libs.koin.compose)
+            api(libs.koin.compose.viewmodel)
             api(libs.kotlinx.serialization.json)
             implementation(libs.kotlinx.datetime)
             implementation(libs.lifecycle.viewmodel.compose)

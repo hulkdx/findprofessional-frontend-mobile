@@ -7,15 +7,15 @@ import com.hulkdx.findprofessional.feature.book.time.BookingTimeUseCase
 import com.hulkdx.findprofessional.feature.book.time.BookingTimeViewModel
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.factoryOf
+import org.koin.core.module.dsl.viewModelOf
 import org.koin.dsl.module
-
 
 val bookModule: Module
     get() = module {
-        factoryOf(::BookingSummeryViewModel)
+        viewModelOf(::BookingSummeryViewModel)
         factoryOf(::BookingSummeryUseCase)
         factoryOf(::BookingSummeryTimeMapper)
 
-        factoryOf(::BookingTimeViewModel)
+        viewModelOf(::BookingTimeViewModel)
         factory { BookingTimeUseCase(navigator = get()) }
     }

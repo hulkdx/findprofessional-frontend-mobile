@@ -35,7 +35,7 @@ import com.hulkdx.findprofessional.core.ui.theme.body1
 import com.hulkdx.findprofessional.core.ui.theme.h1Medium
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
-import org.koin.androidx.compose.koinViewModel
+import org.koin.compose.viewmodel.koinViewModel
 
 
 @Composable
