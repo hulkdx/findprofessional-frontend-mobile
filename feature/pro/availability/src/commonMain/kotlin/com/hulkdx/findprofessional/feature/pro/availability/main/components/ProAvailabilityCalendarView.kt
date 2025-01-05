@@ -27,6 +27,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.hulkdx.findprofessional.core.resources.Res
@@ -63,7 +64,7 @@ fun ProAvailabilityCalendarView(
         )
     }
     val isSelectedDay: @Composable (Int) -> Boolean = { day ->
-        remember(day, date) {
+        remember(day, date, availabilities) {
             val checkDay = LocalDate(date.year, date.month, day)
             availabilities.contains(checkDay)
         }
@@ -255,6 +256,7 @@ private fun SelectedDay(day: Int, onDateClicked: (Int) -> Unit) {
     val backgroundColor = MaterialTheme.colorScheme.outlineVariant
     CommonDay(
         modifier = Modifier.drawBehind { drawCircle(backgroundColor) }
+            .testTag("SelectedDay")
             .clickable { onDateClicked(day) },
         text = day.toString(),
         textColor = MaterialTheme.colorScheme.surfaceVariant,

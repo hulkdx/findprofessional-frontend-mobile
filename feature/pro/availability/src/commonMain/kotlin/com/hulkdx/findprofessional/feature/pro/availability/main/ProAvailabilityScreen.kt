@@ -17,7 +17,6 @@ import org.koin.compose.koinInject
 
 @Composable
 fun ProAvailabilityScreen(viewModel: ProAvailabilityViewModel = koinViewModel()) {
-
     val availabilities by viewModel.availabilities.collectAsState()
     val error by viewModel.error.collectAsState()
     val clockProvider = koinInject<ClockProvider>()
