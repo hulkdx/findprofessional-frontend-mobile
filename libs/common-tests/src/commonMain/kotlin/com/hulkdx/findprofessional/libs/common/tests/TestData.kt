@@ -10,6 +10,7 @@ import com.hulkdx.findprofessional.core.utils.now
 import com.hulkdx.findprofessional.feature.book.time.BookingTimeUiState
 import kotlinx.datetime.Clock
 import kotlinx.datetime.LocalDate
+import kotlinx.datetime.LocalTime
 
 
 fun createProfessional(
@@ -33,6 +34,18 @@ fun createProfessional(
     createdAt = "",
     updatedAt = ""
 )
+
+fun createAvailabilities(
+    vararg date: LocalDate,
+): List<ProfessionalAvailability> {
+    return date.map {
+        ProfessionalAvailability(
+            date = it,
+            from = LocalTime(1, 1, 1, 1),
+            to = LocalTime(1, 1, 1, 1),
+        )
+    }
+}
 
 fun createReview() = ProfessionalReview(
     id = 6240,

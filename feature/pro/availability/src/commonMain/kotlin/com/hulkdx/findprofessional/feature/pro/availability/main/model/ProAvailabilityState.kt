@@ -2,7 +2,7 @@ package com.hulkdx.findprofessional.feature.pro.availability.main.model
 
 import kotlin.math.ceil
 
-data class AvailabilityState(
+data class ProAvailabilityState(
     val currentMonth: String,
     val firstDay: Int,
     val lengthOfMonth: Int,

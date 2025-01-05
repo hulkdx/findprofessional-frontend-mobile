@@ -5,11 +5,12 @@ import com.hulkdx.findprofessional.feature.developer.developerModule
 import org.koin.core.module.Module
 
 
-fun debugModules() = provideDebugModule {
-    add(developerModule)
+fun debugModules(): Array<Module> {
+    return if (isDebug()) {
+        arrayOf(
+            developerModule,
+        )
+    } else {
+        emptyArray()
+    }
 }
-
-private fun provideDebugModule(block: MutableList<Module>.() -> Unit) =
-    if (isDebug()) {
-        buildList(block)
-    } else emptyList()

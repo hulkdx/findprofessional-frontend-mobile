@@ -181,6 +181,8 @@ internal class InMemoryApiImpl : InMemoryApi {
 
     private var professionals = defaultProfessionals
 
+    private var availability = listOf<ProfessionalAvailability>()
+
     private inner class Signup : SignUpApi {
         override suspend fun register(request: RegisterRequest): UserData {
             users.add(
@@ -243,9 +245,7 @@ internal class InMemoryApiImpl : InMemoryApi {
             )
         }
 
-        override suspend fun getAvailability(): List<ProfessionalAvailability> {
-            return listOf()
-        }
+        override suspend fun getAvailability() = availability
     }
 
     private inner class Review : ReviewApi {
@@ -289,5 +289,9 @@ internal class InMemoryApiImpl : InMemoryApi {
 
     override fun resetProfessionals() {
         professionals = defaultProfessionals
+    }
+
+    override fun setProAvailability(availability: List<ProfessionalAvailability>) {
+        this.availability = availability
     }
 }
