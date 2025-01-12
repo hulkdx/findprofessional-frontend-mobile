@@ -8,10 +8,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.hulkdx.findprofessional.core.ui.commonui.CUSnackBar
+import com.hulkdx.findprofessional.core.ui.utils.`if`
 
 @Composable
 internal fun AppNavBarContainerInternal(
     modifier: Modifier = Modifier,
+    hasStatusBarPadding: Boolean = true,
     error: String?,
     items: List<NavData>,
     onErrorDismissed: () -> Unit,
@@ -20,7 +22,9 @@ internal fun AppNavBarContainerInternal(
     Box(
         modifier = modifier
             .background(MaterialTheme.colorScheme.onPrimary)
-            .statusBarsPadding()
+            .`if`(hasStatusBarPadding) {
+                statusBarsPadding()
+            }
     ) {
         content()
         CUSnackBar(

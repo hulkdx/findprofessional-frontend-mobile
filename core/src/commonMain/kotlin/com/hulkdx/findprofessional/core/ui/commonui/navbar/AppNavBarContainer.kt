@@ -39,5 +39,11 @@ fun AppNavBarContainer(
         )
     )
 
-    AppNavBarContainerInternal(modifier, error, items, onErrorDismissed, content)
+    AppNavBarContainerInternal(
+        modifier = modifier,
+        error = error,
+        items = items,
+        onErrorDismissed = onErrorDismissed,
+        content = content
+    )
 }

@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.HorizontalDivider
@@ -97,11 +98,11 @@ private fun AvailabilityCalendar(
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 24.dp)
-            .padding(bottom = 32.dp)
             .clip(shape = RoundedCornerShape(10.dp))
             .background(MaterialTheme.colorScheme.surfaceVariant)
-            .padding(bottom = 8.dp)
+            .statusBarsPadding()
+            .padding(bottom = 32.dp, top = 16.dp)
+            .padding(horizontal = 16.dp)
     ) {
         AvailabilityCalendarTopHeader(
             state,
@@ -118,7 +119,7 @@ private fun AvailabilityCalendarTopHeader(
     availabilityMonthMinusOne: () -> Unit,
     availabilityMonthPlusOne: () -> Unit,
 ) {
-    Row(modifier = Modifier.padding(horizontal = 16.dp)) {
+    Row(modifier = Modifier.padding(horizontal = 16.dp).padding(bottom = 16.dp)) {
         AvailabilityCalendarTopHeaderButton(
             icon = Res.drawable.ic_calendar_left,
             onClick = availabilityMonthMinusOne,
@@ -203,7 +204,7 @@ private fun DayText(dayIndex: Int) {
 @Composable
 private fun DayDivider() {
     HorizontalDivider(
-        modifier = Modifier.padding(vertical = 8.dp),
+        modifier = Modifier.padding(top = 8.dp, bottom = 20.dp),
         thickness = 0.5.dp,
         color = MaterialTheme.colorScheme.errorContainer
     )

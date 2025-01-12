@@ -1,7 +1,9 @@
 package com.hulkdx.findprofessional.feature.pro.availability.main
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -39,19 +41,17 @@ fun ProAvailabilityScreen(
     onDateClicked: (LocalDate) -> Unit,
 ) {
     ProAppNavBarContainer(
-        modifier = Modifier.testTag("ProAvailabilityScreen"),
+        modifier = Modifier
+            .fillMaxSize()
+            .testTag("ProAvailabilityScreen"),
         error = error,
         onErrorDismissed = onErrorDismissed,
+        hasStatusBarPadding = false,
     ) {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-        ) {
-            ProAvailabilityCalendarView(
-                now,
-                availabilities,
-                onDateClicked,
-            )
-        }
+        ProAvailabilityCalendarView(
+            now,
+            availabilities,
+            onDateClicked,
+        )
     }
 }
