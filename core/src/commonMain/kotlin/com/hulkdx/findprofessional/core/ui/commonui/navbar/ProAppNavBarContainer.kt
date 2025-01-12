@@ -18,6 +18,7 @@ import org.jetbrains.compose.resources.stringResource
 @Composable
 fun ProAppNavBarContainer(
     modifier: Modifier = Modifier,
+    hasStatusBarPadding: Boolean = true,
     error: String?,
     onErrorDismissed: () -> Unit,
     content: @Composable () -> Unit,
@@ -49,6 +50,6 @@ fun ProAppNavBarContainer(
         ),
     )
 
-    AppNavBarContainerInternal(modifier, error, items, onErrorDismissed, content)
+    AppNavBarContainerInternal(modifier, hasStatusBarPadding, error, items, onErrorDismissed, content)
 }
 
