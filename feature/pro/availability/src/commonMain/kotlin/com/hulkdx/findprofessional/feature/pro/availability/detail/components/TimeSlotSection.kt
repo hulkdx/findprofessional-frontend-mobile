@@ -1,6 +1,13 @@
+@file:Suppress("FunctionName")
+
 package com.hulkdx.findprofessional.feature.pro.availability.detail.components
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.lazy.itemsIndexed
@@ -13,10 +20,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.addNewTime
-import com.hulkdx.findprofessional.core.ui.commonui.CUTextButton
+import com.hulkdx.findprofessional.core.ui.commonui.CUFilledButton
 import com.hulkdx.findprofessional.core.ui.commonui.CuDropDownMenu
 import com.hulkdx.findprofessional.core.ui.theme.h3Medium
 import com.hulkdx.findprofessional.feature.pro.availability.detail.TimeSlot
@@ -31,6 +39,8 @@ fun LazyListScope.TimeSlotSection(
     onToSelected: (Int, String) -> Unit,
     onAddNewTimeSlotClicked: () -> Unit,
 ) {
+    item { Spacer(Modifier.padding(if (timeSlots.isEmpty()) 6.dp else 8.dp)) }
+
     itemsIndexed(timeSlots) { index, timeSlot ->
         TimeSlotView(
             timeSlot = timeSlot,
@@ -40,6 +50,8 @@ fun LazyListScope.TimeSlotSection(
             onToSelected = { onToSelected(index, it) },
         )
     }
+
+    item { Spacer(Modifier.padding(if (timeSlots.isEmpty()) 6.dp else 8.dp)) }
 
     item { AddNewTimeButton(onCLick = onAddNewTimeSlotClicked) }
 }
@@ -52,7 +64,7 @@ fun TimeSlotView(
     onFromSelected: (String) -> Unit,
     onToSelected: (String) -> Unit,
 ) {
-    Row(Modifier.padding(start = 24.dp, bottom = 8.dp)) {
+    Row(Modifier.padding(start = 24.dp, top = 8.dp)) {
         CuDropDownMenu(
             initialValue = timeSlot.from,
             modifier = Modifier.weight(1F),
@@ -83,9 +95,12 @@ fun TimeSlotView(
 
 @Composable
 fun AddNewTimeButton(onCLick: () -> Unit) {
-    CUTextButton(
-        modifier = Modifier.padding(horizontal = 24.dp),
+    CUFilledButton(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp),
         text = stringResource(Res.string.addNewTime),
+        contentPadding = PaddingValues(0.dp),
         onClick = onCLick,
     )
 }

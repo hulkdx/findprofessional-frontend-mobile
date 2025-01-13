@@ -144,7 +144,7 @@ private fun Bottom(
             .padding(horizontal = 26.dp, vertical = 22.dp),
     ) {
         ApplyButton(uiState.applyButtonText, onApplyClicked)
-        ApplyToAllButton(uiState.dayOfWeek ,onApplyClicked)
+        ApplyToAllButton(uiState.dayOfWeek ,onApplyToAllClicked)
     }
 }
 
