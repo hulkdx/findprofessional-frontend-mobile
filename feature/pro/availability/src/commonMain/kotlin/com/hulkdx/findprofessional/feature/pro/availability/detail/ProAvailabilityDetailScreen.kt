@@ -63,7 +63,7 @@ fun ProAvailabilityDetailScreen(
 }
 
 @Composable
-private fun ProAvailabilityDetailScreen(
+fun ProAvailabilityDetailScreen(
     uiState: UiState,
     error: String?,
     onDeleteClicked: (Int) -> Unit,
