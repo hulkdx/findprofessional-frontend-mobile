@@ -1,9 +1,6 @@
 package com.hulkdx.findprofessional.feature.pro.availability.main
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -14,8 +11,8 @@ import com.hulkdx.findprofessional.core.utils.ClockProvider
 import com.hulkdx.findprofessional.core.utils.now
 import com.hulkdx.findprofessional.feature.pro.availability.main.components.ProAvailabilityCalendarView
 import kotlinx.datetime.LocalDate
-import org.koin.compose.viewmodel.koinViewModel
 import org.koin.compose.koinInject
+import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun ProAvailabilityScreen(viewModel: ProAvailabilityViewModel = koinViewModel()) {

@@ -64,4 +64,6 @@
 
     <string name="save">Save</string>
 
+    <string name="invalidTime">Please select a valid time</string>
+
 </resources>

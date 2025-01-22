@@ -4,7 +4,8 @@ import com.hulkdx.findprofessional.core.utils.auth
 import com.hulkdx.findprofessional.core.features.pro.model.Professional
 import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalAvailability
 import com.hulkdx.findprofessional.core.features.pro.api.ProfessionalApi
-import com.hulkdx.findprofessional.core.features.proauth.SignUpProRequest
+import com.hulkdx.findprofessional.core.features.pro.model.request.SignUpProRequest
+import com.hulkdx.findprofessional.core.features.pro.model.request.UpdateAvailabilityRequest
 import com.hulkdx.findprofessional.core.features.user.ProUser
 import com.hulkdx.findprofessional.core.features.user.UserData
 import com.hulkdx.findprofessional.core.storage.UserStorage
@@ -56,5 +57,14 @@ class ProfessionalApiImpl(
             url("professional/availability")
             contentType(ContentType.Application.Json)
         }.body()
+    }
+
+    override suspend fun updateAvailability(request: UpdateAvailabilityRequest) {
+        client.post {
+            auth(userStorage)
+            url("professional/availability")
+            contentType(ContentType.Application.Json)
+            setBody(request)
+        }
     }
 }

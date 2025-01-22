@@ -1,15 +1,21 @@
 package com.hulkdx.findprofessional.feature.pro.availability.detail
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.hulkdx.findprofessional.core.navigation.Navigator
 import com.hulkdx.findprofessional.core.utils.StringOrRes
 import com.hulkdx.findprofessional.core.utils.TimeUtils
+import com.hulkdx.findprofessional.feature.pro.availability.detail.usecase.UpdateAvailabilityUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 import kotlinx.datetime.LocalDate
 
 class ProAvailabilityDetailViewModel(
-    selectedDate: LocalDate,
+    private val navigator: Navigator,
+    private val updateAvailabilityUseCase: UpdateAvailabilityUseCase,
+    private val selectedDate: LocalDate,
     selectedTimeSlot: List<TimeSlot>,
 ) : ViewModel() {
     private val _uiState = MutableStateFlow(UiState.create(selectedDate, selectedTimeSlot))
@@ -42,11 +48,23 @@ class ProAvailabilityDetailViewModel(
     }
 
     fun onApplyClicked() {
-        // TODO:
+        viewModelScope.launch {
+            val err = updateAvailabilityUseCase.execute(
+                timeSlots = uiState.value.timeSlots,
+                date = selectedDate,
+            )
+            if (err == null) {
+                navigator.goBack()
+            } else {
+                setError(err)
+            }
+        }
     }
 
     fun onApplyToAllClicked() {
         // TODO:
+        viewModelScope.launch {
+        }
     }
 
     private fun setTimeSlots(timeSlots: List<TimeSlot>) {
@@ -77,7 +95,7 @@ class ProAvailabilityDetailViewModel(
                         .lowercase()
                         .replaceFirstChar { if (it.isLowerCase()) it.titlecase() else it.toString() }
                     val day = selectedDate.dayOfMonth
-                    "$month $day"
+                    "$day $month"
                 },
                 currentDate = run {
                     val month = selectedDate.month.name
@@ -85,7 +103,7 @@ class ProAvailabilityDetailViewModel(
                         .replaceFirstChar { if (it.isLowerCase()) it.titlecase() else it.toString() }
                     val day = selectedDate.dayOfMonth
                     val year = selectedDate.year
-                    "$year $month $day"
+                    "$day $month $year"
                 },
             )
         }
