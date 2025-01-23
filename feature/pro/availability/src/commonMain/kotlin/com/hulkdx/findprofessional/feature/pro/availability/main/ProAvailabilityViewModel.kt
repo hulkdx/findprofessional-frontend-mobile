@@ -11,7 +11,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted.Companion.WhileSubscribed
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
@@ -20,8 +19,8 @@ import kotlinx.datetime.LocalDate
 class ProAvailabilityViewModel(
     private val navigator: Navigator,
     getAvailabilityUseCase: GetAvailabilityUseCase,
-): ViewModel() {
-    val availabilities = flow { emit(getAvailabilityUseCase.execute()) }
+) : ViewModel() {
+    val availabilities = getAvailabilityUseCase.execute()
         .catch { setError(it.generalError()) }
         .map { list -> list.map { it.date } }
         .stateIn(viewModelScope, WhileSubscribed(5_000), emptyList())

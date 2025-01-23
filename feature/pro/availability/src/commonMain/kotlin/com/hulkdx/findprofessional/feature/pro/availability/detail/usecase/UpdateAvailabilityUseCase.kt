@@ -14,6 +14,7 @@ import kotlinx.datetime.LocalDate
 
 class UpdateAvailabilityUseCase(
     private val professionalApi: ProfessionalApi,
+    private val storage: AvailabilityStorage,
 ) {
     suspend fun execute(timeSlots: List<TimeSlot>, date: LocalDate): StringOrRes? {
         return try {
@@ -30,6 +31,8 @@ class UpdateAvailabilityUseCase(
                 }
             )
             professionalApi.updateAvailability(request)
+            val new = professionalApi.getAvailability()
+            storage.set(new)
             null
         } catch (e: Exception) {
             e.generalError()
