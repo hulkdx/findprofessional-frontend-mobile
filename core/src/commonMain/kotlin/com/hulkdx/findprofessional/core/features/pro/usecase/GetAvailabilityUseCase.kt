@@ -4,8 +4,6 @@ import com.hulkdx.findprofessional.core.features.pro.api.ProfessionalApi
 import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalAvailability
 import com.hulkdx.findprofessional.core.features.pro.storage.AvailabilityStorage
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.onStart
 
 class GetAvailabilityUseCase(
