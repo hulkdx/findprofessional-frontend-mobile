@@ -5,11 +5,14 @@ import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalAvailabil
 import com.hulkdx.findprofessional.core.features.pro.model.request.SignUpProRequest
 import com.hulkdx.findprofessional.core.features.pro.model.request.UpdateAvailabilityItemRequest
 import com.hulkdx.findprofessional.core.features.pro.model.request.UpdateAvailabilityRequest
+import com.hulkdx.findprofessional.core.features.pro.storage.AvailabilityStorage
 import com.hulkdx.findprofessional.core.features.user.ProUser
 import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.invalidTime
 import com.hulkdx.findprofessional.core.utils.toStringOrRes
 import com.hulkdx.findprofessional.feature.pro.availability.detail.TimeSlot
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.runBlocking
 import kotlinx.datetime.LocalDate
 import kotlin.test.BeforeTest
@@ -21,9 +24,11 @@ class ApplyTimeSlotsUseCaseTest {
     private lateinit var sut: UpdateAvailabilityUseCase
     private val api = ProApiMock()
 
+    private val storageMock = StorageMock()
+
     @BeforeTest
     fun setUp() {
-        sut = UpdateAvailabilityUseCase(api)
+        sut = UpdateAvailabilityUseCase(api, storageMock)
     }
 
     @Test
@@ -76,6 +81,12 @@ class ApplyTimeSlotsUseCaseTest {
         override suspend fun updateAvailability(request: UpdateAvailabilityRequest) {
             applyAvailabilityCalled = request
         }
+    }
+
+    private class StorageMock: AvailabilityStorage {
+        override fun getFlow(): Flow<List<ProfessionalAvailability>> = flowOf()
+        override suspend fun set(value: List<ProfessionalAvailability>) {}
+        override suspend fun remove() {}
     }
 
     // endregion
