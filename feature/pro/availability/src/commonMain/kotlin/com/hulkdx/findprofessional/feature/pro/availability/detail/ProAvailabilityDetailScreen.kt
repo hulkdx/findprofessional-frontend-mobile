@@ -24,6 +24,7 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.hulkdx.findprofessional.core.resources.Res
+import com.hulkdx.findprofessional.core.resources.apply_
 import com.hulkdx.findprofessional.core.resources.applyToAll
 import com.hulkdx.findprofessional.core.resources.applyToOnly
 import com.hulkdx.findprofessional.core.resources.checkout
@@ -75,31 +76,36 @@ fun ProAvailabilityDetailScreen(
     onErrorDismissed: () -> Unit,
 ) {
     Box {
-        LazyColumn(
-            modifier = Modifier
-                .testTag("ProAvailabilityDetailScreen")
-                .fillMaxSize()
-                .background(MaterialTheme.colorScheme.onPrimary)
-                .systemBarsPadding()
-        ) {
-            item { Title() }
-            item { TitleDate(uiState.currentDate) }
-            TimeSlotSection(
-                uiState.timeSlots,
-                uiState.availableTime,
-                onDeleteClicked,
-                onFromSelected,
-                onToSelected,
-                onAddNewTimeSlotClicked,
+        Column {
+            Title()
+            TitleDate(uiState.currentDate)
+
+            LazyColumn(
+                modifier = Modifier
+                    .testTag("ProAvailabilityDetailScreen")
+                    .weight(1F)
+                    .background(MaterialTheme.colorScheme.onPrimary)
+                    .systemBarsPadding()
+            ) {
+                TimeSlotSection(
+                    uiState.timeSlots,
+                    uiState.availableTime,
+                    onDeleteClicked,
+                    onFromSelected,
+                    onToSelected,
+                    onAddNewTimeSlotClicked,
+                )
+            }
+
+            Bottom(
+                modifier = Modifier,
+                uiState,
+                onApplyClicked,
+                onApplyToAllClicked,
             )
         }
+
         CUBackButton(modifier = Modifier.align(Alignment.TopStart))
-        Bottom(
-            modifier = Modifier.align(Alignment.BottomStart),
-            uiState,
-            onApplyClicked,
-            onApplyToAllClicked,
-        )
         CUSnackBar(
             modifier = Modifier.align(Alignment.BottomCenter),
             message = error,
@@ -144,7 +150,7 @@ private fun Bottom(
             .padding(horizontal = 26.dp, vertical = 22.dp),
     ) {
         ApplyButton(uiState.applyButtonText, onApplyClicked)
-        ApplyToAllButton(uiState.dayOfWeek ,onApplyToAllClicked)
+//        ApplyToAllButton(uiState.dayOfWeek ,onApplyToAllClicked)
     }
 }
 
@@ -152,7 +158,7 @@ private fun Bottom(
 private fun ApplyButton(applyButtonText: String, onCLick: () -> Unit) {
     CUFilledButton(
         modifier = Modifier.fillMaxWidth(),
-        text = stringResource(Res.string.applyToOnly, applyButtonText),
+        text = stringResource(Res.string.apply_),
         colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.secondary),
         contentPadding = PaddingValues(0.dp),
         onClick = onCLick,
