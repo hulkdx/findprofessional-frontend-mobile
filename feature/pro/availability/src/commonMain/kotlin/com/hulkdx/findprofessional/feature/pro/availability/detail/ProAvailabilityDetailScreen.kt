@@ -24,15 +24,12 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.hulkdx.findprofessional.core.resources.Res
-import com.hulkdx.findprofessional.core.resources.apply_
 import com.hulkdx.findprofessional.core.resources.applyToAll
-import com.hulkdx.findprofessional.core.resources.applyToOnly
-import com.hulkdx.findprofessional.core.resources.checkout
+import com.hulkdx.findprofessional.core.resources.apply_
 import com.hulkdx.findprofessional.core.resources.editAvailableTime
 import com.hulkdx.findprofessional.core.ui.commonui.CUBackButton
 import com.hulkdx.findprofessional.core.ui.commonui.CUFilledButton
 import com.hulkdx.findprofessional.core.ui.commonui.CUSnackBar
-import com.hulkdx.findprofessional.core.ui.commonui.CUTextButton
 import com.hulkdx.findprofessional.core.ui.theme.h2
 import com.hulkdx.findprofessional.core.ui.theme.h3
 import com.hulkdx.findprofessional.core.utils.koinViewModel
@@ -75,17 +72,20 @@ fun ProAvailabilityDetailScreen(
     onApplyToAllClicked: () -> Unit,
     onErrorDismissed: () -> Unit,
 ) {
-    Box {
+    Box(
+        Modifier
+            .testTag("ProAvailabilityDetailScreen")
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.onPrimary)
+            .systemBarsPadding()
+    ) {
         Column {
             Title()
             TitleDate(uiState.currentDate)
 
             LazyColumn(
                 modifier = Modifier
-                    .testTag("ProAvailabilityDetailScreen")
                     .weight(1F)
-                    .background(MaterialTheme.colorScheme.onPrimary)
-                    .systemBarsPadding()
             ) {
                 TimeSlotSection(
                     uiState.timeSlots,
