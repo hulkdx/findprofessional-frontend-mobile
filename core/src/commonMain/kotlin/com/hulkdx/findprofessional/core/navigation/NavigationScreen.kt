@@ -2,7 +2,7 @@ package com.hulkdx.findprofessional.core.navigation
 
 import com.hulkdx.findprofessional.core.features.book.SelectedTimes
 import com.hulkdx.findprofessional.core.features.pro.model.Professional
-import com.hulkdx.findprofessional.core.features.proauth.SignUpProRequest
+import com.hulkdx.findprofessional.core.features.pro.model.request.SignUpProRequest
 import kotlinx.datetime.LocalDate
 import kotlinx.serialization.Serializable
 

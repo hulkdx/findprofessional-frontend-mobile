@@ -10,15 +10,14 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted.Companion.WhileSubscribed
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 
 class ProScheduleViewModel(
-    getScheduleUseCase: GetAvailabilityUseCase,
+    getAvailabilityUseCase: GetAvailabilityUseCase,
 ) : ViewModel() {
-    val state = flow { emit(getScheduleUseCase.execute()) }
+    val state = getAvailabilityUseCase.execute()
         .catch { setError(it.generalError()) }
         .map {
             ScheduleUiState()

@@ -56,12 +56,15 @@
 
     <string name="editAvailableTime">Edit Available Time</string>
     <string name="addNewTime">Add New Time</string>
-    <string name="applyToAll">Apply to all %1$s</string>
+    <string name="apply_">Apply</string>
+    <string name="applyToAll">Apply to all %1$ss</string>
     <string name="applyToOnly">Apply to %1$s only</string>
 
     <string name="schedule">Schedule</string>
     <string name="editProfile">Edit Profile</string>
 
     <string name="save">Save</string>
+
+    <string name="invalidTime">Please select a valid time</string>
 
 </resources>

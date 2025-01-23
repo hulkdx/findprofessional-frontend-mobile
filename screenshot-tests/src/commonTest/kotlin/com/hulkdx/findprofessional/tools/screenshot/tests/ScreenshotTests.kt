@@ -1,8 +1,7 @@
 package com.hulkdx.findprofessional.tools.screenshot.tests
 
-import com.hulkdx.findprofessional.core.features.proauth.SignUpProRequest
+import com.hulkdx.findprofessional.core.features.pro.model.request.SignUpProRequest
 import com.hulkdx.findprofessional.core.features.user.ProUser
-import com.hulkdx.findprofessional.core.utils.now
 import com.hulkdx.findprofessional.feature.authentication.login.LoginScreen
 import com.hulkdx.findprofessional.feature.authentication.signup.SignUpScreen
 import com.hulkdx.findprofessional.feature.authentication.splash.Splash
@@ -14,6 +13,9 @@ import com.hulkdx.findprofessional.feature.home.detail.availability.Availability
 import com.hulkdx.findprofessional.feature.home.main.view.HomeScreen
 import com.hulkdx.findprofessional.feature.pro.auth.signup.view.SignUpProScreenStep1
 import com.hulkdx.findprofessional.feature.pro.auth.signup.view.SignUpProScreenStep2
+import com.hulkdx.findprofessional.feature.pro.availability.detail.ProAvailabilityDetailScreen
+import com.hulkdx.findprofessional.feature.pro.availability.detail.ProAvailabilityDetailViewModel
+import com.hulkdx.findprofessional.feature.pro.availability.detail.TimeSlot
 import com.hulkdx.findprofessional.feature.pro.availability.main.ProAvailabilityScreen
 import com.hulkdx.findprofessional.feature.pro.profile.ProProfileScreen
 import com.hulkdx.findprofessional.feature.pro.profile.edit.EditProProfileScreen
@@ -209,6 +211,23 @@ class ScreenshotTests {
                 ),
                 now = now,
                 "", {}, {}
+            )
+        }
+    }
+
+    @Test
+    fun proAvailabilityDetailScreen() {
+        val now = LocalDate(2024, 4, 1)
+        screenShotTests(className, "proAvailabilityDetailScreen") {
+            ProAvailabilityDetailScreen(
+                ProAvailabilityDetailViewModel.UiState.create(
+                    now,
+                    listOf(
+                        TimeSlot("16:30", "17:00"),
+                        TimeSlot("17:30", "18:00"),
+                    ),
+                ),
+                null, {}, { _, _ -> }, { _, _ -> }, {}, {}, {}, {}
             )
         }
     }

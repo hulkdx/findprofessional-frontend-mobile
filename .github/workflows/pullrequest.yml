@@ -41,7 +41,7 @@ jobs:
 
       - name: Upload test reports
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: android-unit-test-reports
           path: |
@@ -109,7 +109,7 @@ jobs:
 
       - name: Upload Android test reports
         if: failure()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: android-integration-test-reports-${{ matrix.api-level }}
           path: |
@@ -152,7 +152,7 @@ jobs:
 
       - name: Upload IOS test reports
         if: failure()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ios-integration-test-reports-${{ matrix.api-level }}
           path: |

@@ -3,7 +3,7 @@ package com.hulkdx.findprofessional.feature.developer
 import com.hulkdx.findprofessional.core.features.pro.model.Professional
 import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalAvailability
 import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalReview
-import com.hulkdx.findprofessional.core.features.proauth.SignUpProRequest
+import com.hulkdx.findprofessional.core.features.pro.model.request.SignUpProRequest
 import com.hulkdx.findprofessional.core.features.user.ProUser
 import com.hulkdx.findprofessional.core.features.user.Token
 import com.hulkdx.findprofessional.core.features.user.User
@@ -14,6 +14,7 @@ import com.hulkdx.findprofessional.feature.authentication.login.model.LoginReque
 import com.hulkdx.findprofessional.feature.authentication.signup.SignUpApi
 import com.hulkdx.findprofessional.feature.authentication.signup.model.RegisterRequest
 import com.hulkdx.findprofessional.core.features.pro.api.ProfessionalApi
+import com.hulkdx.findprofessional.core.features.pro.model.request.UpdateAvailabilityRequest
 import com.hulkdx.findprofessional.feature.review.ReviewApi
 import kotlinx.datetime.Clock
 import kotlinx.datetime.LocalDate
@@ -181,7 +182,7 @@ internal class InMemoryApiImpl : InMemoryApi {
 
     private var professionals = defaultProfessionals
 
-    private var availability = listOf<ProfessionalAvailability>()
+    private var availability = mutableListOf<ProfessionalAvailability>()
 
     private inner class Signup : SignUpApi {
         override suspend fun register(request: RegisterRequest): UserData {
@@ -246,6 +247,17 @@ internal class InMemoryApiImpl : InMemoryApi {
         }
 
         override suspend fun getAvailability() = availability
+        override suspend fun updateAvailability(request: UpdateAvailabilityRequest) {
+            availability.addAll(
+                request.items.map {
+                    ProfessionalAvailability(
+                        date = LocalDate.parse(it.date),
+                        from = LocalTime.parse(it.from),
+                        to = LocalTime.parse(it.to),
+                    )
+                }
+            )
+        }
     }
 
     private inner class Review : ReviewApi {
@@ -292,6 +304,6 @@ internal class InMemoryApiImpl : InMemoryApi {
     }
 
     override fun setProAvailability(availability: List<ProfessionalAvailability>) {
-        this.availability = availability
+        this.availability = availability.toMutableList()
     }
 }

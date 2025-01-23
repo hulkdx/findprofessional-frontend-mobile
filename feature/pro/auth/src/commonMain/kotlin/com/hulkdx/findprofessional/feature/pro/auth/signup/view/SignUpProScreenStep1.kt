@@ -10,7 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
-import com.hulkdx.findprofessional.core.features.proauth.SignUpProRequest
+import com.hulkdx.findprofessional.core.features.pro.model.request.SignUpProRequest
 import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.firstName
 import com.hulkdx.findprofessional.core.resources.headerForNames

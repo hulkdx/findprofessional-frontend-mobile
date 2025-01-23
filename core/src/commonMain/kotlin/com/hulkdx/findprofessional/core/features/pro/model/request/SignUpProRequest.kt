@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.core.features.proauth
+package com.hulkdx.findprofessional.core.features.pro.model.request
 
 import com.hulkdx.findprofessional.core.utils.PriceUtils
 import kotlinx.serialization.Serializable
