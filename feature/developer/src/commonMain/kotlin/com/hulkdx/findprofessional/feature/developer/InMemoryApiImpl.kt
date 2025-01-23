@@ -182,7 +182,7 @@ internal class InMemoryApiImpl : InMemoryApi {
 
     private var professionals = defaultProfessionals
 
-    private var availability = listOf<ProfessionalAvailability>()
+    private var availability = mutableListOf<ProfessionalAvailability>()
 
     private inner class Signup : SignUpApi {
         override suspend fun register(request: RegisterRequest): UserData {
@@ -247,7 +247,16 @@ internal class InMemoryApiImpl : InMemoryApi {
         }
 
         override suspend fun getAvailability() = availability
-        override suspend fun updateAvailability(availability: UpdateAvailabilityRequest) {
+        override suspend fun updateAvailability(request: UpdateAvailabilityRequest) {
+            availability.addAll(
+                request.items.map {
+                    ProfessionalAvailability(
+                        date = LocalDate.parse(it.date),
+                        from = LocalTime.parse(it.from),
+                        to = LocalTime.parse(it.to),
+                    )
+                }
+            )
         }
     }
 
@@ -295,6 +304,6 @@ internal class InMemoryApiImpl : InMemoryApi {
     }
 
     override fun setProAvailability(availability: List<ProfessionalAvailability>) {
-        this.availability = availability
+        this.availability = availability.toMutableList()
     }
 }
