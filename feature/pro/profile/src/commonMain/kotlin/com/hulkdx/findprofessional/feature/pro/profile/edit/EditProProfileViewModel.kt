@@ -38,13 +38,12 @@ class EditProProfileViewModel(
         }
     }
 
-    private fun updateState(update: ProUser.() -> ProUser) = _uiState.update { it.update() }
-    fun setFirstName(value: String) = updateState { copy(firstName = value) }
-    fun setLastName(value: String) = updateState { copy(lastName = value) }
-    fun setSkypeId(value: String) = updateState { copy(skypeId = value) }
-    fun setEmail(value: String) = updateState { copy(email = value) }
-    fun setCoachType(value: String) = updateState { copy(coachType = value) }
-    fun setAboutMe(value: String) = updateState { copy(description = value) }
-    fun setPrice(value: String) = updateState { copy(priceNumber = toPriceNumber(value)) }
+    fun setFirstName(value: String) = _uiState.update { it.copy(firstName = value) }
+    fun setLastName(value: String) = _uiState.update { it.copy(lastName = value) }
+    fun setSkypeId(value: String) = _uiState.update { it.copy(skypeId = value) }
+    fun setEmail(value: String) = _uiState.update { it.copy(email = value) }
+    fun setCoachType(value: String) = _uiState.update { it.copy(coachType = value) }
+    fun setAboutMe(value: String) = _uiState.update { it.copy(description = value) }
+    fun setPrice(value: String) = _uiState.update { it.copy(priceNumber = toPriceNumber(value)) }
     fun setError(error: StringOrRes?) { _error.value = error }
 }

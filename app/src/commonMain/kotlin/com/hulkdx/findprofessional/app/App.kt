@@ -18,6 +18,7 @@ import com.hulkdx.findprofessional.feature.pro.profile.ProProfileScreen
 import com.hulkdx.findprofessional.feature.pro.profile.edit.EditProProfileScreen
 import com.hulkdx.findprofessional.feature.pro.schedule.ProScheduleScreen
 import com.hulkdx.findprofessional.feature.profile.ProfileScreen
+import com.hulkdx.findprofessional.feature.profile.edit.ProfileEditScreen
 import com.hulkdx.findprofessional.feature.review.ReviewScreen
 import com.hulkdx.findprofessional.libs.navigation.decompose.RootComponent
 import com.hulkdx.findprofessional.libs.navigation.decompose.RootContent
@@ -41,6 +42,7 @@ private fun RenderScreen(screen: NavigationScreen) {
         is NavigationScreen.HomeDetail -> HomeDetailScreen(screen.professional)
         is NavigationScreen.Review -> ReviewScreen(screen.professional)
         is NavigationScreen.Profile -> ProfileScreen()
+        is NavigationScreen.ProfileEdit -> ProfileEditScreen()
         is NavigationScreen.BookingTime -> BookingTimeScreen(screen.professional)
         is NavigationScreen.BookingSummery -> BookingSummeryScreen(screen.professional, screen.times)
 

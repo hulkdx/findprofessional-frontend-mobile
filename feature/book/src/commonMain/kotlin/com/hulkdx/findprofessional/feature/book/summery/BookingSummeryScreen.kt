@@ -3,6 +3,7 @@ package com.hulkdx.findprofessional.feature.book.summery
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -61,8 +62,9 @@ fun BookingSummeryScreen(
     BookingSummeryScreen(
         uiState = uiState ?: return,
         onCheckoutClicked = viewModel::onCheckoutClicked,
+        onEditSkypeIdClicked = viewModel::onEditSkypeIdClicked,
         error = error?.localized(),
-        onErrorDismissed = { viewModel.setError(null) }
+        onErrorDismissed = { viewModel.setError(null) },
     )
 }
 
@@ -70,6 +72,7 @@ fun BookingSummeryScreen(
 fun BookingSummeryScreen(
     uiState: BookingSummeryUiState,
     onCheckoutClicked: () -> Unit,
+    onEditSkypeIdClicked: () -> Unit,
     error: String?,
     onErrorDismissed: () -> Unit,
 ) {
@@ -86,7 +89,7 @@ fun BookingSummeryScreen(
             items(uiState.times) {
                 TimeItem(it)
             }
-            item { ConnectionSection(uiState.userSkypeId) }
+            item { ConnectionSection(uiState.userSkypeId, onEditSkypeIdClicked) }
         }
         CUBackButton(modifier = Modifier.align(Alignment.TopStart))
         Bottom(
@@ -156,7 +159,10 @@ private fun TimeItem(data: BookingSummeryUiState.Time) {
 }
 
 @Composable
-private fun ConnectionSection(skypeId: String?) {
+private fun ConnectionSection(
+    skypeId: String?,
+    onEditSkypeIdClicked: () -> Unit,
+) {
     Column {
         Text(
             modifier = Modifier
@@ -167,18 +173,22 @@ private fun ConnectionSection(skypeId: String?) {
             text = stringResource(Res.string.connection),
             style = body1Medium,
         )
-        SkypeId(skypeId)
+        SkypeId(skypeId, onEditSkypeIdClicked)
     }
 }
 
 @Composable
-private fun SkypeId(skypeId: String?) {
+private fun SkypeId(
+    skypeId: String?,
+    onEditSkypeIdClicked: () -> Unit,
+) {
     Row(
         modifier = Modifier
             .padding(horizontal = 26.dp)
             .padding(top = 8.dp)
             .background(MaterialTheme.colorScheme.surfaceVariant)
             .fillMaxWidth()
+            .clickable(onClick = onEditSkypeIdClicked)
             .padding(16.dp),
     ) {
         Text(
@@ -248,6 +258,7 @@ private fun BookingSummeryScreenPreview() {
             error = "",
             onErrorDismissed = {},
             onCheckoutClicked = {},
+            onEditSkypeIdClicked = {},
             uiState = BookingSummeryUiState(
                 userSkypeId = "test@gmail.com",
                 times = listOf(

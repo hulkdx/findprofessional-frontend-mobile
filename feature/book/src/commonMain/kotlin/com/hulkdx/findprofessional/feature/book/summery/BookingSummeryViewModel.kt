@@ -26,5 +26,8 @@ class BookingSummeryViewModel(
     fun onCheckoutClicked() {
     }
 
+    fun onEditSkypeIdClicked() {
+    }
+
     fun setError(error: StringOrRes?) = _error.update { error }
 }

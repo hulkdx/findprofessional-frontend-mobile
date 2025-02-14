@@ -28,5 +28,9 @@ class ProfileViewModel(
         navigator.navigate(NavigationScreen.ProSignUp())
     }
 
+    fun onEditProfileClicked() {
+        navigator.navigate(NavigationScreen.ProfileEdit)
+    }
+
     fun setError(error: StringOrRes?) = _error.update { error }
 }

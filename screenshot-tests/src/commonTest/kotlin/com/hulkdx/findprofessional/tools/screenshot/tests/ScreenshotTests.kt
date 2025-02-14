@@ -103,7 +103,7 @@ class ScreenshotTests {
     @Test
     fun profileScreen() {
         screenShotTests(className, "profileScreen") {
-            ProfileScreen({}, {}, "", {})
+            ProfileScreen({}, {}, {}, "", {})
         }
     }
 
@@ -132,6 +132,7 @@ class ScreenshotTests {
                 error = "",
                 onCheckoutClicked = {},
                 onErrorDismissed = {},
+                onEditSkypeIdClicked = {},
                 uiState = BookingSummeryUiState(
                     userSkypeId = "test@gmail.com", times = listOf(
                         BookingSummeryUiState.Time(
