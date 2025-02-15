@@ -23,5 +23,11 @@ class BookingSummeryViewModel(
     private val _error = MutableStateFlow<StringOrRes?>(null)
     val error = _error.asStateFlow()
 
+    fun onCheckoutClicked() {
+    }
+
+    fun onEditSkypeIdClicked() {
+    }
+
     fun setError(error: StringOrRes?) = _error.update { error }
 }
