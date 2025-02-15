@@ -2,6 +2,7 @@ package com.hulkdx.findprofessional.tools.screenshot.tests
 
 import com.hulkdx.findprofessional.core.features.pro.model.request.SignUpProRequest
 import com.hulkdx.findprofessional.core.features.user.ProUser
+import com.hulkdx.findprofessional.core.features.user.User
 import com.hulkdx.findprofessional.feature.authentication.login.LoginScreen
 import com.hulkdx.findprofessional.feature.authentication.signup.SignUpScreen
 import com.hulkdx.findprofessional.feature.authentication.splash.Splash
@@ -20,6 +21,7 @@ import com.hulkdx.findprofessional.feature.pro.availability.main.ProAvailability
 import com.hulkdx.findprofessional.feature.pro.profile.ProProfileScreen
 import com.hulkdx.findprofessional.feature.pro.profile.edit.EditProProfileScreen
 import com.hulkdx.findprofessional.feature.profile.ProfileScreen
+import com.hulkdx.findprofessional.feature.profile.edit.ProfileEditScreen
 import com.hulkdx.findprofessional.feature.review.ReviewScreen
 import kotlinx.datetime.LocalDate
 import kotlin.test.Test
@@ -104,6 +106,16 @@ class ScreenshotTests {
     fun profileScreen() {
         screenShotTests(className, "profileScreen") {
             ProfileScreen({}, {}, {}, "", {})
+        }
+    }
+
+    @Test
+    fun editProfileScreen() {
+        screenShotTests(className, "editProfileScreen") {
+            ProfileEditScreen(
+                User(),
+                null, {}, {}, {}, {}, {},
+            )
         }
     }
 

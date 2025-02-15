@@ -6,9 +6,9 @@ import kotlinx.serialization.Serializable
 @Serializable
 @SerialName("normal")
 data class User(
-    val email: String,
-    val firstName: String,
-    val lastName: String,
+    val email: String = "",
+    val firstName: String = "",
+    val lastName: String = "",
     val profileImage: String? = null,
     val skypeId: String? = null,
 ) : UserType() {

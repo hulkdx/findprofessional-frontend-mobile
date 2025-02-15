@@ -71,15 +71,9 @@ fun ProfileScreen(
                 .padding(bottom = AppNavigationBarDimens.Height.dp)
         ) {
             item { Header() }
-            item {
-                ProfileItem(Res.string.becomeCoach, onBecomeCoachClicked)
-            }
-            item {
-                ProfileItem(Res.string.editProfile, onEditProfileClicked)
-            }
-            item {
-                ProfileItem(Res.string.logout, onLogoutClicked)
-            }
+            item { ProfileItem(Res.string.editProfile, onEditProfileClicked) }
+            item { ProfileItem(Res.string.becomeCoach, onBecomeCoachClicked) }
+            item { ProfileItem(Res.string.logout, onLogoutClicked) }
         }
     }
 }
