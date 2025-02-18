@@ -2,10 +2,10 @@ package com.hulkdx.findprofessional.feature.pro.profile.edit
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.hulkdx.findprofessional.core.utils.PriceUtils.toPriceNumber
 import com.hulkdx.findprofessional.core.features.user.ProUser
 import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import com.hulkdx.findprofessional.core.navigation.Navigator
+import com.hulkdx.findprofessional.core.utils.PriceUtils.toPriceNumber
 import com.hulkdx.findprofessional.core.utils.StringOrRes
 import com.hulkdx.findprofessional.feature.pro.auth.signup.usecase.GetProUserUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -33,7 +33,11 @@ class EditProProfileViewModel(
 
     fun onSaveButtonClicked() {
         viewModelScope.launch {
-            _error.value = saveProUserUseCase.save(_uiState.value)
+            val error = saveProUserUseCase.save(_uiState.value)
+            if (error != null) {
+                _error.value = error
+                return@launch
+            }
             navigator.navigate(NavigationScreen.ProProfile)
         }
     }
@@ -45,5 +49,7 @@ class EditProProfileViewModel(
     fun setCoachType(value: String) = _uiState.update { it.copy(coachType = value) }
     fun setAboutMe(value: String) = _uiState.update { it.copy(description = value) }
     fun setPrice(value: String) = _uiState.update { it.copy(priceNumber = toPriceNumber(value)) }
-    fun setError(error: StringOrRes?) { _error.value = error }
+    fun setError(error: StringOrRes?) {
+        _error.value = error
+    }
 }

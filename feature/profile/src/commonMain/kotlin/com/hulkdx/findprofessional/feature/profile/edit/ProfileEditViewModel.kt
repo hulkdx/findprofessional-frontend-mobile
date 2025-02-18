@@ -10,6 +10,7 @@ import com.hulkdx.findprofessional.core.utils.PriceUtils.toPriceNumber
 import com.hulkdx.findprofessional.core.utils.StringOrRes
 import com.hulkdx.findprofessional.feature.authentication.login.usecase.GetUserUseCase
 import com.hulkdx.findprofessional.feature.authentication.login.usecase.LogoutUseCase
+import com.hulkdx.findprofessional.feature.profile.edit.usecase.UpdateProfileUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
@@ -18,6 +19,7 @@ import kotlinx.coroutines.launch
 
 class ProfileEditViewModel(
     getUserUseCase: GetUserUseCase,
+    private val updateProfileUseCase: UpdateProfileUseCase,
     private val navigator: Navigator,
 ) : ViewModel() {
     private val _error: MutableStateFlow<StringOrRes?> = MutableStateFlow(null)
@@ -34,7 +36,11 @@ class ProfileEditViewModel(
 
     fun onSaveButtonClicked() {
         viewModelScope.launch {
-            // TODO: call the api
+            val error = updateProfileUseCase.execute(_uiState.value)
+            if (error != null) {
+                _error.value = error
+                return@launch
+            }
             navigator.navigate(NavigationScreen.Profile)
         }
     }

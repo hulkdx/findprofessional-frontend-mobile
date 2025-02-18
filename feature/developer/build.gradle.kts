@@ -12,6 +12,7 @@ kotlin {
             implementation(projects.feature.home)
             implementation(projects.feature.review)
             implementation(projects.feature.pro.auth)
+            implementation(projects.feature.profile)
 
             implementation(libs.ktor.core)
             implementation(libs.lifecycle.viewmodel.compose)
