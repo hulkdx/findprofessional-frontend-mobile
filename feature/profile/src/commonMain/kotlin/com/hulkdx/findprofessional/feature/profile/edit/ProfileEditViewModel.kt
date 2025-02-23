@@ -41,7 +41,7 @@ class ProfileEditViewModel(
                 _error.value = error
                 return@launch
             }
-            navigator.navigate(NavigationScreen.Profile)
+            navigator.goBack()
         }
     }
 
