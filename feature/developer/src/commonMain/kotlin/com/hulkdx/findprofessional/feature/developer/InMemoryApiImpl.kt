@@ -1,20 +1,22 @@
 package com.hulkdx.findprofessional.feature.developer
 
+import com.hulkdx.findprofessional.core.features.pro.api.ProfessionalApi
 import com.hulkdx.findprofessional.core.features.pro.model.Professional
 import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalAvailability
 import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalReview
 import com.hulkdx.findprofessional.core.features.pro.model.request.SignUpProRequest
+import com.hulkdx.findprofessional.core.features.pro.model.request.UpdateAvailabilityRequest
 import com.hulkdx.findprofessional.core.features.user.ProUser
 import com.hulkdx.findprofessional.core.features.user.Token
 import com.hulkdx.findprofessional.core.features.user.User
 import com.hulkdx.findprofessional.core.features.user.UserData
+import com.hulkdx.findprofessional.core.features.user.UserType
 import com.hulkdx.findprofessional.core.utils.now
 import com.hulkdx.findprofessional.feature.authentication.login.api.LoginApi
 import com.hulkdx.findprofessional.feature.authentication.login.model.LoginRequest
 import com.hulkdx.findprofessional.feature.authentication.signup.SignUpApi
 import com.hulkdx.findprofessional.feature.authentication.signup.model.RegisterRequest
-import com.hulkdx.findprofessional.core.features.pro.api.ProfessionalApi
-import com.hulkdx.findprofessional.core.features.pro.model.request.UpdateAvailabilityRequest
+import com.hulkdx.findprofessional.feature.profile.edit.api.UpdateProfileApi
 import com.hulkdx.findprofessional.feature.review.ReviewApi
 import kotlinx.datetime.Clock
 import kotlinx.datetime.LocalDate
@@ -27,6 +29,7 @@ internal class InMemoryApiImpl : InMemoryApi {
         single<LoginApi> { Login() }
         single<ProfessionalApi> { Pro() }
         single<ReviewApi> { Review() }
+        single<UpdateProfileApi> { UpdateProfile() }
     }
 
     private var users = mutableListOf<UserData>()
@@ -279,6 +282,24 @@ internal class InMemoryApiImpl : InMemoryApi {
                 createdAt = Clock.System.now(),
                 updatedAt = Clock.System.now()
             )
+        }
+    }
+
+    private inner class UpdateProfile : UpdateProfileApi {
+        override suspend fun update(user: User): UserType {
+            if (users.isNotEmpty()) {
+                users.removeLast()
+            }
+            users.add(
+                UserData(
+                    Token(
+                        "uiTestAccessToken",
+                        "uiTestRefreshToken",
+                    ),
+                    user,
+                )
+            )
+            return user
         }
     }
 
