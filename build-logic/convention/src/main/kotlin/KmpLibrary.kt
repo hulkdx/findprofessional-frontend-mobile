@@ -1,6 +1,7 @@
 import com.android.build.gradle.LibraryExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.getByType
 import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
 
@@ -15,6 +16,9 @@ class KmpLibrary : Plugin<Project> {
             }
             kotlin(extensions.getByType<KotlinMultiplatformExtension>())
             android(extensions.getByType<LibraryExtension>())
+            dependencies {
+                add("debugImplementation", compose.uiTooling)
+            }
         }
     }
 }
