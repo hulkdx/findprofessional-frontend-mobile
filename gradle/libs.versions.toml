@@ -5,38 +5,38 @@
 #
 
 # https://github.com/JetBrains/kotlin
-kotlin = "2.1.0"
+kotlin = "2.2.10"
 # https://developer.android.com/studio/releases/gradle-plugin
 # noinspection AndroidGradlePluginVersion
-androidGradlePlugin = "8.8.0"
+androidGradlePlugin = "8.10.0"
 # https://developer.android.com/jetpack/androidx/releases/activity
-androidxActivity = "1.9.3"
+androidxActivity = "1.10.1"
 # https://developer.android.com/jetpack/androidx/releases/datastore
-androidxDataStore = "1.1.2"
+androidxDataStore = "1.1.7"
 # https://github.com/coil-kt/coil
-coil = "3.0.4"
+coil = "3.3.0"
 # https://github.com/JetBrains/compose-multiplatform
-compose-plugin = "1.7.3"
+compose-plugin = "1.8.2"
 # https://github.com/arkivanov/Decompose
-decompose = "3.2.2"
+decompose = "3.3.0"
 # https://github.com/InsertKoinIO/koin
-koin = "4.0.2"
+koin = "4.1.0"
 # https://central.sonatype.com/artifact/io.insert-koin/koin-compose/versions
-koin-compose = "4.0.2"
+koin-compose = "4.1.0"
 # https://github.com/Kotlin/kotlinx-datetime
-kotlinxDatetime = "0.6.1"
+kotlinxDatetime = "0.7.1"
 # https://github.com/Kotlin/kotlinx.serialization
-kotlinxSerializationJson = "1.8.0"
+kotlinxSerializationJson = "1.9.0"
 # https://github.com/ktorio/ktor
-ktor = "3.0.3"
+ktor = "3.2.3"
 # https://github.com/Kotlin/kotlinx.coroutines
-kotlinxCoroutines = "1.10.1"
+kotlinxCoroutines = "1.10.2"
 # https://github.com/square/leakcanary
 leakcanary = "2.14"
 # https://central.sonatype.com/artifact/org.jetbrains.androidx.lifecycle/lifecycle-viewmodel-compose/versions
-lifecycle = "2.8.4"
+lifecycle = "2.9.3"
 # https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-compatibility-and-versioning.html#jetpack-compose-and-compose-multiplatform-release-cycles
-test-composeUi = "1.7.6"
+test-composeUi = "1.9.0"
 
 
 [libraries]
