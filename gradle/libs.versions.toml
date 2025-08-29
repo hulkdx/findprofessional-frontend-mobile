@@ -38,6 +38,8 @@ leakcanary = "2.14"
 lifecycle = "2.9.3"
 # https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-compatibility-and-versioning.html#jetpack-compose-and-compose-multiplatform-release-cycles
 test-composeUi = "1.9.0"
+# https://github.com/cashapp/paparazzi
+test-paparazzi = "2.0.0-alpha02"
 
 
 [libraries]
@@ -82,6 +84,7 @@ jetbrains-compose = { id = "org.jetbrains.compose", version.ref = "compose-plugi
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+paparazzi = { id = "app.cash.paparazzi", version.ref = "test-paparazzi"}
 
 # build-logic
 hulkdx-kmp-application = { id = "com.hulkdx.findprofessional.kmp.application", version = "unspecified" }
