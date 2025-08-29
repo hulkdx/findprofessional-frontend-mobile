@@ -39,7 +39,7 @@ class ProfileEditViewModel(
             val error = updateProfileUseCase.execute(_uiState.value)
             if (error != null) {
                 _error.value = error
-                // return@launch
+                return@launch
             }
             navigator.goBack()
         }
