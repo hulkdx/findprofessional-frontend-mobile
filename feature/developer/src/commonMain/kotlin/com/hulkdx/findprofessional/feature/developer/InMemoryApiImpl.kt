@@ -237,7 +237,9 @@ internal class InMemoryApiImpl : InMemoryApi {
         }
 
         override suspend fun update(proUser: ProUser) {
-            users.removeLast()
+            if (users.isNotEmpty()) {
+                users.removeAt(users.size - 1)
+            }
             users.add(
                 UserData(
                     Token(
@@ -288,7 +290,7 @@ internal class InMemoryApiImpl : InMemoryApi {
     private inner class UpdateProfile : UpdateProfileApi {
         override suspend fun update(user: User): UserType {
             if (users.isNotEmpty()) {
-                users.removeLast()
+                users.removeAt(users.size - 1)
             }
             users.add(
                 UserData(

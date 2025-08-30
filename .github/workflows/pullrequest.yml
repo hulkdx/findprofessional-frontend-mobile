@@ -102,10 +102,13 @@ jobs:
           disable-animations: false
           emulator-build: 11834374
           emulator-options: -no-snapshot -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -camera-front none
-          script: >
-            ./gradlew connectedAndroidTest ||
-            (adb pull sdcard/Download/uitest-screenshot-failure &&
-            exit 1)
+          script: |
+            touch adb-log.txt
+            adb logcat '*:D' >> adb-log.txt &
+            LOGCAT_PID=$!
+            adb emu screenrecord start --time-limit 1800 video.webm || true
+            sleep 5
+            ./gradlew connectedAndroidTest
 
       - name: Upload Android test reports
         if: failure()
@@ -116,6 +119,20 @@ jobs:
             **/build/reports/tests
             **/build/reports/androidTests/connected
             uitest-screenshot-failure
+
+      - name: Upload Emulator Log
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: ${{ matrix.name }}-adb_logs
+          path: adb-log.txt
+
+      - name: Upload Emulator Screen Record
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: ${{ matrix.name }}-adb_video
+          path: video.webm
 
 
   ios-tests:
