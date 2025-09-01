@@ -25,7 +25,7 @@ koin = "4.1.0"
 koin-compose = "4.1.0"
 # https://github.com/Kotlin/kotlinx-datetime
 # Using 0.6.2 until https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.time/-instant/ is not experimental
-kotlinxDatetime = "0.6.2"
+kotlinxDatetime = "0.7.1-0.6.x-compat"
 # https://github.com/Kotlin/kotlinx.serialization
 kotlinxSerializationJson = "1.9.0"
 # https://github.com/ktorio/ktor
