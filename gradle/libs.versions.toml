@@ -20,7 +20,7 @@ compose-plugin = "1.8.2"
 # https://github.com/arkivanov/Decompose
 decompose = "3.3.0"
 # https://github.com/InsertKoinIO/koin
-koin = "4.1.0"
+koin = "4.1.1"
 # https://central.sonatype.com/artifact/io.insert-koin/koin-compose/versions
 koin-compose = "4.1.0"
 # https://github.com/Kotlin/kotlinx-datetime
