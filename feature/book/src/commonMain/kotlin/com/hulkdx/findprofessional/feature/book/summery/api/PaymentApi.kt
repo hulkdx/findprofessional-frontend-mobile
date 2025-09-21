@@ -21,7 +21,7 @@ class PaymentApiImpl(
     override suspend fun checkout(request: PayRequest): PayResponse {
         return client.post {
             auth(userStorage)
-            apiUrl("/payments/create-intent")
+            apiUrl("payments/create-intent")
             contentType(ContentType.Application.Json)
             setBody(request)
         }
