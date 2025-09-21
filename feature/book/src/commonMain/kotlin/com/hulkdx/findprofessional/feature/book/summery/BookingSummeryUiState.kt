@@ -4,6 +4,7 @@ import com.hulkdx.findprofessional.core.utils.StringOrRes
 
 data class BookingSummeryUiState(
     val summeryDetails: SummeryDetails = SummeryDetails(),
+    val checkoutStatus: CheckoutStatus = CheckoutStatus.Idle,
     val error: StringOrRes? = null,
 ) {
     data class SummeryDetails(
@@ -17,5 +18,11 @@ data class BookingSummeryUiState(
             val date: String,
             val day: String,
         )
+    }
+
+    sealed interface CheckoutStatus {
+        object Idle : CheckoutStatus
+        object Loading : CheckoutStatus
+        object Success : CheckoutStatus
     }
 }
