@@ -35,6 +35,7 @@ private object ApiUrl : KoinComponent {
             "auth/signup",
             "auth/refresh-token",
             "auth/user",
+            "auth/refresh",
                 -> ":8080"
 
             "payments/create-intent" -> ":8082"
