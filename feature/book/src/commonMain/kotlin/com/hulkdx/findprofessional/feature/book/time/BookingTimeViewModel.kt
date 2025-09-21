@@ -3,7 +3,10 @@ package com.hulkdx.findprofessional.feature.book.time
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hulkdx.findprofessional.core.features.pro.model.Professional
+import com.hulkdx.findprofessional.core.resources.Res
+import com.hulkdx.findprofessional.core.resources.invalidTime
 import com.hulkdx.findprofessional.core.utils.StringOrRes
+import com.hulkdx.findprofessional.core.utils.toStringOrRes
 import com.hulkdx.findprofessional.feature.book.time.BookingTimeUiState.BookingTime
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -36,6 +39,10 @@ class BookingTimeViewModel(
     }
 
     fun onContinueClicked() {
+        if (!useCase.hasSelectedItems()) {
+            setError(Res.string.invalidTime.toStringOrRes())
+            return
+        }
         useCase.onContinueClicked(professional)
     }
 

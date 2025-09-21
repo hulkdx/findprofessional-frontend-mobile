@@ -62,6 +62,10 @@ class BookingTimeUseCase(
         }
     }
 
+    fun hasSelectedItems(): Boolean {
+        return selectedItems.value.items.isNotEmpty()
+    }
+
     fun onContinueClicked(professional: Professional) {
         navigator.navigate(NavigationScreen.BookingSummery(professional, selectedItems.value))
     }
