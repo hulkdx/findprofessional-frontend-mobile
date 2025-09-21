@@ -37,6 +37,8 @@ private object ApiUrl : KoinComponent {
             "auth/user",
                 -> ":8080"
 
+            "payments/create-intent" -> ":8082"
+
             else -> ":8081"
         }
     }
