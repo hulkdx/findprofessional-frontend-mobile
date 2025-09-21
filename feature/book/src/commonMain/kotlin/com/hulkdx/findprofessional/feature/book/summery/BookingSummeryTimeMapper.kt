@@ -5,9 +5,10 @@ import com.hulkdx.findprofessional.core.features.book.SelectedTimes
 import com.hulkdx.findprofessional.core.features.pro.model.Professional
 import com.hulkdx.findprofessional.core.utils.CurrencyFormatter
 import com.hulkdx.findprofessional.core.utils.NumberFormatter
-import com.hulkdx.findprofessional.core.utils.shortDayOfWeeks
-import com.hulkdx.findprofessional.feature.book.time.utils.BookingTimeUtils.currentDay
 import com.hulkdx.findprofessional.core.utils.TimeUtils.formattedTime
+import com.hulkdx.findprofessional.core.utils.shortDayOfWeeks
+import com.hulkdx.findprofessional.feature.book.summery.BookingSummeryUiState.SummeryDetails.Time
+import com.hulkdx.findprofessional.feature.book.time.utils.BookingTimeUtils.currentDay
 import kotlinx.datetime.LocalDate
 
 class BookingSummeryTimeMapper {
@@ -17,11 +18,11 @@ class BookingSummeryTimeMapper {
         }
 
     @VisibleForTesting
-    internal fun map(date: LocalDate, startTimeMinutes: Int): BookingSummeryUiState.Time {
+    internal fun map(date: LocalDate, startTimeMinutes: Int): Time {
         val endTime = startTimeMinutes + 30
         val duration = "${formattedTime(startTimeMinutes)} - ${formattedTime(endTime)}"
 
-        return BookingSummeryUiState.Time(
+        return Time(
             duration = duration,
             date = currentDay(date),
             day = date.shortDayOfWeeks(),

@@ -24,11 +24,8 @@ class BookingSummeryViewModel(
     private val checkoutUseCase: CheckoutUseCase,
     private val navigator: Navigator,
 ) : ViewModel() {
-    val uiState = useCase.getUiState(professional, times)
-        .stateIn(viewModelScope, WhileSubscribed(5_000), null)
-
-    private val _error = MutableStateFlow<StringOrRes?>(null)
-    val error = _error.asStateFlow()
+    private val _uiState = MutableStateFlow(BookingSummeryUiState())
+    val uiState = _uiState.asStateFlow()
 
     fun onCheckoutClicked() {
         viewModelScope.launch {
@@ -44,5 +41,5 @@ class BookingSummeryViewModel(
         navigator.navigate(NavigationScreen.ProfileEdit)
     }
 
-    fun setError(error: StringOrRes?) = _error.update { error }
+    fun setError(error: StringOrRes?) = _uiState.update { uiState -> uiState.copy(error = error) }
 }

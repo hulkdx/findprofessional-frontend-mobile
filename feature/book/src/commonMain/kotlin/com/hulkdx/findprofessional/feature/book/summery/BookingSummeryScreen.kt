@@ -56,14 +56,13 @@ fun BookingSummeryScreen(
     times: SelectedTimes,
     viewModel: BookingSummeryViewModel = koinViewModel { parametersOf(professional, times) },
 ) {
-    val error by viewModel.error.collectAsState()
     val uiState by viewModel.uiState.collectAsState()
 
     BookingSummeryScreen(
-        uiState = uiState ?: return,
+        uiState = uiState,
         onCheckoutClicked = viewModel::onCheckoutClicked,
         onEditSkypeIdClicked = viewModel::onEditSkypeIdClicked,
-        error = error?.localized(),
+        error = uiState.error?.localized(),
         onErrorDismissed = { viewModel.setError(null) },
     )
 }
@@ -86,15 +85,15 @@ fun BookingSummeryScreen(
         LazyColumn(Modifier.padding(top = 100.dp)) {
             item { YourRequest() }
             item { DateAndTime() }
-            items(uiState.times) {
+            items(uiState.summeryDetails.times) {
                 TimeItem(it)
             }
-            item { ConnectionSection(uiState.userSkypeId, onEditSkypeIdClicked) }
+            item { ConnectionSection(uiState.summeryDetails.userSkypeId, onEditSkypeIdClicked) }
         }
         CUBackButton(modifier = Modifier.align(Alignment.TopStart))
         Bottom(
             modifier = Modifier.align(Alignment.BottomStart),
-            totalPrices = uiState.totalPrices,
+            totalPrices = uiState.summeryDetails.totalPrices,
             onCheckoutClicked = onCheckoutClicked,
         )
         CUSnackBar(
@@ -130,7 +129,7 @@ private fun DateAndTime() {
 }
 
 @Composable
-private fun TimeItem(data: BookingSummeryUiState.Time) {
+private fun TimeItem(data: BookingSummeryUiState.SummeryDetails.Time) {
     Row(
         modifier = Modifier
             .padding(horizontal = 26.dp)
@@ -260,20 +259,22 @@ private fun BookingSummeryScreenPreview() {
             onCheckoutClicked = {},
             onEditSkypeIdClicked = {},
             uiState = BookingSummeryUiState(
-                userSkypeId = "test@gmail.com",
-                times = listOf(
-                    BookingSummeryUiState.Time(
-                        duration = "16:30 - 17:00",
-                        date = "1.1.2024",
-                        day = "Mon",
+                BookingSummeryUiState.SummeryDetails(
+                    userSkypeId = "test@gmail.com",
+                    times = listOf(
+                        BookingSummeryUiState.SummeryDetails.Time(
+                            duration = "16:30 - 17:00",
+                            date = "1.1.2024",
+                            day = "Mon",
+                        ),
+                        BookingSummeryUiState.SummeryDetails.Time(
+                            duration = "17:30 - 18:00",
+                            date = "1.1.2024",
+                            day = "Mon",
+                        ),
                     ),
-                    BookingSummeryUiState.Time(
-                        duration = "17:30 - 18:00",
-                        date = "1.1.2024",
-                        day = "Mon",
-                    ),
+                    totalPrices = "100 €"
                 ),
-                totalPrices = "100 €"
             ),
         )
     }
