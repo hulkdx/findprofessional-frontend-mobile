@@ -28,10 +28,6 @@ object AppApiProvider {
             connectTimeoutMillis = 10_000
         }
 
-        install(DefaultRequest) {
-            url(baseUrl(ps))
-        }
-
         // throws exception when request is not successful:
         expectSuccess = true
 
@@ -49,14 +45,6 @@ object AppApiProvider {
                 }
             }
             level = LogLevel.ALL
-        }
-    }
-
-    private fun baseUrl(ps: PlatformSpecific): String = with(ps) {
-        return if (isDebug()) {
-            "http://${localhostUrl()}:8080/"
-        } else {
-            "http://api.sabajafarzadeh.com:30000/"
         }
     }
 }
