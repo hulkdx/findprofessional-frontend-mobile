@@ -22,11 +22,3 @@ inline fun getGeneralErrorOrNull(block: () -> Unit): StringOrRes? {
     }
 }
 
-inline fun <R> getOrGeneralError(block: () -> R): Pair<R?, StringOrRes?> {
-    try {
-        return block() to null
-    } catch (e: Throwable) {
-        val error = e.generalError()
-        return null to error
-    }
-}

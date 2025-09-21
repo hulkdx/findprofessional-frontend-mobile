@@ -9,6 +9,7 @@ import com.hulkdx.findprofessional.core.features.pro.model.Professional
 import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import com.hulkdx.findprofessional.core.navigation.Navigator
 import com.hulkdx.findprofessional.core.utils.StringOrRes
+import com.hulkdx.findprofessional.core.utils.generalError
 import com.hulkdx.findprofessional.feature.book.summery.BookingSummeryUiState.CheckoutStatus
 import com.hulkdx.findprofessional.feature.book.summery.api.PayRequest
 import com.hulkdx.findprofessional.feature.book.summery.usecase.BookingSummeryUseCase
@@ -41,12 +42,13 @@ class BookingSummeryViewModel(
     fun onCheckoutClicked() {
         viewModelScope.launch {
             setCheckoutStatus(CheckoutStatus.Loading)
-            val err = checkoutUseCase.execute(PayRequest(1000, "EUR"))
-            if (err != null) {
-                setError(err)
-                return@launch
-            }
-            setCheckoutStatus(CheckoutStatus.Success)
+            checkoutUseCase.execute(PayRequest(1000, "EUR"))
+                .onFailure { throwable ->
+                    setError(throwable.generalError())
+                }
+                .onSuccess {
+                    setCheckoutStatus(CheckoutStatus.Success(it))
+                }
         }
     }
 
