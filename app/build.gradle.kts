@@ -102,6 +102,7 @@ android {
         implementation(libs.ktor.okhttp)
         implementation(libs.koin.android)
         implementation(libs.androidx.activity.compose)
+        implementation(libs.stripe.android)
         debugImplementation(libs.leakcanary)
 
         androidTestImplementation(libs.androidx.ui.test.junit4.android)

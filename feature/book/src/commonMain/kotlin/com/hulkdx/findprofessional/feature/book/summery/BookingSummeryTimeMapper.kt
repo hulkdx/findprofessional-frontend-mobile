@@ -28,8 +28,7 @@ class BookingSummeryTimeMapper {
         )
     }
 
-    @VisibleForTesting
-    internal fun calculateTotalPrices(
+    fun calculateTotalPrices(
         professional: Professional,
         sizeOfItemsSelected: Int,
     ): String {
