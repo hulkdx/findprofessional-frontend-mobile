@@ -33,7 +33,7 @@ class BookingSummeryViewModel(
 
     fun onCheckoutClicked() {
         viewModelScope.launch {
-            val err = checkoutUseCase.execute(PayRequest(10, "eur"))
+            val err = checkoutUseCase.execute(PayRequest(1000, "EUR"))
             if (err != null) {
                 setError(err)
                 return@launch
