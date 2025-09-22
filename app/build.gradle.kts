@@ -18,6 +18,7 @@ kotlin {
     }
 
     sourceSets {
+        // NOTE: android dependencies are listed below
         commonMain.dependencies {
             implementation(projects.core)
             implementation(projects.libs.navigationDecompose)
@@ -102,7 +103,6 @@ android {
         implementation(libs.ktor.okhttp)
         implementation(libs.koin.android)
         implementation(libs.androidx.activity.compose)
-        implementation(libs.stripe.android)
         debugImplementation(libs.leakcanary)
 
         androidTestImplementation(libs.androidx.ui.test.junit4.android)

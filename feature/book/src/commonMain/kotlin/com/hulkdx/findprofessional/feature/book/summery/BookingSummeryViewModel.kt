@@ -12,6 +12,7 @@ import com.hulkdx.findprofessional.core.utils.StringOrRes
 import com.hulkdx.findprofessional.core.utils.generalError
 import com.hulkdx.findprofessional.feature.book.summery.BookingSummeryUiState.CheckoutStatus
 import com.hulkdx.findprofessional.feature.book.summery.api.PayRequest
+import com.hulkdx.findprofessional.feature.book.summery.stripe.PaymentSheetResult
 import com.hulkdx.findprofessional.feature.book.summery.usecase.BookingSummeryUseCase
 import com.hulkdx.findprofessional.feature.book.summery.usecase.CheckoutUseCase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -42,6 +43,8 @@ class BookingSummeryViewModel(
     fun onCheckoutClicked() {
         viewModelScope.launch {
             setCheckoutStatus(CheckoutStatus.Loading)
+            // TODO: get the real values
+            // TODO: change the api to the pro
             checkoutUseCase.execute(PayRequest(1000, "EUR"))
                 .onFailure { throwable ->
                     setError(throwable.generalError())
@@ -50,6 +53,11 @@ class BookingSummeryViewModel(
                     setCheckoutStatus(CheckoutStatus.Success(it))
                 }
         }
+    }
+
+    fun onStripeResult(result: PaymentSheetResult) {
+        // TODO: add a stripe webhook to the server, wait over here to show confirmations
+        println(result)
     }
 
     fun onEditSkypeIdClicked() {

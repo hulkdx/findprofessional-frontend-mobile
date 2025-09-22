@@ -43,6 +43,8 @@ import com.hulkdx.findprofessional.core.ui.theme.AppTheme
 import com.hulkdx.findprofessional.core.ui.theme.body1Medium
 import com.hulkdx.findprofessional.core.ui.theme.body2
 import com.hulkdx.findprofessional.core.ui.theme.h1Medium
+import com.hulkdx.findprofessional.feature.book.summery.stripe.PaymentSheetResult
+import com.hulkdx.findprofessional.feature.book.summery.stripe.StripePayment
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
@@ -57,6 +59,8 @@ fun BookingSummeryScreen(
     viewModel: BookingSummeryViewModel = koinViewModel { parametersOf(professional, times) },
 ) {
     val uiState by viewModel.uiState.collectAsState()
+
+    StripePayment(uiState, viewModel::onStripeResult)
 
     BookingSummeryScreen(
         uiState = uiState,
