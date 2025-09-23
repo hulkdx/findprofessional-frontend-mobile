@@ -147,18 +147,22 @@ class ScreenshotTests {
                 onErrorDismissed = {},
                 onEditSkypeIdClicked = {},
                 uiState = BookingSummeryUiState(
-                    userSkypeId = "test@gmail.com", times = listOf(
-                        BookingSummeryUiState.Time(
-                            duration = "16:30 - 17:00",
-                            date = "1.1.2024",
-                            day = "Mon",
+                    BookingSummeryUiState.SummeryDetails(
+                        userSkypeId = "test@gmail.com",
+                        times = listOf(
+                            BookingSummeryUiState.SummeryDetails.Time(
+                                duration = "16:30 - 17:00",
+                                date = "1.1.2024",
+                                day = "Mon",
+                            ),
+                            BookingSummeryUiState.SummeryDetails.Time(
+                                duration = "17:30 - 18:00",
+                                date = "1.1.2024",
+                                day = "Mon",
+                            ),
                         ),
-                        BookingSummeryUiState.Time(
-                            duration = "17:30 - 18:00",
-                            date = "1.1.2024",
-                            day = "Mon",
-                        ),
-                    ), totalPrices = "100 €"
+                        formattedTotalPrices = "100 €",
+                    )
                 ),
             )
         }
