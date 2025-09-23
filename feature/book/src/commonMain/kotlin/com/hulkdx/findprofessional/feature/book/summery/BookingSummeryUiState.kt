@@ -1,7 +1,7 @@
 package com.hulkdx.findprofessional.feature.book.summery
 
 import com.hulkdx.findprofessional.core.utils.StringOrRes
-import com.hulkdx.findprofessional.feature.book.summery.api.PayResponse
+import com.hulkdx.findprofessional.core.features.pro.model.response.CreateBookingResponse
 
 data class BookingSummeryUiState(
     val summeryDetails: SummeryDetails = SummeryDetails(),
@@ -11,7 +11,7 @@ data class BookingSummeryUiState(
     data class SummeryDetails(
         val times: List<Time> = listOf(),
         val userSkypeId: String? = null,
-        val totalPrices: String = "",
+        val formattedTotalPrices: String = "",
     ) {
 
         data class Time(
@@ -24,6 +24,6 @@ data class BookingSummeryUiState(
     sealed interface CheckoutStatus {
         object Idle : CheckoutStatus
         object Loading : CheckoutStatus
-        data class Success(val result: PayResponse) : CheckoutStatus
+        data class Success(val result: CreateBookingResponse) : CheckoutStatus
     }
 }

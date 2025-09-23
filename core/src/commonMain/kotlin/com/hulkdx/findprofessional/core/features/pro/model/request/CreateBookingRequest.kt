@@ -1,10 +1,10 @@
-package com.hulkdx.findprofessional.feature.book.summery.api
+package com.hulkdx.findprofessional.core.features.pro.model.request
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class PayRequest(
+data class CreateBookingRequest(
     @SerialName("amounts_in_cents") val amountInCents: Long,
-    val currency: String,
+    @SerialName("currency") val currency: String,
 )

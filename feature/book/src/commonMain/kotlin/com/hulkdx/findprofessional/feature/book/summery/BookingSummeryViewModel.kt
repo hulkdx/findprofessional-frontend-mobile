@@ -11,10 +11,10 @@ import com.hulkdx.findprofessional.core.navigation.Navigator
 import com.hulkdx.findprofessional.core.utils.StringOrRes
 import com.hulkdx.findprofessional.core.utils.generalError
 import com.hulkdx.findprofessional.feature.book.summery.BookingSummeryUiState.CheckoutStatus
-import com.hulkdx.findprofessional.feature.book.summery.api.PayRequest
+import com.hulkdx.findprofessional.core.features.pro.model.request.CreateBookingRequest
 import com.hulkdx.findprofessional.feature.book.summery.stripe.PaymentSheetResult
 import com.hulkdx.findprofessional.feature.book.summery.usecase.BookingSummeryUseCase
-import com.hulkdx.findprofessional.feature.book.summery.usecase.CheckoutUseCase
+import com.hulkdx.findprofessional.feature.book.summery.usecase.CreateBookingUseCase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted.Companion.WhileSubscribed
@@ -27,7 +27,7 @@ class BookingSummeryViewModel(
     professional: Professional,
     times: SelectedTimes,
     useCase: BookingSummeryUseCase,
-    private val checkoutUseCase: CheckoutUseCase,
+    private val createBookingUseCase: CreateBookingUseCase,
     private val navigator: Navigator,
 ) : ViewModel() {
     private val _uiState = MutableStateFlow(BookingSummeryUiState())
@@ -43,9 +43,14 @@ class BookingSummeryViewModel(
     fun onCheckoutClicked() {
         viewModelScope.launch {
             setCheckoutStatus(CheckoutStatus.Loading)
-            // TODO: get the real values
+            val request = CreateBookingRequest(
+//                amountInCents = _uiState.value.summeryDetails.amountInCents,
+//                currency = _uiState.value.summeryDetails.currency,
+                1000,
+                "EUR",
+            )
             // TODO: change the api to the pro
-            checkoutUseCase.execute(PayRequest(1000, "EUR"))
+            createBookingUseCase.execute(request)
                 .onFailure { throwable ->
                     setError(throwable.generalError())
                 }

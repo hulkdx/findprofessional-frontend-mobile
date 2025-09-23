@@ -43,7 +43,6 @@ import com.hulkdx.findprofessional.core.ui.theme.AppTheme
 import com.hulkdx.findprofessional.core.ui.theme.body1Medium
 import com.hulkdx.findprofessional.core.ui.theme.body2
 import com.hulkdx.findprofessional.core.ui.theme.h1Medium
-import com.hulkdx.findprofessional.feature.book.summery.stripe.PaymentSheetResult
 import com.hulkdx.findprofessional.feature.book.summery.stripe.StripePayment
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -97,7 +96,7 @@ fun BookingSummeryScreen(
         CUBackButton(modifier = Modifier.align(Alignment.TopStart))
         Bottom(
             modifier = Modifier.align(Alignment.BottomStart),
-            totalPrices = uiState.summeryDetails.totalPrices,
+            totalPrices = uiState.summeryDetails.formattedTotalPrices,
             onCheckoutClicked = onCheckoutClicked,
         )
         CUSnackBar(
@@ -277,7 +276,7 @@ private fun BookingSummeryScreenPreview() {
                             day = "Mon",
                         ),
                     ),
-                    totalPrices = "100 €"
+                    formattedTotalPrices = "100 €"
                 ),
             ),
         )

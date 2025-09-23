@@ -21,7 +21,7 @@ class BookingSummeryTimeMapperTest {
         // Arrange
         val date = LocalDate(2024, 1, 1)
         val startTime = 0
-        val expectedResult = BookingSummeryUiState.Time(
+        val expectedResult = BookingSummeryUiState.SummeryDetails.Time(
             duration = "00:00 - 00:30",
             date = "1.1.2024",
             day = "Mon",
@@ -42,17 +42,17 @@ class BookingSummeryTimeMapperTest {
             )
         )
         val expectedResult = listOf(
-            BookingSummeryUiState.Time(
+            BookingSummeryUiState.SummeryDetails.Time(
                 duration = "00:00 - 00:30",
                 date = "1.1.2024",
                 day = "Mon",
             ),
-            BookingSummeryUiState.Time(
+            BookingSummeryUiState.SummeryDetails.Time(
                 duration = "00:30 - 01:00",
                 date = "1.1.2024",
                 day = "Mon",
             ),
-            BookingSummeryUiState.Time(
+            BookingSummeryUiState.SummeryDetails.Time(
                 duration = "01:00 - 01:30",
                 date = "2.1.2024",
                 day = "Tue",

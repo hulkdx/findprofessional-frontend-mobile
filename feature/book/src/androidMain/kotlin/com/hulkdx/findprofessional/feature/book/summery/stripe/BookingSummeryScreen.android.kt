@@ -5,7 +5,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
 import com.hulkdx.findprofessional.feature.book.summery.BookingSummeryUiState
-import com.hulkdx.findprofessional.feature.book.summery.api.PayResponse
+import com.hulkdx.findprofessional.core.features.pro.model.response.CreateBookingResponse
 import com.stripe.android.PaymentConfiguration
 import com.stripe.android.paymentsheet.PaymentSheet
 
@@ -19,7 +19,7 @@ actual fun StripePayment(uiState: BookingSummeryUiState, onResult: (PaymentSheet
 }
 
 @Composable
-private fun ShowStripePayment(result: PayResponse, onResult: (PaymentSheetResult) -> Unit) {
+private fun ShowStripePayment(result: CreateBookingResponse, onResult: (PaymentSheetResult) -> Unit) {
     val context = LocalContext.current
     val paymentSheet = remember(onResult) { PaymentSheet.Builder(toStripeCallback(onResult)) }.build()
 
