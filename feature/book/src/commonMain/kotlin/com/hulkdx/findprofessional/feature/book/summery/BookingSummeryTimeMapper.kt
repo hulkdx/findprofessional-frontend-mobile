@@ -4,7 +4,6 @@ import androidx.annotation.VisibleForTesting
 import com.hulkdx.findprofessional.core.features.book.SelectedTimes
 import com.hulkdx.findprofessional.core.features.pro.model.Professional
 import com.hulkdx.findprofessional.core.utils.CurrencyFormatter
-import com.hulkdx.findprofessional.core.utils.NumberFormatter
 import com.hulkdx.findprofessional.core.utils.TimeUtils.formattedTime
 import com.hulkdx.findprofessional.core.utils.shortDayOfWeeks
 import com.hulkdx.findprofessional.feature.book.summery.BookingSummeryUiState.SummeryDetails.Time
