@@ -6,12 +6,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hulkdx.findprofessional.core.features.book.SelectedTimes
 import com.hulkdx.findprofessional.core.features.pro.model.Professional
+import com.hulkdx.findprofessional.core.features.pro.model.request.CreateBookingRequest
 import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import com.hulkdx.findprofessional.core.navigation.Navigator
+import com.hulkdx.findprofessional.core.platform.isDebug
 import com.hulkdx.findprofessional.core.utils.StringOrRes
 import com.hulkdx.findprofessional.core.utils.generalError
 import com.hulkdx.findprofessional.feature.book.summery.BookingSummeryUiState.CheckoutStatus
-import com.hulkdx.findprofessional.core.features.pro.model.request.CreateBookingRequest
 import com.hulkdx.findprofessional.feature.book.summery.stripe.PaymentSheetResult
 import com.hulkdx.findprofessional.feature.book.summery.usecase.BookingSummeryUseCase
 import com.hulkdx.findprofessional.feature.book.summery.usecase.CreateBookingUseCase
@@ -56,14 +57,27 @@ class BookingSummeryViewModel(
                 .onSuccess {
                     setCheckoutStatus(CheckoutStatus.Success(it))
                 }
-
-            setLoading(false)
         }
     }
 
     fun onStripeResult(result: PaymentSheetResult) {
+        if (result is PaymentSheetResult.Failed) {
+            setError(result.error.generalError())
+            setCheckoutStatus(CheckoutStatus.Idle)
+            setLoading(false)
+            return
+        }
+        if (result is PaymentSheetResult.Canceled) {
+            setCheckoutStatus(CheckoutStatus.Idle)
+            if (isDebug()) {
+                setError(StringOrRes("Payment Cancelled"))
+            }
+            setLoading(false)
+            return
+        }
+
+        // Success
         // TODO: add a stripe webhook to the server, wait over here to show confirmations
-        println(result)
         setCheckoutStatus(CheckoutStatus.Idle)
     }
 
