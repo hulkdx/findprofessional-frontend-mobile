@@ -20,13 +20,19 @@ class BookingSummeryUseCase(
         val uiTimes = bookingSummeryTimeMapper.map(times)
         return userStore.getFlow()
             .map {
+                val amountInCents = professional.priceNumber * uiTimes.size
+                val currency = professional.priceCurrency
+                val formattedTotalPrices = bookingSummeryTimeMapper.formattedTotalPrices(
+                    amountInCents = amountInCents,
+                    currency = currency,
+                )
+
                 SummeryDetails(
                     times = uiTimes,
                     userSkypeId = (it?.user as? User)?.skypeId,
-                    formattedTotalPrices = bookingSummeryTimeMapper.calculateTotalPrices(
-                        professional,
-                        uiTimes.size
-                    )
+                    amountInCents = amountInCents,
+                    currency = currency,
+                    formattedTotalPrices = formattedTotalPrices,
                 )
             }
     }

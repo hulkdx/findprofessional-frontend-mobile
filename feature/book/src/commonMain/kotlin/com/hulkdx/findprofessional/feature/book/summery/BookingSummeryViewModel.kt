@@ -44,10 +44,8 @@ class BookingSummeryViewModel(
         viewModelScope.launch {
             setCheckoutStatus(CheckoutStatus.Loading)
             val request = CreateBookingRequest(
-//                amountInCents = _uiState.value.summeryDetails.amountInCents,
-//                currency = _uiState.value.summeryDetails.currency,
-                1000,
-                "EUR",
+                amountInCents = _uiState.value.summeryDetails.amountInCents,
+                currency = _uiState.value.summeryDetails.currency,
             )
             // TODO: change the api to the pro
             createBookingUseCase.execute(request)

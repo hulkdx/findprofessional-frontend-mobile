@@ -2,7 +2,6 @@ package com.hulkdx.findprofessional.feature.book.summery
 
 import androidx.annotation.VisibleForTesting
 import com.hulkdx.findprofessional.core.features.book.SelectedTimes
-import com.hulkdx.findprofessional.core.features.pro.model.Professional
 import com.hulkdx.findprofessional.core.utils.CurrencyFormatter
 import com.hulkdx.findprofessional.core.utils.TimeUtils.formattedTime
 import com.hulkdx.findprofessional.core.utils.shortDayOfWeeks
@@ -28,15 +27,12 @@ class BookingSummeryTimeMapper {
         )
     }
 
-    fun calculateTotalPrices(
-        professional: Professional,
-        sizeOfItemsSelected: Int,
+    fun formattedTotalPrices(
+        amountInCents: Long,
+        currency: String,
     ): String {
-        val cents = professional.priceNumber
-        val currency = CurrencyFormatter.toSymbol(professional.priceCurrency)
-        val total = cents * sizeOfItemsSelected
-        val a = (total / 100)
-        val b = NumberFormatter.twoDigits(total % 100)
-        return "${a}.${b} $currency"
+        val whole = amountInCents / 100
+        val fractional = (amountInCents % 100).toString().padStart(2, '0')
+        return "$whole.$fractional ${CurrencyFormatter.toSymbol(currency)}"
     }
 }

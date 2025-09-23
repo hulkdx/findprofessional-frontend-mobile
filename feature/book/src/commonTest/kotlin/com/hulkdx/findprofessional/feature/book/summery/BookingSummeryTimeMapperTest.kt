@@ -1,7 +1,6 @@
 package com.hulkdx.findprofessional.feature.book.summery
 
 import com.hulkdx.findprofessional.core.features.book.SelectedTimes
-import com.hulkdx.findprofessional.libs.common.tests.createProfessional
 import kotlinx.datetime.LocalDate
 import kotlin.test.BeforeTest
 import kotlin.test.Test
@@ -65,37 +64,30 @@ class BookingSummeryTimeMapperTest {
     }
 
     @Test
-    fun `calculateTotalPrices tests`() {
+    fun `formattedTotalPrices tests`() {
         data class TestData(
-            val priceCurrency: String,
-            val priceNumber: Int,
-            val size: Int,
+            val currency: String,
+            val amountInCents: Long,
             val expectedResult: String,
         )
 
         val testData = listOf(
-            TestData(
-                priceCurrency = "USD",
-                priceNumber = 50,
-                size = 2,
-                expectedResult = "1.00 $",
-            ),
-            TestData(
-                priceCurrency = "EUR",
-                priceNumber = 60,
-                size = 3,
-                expectedResult = "1.80 €",
-            )
+            TestData(currency = "USD", amountInCents = 100, expectedResult = "1.00 $"),
+            TestData(currency = "EUR", amountInCents = 180, expectedResult = "1.80 €"),
+            TestData(currency = "USD", amountInCents = 0, expectedResult = "0.00 $"),
+            TestData(currency = "EUR", amountInCents = 5, expectedResult = "0.05 €"),
+            TestData(currency = "USD", amountInCents = 999, expectedResult = "9.99 $"),
+            TestData(currency = "EUR", amountInCents = 250, expectedResult = "2.50 €"),
+            TestData(currency = "EUR", amountInCents = 1, expectedResult = "0.01 €"),
+            TestData(currency = "USD", amountInCents = 100000, expectedResult = "1000.00 $"),
+            TestData(currency = "EUR", amountInCents = 123456, expectedResult = "1234.56 €"),
         )
         for (t in testData) {
             // Arrange
             // Act
-            val result = sut.calculateTotalPrices(
-                createProfessional(
-                    priceCurrency = t.priceCurrency,
-                    priceNumber = t.priceNumber,
-                ),
-                t.size,
+            val result = sut.formattedTotalPrices(
+                t.amountInCents,
+                t.currency,
             )
             // Assert
             assertEquals(t.expectedResult, result)

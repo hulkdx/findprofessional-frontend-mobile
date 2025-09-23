@@ -9,7 +9,7 @@ data class Professional(
     val firstName: String? = null,
     val lastName: String? = null,
     val coachType: String? = null,
-    val priceNumber: Int = 0,
+    val priceNumber: Long = 0,
     val priceCurrency: String = "",
     val profileImageUrl: String? = null,
     val rating: String? = null,

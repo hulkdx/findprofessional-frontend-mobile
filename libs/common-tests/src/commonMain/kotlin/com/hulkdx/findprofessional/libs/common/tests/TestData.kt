@@ -15,7 +15,7 @@ import kotlinx.datetime.LocalTime
 
 fun createProfessional(
     availability: List<ProfessionalAvailability> = listOf(),
-    priceNumber: Int = 0,
+    priceNumber: Long = 0,
     priceCurrency: String = "",
 ) = Professional(
     id = 0,
