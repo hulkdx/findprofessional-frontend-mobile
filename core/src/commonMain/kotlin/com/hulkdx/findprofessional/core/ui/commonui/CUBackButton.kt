@@ -19,6 +19,7 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.unit.dp
 import com.hulkdx.findprofessional.core.ui.utils.`if`
 import com.hulkdx.findprofessional.core.utils.getNavigator
+import com.hulkdx.findprofessional.core.utils.singleClick
 
 const val BACK_BUTTON_INNER_PADDING = 8
 const val BACK_BUTTON_OUTER_PADDING = 16
@@ -56,7 +57,7 @@ fun CUBackButton(
             .clickable(
                 indication = null,
                 interactionSource = interactionSource,
-                onClick = onClick,
+                onClick = singleClick(onClick),
             )
             .`if`(hasPaddings) {
                 padding(BACK_BUTTON_INNER_PADDING.dp)

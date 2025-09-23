@@ -45,6 +45,7 @@ import com.hulkdx.findprofessional.core.ui.theme.AppTheme
 import com.hulkdx.findprofessional.core.ui.theme.body1Medium
 import com.hulkdx.findprofessional.core.ui.theme.body2
 import com.hulkdx.findprofessional.core.ui.theme.h1Medium
+import com.hulkdx.findprofessional.core.utils.singleClick
 import com.hulkdx.findprofessional.feature.book.summery.stripe.StripePayment
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -275,7 +276,7 @@ private fun CheckoutButton(onClick: () -> Unit) {
         text = stringResource(Res.string.checkout),
         colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.secondary),
         contentPadding = PaddingValues(0.dp),
-        onClick = onClick,
+        onClick = singleClick(onClick),
     )
 }
 
