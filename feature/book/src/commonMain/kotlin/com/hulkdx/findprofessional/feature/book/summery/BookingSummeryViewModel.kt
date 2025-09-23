@@ -42,7 +42,8 @@ class BookingSummeryViewModel(
 
     fun onCheckoutClicked() {
         viewModelScope.launch {
-            setCheckoutStatus(CheckoutStatus.Loading)
+            setLoading(true)
+
             val request = CreateBookingRequest(
                 amountInCents = _uiState.value.summeryDetails.amountInCents,
                 currency = _uiState.value.summeryDetails.currency,
@@ -55,12 +56,15 @@ class BookingSummeryViewModel(
                 .onSuccess {
                     setCheckoutStatus(CheckoutStatus.Success(it))
                 }
+
+            setLoading(false)
         }
     }
 
     fun onStripeResult(result: PaymentSheetResult) {
         // TODO: add a stripe webhook to the server, wait over here to show confirmations
         println(result)
+        setCheckoutStatus(CheckoutStatus.Idle)
     }
 
     fun onEditSkypeIdClicked() {
@@ -72,4 +76,7 @@ class BookingSummeryViewModel(
 
     fun setError(error: StringOrRes?) =
         _uiState.update { uiState -> uiState.copy(error = error) }
+
+    fun setLoading(loading: Boolean) =
+        _uiState.update { uiState -> uiState.copy(isLoading = loading) }
 }

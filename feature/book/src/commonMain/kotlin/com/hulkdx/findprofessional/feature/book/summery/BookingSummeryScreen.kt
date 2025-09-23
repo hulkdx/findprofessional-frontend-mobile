@@ -5,6 +5,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -16,6 +17,7 @@ import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -85,26 +87,51 @@ fun BookingSummeryScreen(
             .systemBarsPadding()
             .testTag("BookingSummeryScreen")
     ) {
-        LazyColumn(Modifier.padding(top = 100.dp)) {
-            item { YourRequest() }
-            item { DateAndTime() }
-            items(uiState.summeryDetails.times) {
-                TimeItem(it)
-            }
-            item { ConnectionSection(uiState.summeryDetails.userSkypeId, onEditSkypeIdClicked) }
-        }
         CUBackButton(modifier = Modifier.align(Alignment.TopStart))
-        Bottom(
-            modifier = Modifier.align(Alignment.BottomStart),
-            totalPrices = uiState.summeryDetails.formattedTotalPrices,
-            onCheckoutClicked = onCheckoutClicked,
-        )
+        if (uiState.isLoading) {
+            Loading()
+        } else {
+            Content(
+                uiState = uiState,
+                onCheckoutClicked = onCheckoutClicked,
+                onEditSkypeIdClicked = onEditSkypeIdClicked,
+            )
+        }
         CUSnackBar(
             modifier = Modifier.align(Alignment.BottomCenter),
             message = error,
             onDismiss = onErrorDismissed
         )
     }
+}
+
+@Composable
+private fun BoxScope.Loading() {
+    CircularProgressIndicator(
+        modifier = Modifier.align(Alignment.Center),
+        color = MaterialTheme.colorScheme.primary,
+    )
+}
+
+@Composable
+private fun BoxScope.Content(
+    uiState: BookingSummeryUiState,
+    onCheckoutClicked: () -> Unit,
+    onEditSkypeIdClicked: () -> Unit,
+) {
+    LazyColumn(Modifier.padding(top = 100.dp)) {
+        item { YourRequest() }
+        item { DateAndTime() }
+        items(uiState.summeryDetails.times) {
+            TimeItem(it)
+        }
+        item { ConnectionSection(uiState.summeryDetails.userSkypeId, onEditSkypeIdClicked) }
+    }
+    Bottom(
+        modifier = Modifier.align(Alignment.BottomStart),
+        totalPrices = uiState.summeryDetails.formattedTotalPrices,
+        onCheckoutClicked = onCheckoutClicked,
+    )
 }
 
 @Composable
