@@ -270,7 +270,7 @@ internal class InMemoryApiImpl : InMemoryApi {
             )
         }
 
-        override suspend fun createBooking(request: CreateBookingRequest): CreateBookingResponse {
+        override suspend fun createBooking(request: CreateBookingRequest, idempotencyKey: String): CreateBookingResponse {
             TODO("Not yet implemented")
         }
     }
