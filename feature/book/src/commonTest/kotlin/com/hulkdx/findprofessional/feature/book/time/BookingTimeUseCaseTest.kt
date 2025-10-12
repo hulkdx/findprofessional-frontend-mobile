@@ -60,6 +60,7 @@ class BookingTimeUseCaseTest {
             val pro = createProfessional(
                 availability = listOf(
                     ProfessionalAvailability(
+                        id = 1,
                         date = LocalDate(2024, 1, 2),
                         from = LocalTime.fromSecondOfDay(0),
                         to = LocalTime.fromSecondOfDay(0),
@@ -142,6 +143,7 @@ class BookingTimeUseCaseTest {
         createProfessional(
             availability = times.map {
                 ProfessionalAvailability(
+                    id = 1,
                     date = date,
                     from = LocalTime.fromSecondOfDay(it.first * 60),
                     to = LocalTime.fromSecondOfDay(it.second * 60),

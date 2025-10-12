@@ -53,6 +53,7 @@ class HomeDetailAvailabilityUseCaseTest {
     }
 
     private fun professionalAvailability(date: LocalDate) = ProfessionalAvailability(
+        id = 1,
         date,
         LocalTime.fromMillisecondOfDay(1),
         LocalTime.fromMillisecondOfDay(1),

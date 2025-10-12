@@ -62,6 +62,7 @@ class BookingTimeUtilsTest {
         for (t in testData) {
             // Arrange
             val availability = ProfessionalAvailability(
+                id = 1,
                 date = LocalDate.now(), // irrelevant
                 from = LocalTime.fromSecondOfDay(t.availabilityFrom * 60),
                 to = LocalTime.fromSecondOfDay(t.availabilityTo * 60),

@@ -32,6 +32,7 @@ class BookingTimeScreenTest {
     @Test
     fun performHighlightSomeTime() = runAppUiTest {
         val availability = ProfessionalAvailability(
+            id = 1,
             date = LocalDate.now(),
             from = LocalTime.parse("08:00"),
             to = LocalTime.parse("08:30"),

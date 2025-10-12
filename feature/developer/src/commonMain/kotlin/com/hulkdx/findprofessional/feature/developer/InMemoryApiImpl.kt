@@ -81,31 +81,37 @@ internal class InMemoryApiImpl : InMemoryApi {
             "Former professional boxer who competed from 1985 to 2005",
             availability = listOf(
                 ProfessionalAvailability(
+                    id = 1,
                     date = LocalDate.now(),
                     from = LocalTime.parse("08:00"),
                     to = LocalTime.parse("08:30"),
                 ),
                 ProfessionalAvailability(
+                    id = 2,
                     date = LocalDate.now(),
                     from = LocalTime.parse("09:00"),
                     to = LocalTime.parse("10:30"),
                 ),
                 ProfessionalAvailability(
+                    id = 3,
                     date = LocalDate.parse("2023-11-10"),
                     from = LocalTime.parse("07:00"),
                     to = LocalTime.parse("08:00"),
                 ),
                 ProfessionalAvailability(
+                    id = 4,
                     date = LocalDate.parse("2023-11-11"),
                     from = LocalTime.parse("09:00"),
                     to = LocalTime.parse("11:00"),
                 ),
                 ProfessionalAvailability(
+                    id = 5,
                     date = LocalDate.parse("2023-11-12"),
                     from = LocalTime.parse("12:00"),
                     to = LocalTime.parse("15:00"),
                 ),
                 ProfessionalAvailability(
+                    id = 6,
                     date = LocalDate.parse("2023-11-13"),
                     from = LocalTime.parse("20:00"),
                     to = LocalTime.parse("00:00"),
@@ -127,26 +133,31 @@ internal class InMemoryApiImpl : InMemoryApi {
             "One notable actress who graced the screens from 1985 to 2005 is Meryl Streep. Widely regarded as one of the greatest actresses of her generation, Streep's career during this period was marked by an exceptional range and versatility in her performances.",
             availability = listOf(
                 ProfessionalAvailability(
+                    id = 7,
                     date = LocalDate.parse("2023-11-09"),
                     from = LocalTime.parse("08:00"),
                     to = LocalTime.parse("09:00"),
                 ),
                 ProfessionalAvailability(
+                    id = 8,
                     date = LocalDate.parse("2023-11-10"),
                     from = LocalTime.parse("07:00"),
                     to = LocalTime.parse("08:00"),
                 ),
                 ProfessionalAvailability(
+                    id = 9,
                     date = LocalDate.parse("2023-11-11"),
                     from = LocalTime.parse("09:00"),
                     to = LocalTime.parse("11:00"),
                 ),
                 ProfessionalAvailability(
+                    id = 10,
                     date = LocalDate.parse("2023-11-12"),
                     from = LocalTime.parse("12:00"),
                     to = LocalTime.parse("15:00"),
                 ),
                 ProfessionalAvailability(
+                    id = 11,
                     date = LocalDate.parse("2023-11-13"),
                     from = LocalTime.parse("20:00"),
                     to = LocalTime.parse("00:00"),
@@ -262,6 +273,7 @@ internal class InMemoryApiImpl : InMemoryApi {
                     val fromDateTime = it.from.toLocalDateTime(TimeZone.UTC)
                     val toDateTime = it.to.toLocalDateTime(TimeZone.UTC)
                     ProfessionalAvailability(
+                        id = 1,
                         date = fromDateTime.date,
                         from = fromDateTime.time,
                         to = toDateTime.time,

@@ -54,31 +54,37 @@ val professionals = listOf(
         "Former professional boxer who competed from 1985 to 2005",
         availability = listOf(
             ProfessionalAvailability(
+                id = 1,
                 date = randomDate,
                 from = LocalTime.parse("08:00"),
                 to = LocalTime.parse("08:30"),
             ),
             ProfessionalAvailability(
+                id = 2,
                 date = randomDate,
                 from = LocalTime.parse("09:00"),
                 to = LocalTime.parse("10:30"),
             ),
             ProfessionalAvailability(
+                id = 3,
                 date = LocalDate.parse("2023-11-10"),
                 from = LocalTime.parse("07:00"),
                 to = LocalTime.parse("08:00"),
             ),
             ProfessionalAvailability(
+                id = 4,
                 date = LocalDate.parse("2023-11-11"),
                 from = LocalTime.parse("09:00"),
                 to = LocalTime.parse("11:00"),
             ),
             ProfessionalAvailability(
+                id = 5,
                 date = LocalDate.parse("2023-11-12"),
                 from = LocalTime.parse("12:00"),
                 to = LocalTime.parse("15:00"),
             ),
             ProfessionalAvailability(
+                id = 6,
                 date = LocalDate.parse("2023-11-13"),
                 from = LocalTime.parse("20:00"),
                 to = LocalTime.parse("00:00"),
@@ -100,26 +106,31 @@ val professionals = listOf(
         "One notable actress who graced the screens from 1985 to 2005 is Meryl Streep. Widely regarded as one of the greatest actresses of her generation, Streep's career during this period was marked by an exceptional range and versatility in her performances.",
         availability = listOf(
             ProfessionalAvailability(
+                id = 1,
                 date = LocalDate.parse("2023-11-09"),
                 from = LocalTime.parse("08:00"),
                 to = LocalTime.parse("09:00"),
             ),
             ProfessionalAvailability(
+                id = 2,
                 date = LocalDate.parse("2023-11-10"),
                 from = LocalTime.parse("07:00"),
                 to = LocalTime.parse("08:00"),
             ),
             ProfessionalAvailability(
+                id = 3,
                 date = LocalDate.parse("2023-11-11"),
                 from = LocalTime.parse("09:00"),
                 to = LocalTime.parse("11:00"),
             ),
             ProfessionalAvailability(
+                id = 4,
                 date = LocalDate.parse("2023-11-12"),
                 from = LocalTime.parse("12:00"),
                 to = LocalTime.parse("15:00"),
             ),
             ProfessionalAvailability(
+                id = 5,
                 date = LocalDate.parse("2023-11-13"),
                 from = LocalTime.parse("20:00"),
                 to = LocalTime.parse("00:00"),

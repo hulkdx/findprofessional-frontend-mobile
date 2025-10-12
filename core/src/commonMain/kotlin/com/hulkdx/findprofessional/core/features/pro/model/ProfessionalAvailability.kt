@@ -9,6 +9,7 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 data class ProfessionalAvailability(
+    val id: Long,
     val date: LocalDate,
     val from: LocalTime,
     val to: LocalTime,

@@ -40,6 +40,7 @@ fun createAvailabilities(
 ): List<ProfessionalAvailability> {
     return date.map {
         ProfessionalAvailability(
+            id = 1,
             date = it,
             from = LocalTime(1, 1, 1, 1),
             to = LocalTime(1, 1, 1, 1),
