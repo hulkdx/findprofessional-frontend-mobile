@@ -15,5 +15,5 @@ interface ProfessionalApi {
     suspend fun update(proUser: ProUser)
     suspend fun getAvailability(): List<ProfessionalAvailability>
     suspend fun updateAvailability(request: UpdateAvailabilityRequest)
-    suspend fun createBooking(request: CreateBookingRequest, idempotencyKey: String): CreateBookingResponse
+    suspend fun createBooking(request: CreateBookingRequest, proId: String): CreateBookingResponse
 }

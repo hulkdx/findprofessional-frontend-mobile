@@ -1,7 +1,8 @@
 package com.hulkdx.findprofessional.core.features.pro.model
 
-import kotlinx.datetime.LocalDate
-import kotlinx.datetime.LocalTime
+import kotlinx.datetime.Instant
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.toLocalDateTime
 import kotlinx.serialization.Serializable
 
 /**
@@ -10,9 +11,12 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class ProfessionalAvailability(
     val id: Long,
-    val date: LocalDate,
-    val from: LocalTime,
-    val to: LocalTime,
+    val from: Instant,
+    val to: Instant,
     val createdAt: String = "",
     val updatedAt: String = "",
-)
+) {
+    val date = from.toLocalDateTime(TimeZone.currentSystemDefault()).date
+    val fromTime = from.toLocalDateTime(TimeZone.currentSystemDefault()).time
+    val toTime = to.toLocalDateTime(TimeZone.currentSystemDefault()).time
+}

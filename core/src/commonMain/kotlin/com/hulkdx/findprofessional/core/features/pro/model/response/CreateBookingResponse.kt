@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class CreateBookingResponse(
     @SerialName("payment_intent") val paymentIntent: String,
-    @SerialName("ephemeral_key") val ephemeralKey: String,
+    @SerialName("ephemeral_key") val customerSessionClientSecret: String,
     @SerialName("customer") val customer: String,
     @SerialName("publishable_key") val publishableKey: String,
 )

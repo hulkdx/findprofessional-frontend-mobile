@@ -6,6 +6,7 @@ import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalReview
 import com.hulkdx.findprofessional.core.features.user.User
 import com.hulkdx.findprofessional.feature.book.time.BookingTimeUiState
 import kotlinx.datetime.Clock
+import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalTime
 
@@ -55,39 +56,33 @@ val professionals = listOf(
         availability = listOf(
             ProfessionalAvailability(
                 id = 1,
-                date = randomDate,
-                from = LocalTime.parse("08:00"),
-                to = LocalTime.parse("08:30"),
+                from = Instant.parse("2023-11-10T08:00:00Z"),
+                to = Instant.parse("2023-11-10T08:30:00Z"),
             ),
             ProfessionalAvailability(
                 id = 2,
-                date = randomDate,
-                from = LocalTime.parse("09:00"),
-                to = LocalTime.parse("10:30"),
+                from = Instant.parse("2023-11-10T09:00:00Z"),
+                to = Instant.parse("2023-11-10T10:30:00Z"),
             ),
             ProfessionalAvailability(
                 id = 3,
-                date = LocalDate.parse("2023-11-10"),
-                from = LocalTime.parse("07:00"),
-                to = LocalTime.parse("08:00"),
+                from = Instant.parse("2023-11-10T07:00:00Z"),
+                to = Instant.parse("2023-11-10T08:00:00Z"),
             ),
             ProfessionalAvailability(
                 id = 4,
-                date = LocalDate.parse("2023-11-11"),
-                from = LocalTime.parse("09:00"),
-                to = LocalTime.parse("11:00"),
+                from = Instant.parse("2023-11-11T09:00:00Z"),
+                to = Instant.parse("2023-11-11T11:00:00Z"),
             ),
             ProfessionalAvailability(
                 id = 5,
-                date = LocalDate.parse("2023-11-12"),
-                from = LocalTime.parse("12:00"),
-                to = LocalTime.parse("15:00"),
+                from = Instant.parse("2023-11-12T12:00:00Z"),
+                to = Instant.parse("2023-11-12T15:00:00Z"),
             ),
             ProfessionalAvailability(
                 id = 6,
-                date = LocalDate.parse("2023-11-13"),
-                from = LocalTime.parse("20:00"),
-                to = LocalTime.parse("00:00"),
+                from = Instant.parse("2023-11-13T20:00:00Z"),
+                to = Instant.parse("2023-11-14T00:00:00Z"),
             ),
         ),
         reviewSize = "100",
@@ -107,33 +102,28 @@ val professionals = listOf(
         availability = listOf(
             ProfessionalAvailability(
                 id = 1,
-                date = LocalDate.parse("2023-11-09"),
-                from = LocalTime.parse("08:00"),
-                to = LocalTime.parse("09:00"),
+                from = Instant.parse("2023-11-09T08:00:00Z"),
+                to = Instant.parse("2023-11-09T09:00:00Z"),
             ),
             ProfessionalAvailability(
                 id = 2,
-                date = LocalDate.parse("2023-11-10"),
-                from = LocalTime.parse("07:00"),
-                to = LocalTime.parse("08:00"),
+                from = Instant.parse("2023-11-10T07:00:00Z"),
+                to = Instant.parse("2023-11-10T08:00:00Z"),
             ),
             ProfessionalAvailability(
                 id = 3,
-                date = LocalDate.parse("2023-11-11"),
-                from = LocalTime.parse("09:00"),
-                to = LocalTime.parse("11:00"),
+                from = Instant.parse("2023-11-11T09:00:00Z"),
+                to = Instant.parse("2023-11-11T11:00:00Z"),
             ),
             ProfessionalAvailability(
                 id = 4,
-                date = LocalDate.parse("2023-11-12"),
-                from = LocalTime.parse("12:00"),
-                to = LocalTime.parse("15:00"),
+                from = Instant.parse("2023-11-12T12:00:00Z"),
+                to = Instant.parse("2023-11-12T15:00:00Z"),
             ),
             ProfessionalAvailability(
                 id = 5,
-                date = LocalDate.parse("2023-11-13"),
-                from = LocalTime.parse("20:00"),
-                to = LocalTime.parse("00:00"),
+                from = Instant.parse("2023-11-13T20:00:00Z"),
+                to = Instant.parse("2023-11-14T00:00:00Z"),
             ),
         ),
         reviewSize = "100",

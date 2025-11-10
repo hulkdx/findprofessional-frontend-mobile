@@ -13,7 +13,6 @@ import com.hulkdx.findprofessional.core.features.user.Token
 import com.hulkdx.findprofessional.core.features.user.User
 import com.hulkdx.findprofessional.core.features.user.UserData
 import com.hulkdx.findprofessional.core.features.user.UserType
-import com.hulkdx.findprofessional.core.utils.now
 import com.hulkdx.findprofessional.feature.authentication.login.api.LoginApi
 import com.hulkdx.findprofessional.feature.authentication.login.model.LoginRequest
 import com.hulkdx.findprofessional.feature.authentication.signup.SignUpApi
@@ -21,10 +20,13 @@ import com.hulkdx.findprofessional.feature.authentication.signup.model.RegisterR
 import com.hulkdx.findprofessional.feature.profile.edit.api.UpdateProfileApi
 import com.hulkdx.findprofessional.feature.review.ReviewApi
 import kotlinx.datetime.Clock
+import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalTime
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
+import kotlinx.datetime.atTime
+import kotlinx.datetime.toInstant
 import org.koin.dsl.module
 
 internal class InMemoryApiImpl : InMemoryApi {
@@ -82,39 +84,33 @@ internal class InMemoryApiImpl : InMemoryApi {
             availability = listOf(
                 ProfessionalAvailability(
                     id = 1,
-                    date = LocalDate.now(),
-                    from = LocalTime.parse("08:00"),
-                    to = LocalTime.parse("08:30"),
+                    from = Instant.parse("2024-01-01T08:00:00Z"),
+                    to = Instant.parse("2024-01-01T08:30:00Z"),
                 ),
                 ProfessionalAvailability(
                     id = 2,
-                    date = LocalDate.now(),
-                    from = LocalTime.parse("09:00"),
-                    to = LocalTime.parse("10:30"),
+                    from = Instant.parse("2024-01-01T09:00:00Z"),
+                    to = Instant.parse("2024-01-01T10:30:00Z"),
                 ),
                 ProfessionalAvailability(
                     id = 3,
-                    date = LocalDate.parse("2023-11-10"),
-                    from = LocalTime.parse("07:00"),
-                    to = LocalTime.parse("08:00"),
+                    from = Instant.parse("2023-11-10T07:00:00Z"),
+                    to = Instant.parse("2023-11-10T08:00:00Z"),
                 ),
                 ProfessionalAvailability(
                     id = 4,
-                    date = LocalDate.parse("2023-11-11"),
-                    from = LocalTime.parse("09:00"),
-                    to = LocalTime.parse("11:00"),
+                    from = Instant.parse("2023-11-11T09:00:00Z"),
+                    to = Instant.parse("2023-11-11T11:00:00Z"),
                 ),
                 ProfessionalAvailability(
                     id = 5,
-                    date = LocalDate.parse("2023-11-12"),
-                    from = LocalTime.parse("12:00"),
-                    to = LocalTime.parse("15:00"),
+                    from = Instant.parse("2023-11-12T12:00:00Z"),
+                    to = Instant.parse("2023-11-12T15:00:00Z"),
                 ),
                 ProfessionalAvailability(
                     id = 6,
-                    date = LocalDate.parse("2023-11-13"),
-                    from = LocalTime.parse("20:00"),
-                    to = LocalTime.parse("00:00"),
+                    from = Instant.parse("2023-11-13T20:00:00Z"),
+                    to = Instant.parse("2023-11-14T00:00:00Z"),
                 ),
             ),
             reviewSize = "100",
@@ -134,33 +130,28 @@ internal class InMemoryApiImpl : InMemoryApi {
             availability = listOf(
                 ProfessionalAvailability(
                     id = 7,
-                    date = LocalDate.parse("2023-11-09"),
-                    from = LocalTime.parse("08:00"),
-                    to = LocalTime.parse("09:00"),
+                    from = Instant.parse("2023-11-09T08:00:00Z"),
+                    to = Instant.parse("2023-11-09T09:00:00Z"),
                 ),
                 ProfessionalAvailability(
                     id = 8,
-                    date = LocalDate.parse("2023-11-10"),
-                    from = LocalTime.parse("07:00"),
-                    to = LocalTime.parse("08:00"),
+                    from = Instant.parse("2023-11-10T07:00:00Z"),
+                    to = Instant.parse("2023-11-10T08:00:00Z"),
                 ),
                 ProfessionalAvailability(
                     id = 9,
-                    date = LocalDate.parse("2023-11-11"),
-                    from = LocalTime.parse("09:00"),
-                    to = LocalTime.parse("11:00"),
+                    from = Instant.parse("2023-11-11T09:00:00Z"),
+                    to = Instant.parse("2023-11-11T11:00:00Z"),
                 ),
                 ProfessionalAvailability(
                     id = 10,
-                    date = LocalDate.parse("2023-11-12"),
-                    from = LocalTime.parse("12:00"),
-                    to = LocalTime.parse("15:00"),
+                    from = Instant.parse("2023-11-12T12:00:00Z"),
+                    to = Instant.parse("2023-11-12T15:00:00Z"),
                 ),
                 ProfessionalAvailability(
                     id = 11,
-                    date = LocalDate.parse("2023-11-13"),
-                    from = LocalTime.parse("20:00"),
-                    to = LocalTime.parse("00:00"),
+                    from = Instant.parse("2023-11-13T20:00:00Z"),
+                    to = Instant.parse("2023-11-14T00:00:00Z"),
                 ),
             ),
             reviewSize = "100",
@@ -270,19 +261,19 @@ internal class InMemoryApiImpl : InMemoryApi {
         override suspend fun updateAvailability(request: UpdateAvailabilityRequest) {
             availability.addAll(
                 request.items.map {
-                    val fromDateTime = it.from.toLocalDateTime(TimeZone.UTC)
-                    val toDateTime = it.to.toLocalDateTime(TimeZone.UTC)
                     ProfessionalAvailability(
                         id = 1,
-                        date = fromDateTime.date,
-                        from = fromDateTime.time,
-                        to = toDateTime.time,
+                        from = it.from,
+                        to = it.to,
                     )
                 }
             )
         }
 
-        override suspend fun createBooking(request: CreateBookingRequest, idempotencyKey: String): CreateBookingResponse {
+        override suspend fun createBooking(
+            request: CreateBookingRequest,
+            proId: String
+        ): CreateBookingResponse {
             TODO("Not yet implemented")
         }
     }

@@ -11,26 +11,23 @@ import com.stripe.android.paymentsheet.PaymentSheet
 
 @Composable
 actual fun StripePayment(uiState: BookingSummeryUiState, onResult: (PaymentSheetResult) -> Unit) {
-    val checkoutStatus = uiState.checkoutStatus
-    val isCheckoutSuccess = checkoutStatus is BookingSummeryUiState.CheckoutStatus.Success
-    if (isCheckoutSuccess) {
-        ShowStripePayment(checkoutStatus.result, onResult)
+    if (uiState.checkoutStatus is BookingSummeryUiState.CheckoutStatus.Success) {
+        ShowStripePayment(uiState.checkoutStatus.result, onResult)
     }
 }
 
 @Composable
-private fun ShowStripePayment(result: CreateBookingResponse, onResult: (PaymentSheetResult) -> Unit) {
+private fun ShowStripePayment(networkResult: CreateBookingResponse, onResult: (PaymentSheetResult) -> Unit) {
     val context = LocalContext.current
     val paymentSheet = remember(onResult) { PaymentSheet.Builder(toStripeCallback(onResult)) }.build()
 
-    LaunchedEffect(context, result) {
-        PaymentConfiguration.init(context, result.publishableKey)
-        val currentClientSecret = result.paymentIntent
-        val currentConfig = PaymentSheet.CustomerConfiguration(
-            id = result.customer,
-            ephemeralKeySecret = result.ephemeralKey
+    LaunchedEffect(context, networkResult) {
+        val currentConfig = PaymentSheet.CustomerConfiguration.createWithCustomerSession(
+            id = networkResult.customer,
+            clientSecret = networkResult.customerSessionClientSecret
         )
-        presentPaymentSheet(paymentSheet, currentConfig, currentClientSecret)
+        PaymentConfiguration.init(context, networkResult.publishableKey)
+        presentPaymentSheet(paymentSheet, currentConfig, networkResult.paymentIntent)
     }
 
 }

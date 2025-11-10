@@ -70,13 +70,15 @@ class ProfessionalApiImpl(
         }
     }
 
-    override suspend fun createBooking(request: CreateBookingRequest, idempotencyKey: String): CreateBookingResponse {
+    override suspend fun createBooking(
+        request: CreateBookingRequest,
+        proId: String
+    ): CreateBookingResponse {
         return client.post {
             auth(userStorage)
-            apiUrl("payments/create-intent")
+            apiUrl("professional/$proId/booking")
             contentType(ContentType.Application.Json)
             setBody(request)
-            headers.append("Idempotency-Key", idempotencyKey)
         }
             .body()
     }

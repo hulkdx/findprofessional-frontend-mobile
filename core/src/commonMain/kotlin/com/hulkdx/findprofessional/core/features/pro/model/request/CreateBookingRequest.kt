@@ -5,6 +5,13 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class CreateBookingRequest(
-    @SerialName("amounts_in_cents") val amountInCents: Long,
+    @SerialName("amount_in_cents") val amountInCents: Long,
     @SerialName("currency") val currency: String,
+    @SerialName("idempotency_key") val idempotencyKey: String,
+    @SerialName("availabilities") val availabilities: List<CreateBookingRequestAvailability>,
+)
+
+@Serializable
+data class CreateBookingRequestAvailability(
+    val id: String,
 )

@@ -23,9 +23,11 @@ import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlin.uuid.ExperimentalUuidApi
+import kotlin.uuid.Uuid
 
 class BookingSummeryViewModel(
-    professional: Professional,
+    private val professional: Professional,
     times: SelectedTimes,
     useCase: BookingSummeryUseCase,
     private val createBookingUseCase: CreateBookingUseCase,
@@ -41,20 +43,28 @@ class BookingSummeryViewModel(
         .stateIn(viewModelScope, WhileSubscribed(5_000), BookingSummeryUiState())
 
 
+    @OptIn(ExperimentalUuidApi::class)
+
     fun onCheckoutClicked() {
         viewModelScope.launch {
             setLoading(true)
 
+            // TODO: use v7
+            val idempotencyKey = Uuid.random().toString()
+
             val request = CreateBookingRequest(
                 amountInCents = _uiState.value.summeryDetails.amountInCents,
                 currency = _uiState.value.summeryDetails.currency,
+                availabilities = listOf(),
+                idempotencyKey = idempotencyKey,
             )
-            // TODO: change the api to the pro
-            createBookingUseCase.execute(request)
+            createBookingUseCase.execute(request, professional.id.toString())
                 .onFailure { throwable ->
+                    setLoading(false)
                     setError(throwable.generalError())
                 }
                 .onSuccess {
+                    setLoading(false)
                     setCheckoutStatus(CheckoutStatus.Success(it))
                 }
         }

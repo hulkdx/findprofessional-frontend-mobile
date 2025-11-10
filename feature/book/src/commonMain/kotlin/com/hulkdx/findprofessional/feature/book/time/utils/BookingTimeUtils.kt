@@ -12,8 +12,8 @@ object BookingTimeUtils {
         from: Int,
         to: Int,
     ): Boolean {
-        val availabilityFrom = availability.from.toMinutesOfDay()
-        val availabilityTo = availability.to.toMinutesOfDay().let { aT ->
+        val availabilityFrom = availability.fromTime.toMinutesOfDay()
+        val availabilityTo = availability.toTime.toMinutesOfDay().let { aT ->
             if (aT == 0) {
                 24 * 60
             } else {

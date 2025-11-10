@@ -8,6 +8,7 @@ import com.hulkdx.findprofessional.app.test.utils.inMemoryApi
 import com.hulkdx.findprofessional.core.features.pro.model.Professional
 import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalAvailability
 import com.hulkdx.findprofessional.core.utils.now
+import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalTime
 import kotlin.test.AfterTest
@@ -33,9 +34,8 @@ class BookingTimeScreenTest {
     fun performHighlightSomeTime() = runAppUiTest {
         val availability = ProfessionalAvailability(
             id = 1,
-            date = LocalDate.now(),
-            from = LocalTime.parse("08:00"),
-            to = LocalTime.parse("08:30"),
+            from = Instant.parse("2024-01-01T08:00:00Z"),
+            to = Instant.parse("2024-01-01T08:30:00Z"),
         )
         val pro = listOf(
             Professional(

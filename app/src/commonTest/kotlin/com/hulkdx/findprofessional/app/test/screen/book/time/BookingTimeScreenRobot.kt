@@ -80,7 +80,7 @@ class BookingTimeScreenVerify(
 }
 
 private fun ProfessionalAvailability.toText(): String {
-    val startTime = formattedTime(from.toMinutesOfDay())
-    val endTime = formattedTime(to.toMinutesOfDay())
+    val startTime = formattedTime(fromTime.toMinutesOfDay())
+    val endTime = formattedTime(toTime.toMinutesOfDay())
     return "$startTime - $endTime"
 }

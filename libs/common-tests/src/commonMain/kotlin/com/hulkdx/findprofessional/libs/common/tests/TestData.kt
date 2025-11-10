@@ -11,6 +11,9 @@ import com.hulkdx.findprofessional.feature.book.time.BookingTimeUiState
 import kotlinx.datetime.Clock
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalTime
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.atTime
+import kotlinx.datetime.toInstant
 
 
 fun createProfessional(
@@ -41,9 +44,8 @@ fun createAvailabilities(
     return date.map {
         ProfessionalAvailability(
             id = 1,
-            date = it,
-            from = LocalTime(1, 1, 1, 1),
-            to = LocalTime(1, 1, 1, 1),
+            from = it.atTime(LocalTime(1, 1, 1, 1)).toInstant(TimeZone.UTC),
+            to = it.atTime(LocalTime(1, 1, 1, 1)).toInstant(TimeZone.UTC),
         )
     }
 }

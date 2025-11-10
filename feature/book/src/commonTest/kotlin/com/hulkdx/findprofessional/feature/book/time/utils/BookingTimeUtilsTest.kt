@@ -4,6 +4,9 @@ import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalAvailabil
 import com.hulkdx.findprofessional.core.utils.now
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalTime
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.atTime
+import kotlinx.datetime.toInstant
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -63,9 +66,8 @@ class BookingTimeUtilsTest {
             // Arrange
             val availability = ProfessionalAvailability(
                 id = 1,
-                date = LocalDate.now(), // irrelevant
-                from = LocalTime.fromSecondOfDay(t.availabilityFrom * 60),
-                to = LocalTime.fromSecondOfDay(t.availabilityTo * 60),
+                from = LocalDate.now().atTime(LocalTime.fromSecondOfDay(t.availabilityFrom * 60)).toInstant(TimeZone.UTC),
+                to = LocalDate.now().atTime(LocalTime.fromSecondOfDay(t.availabilityTo * 60)).toInstant(TimeZone.UTC),
             )
             // Act
             val result = sut.isAvailabilityIncludedInTimes(availability, t.from, t.to)

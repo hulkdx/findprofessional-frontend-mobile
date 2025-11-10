@@ -11,8 +11,12 @@ import com.hulkdx.findprofessional.libs.common.tests.createBookingTimes
 import com.hulkdx.findprofessional.libs.common.tests.createProfessional
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.runTest
+import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalTime
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.atTime
+import kotlinx.datetime.toInstant
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -61,9 +65,8 @@ class BookingTimeUseCaseTest {
                 availability = listOf(
                     ProfessionalAvailability(
                         id = 1,
-                        date = LocalDate(2024, 1, 2),
-                        from = LocalTime.fromSecondOfDay(0),
-                        to = LocalTime.fromSecondOfDay(0),
+                        from = LocalDate(2024, 1, 2).atTime(LocalTime.fromSecondOfDay(0)).toInstant(TimeZone.UTC),
+                        to = LocalDate(2024, 1, 2).atTime(LocalTime.fromSecondOfDay(0)).toInstant(TimeZone.UTC),
                     )
                 )
             )
@@ -144,9 +147,8 @@ class BookingTimeUseCaseTest {
             availability = times.map {
                 ProfessionalAvailability(
                     id = 1,
-                    date = date,
-                    from = LocalTime.fromSecondOfDay(it.first * 60),
-                    to = LocalTime.fromSecondOfDay(it.second * 60),
+                    from = date.atTime(LocalTime.fromSecondOfDay(it.first * 60)).toInstant(TimeZone.UTC),
+                    to = date.atTime(LocalTime.fromSecondOfDay(it.second * 60)).toInstant(TimeZone.UTC),
                 )
             }
         )
