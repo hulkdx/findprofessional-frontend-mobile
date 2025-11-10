@@ -11,6 +11,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.datetime.LocalDate
+import kotlinx.datetime.LocalTime
 
 class ProAvailabilityDetailViewModel(
     private val navigator: Navigator,
@@ -31,20 +32,27 @@ class ProAvailabilityDetailViewModel(
     }
 
     fun onFromSelected(index: Int, time: String) {
+        val localTime = LocalTime.parse(time)
         val timeSlots = uiState.value.timeSlots.toMutableList()
-        timeSlots[index] = timeSlots[index].copy(from = time)
+        timeSlots[index] = timeSlots[index].copy(from = localTime)
         setTimeSlots(timeSlots)
     }
 
     fun onToSelected(index: Int, time: String) {
+        val localTime = LocalTime.parse(time)
         val timeSlots = uiState.value.timeSlots.toMutableList()
-        timeSlots[index] = timeSlots[index].copy(to = time)
+        timeSlots[index] = timeSlots[index].copy(to = localTime)
         setTimeSlots(timeSlots)
     }
 
     fun onAddNewTimeSlotClicked() {
         val timeSlots = uiState.value.timeSlots.toMutableList()
-        setTimeSlots(timeSlots + TimeSlot("00:00", "00:00"))
+        setTimeSlots(
+            timeSlots + TimeSlot(
+                from = LocalTime(hour = 0, minute = 0),
+                to = LocalTime(hour = 0, minute = 0),
+            )
+        )
     }
 
     fun onApplyClicked() {

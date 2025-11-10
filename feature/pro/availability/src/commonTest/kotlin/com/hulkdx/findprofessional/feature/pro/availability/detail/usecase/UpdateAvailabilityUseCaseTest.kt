@@ -15,11 +15,12 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.runBlocking
 import kotlinx.datetime.LocalDate
+import kotlinx.datetime.LocalTime
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-class ApplyTimeSlotsUseCaseTest {
+class UpdateAvailabilityUseCaseTest {
 
     private lateinit var sut: UpdateAvailabilityUseCase
     private val api = ProApiMock()
@@ -35,8 +36,8 @@ class ApplyTimeSlotsUseCaseTest {
     fun `on execute when valid time slots should call api`() = runBlocking {
         // Arrange
         val timeSlots = listOf(
-            TimeSlot("09:00", "10:00"),
-            TimeSlot("10:30", "11:30"),
+            TimeSlot(LocalTime.parse("09:00"), LocalTime.parse("10:00")),
+            TimeSlot(LocalTime.parse("10:30"), LocalTime.parse("11:30")),
         )
         val date = LocalDate(2024, 1, 1)
         val expected = UpdateAvailabilityRequest(
@@ -55,8 +56,8 @@ class ApplyTimeSlotsUseCaseTest {
     fun `on execute when invalid time slots should show error`() = runBlocking {
         val testData = listOf(
             listOf(
-                TimeSlot(from = "00:00", to = "00:00"),
-                TimeSlot(from = "05:30", to = "00:00"),
+                TimeSlot(from = LocalTime.parse("00:00"), to = LocalTime.parse("00:00")),
+                TimeSlot(from = LocalTime.parse("05:30"), to = LocalTime.parse("00:00")),
             ),
         )
         for (invalidTimeSlots in testData) {

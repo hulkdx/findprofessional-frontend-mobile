@@ -24,6 +24,7 @@ import com.hulkdx.findprofessional.feature.profile.ProfileScreen
 import com.hulkdx.findprofessional.feature.profile.edit.ProfileEditScreen
 import com.hulkdx.findprofessional.feature.review.ReviewScreen
 import kotlinx.datetime.LocalDate
+import kotlinx.datetime.LocalTime
 import kotlin.test.Test
 
 class ScreenshotTests {
@@ -237,8 +238,8 @@ class ScreenshotTests {
                 ProAvailabilityDetailViewModel.UiState.create(
                     now,
                     listOf(
-                        TimeSlot("16:30", "17:00"),
-                        TimeSlot("17:30", "18:00"),
+                        TimeSlot(LocalTime.parse("16:30"), LocalTime.parse("17:00")),
+                        TimeSlot(LocalTime.parse("17:30"), LocalTime.parse("18:00")),
                     ),
                 ),
                 null, {}, { _, _ -> }, { _, _ -> }, {}, {}, {}, {}

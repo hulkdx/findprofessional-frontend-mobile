@@ -11,6 +11,7 @@ import com.hulkdx.findprofessional.core.utils.generalError
 import com.hulkdx.findprofessional.core.utils.toStringOrRes
 import com.hulkdx.findprofessional.feature.pro.availability.detail.TimeSlot
 import kotlinx.datetime.LocalDate
+import kotlinx.datetime.LocalTime
 
 class UpdateAvailabilityUseCase(
     private val professionalApi: ProfessionalApi,
@@ -23,10 +24,11 @@ class UpdateAvailabilityUseCase(
             }
             val request = UpdateAvailabilityRequest(
                 timeSlots.map {
+                    // TODO: 
                     UpdateAvailabilityItemRequest(
                         date = date.toString(),
-                        from = "${it.from}:00",
-                        to = "${it.to}:00",
+                        from = it.from.toString(),
+                        to = it.to.toString(),
                     )
                 }
             )

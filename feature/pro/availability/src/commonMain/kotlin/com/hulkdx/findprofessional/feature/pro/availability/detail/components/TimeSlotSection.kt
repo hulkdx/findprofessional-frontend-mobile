@@ -65,7 +65,7 @@ fun TimeSlotView(
 ) {
     Row(Modifier.padding(start = 24.dp, top = 8.dp)) {
         CuDropDownMenu(
-            initialValue = timeSlot.from,
+            initialValue = timeSlot.fromDisplayValue,
             modifier = Modifier.weight(1F),
             options = availableTime,
             onValueChanged = onFromSelected,
@@ -77,7 +77,7 @@ fun TimeSlotView(
             style = h3Medium,
         )
         CuDropDownMenu(
-            initialValue = timeSlot.to,
+            initialValue = timeSlot.toDisplayValue,
             modifier = Modifier.weight(1F),
             options = availableTime,
             onValueChanged = onToSelected,
