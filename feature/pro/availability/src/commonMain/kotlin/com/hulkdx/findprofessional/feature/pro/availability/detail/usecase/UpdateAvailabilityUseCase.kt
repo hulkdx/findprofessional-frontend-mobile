@@ -10,8 +10,14 @@ import com.hulkdx.findprofessional.core.utils.StringOrRes
 import com.hulkdx.findprofessional.core.utils.generalError
 import com.hulkdx.findprofessional.core.utils.toStringOrRes
 import com.hulkdx.findprofessional.feature.pro.availability.detail.TimeSlot
+import kotlinx.datetime.DateTimeUnit
+import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
-import kotlinx.datetime.LocalTime
+import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.atTime
+import kotlinx.datetime.toInstant
+import kotlin.time.Duration.Companion.minutes
 
 class UpdateAvailabilityUseCase(
     private val professionalApi: ProfessionalApi,
@@ -22,16 +28,7 @@ class UpdateAvailabilityUseCase(
             if (isNotValid(timeSlots)) {
                 return Res.string.invalidTime.toStringOrRes()
             }
-            val request = UpdateAvailabilityRequest(
-                timeSlots.map {
-                    // TODO: 
-                    UpdateAvailabilityItemRequest(
-                        date = date.toString(),
-                        from = it.from.toString(),
-                        to = it.to.toString(),
-                    )
-                }
-            )
+            val request = UpdateAvailabilityRequest(toRequestItems(timeSlots, date, TimeZone.UTC))
             professionalApi.updateAvailability(request)
             val new = professionalApi.getAvailability()
             storage.set(new)
@@ -48,5 +45,28 @@ class UpdateAvailabilityUseCase(
             }
         }
         return false
+    }
+
+    private fun toRequestItems(
+        timeSlots: List<TimeSlot>,
+        date: LocalDate,
+        timeZone: TimeZone,
+    ): List<UpdateAvailabilityItemRequest> {
+        val result = mutableListOf<UpdateAvailabilityItemRequest>()
+        for (t in timeSlots) {
+            var current = date.atTime(t.from).toInstant(timeZone)
+            val slotEnd = date.atTime(t.to).toInstant(timeZone)
+            while (current < slotEnd) {
+                val currentEnd = current.plus(30.minutes)
+                result.add(
+                    UpdateAvailabilityItemRequest(
+                        from = current,
+                        to = currentEnd,
+                    )
+                )
+                current = currentEnd
+            }
+        }
+        return result
     }
 }

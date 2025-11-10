@@ -14,6 +14,7 @@ import com.hulkdx.findprofessional.feature.pro.availability.detail.TimeSlot
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.runBlocking
+import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalTime
 import kotlin.test.BeforeTest
@@ -34,22 +35,46 @@ class UpdateAvailabilityUseCaseTest {
 
     @Test
     fun `on execute when valid time slots should call api`() = runBlocking {
-        // Arrange
-        val timeSlots = listOf(
-            TimeSlot(LocalTime.parse("09:00"), LocalTime.parse("10:00")),
-            TimeSlot(LocalTime.parse("10:30"), LocalTime.parse("11:30")),
+        data class TestCase(
+            val timeSlots: List<TimeSlot>,
+            val date: LocalDate,
+            val expected: UpdateAvailabilityRequest,
         )
-        val date = LocalDate(2024, 1, 1)
-        val expected = UpdateAvailabilityRequest(
-            listOf(
-                UpdateAvailabilityItemRequest("2024-01-01", "09:00:00", "10:00:00"),
-                UpdateAvailabilityItemRequest("2024-01-01", "10:30:00", "11:30:00"),
-            )
+        val testCases = listOf(
+            TestCase(
+                timeSlots = listOf(
+                    TimeSlot(LocalTime.parse("09:00"), LocalTime.parse("11:00")),
+                ),
+                date = LocalDate(2024, 1, 1),
+                expected = UpdateAvailabilityRequest(
+                    listOf(
+                        UpdateAvailabilityItemRequest(
+                            from = Instant.parse("2024-01-01T09:00:00Z"),
+                            to = Instant.parse("2024-01-01T09:30:00Z"),
+                        ),
+                        UpdateAvailabilityItemRequest(
+                            from = Instant.parse("2024-01-01T09:30:00Z"),
+                            to = Instant.parse("2024-01-01T10:00:00Z"),
+                        ),
+                        UpdateAvailabilityItemRequest(
+                            from = Instant.parse("2024-01-01T10:00:00Z"),
+                            to = Instant.parse("2024-01-01T10:30:00Z"),
+                        ),
+                        UpdateAvailabilityItemRequest(
+                            from = Instant.parse("2024-01-01T10:30:00Z"),
+                            to = Instant.parse("2024-01-01T11:00:00Z"),
+                        ),
+                    )
+                )
+            ),
         )
-        // Act
-        sut.execute(timeSlots, date)
-        // Asserts
-        assertEquals(api.applyAvailabilityCalled, expected)
+        for (t in testCases) {
+            // Arrange
+            // Act
+            sut.execute(t.timeSlots, t.date)
+            // Asserts
+            assertEquals(api.applyAvailabilityCalled, t.expected)
+        }
     }
 
     @Test
@@ -84,7 +109,7 @@ class UpdateAvailabilityUseCaseTest {
         }
     }
 
-    private class StorageMock: AvailabilityStorage {
+    private class StorageMock : AvailabilityStorage {
         override fun getFlow(): Flow<List<ProfessionalAvailability>> = flowOf()
         override suspend fun set(value: List<ProfessionalAvailability>) {}
         override suspend fun remove() {}
