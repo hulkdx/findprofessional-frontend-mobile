@@ -110,7 +110,7 @@ class BookingTimeUseCaseTest {
         // Arrange
         val selectedTimeId = 30
         val date = LocalDate.now()
-        val professional = createProfessionalWithAvailability(date, 0 to 0)
+        val professional = createProfessionalWithAvailability(date, 30 to 60)
         // Act
         sut.onTimeClicked(createBookingTimes(selectedTimeId))
         sut.onTimeClicked(createBookingTimes(selectedTimeId))
