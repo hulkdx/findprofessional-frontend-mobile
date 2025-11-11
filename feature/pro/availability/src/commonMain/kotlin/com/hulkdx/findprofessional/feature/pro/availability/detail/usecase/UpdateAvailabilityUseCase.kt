@@ -10,26 +10,23 @@ import com.hulkdx.findprofessional.core.utils.StringOrRes
 import com.hulkdx.findprofessional.core.utils.generalError
 import com.hulkdx.findprofessional.core.utils.toStringOrRes
 import com.hulkdx.findprofessional.feature.pro.availability.detail.TimeSlot
+import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.atTime
+import kotlinx.datetime.toInstant
+import kotlin.time.Duration.Companion.minutes
 
 class UpdateAvailabilityUseCase(
     private val professionalApi: ProfessionalApi,
     private val storage: AvailabilityStorage,
 ) {
-    suspend fun execute(timeSlots: List<TimeSlot>, date: LocalDate): StringOrRes? {
+    suspend fun execute(timeSlots: List<TimeSlot>, date: LocalDate, timeZone: TimeZone): StringOrRes? {
         return try {
             if (isNotValid(timeSlots)) {
                 return Res.string.invalidTime.toStringOrRes()
             }
-            val request = UpdateAvailabilityRequest(
-                timeSlots.map {
-                    UpdateAvailabilityItemRequest(
-                        date = date.toString(),
-                        from = "${it.from}:00",
-                        to = "${it.to}:00",
-                    )
-                }
-            )
+            val request = UpdateAvailabilityRequest(createItems(timeSlots, date, timeZone))
             professionalApi.updateAvailability(request)
             val new = professionalApi.getAvailability()
             storage.set(new)
@@ -46,5 +43,32 @@ class UpdateAvailabilityUseCase(
             }
         }
         return false
+    }
+
+    private fun createItems(
+        timeSlots: List<TimeSlot>,
+        date: LocalDate,
+        timeZone: TimeZone,
+    ): List<UpdateAvailabilityItemRequest> {
+        val set = mutableSetOf<Instant>()
+        val result = mutableListOf<UpdateAvailabilityItemRequest>()
+        for (t in timeSlots) {
+            var current = date.atTime(t.from).toInstant(timeZone)
+            val slotEnd = date.atTime(t.to).toInstant(timeZone)
+            while (current < slotEnd) {
+                val currentEnd = current.plus(30.minutes)
+                if (!set.contains(current)) {
+                    result.add(
+                        UpdateAvailabilityItemRequest(
+                            from = current,
+                            to = currentEnd,
+                        )
+                    )
+                    set.add(current)
+                }
+                current = currentEnd
+            }
+        }
+        return result
     }
 }

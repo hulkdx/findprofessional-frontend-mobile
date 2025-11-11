@@ -51,11 +51,7 @@ jobs:
 
   android-integration-tests:
     name: Android integration tests
-    #
-    # macos-14 is not supported yet:
-    # https://github.com/ReactiveCircus/android-emulator-runner/issues/324
-    #
-    runs-on: macos-13
+    runs-on: ubuntu-latest
     timeout-minutes: 45
     strategy:
       fail-fast: false
@@ -68,6 +64,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+
+      - name: Enable KVM (hardware acceleration)
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
 
       - uses: actions/setup-java@v4
         with:
@@ -84,14 +86,14 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradle-
 
-      - name: AVD cache
-        uses: actions/cache@v4
-        id: avd-cache
-        with:
-          path: |
-            ~/.android/avd/*
-            ~/.android/adb*
-          key: avd-${{ matrix.api-level }} - ${{ matrix.arch }} - ${{ matrix.target }}
+#      - name: AVD cache
+#        uses: actions/cache@v4
+#        id: avd-cache
+#        with:
+#          path: |
+#            ~/.android/avd/*
+#            ~/.android/adb*
+#          key: avd-${{ matrix.api-level }} - ${{ matrix.arch }} - ${{ matrix.target }}
 
       - name: Run Android instrumentation tests
         uses: reactivecircus/android-emulator-runner@v2
@@ -164,8 +166,16 @@ jobs:
 
           continue-on-error: true
 
+      - name: Cache Kotlin/Native (konan)
+        uses: actions/cache@v4
+        with:
+          path: ~/.konan
+          key: ${{ runner.os }}-konan-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties', '**/gradle/libs.versions.toml') }}
+          restore-keys: |
+            ${{ runner.os }}-konan-
+
       - name: Run IOS instrumentation tests
-        run: ./gradlew iosSimulatorArm64Test
+        run: ./gradlew iosSimulatorArm64Test --parallel
 
       - name: Upload IOS test reports
         if: failure()

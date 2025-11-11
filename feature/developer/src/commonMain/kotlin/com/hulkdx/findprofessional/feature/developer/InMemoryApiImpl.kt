@@ -21,6 +21,8 @@ import com.hulkdx.findprofessional.feature.review.ReviewApi
 import kotlinx.datetime.Clock
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalTime
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.toLocalDateTime
 import org.koin.dsl.module
 
 internal class InMemoryApiImpl : InMemoryApi {
@@ -255,10 +257,12 @@ internal class InMemoryApiImpl : InMemoryApi {
         override suspend fun updateAvailability(request: UpdateAvailabilityRequest) {
             availability.addAll(
                 request.items.map {
+                    val fromDateTime = it.from.toLocalDateTime(TimeZone.UTC)
+                    val toDateTime = it.to.toLocalDateTime(TimeZone.UTC)
                     ProfessionalAvailability(
-                        date = LocalDate.parse(it.date),
-                        from = LocalTime.parse(it.from),
-                        to = LocalTime.parse(it.to),
+                        date = fromDateTime.date,
+                        from = fromDateTime.time,
+                        to = toDateTime.time,
                     )
                 }
             )
