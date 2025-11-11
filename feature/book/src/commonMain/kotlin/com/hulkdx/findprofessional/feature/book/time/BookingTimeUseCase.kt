@@ -5,6 +5,7 @@ import com.hulkdx.findprofessional.core.features.pro.model.Professional
 import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalAvailability
 import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import com.hulkdx.findprofessional.core.navigation.Navigator
+import com.hulkdx.findprofessional.core.utils.TimeUtils
 import com.hulkdx.findprofessional.core.utils.TimeUtils.formattedTime
 import com.hulkdx.findprofessional.core.utils.now
 import com.hulkdx.findprofessional.feature.book.time.BookingTimeUiState.BookingTime
@@ -12,7 +13,6 @@ import com.hulkdx.findprofessional.feature.book.time.BookingTimeUiState.BookingT
 import com.hulkdx.findprofessional.feature.book.time.BookingTimeUiState.BookingTime.Type.Selected
 import com.hulkdx.findprofessional.feature.book.time.BookingTimeUiState.BookingTime.Type.UnAvailable
 import com.hulkdx.findprofessional.feature.book.time.utils.BookingTimeUtils.currentDay
-import com.hulkdx.findprofessional.feature.book.time.utils.BookingTimeUtils.isAvailabilityIncludedInTimes
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
@@ -27,17 +27,27 @@ class BookingTimeUseCase(
     now: LocalDate = LocalDate.now(),
     private val navigator: Navigator,
 ) {
+    private val professionalAvailabilityMap = mutableMapOf<LocalDate, Map<Int, ProfessionalAvailability>>()
     private val date = MutableStateFlow(now)
     private val selectedItems = MutableStateFlow(SelectedTimes())
 
-    fun getUiState(professional: Professional): Flow<BookingTimeUiState> =
-        combine(date, selectedItems, ::Pair)
+    fun getUiState(professional: Professional): Flow<BookingTimeUiState> {
+        if (professionalAvailabilityMap.isEmpty()) {
+            for (a in professional.availability) {
+                professionalAvailabilityMap[a.date] =
+                    (professionalAvailabilityMap[a.date] ?: mutableMapOf()) +
+                            (TimeUtils.getMinutes(a.from) to a)
+            }
+        }
+
+        return combine(date, selectedItems, ::Pair)
             .map { (date, selectedItems) ->
                 BookingTimeUiState(
                     currentDate = currentDay(date),
-                    times = getTimes(professional, date, selectedItems.items),
+                    times = getTimes(date, selectedItems.items),
                 )
             }
+    }
 
     fun dayMinusOne() {
         date.value = date.value.minus(1, DateTimeUnit.DAY)
@@ -71,15 +81,9 @@ class BookingTimeUseCase(
     }
 
     internal fun getTimes(
-        professional: Professional,
         date: LocalDate,
         selectedItems: Map<LocalDate, Set<Int>>,
     ): List<List<BookingTime>> {
-        val availabilities = professional.availability
-            .filter { it.date == date }
-
-        val filteredSelectedItems = selectedItems[date] ?: setOf()
-
         return (0..24 * 60 step 30)
             .windowed(size = 2) { (start, end) ->
                 val startTime = formattedTime(start)
@@ -87,7 +91,7 @@ class BookingTimeUseCase(
                     id = start,
                     startTime = startTime,
                     endTime = formattedTime(end),
-                    type = getType(start, end, availabilities, filteredSelectedItems),
+                    type = getType(start, date, selectedItems),
                 )
             }
             .chunked(2)
@@ -95,16 +99,15 @@ class BookingTimeUseCase(
 
     private fun getType(
         start: Int,
-        end: Int,
-        availabilities: List<ProfessionalAvailability>,
-        selectedItems: Set<Int>,
+        date: LocalDate,
+        selectedItems: Map<LocalDate, Set<Int>>,
     ): BookingTime.Type {
         return when {
-            selectedItems.contains(start) -> {
+            selectedItems[date]?.contains(start) == true -> {
                 Selected
             }
 
-            availabilities.any { isAvailabilityIncludedInTimes(it, start, end) } -> {
+            professionalAvailabilityMap[date]?.contains(start) == true -> {
                 Available
             }
 
