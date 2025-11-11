@@ -5,14 +5,27 @@ import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalAvailabil
 import com.hulkdx.findprofessional.core.utils.CurrencyFormatter
 import com.hulkdx.findprofessional.core.utils.TimeUtils.formattedTime
 import com.hulkdx.findprofessional.core.utils.shortDayOfWeeks
+import com.hulkdx.findprofessional.core.utils.toMinutesOfDay
 import com.hulkdx.findprofessional.feature.book.summery.BookingSummeryUiState.SummeryDetails
 import com.hulkdx.findprofessional.feature.book.time.utils.BookingTimeUtils.currentDay
 import kotlinx.datetime.LocalDate
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.toLocalDateTime
 
 class BookingSummeryTimeMapper {
-    fun map(availabilities: List<ProfessionalAvailability>): List<SummeryDetails.Time> {
-        // TODO:
-        return listOf()
+    fun map(
+        availabilities: List<ProfessionalAvailability>,
+        timeZone: TimeZone = TimeZone.currentSystemDefault()
+    ): List<SummeryDetails.Time> {
+        return availabilities
+            .sortedWith(compareBy({ it.from }))
+            .map { availability ->
+                val localDateTime = availability.from.toLocalDateTime(timeZone)
+                map(
+                    localDateTime.date,
+                    localDateTime.time.toMinutesOfDay(),
+                )
+            }
     }
 
     @VisibleForTesting

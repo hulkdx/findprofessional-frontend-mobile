@@ -8,6 +8,7 @@ import com.hulkdx.findprofessional.core.navigation.Navigator
 import com.hulkdx.findprofessional.core.utils.TimeUtils
 import com.hulkdx.findprofessional.core.utils.TimeUtils.formattedTime
 import com.hulkdx.findprofessional.core.utils.now
+import com.hulkdx.findprofessional.core.utils.toMinutesOfDay
 import com.hulkdx.findprofessional.feature.book.time.BookingTimeUiState.BookingTime
 import com.hulkdx.findprofessional.feature.book.time.BookingTimeUiState.BookingTime.Type.Available
 import com.hulkdx.findprofessional.feature.book.time.BookingTimeUiState.BookingTime.Type.Selected
@@ -20,6 +21,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.update
 import kotlinx.datetime.DateTimeUnit
 import kotlinx.datetime.LocalDate
+import kotlinx.datetime.TimeZone
 import kotlinx.datetime.minus
 import kotlinx.datetime.plus
 
@@ -36,7 +38,7 @@ class BookingTimeUseCase(
             for (a in professional.availability) {
                 professionalAvailabilityMap[a.date] =
                     (professionalAvailabilityMap[a.date] ?: mutableMapOf()) +
-                            (TimeUtils.getMinutes(a.from) to a)
+                            (a.from.toMinutesOfDay(TimeZone.UTC) to a)
             }
         }
 

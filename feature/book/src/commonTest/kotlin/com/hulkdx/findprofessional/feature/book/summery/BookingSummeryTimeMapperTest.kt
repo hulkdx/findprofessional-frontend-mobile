@@ -1,7 +1,9 @@
 package com.hulkdx.findprofessional.feature.book.summery
 
 import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalAvailability
+import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
+import kotlinx.datetime.TimeZone
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -35,7 +37,21 @@ class BookingSummeryTimeMapperTest {
     fun `map selectedTimes tests`() {
         // Arrange
         val availabilities = listOf(
-            ProfessionalAvailability(),
+            ProfessionalAvailability(
+                id = 1,
+                from = Instant.parse("2024-01-02T01:00:00Z"),
+                to = Instant.parse("2024-01-02T01:30:00Z"),
+            ),
+            ProfessionalAvailability(
+                id = 2,
+                from = Instant.parse("2024-01-01T00:30:00Z"),
+                to = Instant.parse("2024-01-01T01:00:00Z"),
+            ),
+            ProfessionalAvailability(
+                id = 3,
+                from = Instant.parse("2024-01-01T00:00:00Z"),
+                to = Instant.parse("2024-01-01T00:30:00Z"),
+            )
         )
         val expectedResult = listOf(
             BookingSummeryUiState.SummeryDetails.Time(
@@ -55,9 +71,9 @@ class BookingSummeryTimeMapperTest {
             ),
         )
         // Act
-        val result = sut.map(availabilities)
+        val result = sut.map(availabilities, TimeZone.UTC)
         // Assert
-        assertEquals(result, expectedResult)
+        assertEquals(expectedResult, result)
     }
 
     @Test

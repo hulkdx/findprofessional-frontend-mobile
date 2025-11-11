@@ -34,22 +34,9 @@ class BookingTimeUseCaseTest {
     fun `getTimes when empty availability then result would be all unavailable times`() {
         // Arrange
         val date = LocalDate.now()
-        val professional = createProfessional(availability = listOf())
         val expectedResult = allUnavailable()
         // Act
-        val result = sut.getTimes(professional, date, mapOf())
-        // Assert
-        assertEquals(result, expectedResult)
-    }
-
-    @Test
-    fun `getTimes when all times are available then result would be available`() {
-        // Arrange
-        val date = LocalDate.now()
-        val professional = createProfessionalWithAvailability(date, 0 to 0)
-        val expectedResult = allAvailable()
-        // Act
-        val result = sut.getTimes(professional, date, mapOf())
+        val result = sut.getTimes(date, mapOf())
         // Assert
         assertEquals(result, expectedResult)
     }
