@@ -5,13 +5,13 @@ import com.hulkdx.findprofessional.core.features.pro.model.Professional
 import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalAvailability
 import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import com.hulkdx.findprofessional.core.navigation.Navigator
+import com.hulkdx.findprofessional.core.utils.TimeUtils.formattedTime
 import com.hulkdx.findprofessional.core.utils.now
 import com.hulkdx.findprofessional.feature.book.time.BookingTimeUiState.BookingTime
 import com.hulkdx.findprofessional.feature.book.time.BookingTimeUiState.BookingTime.Type.Available
 import com.hulkdx.findprofessional.feature.book.time.BookingTimeUiState.BookingTime.Type.Selected
 import com.hulkdx.findprofessional.feature.book.time.BookingTimeUiState.BookingTime.Type.UnAvailable
 import com.hulkdx.findprofessional.feature.book.time.utils.BookingTimeUtils.currentDay
-import com.hulkdx.findprofessional.core.utils.TimeUtils.formattedTime
 import com.hulkdx.findprofessional.feature.book.time.utils.BookingTimeUtils.isAvailabilityIncludedInTimes
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -67,7 +67,7 @@ class BookingTimeUseCase(
     }
 
     fun onContinueClicked(professional: Professional) {
-        navigator.navigate(NavigationScreen.BookingSummery(professional, selectedItems.value))
+        navigator.navigate(NavigationScreen.BookingSummery(professional, listOf()))
     }
 
     internal fun getTimes(
@@ -75,19 +75,19 @@ class BookingTimeUseCase(
         date: LocalDate,
         selectedItems: Map<LocalDate, Set<Int>>,
     ): List<List<BookingTime>> {
-        val availability = professional.availability
+        val availabilities = professional.availability
             .filter { it.date == date }
 
         val filteredSelectedItems = selectedItems[date] ?: setOf()
 
         return (0..24 * 60 step 30)
             .windowed(size = 2) { (start, end) ->
+                val startTime = formattedTime(start)
                 BookingTime(
                     id = start,
-                    date = date,
-                    startTime = formattedTime(start),
+                    startTime = startTime,
                     endTime = formattedTime(end),
-                    type = getType(start, end, availability, filteredSelectedItems),
+                    type = getType(start, end, availabilities, filteredSelectedItems),
                 )
             }
             .chunked(2)
@@ -96,7 +96,7 @@ class BookingTimeUseCase(
     private fun getType(
         start: Int,
         end: Int,
-        availability: List<ProfessionalAvailability>,
+        availabilities: List<ProfessionalAvailability>,
         selectedItems: Set<Int>,
     ): BookingTime.Type {
         return when {
@@ -104,7 +104,7 @@ class BookingTimeUseCase(
                 Selected
             }
 
-            availability.any { isAvailabilityIncludedInTimes(it, start, end) } -> {
+            availabilities.any { isAvailabilityIncludedInTimes(it, start, end) } -> {
                 Available
             }
 

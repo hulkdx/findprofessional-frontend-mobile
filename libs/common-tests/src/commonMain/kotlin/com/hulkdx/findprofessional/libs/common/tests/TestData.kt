@@ -6,7 +6,6 @@ import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalReview
 import com.hulkdx.findprofessional.core.features.user.Token
 import com.hulkdx.findprofessional.core.features.user.User
 import com.hulkdx.findprofessional.core.features.user.UserData
-import com.hulkdx.findprofessional.core.utils.now
 import com.hulkdx.findprofessional.feature.book.time.BookingTimeUiState
 import kotlinx.datetime.Clock
 import kotlinx.datetime.LocalDate
@@ -69,7 +68,6 @@ fun createBookingTimes(id: Int) = BookingTimeUiState.BookingTime(
     startTime = "mentitum",
     endTime = "interdum",
     type = BookingTimeUiState.BookingTime.Type.UnAvailable,
-    date = LocalDate.now(),
 )
 
 

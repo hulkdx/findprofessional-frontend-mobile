@@ -4,7 +4,7 @@ package com.hulkdx.findprofessional.feature.book.summery
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.hulkdx.findprofessional.core.features.book.SelectedTimes
+import com.hulkdx.findprofessional.core.features.book.BookingSummeryTime
 import com.hulkdx.findprofessional.core.features.pro.model.Professional
 import com.hulkdx.findprofessional.core.features.pro.model.request.CreateBookingRequest
 import com.hulkdx.findprofessional.core.navigation.NavigationScreen
@@ -28,7 +28,7 @@ import kotlin.uuid.Uuid
 
 class BookingSummeryViewModel(
     private val professional: Professional,
-    times: SelectedTimes,
+    times: List<BookingSummeryTime>,
     useCase: BookingSummeryUseCase,
     private val createBookingUseCase: CreateBookingUseCase,
     private val navigator: Navigator,

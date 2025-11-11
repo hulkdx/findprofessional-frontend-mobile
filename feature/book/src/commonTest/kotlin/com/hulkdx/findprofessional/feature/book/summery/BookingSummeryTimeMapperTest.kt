@@ -1,5 +1,6 @@
 package com.hulkdx.findprofessional.feature.book.summery
 
+import com.hulkdx.findprofessional.core.features.book.BookingSummeryTime
 import com.hulkdx.findprofessional.core.features.book.SelectedTimes
 import kotlinx.datetime.LocalDate
 import kotlin.test.BeforeTest
@@ -20,7 +21,7 @@ class BookingSummeryTimeMapperTest {
         // Arrange
         val date = LocalDate(2024, 1, 1)
         val startTime = 0
-        val expectedResult = BookingSummeryUiState.SummeryDetails.Time(
+        val expectedResult = BookingSummeryTime(
             duration = "00:00 - 00:30",
             date = "1.1.2024",
             day = "Mon",
@@ -41,17 +42,17 @@ class BookingSummeryTimeMapperTest {
             )
         )
         val expectedResult = listOf(
-            BookingSummeryUiState.SummeryDetails.Time(
+            BookingSummeryTime(
                 duration = "00:00 - 00:30",
                 date = "1.1.2024",
                 day = "Mon",
             ),
-            BookingSummeryUiState.SummeryDetails.Time(
+            BookingSummeryTime(
                 duration = "00:30 - 01:00",
                 date = "1.1.2024",
                 day = "Mon",
             ),
-            BookingSummeryUiState.SummeryDetails.Time(
+            BookingSummeryTime(
                 duration = "01:00 - 01:30",
                 date = "2.1.2024",
                 day = "Tue",
