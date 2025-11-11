@@ -8,7 +8,7 @@ data class TimeSlot(
     val to: LocalTime,
 ) {
     val fromDisplayValue = from.displayValue()
-    val toDisplayValue = from.displayValue()
+    val toDisplayValue = to.displayValue()
 
     private fun LocalTime.displayValue(): String {
         val minutesOfDay = hour * 60 + minute
