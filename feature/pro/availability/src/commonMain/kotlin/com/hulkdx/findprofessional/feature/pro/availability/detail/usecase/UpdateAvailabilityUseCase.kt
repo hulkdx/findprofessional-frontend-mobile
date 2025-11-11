@@ -10,10 +10,8 @@ import com.hulkdx.findprofessional.core.utils.StringOrRes
 import com.hulkdx.findprofessional.core.utils.generalError
 import com.hulkdx.findprofessional.core.utils.toStringOrRes
 import com.hulkdx.findprofessional.feature.pro.availability.detail.TimeSlot
-import kotlinx.datetime.DateTimeUnit
 import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
-import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.atTime
 import kotlinx.datetime.toInstant
@@ -23,12 +21,12 @@ class UpdateAvailabilityUseCase(
     private val professionalApi: ProfessionalApi,
     private val storage: AvailabilityStorage,
 ) {
-    suspend fun execute(timeSlots: List<TimeSlot>, date: LocalDate): StringOrRes? {
+    suspend fun execute(timeSlots: List<TimeSlot>, date: LocalDate, timeZone: TimeZone): StringOrRes? {
         return try {
             if (isNotValid(timeSlots)) {
                 return Res.string.invalidTime.toStringOrRes()
             }
-            val request = UpdateAvailabilityRequest(toRequestItems(timeSlots, date, TimeZone.UTC))
+            val request = UpdateAvailabilityRequest(createItems(timeSlots, date, timeZone))
             professionalApi.updateAvailability(request)
             val new = professionalApi.getAvailability()
             storage.set(new)
@@ -47,23 +45,27 @@ class UpdateAvailabilityUseCase(
         return false
     }
 
-    private fun toRequestItems(
+    private fun createItems(
         timeSlots: List<TimeSlot>,
         date: LocalDate,
         timeZone: TimeZone,
     ): List<UpdateAvailabilityItemRequest> {
+        val set = mutableSetOf<Instant>()
         val result = mutableListOf<UpdateAvailabilityItemRequest>()
         for (t in timeSlots) {
             var current = date.atTime(t.from).toInstant(timeZone)
             val slotEnd = date.atTime(t.to).toInstant(timeZone)
             while (current < slotEnd) {
                 val currentEnd = current.plus(30.minutes)
-                result.add(
-                    UpdateAvailabilityItemRequest(
-                        from = current,
-                        to = currentEnd,
+                if (!set.contains(current)) {
+                    result.add(
+                        UpdateAvailabilityItemRequest(
+                            from = current,
+                            to = currentEnd,
+                        )
                     )
-                )
+                    set.add(current)
+                }
                 current = currentEnd
             }
         }

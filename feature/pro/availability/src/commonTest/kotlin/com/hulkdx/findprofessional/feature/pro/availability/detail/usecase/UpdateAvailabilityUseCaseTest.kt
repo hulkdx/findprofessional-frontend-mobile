@@ -17,6 +17,7 @@ import kotlinx.coroutines.runBlocking
 import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalTime
+import kotlinx.datetime.TimeZone
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -71,7 +72,7 @@ class UpdateAvailabilityUseCaseTest {
         for (t in testCases) {
             // Arrange
             // Act
-            sut.execute(t.timeSlots, t.date)
+            sut.execute(t.timeSlots, t.date, TimeZone.UTC)
             // Asserts
             assertEquals(api.applyAvailabilityCalled, t.expected)
         }
@@ -89,7 +90,7 @@ class UpdateAvailabilityUseCaseTest {
             // Arrange
             val date = LocalDate(2024, 1, 1)
             // Act
-            val err = sut.execute(invalidTimeSlots, date)
+            val err = sut.execute(invalidTimeSlots, date, TimeZone.UTC)
             // Asserts
             assertEquals(err, Res.string.invalidTime.toStringOrRes())
         }

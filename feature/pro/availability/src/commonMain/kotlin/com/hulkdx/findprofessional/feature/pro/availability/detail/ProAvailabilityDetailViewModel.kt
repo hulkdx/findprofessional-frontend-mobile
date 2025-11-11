@@ -12,6 +12,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalTime
+import kotlinx.datetime.TimeZone
 
 class ProAvailabilityDetailViewModel(
     private val navigator: Navigator,
@@ -60,6 +61,7 @@ class ProAvailabilityDetailViewModel(
             val err = updateAvailabilityUseCase.execute(
                 timeSlots = uiState.value.timeSlots,
                 date = selectedDate,
+                timeZone = TimeZone.currentSystemDefault(),
             )
             if (err == null) {
                 navigator.goBack()
