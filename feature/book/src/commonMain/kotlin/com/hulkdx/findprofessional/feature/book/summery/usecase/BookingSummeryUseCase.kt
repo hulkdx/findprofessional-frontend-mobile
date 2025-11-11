@@ -1,7 +1,7 @@
 package com.hulkdx.findprofessional.feature.book.summery.usecase
 
-import com.hulkdx.findprofessional.core.features.book.BookingSummeryTime
 import com.hulkdx.findprofessional.core.features.pro.model.Professional
+import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalAvailability
 import com.hulkdx.findprofessional.core.features.user.User
 import com.hulkdx.findprofessional.core.storage.UserStorage
 import com.hulkdx.findprofessional.feature.book.summery.BookingSummeryTimeMapper
@@ -15,8 +15,9 @@ class BookingSummeryUseCase(
 ) {
     fun getSummeryDetails(
         professional: Professional,
-        times: List<BookingSummeryTime>,
+        availabilities: List<ProfessionalAvailability>,
     ): Flow<SummeryDetails> {
+        val times = bookingSummeryTimeMapper.map(availabilities)
         return userStore.getFlow()
             .map {
                 val amountInCents = professional.priceNumber * times.size

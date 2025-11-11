@@ -1,7 +1,6 @@
 package com.hulkdx.findprofessional.feature.book.summery
 
-import com.hulkdx.findprofessional.core.features.book.BookingSummeryTime
-import com.hulkdx.findprofessional.core.features.book.SelectedTimes
+import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalAvailability
 import kotlinx.datetime.LocalDate
 import kotlin.test.BeforeTest
 import kotlin.test.Test
@@ -21,7 +20,7 @@ class BookingSummeryTimeMapperTest {
         // Arrange
         val date = LocalDate(2024, 1, 1)
         val startTime = 0
-        val expectedResult = BookingSummeryTime(
+        val expectedResult = BookingSummeryUiState.SummeryDetails.Time(
             duration = "00:00 - 00:30",
             date = "1.1.2024",
             day = "Mon",
@@ -35,31 +34,28 @@ class BookingSummeryTimeMapperTest {
     @Test
     fun `map selectedTimes tests`() {
         // Arrange
-        val selectedTimes = SelectedTimes(
-            mapOf(
-                LocalDate(2024, 1, 1) to setOf(0, 30),
-                LocalDate(2024, 1, 2) to setOf(60),
-            )
+        val availabilities = listOf(
+            ProfessionalAvailability(),
         )
         val expectedResult = listOf(
-            BookingSummeryTime(
+            BookingSummeryUiState.SummeryDetails.Time(
                 duration = "00:00 - 00:30",
                 date = "1.1.2024",
                 day = "Mon",
             ),
-            BookingSummeryTime(
+            BookingSummeryUiState.SummeryDetails.Time(
                 duration = "00:30 - 01:00",
                 date = "1.1.2024",
                 day = "Mon",
             ),
-            BookingSummeryTime(
+            BookingSummeryUiState.SummeryDetails.Time(
                 duration = "01:00 - 01:30",
                 date = "2.1.2024",
                 day = "Tue",
             ),
         )
         // Act
-        val result = sut.map(selectedTimes)
+        val result = sut.map(availabilities)
         // Assert
         assertEquals(result, expectedResult)
     }

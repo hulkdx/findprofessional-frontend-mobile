@@ -77,7 +77,16 @@ class BookingTimeUseCase(
     }
 
     fun onContinueClicked(professional: Professional) {
-        navigator.navigate(NavigationScreen.BookingSummery(professional, listOf()))
+        val availabilities = mutableListOf<ProfessionalAvailability>()
+        for ((date, times) in selectedItems.value.items) {
+            for (t in times) {
+                val av = professionalAvailabilityMap[date]?.get(t)
+                if (av != null) {
+                    availabilities.add(av)
+                }
+            }
+        }
+        navigator.navigate(NavigationScreen.BookingSummery(professional, availabilities))
     }
 
     internal fun getTimes(

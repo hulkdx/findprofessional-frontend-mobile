@@ -1,26 +1,26 @@
 package com.hulkdx.findprofessional.feature.book.summery
 
 import androidx.annotation.VisibleForTesting
-import com.hulkdx.findprofessional.core.features.book.BookingSummeryTime
-import com.hulkdx.findprofessional.core.features.book.SelectedTimes
+import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalAvailability
 import com.hulkdx.findprofessional.core.utils.CurrencyFormatter
 import com.hulkdx.findprofessional.core.utils.TimeUtils.formattedTime
 import com.hulkdx.findprofessional.core.utils.shortDayOfWeeks
+import com.hulkdx.findprofessional.feature.book.summery.BookingSummeryUiState.SummeryDetails
 import com.hulkdx.findprofessional.feature.book.time.utils.BookingTimeUtils.currentDay
 import kotlinx.datetime.LocalDate
 
 class BookingSummeryTimeMapper {
-    fun map(selectedTimes: SelectedTimes) = selectedTimes.items
-        .flatMap { (key, times) ->
-            times.map { time -> map(key, time) }
-        }
+    fun map(availabilities: List<ProfessionalAvailability>): List<SummeryDetails.Time> {
+        // TODO:
+        return listOf()
+    }
 
     @VisibleForTesting
-    internal fun map(date: LocalDate, startTimeMinutes: Int): BookingSummeryTime {
+    internal fun map(date: LocalDate, startTimeMinutes: Int): SummeryDetails.Time {
         val endTime = startTimeMinutes + 30
         val duration = "${formattedTime(startTimeMinutes)} - ${formattedTime(endTime)}"
 
-        return BookingSummeryTime(
+        return SummeryDetails.Time(
             duration = duration,
             date = currentDay(date),
             day = date.shortDayOfWeeks(),

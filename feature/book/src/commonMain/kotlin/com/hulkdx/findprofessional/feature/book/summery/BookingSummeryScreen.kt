@@ -28,8 +28,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.hulkdx.findprofessional.core.features.book.BookingSummeryTime
 import com.hulkdx.findprofessional.core.features.pro.model.Professional
+import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalAvailability
 import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.checkout
 import com.hulkdx.findprofessional.core.resources.connection
@@ -57,7 +57,7 @@ import org.koin.core.parameter.parametersOf
 @Composable
 fun BookingSummeryScreen(
     professional: Professional,
-    times: List<BookingSummeryTime>,
+    times: List<ProfessionalAvailability>,
     viewModel: BookingSummeryViewModel = koinViewModel { parametersOf(professional, times) },
 ) {
     val uiState by viewModel.uiState.collectAsState()
@@ -160,7 +160,7 @@ private fun DateAndTime() {
 }
 
 @Composable
-private fun TimeItem(data: BookingSummeryTime) {
+private fun TimeItem(data: BookingSummeryUiState.SummeryDetails.Time) {
     Row(
         modifier = Modifier
             .padding(horizontal = 26.dp)
@@ -293,12 +293,12 @@ private fun BookingSummeryScreenPreview() {
                 BookingSummeryUiState.SummeryDetails(
                     userSkypeId = "test@gmail.com",
                     times = listOf(
-                        BookingSummeryTime(
+                        BookingSummeryUiState.SummeryDetails.Time(
                             duration = "16:30 - 17:00",
                             date = "1.1.2024",
                             day = "Mon",
                         ),
-                        BookingSummeryTime(
+                        BookingSummeryUiState.SummeryDetails.Time(
                             duration = "17:30 - 18:00",
                             date = "1.1.2024",
                             day = "Mon",
