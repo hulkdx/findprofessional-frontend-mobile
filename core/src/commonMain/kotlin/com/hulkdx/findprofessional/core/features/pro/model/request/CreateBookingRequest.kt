@@ -13,5 +13,5 @@ data class CreateBookingRequest(
 
 @Serializable
 data class CreateBookingRequestAvailability(
-    val id: String,
+    val id: Long,
 )

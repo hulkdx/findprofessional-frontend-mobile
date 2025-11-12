@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.hulkdx.findprofessional.core.features.pro.model.Professional
 import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalAvailability
 import com.hulkdx.findprofessional.core.features.pro.model.request.CreateBookingRequest
+import com.hulkdx.findprofessional.core.features.pro.model.request.CreateBookingRequestAvailability
 import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import com.hulkdx.findprofessional.core.navigation.Navigator
 import com.hulkdx.findprofessional.core.platform.isDebug
@@ -28,13 +29,13 @@ import kotlin.uuid.Uuid
 
 class BookingSummeryViewModel(
     private val professional: Professional,
-    times: List<ProfessionalAvailability>,
+    private val availabilities: List<ProfessionalAvailability>,
     useCase: BookingSummeryUseCase,
     private val createBookingUseCase: CreateBookingUseCase,
     private val navigator: Navigator,
 ) : ViewModel() {
     private val _uiState = MutableStateFlow(BookingSummeryUiState())
-    val uiState = useCase.getSummeryDetails(professional, times)
+    val uiState = useCase.getSummeryDetails(professional, availabilities)
         .flatMapLatest {
             _uiState.apply {
                 update { uiState -> uiState.copy(summeryDetails = it) }
@@ -55,7 +56,7 @@ class BookingSummeryViewModel(
             val request = CreateBookingRequest(
                 amountInCents = _uiState.value.summeryDetails.amountInCents,
                 currency = _uiState.value.summeryDetails.currency,
-                availabilities = listOf(),
+                availabilities = availabilities.map { CreateBookingRequestAvailability(it.id) },
                 idempotencyKey = idempotencyKey,
             )
             createBookingUseCase.execute(request, professional.id.toString())
