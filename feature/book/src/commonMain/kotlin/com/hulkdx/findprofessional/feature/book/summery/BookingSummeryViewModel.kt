@@ -13,6 +13,7 @@ import com.hulkdx.findprofessional.core.navigation.Navigator
 import com.hulkdx.findprofessional.core.platform.isDebug
 import com.hulkdx.findprofessional.core.utils.StringOrRes
 import com.hulkdx.findprofessional.core.utils.generalError
+import com.hulkdx.findprofessional.core.utils.generateUuidV7
 import com.hulkdx.findprofessional.feature.book.summery.BookingSummeryUiState.CheckoutStatus
 import com.hulkdx.findprofessional.feature.book.summery.stripe.PaymentSheetResult
 import com.hulkdx.findprofessional.feature.book.summery.usecase.BookingSummeryUseCase
@@ -24,8 +25,6 @@ import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import kotlin.uuid.ExperimentalUuidApi
-import kotlin.uuid.Uuid
 
 class BookingSummeryViewModel(
     private val professional: Professional,
@@ -44,20 +43,14 @@ class BookingSummeryViewModel(
         .stateIn(viewModelScope, WhileSubscribed(5_000), BookingSummeryUiState())
 
 
-    @OptIn(ExperimentalUuidApi::class)
-
     fun onCheckoutClicked() {
         viewModelScope.launch {
             setLoading(true)
-
-            // TODO: use v7
-            val idempotencyKey = Uuid.random().toString()
-
             val request = CreateBookingRequest(
                 amountInCents = _uiState.value.summeryDetails.amountInCents,
                 currency = _uiState.value.summeryDetails.currency,
                 availabilities = availabilities.map { CreateBookingRequestAvailability(it.id) },
-                idempotencyKey = idempotencyKey,
+                idempotencyKey = generateUuidV7(),
             )
             createBookingUseCase.execute(request, professional.id.toString())
                 .onFailure { throwable ->
