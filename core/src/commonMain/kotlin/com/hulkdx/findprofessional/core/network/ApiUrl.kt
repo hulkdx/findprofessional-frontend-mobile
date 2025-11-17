@@ -38,6 +38,8 @@ private object ApiUrl : KoinComponent {
             "auth/refresh",
                 -> ":8080"
 
+            "payments/start" -> ":8082"
+
             else -> ":8081"
         }
     }

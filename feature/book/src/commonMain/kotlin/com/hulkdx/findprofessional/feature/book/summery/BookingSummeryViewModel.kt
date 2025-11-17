@@ -6,14 +6,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hulkdx.findprofessional.core.features.pro.model.Professional
 import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalAvailability
-import com.hulkdx.findprofessional.core.features.pro.model.request.CreateBookingRequest
-import com.hulkdx.findprofessional.core.features.pro.model.request.CreateBookingRequestAvailability
 import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import com.hulkdx.findprofessional.core.navigation.Navigator
 import com.hulkdx.findprofessional.core.platform.isDebug
 import com.hulkdx.findprofessional.core.utils.StringOrRes
 import com.hulkdx.findprofessional.core.utils.generalError
-import com.hulkdx.findprofessional.core.utils.generateUuidV7
 import com.hulkdx.findprofessional.feature.book.summery.BookingSummeryUiState.CheckoutStatus
 import com.hulkdx.findprofessional.feature.book.summery.stripe.PaymentSheetResult
 import com.hulkdx.findprofessional.feature.book.summery.usecase.BookingSummeryUseCase
@@ -46,13 +43,12 @@ class BookingSummeryViewModel(
     fun onCheckoutClicked() {
         viewModelScope.launch {
             setLoading(true)
-            val request = CreateBookingRequest(
-                amountInCents = _uiState.value.summeryDetails.amountInCents,
-                currency = _uiState.value.summeryDetails.currency,
-                availabilities = availabilities.map { CreateBookingRequestAvailability(it.id) },
-                idempotencyKey = generateUuidV7(),
+            createBookingUseCase.execute(
+                _uiState.value.summeryDetails.amountInCents,
+                _uiState.value.summeryDetails.currency,
+                availabilities,
+                professional,
             )
-            createBookingUseCase.execute(request, professional.id.toString())
                 .onFailure { throwable ->
                     setLoading(false)
                     setError(throwable.generalError())

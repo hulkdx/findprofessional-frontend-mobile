@@ -70,13 +70,10 @@ class ProfessionalApiImpl(
         }
     }
 
-    override suspend fun createBooking(
-        request: CreateBookingRequest,
-        proId: String
-    ): CreateBookingResponse {
+    override suspend fun createBooking(request: CreateBookingRequest): CreateBookingResponse {
         return client.post {
             auth(userStorage)
-            apiUrl("professional/$proId/booking")
+            apiUrl("payments/start")
             contentType(ContentType.Application.Json)
             setBody(request)
         }

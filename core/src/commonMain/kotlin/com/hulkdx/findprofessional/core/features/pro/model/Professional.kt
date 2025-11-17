@@ -4,6 +4,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Professional(
+    // TODO: change it to Long
     val id: Int,
     val email: String,
     val firstName: String? = null,
