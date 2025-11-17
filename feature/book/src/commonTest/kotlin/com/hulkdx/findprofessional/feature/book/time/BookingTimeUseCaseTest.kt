@@ -114,7 +114,7 @@ class BookingTimeUseCaseTest {
         // Act
         sut.onTimeClicked(createBookingTimes(selectedTimeId))
         sut.onTimeClicked(createBookingTimes(selectedTimeId))
-        val result = sut.getUiState(professional).first().times
+        val result = sut.getUiState(professional, TimeZone.UTC).first().times
         // Assert
         val actual = result
             .flatten()

@@ -33,12 +33,15 @@ class BookingTimeUseCase(
     private val date = MutableStateFlow(now)
     private val selectedItems = MutableStateFlow(SelectedTimes())
 
-    fun getUiState(professional: Professional): Flow<BookingTimeUiState> {
+    fun getUiState(
+        professional: Professional,
+        timeZone: TimeZone = TimeZone.currentSystemDefault()
+    ): Flow<BookingTimeUiState> {
         if (professionalAvailabilityMap.isEmpty()) {
             for (a in professional.availability) {
                 professionalAvailabilityMap[a.date] =
                     (professionalAvailabilityMap[a.date] ?: mutableMapOf()) +
-                            (a.from.toMinutesOfDay(TimeZone.UTC) to a)
+                            (a.from.toMinutesOfDay(timeZone) to a)
             }
         }
 
