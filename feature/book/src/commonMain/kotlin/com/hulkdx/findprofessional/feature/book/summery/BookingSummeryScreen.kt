@@ -46,6 +46,7 @@ import com.hulkdx.findprofessional.core.ui.theme.body1Medium
 import com.hulkdx.findprofessional.core.ui.theme.body2
 import com.hulkdx.findprofessional.core.ui.theme.h1Medium
 import com.hulkdx.findprofessional.core.utils.singleClick
+import com.hulkdx.findprofessional.feature.book.summery.stripe.PaymentSheetResult
 import com.hulkdx.findprofessional.feature.book.summery.stripe.StripePayment
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -62,12 +63,11 @@ fun BookingSummeryScreen(
 ) {
     val uiState by viewModel.uiState.collectAsState()
 
-    StripePayment(uiState, viewModel::onStripeResult)
-
     BookingSummeryScreen(
         uiState = uiState,
         onCheckoutClicked = viewModel::onCheckoutClicked,
         onEditSkypeIdClicked = viewModel::onEditSkypeIdClicked,
+        onStripeResult = viewModel::onStripeResult,
         error = uiState.error?.localized(),
         onErrorDismissed = { viewModel.setError(null) },
     )
@@ -78,6 +78,7 @@ fun BookingSummeryScreen(
     uiState: BookingSummeryUiState,
     onCheckoutClicked: () -> Unit,
     onEditSkypeIdClicked: () -> Unit,
+    onStripeResult: (PaymentSheetResult) -> Unit,
     error: String?,
     onErrorDismissed: () -> Unit,
 ) {
@@ -89,6 +90,9 @@ fun BookingSummeryScreen(
             .testTag("BookingSummeryScreen")
     ) {
         CUBackButton(modifier = Modifier.align(Alignment.TopStart))
+
+        StripePayment(uiState, onStripeResult)
+
         if (uiState.isLoading) {
             Loading()
         } else {
@@ -289,6 +293,7 @@ private fun BookingSummeryScreenPreview() {
             onErrorDismissed = {},
             onCheckoutClicked = {},
             onEditSkypeIdClicked = {},
+            onStripeResult = {},
             uiState = BookingSummeryUiState(
                 BookingSummeryUiState.SummeryDetails(
                     userSkypeId = "test@gmail.com",

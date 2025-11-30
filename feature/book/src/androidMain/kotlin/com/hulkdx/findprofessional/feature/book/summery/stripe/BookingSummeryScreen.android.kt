@@ -1,25 +1,17 @@
 package com.hulkdx.findprofessional.feature.book.summery.stripe
 
+import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
 import com.hulkdx.findprofessional.core.features.pro.model.response.CreateBookingResponse
-import com.hulkdx.findprofessional.feature.book.summery.BookingSummeryUiState
 import com.stripe.android.PaymentConfiguration
 import com.stripe.android.paymentsheet.PaymentSheet
-import kotlin.time.Duration.Companion.seconds
 
 @Composable
-actual fun StripePayment(uiState: BookingSummeryUiState, onResult: (PaymentSheetResult) -> Unit) {
-    if (uiState.checkoutStatus is BookingSummeryUiState.CheckoutStatus.Success) {
-        ShowStripePayment(uiState.checkoutStatus.result, onResult)
-    }
-}
-
-@Composable
-private fun ShowStripePayment(
+actual fun BoxScope.StripePaymentPlatform(
     networkResult: CreateBookingResponse,
     onResult: (PaymentSheetResult) -> Unit
 ) {

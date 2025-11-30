@@ -40,6 +40,7 @@
     <string name="yourSkypeId">Your Skype ID</string>
     <string name="total">Total</string>
     <string name="checkout">Checkout</string>
+    <string name="stripePaymentCountdownMessage">Complete payment within %1$s mins</string>
 
     <string name="skypeId">Skype ID</string>
     <string name="coachType">Coach Type</string>
