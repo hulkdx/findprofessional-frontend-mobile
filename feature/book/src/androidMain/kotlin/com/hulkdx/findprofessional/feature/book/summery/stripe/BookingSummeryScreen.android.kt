@@ -2,12 +2,14 @@ package com.hulkdx.findprofessional.feature.book.summery.stripe
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
-import com.hulkdx.findprofessional.feature.book.summery.BookingSummeryUiState
 import com.hulkdx.findprofessional.core.features.pro.model.response.CreateBookingResponse
+import com.hulkdx.findprofessional.feature.book.summery.BookingSummeryUiState
 import com.stripe.android.PaymentConfiguration
 import com.stripe.android.paymentsheet.PaymentSheet
+import kotlin.time.Duration.Companion.seconds
 
 @Composable
 actual fun StripePayment(uiState: BookingSummeryUiState, onResult: (PaymentSheetResult) -> Unit) {
@@ -17,11 +19,22 @@ actual fun StripePayment(uiState: BookingSummeryUiState, onResult: (PaymentSheet
 }
 
 @Composable
-private fun ShowStripePayment(networkResult: CreateBookingResponse, onResult: (PaymentSheetResult) -> Unit) {
+private fun ShowStripePayment(
+    networkResult: CreateBookingResponse,
+    onResult: (PaymentSheetResult) -> Unit
+) {
     val context = LocalContext.current
-    val paymentSheet = remember(onResult) { PaymentSheet.Builder(toStripeCallback(onResult)) }.build()
+
+    val isTimedOut = remember { mutableStateOf(false) }
+
+    val paymentSheet =
+        remember(onResult) { PaymentSheet.Builder(createCallback(onResult, isTimedOut)) }.build()
+
+    AutoDismissPaymentSheet(timeout = STRIPE_PAYMENT_SHEET_TIMEOUT, context = context, isTimedOut)
 
     LaunchedEffect(context, networkResult) {
+        isTimedOut.value = false
+
         val currentConfig = PaymentSheet.CustomerConfiguration.createWithCustomerSession(
             id = networkResult.customer,
             clientSecret = networkResult.customerSessionClientSecret
