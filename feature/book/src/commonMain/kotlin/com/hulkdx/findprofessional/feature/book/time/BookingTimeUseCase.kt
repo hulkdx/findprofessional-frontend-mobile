@@ -5,7 +5,6 @@ import com.hulkdx.findprofessional.core.features.pro.model.Professional
 import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalAvailability
 import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import com.hulkdx.findprofessional.core.navigation.Navigator
-import com.hulkdx.findprofessional.core.utils.TimeUtils
 import com.hulkdx.findprofessional.core.utils.TimeUtils.formattedTime
 import com.hulkdx.findprofessional.core.utils.now
 import com.hulkdx.findprofessional.core.utils.toMinutesOfDay
@@ -38,10 +37,10 @@ class BookingTimeUseCase(
         timeZone: TimeZone = TimeZone.currentSystemDefault()
     ): Flow<BookingTimeUiState> {
         if (professionalAvailabilityMap.isEmpty()) {
-            for (a in professional.availability) {
-                professionalAvailabilityMap[a.date] =
-                    (professionalAvailabilityMap[a.date] ?: mutableMapOf()) +
-                            (a.from.toMinutesOfDay(timeZone) to a)
+            for (availability in professional.availability) {
+                val current = professionalAvailabilityMap[availability.date] ?: mapOf()
+                val new = availability.from.toMinutesOfDay(timeZone) to availability
+                professionalAvailabilityMap[availability.date] = current + new
             }
         }
 

@@ -17,6 +17,7 @@ import com.hulkdx.findprofessional.feature.book.summery.usecase.CreateBookingUse
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted.Companion.WhileSubscribed
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
@@ -30,13 +31,16 @@ class BookingSummeryViewModel(
     private val navigator: Navigator,
 ) : ViewModel() {
     private val _uiState = MutableStateFlow(BookingSummeryUiState())
-    val uiState = useCase.getSummeryDetails(professional, availabilities)
-        .flatMapLatest {
-            _uiState.apply {
-                update { uiState -> uiState.copy(summeryDetails = it) }
-            }
+    val uiState = _uiState.asStateFlow()
+
+    init {
+        viewModelScope.launch {
+            useCase.getSummeryDetails(professional, availabilities)
+                .collect { summaryDetails ->
+                    _uiState.update { it.copy(summeryDetails = summaryDetails) }
+                }
         }
-        .stateIn(viewModelScope, WhileSubscribed(5_000), BookingSummeryUiState())
+    }
 
 
     fun onCheckoutClicked() {
