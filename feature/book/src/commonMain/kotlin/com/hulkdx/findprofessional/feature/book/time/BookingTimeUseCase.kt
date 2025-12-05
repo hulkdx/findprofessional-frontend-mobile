@@ -83,10 +83,10 @@ class BookingTimeUseCase(
     fun onContinueClicked(professional: Professional) {
         val availabilities = mutableListOf<ProfessionalAvailability>()
         for ((date, times) in selectedItems.value.items) {
-            for (t in times) {
-                val av = professionalAvailabilityMap[date]?.get(t)
-                if (av != null) {
-                    availabilities.add(av)
+            for (time in times) {
+                val availability = professionalAvailabilityMap[date]?.get(time)
+                if (availability != null) {
+                    availabilities.add(availability)
                 }
             }
         }
