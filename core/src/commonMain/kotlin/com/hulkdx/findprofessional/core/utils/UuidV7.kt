@@ -6,7 +6,7 @@ import kotlinx.datetime.Clock
 import kotlin.uuid.ExperimentalUuidApi
 import kotlin.uuid.Uuid
 
-// Kotlin 2.3.0 will have it Uuid.generateV7
+// TODO: Kotlin 2.3.0 will have it Uuid.generateV7
 fun generateUuidV7(): String {
     val timeStamp = Clock.System.now().toEpochMilliseconds()
     val base = Uuid.random()

@@ -12,7 +12,6 @@ import androidx.compose.ui.Modifier
 import com.hulkdx.findprofessional.core.features.pro.model.response.CreateBookingResponse
 import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.stripePaymentCountdownMessage
-import com.hulkdx.findprofessional.core.ui.theme.h1
 import com.hulkdx.findprofessional.core.ui.theme.h2
 import com.hulkdx.findprofessional.feature.book.summery.BookingSummeryUiState
 import org.jetbrains.compose.resources.stringResource
@@ -36,7 +35,7 @@ fun BoxScope.StripePayment(uiState: BookingSummeryUiState, onResult: (PaymentShe
 }
 
 @Composable
-fun BoxScope.ShowInfo() {
+fun ShowInfo() {
     Box(Modifier.fillMaxSize().background(MaterialTheme.colorScheme.onPrimary)) {
         Text(
             modifier = Modifier.align(Alignment.TopCenter),

@@ -8,7 +8,6 @@ import com.hulkdx.findprofessional.core.features.pro.model.Professional
 import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalAvailability
 import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import com.hulkdx.findprofessional.core.navigation.Navigator
-import com.hulkdx.findprofessional.core.platform.isDebug
 import com.hulkdx.findprofessional.core.utils.StringOrRes
 import com.hulkdx.findprofessional.core.utils.generalError
 import com.hulkdx.findprofessional.feature.book.summery.BookingSummeryUiState.CheckoutStatus
@@ -61,24 +60,22 @@ class BookingSummeryViewModel(
     }
 
     fun onStripeResult(result: PaymentSheetResult) {
-        if (result is PaymentSheetResult.Failed) {
-            setError(result.error.generalError())
-            setCheckoutStatus(CheckoutStatus.Idle)
-            setLoading(false)
-            return
-        }
-        if (result is PaymentSheetResult.Canceled) {
-            setCheckoutStatus(CheckoutStatus.Idle)
-            if (isDebug()) {
-                setError(StringOrRes("Payment Cancelled"))
-            }
-            setLoading(false)
-            return
-        }
-
-        // Success
-        // TODO: add a stripe webhook to the server, wait over here to show confirmations
+        setLoading(false)
         setCheckoutStatus(CheckoutStatus.Idle)
+
+        when (result) {
+            is PaymentSheetResult.Failed -> {
+                setError(result.error.generalError())
+            }
+
+            is PaymentSheetResult.Canceled -> {
+            }
+
+            is PaymentSheetResult.Completed -> {
+                // TODO: write down we will check your payments
+                navigator.goBack(NavigationScreen.Home::class)
+            }
+        }
     }
 
     fun onEditSkypeIdClicked() {
