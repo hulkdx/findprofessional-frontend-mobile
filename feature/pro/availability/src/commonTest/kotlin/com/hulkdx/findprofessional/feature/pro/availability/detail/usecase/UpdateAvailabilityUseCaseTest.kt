@@ -2,9 +2,11 @@ package com.hulkdx.findprofessional.feature.pro.availability.detail.usecase
 
 import com.hulkdx.findprofessional.core.features.pro.api.ProfessionalApi
 import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalAvailability
+import com.hulkdx.findprofessional.core.features.pro.model.request.CreateBookingRequest
 import com.hulkdx.findprofessional.core.features.pro.model.request.SignUpProRequest
 import com.hulkdx.findprofessional.core.features.pro.model.request.UpdateAvailabilityItemRequest
 import com.hulkdx.findprofessional.core.features.pro.model.request.UpdateAvailabilityRequest
+import com.hulkdx.findprofessional.core.features.pro.model.response.CreateBookingResponse
 import com.hulkdx.findprofessional.core.features.pro.storage.AvailabilityStorage
 import com.hulkdx.findprofessional.core.features.user.ProUser
 import com.hulkdx.findprofessional.core.resources.Res
@@ -108,6 +110,7 @@ class UpdateAvailabilityUseCaseTest {
         override suspend fun updateAvailability(request: UpdateAvailabilityRequest) {
             applyAvailabilityCalled = request
         }
+        override suspend fun createBooking(request: CreateBookingRequest) = throw RuntimeException("")
     }
 
     private class StorageMock : AvailabilityStorage {

@@ -6,8 +6,10 @@ package com.hulkdx.findprofessional.feature.home.main
 import com.hulkdx.findprofessional.core.features.pro.model.Professional
 import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalAvailability
 import com.hulkdx.findprofessional.core.features.pro.api.ProfessionalApi
+import com.hulkdx.findprofessional.core.features.pro.model.request.CreateBookingRequest
 import com.hulkdx.findprofessional.core.features.pro.model.request.SignUpProRequest
 import com.hulkdx.findprofessional.core.features.pro.model.request.UpdateAvailabilityRequest
+import com.hulkdx.findprofessional.core.features.pro.model.response.CreateBookingResponse
 import com.hulkdx.findprofessional.core.features.user.ProUser
 import com.hulkdx.findprofessional.core.features.user.UserData
 import com.hulkdx.findprofessional.libs.common.tests.StubNavigator
@@ -70,6 +72,8 @@ class HomeViewModelTest {
         override suspend fun update(proUser: ProUser) {}
         override suspend fun getAvailability(): List<ProfessionalAvailability> = listOf()
         override suspend fun updateAvailability(request: UpdateAvailabilityRequest) {}
+        override suspend fun createBooking(request: CreateBookingRequest) =
+            throw RuntimeException("irrelevant")
     }
 
     // endregion

@@ -7,8 +7,12 @@ import com.hulkdx.findprofessional.feature.home.detail.availability.HomeDetailAv
 import com.hulkdx.findprofessional.libs.common.tests.createProfessional
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.runTest
+import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalTime
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.atTime
+import kotlinx.datetime.toInstant
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -54,8 +58,7 @@ class HomeDetailAvailabilityUseCaseTest {
 
     private fun professionalAvailability(date: LocalDate) = ProfessionalAvailability(
         id = 1,
-        date,
-        LocalTime.fromMillisecondOfDay(1),
-        LocalTime.fromMillisecondOfDay(1),
+        from = date.atTime(0, 0).toInstant(TimeZone.UTC),
+        to = date.atTime(0, 0).toInstant(TimeZone.UTC),
     )
 }

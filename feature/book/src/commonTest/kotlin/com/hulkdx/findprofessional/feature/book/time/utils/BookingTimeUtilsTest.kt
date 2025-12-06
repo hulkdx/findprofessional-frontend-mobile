@@ -7,6 +7,7 @@ import kotlinx.datetime.LocalTime
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.atTime
 import kotlinx.datetime.toInstant
+import kotlin.test.DefaultAsserter.assertEquals
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -70,9 +71,9 @@ class BookingTimeUtilsTest {
                 to = LocalDate.now().atTime(LocalTime.fromSecondOfDay(t.availabilityTo * 60)).toInstant(TimeZone.UTC),
             )
             // Act
-            val result = sut.isAvailabilityIncludedInTimes(availability, t.from, t.to)
+            val result = sut.isAvailabilityIncludedInTimes(availability, t.from, t.to, TimeZone.UTC)
             // Assert
-            assertEquals(t.exceptedResult, result)
+            assertEquals("", t.exceptedResult, result)
         }
     }
 
