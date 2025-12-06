@@ -146,6 +146,7 @@ class ScreenshotTests {
                 onCheckoutClicked = {},
                 onErrorDismissed = {},
                 onEditSkypeIdClicked = {},
+                onStripeResult = {},
                 uiState = BookingSummeryUiState(
                     BookingSummeryUiState.SummeryDetails(
                         userSkypeId = "test@gmail.com",

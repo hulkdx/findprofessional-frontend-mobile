@@ -22,8 +22,8 @@ val reviews = listOf(
         ),
         rate = 5,
         contentText = "He was a great coach for me!",
-        createdAt = Clock.System.now(),
-        updatedAt = Clock.System.now(),
+        createdAt = Instant.parse("2025-11-11T09:00:00Z"),
+        updatedAt = Instant.parse("2025-11-11T09:00:00Z"),
     ),
     ProfessionalReview(
         id = 1,
@@ -35,8 +35,8 @@ val reviews = listOf(
         ),
         rate = 1,
         contentText = "I love it, but it was bad.",
-        createdAt = Clock.System.now(),
-        updatedAt = Clock.System.now(),
+        createdAt = Instant.parse("2025-11-11T09:00:00Z"),
+        updatedAt = Instant.parse("2025-11-11T09:00:00Z"),
     )
 )
 
