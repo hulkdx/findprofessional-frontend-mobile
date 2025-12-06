@@ -5,6 +5,9 @@ plugins {
 
 kotlin {
     sourceSets {
+        androidMain.dependencies {
+            implementation(libs.stripe.android)
+        }
         commonMain.dependencies {
             implementation(projects.core)
 

@@ -1,7 +1,7 @@
 package com.hulkdx.findprofessional.core.navigation
 
-import com.hulkdx.findprofessional.core.features.book.SelectedTimes
 import com.hulkdx.findprofessional.core.features.pro.model.Professional
+import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalAvailability
 import com.hulkdx.findprofessional.core.features.pro.model.request.SignUpProRequest
 import kotlinx.datetime.LocalDate
 import kotlinx.serialization.Serializable
@@ -16,7 +16,7 @@ sealed class NavigationScreen {
     @Serializable data class HomeDetail(val professional: Professional) : NavigationScreen()
     @Serializable data class Review(val professional: Professional) : NavigationScreen()
     @Serializable data class BookingTime(val professional: Professional) : NavigationScreen()
-    @Serializable data class BookingSummery(val professional: Professional, val times: SelectedTimes) : NavigationScreen()
+    @Serializable data class BookingSummery(val professional: Professional, val times: List<ProfessionalAvailability>) : NavigationScreen()
     @Serializable data object Developer : NavigationScreen()
     @Serializable data object Profile : NavigationScreen()
     @Serializable data object ProfileEdit : NavigationScreen()

@@ -1,12 +1,12 @@
 package com.hulkdx.findprofessional.feature.authentication.login.api
 
 import com.hulkdx.findprofessional.core.features.user.Token
+import com.hulkdx.findprofessional.core.network.apiUrl
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.headers
 import io.ktor.client.request.post
 import io.ktor.client.request.setBody
-import io.ktor.client.request.url
 import io.ktor.http.ContentType
 import io.ktor.http.HttpHeaders
 import io.ktor.http.contentType
@@ -24,7 +24,7 @@ class RefreshTokenApiImpl(
         accessToken: String,
     ): Token {
         return client.post {
-            url(URL)
+            apiUrl(URL)
             contentType(ContentType.Application.Json)
             setBody(RefreshRequest(refreshToken))
             headers {

@@ -5,10 +5,12 @@ package com.hulkdx.findprofessional.libs.navigation.decompose
 import com.arkivanov.decompose.router.stack.StackNavigation
 import com.arkivanov.decompose.router.stack.navigate
 import com.arkivanov.decompose.router.stack.pop
+import com.arkivanov.decompose.router.stack.popWhile
 import com.arkivanov.decompose.router.stack.pushToFront
 import com.hulkdx.findprofessional.core.platform.closeApp
 import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import com.hulkdx.findprofessional.core.navigation.Navigator
+import kotlin.reflect.KClass
 
 
 class DecomposeNavigator(
@@ -50,6 +52,12 @@ class DecomposeNavigator(
 
     override fun getCurrentScreen(): NavigationScreen {
         return _currentScreen
+    }
+
+    override fun goBack(screen: KClass<out NavigationScreen>) {
+        navController.popWhile {
+            it::class != screen
+        }
     }
 }
 

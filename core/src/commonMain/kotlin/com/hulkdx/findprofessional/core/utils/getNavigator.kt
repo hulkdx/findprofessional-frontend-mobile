@@ -6,6 +6,7 @@ import com.hulkdx.findprofessional.core.platform.isDebug
 import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import com.hulkdx.findprofessional.core.navigation.Navigator
 import org.koin.compose.koinInject
+import kotlin.reflect.KClass
 
 /**
  *  A safe function to get navigator for previews
@@ -20,6 +21,7 @@ fun getNavigator(): Navigator {
             override fun navigate(screen: NavigationScreen, popTo: NavigationScreen, inclusive: Boolean) {}
             override fun goBack() {}
             override fun getCurrentScreen() = NavigationScreen.Login
+            override fun goBack(screen: KClass<out NavigationScreen>) {}
         }
         // @formatter:on
     } else {

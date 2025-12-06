@@ -4,12 +4,13 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Professional(
+    // TODO: change it to Long
     val id: Int,
     val email: String,
     val firstName: String? = null,
     val lastName: String? = null,
     val coachType: String? = null,
-    val priceNumber: Int = 0,
+    val priceNumber: Long = 0,
     val priceCurrency: String = "",
     val profileImageUrl: String? = null,
     val rating: String? = null,

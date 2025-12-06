@@ -6,16 +6,18 @@ import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalReview
 import com.hulkdx.findprofessional.core.features.user.Token
 import com.hulkdx.findprofessional.core.features.user.User
 import com.hulkdx.findprofessional.core.features.user.UserData
-import com.hulkdx.findprofessional.core.utils.now
 import com.hulkdx.findprofessional.feature.book.time.BookingTimeUiState
 import kotlinx.datetime.Clock
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalTime
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.atTime
+import kotlinx.datetime.toInstant
 
 
 fun createProfessional(
     availability: List<ProfessionalAvailability> = listOf(),
-    priceNumber: Int = 0,
+    priceNumber: Long = 0,
     priceCurrency: String = "",
 ) = Professional(
     id = 0,
@@ -40,9 +42,9 @@ fun createAvailabilities(
 ): List<ProfessionalAvailability> {
     return date.map {
         ProfessionalAvailability(
-            date = it,
-            from = LocalTime(1, 1, 1, 1),
-            to = LocalTime(1, 1, 1, 1),
+            id = 1,
+            from = it.atTime(LocalTime(1, 1, 1, 1)).toInstant(TimeZone.UTC),
+            to = it.atTime(LocalTime(1, 1, 1, 1)).toInstant(TimeZone.UTC),
         )
     }
 }
@@ -66,7 +68,6 @@ fun createBookingTimes(id: Int) = BookingTimeUiState.BookingTime(
     startTime = "mentitum",
     endTime = "interdum",
     type = BookingTimeUiState.BookingTime.Type.UnAvailable,
-    date = LocalDate.now(),
 )
 
 

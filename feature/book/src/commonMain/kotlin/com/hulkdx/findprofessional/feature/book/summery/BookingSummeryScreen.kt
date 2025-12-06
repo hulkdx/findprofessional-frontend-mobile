@@ -5,6 +5,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -16,6 +17,7 @@ import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -26,8 +28,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.hulkdx.findprofessional.core.features.book.SelectedTimes
 import com.hulkdx.findprofessional.core.features.pro.model.Professional
+import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalAvailability
 import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.checkout
 import com.hulkdx.findprofessional.core.resources.connection
@@ -43,6 +45,9 @@ import com.hulkdx.findprofessional.core.ui.theme.AppTheme
 import com.hulkdx.findprofessional.core.ui.theme.body1Medium
 import com.hulkdx.findprofessional.core.ui.theme.body2
 import com.hulkdx.findprofessional.core.ui.theme.h1Medium
+import com.hulkdx.findprofessional.core.utils.singleClick
+import com.hulkdx.findprofessional.feature.book.summery.stripe.PaymentSheetResult
+import com.hulkdx.findprofessional.feature.book.summery.stripe.StripePayment
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
@@ -53,17 +58,17 @@ import org.koin.core.parameter.parametersOf
 @Composable
 fun BookingSummeryScreen(
     professional: Professional,
-    times: SelectedTimes,
+    times: List<ProfessionalAvailability>,
     viewModel: BookingSummeryViewModel = koinViewModel { parametersOf(professional, times) },
 ) {
-    val error by viewModel.error.collectAsState()
     val uiState by viewModel.uiState.collectAsState()
 
     BookingSummeryScreen(
-        uiState = uiState ?: return,
+        uiState = uiState,
         onCheckoutClicked = viewModel::onCheckoutClicked,
         onEditSkypeIdClicked = viewModel::onEditSkypeIdClicked,
-        error = error?.localized(),
+        onStripeResult = viewModel::onStripeResult,
+        error = uiState.error?.localized(),
         onErrorDismissed = { viewModel.setError(null) },
     )
 }
@@ -73,6 +78,7 @@ fun BookingSummeryScreen(
     uiState: BookingSummeryUiState,
     onCheckoutClicked: () -> Unit,
     onEditSkypeIdClicked: () -> Unit,
+    onStripeResult: (PaymentSheetResult) -> Unit,
     error: String?,
     onErrorDismissed: () -> Unit,
 ) {
@@ -83,26 +89,54 @@ fun BookingSummeryScreen(
             .systemBarsPadding()
             .testTag("BookingSummeryScreen")
     ) {
-        LazyColumn(Modifier.padding(top = 100.dp)) {
-            item { YourRequest() }
-            item { DateAndTime() }
-            items(uiState.times) {
-                TimeItem(it)
-            }
-            item { ConnectionSection(uiState.userSkypeId, onEditSkypeIdClicked) }
-        }
         CUBackButton(modifier = Modifier.align(Alignment.TopStart))
-        Bottom(
-            modifier = Modifier.align(Alignment.BottomStart),
-            totalPrices = uiState.totalPrices,
-            onCheckoutClicked = onCheckoutClicked,
-        )
+
+        StripePayment(uiState, onStripeResult)
+
+        if (uiState.isLoading) {
+            Loading()
+        } else {
+            Content(
+                uiState = uiState,
+                onCheckoutClicked = onCheckoutClicked,
+                onEditSkypeIdClicked = onEditSkypeIdClicked,
+            )
+        }
         CUSnackBar(
             modifier = Modifier.align(Alignment.BottomCenter),
             message = error,
             onDismiss = onErrorDismissed
         )
     }
+}
+
+@Composable
+private fun BoxScope.Loading() {
+    CircularProgressIndicator(
+        modifier = Modifier.align(Alignment.Center),
+        color = MaterialTheme.colorScheme.primary,
+    )
+}
+
+@Composable
+private fun BoxScope.Content(
+    uiState: BookingSummeryUiState,
+    onCheckoutClicked: () -> Unit,
+    onEditSkypeIdClicked: () -> Unit,
+) {
+    LazyColumn(Modifier.padding(top = 100.dp)) {
+        item { YourRequest() }
+        item { DateAndTime() }
+        items(uiState.summeryDetails.times) {
+            TimeItem(it)
+        }
+        item { ConnectionSection(uiState.summeryDetails.userSkypeId, onEditSkypeIdClicked) }
+    }
+    Bottom(
+        modifier = Modifier.align(Alignment.BottomStart),
+        totalPrices = uiState.summeryDetails.formattedTotalPrices,
+        onCheckoutClicked = onCheckoutClicked,
+    )
 }
 
 @Composable
@@ -130,7 +164,7 @@ private fun DateAndTime() {
 }
 
 @Composable
-private fun TimeItem(data: BookingSummeryUiState.Time) {
+private fun TimeItem(data: BookingSummeryUiState.SummeryDetails.Time) {
     Row(
         modifier = Modifier
             .padding(horizontal = 26.dp)
@@ -246,7 +280,7 @@ private fun CheckoutButton(onClick: () -> Unit) {
         text = stringResource(Res.string.checkout),
         colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.secondary),
         contentPadding = PaddingValues(0.dp),
-        onClick = onClick,
+        onClick = singleClick(onClick),
     )
 }
 
@@ -259,21 +293,24 @@ private fun BookingSummeryScreenPreview() {
             onErrorDismissed = {},
             onCheckoutClicked = {},
             onEditSkypeIdClicked = {},
+            onStripeResult = {},
             uiState = BookingSummeryUiState(
-                userSkypeId = "test@gmail.com",
-                times = listOf(
-                    BookingSummeryUiState.Time(
-                        duration = "16:30 - 17:00",
-                        date = "1.1.2024",
-                        day = "Mon",
+                BookingSummeryUiState.SummeryDetails(
+                    userSkypeId = "test@gmail.com",
+                    times = listOf(
+                        BookingSummeryUiState.SummeryDetails.Time(
+                            duration = "16:30 - 17:00",
+                            date = "1.1.2024",
+                            day = "Mon",
+                        ),
+                        BookingSummeryUiState.SummeryDetails.Time(
+                            duration = "17:30 - 18:00",
+                            date = "1.1.2024",
+                            day = "Mon",
+                        ),
                     ),
-                    BookingSummeryUiState.Time(
-                        duration = "17:30 - 18:00",
-                        date = "1.1.2024",
-                        day = "Mon",
-                    ),
+                    formattedTotalPrices = "100 €"
                 ),
-                totalPrices = "100 €"
             ),
         )
     }

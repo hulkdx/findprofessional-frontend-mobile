@@ -4,14 +4,15 @@ import com.hulkdx.findprofessional.core.features.pro.api.ProfessionalApi
 import com.hulkdx.findprofessional.core.features.pro.model.Professional
 import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalAvailability
 import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalReview
+import com.hulkdx.findprofessional.core.features.pro.model.request.CreateBookingRequest
 import com.hulkdx.findprofessional.core.features.pro.model.request.SignUpProRequest
 import com.hulkdx.findprofessional.core.features.pro.model.request.UpdateAvailabilityRequest
+import com.hulkdx.findprofessional.core.features.pro.model.response.CreateBookingResponse
 import com.hulkdx.findprofessional.core.features.user.ProUser
 import com.hulkdx.findprofessional.core.features.user.Token
 import com.hulkdx.findprofessional.core.features.user.User
 import com.hulkdx.findprofessional.core.features.user.UserData
 import com.hulkdx.findprofessional.core.features.user.UserType
-import com.hulkdx.findprofessional.core.utils.now
 import com.hulkdx.findprofessional.feature.authentication.login.api.LoginApi
 import com.hulkdx.findprofessional.feature.authentication.login.model.LoginRequest
 import com.hulkdx.findprofessional.feature.authentication.signup.SignUpApi
@@ -19,10 +20,13 @@ import com.hulkdx.findprofessional.feature.authentication.signup.model.RegisterR
 import com.hulkdx.findprofessional.feature.profile.edit.api.UpdateProfileApi
 import com.hulkdx.findprofessional.feature.review.ReviewApi
 import kotlinx.datetime.Clock
+import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalTime
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
+import kotlinx.datetime.atTime
+import kotlinx.datetime.toInstant
 import org.koin.dsl.module
 
 internal class InMemoryApiImpl : InMemoryApi {
@@ -79,34 +83,34 @@ internal class InMemoryApiImpl : InMemoryApi {
             "Former professional boxer who competed from 1985 to 2005",
             availability = listOf(
                 ProfessionalAvailability(
-                    date = LocalDate.now(),
-                    from = LocalTime.parse("08:00"),
-                    to = LocalTime.parse("08:30"),
+                    id = 1,
+                    from = Instant.parse("2024-01-01T08:00:00Z"),
+                    to = Instant.parse("2024-01-01T08:30:00Z"),
                 ),
                 ProfessionalAvailability(
-                    date = LocalDate.now(),
-                    from = LocalTime.parse("09:00"),
-                    to = LocalTime.parse("10:30"),
+                    id = 2,
+                    from = Instant.parse("2024-01-01T09:00:00Z"),
+                    to = Instant.parse("2024-01-01T10:30:00Z"),
                 ),
                 ProfessionalAvailability(
-                    date = LocalDate.parse("2023-11-10"),
-                    from = LocalTime.parse("07:00"),
-                    to = LocalTime.parse("08:00"),
+                    id = 3,
+                    from = Instant.parse("2023-11-10T07:00:00Z"),
+                    to = Instant.parse("2023-11-10T08:00:00Z"),
                 ),
                 ProfessionalAvailability(
-                    date = LocalDate.parse("2023-11-11"),
-                    from = LocalTime.parse("09:00"),
-                    to = LocalTime.parse("11:00"),
+                    id = 4,
+                    from = Instant.parse("2023-11-11T09:00:00Z"),
+                    to = Instant.parse("2023-11-11T11:00:00Z"),
                 ),
                 ProfessionalAvailability(
-                    date = LocalDate.parse("2023-11-12"),
-                    from = LocalTime.parse("12:00"),
-                    to = LocalTime.parse("15:00"),
+                    id = 5,
+                    from = Instant.parse("2023-11-12T12:00:00Z"),
+                    to = Instant.parse("2023-11-12T15:00:00Z"),
                 ),
                 ProfessionalAvailability(
-                    date = LocalDate.parse("2023-11-13"),
-                    from = LocalTime.parse("20:00"),
-                    to = LocalTime.parse("00:00"),
+                    id = 6,
+                    from = Instant.parse("2023-11-13T20:00:00Z"),
+                    to = Instant.parse("2023-11-14T00:00:00Z"),
                 ),
             ),
             reviewSize = "100",
@@ -125,29 +129,29 @@ internal class InMemoryApiImpl : InMemoryApi {
             "One notable actress who graced the screens from 1985 to 2005 is Meryl Streep. Widely regarded as one of the greatest actresses of her generation, Streep's career during this period was marked by an exceptional range and versatility in her performances.",
             availability = listOf(
                 ProfessionalAvailability(
-                    date = LocalDate.parse("2023-11-09"),
-                    from = LocalTime.parse("08:00"),
-                    to = LocalTime.parse("09:00"),
+                    id = 7,
+                    from = Instant.parse("2023-11-09T08:00:00Z"),
+                    to = Instant.parse("2023-11-09T09:00:00Z"),
                 ),
                 ProfessionalAvailability(
-                    date = LocalDate.parse("2023-11-10"),
-                    from = LocalTime.parse("07:00"),
-                    to = LocalTime.parse("08:00"),
+                    id = 8,
+                    from = Instant.parse("2023-11-10T07:00:00Z"),
+                    to = Instant.parse("2023-11-10T08:00:00Z"),
                 ),
                 ProfessionalAvailability(
-                    date = LocalDate.parse("2023-11-11"),
-                    from = LocalTime.parse("09:00"),
-                    to = LocalTime.parse("11:00"),
+                    id = 9,
+                    from = Instant.parse("2023-11-11T09:00:00Z"),
+                    to = Instant.parse("2023-11-11T11:00:00Z"),
                 ),
                 ProfessionalAvailability(
-                    date = LocalDate.parse("2023-11-12"),
-                    from = LocalTime.parse("12:00"),
-                    to = LocalTime.parse("15:00"),
+                    id = 10,
+                    from = Instant.parse("2023-11-12T12:00:00Z"),
+                    to = Instant.parse("2023-11-12T15:00:00Z"),
                 ),
                 ProfessionalAvailability(
-                    date = LocalDate.parse("2023-11-13"),
-                    from = LocalTime.parse("20:00"),
-                    to = LocalTime.parse("00:00"),
+                    id = 11,
+                    from = Instant.parse("2023-11-13T20:00:00Z"),
+                    to = Instant.parse("2023-11-14T00:00:00Z"),
                 ),
             ),
             reviewSize = "100",
@@ -257,15 +261,19 @@ internal class InMemoryApiImpl : InMemoryApi {
         override suspend fun updateAvailability(request: UpdateAvailabilityRequest) {
             availability.addAll(
                 request.items.map {
-                    val fromDateTime = it.from.toLocalDateTime(TimeZone.UTC)
-                    val toDateTime = it.to.toLocalDateTime(TimeZone.UTC)
                     ProfessionalAvailability(
-                        date = fromDateTime.date,
-                        from = fromDateTime.time,
-                        to = toDateTime.time,
+                        id = 1,
+                        from = it.from,
+                        to = it.to,
                     )
                 }
             )
+        }
+
+        override suspend fun createBooking(
+            request: CreateBookingRequest,
+        ): CreateBookingResponse {
+            return CreateBookingResponse("", "", "", "")
         }
     }
 

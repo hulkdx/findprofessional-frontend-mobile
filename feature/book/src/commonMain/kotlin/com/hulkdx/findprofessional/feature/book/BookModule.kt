@@ -1,8 +1,9 @@
 package com.hulkdx.findprofessional.feature.book
 
 import com.hulkdx.findprofessional.feature.book.summery.BookingSummeryTimeMapper
-import com.hulkdx.findprofessional.feature.book.summery.BookingSummeryUseCase
 import com.hulkdx.findprofessional.feature.book.summery.BookingSummeryViewModel
+import com.hulkdx.findprofessional.feature.book.summery.usecase.BookingSummeryUseCase
+import com.hulkdx.findprofessional.feature.book.summery.usecase.CreateBookingUseCase
 import com.hulkdx.findprofessional.feature.book.time.BookingTimeUseCase
 import com.hulkdx.findprofessional.feature.book.time.BookingTimeViewModel
 import org.koin.core.module.Module
@@ -15,6 +16,7 @@ val bookModule: Module
         viewModelOf(::BookingSummeryViewModel)
         factoryOf(::BookingSummeryUseCase)
         factoryOf(::BookingSummeryTimeMapper)
+        factoryOf(::CreateBookingUseCase)
 
         viewModelOf(::BookingTimeViewModel)
         factory { BookingTimeUseCase(navigator = get()) }

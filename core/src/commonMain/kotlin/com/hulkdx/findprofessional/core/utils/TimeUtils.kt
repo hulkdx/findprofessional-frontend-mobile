@@ -1,12 +1,10 @@
 package com.hulkdx.findprofessional.core.utils
 
-import com.hulkdx.findprofessional.core.utils.NumberFormatter.twoDigits
-
 object TimeUtils {
     // Formatted time in HH:MM
     fun formattedTime(minute: Int): String {
-        val hour = twoDigits((minute / 60) % 24)
-        val min = twoDigits(minute % 60)
+        val hour = ((minute / 60) % 24).toString().padStart(2, '0')
+        val min = (minute % 60).toString().padStart(2, '0')
 
         return "$hour:$min"
     }

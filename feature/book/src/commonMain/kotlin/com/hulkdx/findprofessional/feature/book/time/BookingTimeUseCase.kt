@@ -5,14 +5,14 @@ import com.hulkdx.findprofessional.core.features.pro.model.Professional
 import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalAvailability
 import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import com.hulkdx.findprofessional.core.navigation.Navigator
+import com.hulkdx.findprofessional.core.utils.TimeUtils.formattedTime
 import com.hulkdx.findprofessional.core.utils.now
+import com.hulkdx.findprofessional.core.utils.toMinutesOfDay
 import com.hulkdx.findprofessional.feature.book.time.BookingTimeUiState.BookingTime
 import com.hulkdx.findprofessional.feature.book.time.BookingTimeUiState.BookingTime.Type.Available
 import com.hulkdx.findprofessional.feature.book.time.BookingTimeUiState.BookingTime.Type.Selected
 import com.hulkdx.findprofessional.feature.book.time.BookingTimeUiState.BookingTime.Type.UnAvailable
 import com.hulkdx.findprofessional.feature.book.time.utils.BookingTimeUtils.currentDay
-import com.hulkdx.findprofessional.core.utils.TimeUtils.formattedTime
-import com.hulkdx.findprofessional.feature.book.time.utils.BookingTimeUtils.isAvailabilityIncludedInTimes
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
@@ -20,6 +20,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.update
 import kotlinx.datetime.DateTimeUnit
 import kotlinx.datetime.LocalDate
+import kotlinx.datetime.TimeZone
 import kotlinx.datetime.minus
 import kotlinx.datetime.plus
 
@@ -27,17 +28,30 @@ class BookingTimeUseCase(
     now: LocalDate = LocalDate.now(),
     private val navigator: Navigator,
 ) {
+    private val professionalAvailabilityMap = mutableMapOf<LocalDate, Map<Int, ProfessionalAvailability>>()
     private val date = MutableStateFlow(now)
     private val selectedItems = MutableStateFlow(SelectedTimes())
 
-    fun getUiState(professional: Professional): Flow<BookingTimeUiState> =
-        combine(date, selectedItems, ::Pair)
+    fun getUiState(
+        professional: Professional,
+        timeZone: TimeZone = TimeZone.currentSystemDefault()
+    ): Flow<BookingTimeUiState> {
+        if (professionalAvailabilityMap.isEmpty()) {
+            for (availability in professional.availability) {
+                val current = professionalAvailabilityMap[availability.date] ?: mapOf()
+                val new = availability.from.toMinutesOfDay(timeZone) to availability
+                professionalAvailabilityMap[availability.date] = current + new
+            }
+        }
+
+        return combine(date, selectedItems, ::Pair)
             .map { (date, selectedItems) ->
                 BookingTimeUiState(
                     currentDate = currentDay(date),
-                    times = getTimes(professional, date, selectedItems.items),
+                    times = getTimes(date, selectedItems.items),
                 )
             }
+    }
 
     fun dayMinusOne() {
         date.value = date.value.minus(1, DateTimeUnit.DAY)
@@ -62,28 +76,35 @@ class BookingTimeUseCase(
         }
     }
 
+    fun hasSelectedItems(): Boolean {
+        return selectedItems.value.items.isNotEmpty()
+    }
+
     fun onContinueClicked(professional: Professional) {
-        navigator.navigate(NavigationScreen.BookingSummery(professional, selectedItems.value))
+        val availabilities = mutableListOf<ProfessionalAvailability>()
+        for ((date, times) in selectedItems.value.items) {
+            for (time in times) {
+                val availability = professionalAvailabilityMap[date]?.get(time)
+                if (availability != null) {
+                    availabilities.add(availability)
+                }
+            }
+        }
+        navigator.navigate(NavigationScreen.BookingSummery(professional, availabilities))
     }
 
     internal fun getTimes(
-        professional: Professional,
         date: LocalDate,
         selectedItems: Map<LocalDate, Set<Int>>,
     ): List<List<BookingTime>> {
-        val availability = professional.availability
-            .filter { it.date == date }
-
-        val filteredSelectedItems = selectedItems[date] ?: setOf()
-
         return (0..24 * 60 step 30)
             .windowed(size = 2) { (start, end) ->
+                val startTime = formattedTime(start)
                 BookingTime(
                     id = start,
-                    date = date,
-                    startTime = formattedTime(start),
+                    startTime = startTime,
                     endTime = formattedTime(end),
-                    type = getType(start, end, availability, filteredSelectedItems),
+                    type = getType(start, date, selectedItems),
                 )
             }
             .chunked(2)
@@ -91,16 +112,15 @@ class BookingTimeUseCase(
 
     private fun getType(
         start: Int,
-        end: Int,
-        availability: List<ProfessionalAvailability>,
-        selectedItems: Set<Int>,
+        date: LocalDate,
+        selectedItems: Map<LocalDate, Set<Int>>,
     ): BookingTime.Type {
         return when {
-            selectedItems.contains(start) -> {
+            selectedItems[date]?.contains(start) == true -> {
                 Selected
             }
 
-            availability.any { isAvailabilityIncludedInTimes(it, start, end) } -> {
+            professionalAvailabilityMap[date]?.contains(start) == true -> {
                 Available
             }
 
