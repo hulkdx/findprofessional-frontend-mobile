@@ -273,7 +273,7 @@ internal class InMemoryApiImpl : InMemoryApi {
         override suspend fun createBooking(
             request: CreateBookingRequest,
         ): CreateBookingResponse {
-            return CreateBookingResponse("", "", "", "")
+            return CreateBookingResponse(1, "", "", "", "")
         }
     }
 
