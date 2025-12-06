@@ -8,6 +8,7 @@ import com.hulkdx.findprofessional.app.test.runAppUiTest
 import com.hulkdx.findprofessional.app.test.utils.inMemoryApi
 import com.hulkdx.findprofessional.core.features.pro.model.Professional
 import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalAvailability
+import com.hulkdx.findprofessional.libs.common.tests.createProfessional
 import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
 import kotlin.test.AfterTest
@@ -29,7 +30,7 @@ class BookingTimeScreenTest {
             from = Instant.parse("2024-01-01T08:00:00Z"),
             to = Instant.parse("2024-01-01T08:30:00Z"),
         )
-        inMemoryApi.setProfessionals(createPro(availability))
+        inMemoryApi.setProfessionals(listOf(createProfessional(listOf(availability))))
 
         launchBookingTimeScreen(this) {
             pressTime(availability)
@@ -48,7 +49,7 @@ class BookingTimeScreenTest {
             from = Instant.parse("2024-01-01T08:00:00Z"),
             to = Instant.parse("2024-01-01T08:30:00Z"),
         )
-        inMemoryApi.setProfessionals(createPro(availability))
+        inMemoryApi.setProfessionals(listOf(createProfessional(listOf(availability))))
 
         launchBookingTimeScreen(this) {
             pressTime(availability)
@@ -56,22 +57,4 @@ class BookingTimeScreenTest {
             isHighlightedTime(availability)
         }
     }
-
-    private fun createPro(availability: ProfessionalAvailability) = listOf(
-        Professional(
-            1,
-            "test@email.com",
-            "Luba",
-            "Mikaela",
-            "Life coach",
-            100,
-            "EUR",
-            "https://i.imgur.com/5Yma8Kl.jpeg",
-            "5.0",
-            "Former professional boxer who competed from 1985 to 2005",
-            availability = listOf(availability),
-            reviewSize = "0",
-            reviews = listOf()
-        )
-    )
 }

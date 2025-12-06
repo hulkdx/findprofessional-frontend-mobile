@@ -7,6 +7,8 @@ import androidx.compose.ui.test.assert
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.hasText
+import androidx.compose.ui.test.onAllNodesWithTag
+import androidx.compose.ui.test.onFirst
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
@@ -14,14 +16,20 @@ import androidx.compose.ui.test.performScrollToNode
 import androidx.compose.ui.test.performTouchInput
 import androidx.compose.ui.test.swipeUp
 import androidx.compose.ui.unit.Dp
+import com.hulkdx.findprofessional.app.test.TestClockProvider
 import com.hulkdx.findprofessional.app.test.screen.home.detail.launchHomeDetailScreen
 import com.hulkdx.findprofessional.app.test.utils.Rule
 import com.hulkdx.findprofessional.app.test.utils.assertNodeIsDisplayed
+import com.hulkdx.findprofessional.app.test.utils.inMemoryApi
 import com.hulkdx.findprofessional.app.test.utils.setUser
 import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalAvailability
 import com.hulkdx.findprofessional.core.utils.toMinutesOfDay
 import com.hulkdx.findprofessional.feature.book.time.BookingTimeUiState.BookingTime.Type.Selected
 import com.hulkdx.findprofessional.core.utils.TimeUtils.formattedTime
+import com.hulkdx.findprofessional.feature.book.time.BookingTimeUiState
+import com.hulkdx.findprofessional.libs.common.tests.createProfessional
+import kotlinx.datetime.Instant
+import kotlinx.datetime.LocalDate
 
 
 fun launchBookingTimeScreen(
@@ -48,6 +56,20 @@ class BookingTimeScreenDsl(
 
     fun pressContinue() {
         rule.onNodeWithText("Continue")
+            .performClick()
+    }
+
+    fun pressAnyTime() {
+        val tag = BookingTimeUiState.BookingTime.Type.Available.name
+
+        rule.onNodeWithTag("BookingTimeScreen.LazyColumn")
+            .assertIsDisplayed()
+            .performScrollToNode(hasTestTag(tag))
+            .performTouchInput { swipeUp(bottom, bottom - (Dp(50F).toPx())) }
+
+        rule.onAllNodesWithTag(tag)
+            .onFirst()
+            .assertIsDisplayed()
             .performClick()
     }
 
