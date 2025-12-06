@@ -1,6 +1,7 @@
 package com.hulkdx.findprofessional.feature.book.time
 
 import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalAvailability
+import com.hulkdx.findprofessional.core.utils.ClockProvider
 import com.hulkdx.findprofessional.core.utils.now
 import com.hulkdx.findprofessional.feature.book.time.BookingTimeUiState.BookingTime
 import com.hulkdx.findprofessional.feature.book.time.BookingTimeUiState.BookingTime.Type.Available
@@ -11,11 +12,14 @@ import com.hulkdx.findprofessional.libs.common.tests.createBookingTimes
 import com.hulkdx.findprofessional.libs.common.tests.createProfessional
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.runTest
+import kotlinx.datetime.Clock
+import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalTime
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.atTime
 import kotlinx.datetime.toInstant
+import kotlinx.datetime.toLocalDateTime
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -45,7 +49,7 @@ class BookingTimeUseCaseTest {
     fun `getUiState when availability is for all way but wrong date should be all unavailable`() =
         runTest {
             // Arrange
-            val now = LocalDate(2024, 1, 1)
+            val now = Instant.parse("2024-01-01T08:00:00Z")
             val sut = createSut(now)
             val pro = createProfessional(
                 availability = listOf(
@@ -59,13 +63,13 @@ class BookingTimeUseCaseTest {
             // Act
             val result = sut.getUiState(pro).first().times
             // Assert
-            assertEquals(result, allUnavailable(now))
+            assertEquals(result, allUnavailable(now.toLocalDateTime(TimeZone.UTC).date))
         }
 
     @Test
     fun `dayMinusOne tests`() = runTest {
         // Arrange
-        val now = LocalDate(2024, 1, 2)
+        val now = Instant.parse("2024-01-02T08:00:00Z")
         val pro = createProfessional()
         val sut = createSut(now)
         // Act
@@ -78,7 +82,7 @@ class BookingTimeUseCaseTest {
     @Test
     fun `dayPlusOne tests`() = runTest {
         // Arrange
-        val now = LocalDate(2024, 1, 2)
+        val now = Instant.parse("2024-01-02T08:00:00Z")
         val pro = createProfessional()
         val sut = createSut(now)
         // Act
@@ -123,9 +127,17 @@ class BookingTimeUseCaseTest {
         assertEquals(Available, actual)
     }
 
-    private fun createSut(now: LocalDate = LocalDate.now()) = BookingTimeUseCase(
-        now = now,
+    private fun createSut(now: Instant = Clock.System.now()) = BookingTimeUseCase(
         navigator = navigator,
+        clockProvider = object: ClockProvider {
+            override fun clock(): Clock {
+                return object: Clock {
+                    override fun now() = now
+                }
+            }
+
+            override fun defaultTimeZone() = TimeZone.UTC
+        }
     )
 
     private fun createProfessionalWithAvailability(date: LocalDate, vararg times: Pair<Int, Int>) =
