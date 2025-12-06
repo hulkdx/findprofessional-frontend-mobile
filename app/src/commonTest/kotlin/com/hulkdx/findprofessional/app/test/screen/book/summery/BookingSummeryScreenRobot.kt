@@ -25,6 +25,7 @@ fun launchBookingSummeryScreen(
     setUser(email, password)
 
     launchBookingTimeScreen(rule) {
+        pressAnyTime()
         pressContinue()
     }.verify {
         bookingSummeryShown()

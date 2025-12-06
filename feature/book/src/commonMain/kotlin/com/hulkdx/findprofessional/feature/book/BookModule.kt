@@ -19,5 +19,5 @@ val bookModule: Module
         factoryOf(::CreateBookingUseCase)
 
         viewModelOf(::BookingTimeViewModel)
-        factory { BookingTimeUseCase(navigator = get()) }
+        factoryOf(::BookingTimeUseCase)
     }

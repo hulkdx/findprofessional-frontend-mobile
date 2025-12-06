@@ -27,6 +27,7 @@ object TestClockProvider : ClockProvider {
     private var testClock: Clock = Clock.System
 
     override fun clock() = testClock
+    override fun defaultTimeZone() = TimeZone.UTC
 
     fun setNow(now: Instant) {
         testClock = object: Clock {
