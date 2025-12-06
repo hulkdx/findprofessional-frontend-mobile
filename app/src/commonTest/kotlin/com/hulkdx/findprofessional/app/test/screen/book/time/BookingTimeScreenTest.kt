@@ -6,9 +6,7 @@ import androidx.compose.ui.test.ExperimentalTestApi
 import com.hulkdx.findprofessional.app.test.TestClockProvider
 import com.hulkdx.findprofessional.app.test.runAppUiTest
 import com.hulkdx.findprofessional.app.test.utils.inMemoryApi
-import com.hulkdx.findprofessional.core.features.pro.model.Professional
 import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalAvailability
-import com.hulkdx.findprofessional.libs.common.tests.createProfessional
 import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
 import kotlin.test.AfterTest
@@ -30,7 +28,7 @@ class BookingTimeScreenTest {
             from = Instant.parse("2024-01-01T08:00:00Z"),
             to = Instant.parse("2024-01-01T08:30:00Z"),
         )
-        inMemoryApi.setProfessionals(listOf(createProfessional(listOf(availability))))
+        inMemoryApi.setProAvailability(listOf(availability))
 
         launchBookingTimeScreen(this) {
             pressTime(availability)
@@ -49,7 +47,7 @@ class BookingTimeScreenTest {
             from = Instant.parse("2024-01-01T08:00:00Z"),
             to = Instant.parse("2024-01-01T08:30:00Z"),
         )
-        inMemoryApi.setProfessionals(listOf(createProfessional(listOf(availability))))
+        inMemoryApi.setProAvailability(listOf(availability))
 
         launchBookingTimeScreen(this) {
             pressTime(availability)
