@@ -39,17 +39,18 @@ fun HomeScreen(
 
     LaunchedEffect(message) {
         if (message != null) {
-            viewModel.setError(message)
+            viewModel.setError(message, errorDurationMillis = 15_000)
         }
     }
 
     HomeScreen(
-        professionals,
-        error?.localized(),
-        { viewModel.setError(null) },
-        viewModel::onLikeClick,
-        viewModel::onItemClick,
-        viewModel::onSearchClick,
+        professionals = professionals,
+        error = error.first?.localized(),
+        errorDurationMillis = error.second,
+        onErrorDismissed = { viewModel.setError(null) },
+        onLikeClick = viewModel::onLikeClick,
+        onItemClick = viewModel::onItemClick,
+        onSearchClick = viewModel::onSearchClick,
     )
 }
 
@@ -57,6 +58,7 @@ fun HomeScreen(
 fun HomeScreen(
     professionals: List<Professional>,
     error: String?,
+    errorDurationMillis: Long? = null,
     onErrorDismissed: () -> Unit,
     onLikeClick: (Professional) -> Unit,
     onItemClick: (Professional) -> Unit,
@@ -65,6 +67,7 @@ fun HomeScreen(
     AppNavBarContainer(
         modifier = Modifier.testTag("HomeScreen"),
         error = error,
+        errorDurationMillis = errorDurationMillis,
         onErrorDismissed = onErrorDismissed,
     ) {
         HomeScreen(

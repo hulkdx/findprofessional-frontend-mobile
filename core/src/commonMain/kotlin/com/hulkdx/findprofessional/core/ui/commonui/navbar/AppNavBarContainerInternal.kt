@@ -8,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.hulkdx.findprofessional.core.ui.commonui.CUSnackBar
+import com.hulkdx.findprofessional.core.ui.commonui.CUSnackBarDurationDefault
 import com.hulkdx.findprofessional.core.ui.utils.`if`
 
 @Composable
@@ -18,6 +19,7 @@ internal fun AppNavBarContainerInternal(
     items: List<NavData>,
     onErrorDismissed: () -> Unit,
     content: @Composable () -> Unit,
+    errorDurationMillis: Long? = CUSnackBarDurationDefault,
 ) {
     Box(
         modifier = modifier
@@ -34,7 +36,8 @@ internal fun AppNavBarContainerInternal(
         CUSnackBar(
             modifier = Modifier.align(Alignment.BottomCenter),
             message = error,
-            onDismiss = onErrorDismissed
+            onDismiss = onErrorDismissed,
+            durationMillis = errorDurationMillis,
         )
     }
 }

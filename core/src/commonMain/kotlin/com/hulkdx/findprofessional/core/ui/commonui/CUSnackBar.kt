@@ -11,10 +11,13 @@ import androidx.compose.ui.platform.AccessibilityManager
 import androidx.compose.ui.platform.LocalAccessibilityManager
 import kotlinx.coroutines.delay
 
+val CUSnackBarDurationDefault: Long? = null
+
 @Composable
 fun CUSnackBar(
     modifier: Modifier = Modifier,
     message: String?,
+    durationMillis: Long? = CUSnackBarDurationDefault,
     onDismiss: () -> Unit,
 ) {
     if (message == null) {
@@ -22,7 +25,7 @@ fun CUSnackBar(
     }
 
     val hostState = remember { SnackbarHostState() }
-    val delayDuration = delayDuration(hostState)
+    val delayDuration = durationMillis ?: delayDuration(hostState)
     LaunchedEffect(message) {
         hostState.showSnackbar(message)
         delay(delayDuration)
