@@ -7,6 +7,7 @@ import com.hulkdx.findprofessional.core.features.pro.model.request.CreateBooking
 import com.hulkdx.findprofessional.core.features.pro.model.request.SignUpProRequest
 import com.hulkdx.findprofessional.core.features.pro.model.request.UpdateAvailabilityRequest
 import com.hulkdx.findprofessional.core.features.pro.model.response.CreateBookingResponse
+import com.hulkdx.findprofessional.core.features.pro.model.response.GetBookingStatusResponse
 import com.hulkdx.findprofessional.core.features.user.ProUser
 import com.hulkdx.findprofessional.core.features.user.UserData
 import com.hulkdx.findprofessional.core.network.apiUrl
@@ -78,5 +79,13 @@ class ProfessionalApiImpl(
             setBody(request)
         }
             .body()
+    }
+
+    override suspend fun getBookingStatus(id: Long): GetBookingStatusResponse {
+        return client.get {
+            auth(userStorage)
+            apiUrl("professional/booking/$id/status")
+            contentType(ContentType.Application.Json)
+        }.body()
     }
 }

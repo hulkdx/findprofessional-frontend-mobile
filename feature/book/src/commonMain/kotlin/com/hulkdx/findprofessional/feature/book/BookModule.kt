@@ -3,6 +3,7 @@ package com.hulkdx.findprofessional.feature.book
 import com.hulkdx.findprofessional.feature.book.summery.BookingSummeryTimeMapper
 import com.hulkdx.findprofessional.feature.book.summery.BookingSummeryViewModel
 import com.hulkdx.findprofessional.feature.book.summery.usecase.BookingSummeryUseCase
+import com.hulkdx.findprofessional.feature.book.summery.usecase.CheckBookingStatusUseCase
 import com.hulkdx.findprofessional.feature.book.summery.usecase.CreateBookingUseCase
 import com.hulkdx.findprofessional.feature.book.time.BookingTimeUseCase
 import com.hulkdx.findprofessional.feature.book.time.BookingTimeViewModel
@@ -17,6 +18,7 @@ val bookModule: Module
         factoryOf(::BookingSummeryUseCase)
         factoryOf(::BookingSummeryTimeMapper)
         factoryOf(::CreateBookingUseCase)
+        factoryOf(::CheckBookingStatusUseCase)
 
         viewModelOf(::BookingTimeViewModel)
         factoryOf(::BookingTimeUseCase)

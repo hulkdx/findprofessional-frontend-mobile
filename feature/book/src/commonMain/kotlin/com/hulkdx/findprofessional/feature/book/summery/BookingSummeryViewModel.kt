@@ -6,6 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hulkdx.findprofessional.core.features.pro.model.Professional
 import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalAvailability
+import com.hulkdx.findprofessional.core.features.pro.model.response.GetBookingStatusResponse
+import com.hulkdx.findprofessional.core.features.pro.model.response.GetBookingStatusResponse.Status.FAILED
 import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import com.hulkdx.findprofessional.core.navigation.Navigator
 import com.hulkdx.findprofessional.core.resources.Res
@@ -98,11 +100,11 @@ class BookingSummeryViewModel(
             return@launch
         }
         val result = checkBookingStatusUseCase.execute(bookingId)
-        if (result.isFailure) {
+        if (result.isFailure || result.getOrNull() == FAILED) {
             showBookingFailure()
             return@launch
         }
-        TODO()
+        showBookingSuccess()
     }
 
     private fun showBookingFailure() {
@@ -112,6 +114,9 @@ class BookingSummeryViewModel(
                 error = Res.string.bookingFailed.toStringOrRes()
             )
         }
+    }
+
+    private fun showBookingSuccess() {
     }
 
     fun onEditSkypeIdClicked() {

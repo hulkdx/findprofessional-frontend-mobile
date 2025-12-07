@@ -6,6 +6,7 @@ import com.hulkdx.findprofessional.core.features.pro.model.request.CreateBooking
 import com.hulkdx.findprofessional.core.features.pro.model.request.SignUpProRequest
 import com.hulkdx.findprofessional.core.features.pro.model.request.UpdateAvailabilityRequest
 import com.hulkdx.findprofessional.core.features.pro.model.response.CreateBookingResponse
+import com.hulkdx.findprofessional.core.features.pro.model.response.GetBookingStatusResponse
 import com.hulkdx.findprofessional.core.features.user.ProUser
 import com.hulkdx.findprofessional.core.features.user.UserData
 
@@ -16,4 +17,5 @@ interface ProfessionalApi {
     suspend fun getAvailability(): List<ProfessionalAvailability>
     suspend fun updateAvailability(request: UpdateAvailabilityRequest)
     suspend fun createBooking(request: CreateBookingRequest): CreateBookingResponse
+    suspend fun getBookingStatus(id: Long): GetBookingStatusResponse
 }
