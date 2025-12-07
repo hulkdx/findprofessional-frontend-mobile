@@ -6,13 +6,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hulkdx.findprofessional.core.features.pro.model.Professional
 import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalAvailability
-import com.hulkdx.findprofessional.core.features.pro.model.response.GetBookingStatusResponse
 import com.hulkdx.findprofessional.core.features.pro.model.response.GetBookingStatusResponse.Status.FAILED
 import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import com.hulkdx.findprofessional.core.navigation.Navigator
 import com.hulkdx.findprofessional.core.resources.Res
-import com.hulkdx.findprofessional.core.resources.availability
 import com.hulkdx.findprofessional.core.resources.bookingFailed
+import com.hulkdx.findprofessional.core.resources.paymentsUnderReview
 import com.hulkdx.findprofessional.core.utils.StringOrRes
 import com.hulkdx.findprofessional.core.utils.generalError
 import com.hulkdx.findprofessional.core.utils.toStringOrRes
@@ -23,10 +22,7 @@ import com.hulkdx.findprofessional.feature.book.summery.usecase.CheckBookingStat
 import com.hulkdx.findprofessional.feature.book.summery.usecase.CreateBookingUseCase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.SharingStarted.Companion.WhileSubscribed
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.flatMapLatest
-import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
@@ -117,6 +113,11 @@ class BookingSummeryViewModel(
     }
 
     private fun showBookingSuccess() {
+        navigator.navigate(
+            screen = NavigationScreen.Home(Res.string.paymentsUnderReview.toStringOrRes()),
+            popTo = NavigationScreen.Home(),
+            inclusive = true
+        )
     }
 
     fun onEditSkypeIdClicked() {

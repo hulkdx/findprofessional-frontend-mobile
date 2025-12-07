@@ -31,7 +31,7 @@ class SignUpViewModel(
         val err = useCase.signUp(uiState.value)
         if (err == null) {
             navigator.navigate(
-                NavigationScreen.Home,
+                NavigationScreen.Home(),
                 popTo = NavigationScreen.Login,
                 inclusive = true
             )

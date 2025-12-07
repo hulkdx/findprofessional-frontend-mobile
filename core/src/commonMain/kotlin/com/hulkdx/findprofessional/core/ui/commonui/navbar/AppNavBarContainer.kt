@@ -26,7 +26,7 @@ fun AppNavBarContainer(
         NavData.create(
             text = stringResource(Res.string.explorer),
             icon = painterResource(Res.drawable.ic_nav_explorer),
-            screen = NavigationScreen.Home,
+            screen = NavigationScreen.Home(),
             currentScreen,
             navigator,
         ),

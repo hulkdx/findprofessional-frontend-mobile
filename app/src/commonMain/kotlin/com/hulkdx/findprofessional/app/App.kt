@@ -38,7 +38,7 @@ private fun RenderScreen(screen: NavigationScreen) {
         is NavigationScreen.Splash -> SplashScreen()
         is NavigationScreen.Login -> LoginScreen()
         is NavigationScreen.SignUp -> SignUpScreen()
-        is NavigationScreen.Home -> HomeScreen()
+        is NavigationScreen.Home -> HomeScreen(screen.message)
         is NavigationScreen.HomeDetail -> HomeDetailScreen(screen.professional)
         is NavigationScreen.Review -> ReviewScreen(screen.professional)
         is NavigationScreen.Profile -> ProfileScreen()

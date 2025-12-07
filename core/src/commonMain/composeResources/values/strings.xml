@@ -69,5 +69,6 @@
     <string name="invalidTime">Please select a valid time</string>
 
     <string name="bookingFailed">Booking failed</string>
+    <string name="paymentsUnderReview">Payment received. We're reviewing it, it might take some time, you can check it in your profile if the payments is successful</string>
 
 </resources>

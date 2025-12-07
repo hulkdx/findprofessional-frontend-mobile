@@ -27,14 +27,14 @@ internal fun AppNavBarContainerInternal(
             }
     ) {
         content()
+        AppNavigationBarInternal(
+            modifier = Modifier.align(Alignment.BottomCenter),
+            items = items,
+        )
         CUSnackBar(
             modifier = Modifier.align(Alignment.BottomCenter),
             message = error,
             onDismiss = onErrorDismissed
-        )
-        AppNavigationBarInternal(
-            modifier = Modifier.align(Alignment.BottomCenter),
-            items = items,
         )
     }
 }
