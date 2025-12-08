@@ -16,19 +16,16 @@ import androidx.compose.ui.test.performScrollToNode
 import androidx.compose.ui.test.performTouchInput
 import androidx.compose.ui.test.swipeUp
 import androidx.compose.ui.unit.Dp
-import com.hulkdx.findprofessional.app.test.TestClockProvider
 import com.hulkdx.findprofessional.app.test.screen.home.detail.launchHomeDetailScreen
 import com.hulkdx.findprofessional.app.test.utils.Rule
 import com.hulkdx.findprofessional.app.test.utils.assertNodeIsDisplayed
-import com.hulkdx.findprofessional.app.test.utils.inMemoryApi
 import com.hulkdx.findprofessional.app.test.utils.setUser
 import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalAvailability
 import com.hulkdx.findprofessional.core.utils.toMinutesOfDay
-import com.hulkdx.findprofessional.feature.book.time.BookingTimeUiState.BookingTime.Type.Selected
 import com.hulkdx.findprofessional.core.utils.TimeUtils.formattedTime
 import com.hulkdx.findprofessional.feature.book.time.BookingTimeUiState
-import com.hulkdx.findprofessional.libs.common.tests.createProfessional
-import kotlinx.datetime.Instant
+import com.hulkdx.findprofessional.feature.book.time.BookingTimeUiState.BookingTime.Type.Selected
+import com.hulkdx.findprofessional.feature.book.time.utils.BookingTimeUtils
 import kotlinx.datetime.LocalDate
 
 
@@ -98,6 +95,11 @@ class BookingTimeScreenVerify(
     fun isHighlightedTime(time: ProfessionalAvailability) {
         rule.onNodeWithText(time.toText())
             .assert(hasTestTag(Selected.name))
+    }
+
+    fun currentDateIs(date: LocalDate) {
+        rule.onNodeWithText(BookingTimeUtils.currentDay(date))
+            .assertIsDisplayed()
     }
 }
 
