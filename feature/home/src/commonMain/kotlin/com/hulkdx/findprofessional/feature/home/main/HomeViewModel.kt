@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.hulkdx.findprofessional.core.features.pro.model.Professional
 import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import com.hulkdx.findprofessional.core.navigation.Navigator
+import com.hulkdx.findprofessional.core.ui.commonui.CUSnackBarDurationDefault
 import com.hulkdx.findprofessional.core.utils.StringOrRes
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -16,7 +17,7 @@ class HomeViewModel(
 ) : ViewModel() {
     private val _professionals = MutableStateFlow(listOf<Professional>())
     val professionals = _professionals.asStateFlow()
-    private val _error = MutableStateFlow<StringOrRes?>(null)
+    private val _error = MutableStateFlow<Pair<StringOrRes?, Long?>>(null to null)
     val error = _error.asStateFlow()
 
     init {
@@ -44,7 +45,7 @@ class HomeViewModel(
         navigator.navigate(NavigationScreen.HomeDetail(professional))
     }
 
-    fun setError(error: StringOrRes?) {
-        _error.value = error
+    fun setError(error: StringOrRes?, errorDurationMillis: Long? = CUSnackBarDurationDefault) {
+        _error.value = error to errorDurationMillis
     }
 }

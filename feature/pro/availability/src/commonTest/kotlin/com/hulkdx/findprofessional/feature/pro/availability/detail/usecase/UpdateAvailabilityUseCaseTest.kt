@@ -6,7 +6,7 @@ import com.hulkdx.findprofessional.core.features.pro.model.request.CreateBooking
 import com.hulkdx.findprofessional.core.features.pro.model.request.SignUpProRequest
 import com.hulkdx.findprofessional.core.features.pro.model.request.UpdateAvailabilityItemRequest
 import com.hulkdx.findprofessional.core.features.pro.model.request.UpdateAvailabilityRequest
-import com.hulkdx.findprofessional.core.features.pro.model.response.CreateBookingResponse
+import com.hulkdx.findprofessional.core.features.pro.model.response.GetBookingStatusResponse
 import com.hulkdx.findprofessional.core.features.pro.storage.AvailabilityStorage
 import com.hulkdx.findprofessional.core.features.user.ProUser
 import com.hulkdx.findprofessional.core.resources.Res
@@ -43,6 +43,7 @@ class UpdateAvailabilityUseCaseTest {
             val date: LocalDate,
             val expected: UpdateAvailabilityRequest,
         )
+
         val testCases = listOf(
             TestCase(
                 timeSlots = listOf(
@@ -110,7 +111,12 @@ class UpdateAvailabilityUseCaseTest {
         override suspend fun updateAvailability(request: UpdateAvailabilityRequest) {
             applyAvailabilityCalled = request
         }
-        override suspend fun createBooking(request: CreateBookingRequest) = throw RuntimeException("")
+
+        override suspend fun createBooking(request: CreateBookingRequest) =
+            throw RuntimeException("")
+
+        override suspend fun getBookingStatus(id: Long): GetBookingStatusResponse =
+            throw RuntimeException("")
     }
 
     private class StorageMock : AvailabilityStorage {

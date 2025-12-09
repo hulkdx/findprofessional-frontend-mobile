@@ -8,6 +8,7 @@ import com.hulkdx.findprofessional.core.features.pro.model.request.CreateBooking
 import com.hulkdx.findprofessional.core.features.pro.model.request.SignUpProRequest
 import com.hulkdx.findprofessional.core.features.pro.model.request.UpdateAvailabilityRequest
 import com.hulkdx.findprofessional.core.features.pro.model.response.CreateBookingResponse
+import com.hulkdx.findprofessional.core.features.pro.model.response.GetBookingStatusResponse
 import com.hulkdx.findprofessional.core.features.user.ProUser
 import com.hulkdx.findprofessional.core.features.user.Token
 import com.hulkdx.findprofessional.core.features.user.User
@@ -273,7 +274,11 @@ internal class InMemoryApiImpl : InMemoryApi {
         override suspend fun createBooking(
             request: CreateBookingRequest,
         ): CreateBookingResponse {
-            return CreateBookingResponse("", "", "", "")
+            return CreateBookingResponse(1, "", "", "", "")
+        }
+
+        override suspend fun getBookingStatus(id: Long): GetBookingStatusResponse {
+            return GetBookingStatusResponse(status = GetBookingStatusResponse.Status.PENDING)
         }
     }
 

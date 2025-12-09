@@ -6,20 +6,23 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hulkdx.findprofessional.core.features.pro.model.Professional
 import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalAvailability
+import com.hulkdx.findprofessional.core.features.pro.model.response.GetBookingStatusResponse.Status.FAILED
 import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import com.hulkdx.findprofessional.core.navigation.Navigator
+import com.hulkdx.findprofessional.core.resources.Res
+import com.hulkdx.findprofessional.core.resources.bookingFailed
+import com.hulkdx.findprofessional.core.resources.paymentsUnderReview
 import com.hulkdx.findprofessional.core.utils.StringOrRes
 import com.hulkdx.findprofessional.core.utils.generalError
+import com.hulkdx.findprofessional.core.utils.toStringOrRes
 import com.hulkdx.findprofessional.feature.book.summery.BookingSummeryUiState.CheckoutStatus
 import com.hulkdx.findprofessional.feature.book.summery.stripe.PaymentSheetResult
 import com.hulkdx.findprofessional.feature.book.summery.usecase.BookingSummeryUseCase
+import com.hulkdx.findprofessional.feature.book.summery.usecase.CheckBookingStatusUseCase
 import com.hulkdx.findprofessional.feature.book.summery.usecase.CreateBookingUseCase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.SharingStarted.Companion.WhileSubscribed
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.flatMapLatest
-import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
@@ -28,10 +31,14 @@ class BookingSummeryViewModel(
     private val availabilities: List<ProfessionalAvailability>,
     useCase: BookingSummeryUseCase,
     private val createBookingUseCase: CreateBookingUseCase,
+    private val checkBookingStatusUseCase: CheckBookingStatusUseCase,
     private val navigator: Navigator,
 ) : ViewModel() {
+
     private val _uiState = MutableStateFlow(BookingSummeryUiState())
     val uiState = _uiState.asStateFlow()
+
+    private var bookingId: Long? = null
 
     init {
         viewModelScope.launch {
@@ -57,29 +64,60 @@ class BookingSummeryViewModel(
                     setError(throwable.generalError())
                 }
                 .onSuccess {
-                    setLoading(false)
+                    bookingId = it.id
                     setCheckoutStatus(CheckoutStatus.Success(it))
                 }
         }
     }
 
     fun onStripeResult(result: PaymentSheetResult) {
-        setLoading(false)
         setCheckoutStatus(CheckoutStatus.Idle)
 
         when (result) {
             is PaymentSheetResult.Failed -> {
                 setError(result.error.generalError())
+                setLoading(false)
             }
 
             is PaymentSheetResult.Canceled -> {
+                setLoading(false)
             }
 
             is PaymentSheetResult.Completed -> {
-                // TODO: write down we will check your payments
-                navigator.goBack(NavigationScreen.Home::class)
+                checkBookingStatus()
             }
         }
+    }
+
+    private fun checkBookingStatus() = viewModelScope.launch {
+        val bookingId = bookingId
+        if (bookingId == null) {
+            showBookingFailure()
+            return@launch
+        }
+        val result = checkBookingStatusUseCase.execute(bookingId)
+        if (result.isFailure || result.getOrNull() == FAILED) {
+            showBookingFailure()
+            return@launch
+        }
+        showBookingSuccess()
+    }
+
+    private fun showBookingFailure() {
+        _uiState.update { uiState ->
+            uiState.copy(
+                isLoading = false,
+                error = Res.string.bookingFailed.toStringOrRes()
+            )
+        }
+    }
+
+    private fun showBookingSuccess() {
+        navigator.navigate(
+            screen = NavigationScreen.Home(Res.string.paymentsUnderReview.toStringOrRes()),
+            popTo = NavigationScreen.Home(),
+            inclusive = true
+        )
     }
 
     fun onEditSkypeIdClicked() {

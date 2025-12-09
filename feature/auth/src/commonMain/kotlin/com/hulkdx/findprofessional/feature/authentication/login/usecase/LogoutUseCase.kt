@@ -23,6 +23,6 @@ class LogoutUseCaseImpl(
             return
         }
         userStorage.remove()
-        navigator.navigate(NavigationScreen.Login, NavigationScreen.Home, inclusive = true)
+        navigator.navigate(NavigationScreen.Login, NavigationScreen.Home(), inclusive = true)
     }
 }

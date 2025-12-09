@@ -13,6 +13,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -23,22 +24,33 @@ import com.hulkdx.findprofessional.core.ui.commonui.CUSearchField
 import com.hulkdx.findprofessional.core.ui.commonui.navbar.AppNavBarContainer
 import com.hulkdx.findprofessional.core.ui.commonui.navbar.AppNavigationBarDimens
 import com.hulkdx.findprofessional.core.ui.theme.AppTheme
+import com.hulkdx.findprofessional.core.utils.StringOrRes
 import com.hulkdx.findprofessional.feature.home.main.HomeViewModel
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
-fun HomeScreen(viewModel: HomeViewModel = koinViewModel()) {
+fun HomeScreen(
+    message: StringOrRes?,
+    viewModel: HomeViewModel = koinViewModel(),
+) {
     val professionals by viewModel.professionals.collectAsState()
     val error by viewModel.error.collectAsState()
 
+    LaunchedEffect(message) {
+        if (message != null) {
+            viewModel.setError(message, errorDurationMillis = 15_000)
+        }
+    }
+
     HomeScreen(
-        professionals,
-        error?.localized(),
-        { viewModel.setError(null) },
-        viewModel::onLikeClick,
-        viewModel::onItemClick,
-        viewModel::onSearchClick,
+        professionals = professionals,
+        error = error.first?.localized(),
+        errorDurationMillis = error.second,
+        onErrorDismissed = { viewModel.setError(null) },
+        onLikeClick = viewModel::onLikeClick,
+        onItemClick = viewModel::onItemClick,
+        onSearchClick = viewModel::onSearchClick,
     )
 }
 
@@ -46,6 +58,7 @@ fun HomeScreen(viewModel: HomeViewModel = koinViewModel()) {
 fun HomeScreen(
     professionals: List<Professional>,
     error: String?,
+    errorDurationMillis: Long? = null,
     onErrorDismissed: () -> Unit,
     onLikeClick: (Professional) -> Unit,
     onItemClick: (Professional) -> Unit,
@@ -54,6 +67,7 @@ fun HomeScreen(
     AppNavBarContainer(
         modifier = Modifier.testTag("HomeScreen"),
         error = error,
+        errorDurationMillis = errorDurationMillis,
         onErrorDismissed = onErrorDismissed,
     ) {
         HomeScreen(

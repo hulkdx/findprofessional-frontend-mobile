@@ -5,6 +5,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class CreateBookingResponse(
+    @SerialName("id") val id: Long,
     @SerialName("payment_intent") val paymentIntent: String,
     @SerialName("customer_session_client_secret") val customerSessionClientSecret: String,
     @SerialName("customer") val customer: String,

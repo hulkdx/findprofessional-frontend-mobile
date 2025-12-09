@@ -8,6 +8,7 @@ import com.hulkdx.findprofessional.core.resources.explorer
 import com.hulkdx.findprofessional.core.resources.ic_nav_explorer
 import com.hulkdx.findprofessional.core.resources.ic_nav_profile
 import com.hulkdx.findprofessional.core.resources.profile
+import com.hulkdx.findprofessional.core.ui.commonui.CUSnackBarDurationDefault
 import com.hulkdx.findprofessional.core.utils.getNavigator
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -17,6 +18,7 @@ fun AppNavBarContainer(
     modifier: Modifier = Modifier,
     error: String?,
     onErrorDismissed: () -> Unit,
+    errorDurationMillis: Long? = CUSnackBarDurationDefault,
     content: @Composable () -> Unit,
 ) {
     val navigator = getNavigator()
@@ -26,7 +28,7 @@ fun AppNavBarContainer(
         NavData.create(
             text = stringResource(Res.string.explorer),
             icon = painterResource(Res.drawable.ic_nav_explorer),
-            screen = NavigationScreen.Home,
+            screen = NavigationScreen.Home(),
             currentScreen,
             navigator,
         ),
@@ -44,6 +46,7 @@ fun AppNavBarContainer(
         error = error,
         items = items,
         onErrorDismissed = onErrorDismissed,
-        content = content
+        content = content,
+        errorDurationMillis = errorDurationMillis,
     )
 }
