@@ -25,6 +25,7 @@ import kotlinx.datetime.LocalDate
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.minus
 import kotlinx.datetime.plus
+import kotlin.math.min
 
 class BookingTimeUseCase(
     clockProvider: ClockProvider,
@@ -39,10 +40,18 @@ class BookingTimeUseCase(
         timeZone: TimeZone = TimeZone.currentSystemDefault()
     ): Flow<BookingTimeUiState> {
         if (professionalAvailabilityMap.isEmpty()) {
+            var minDate = Int.MAX_VALUE
+
             for (availability in professional.availability) {
                 val current = professionalAvailabilityMap[availability.date] ?: mapOf()
                 val new = availability.from.toMinutesOfDay(timeZone) to availability
                 professionalAvailabilityMap[availability.date] = current + new
+
+                minDate = min(minDate, availability.date.toEpochDays())
+            }
+
+            if (minDate != Int.MAX_VALUE) {
+                date.value = LocalDate.fromEpochDays(minDate)
             }
         }
 

@@ -19,7 +19,6 @@ import kotlinx.datetime.LocalTime
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.atTime
 import kotlinx.datetime.toInstant
-import kotlinx.datetime.toLocalDateTime
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -44,27 +43,6 @@ class BookingTimeUseCaseTest {
         // Assert
         assertEquals(result, expectedResult)
     }
-
-    @Test
-    fun `getUiState when availability is for all way but wrong date should be all unavailable`() =
-        runTest {
-            // Arrange
-            val now = Instant.parse("2024-01-01T08:00:00Z")
-            val sut = createSut(now)
-            val pro = createProfessional(
-                availability = listOf(
-                    ProfessionalAvailability(
-                        id = 1,
-                        from = LocalDate(2024, 1, 2).atTime(LocalTime.fromSecondOfDay(0)).toInstant(TimeZone.UTC),
-                        to = LocalDate(2024, 1, 2).atTime(LocalTime.fromSecondOfDay(0)).toInstant(TimeZone.UTC),
-                    )
-                )
-            )
-            // Act
-            val result = sut.getUiState(pro).first().times
-            // Assert
-            assertEquals(result, allUnavailable(now.toLocalDateTime(TimeZone.UTC).date))
-        }
 
     @Test
     fun `dayMinusOne tests`() = runTest {
@@ -129,9 +107,9 @@ class BookingTimeUseCaseTest {
 
     private fun createSut(now: Instant = Clock.System.now()) = BookingTimeUseCase(
         navigator = navigator,
-        clockProvider = object: ClockProvider {
+        clockProvider = object : ClockProvider {
             override fun clock(): Clock {
-                return object: Clock {
+                return object : Clock {
                     override fun now() = now
                 }
             }
@@ -145,8 +123,10 @@ class BookingTimeUseCaseTest {
             availability = times.map {
                 ProfessionalAvailability(
                     id = 1,
-                    from = date.atTime(LocalTime.fromSecondOfDay(it.first * 60)).toInstant(TimeZone.UTC),
-                    to = date.atTime(LocalTime.fromSecondOfDay(it.second * 60)).toInstant(TimeZone.UTC),
+                    from = date.atTime(LocalTime.fromSecondOfDay(it.first * 60))
+                        .toInstant(TimeZone.UTC),
+                    to = date.atTime(LocalTime.fromSecondOfDay(it.second * 60))
+                        .toInstant(TimeZone.UTC),
                 )
             }
         )

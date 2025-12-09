@@ -340,5 +340,8 @@ internal class InMemoryApiImpl : InMemoryApi {
 
     override fun setProAvailability(availability: List<ProfessionalAvailability>) {
         this.availability = availability.toMutableList()
+        professionals = professionals.map {
+            it.copy(availability = availability)
+        }
     }
 }
