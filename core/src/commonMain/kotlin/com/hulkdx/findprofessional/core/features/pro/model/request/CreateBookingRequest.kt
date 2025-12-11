@@ -8,6 +8,6 @@ data class CreateBookingRequest(
     @SerialName("amount_in_cents") val amountInCents: Long,
     @SerialName("currency") val currency: String,
     @SerialName("idempotency_key") val idempotencyKey: String,
-    @SerialName("professional_id") val proId: Int,
+    @SerialName("professional_id") val proId: Long,
     @SerialName("availability_ids") val availabilities: List<String>,
 )

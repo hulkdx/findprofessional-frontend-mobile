@@ -11,7 +11,7 @@ import io.ktor.http.ContentType
 import io.ktor.http.contentType
 
 interface ReviewApi {
-    suspend fun findAll(professionalId: Int, page: Int, pageSize: Int): List<ProfessionalReview>
+    suspend fun findAll(professionalId: Long, page: Int, pageSize: Int): List<ProfessionalReview>
 }
 
 class ReviewApiImpl(
@@ -20,7 +20,7 @@ class ReviewApiImpl(
 ) : ReviewApi {
 
     override suspend fun findAll(
-        professionalId: Int,
+        professionalId: Long,
         page: Int,
         pageSize: Int,
     ): List<ProfessionalReview> {
