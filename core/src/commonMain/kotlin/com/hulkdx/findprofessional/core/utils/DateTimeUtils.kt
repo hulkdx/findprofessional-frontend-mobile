@@ -1,14 +1,13 @@
 package com.hulkdx.findprofessional.core.utils
 
-import kotlinx.datetime.Clock
 import kotlinx.datetime.DateTimeUnit
 import kotlinx.datetime.DayOfWeek
 import kotlinx.datetime.LocalDate
-import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.plus
 import kotlinx.datetime.todayIn
 import kotlinx.datetime.until
+import kotlin.time.Clock
 
 
 fun DayOfWeek.toShort(): String {
@@ -25,13 +24,7 @@ fun DayOfWeek.toShort(): String {
 }
 
 // From: https://github.com/Kotlin/kotlinx-datetime/issues/184
-fun LocalDate.lengthOfMonth(): Int {
-    val start = LocalDate(year, month, 1)
-    val end = start.plus(1, DateTimeUnit.MONTH)
-    return start.until(end, DateTimeUnit.DAY)
-}
-
-fun LocalDateTime.lengthOfMonth(): Int {
+fun LocalDate.lengthOfMonth(): Long {
     val start = LocalDate(year, month, 1)
     val end = start.plus(1, DateTimeUnit.MONTH)
     return start.until(end, DateTimeUnit.DAY)

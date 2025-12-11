@@ -20,15 +20,9 @@ import com.hulkdx.findprofessional.feature.authentication.signup.SignUpApi
 import com.hulkdx.findprofessional.feature.authentication.signup.model.RegisterRequest
 import com.hulkdx.findprofessional.feature.profile.edit.api.UpdateProfileApi
 import com.hulkdx.findprofessional.feature.review.ReviewApi
-import kotlinx.datetime.Clock
-import kotlinx.datetime.Instant
-import kotlinx.datetime.LocalDate
-import kotlinx.datetime.LocalTime
-import kotlinx.datetime.TimeZone
-import kotlinx.datetime.toLocalDateTime
-import kotlinx.datetime.atTime
-import kotlinx.datetime.toInstant
 import org.koin.dsl.module
+import kotlin.time.Clock
+import kotlin.time.Instant
 
 internal class InMemoryApiImpl : InMemoryApi {
     private val module = module {

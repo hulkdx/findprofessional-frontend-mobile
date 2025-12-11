@@ -6,7 +6,7 @@ import kotlin.math.ceil
 data class AvailabilityData(
     val currentMonth: String,
     val firstDay: Int,
-    val lengthOfMonth: Int,
+    val lengthOfMonth: Long,
     val now: LocalDate,
     val professionalAvailabilityDates: List<LocalDate>,
 ) {

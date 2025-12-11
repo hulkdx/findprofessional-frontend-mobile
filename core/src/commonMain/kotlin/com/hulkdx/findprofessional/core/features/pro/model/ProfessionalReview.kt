@@ -1,10 +1,10 @@
 package com.hulkdx.findprofessional.core.features.pro.model
 
 import com.hulkdx.findprofessional.core.features.user.User
-import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
 import kotlinx.serialization.Serializable
+import kotlin.time.Instant
 
 @Serializable
 data class ProfessionalReview(
@@ -20,4 +20,3 @@ data class ProfessionalReview(
             "${it.dayOfMonth} ${it.monthNumber} ${it.year}"
         }
 }
-

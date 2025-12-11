@@ -33,7 +33,7 @@ object DateUtils {
             .firstNotNullOf { it.key }
     }
 
-    fun lengthOfMonth(now: LocalDate): Int {
+    fun lengthOfMonth(now: LocalDate): Long {
         return now.lengthOfMonth()
     }
 

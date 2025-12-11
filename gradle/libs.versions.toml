@@ -16,7 +16,7 @@ androidxDataStore = "1.1.7"
 # https://github.com/coil-kt/coil
 coil = "3.3.0"
 # https://github.com/JetBrains/compose-multiplatform
-compose-plugin = "1.8.2"
+compose-plugin = "1.9.3"
 # https://github.com/arkivanov/Decompose
 decompose = "3.3.0"
 # https://github.com/InsertKoinIO/koin
@@ -24,8 +24,7 @@ koin = "4.1.0"
 # https://central.sonatype.com/artifact/io.insert-koin/koin-compose/versions
 koin-compose = "4.1.0"
 # https://github.com/Kotlin/kotlinx-datetime
-# Using 0.6.2 until https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.time/-instant/ is not experimental
-kotlinxDatetime = "0.6.2"
+kotlinxDatetime = "0.7.1"
 # https://github.com/Kotlin/kotlinx.serialization
 kotlinxSerializationJson = "1.9.0"
 # https://github.com/ktorio/ktor
@@ -87,7 +86,7 @@ jetbrains-compose = { id = "org.jetbrains.compose", version.ref = "compose-plugi
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
-paparazzi = { id = "app.cash.paparazzi", version.ref = "test-paparazzi"}
+paparazzi = { id = "app.cash.paparazzi", version.ref = "test-paparazzi" }
 
 # build-logic
 hulkdx-kmp-application = { id = "com.hulkdx.findprofessional.kmp.application", version = "unspecified" }

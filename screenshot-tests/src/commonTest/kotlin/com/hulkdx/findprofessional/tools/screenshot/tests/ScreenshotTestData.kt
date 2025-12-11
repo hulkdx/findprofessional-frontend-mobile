@@ -5,9 +5,8 @@ import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalAvailabil
 import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalReview
 import com.hulkdx.findprofessional.core.features.user.User
 import com.hulkdx.findprofessional.feature.book.time.BookingTimeUiState
-import kotlinx.datetime.Clock
-import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
+import kotlin.time.Instant
 
 val randomDate = LocalDate.parse("2023-11-10")
 

@@ -40,12 +40,12 @@ import com.hulkdx.findprofessional.core.ui.theme.body1
 import com.hulkdx.findprofessional.core.ui.theme.body1Medium
 import com.hulkdx.findprofessional.core.ui.theme.body3
 import com.hulkdx.findprofessional.core.ui.theme.h1Medium
-import kotlinx.datetime.Clock
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.viewmodel.koinViewModel
 import org.koin.core.parameter.parametersOf
+import kotlin.time.Clock
 
 @Composable
 fun ReviewScreen(

@@ -1,6 +1,6 @@
 package com.hulkdx.findprofessional.core.utils
 
-import kotlinx.datetime.Clock
+import kotlin.time.Clock
 
 private const val DEBOUNCE_TIME_MS = 500
 

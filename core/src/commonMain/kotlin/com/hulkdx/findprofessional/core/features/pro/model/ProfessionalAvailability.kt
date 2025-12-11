@@ -1,9 +1,9 @@
 package com.hulkdx.findprofessional.core.features.pro.model
 
-import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
 import kotlinx.serialization.Serializable
+import kotlin.time.Instant
 
 /**
  * from 0 time to 0 time means its available the whole day

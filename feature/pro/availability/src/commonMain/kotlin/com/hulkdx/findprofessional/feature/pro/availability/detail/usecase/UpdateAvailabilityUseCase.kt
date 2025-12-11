@@ -10,18 +10,22 @@ import com.hulkdx.findprofessional.core.utils.StringOrRes
 import com.hulkdx.findprofessional.core.utils.generalError
 import com.hulkdx.findprofessional.core.utils.toStringOrRes
 import com.hulkdx.findprofessional.feature.pro.availability.detail.TimeSlot
-import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.atTime
 import kotlinx.datetime.toInstant
 import kotlin.time.Duration.Companion.minutes
+import kotlin.time.Instant
 
 class UpdateAvailabilityUseCase(
     private val professionalApi: ProfessionalApi,
     private val storage: AvailabilityStorage,
 ) {
-    suspend fun execute(timeSlots: List<TimeSlot>, date: LocalDate, timeZone: TimeZone): StringOrRes? {
+    suspend fun execute(
+        timeSlots: List<TimeSlot>,
+        date: LocalDate,
+        timeZone: TimeZone
+    ): StringOrRes? {
         return try {
             if (isNotValid(timeSlots)) {
                 return Res.string.invalidTime.toStringOrRes()
