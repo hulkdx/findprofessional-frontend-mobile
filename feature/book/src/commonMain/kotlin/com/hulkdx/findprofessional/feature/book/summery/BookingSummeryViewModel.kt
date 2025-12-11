@@ -49,7 +49,6 @@ class BookingSummeryViewModel(
         }
     }
 
-
     fun onCheckoutClicked() {
         viewModelScope.launch {
             setLoading(true)
