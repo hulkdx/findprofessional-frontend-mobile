@@ -4,15 +4,13 @@ package com.hulkdx.findprofessional.feature.authentication.login
 
 import com.hulkdx.findprofessional.core.features.user.Token
 import com.hulkdx.findprofessional.core.features.user.UserData
-import com.hulkdx.findprofessional.core.storage.UserStorage
 import com.hulkdx.findprofessional.feature.authentication.login.api.LoginApi
 import com.hulkdx.findprofessional.feature.authentication.login.model.LoginRequest
 import com.hulkdx.findprofessional.libs.common.tests.StubNavigator
+import com.hulkdx.findprofessional.libs.common.tests.StubUserStorage
 import com.hulkdx.findprofessional.libs.common.tests.newUser
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.setMain
 import kotlin.test.AfterTest
@@ -26,7 +24,12 @@ class LoginViewModelTest {
 
     private val loginApi = LoginApiMock()
     private val navigator = StubNavigator()
-    private val userStorage = UserStorageMock()
+    private val userStorage = object : StubUserStorage() {
+        var setValue: UserData? = null
+        override suspend fun set(value: UserData) {
+            setValue = value
+        }
+    }
 
     @BeforeTest
     fun setUp() {
@@ -66,18 +69,6 @@ class LoginViewModelTest {
         override suspend fun login(request: LoginRequest): UserData {
             return loginReturns
         }
-    }
-
-    private class UserStorageMock : UserStorage {
-        var setValue: UserData? = null
-
-        override suspend fun get() = null
-        override suspend fun set(value: UserData) {
-            setValue = value
-        }
-
-        override suspend fun remove() {}
-        override fun getFlow(): Flow<UserData?> = flow {}
     }
 
     // endregion
