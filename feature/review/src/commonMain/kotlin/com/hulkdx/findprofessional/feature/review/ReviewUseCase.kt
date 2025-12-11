@@ -12,7 +12,7 @@ class ReviewUseCase(
     private var isLoading = false
     private var page = 1
 
-    suspend fun findAll(professionalId: Int) = try {
+    suspend fun findAll(professionalId: Long) = try {
         if (isLoading) {
             Result.DoNothing
         } else {

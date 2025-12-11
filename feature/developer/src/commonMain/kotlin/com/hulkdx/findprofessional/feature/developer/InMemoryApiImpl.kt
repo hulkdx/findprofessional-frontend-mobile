@@ -278,7 +278,7 @@ internal class InMemoryApiImpl : InMemoryApi {
 
     private inner class Review : ReviewApi {
         override suspend fun findAll(
-            professionalId: Int,
+            professionalId: Long,
             page: Int,
             pageSize: Int,
         ) = (((page - 1) * pageSize)..<(page * pageSize)).map {
