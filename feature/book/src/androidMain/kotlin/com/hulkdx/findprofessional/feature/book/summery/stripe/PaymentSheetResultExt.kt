@@ -1,7 +1,7 @@
 package com.hulkdx.findprofessional.feature.book.summery.stripe
 
 import androidx.compose.runtime.State
-import com.hulkdx.findprofessional.core.utils.StripeTimedOutException
+import com.hulkdx.findprofessional.core.utils.exception.StripeTimedOutException
 import com.stripe.android.paymentsheet.PaymentSheetResult as StripePaymentSheetResult
 
 fun createCallback(
