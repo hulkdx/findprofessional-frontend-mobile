@@ -50,7 +50,7 @@ class DateUtilsTest {
     fun lengthOfMonthTest() {
         // Arrange
         val now = LocalDate(2023, 12, 21)
-        val expected = 31
+        val expected = 31L
         // Act
         val result = sut.lengthOfMonth(now)
         // Assert

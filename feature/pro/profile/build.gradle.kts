@@ -10,6 +10,8 @@ kotlin {
             implementation(projects.feature.auth)
             implementation(projects.feature.pro.auth)
 
+            implementation(compose.materialIconsExtended)
+
             implementation(libs.ktor.core)
             implementation(libs.lifecycle.viewmodel.compose)
             implementation(libs.kotlinx.datetime)

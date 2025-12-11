@@ -1,12 +1,12 @@
 package com.hulkdx.findprofessional.feature.book.summery
 
 import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalAvailability
-import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.TimeZone
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.time.Instant
 
 class BookingSummeryTimeMapperTest {
 

@@ -8,7 +8,6 @@ import com.hulkdx.findprofessional.core.navigation.Navigator
 import com.hulkdx.findprofessional.core.utils.ClockProvider
 import com.hulkdx.findprofessional.core.utils.TimeUtils.formattedTime
 import com.hulkdx.findprofessional.core.utils.localDateNow
-import com.hulkdx.findprofessional.core.utils.now
 import com.hulkdx.findprofessional.core.utils.toMinutesOfDay
 import com.hulkdx.findprofessional.feature.book.time.BookingTimeUiState.BookingTime
 import com.hulkdx.findprofessional.feature.book.time.BookingTimeUiState.BookingTime.Type.Available
@@ -31,7 +30,8 @@ class BookingTimeUseCase(
     clockProvider: ClockProvider,
     private val navigator: Navigator,
 ) {
-    private val professionalAvailabilityMap = mutableMapOf<LocalDate, Map<Int, ProfessionalAvailability>>()
+    private val professionalAvailabilityMap =
+        mutableMapOf<LocalDate, Map<Int, ProfessionalAvailability>>()
     private val date = MutableStateFlow(clockProvider.localDateNow())
     private val selectedItems = MutableStateFlow(SelectedTimes())
 
@@ -40,7 +40,7 @@ class BookingTimeUseCase(
         timeZone: TimeZone = TimeZone.currentSystemDefault()
     ): Flow<BookingTimeUiState> {
         if (professionalAvailabilityMap.isEmpty()) {
-            var minDate = Int.MAX_VALUE
+            var minDate = Long.MAX_VALUE
 
             for (availability in professional.availability) {
                 val current = professionalAvailabilityMap[availability.date] ?: mapOf()
@@ -50,7 +50,7 @@ class BookingTimeUseCase(
                 minDate = min(minDate, availability.date.toEpochDays())
             }
 
-            if (minDate != Int.MAX_VALUE) {
+            if (minDate != Long.MAX_VALUE) {
                 date.value = LocalDate.fromEpochDays(minDate)
             }
         }

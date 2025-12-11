@@ -12,8 +12,6 @@ import com.hulkdx.findprofessional.libs.common.tests.createBookingTimes
 import com.hulkdx.findprofessional.libs.common.tests.createProfessional
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.runTest
-import kotlinx.datetime.Clock
-import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalTime
 import kotlinx.datetime.TimeZone
@@ -22,6 +20,8 @@ import kotlinx.datetime.toInstant
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.time.Clock
+import kotlin.time.Instant
 
 class BookingTimeUseCaseTest {
 

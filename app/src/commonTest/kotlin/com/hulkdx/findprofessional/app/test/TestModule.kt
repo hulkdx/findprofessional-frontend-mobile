@@ -3,14 +3,14 @@ package com.hulkdx.findprofessional.app.test
 import com.hulkdx.findprofessional.core.features.pro.usecase.GetAvailabilityUseCase
 import com.hulkdx.findprofessional.core.platform.PlatformSpecific
 import com.hulkdx.findprofessional.core.utils.ClockProvider
-import kotlinx.datetime.Clock
-import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.atStartOfDayIn
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.bind
 import org.koin.dsl.module
+import kotlin.time.Clock
+import kotlin.time.Instant
 
 val testModule
     get() = module {
@@ -30,7 +30,7 @@ object TestClockProvider : ClockProvider {
     override fun defaultTimeZone() = TimeZone.UTC
 
     fun setNow(now: Instant) {
-        testClock = object: Clock {
+        testClock = object : Clock {
             override fun now() = now
         }
     }

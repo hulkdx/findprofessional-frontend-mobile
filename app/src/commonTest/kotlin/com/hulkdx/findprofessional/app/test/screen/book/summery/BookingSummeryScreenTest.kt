@@ -5,7 +5,6 @@ package com.hulkdx.findprofessional.app.test.screen.book.summery
 import androidx.compose.ui.test.ExperimentalTestApi
 import com.hulkdx.findprofessional.app.test.TestClockProvider
 import com.hulkdx.findprofessional.app.test.runAppUiTest
-import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
 import kotlin.test.AfterTest
 import kotlin.test.Test

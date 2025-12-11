@@ -8,6 +8,8 @@ kotlin {
         commonMain.dependencies {
             implementation(projects.core)
 
+            implementation(compose.materialIconsExtended)
+
             implementation(libs.ktor.core)
             implementation(libs.lifecycle.viewmodel.compose)
             implementation(libs.kotlinx.datetime)

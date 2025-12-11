@@ -7,9 +7,7 @@ import com.hulkdx.findprofessional.feature.home.detail.availability.HomeDetailAv
 import com.hulkdx.findprofessional.libs.common.tests.createProfessional
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.runTest
-import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
-import kotlinx.datetime.LocalTime
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.atTime
 import kotlinx.datetime.toInstant

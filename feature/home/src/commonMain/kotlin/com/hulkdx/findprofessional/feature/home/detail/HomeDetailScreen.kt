@@ -44,12 +44,12 @@ import com.hulkdx.findprofessional.feature.home.detail.utils.HomeScreenDimens.BO
 import com.hulkdx.findprofessional.feature.home.detail.utils.HomeScreenDimens.OUTER_HORIZONTAL_PADDING
 import com.hulkdx.findprofessional.feature.home.main.view.Description
 import com.hulkdx.findprofessional.feature.home.main.view.TopRow
-import kotlinx.datetime.Clock
 import kotlinx.datetime.LocalDate
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.viewmodel.koinViewModel
 import org.koin.core.parameter.parametersOf
+import kotlin.time.Clock
 
 @Composable
 fun HomeDetailScreen(
