@@ -1,18 +1,14 @@
 package com.hulkdx.findprofessional.feature.pro.availability.detail.usecase
 
-import com.hulkdx.findprofessional.core.features.pro.api.ProfessionalApi
 import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalAvailability
-import com.hulkdx.findprofessional.core.features.pro.model.request.CreateBookingRequest
-import com.hulkdx.findprofessional.core.features.pro.model.request.SignUpProRequest
 import com.hulkdx.findprofessional.core.features.pro.model.request.UpdateAvailabilityItemRequest
 import com.hulkdx.findprofessional.core.features.pro.model.request.UpdateAvailabilityRequest
-import com.hulkdx.findprofessional.core.features.pro.model.response.GetBookingStatusResponse
 import com.hulkdx.findprofessional.core.features.pro.storage.AvailabilityStorage
-import com.hulkdx.findprofessional.core.features.user.ProUser
 import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.invalidTime
 import com.hulkdx.findprofessional.core.utils.toStringOrRes
 import com.hulkdx.findprofessional.feature.pro.availability.detail.TimeSlot
+import com.hulkdx.findprofessional.libs.common.tests.StubProfessionalApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.runBlocking
@@ -27,7 +23,12 @@ import kotlin.test.assertEquals
 class UpdateAvailabilityUseCaseTest {
 
     private lateinit var sut: UpdateAvailabilityUseCase
-    private val api = ProApiMock()
+    private val api = object : StubProfessionalApi() {
+        var applyAvailabilityCalled: UpdateAvailabilityRequest? = null
+        override suspend fun updateAvailability(request: UpdateAvailabilityRequest) {
+            applyAvailabilityCalled = request
+        }
+    }
 
     private val storageMock = StorageMock()
 
@@ -100,24 +101,6 @@ class UpdateAvailabilityUseCaseTest {
     }
 
     // region mock classes
-
-    private class ProApiMock : ProfessionalApi {
-        var applyAvailabilityCalled: UpdateAvailabilityRequest? = null
-
-        override suspend fun findAll() = throw RuntimeException("")
-        override suspend fun register(request: SignUpProRequest) = throw RuntimeException("")
-        override suspend fun update(proUser: ProUser) {}
-        override suspend fun getAvailability(): List<ProfessionalAvailability> = listOf()
-        override suspend fun updateAvailability(request: UpdateAvailabilityRequest) {
-            applyAvailabilityCalled = request
-        }
-
-        override suspend fun createBooking(request: CreateBookingRequest) =
-            throw RuntimeException("")
-
-        override suspend fun getBookingStatus(id: Long): GetBookingStatusResponse =
-            throw RuntimeException("")
-    }
 
     private class StorageMock : AvailabilityStorage {
         override fun getFlow(): Flow<List<ProfessionalAvailability>> = flowOf()

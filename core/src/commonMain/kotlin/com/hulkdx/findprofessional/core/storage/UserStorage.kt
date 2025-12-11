@@ -3,7 +3,7 @@ package com.hulkdx.findprofessional.core.storage
 import com.hulkdx.findprofessional.core.features.user.ProUser
 import com.hulkdx.findprofessional.core.features.user.User
 import com.hulkdx.findprofessional.core.features.user.UserData
-import com.hulkdx.findprofessional.core.utils.AccessTokenNotFoundException
+import com.hulkdx.findprofessional.core.utils.exception.AccessTokenNotFoundException
 import kotlinx.coroutines.flow.Flow
 
 

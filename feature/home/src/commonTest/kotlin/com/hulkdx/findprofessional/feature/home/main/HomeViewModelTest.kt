@@ -4,16 +4,8 @@
 package com.hulkdx.findprofessional.feature.home.main
 
 import com.hulkdx.findprofessional.core.features.pro.model.Professional
-import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalAvailability
-import com.hulkdx.findprofessional.core.features.pro.api.ProfessionalApi
-import com.hulkdx.findprofessional.core.features.pro.model.request.CreateBookingRequest
-import com.hulkdx.findprofessional.core.features.pro.model.request.SignUpProRequest
-import com.hulkdx.findprofessional.core.features.pro.model.request.UpdateAvailabilityRequest
-import com.hulkdx.findprofessional.core.features.pro.model.response.CreateBookingResponse
-import com.hulkdx.findprofessional.core.features.pro.model.response.GetBookingStatusResponse
-import com.hulkdx.findprofessional.core.features.user.ProUser
-import com.hulkdx.findprofessional.core.features.user.UserData
 import com.hulkdx.findprofessional.libs.common.tests.StubNavigator
+import com.hulkdx.findprofessional.libs.common.tests.StubProfessionalApi
 import com.hulkdx.findprofessional.libs.common.tests.createProfessional
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -30,7 +22,11 @@ class HomeViewModelTest {
 
     private lateinit var sut: HomeViewModel
 
-    private val api = ProApiMock()
+    private val api = object : StubProfessionalApi() {
+        var findAllResponse: List<Professional> = listOf()
+
+        override suspend fun findAll() = findAllResponse
+    }
 
     @BeforeTest
     fun setUp() {
@@ -62,22 +58,4 @@ class HomeViewModelTest {
         val result = sut.professionals.first()
         assertEquals(result, apiResult)
     }
-
-    // region mock classes
-
-    private class ProApiMock : ProfessionalApi {
-        var findAllResponse: List<Professional> = listOf()
-        override suspend fun findAll() = findAllResponse
-        override suspend fun register(request: SignUpProRequest): UserData =
-            throw RuntimeException("irrelevant")
-        override suspend fun update(proUser: ProUser) {}
-        override suspend fun getAvailability(): List<ProfessionalAvailability> = listOf()
-        override suspend fun updateAvailability(request: UpdateAvailabilityRequest) {}
-        override suspend fun createBooking(request: CreateBookingRequest) =
-            throw RuntimeException("irrelevant")
-        override suspend fun getBookingStatus(id: Long): GetBookingStatusResponse =
-            throw RuntimeException("irrelevant")
-    }
-
-    // endregion
 }

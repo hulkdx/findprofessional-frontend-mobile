@@ -12,10 +12,12 @@ import com.hulkdx.findprofessional.core.navigation.Navigator
 import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.bookingFailed
 import com.hulkdx.findprofessional.core.resources.paymentsUnderReview
+import com.hulkdx.findprofessional.core.resources.skypeIdNotFound
 import com.hulkdx.findprofessional.core.utils.StringOrRes
 import com.hulkdx.findprofessional.core.utils.generalError
 import com.hulkdx.findprofessional.core.utils.toStringOrRes
 import com.hulkdx.findprofessional.feature.book.summery.BookingSummeryUiState.CheckoutStatus
+import com.hulkdx.findprofessional.feature.book.summery.exception.SkypeIdNotFound
 import com.hulkdx.findprofessional.feature.book.summery.stripe.PaymentSheetResult
 import com.hulkdx.findprofessional.feature.book.summery.usecase.BookingSummeryUseCase
 import com.hulkdx.findprofessional.feature.book.summery.usecase.CheckBookingStatusUseCase
@@ -49,7 +51,6 @@ class BookingSummeryViewModel(
         }
     }
 
-
     fun onCheckoutClicked() {
         viewModelScope.launch {
             setLoading(true)
@@ -61,7 +62,10 @@ class BookingSummeryViewModel(
             )
                 .onFailure { throwable ->
                     setLoading(false)
-                    setError(throwable.generalError())
+                    when (throwable) {
+                        is SkypeIdNotFound -> setError(Res.string.skypeIdNotFound.toStringOrRes())
+                        else -> setError(throwable.generalError())
+                    }
                 }
                 .onSuccess {
                     bookingId = it.id

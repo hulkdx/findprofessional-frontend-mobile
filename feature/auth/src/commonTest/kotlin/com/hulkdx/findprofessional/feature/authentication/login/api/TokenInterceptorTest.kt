@@ -4,8 +4,8 @@ package com.hulkdx.findprofessional.feature.authentication.login.api
 
 import com.hulkdx.findprofessional.core.features.user.Token
 import com.hulkdx.findprofessional.core.features.user.UserData
-import com.hulkdx.findprofessional.core.storage.UserStorage
 import com.hulkdx.findprofessional.feature.authentication.login.usecase.LogoutUseCase
+import com.hulkdx.findprofessional.libs.common.tests.StubUserStorage
 import com.hulkdx.findprofessional.libs.common.tests.newUserData
 import io.ktor.client.HttpClient
 import io.ktor.client.call.HttpClientCall
@@ -23,8 +23,6 @@ import io.ktor.http.headersOf
 import io.ktor.util.date.GMTDate
 import io.ktor.utils.io.InternalAPI
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.test.runTest
 import kotlin.coroutines.coroutineContext
 import kotlin.test.AfterTest
@@ -37,7 +35,19 @@ class TokenInterceptorTest {
     private lateinit var sut: TokenInterceptor
 
     private val refreshTokenApi = RefreshTokenApiMock()
-    private val userStorage = UserStorageMock()
+    private val userStorage = object : StubUserStorage() {
+        var value: UserData? = null
+        var isSetCalled = false
+
+        override suspend fun get(): UserData? {
+            return value
+        }
+
+        override suspend fun set(value: UserData) {
+            isSetCalled = true
+            this.value = value
+        }
+    }
 
     @BeforeTest
     fun setUp() {
@@ -144,23 +154,6 @@ class TokenInterceptorTest {
     }
 
     // region mock classes
-
-    private class UserStorageMock : UserStorage {
-        var value: UserData? = null
-        var isSetCalled = false
-
-        override suspend fun get(): UserData? {
-            return value
-        }
-
-        override suspend fun set(value: UserData) {
-            isSetCalled = true
-            this.value = value
-        }
-
-        override suspend fun remove() {}
-        override fun getFlow(): Flow<UserData?> = flow {}
-    }
 
     private class RefreshTokenApiMock : RefreshTokenApi {
         var isRefreshTokenCalled = false
