@@ -35,12 +35,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		163E9E682EEEE82C000AF5FE /* DI */ = {
+		163E9E682EEEE82C000AF5FE /* Stripe */ = {
 			isa = PBXGroup;
 			children = (
 				163E9E6A2EEEE846000AF5FE /* StripePaymentFactoryImpl.swift */,
 			);
-			path = DI;
+			path = Stripe;
 			sourceTree = "<group>";
 		};
 		46905BA9298BDA6B005D4292 /* Preview Content */ = {
@@ -80,7 +80,7 @@
 		7555FF7D242A565900829871 /* Src */ = {
 			isa = PBXGroup;
 			children = (
-				163E9E682EEEE82C000AF5FE /* DI */,
+				163E9E682EEEE82C000AF5FE /* Stripe */,
 				46E01ECB280B000C0023A293 /* Res */,
 				7555FF8C242A565B00829871 /* Info.plist */,
 				2152FB032600AC8F00CF470E /* MainApp.swift */,

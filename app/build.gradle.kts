@@ -10,6 +10,11 @@ plugins {
 }
 
 kotlin {
+    sourceSets.all {
+        // TODO: remove when https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.time/-instant/ is not experimental
+        languageSettings.optIn("kotlin.time.ExperimentalTime")
+    }
+
     androidTarget {
         // https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-test.html
         instrumentedTestVariant {

@@ -1,6 +1,7 @@
 import SwiftUI
 import Foundation
 import shared
+import StripePaymentSheet
 
 
 @UIApplicationMain
@@ -32,5 +33,10 @@ class MainApp: UIResponder, UIApplicationDelegate {
     
     func applicationWillTerminate(_ application: UIApplication) {
         rootRouterContext.destroy()
+    }
+
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        let stripeHandled = StripeAPI.handleURLCallback(with: url)
+        return stripeHandled
     }
 }
