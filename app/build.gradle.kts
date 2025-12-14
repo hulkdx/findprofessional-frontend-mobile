@@ -17,6 +17,18 @@ kotlin {
         }
     }
 
+    listOf(
+        iosX64(),
+        iosArm64(),
+        iosSimulatorArm64(),
+    ).forEach {
+        it.binaries.framework {
+            baseName = "shared"
+            isStatic = true
+            export(projects.feature.book)
+        }
+    }
+
     sourceSets {
         // NOTE: android dependencies are listed below
         commonMain.dependencies {
@@ -26,13 +38,20 @@ kotlin {
             implementation(projects.feature.auth)
             implementation(projects.feature.home)
             implementation(projects.feature.developer)
-            implementation(projects.feature.book)
+            api(projects.feature.book)
             implementation(projects.feature.profile)
             implementation(projects.feature.review)
             implementation(projects.feature.pro.auth)
             implementation(projects.feature.pro.schedule)
             implementation(projects.feature.pro.availability)
             implementation(projects.feature.pro.profile)
+
+            implementation(compose.runtime)
+            implementation(compose.foundation)
+            implementation(compose.material3)
+            implementation(compose.ui)
+            implementation(compose.components.resources)
+            implementation(compose.components.uiToolingPreview)
 
             implementation(libs.kotlinx.datetime)
             implementation(libs.ktor.core)

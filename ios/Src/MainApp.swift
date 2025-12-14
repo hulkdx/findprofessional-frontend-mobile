@@ -8,7 +8,9 @@ class MainApp: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     private lazy var rootRouterContext = {
-        KoinFactoryIos().doInitKoin()
+        KoinFactoryIos().doInitKoin { module in
+            module.addStripePaymentFactoryIos { StripePaymentFactoryImpl() }
+        }
         return DecomposeHelperKt.getRoot()
     }()
     

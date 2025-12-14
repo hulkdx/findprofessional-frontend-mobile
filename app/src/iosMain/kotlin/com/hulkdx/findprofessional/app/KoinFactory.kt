@@ -11,14 +11,14 @@ import org.koin.mp.KoinPlatformTools
 
 @Suppress("unused") // used in swift
 class KoinFactoryIos {
-    fun initKoin() {
-        initKoin(iOSModule)
+    fun initKoin(swiftModules: Module.() -> Unit) {
+        initKoin(iOSModule(swiftModules))
     }
 }
 
-private val iOSModule: Module
-    get() = module {
-        factoryOf(::PlatformSpecificIOS) bind PlatformSpecific::class
-    }
+private fun iOSModule(swiftModules: Module.() -> Unit) = module {
+    factoryOf(::PlatformSpecificIOS) bind PlatformSpecific::class
+    swiftModules(this)
+}
 
 inline fun <reified T : Any> get() = KoinPlatformTools.defaultContext().get().get<T>()

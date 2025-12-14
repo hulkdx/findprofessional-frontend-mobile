@@ -9,12 +9,14 @@
 /* Begin PBXBuildFile section */
 		058557BB273AAA24004C7B11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557BA273AAA24004C7B11 /* Assets.xcassets */; };
 		058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */; };
+		163E9E6B2EEEE846000AF5FE /* StripePaymentFactoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163E9E6A2EEEE846000AF5FE /* StripePaymentFactoryImpl.swift */; };
 		2152FB042600AC8F00CF470E /* MainApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* MainApp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		058557BA273AAA24004C7B11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		163E9E6A2EEEE846000AF5FE /* StripePaymentFactoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripePaymentFactoryImpl.swift; sourceTree = "<group>"; };
 		2152FB032600AC8F00CF470E /* MainApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainApp.swift; sourceTree = "<group>"; };
 		7555FF7B242A565900829871 /* FindProfessional.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindProfessional.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -31,6 +33,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		163E9E682EEEE82C000AF5FE /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				163E9E6A2EEEE846000AF5FE /* StripePaymentFactoryImpl.swift */,
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
 		46905BA9298BDA6B005D4292 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
@@ -68,6 +78,7 @@
 		7555FF7D242A565900829871 /* Src */ = {
 			isa = PBXGroup;
 			children = (
+				163E9E682EEEE82C000AF5FE /* DI */,
 				46E01ECB280B000C0023A293 /* Res */,
 				7555FF8C242A565B00829871 /* Info.plist */,
 				2152FB032600AC8F00CF470E /* MainApp.swift */,
@@ -178,6 +189,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				163E9E6B2EEEE846000AF5FE /* StripePaymentFactoryImpl.swift in Sources */,
 				2152FB042600AC8F00CF470E /* MainApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
