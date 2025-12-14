@@ -15,6 +15,6 @@ actual fun BoxScope.StripePaymentPlatform(
     val factory: StripePaymentFactoryIos = koinInject()
     UIKitView(
         modifier = Modifier.matchParentSize(),
-        factory = { factory.onCreate() }
+        factory = { factory.onCreate(networkResult, onResult) }
     )
 }

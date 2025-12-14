@@ -1,11 +1,15 @@
 package com.hulkdx.findprofessional.feature.book.summery.stripe
 
+import com.hulkdx.findprofessional.core.features.pro.model.response.CreateBookingResponse
 import org.koin.core.module.Module
 import org.koin.dsl.bind
 import platform.UIKit.UIView
 
 interface StripePaymentFactoryIos {
-    fun onCreate(): UIView
+    fun onCreate(
+        networkResult: CreateBookingResponse,
+        onResult: (PaymentSheetResult) -> Unit,
+    ): UIView
 }
 
 @Suppress("unused") // used in swift
