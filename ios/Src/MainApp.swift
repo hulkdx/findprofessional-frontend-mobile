@@ -1,6 +1,7 @@
 import SwiftUI
 import Foundation
 import shared
+import StripePaymentSheet
 
 
 @UIApplicationMain
@@ -8,7 +9,9 @@ class MainApp: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     private lazy var rootRouterContext = {
-        KoinFactoryIos().doInitKoin()
+        KoinFactoryIos().doInitKoin { module in
+            module.addStripePaymentFactoryIos { StripePaymentFactoryImpl() }
+        }
         return DecomposeHelperKt.getRoot()
     }()
     
@@ -30,5 +33,10 @@ class MainApp: UIResponder, UIApplicationDelegate {
     
     func applicationWillTerminate(_ application: UIApplication) {
         rootRouterContext.destroy()
+    }
+
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        let stripeHandled = StripeAPI.handleURLCallback(with: url)
+        return stripeHandled
     }
 }
