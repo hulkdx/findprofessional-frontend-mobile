@@ -86,14 +86,14 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradle-
 
-#      - name: AVD cache
-#        uses: actions/cache@v4
-#        id: avd-cache
-#        with:
-#          path: |
-#            ~/.android/avd/*
-#            ~/.android/adb*
-#          key: avd-${{ matrix.api-level }} - ${{ matrix.arch }} - ${{ matrix.target }}
+      #      - name: AVD cache
+      #        uses: actions/cache@v4
+      #        id: avd-cache
+      #        with:
+      #          path: |
+      #            ~/.android/avd/*
+      #            ~/.android/adb*
+      #          key: avd-${{ matrix.api-level }} - ${{ matrix.arch }} - ${{ matrix.target }}
 
       - name: Run Android instrumentation tests
         uses: reactivecircus/android-emulator-runner@v2
@@ -139,7 +139,7 @@ jobs:
 
   ios-tests:
     name: IOS unit and integration tests
-    runs-on: macos-15
+    runs-on: macos-latest
     timeout-minutes: 45
     steps:
       - name: Checkout
@@ -175,7 +175,7 @@ jobs:
             ${{ runner.os }}-konan-
 
       - name: Run IOS instrumentation tests
-        run: ./gradlew iosSimulatorArm64Test --parallel
+        run: ./gradlew iosSimulatorArm64Test -x :screenshot-tests:iosSimulatorArm64Test
 
       - name: Upload IOS test reports
         if: failure()

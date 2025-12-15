@@ -4,3 +4,14 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    ignore:
+      # Kotlin requires manual upgrade
+      - dependency-name: "org.jetbrains.kotlin:kotlin-gradle-plugin"
+      - dependency-name: "org.jetbrains.kotlin.android"
+      - dependency-name: "org.jetbrains.kotlin.multiplatform"
+      - dependency-name: "org.jetbrains.kotlin.plugin.serialization"
+      - dependency-name: "org.jetbrains.kotlin.plugin.compose"
+      # AGP requires manual upgrade
+      - dependency-name: "com.android.tools.build:gradle"
+      - dependency-name: "com.android.application"
+      - dependency-name: "com.android.library"
