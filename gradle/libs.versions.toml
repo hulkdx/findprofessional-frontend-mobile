@@ -38,7 +38,7 @@ lifecycle = "2.9.3"
 # https://docs.stripe.com/payments/accept-a-payment?platform=android&ui=payment-sheet
 stripe = "22.0.0"
 # https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-compatibility-and-versioning.html#jetpack-compose-and-compose-multiplatform-release-cycles
-test-composeUi = "1.9.0"
+test-composeUi = "1.10.0"
 # https://github.com/cashapp/paparazzi
 test-paparazzi = "2.0.0-alpha02"
 
