@@ -20,9 +20,7 @@ compose-plugin = "1.9.3"
 # https://github.com/arkivanov/Decompose
 decompose = "3.4.0"
 # https://github.com/InsertKoinIO/koin
-koin = "4.1.0"
-# https://central.sonatype.com/artifact/io.insert-koin/koin-compose/versions
-koin-compose = "4.1.0"
+koin = "4.1.1"
 # https://github.com/Kotlin/kotlinx-datetime
 kotlinxDatetime = "0.7.1"
 # https://github.com/Kotlin/kotlinx.serialization
@@ -34,7 +32,7 @@ kotlinxCoroutines = "1.10.2"
 # https://github.com/square/leakcanary
 leakcanary = "2.14"
 # https://central.sonatype.com/artifact/org.jetbrains.androidx.lifecycle/lifecycle-viewmodel-compose/versions
-lifecycle = "2.9.3"
+lifecycle = "2.9.6"
 # https://docs.stripe.com/payments/accept-a-payment?platform=android&ui=payment-sheet
 stripe = "22.0.0"
 # https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-compatibility-and-versioning.html#jetpack-compose-and-compose-multiplatform-release-cycles
@@ -52,8 +50,8 @@ coil-compose = { group = "io.coil-kt.coil3", name = "coil-compose", version.ref 
 coil-network-ktor = { group = "io.coil-kt.coil3", name = "coil-network-ktor3", version.ref = "coil" }
 decompose = { module = "com.arkivanov.decompose:decompose", version.ref = "decompose" }
 decompose-extensions-compose = { module = "com.arkivanov.decompose:extensions-compose", version.ref = "decompose" }
-koin-compose = { group = "io.insert-koin", name = "koin-compose", version.ref = "koin-compose" }
-koin-compose-viewmodel = { group = "io.insert-koin", name = "koin-compose-viewmodel", version.ref = "koin-compose" }
+koin-compose = { group = "io.insert-koin", name = "koin-compose", version.ref = "koin" }
+koin-compose-viewmodel = { group = "io.insert-koin", name = "koin-compose-viewmodel", version.ref = "koin" }
 koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin" }
 koin-test = { group = "io.insert-koin", name = "koin-test", version.ref = "koin" }
 koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koin" }
