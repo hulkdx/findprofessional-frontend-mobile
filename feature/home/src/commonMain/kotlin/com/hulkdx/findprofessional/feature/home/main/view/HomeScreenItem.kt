@@ -186,7 +186,7 @@ private fun Price(professional: Professional) {
                 .align(Bottom),
             style = body2,
             maxLines = 1,
-            text = " ${CurrencyFormatter.toSymbol(professional.priceCurrency)} ",
+            text = " ${CurrencyFormatter.toSymbol(professional.priceCurrency)}",
             color = MaterialTheme.colorScheme.errorContainer,
         )
         Text(
