@@ -6,8 +6,8 @@ import com.hulkdx.findprofessional.core.ui.theme.AppTheme
 import com.hulkdx.findprofessional.feature.authentication.login.LoginScreen
 import com.hulkdx.findprofessional.feature.authentication.signup.SignUpScreen
 import com.hulkdx.findprofessional.feature.authentication.splash.SplashScreen
-import com.hulkdx.findprofessional.feature.book.summery.BookingSummeryScreen
-import com.hulkdx.findprofessional.feature.book.time.BookingTimeScreen
+import com.hulkdx.findprofessional.feature.booking.summery.BookingSummeryScreen
+import com.hulkdx.findprofessional.feature.booking.time.BookingTimeScreen
 import com.hulkdx.findprofessional.feature.developer.DeveloperScreen
 import com.hulkdx.findprofessional.feature.home.detail.HomeDetailScreen
 import com.hulkdx.findprofessional.feature.home.main.view.HomeScreen

@@ -30,7 +30,7 @@ kotlin {
         it.binaries.framework {
             baseName = "shared"
             isStatic = true
-            export(projects.feature.book)
+            export(projects.feature.booking)
         }
     }
 
@@ -43,7 +43,7 @@ kotlin {
             implementation(projects.feature.auth)
             implementation(projects.feature.home)
             implementation(projects.feature.developer)
-            api(projects.feature.book)
+            api(projects.feature.booking)
             implementation(projects.feature.profile)
             implementation(projects.feature.review)
             implementation(projects.feature.pro.auth)

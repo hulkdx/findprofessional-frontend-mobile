@@ -4,7 +4,7 @@ import com.hulkdx.findprofessional.core.features.pro.model.Professional
 import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalAvailability
 import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalReview
 import com.hulkdx.findprofessional.core.features.user.User
-import com.hulkdx.findprofessional.feature.book.time.BookingTimeUiState
+import com.hulkdx.findprofessional.feature.booking.time.BookingTimeUiState
 import kotlinx.datetime.LocalDate
 import kotlin.time.Instant
 

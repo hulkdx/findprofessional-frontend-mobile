@@ -21,11 +21,11 @@ import com.hulkdx.findprofessional.app.test.utils.Rule
 import com.hulkdx.findprofessional.app.test.utils.assertNodeIsDisplayed
 import com.hulkdx.findprofessional.app.test.utils.setUser
 import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalAvailability
-import com.hulkdx.findprofessional.core.utils.toMinutesOfDay
 import com.hulkdx.findprofessional.core.utils.TimeUtils.formattedTime
-import com.hulkdx.findprofessional.feature.book.time.BookingTimeUiState
-import com.hulkdx.findprofessional.feature.book.time.BookingTimeUiState.BookingTime.Type.Selected
-import com.hulkdx.findprofessional.feature.book.time.utils.BookingTimeUtils
+import com.hulkdx.findprofessional.core.utils.toMinutesOfDay
+import com.hulkdx.findprofessional.feature.booking.time.BookingTimeUiState
+import com.hulkdx.findprofessional.feature.booking.time.BookingTimeUiState.BookingTime.Type.Selected
+import com.hulkdx.findprofessional.feature.booking.time.utils.BookingTimeUtils
 import kotlinx.datetime.LocalDate
 
 
