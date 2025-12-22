@@ -14,7 +14,7 @@ fun roundNow(
     timeZone: TimeZone = TimeZone.currentSystemDefault()
 ): Instant {
     val now = Clock.System.now().toLocalDateTime(timeZone)
-    return now.date.atTime(now.time.hour + 1, 0)
+    return now.date.atTime((now.time.hour + 1) % 24, 0)
         .toInstant(timeZone)
 }
 

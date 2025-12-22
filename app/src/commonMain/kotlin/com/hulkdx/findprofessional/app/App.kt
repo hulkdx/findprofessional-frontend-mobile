@@ -45,6 +45,7 @@ private fun RenderScreen(screen: NavigationScreen) {
         is NavigationScreen.ProfileEdit -> ProfileEditScreen()
         is NavigationScreen.BookingTime -> BookingTimeScreen(screen.professional)
         is NavigationScreen.BookingSummery -> BookingSummeryScreen(screen.professional, screen.times)
+        is NavigationScreen.MyBookings -> TODO()
 
         is NavigationScreen.ProSignUp -> SignUpProScreen(screen.uiState)
         is NavigationScreen.ProSchedule -> ProScheduleScreen()
