@@ -13,7 +13,6 @@ import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
-import com.hulkdx.findprofessional.feature.authentication.model.user.ProUser
 import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.aboutMe
 import com.hulkdx.findprofessional.core.resources.coachType
@@ -26,7 +25,9 @@ import com.hulkdx.findprofessional.core.ui.commonui.CUFilledButton
 import com.hulkdx.findprofessional.core.ui.commonui.CUTextField
 import com.hulkdx.findprofessional.core.ui.commonui.navbar.AppNavigationBarDimens
 import com.hulkdx.findprofessional.core.ui.commonui.navbar.ProAppNavBarContainer
+import com.hulkdx.findprofessional.core.utils.PriceUtils
 import com.hulkdx.findprofessional.core.utils.singleClick
+import com.hulkdx.findprofessional.feature.authentication.model.user.ProUser
 import com.hulkdx.findprofessional.feature.pro.profile.ProProfileImage
 import com.hulkdx.findprofessional.feature.pro.profile.ProProfileName
 import org.jetbrains.compose.resources.stringResource
@@ -154,7 +155,7 @@ private fun EditProProfileScreenContent(
         item {
             EditProProfileItem(
                 hint = stringResource(Res.string.price),
-                value = uiState.priceString,
+                value = uiState.priceNumber?.let { PriceUtils.toPriceString(it) } ?: "",
                 onValueChanged = onPriceChange,
             )
         }

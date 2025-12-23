@@ -38,7 +38,6 @@ kotlin {
         // NOTE: android dependencies are listed below
         commonMain.dependencies {
             implementation(projects.core)
-            implementation(projects.feature.authApi)
             implementation(projects.libs.navigationDecompose)
 
             implementation(projects.feature.authImpl)
