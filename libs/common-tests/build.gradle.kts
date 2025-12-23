@@ -7,7 +7,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(projects.core)
-            implementation(projects.feature.booking)
+            implementation(projects.feature.bookingImpl)
 
             implementation(libs.kotlinx.datetime)
         }
