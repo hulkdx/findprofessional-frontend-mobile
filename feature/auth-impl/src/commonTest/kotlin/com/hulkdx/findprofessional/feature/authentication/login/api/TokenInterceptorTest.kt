@@ -2,8 +2,8 @@
 
 package com.hulkdx.findprofessional.feature.authentication.login.api
 
-import com.hulkdx.findprofessional.core.features.user.Token
-import com.hulkdx.findprofessional.core.features.user.UserData
+import com.hulkdx.findprofessional.feature.authentication.model.user.Token
+import com.hulkdx.findprofessional.feature.authentication.model.user.UserData
 import com.hulkdx.findprofessional.feature.authentication.login.usecase.LogoutUseCase
 import com.hulkdx.findprofessional.libs.common.tests.StubUserStorage
 import com.hulkdx.findprofessional.libs.common.tests.newUserData

@@ -8,6 +8,7 @@ kotlin {
         commonMain.dependencies {
             implementation(compose.materialIconsExtended)
 
+            api(projects.feature.authApi)
             api(libs.koin.core)
             api(libs.koin.compose)
             api(libs.koin.compose.viewmodel)

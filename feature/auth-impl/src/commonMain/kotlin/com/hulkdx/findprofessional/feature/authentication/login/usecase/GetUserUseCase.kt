@@ -1,6 +1,6 @@
 package com.hulkdx.findprofessional.feature.authentication.login.usecase
 
-import com.hulkdx.findprofessional.core.features.user.UserType
+import com.hulkdx.findprofessional.feature.authentication.model.user.UserType
 import com.hulkdx.findprofessional.core.storage.UserStorage
 
 

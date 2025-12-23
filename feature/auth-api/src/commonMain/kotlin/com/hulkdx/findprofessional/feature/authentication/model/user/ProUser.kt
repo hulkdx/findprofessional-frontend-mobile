@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.core.features.user
+package com.hulkdx.findprofessional.feature.authentication.model.user
 
 import com.hulkdx.findprofessional.core.utils.PriceUtils
 import kotlinx.serialization.SerialName

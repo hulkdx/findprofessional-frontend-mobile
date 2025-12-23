@@ -1,7 +1,7 @@
 package com.hulkdx.findprofessional.feature.pro.profile.edit
 
 import com.hulkdx.findprofessional.core.features.pro.api.ProfessionalApi
-import com.hulkdx.findprofessional.core.features.user.ProUser
+import com.hulkdx.findprofessional.feature.authentication.model.user.ProUser
 import com.hulkdx.findprofessional.core.storage.UserStorage
 import com.hulkdx.findprofessional.core.utils.getGeneralErrorOrNull
 

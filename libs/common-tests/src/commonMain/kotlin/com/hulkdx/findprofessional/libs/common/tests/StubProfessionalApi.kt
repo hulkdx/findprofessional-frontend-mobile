@@ -8,10 +8,10 @@ import com.hulkdx.findprofessional.core.features.pro.model.request.SignUpProRequ
 import com.hulkdx.findprofessional.core.features.pro.model.request.UpdateAvailabilityRequest
 import com.hulkdx.findprofessional.core.features.pro.model.response.CreateBookingResponse
 import com.hulkdx.findprofessional.core.features.pro.model.response.GetBookingStatusResponse
-import com.hulkdx.findprofessional.core.features.user.ProUser
-import com.hulkdx.findprofessional.core.features.user.Token
-import com.hulkdx.findprofessional.core.features.user.User
-import com.hulkdx.findprofessional.core.features.user.UserData
+import com.hulkdx.findprofessional.feature.authentication.model.user.ProUser
+import com.hulkdx.findprofessional.feature.authentication.model.user.Token
+import com.hulkdx.findprofessional.feature.authentication.model.user.User
+import com.hulkdx.findprofessional.feature.authentication.model.user.UserData
 
 open class StubProfessionalApi : ProfessionalApi {
     override suspend fun findAll(): List<Professional> {

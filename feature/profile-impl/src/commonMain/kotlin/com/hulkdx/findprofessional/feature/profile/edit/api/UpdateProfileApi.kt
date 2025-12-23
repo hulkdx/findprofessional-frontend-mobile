@@ -1,7 +1,7 @@
 package com.hulkdx.findprofessional.feature.profile.edit.api
 
-import com.hulkdx.findprofessional.core.features.user.User
-import com.hulkdx.findprofessional.core.features.user.UserType
+import com.hulkdx.findprofessional.feature.authentication.model.user.User
+import com.hulkdx.findprofessional.feature.authentication.model.user.UserType
 import com.hulkdx.findprofessional.core.network.apiUrl
 import com.hulkdx.findprofessional.core.storage.UserStorage
 import com.hulkdx.findprofessional.core.utils.auth

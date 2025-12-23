@@ -9,11 +9,11 @@ import com.hulkdx.findprofessional.core.features.pro.model.request.SignUpProRequ
 import com.hulkdx.findprofessional.core.features.pro.model.request.UpdateAvailabilityRequest
 import com.hulkdx.findprofessional.core.features.pro.model.response.CreateBookingResponse
 import com.hulkdx.findprofessional.core.features.pro.model.response.GetBookingStatusResponse
-import com.hulkdx.findprofessional.core.features.user.ProUser
-import com.hulkdx.findprofessional.core.features.user.Token
-import com.hulkdx.findprofessional.core.features.user.User
-import com.hulkdx.findprofessional.core.features.user.UserData
-import com.hulkdx.findprofessional.core.features.user.UserType
+import com.hulkdx.findprofessional.feature.authentication.model.user.ProUser
+import com.hulkdx.findprofessional.feature.authentication.model.user.Token
+import com.hulkdx.findprofessional.feature.authentication.model.user.User
+import com.hulkdx.findprofessional.feature.authentication.model.user.UserData
+import com.hulkdx.findprofessional.feature.authentication.model.user.UserType
 import com.hulkdx.findprofessional.feature.authentication.login.api.LoginApi
 import com.hulkdx.findprofessional.feature.authentication.login.model.LoginRequest
 import com.hulkdx.findprofessional.feature.authentication.signup.SignUpApi
