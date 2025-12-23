@@ -2,6 +2,7 @@ package com.hulkdx.findprofessional.app.di
 
 import com.hulkdx.findprofessional.app.di.module.apiModule
 import com.hulkdx.findprofessional.app.di.module.debugModules
+import com.hulkdx.findprofessional.app.di.module.navigationModule
 import com.hulkdx.findprofessional.core.storage.datastoreModule
 import com.hulkdx.findprofessional.core.utils.clockModule
 import com.hulkdx.findprofessional.feature.authentication.login.loginModule
@@ -25,6 +26,7 @@ val appModule: List<Module>
         datastoreModule,
         decomposeModule,
         clockModule,
+        navigationModule,
 
         splashModule,
         loginModule,
