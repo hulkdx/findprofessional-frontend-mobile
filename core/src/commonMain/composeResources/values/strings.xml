@@ -19,8 +19,9 @@
     <string name="perHour">/hour</string>
 
     <string name="explorer">Explorer</string>
-
+    <string name="bookings">Bookings</string>
     <string name="profile">Profile</string>
+
     <string name="logout">Logout</string>
     <string name="becomeCoach">Become a coach</string>
 
