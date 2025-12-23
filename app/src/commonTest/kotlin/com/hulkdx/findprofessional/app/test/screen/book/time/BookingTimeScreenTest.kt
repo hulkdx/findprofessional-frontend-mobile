@@ -6,7 +6,7 @@ import androidx.compose.ui.test.ExperimentalTestApi
 import com.hulkdx.findprofessional.app.test.TestClockProvider
 import com.hulkdx.findprofessional.app.test.runAppUiTest
 import com.hulkdx.findprofessional.app.test.utils.inMemoryApi
-import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalAvailability
+import com.hulkdx.findprofessional.feature.pro.model.ProfessionalAvailability
 import kotlinx.datetime.LocalDate
 import kotlin.test.AfterTest
 import kotlin.test.Test

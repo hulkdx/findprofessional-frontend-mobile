@@ -7,6 +7,7 @@ import com.hulkdx.findprofessional.feature.authentication.model.user.User
 import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import com.hulkdx.findprofessional.core.navigation.Navigator
 import com.hulkdx.findprofessional.feature.authentication.login.usecase.GetUserUseCase
+import com.hulkdx.findprofessional.feature.home.HomeNavigationScreen
 import kotlinx.coroutines.launch
 
 class SplashViewModel(
@@ -21,7 +22,7 @@ class SplashViewModel(
     private fun onLoaded() = viewModelScope.launch {
         val user = getUserUseCase.execute()
         val dest = when (user) {
-            is User -> NavigationScreen.Home()
+            is User -> HomeNavigationScreen.Home()
             is ProUser -> NavigationScreen.ProSchedule
             null -> NavigationScreen.Login
         }

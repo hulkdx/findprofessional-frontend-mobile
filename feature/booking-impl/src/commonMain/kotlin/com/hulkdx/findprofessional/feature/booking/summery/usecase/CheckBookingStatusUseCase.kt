@@ -1,7 +1,7 @@
 package com.hulkdx.findprofessional.feature.booking.summery.usecase
 
-import com.hulkdx.findprofessional.core.features.pro.api.ProfessionalApi
-import com.hulkdx.findprofessional.core.features.pro.model.response.GetBookingStatusResponse.Status.PENDING
+import com.hulkdx.findprofessional.feature.pro.api.ProfessionalApi
+import com.hulkdx.findprofessional.feature.pro.model.response.GetBookingStatusResponse.Status.PENDING
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.withTimeout

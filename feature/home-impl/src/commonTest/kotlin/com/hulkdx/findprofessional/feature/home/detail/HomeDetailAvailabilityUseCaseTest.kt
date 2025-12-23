@@ -2,7 +2,7 @@
 
 package com.hulkdx.findprofessional.feature.home.detail
 
-import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalAvailability
+import com.hulkdx.findprofessional.feature.pro.model.ProfessionalAvailability
 import com.hulkdx.findprofessional.feature.home.detail.availability.HomeDetailAvailabilityUseCase
 import com.hulkdx.findprofessional.libs.common.tests.createProfessional
 import kotlinx.coroutines.flow.first

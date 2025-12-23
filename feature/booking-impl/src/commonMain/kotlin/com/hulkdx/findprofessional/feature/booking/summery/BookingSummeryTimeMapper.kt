@@ -1,7 +1,7 @@
 package com.hulkdx.findprofessional.feature.booking.summery
 
 import androidx.annotation.VisibleForTesting
-import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalAvailability
+import com.hulkdx.findprofessional.feature.pro.model.ProfessionalAvailability
 import com.hulkdx.findprofessional.core.utils.CurrencyFormatter
 import com.hulkdx.findprofessional.core.utils.TimeUtils.formattedTime
 import com.hulkdx.findprofessional.core.utils.shortDayOfWeeks

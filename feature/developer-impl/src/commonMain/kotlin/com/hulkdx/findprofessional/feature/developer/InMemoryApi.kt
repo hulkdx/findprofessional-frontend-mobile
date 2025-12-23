@@ -1,7 +1,7 @@
 package com.hulkdx.findprofessional.feature.developer
 
-import com.hulkdx.findprofessional.core.features.pro.model.Professional
-import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalAvailability
+import com.hulkdx.findprofessional.feature.pro.model.Professional
+import com.hulkdx.findprofessional.feature.pro.model.ProfessionalAvailability
 import com.hulkdx.findprofessional.feature.authentication.model.user.UserData
 
 interface InMemoryApi {

@@ -6,6 +6,7 @@ import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import com.hulkdx.findprofessional.core.navigation.Navigator
 import com.hulkdx.findprofessional.core.utils.StringOrRes
 import com.hulkdx.findprofessional.feature.authentication.login.usecase.LogoutUseCase
+import com.hulkdx.findprofessional.feature.pro.auth.ProAuthNavigationScreen
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
@@ -25,7 +26,7 @@ class ProfileViewModel(
     }
 
     fun onBecomeCoachClicked() {
-        navigator.navigate(NavigationScreen.ProSignUp())
+        navigator.navigate(ProAuthNavigationScreen.SignUp())
     }
 
     fun onEditProfileClicked() {

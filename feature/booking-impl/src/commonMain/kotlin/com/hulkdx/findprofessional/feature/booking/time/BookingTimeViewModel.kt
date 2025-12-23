@@ -2,7 +2,7 @@ package com.hulkdx.findprofessional.feature.booking.time
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.hulkdx.findprofessional.core.features.pro.model.Professional
+import com.hulkdx.findprofessional.feature.pro.model.Professional
 import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.invalidTime
 import com.hulkdx.findprofessional.core.utils.StringOrRes

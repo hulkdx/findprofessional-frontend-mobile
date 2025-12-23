@@ -1,9 +1,9 @@
 package com.hulkdx.findprofessional.feature.pro.availability.detail.usecase
 
-import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalAvailability
+import com.hulkdx.findprofessional.feature.pro.model.ProfessionalAvailability
 import com.hulkdx.findprofessional.core.features.pro.model.request.UpdateAvailabilityItemRequest
 import com.hulkdx.findprofessional.core.features.pro.model.request.UpdateAvailabilityRequest
-import com.hulkdx.findprofessional.core.features.pro.storage.AvailabilityStorage
+import com.hulkdx.findprofessional.feature.pro.storage.AvailabilityStorage
 import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.invalidTime
 import com.hulkdx.findprofessional.core.utils.toStringOrRes

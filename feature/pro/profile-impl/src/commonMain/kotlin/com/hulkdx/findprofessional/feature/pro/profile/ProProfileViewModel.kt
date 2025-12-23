@@ -6,7 +6,7 @@ import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import com.hulkdx.findprofessional.core.navigation.Navigator
 import com.hulkdx.findprofessional.core.utils.StringOrRes
 import com.hulkdx.findprofessional.feature.authentication.login.usecase.LogoutUseCase
-import com.hulkdx.findprofessional.feature.pro.auth.signup.usecase.GetProUserUseCase
+import com.hulkdx.findprofessional.feature.pro.auth.GetProUserUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted.Companion.WhileSubscribed
 import kotlinx.coroutines.flow.asStateFlow

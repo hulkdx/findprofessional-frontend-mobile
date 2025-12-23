@@ -1,15 +1,15 @@
 package com.hulkdx.findprofessional.feature.pro.availability.detail.usecase
 
-import com.hulkdx.findprofessional.core.features.pro.api.ProfessionalApi
-import com.hulkdx.findprofessional.core.features.pro.model.request.UpdateAvailabilityItemRequest
-import com.hulkdx.findprofessional.core.features.pro.model.request.UpdateAvailabilityRequest
-import com.hulkdx.findprofessional.core.features.pro.storage.AvailabilityStorage
+import com.hulkdx.findprofessional.feature.pro.api.ProfessionalApi
+import com.hulkdx.findprofessional.feature.pro.storage.AvailabilityStorage
 import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.invalidTime
 import com.hulkdx.findprofessional.core.utils.StringOrRes
 import com.hulkdx.findprofessional.core.utils.generalError
 import com.hulkdx.findprofessional.core.utils.toStringOrRes
 import com.hulkdx.findprofessional.feature.pro.availability.detail.TimeSlot
+import com.hulkdx.findprofessional.feature.pro.model.request.UpdateAvailabilityItemRequest
+import com.hulkdx.findprofessional.feature.pro.model.request.UpdateAvailabilityRequest
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.atTime

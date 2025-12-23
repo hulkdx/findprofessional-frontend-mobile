@@ -7,8 +7,9 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(projects.core)
-            implementation(projects.feature.authApi)
+            implementation(projects.feature.proApi)
 
+            // TODO: check these
             implementation(projects.feature.authImpl)
             implementation(projects.feature.homeImpl)
             implementation(projects.feature.reviewImpl)

@@ -1,7 +1,7 @@
 package com.hulkdx.findprofessional.feature.booking.summery
 
-import com.hulkdx.findprofessional.core.features.pro.model.response.CreateBookingResponse
 import com.hulkdx.findprofessional.core.utils.StringOrRes
+import com.hulkdx.findprofessional.feature.pro.model.response.CreateBookingResponse
 
 data class BookingSummeryUiState(
     val summeryDetails: SummeryDetails = SummeryDetails(),

@@ -2,12 +2,8 @@ package com.hulkdx.findprofessional.feature.authentication.login.usecase
 
 import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import com.hulkdx.findprofessional.core.navigation.Navigator
-import com.hulkdx.findprofessional.core.storage.UserStorage
-
-
-interface LogoutUseCase {
-    suspend fun logout()
-}
+import com.hulkdx.findprofessional.feature.authentication.storage.UserStorage
+import com.hulkdx.findprofessional.feature.home.HomeNavigationScreen
 
 class LogoutUseCaseImpl(
     private val navigator: Navigator,
@@ -23,6 +19,6 @@ class LogoutUseCaseImpl(
             return
         }
         userStorage.remove()
-        navigator.navigate(NavigationScreen.Login, NavigationScreen.Home(), inclusive = true)
+        navigator.navigate(NavigationScreen.Login, HomeNavigationScreen.Home(), inclusive = true)
     }
 }

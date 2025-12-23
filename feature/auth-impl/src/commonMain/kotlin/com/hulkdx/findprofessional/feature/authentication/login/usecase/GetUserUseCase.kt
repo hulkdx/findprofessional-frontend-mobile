@@ -1,13 +1,13 @@
 package com.hulkdx.findprofessional.feature.authentication.login.usecase
 
 import com.hulkdx.findprofessional.feature.authentication.model.user.UserType
-import com.hulkdx.findprofessional.core.storage.UserStorage
+import com.hulkdx.findprofessional.feature.authentication.storage.UserStorage
 
 
-class GetUserUseCase(
+class GetUserUseCaseImpl(
     private val userStorage: UserStorage,
-) {
-    suspend fun execute(): UserType? {
+): GetUserUseCase {
+    override suspend fun execute(): UserType? {
         return userStorage.get()?.user
     }
 }

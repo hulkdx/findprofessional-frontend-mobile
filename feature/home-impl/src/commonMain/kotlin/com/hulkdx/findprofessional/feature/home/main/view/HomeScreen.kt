@@ -19,7 +19,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
-import com.hulkdx.findprofessional.core.features.pro.model.Professional
+import com.hulkdx.findprofessional.feature.pro.model.Professional
 import com.hulkdx.findprofessional.core.ui.commonui.CUSearchField
 import com.hulkdx.findprofessional.core.ui.commonui.navbar.AppNavBarContainer
 import com.hulkdx.findprofessional.core.ui.commonui.navbar.AppNavigationBarDimens

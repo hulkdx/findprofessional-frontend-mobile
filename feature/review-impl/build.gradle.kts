@@ -8,6 +8,8 @@ kotlin {
         commonMain.dependencies {
             implementation(projects.core)
 
+            api(projects.feature.reviewApi)
+
             implementation(libs.ktor.core)
             implementation(libs.lifecycle.viewmodel.compose)
             implementation(libs.kotlinx.datetime)

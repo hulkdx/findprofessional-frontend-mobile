@@ -25,7 +25,7 @@ enum class NavigationBars(
     EXPLORER(
         text = Res.string.explorer,
         icon = Res.drawable.ic_nav_explorer,
-        screen = NavigationScreen.Home()
+        screen = NavigationScreen.MyBookings
     ),
     BOOKINGS(
         text = Res.string.bookings,

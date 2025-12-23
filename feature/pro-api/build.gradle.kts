@@ -5,7 +5,8 @@ plugins {
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            implementation(projects.core)
+            api(projects.core)
+            api(projects.feature.authApi)
         }
     }
 }

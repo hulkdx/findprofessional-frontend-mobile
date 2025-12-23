@@ -8,17 +8,16 @@ kotlin {
         commonMain.dependencies {
             implementation(compose.materialIconsExtended)
 
-            api(projects.feature.authApi)
             api(libs.koin.core)
             api(libs.koin.compose)
             api(libs.koin.compose.viewmodel)
             api(libs.kotlinx.serialization.json)
-            implementation(libs.kotlinx.datetime)
-            implementation(libs.lifecycle.viewmodel.compose)
-            implementation(libs.ktor.core)
-            implementation(libs.androidx.dataStore.core)
-            implementation(libs.coil.compose)
-            implementation(libs.coil.network.ktor)
+            api(libs.kotlinx.datetime)
+            api(libs.lifecycle.viewmodel.compose)
+            api(libs.ktor.core)
+            api(libs.androidx.dataStore.core)
+            api(libs.coil.compose)
+            api(libs.coil.network.ktor)
         }
         commonTest.dependencies {
             implementation(kotlin("test"))

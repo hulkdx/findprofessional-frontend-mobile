@@ -1,7 +1,7 @@
 package com.hulkdx.findprofessional.libs.common.tests
 
 import com.hulkdx.findprofessional.feature.authentication.model.user.UserData
-import com.hulkdx.findprofessional.core.storage.UserStorage
+import com.hulkdx.findprofessional.feature.authentication.storage.UserStorage
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 

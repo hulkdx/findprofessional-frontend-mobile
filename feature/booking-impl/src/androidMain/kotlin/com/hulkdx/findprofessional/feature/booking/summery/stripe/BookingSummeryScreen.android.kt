@@ -6,7 +6,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
-import com.hulkdx.findprofessional.core.features.pro.model.response.CreateBookingResponse
+import com.hulkdx.findprofessional.feature.pro.model.response.CreateBookingResponse
 import com.stripe.android.PaymentConfiguration
 import com.stripe.android.paymentsheet.PaymentSheet
 

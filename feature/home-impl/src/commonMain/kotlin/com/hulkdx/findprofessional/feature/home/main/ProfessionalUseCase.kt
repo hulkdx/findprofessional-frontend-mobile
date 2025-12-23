@@ -1,8 +1,8 @@
 package com.hulkdx.findprofessional.feature.home.main
 
-import com.hulkdx.findprofessional.core.features.pro.model.Professional
+import com.hulkdx.findprofessional.feature.pro.model.Professional
 import com.hulkdx.findprofessional.core.utils.generalError
-import com.hulkdx.findprofessional.core.features.pro.api.ProfessionalApi
+import com.hulkdx.findprofessional.feature.pro.api.ProfessionalApi
 
 
 class ProfessionalUseCase(

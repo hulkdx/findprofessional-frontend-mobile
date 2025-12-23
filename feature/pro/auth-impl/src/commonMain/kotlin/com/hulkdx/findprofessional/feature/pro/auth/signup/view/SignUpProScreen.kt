@@ -17,15 +17,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
-import com.hulkdx.findprofessional.core.features.pro.model.request.SignUpProRequest
-import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import com.hulkdx.findprofessional.core.navigation.Navigator
 import com.hulkdx.findprofessional.core.ui.commonui.BACK_BUTTON_HEIGHT
 import com.hulkdx.findprofessional.core.ui.commonui.CUBackButton
 import com.hulkdx.findprofessional.core.ui.commonui.CUSnackBar
+import com.hulkdx.findprofessional.feature.pro.auth.ProAuthNavigationScreen
 import com.hulkdx.findprofessional.feature.pro.auth.signup.SignUpProViewModel
-import org.koin.compose.viewmodel.koinViewModel
+import com.hulkdx.findprofessional.feature.pro.model.request.SignUpProRequest
 import org.koin.compose.koinInject
+import org.koin.compose.viewmodel.koinViewModel
 import org.koin.core.parameter.parametersOf
 
 @Composable
@@ -80,7 +80,7 @@ fun SignUpProScreen(
             uiState,
             onFirstNameChanged,
             onLastNameChanged,
-            onNextClicked = { navigator.navigate(NavigationScreen.ProSignUp(uiState.copy(step = 2))) },
+            onNextClicked = { navigator.navigate(ProAuthNavigationScreen.SignUp(uiState.copy(step = 2))) },
             error,
             onErrorDismissed,
         )

@@ -4,9 +4,8 @@ package com.hulkdx.findprofessional.feature.booking.summery
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.hulkdx.findprofessional.core.features.pro.model.Professional
-import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalAvailability
-import com.hulkdx.findprofessional.core.features.pro.model.response.GetBookingStatusResponse.Status.FAILED
+import com.hulkdx.findprofessional.feature.pro.model.Professional
+import com.hulkdx.findprofessional.feature.pro.model.ProfessionalAvailability
 import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import com.hulkdx.findprofessional.core.navigation.Navigator
 import com.hulkdx.findprofessional.core.resources.Res
@@ -22,6 +21,9 @@ import com.hulkdx.findprofessional.feature.booking.summery.stripe.PaymentSheetRe
 import com.hulkdx.findprofessional.feature.booking.summery.usecase.BookingSummeryUseCase
 import com.hulkdx.findprofessional.feature.booking.summery.usecase.CheckBookingStatusUseCase
 import com.hulkdx.findprofessional.feature.booking.summery.usecase.CreateBookingUseCase
+import com.hulkdx.findprofessional.feature.home.HomeNavigationScreen
+import com.hulkdx.findprofessional.feature.pro.model.response.GetBookingStatusResponse
+import com.hulkdx.findprofessional.feature.pro.model.response.GetBookingStatusResponse.Status.FAILED
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -118,8 +120,8 @@ class BookingSummeryViewModel(
 
     private fun showBookingSuccess() {
         navigator.navigate(
-            screen = NavigationScreen.Home(Res.string.paymentsUnderReview.toStringOrRes()),
-            popTo = NavigationScreen.Home(),
+            screen = HomeNavigationScreen.Home(Res.string.paymentsUnderReview.toStringOrRes()),
+            popTo = HomeNavigationScreen.Home(),
             inclusive = true
         )
     }

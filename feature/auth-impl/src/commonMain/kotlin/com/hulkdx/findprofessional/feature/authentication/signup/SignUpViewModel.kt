@@ -6,6 +6,7 @@ import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import com.hulkdx.findprofessional.core.navigation.Navigator
 import com.hulkdx.findprofessional.core.utils.StringOrRes
 import com.hulkdx.findprofessional.feature.authentication.signup.model.RegisterRequest
+import com.hulkdx.findprofessional.feature.home.HomeNavigationScreen
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
@@ -31,7 +32,7 @@ class SignUpViewModel(
         val err = useCase.signUp(uiState.value)
         if (err == null) {
             navigator.navigate(
-                NavigationScreen.Home(),
+                HomeNavigationScreen.Home(),
                 popTo = NavigationScreen.Login,
                 inclusive = true
             )

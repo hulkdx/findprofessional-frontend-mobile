@@ -1,14 +1,9 @@
 package com.hulkdx.findprofessional.feature.developer
 
-import com.hulkdx.findprofessional.core.features.pro.api.ProfessionalApi
-import com.hulkdx.findprofessional.core.features.pro.model.Professional
-import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalAvailability
-import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalReview
-import com.hulkdx.findprofessional.core.features.pro.model.request.CreateBookingRequest
-import com.hulkdx.findprofessional.core.features.pro.model.request.SignUpProRequest
-import com.hulkdx.findprofessional.core.features.pro.model.request.UpdateAvailabilityRequest
-import com.hulkdx.findprofessional.core.features.pro.model.response.CreateBookingResponse
-import com.hulkdx.findprofessional.core.features.pro.model.response.GetBookingStatusResponse
+import com.hulkdx.findprofessional.feature.pro.api.ProfessionalApi
+import com.hulkdx.findprofessional.feature.pro.model.Professional
+import com.hulkdx.findprofessional.feature.pro.model.ProfessionalAvailability
+import com.hulkdx.findprofessional.feature.pro.model.ProfessionalReview
 import com.hulkdx.findprofessional.feature.authentication.model.user.ProUser
 import com.hulkdx.findprofessional.feature.authentication.model.user.Token
 import com.hulkdx.findprofessional.feature.authentication.model.user.User
@@ -18,6 +13,11 @@ import com.hulkdx.findprofessional.feature.authentication.login.api.LoginApi
 import com.hulkdx.findprofessional.feature.authentication.login.model.LoginRequest
 import com.hulkdx.findprofessional.feature.authentication.signup.SignUpApi
 import com.hulkdx.findprofessional.feature.authentication.signup.model.RegisterRequest
+import com.hulkdx.findprofessional.feature.pro.model.request.CreateBookingRequest
+import com.hulkdx.findprofessional.feature.pro.model.request.SignUpProRequest
+import com.hulkdx.findprofessional.feature.pro.model.request.UpdateAvailabilityRequest
+import com.hulkdx.findprofessional.feature.pro.model.response.CreateBookingResponse
+import com.hulkdx.findprofessional.feature.pro.model.response.GetBookingStatusResponse
 import com.hulkdx.findprofessional.feature.profile.edit.api.UpdateProfileApi
 import com.hulkdx.findprofessional.feature.review.ReviewApi
 import org.koin.dsl.module

@@ -6,6 +6,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(projects.core)
+            api(projects.feature.proApi)
         }
     }
 }

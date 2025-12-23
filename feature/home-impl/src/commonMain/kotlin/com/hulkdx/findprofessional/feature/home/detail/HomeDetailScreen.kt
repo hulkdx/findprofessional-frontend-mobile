@@ -26,8 +26,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
-import com.hulkdx.findprofessional.core.features.pro.model.Professional
-import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalReview
+import com.hulkdx.findprofessional.feature.pro.model.Professional
+import com.hulkdx.findprofessional.feature.pro.model.ProfessionalReview
 import com.hulkdx.findprofessional.feature.authentication.model.user.User
 import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.bookNow

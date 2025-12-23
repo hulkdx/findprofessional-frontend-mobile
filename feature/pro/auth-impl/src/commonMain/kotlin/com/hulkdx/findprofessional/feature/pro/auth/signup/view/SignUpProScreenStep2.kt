@@ -16,7 +16,6 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
-import com.hulkdx.findprofessional.core.features.pro.model.request.SignUpProRequest
 import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.aboutMe
 import com.hulkdx.findprofessional.core.resources.coachType
@@ -33,6 +32,7 @@ import com.hulkdx.findprofessional.core.ui.commonui.CUPasswordTextField
 import com.hulkdx.findprofessional.core.ui.commonui.CUTextField
 import com.hulkdx.findprofessional.core.ui.theme.body3Medium
 import com.hulkdx.findprofessional.core.utils.singleClick
+import com.hulkdx.findprofessional.feature.pro.model.request.SignUpProRequest
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
