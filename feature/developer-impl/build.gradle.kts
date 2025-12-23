@@ -7,9 +7,12 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(projects.core)
-            implementation(projects.feature.auth)
 
-            implementation(compose.materialIconsExtended)
+            implementation(projects.feature.authImpl)
+            implementation(projects.feature.homeImpl)
+            implementation(projects.feature.reviewImpl)
+            implementation(projects.feature.pro.authImpl)
+            implementation(projects.feature.profileImpl)
 
             implementation(libs.ktor.core)
             implementation(libs.lifecycle.viewmodel.compose)
@@ -26,5 +29,5 @@ kotlin {
 }
 
 android {
-    namespace = "com.hulkdx.findprofessional.feature.profile"
+    namespace = "com.hulkdx.findprofessional.feature.developer"
 }

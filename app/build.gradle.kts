@@ -30,7 +30,7 @@ kotlin {
         it.binaries.framework {
             baseName = "shared"
             isStatic = true
-            export(projects.feature.booking)
+            export(projects.feature.bookingImpl)
         }
     }
 
@@ -40,16 +40,16 @@ kotlin {
             implementation(projects.core)
             implementation(projects.libs.navigationDecompose)
 
-            implementation(projects.feature.auth)
-            implementation(projects.feature.home)
-            implementation(projects.feature.developer)
-            api(projects.feature.booking)
-            implementation(projects.feature.profile)
-            implementation(projects.feature.review)
-            implementation(projects.feature.pro.auth)
-            implementation(projects.feature.pro.schedule)
-            implementation(projects.feature.pro.availability)
-            implementation(projects.feature.pro.profile)
+            implementation(projects.feature.authImpl)
+            implementation(projects.feature.homeImpl)
+            implementation(projects.feature.developerImpl)
+            api(projects.feature.bookingImpl)
+            implementation(projects.feature.profileImpl)
+            implementation(projects.feature.reviewImpl)
+            implementation(projects.feature.pro.authImpl)
+            implementation(projects.feature.pro.scheduleImpl)
+            implementation(projects.feature.pro.availabilityImpl)
+            implementation(projects.feature.pro.profileImpl)
 
             implementation(compose.runtime)
             implementation(compose.foundation)
