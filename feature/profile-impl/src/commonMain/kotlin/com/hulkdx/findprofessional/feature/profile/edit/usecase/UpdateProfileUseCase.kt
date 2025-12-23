@@ -1,6 +1,6 @@
 package com.hulkdx.findprofessional.feature.profile.edit.usecase
 
-import com.hulkdx.findprofessional.core.features.user.User
+import com.hulkdx.findprofessional.feature.authentication.model.user.User
 import com.hulkdx.findprofessional.core.storage.UserStorage
 import com.hulkdx.findprofessional.core.utils.StringOrRes
 import com.hulkdx.findprofessional.core.utils.getGeneralErrorOrNull

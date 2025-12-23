@@ -3,9 +3,9 @@ package com.hulkdx.findprofessional.libs.common.tests
 import com.hulkdx.findprofessional.core.features.pro.model.Professional
 import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalAvailability
 import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalReview
-import com.hulkdx.findprofessional.core.features.user.Token
-import com.hulkdx.findprofessional.core.features.user.User
-import com.hulkdx.findprofessional.core.features.user.UserData
+import com.hulkdx.findprofessional.feature.authentication.model.user.Token
+import com.hulkdx.findprofessional.feature.authentication.model.user.User
+import com.hulkdx.findprofessional.feature.authentication.model.user.UserData
 import com.hulkdx.findprofessional.feature.booking.time.BookingTimeUiState
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalTime

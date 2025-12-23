@@ -1,8 +1,8 @@
 package com.hulkdx.findprofessional.feature.booking.summery.usecase
 
-import com.hulkdx.findprofessional.core.features.user.Token
-import com.hulkdx.findprofessional.core.features.user.User
-import com.hulkdx.findprofessional.core.features.user.UserData
+import com.hulkdx.findprofessional.feature.authentication.model.user.Token
+import com.hulkdx.findprofessional.feature.authentication.model.user.User
+import com.hulkdx.findprofessional.feature.authentication.model.user.UserData
 import com.hulkdx.findprofessional.feature.booking.summery.exception.SkypeIdNotFound
 import com.hulkdx.findprofessional.libs.common.tests.StubProfessionalApi
 import com.hulkdx.findprofessional.libs.common.tests.StubUserStorage

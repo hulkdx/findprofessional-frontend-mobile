@@ -11,5 +11,5 @@ kotlin {
 }
 
 android {
-    namespace = "com.hulkdx.findprofessional.feature.pro.auth.api"
+    namespace = "com.hulkdx.findprofessional.feature.pro.api"
 }

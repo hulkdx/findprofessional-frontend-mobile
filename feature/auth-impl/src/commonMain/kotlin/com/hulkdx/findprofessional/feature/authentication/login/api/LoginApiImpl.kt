@@ -1,18 +1,14 @@
 package com.hulkdx.findprofessional.feature.authentication.login.api
 
-import com.hulkdx.findprofessional.core.features.user.UserData
 import com.hulkdx.findprofessional.core.network.apiUrl
 import com.hulkdx.findprofessional.feature.authentication.login.model.LoginRequest
+import com.hulkdx.findprofessional.feature.authentication.model.user.UserData
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.post
 import io.ktor.client.request.setBody
 import io.ktor.http.ContentType
 import io.ktor.http.contentType
-
-interface LoginApi {
-    suspend fun login(request: LoginRequest): UserData
-}
 
 class LoginApiImpl(
     private val client: HttpClient,

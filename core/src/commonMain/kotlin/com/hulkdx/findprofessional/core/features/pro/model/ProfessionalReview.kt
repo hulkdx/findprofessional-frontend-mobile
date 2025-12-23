@@ -1,6 +1,6 @@
 package com.hulkdx.findprofessional.core.features.pro.model
 
-import com.hulkdx.findprofessional.core.features.user.User
+import com.hulkdx.findprofessional.feature.authentication.model.user.User
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
 import kotlinx.serialization.Serializable

@@ -2,7 +2,7 @@ package com.hulkdx.findprofessional.feature.authentication.login.storage.datasto
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
-import com.hulkdx.findprofessional.core.features.user.UserData
+import com.hulkdx.findprofessional.feature.authentication.model.user.UserData
 import com.hulkdx.findprofessional.core.storage.UserStorage
 import com.hulkdx.findprofessional.core.storage.getAsSerializable
 import com.hulkdx.findprofessional.core.storage.getFlowAsSerializable
