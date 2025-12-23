@@ -3,8 +3,10 @@ package com.hulkdx.findprofessional.core.ui.commonui.navbar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalInspectionMode
 import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import com.hulkdx.findprofessional.core.ui.commonui.CUSnackBarDurationDefault
+import com.hulkdx.findprofessional.core.utils.getAppNavBars
 import com.hulkdx.findprofessional.core.utils.getNavigator
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
@@ -31,7 +33,7 @@ fun AppNavBarContainer(
     errorDurationMillis: Long? = CUSnackBarDurationDefault,
     content: @Composable () -> Unit,
 ) {
-    val navBars = koinInject<AppNavBars>()
+    val navBars = getAppNavBars()
     val navigator = getNavigator()
     val currentScreen = navigator.getCurrentScreen()
 

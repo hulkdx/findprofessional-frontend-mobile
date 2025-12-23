@@ -2,9 +2,11 @@ package com.hulkdx.findprofessional.core.utils
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalInspectionMode
-import com.hulkdx.findprofessional.core.platform.isDebug
 import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import com.hulkdx.findprofessional.core.navigation.Navigator
+import com.hulkdx.findprofessional.core.platform.isDebug
+import com.hulkdx.findprofessional.core.ui.commonui.navbar.AppNavBars
+import com.hulkdx.findprofessional.core.ui.commonui.navbar.ProAppNavBars
 import org.koin.compose.koinInject
 import kotlin.reflect.KClass
 
@@ -13,8 +15,7 @@ import kotlin.reflect.KClass
  */
 @Composable
 fun getNavigator(): Navigator {
-    val isPreview = LocalInspectionMode.current
-    return if (isDebug() && isPreview) {
+    return if (isDebug() && LocalInspectionMode.current) {
         // @formatter:off
         object : Navigator {
             override fun navigate(screen: NavigationScreen) {}
@@ -29,3 +30,20 @@ fun getNavigator(): Navigator {
     }
 }
 
+@Composable
+fun getAppNavBars(): AppNavBars {
+    return if (isDebug() && LocalInspectionMode.current) {
+        AppNavBars(listOf())
+    } else {
+        koinInject()
+    }
+}
+
+@Composable
+fun getProAppNavBars(): ProAppNavBars {
+    return if (isDebug() && LocalInspectionMode.current) {
+        ProAppNavBars(listOf())
+    } else {
+        koinInject()
+    }
+}

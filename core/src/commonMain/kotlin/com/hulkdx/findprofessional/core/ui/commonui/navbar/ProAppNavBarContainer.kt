@@ -4,8 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import com.hulkdx.findprofessional.core.utils.getNavigator
+import com.hulkdx.findprofessional.core.utils.getProAppNavBars
 import org.jetbrains.compose.resources.stringResource
-import org.koin.compose.koinInject
 
 data class ProAppNavBars(
     val items: List<NavBarsItem>,
@@ -19,7 +19,7 @@ fun ProAppNavBarContainer(
     onErrorDismissed: () -> Unit,
     content: @Composable () -> Unit,
 ) {
-    val navBars = koinInject<ProAppNavBars>()
+    val navBars = getProAppNavBars()
     val navigator = getNavigator()
     val currentScreen = navigator.getCurrentScreen()
 
