@@ -1,11 +1,12 @@
 package com.hulkdx.findprofessional.core.ui.commonui.navbar
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.vector.rememberVectorPainter
+import com.hulkdx.findprofessional.core.ui.commonui.navbar.NavData.Icon
+import com.hulkdx.findprofessional.core.ui.commonui.navbar.NavData.Text
 import com.hulkdx.findprofessional.core.utils.getNavigator
 import com.hulkdx.findprofessional.core.utils.getProAppNavBars
-import org.jetbrains.compose.resources.stringResource
 
 data class ProAppNavBars(
     val items: List<NavBarsItem>,
@@ -21,16 +22,17 @@ fun ProAppNavBarContainer(
 ) {
     val navBars = getProAppNavBars()
     val navigator = getNavigator()
-    val currentScreen = navigator.getCurrentScreen()
 
-    val items = navBars.items.map {
-        NavData.create(
-            text = stringResource(it.text),
-            icon = rememberVectorPainter(requireNotNull(it.iconVector)),
-            screen = it.screen,
-            currentScreen,
-            navigator,
-        )
+    val items = remember(navBars, navigator) {
+        navBars.items.map {
+            NavData.create(
+                text = Text.Resource(it.text),
+                icon = Icon.ImageVectorIcon(requireNotNull(it.iconVector)),
+                screen = it.screen,
+                navigator.getCurrentScreen(),
+                navigator,
+            )
+        }
     }
 
     AppNavBarContainerInternal(

@@ -1,18 +1,17 @@
 package com.hulkdx.findprofessional.core.ui.commonui.navbar
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.platform.LocalInspectionMode
 import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import com.hulkdx.findprofessional.core.ui.commonui.CUSnackBarDurationDefault
+import com.hulkdx.findprofessional.core.ui.commonui.navbar.NavData.Icon
+import com.hulkdx.findprofessional.core.ui.commonui.navbar.NavData.Text
 import com.hulkdx.findprofessional.core.utils.getAppNavBars
 import com.hulkdx.findprofessional.core.utils.getNavigator
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
-import org.jetbrains.compose.resources.painterResource
-import org.jetbrains.compose.resources.stringResource
-import org.koin.compose.koinInject
 
 data class AppNavBars(
     val items: List<NavBarsItem>,
@@ -35,16 +34,17 @@ fun AppNavBarContainer(
 ) {
     val navBars = getAppNavBars()
     val navigator = getNavigator()
-    val currentScreen = navigator.getCurrentScreen()
 
-    val items = navBars.items.map {
-        NavData.create(
-            text = stringResource(it.text),
-            icon = painterResource(requireNotNull(it.icon)),
-            screen = it.screen,
-            currentScreen,
-            navigator,
-        )
+    val items = remember(navBars, navigator) {
+        navBars.items.map {
+            NavData.create(
+                text = Text.Resource(it.text),
+                icon = Icon.DrawableResourceIcon(requireNotNull(it.icon)),
+                screen = it.screen,
+                navigator.getCurrentScreen(),
+                navigator,
+            )
+        }
     }
 
     AppNavBarContainerInternal(

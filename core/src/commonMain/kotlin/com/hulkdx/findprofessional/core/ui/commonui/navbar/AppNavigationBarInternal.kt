@@ -39,8 +39,8 @@ internal fun AppNavigationBarInternal(
     ) {
         items.forEach { item ->
             AppNavBarItem(
-                text = item.text,
-                icon = item.icon,
+                text = item.text.localized(),
+                icon = item.icon.localized(),
                 selected = item.selected,
                 onClick = item.onClick,
             )
