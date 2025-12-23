@@ -8,6 +8,7 @@ kotlin {
         commonMain.dependencies {
             implementation(projects.core)
             implementation(projects.feature.proApi)
+            api(projects.feature.pro.availabilityApi)
 
             implementation(compose.materialIconsExtended)
 

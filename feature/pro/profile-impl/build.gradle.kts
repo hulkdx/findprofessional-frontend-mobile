@@ -9,7 +9,7 @@ kotlin {
             implementation(projects.core)
             implementation(projects.feature.proApi)
             implementation(projects.feature.pro.authApi)
-            implementation(projects.feature.pro.profileApi)
+            api(projects.feature.pro.profileApi)
 
             implementation(compose.materialIconsExtended)
 

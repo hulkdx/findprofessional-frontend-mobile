@@ -42,7 +42,7 @@ kotlin {
 
             implementation(projects.feature.authImpl)
             implementation(projects.feature.homeImpl)
-            implementation(projects.feature.developerImpl)
+            implementation(projects.feature.developer)
             api(projects.feature.bookingImpl)
             implementation(projects.feature.profileImpl)
             implementation(projects.feature.reviewImpl)
