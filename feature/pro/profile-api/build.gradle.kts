@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.hulkdx.kmp.library)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 kotlin {

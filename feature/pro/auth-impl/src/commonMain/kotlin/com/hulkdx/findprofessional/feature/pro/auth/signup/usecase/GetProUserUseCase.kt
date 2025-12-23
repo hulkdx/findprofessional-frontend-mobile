@@ -1,15 +1,12 @@
 package com.hulkdx.findprofessional.feature.pro.auth.signup.usecase
 
 import com.hulkdx.findprofessional.feature.authentication.model.user.ProUser
-import com.hulkdx.findprofessional.core.storage.UserStorage
-import com.hulkdx.findprofessional.core.storage.getProUser
+import com.hulkdx.findprofessional.feature.authentication.storage.UserStorage
+import com.hulkdx.findprofessional.feature.authentication.storage.getProUser
+import com.hulkdx.findprofessional.feature.pro.auth.GetProUserUseCase
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
-interface GetProUserUseCase {
-    fun getUserFlow(): Flow<ProUser?>
-    suspend fun getUser(): ProUser?
-}
 
 class GetProUserUseCaseImpl(
     private val userStorage: UserStorage,

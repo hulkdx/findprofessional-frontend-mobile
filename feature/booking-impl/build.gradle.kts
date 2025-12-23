@@ -11,6 +11,10 @@ kotlin {
         commonMain.dependencies {
             implementation(projects.core)
 
+            api(projects.feature.bookingApi)
+            implementation(projects.feature.proApi)
+            implementation(projects.feature.homeApi)
+
             implementation(libs.ktor.core)
             implementation(libs.lifecycle.viewmodel.compose)
             implementation(libs.kotlinx.datetime)

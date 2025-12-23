@@ -2,10 +2,11 @@ package com.hulkdx.findprofessional.feature.home.detail
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.hulkdx.findprofessional.core.features.pro.model.Professional
-import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import com.hulkdx.findprofessional.core.navigation.Navigator
+import com.hulkdx.findprofessional.feature.booking.BookingNavigationScreen
 import com.hulkdx.findprofessional.feature.home.detail.availability.HomeDetailAvailabilityUseCase
+import com.hulkdx.findprofessional.feature.pro.model.Professional
+import com.hulkdx.findprofessional.feature.review.ReviewNavigationScreen
 import kotlinx.coroutines.flow.SharingStarted.Companion.WhileSubscribed
 import kotlinx.coroutines.flow.stateIn
 
@@ -26,11 +27,11 @@ class HomeDetailViewModel(
     }
 
     fun onBookClick() {
-        navigator.navigate(NavigationScreen.BookingTime(professional))
+        navigator.navigate(BookingNavigationScreen.Time(professional))
     }
 
     fun onShowMoreReviewClick() {
-        navigator.navigate(NavigationScreen.Review(professional))
+        navigator.navigate(ReviewNavigationScreen.Review(professional))
     }
 
     fun availabilityMonthMinusOne() {

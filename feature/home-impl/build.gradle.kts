@@ -7,6 +7,10 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(projects.core)
+            api(projects.feature.homeApi)
+            implementation(projects.feature.proApi)
+            implementation(projects.feature.bookingApi)
+            implementation(projects.feature.reviewApi)
 
             implementation(libs.ktor.core)
             implementation(libs.lifecycle.viewmodel.compose)

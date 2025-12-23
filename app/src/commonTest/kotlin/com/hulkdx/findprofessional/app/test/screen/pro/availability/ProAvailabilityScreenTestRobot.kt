@@ -15,7 +15,7 @@ import com.hulkdx.findprofessional.app.test.utils.assertAppIsClosed
 import com.hulkdx.findprofessional.app.test.utils.assertNodeIsDisplayed
 import com.hulkdx.findprofessional.app.test.utils.setProAvailability
 import com.hulkdx.findprofessional.app.test.utils.setProUser
-import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalAvailability
+import com.hulkdx.findprofessional.feature.pro.model.ProfessionalAvailability
 
 fun launchProAvailabilityScreen(
     rule: Rule,

@@ -1,6 +1,6 @@
 package com.hulkdx.findprofessional.app.test
 
-import com.hulkdx.findprofessional.core.features.pro.usecase.GetAvailabilityUseCase
+import com.hulkdx.findprofessional.feature.pro.usecase.GetAvailabilityUseCase
 import com.hulkdx.findprofessional.core.platform.PlatformSpecific
 import com.hulkdx.findprofessional.core.utils.ClockProvider
 import kotlinx.datetime.LocalDate

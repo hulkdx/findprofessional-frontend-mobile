@@ -1,6 +1,6 @@
 package com.hulkdx.findprofessional.feature.pro.auth.signup
 
-import com.hulkdx.findprofessional.feature.pro.auth.signup.usecase.GetProUserUseCase
+import com.hulkdx.findprofessional.feature.pro.auth.GetProUserUseCase
 import com.hulkdx.findprofessional.feature.pro.auth.signup.usecase.GetProUserUseCaseImpl
 import com.hulkdx.findprofessional.feature.pro.auth.signup.usecase.SignUpProUseCase
 import org.koin.core.module.Module

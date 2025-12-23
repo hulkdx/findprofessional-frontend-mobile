@@ -1,14 +1,14 @@
 package com.hulkdx.findprofessional.feature.pro.auth.signup.usecase
 
-import com.hulkdx.findprofessional.core.features.pro.api.ProfessionalApi
-import com.hulkdx.findprofessional.core.features.pro.model.request.SignUpProRequest
+import com.hulkdx.findprofessional.feature.pro.api.ProfessionalApi
 import com.hulkdx.findprofessional.feature.authentication.model.user.ProUser
 import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.somethingWentWrong
-import com.hulkdx.findprofessional.core.storage.UserStorage
+import com.hulkdx.findprofessional.feature.authentication.storage.UserStorage
 import com.hulkdx.findprofessional.core.utils.StringOrRes
 import com.hulkdx.findprofessional.core.utils.generalError
 import com.hulkdx.findprofessional.core.utils.toStringOrRes
+import com.hulkdx.findprofessional.feature.pro.model.request.SignUpProRequest
 
 class SignUpProUseCase(
     private val api: ProfessionalApi,

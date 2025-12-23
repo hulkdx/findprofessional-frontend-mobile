@@ -10,7 +10,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
-import com.hulkdx.findprofessional.core.features.pro.model.request.SignUpProRequest
 import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.firstName
 import com.hulkdx.findprofessional.core.resources.headerForNames
@@ -20,6 +19,7 @@ import com.hulkdx.findprofessional.core.ui.commonui.CUFilledButton
 import com.hulkdx.findprofessional.core.ui.commonui.CUTextField
 import com.hulkdx.findprofessional.core.ui.theme.body3Medium
 import com.hulkdx.findprofessional.core.utils.singleClick
+import com.hulkdx.findprofessional.feature.pro.model.request.SignUpProRequest
 import org.jetbrains.compose.resources.stringResource
 
 @Composable

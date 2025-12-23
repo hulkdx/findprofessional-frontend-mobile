@@ -1,0 +1,22 @@
+package com.hulkdx.findprofessional.feature.pro.model
+
+import com.hulkdx.findprofessional.feature.authentication.model.user.User
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.toLocalDateTime
+import kotlinx.serialization.Serializable
+import kotlin.time.Instant
+
+@Serializable
+data class ProfessionalReview(
+    val id: Long,
+    val user: User,
+    val rate: Int,
+    val contentText: String?,
+    val createdAt: Instant,
+    val updatedAt: Instant,
+) {
+    val formattedDate: String = updatedAt.toLocalDateTime(TimeZone.UTC)
+        .let {
+            "${it.dayOfMonth} ${it.monthNumber} ${it.year}"
+        }
+}

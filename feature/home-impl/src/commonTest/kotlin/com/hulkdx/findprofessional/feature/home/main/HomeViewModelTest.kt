@@ -3,7 +3,7 @@
 
 package com.hulkdx.findprofessional.feature.home.main
 
-import com.hulkdx.findprofessional.core.features.pro.model.Professional
+import com.hulkdx.findprofessional.feature.pro.model.Professional
 import com.hulkdx.findprofessional.libs.common.tests.StubNavigator
 import com.hulkdx.findprofessional.libs.common.tests.StubProfessionalApi
 import com.hulkdx.findprofessional.libs.common.tests.createProfessional

@@ -8,6 +8,7 @@ import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import com.hulkdx.findprofessional.core.navigation.Navigator
 import com.hulkdx.findprofessional.core.utils.StringOrRes
 import com.hulkdx.findprofessional.feature.authentication.login.model.LoginRequest
+import com.hulkdx.findprofessional.feature.home.HomeNavigationScreen
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
@@ -36,7 +37,7 @@ class LoginViewModel(
 
         val screen = when (userData?.user) {
             is ProUser -> NavigationScreen.ProSchedule
-            is User -> NavigationScreen.Home()
+            is User -> HomeNavigationScreen.Home()
             null -> return@launch
         }
         navigator.navigate(screen, popTo = NavigationScreen.Login, inclusive = true)

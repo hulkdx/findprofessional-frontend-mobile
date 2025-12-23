@@ -4,7 +4,7 @@ import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.viewinterop.UIKitView
-import com.hulkdx.findprofessional.core.features.pro.model.response.CreateBookingResponse
+import com.hulkdx.findprofessional.feature.pro.model.response.CreateBookingResponse
 import org.koin.compose.koinInject
 
 @Composable

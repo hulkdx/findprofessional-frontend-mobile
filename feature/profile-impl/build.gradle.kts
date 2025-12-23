@@ -7,7 +7,10 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(projects.core)
-            implementation(projects.feature.authImpl)
+            implementation(projects.feature.authApi)
+            implementation(projects.feature.proApi)
+            api(projects.feature.profileApi)
+            implementation(projects.feature.pro.authApi)
 
             implementation(compose.materialIconsExtended)
 

@@ -2,7 +2,7 @@ package com.hulkdx.findprofessional.feature.pro.availability.main
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.hulkdx.findprofessional.core.features.pro.usecase.GetAvailabilityUseCase
+import com.hulkdx.findprofessional.feature.pro.usecase.GetAvailabilityUseCase
 import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import com.hulkdx.findprofessional.core.navigation.Navigator
 import com.hulkdx.findprofessional.core.utils.StringOrRes

@@ -1,11 +1,18 @@
 plugins {
     alias(libs.plugins.hulkdx.kmp.library)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            implementation(projects.core)
+            api(projects.core)
+            api(projects.feature.authApi)
+        }
+        commonTest.dependencies {
+            implementation(kotlin("test"))
+            implementation(kotlin("test-common"))
+            implementation(kotlin("test-annotations-common"))
         }
     }
 }

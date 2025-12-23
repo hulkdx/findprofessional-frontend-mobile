@@ -9,11 +9,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.hulkdx.findprofessional.core.features.pro.model.response.CreateBookingResponse
 import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.stripePaymentCountdownMessage
 import com.hulkdx.findprofessional.core.ui.theme.h2
 import com.hulkdx.findprofessional.feature.booking.summery.BookingSummeryUiState
+import com.hulkdx.findprofessional.feature.pro.model.response.CreateBookingResponse
 import org.jetbrains.compose.resources.stringResource
 import kotlin.time.Duration.Companion.minutes
 

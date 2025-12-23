@@ -2,7 +2,7 @@
 
 package com.hulkdx.findprofessional.feature.review
 
-import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalReview
+import com.hulkdx.findprofessional.feature.pro.model.ProfessionalReview
 import com.hulkdx.findprofessional.feature.review.ReviewUseCase.Result.DoNothing
 import com.hulkdx.findprofessional.feature.review.ReviewUseCase.Result.Success
 import kotlinx.coroutines.Dispatchers

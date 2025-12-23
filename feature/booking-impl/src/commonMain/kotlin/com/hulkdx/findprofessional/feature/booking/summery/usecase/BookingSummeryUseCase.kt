@@ -1,9 +1,9 @@
 package com.hulkdx.findprofessional.feature.booking.summery.usecase
 
-import com.hulkdx.findprofessional.core.features.pro.model.Professional
-import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalAvailability
+import com.hulkdx.findprofessional.feature.pro.model.Professional
+import com.hulkdx.findprofessional.feature.pro.model.ProfessionalAvailability
 import com.hulkdx.findprofessional.feature.authentication.model.user.User
-import com.hulkdx.findprofessional.core.storage.UserStorage
+import com.hulkdx.findprofessional.feature.authentication.storage.UserStorage
 import com.hulkdx.findprofessional.feature.booking.summery.BookingSummeryTimeMapper
 import com.hulkdx.findprofessional.feature.booking.summery.BookingSummeryUiState.SummeryDetails
 import kotlinx.coroutines.flow.Flow

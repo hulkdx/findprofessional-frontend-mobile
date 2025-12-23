@@ -32,7 +32,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.style.TextAlign.Companion.Center
 import androidx.compose.ui.unit.dp
-import com.hulkdx.findprofessional.core.features.pro.model.Professional
+import com.hulkdx.findprofessional.feature.pro.model.Professional
 import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.continue1
 import com.hulkdx.findprofessional.core.resources.ic_calendar_left

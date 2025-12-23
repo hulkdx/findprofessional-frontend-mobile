@@ -2,7 +2,7 @@ package com.hulkdx.findprofessional.feature.pro.schedule
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.hulkdx.findprofessional.core.features.pro.usecase.GetAvailabilityUseCase
+import com.hulkdx.findprofessional.feature.pro.usecase.GetAvailabilityUseCase
 import com.hulkdx.findprofessional.core.utils.StringOrRes
 import com.hulkdx.findprofessional.core.utils.generalError
 import com.hulkdx.findprofessional.feature.pro.schedule.model.ScheduleUiState

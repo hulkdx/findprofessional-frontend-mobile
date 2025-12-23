@@ -4,7 +4,7 @@ import com.hulkdx.findprofessional.feature.home.detail.HomeDetailViewModel
 import com.hulkdx.findprofessional.feature.home.detail.availability.HomeDetailAvailabilityUseCase
 import com.hulkdx.findprofessional.feature.home.main.HomeViewModel
 import com.hulkdx.findprofessional.feature.home.main.ProfessionalUseCase
-import com.hulkdx.findprofessional.core.features.pro.api.ProfessionalApi
+import com.hulkdx.findprofessional.feature.pro.api.ProfessionalApi
 import com.hulkdx.findprofessional.feature.home.main.api.ProfessionalApiImpl
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.factoryOf

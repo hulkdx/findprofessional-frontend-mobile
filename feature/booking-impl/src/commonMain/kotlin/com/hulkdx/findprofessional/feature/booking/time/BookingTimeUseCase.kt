@@ -1,14 +1,15 @@
 package com.hulkdx.findprofessional.feature.booking.time
 
 import com.hulkdx.findprofessional.core.features.book.SelectedTimes
-import com.hulkdx.findprofessional.core.features.pro.model.Professional
-import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalAvailability
+import com.hulkdx.findprofessional.feature.pro.model.Professional
+import com.hulkdx.findprofessional.feature.pro.model.ProfessionalAvailability
 import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import com.hulkdx.findprofessional.core.navigation.Navigator
 import com.hulkdx.findprofessional.core.utils.ClockProvider
 import com.hulkdx.findprofessional.core.utils.TimeUtils.formattedTime
 import com.hulkdx.findprofessional.core.utils.localDateNow
 import com.hulkdx.findprofessional.core.utils.toMinutesOfDay
+import com.hulkdx.findprofessional.feature.booking.BookingNavigationScreen
 import com.hulkdx.findprofessional.feature.booking.time.BookingTimeUiState.BookingTime
 import com.hulkdx.findprofessional.feature.booking.time.BookingTimeUiState.BookingTime.Type.Available
 import com.hulkdx.findprofessional.feature.booking.time.BookingTimeUiState.BookingTime.Type.Selected
@@ -101,7 +102,7 @@ class BookingTimeUseCase(
                 }
             }
         }
-        navigator.navigate(NavigationScreen.BookingSummery(professional, availabilities))
+        navigator.navigate(BookingNavigationScreen.Summery(professional, availabilities))
     }
 
     internal fun getTimes(

@@ -1,6 +1,6 @@
 package com.hulkdx.findprofessional.feature.review
 
-import com.hulkdx.findprofessional.core.features.pro.model.ProfessionalReview
+import com.hulkdx.findprofessional.feature.pro.model.ProfessionalReview
 import com.hulkdx.findprofessional.feature.authentication.model.user.User
 import kotlin.time.Clock
 
