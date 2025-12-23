@@ -2,7 +2,6 @@ package com.hulkdx.findprofessional.feature.pro.auth.signup
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import com.hulkdx.findprofessional.core.navigation.Navigator
 import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.pleaseCheckConsent
@@ -11,6 +10,7 @@ import com.hulkdx.findprofessional.core.utils.toStringOrRes
 import com.hulkdx.findprofessional.feature.home.HomeNavigationScreen
 import com.hulkdx.findprofessional.feature.pro.auth.signup.usecase.SignUpProUseCase
 import com.hulkdx.findprofessional.feature.pro.model.request.SignUpProRequest
+import com.hulkdx.findprofessional.feature.pro.schedule.ProScheduleNavigationScreen
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
@@ -37,7 +37,7 @@ class SignUpProViewModel(
             setError(err)
             return@launch
         }
-        navigator.navigate(NavigationScreen.ProSchedule, HomeNavigationScreen.Home(), true)
+        navigator.navigate(ProScheduleNavigationScreen, HomeNavigationScreen.Home(), true)
     }
 
     fun setError(error: StringOrRes?) = _error.update { error }

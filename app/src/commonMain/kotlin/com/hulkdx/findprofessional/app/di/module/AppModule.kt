@@ -4,7 +4,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccessTime
 import androidx.compose.material.icons.filled.Event
 import androidx.compose.material.icons.outlined.AccountCircle
-import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.availability
 import com.hulkdx.findprofessional.core.resources.bookings
@@ -18,6 +17,10 @@ import com.hulkdx.findprofessional.core.ui.commonui.navbar.AppNavBars
 import com.hulkdx.findprofessional.core.ui.commonui.navbar.NavBarsItem
 import com.hulkdx.findprofessional.core.ui.commonui.navbar.ProAppNavBars
 import com.hulkdx.findprofessional.feature.home.HomeNavigationScreen
+import com.hulkdx.findprofessional.feature.pro.availability.ProAvailabilityNavigationScreen
+import com.hulkdx.findprofessional.feature.pro.profile.ProProfileNavigationScreen
+import com.hulkdx.findprofessional.feature.pro.schedule.ProScheduleNavigationScreen
+import com.hulkdx.findprofessional.feature.profile.ProfileNavigationScreen
 import org.koin.core.module.Module
 import org.koin.dsl.module
 
@@ -35,12 +38,12 @@ val navigationModule: Module
                     NavBarsItem(
                         text = Res.string.bookings,
                         icon = Res.drawable.ic_nav_bookings,
-                        screen = NavigationScreen.MyBookings,
+                        screen = ProfileNavigationScreen.Main,
                     ),
                     NavBarsItem(
                         text = Res.string.profile,
                         icon = Res.drawable.ic_nav_profile,
-                        screen = NavigationScreen.Profile,
+                        screen = ProfileNavigationScreen.Main,
                     ),
                 )
             )
@@ -52,17 +55,17 @@ val navigationModule: Module
                     NavBarsItem(
                         text = Res.string.schedule,
                         iconVector = Icons.Filled.Event,
-                        screen = NavigationScreen.ProSchedule,
+                        screen = ProScheduleNavigationScreen,
                     ),
                     NavBarsItem(
                         text = Res.string.availability,
                         iconVector = Icons.Filled.AccessTime,
-                        screen = NavigationScreen.ProAvailability,
+                        screen = ProAvailabilityNavigationScreen.Main,
                     ),
                     NavBarsItem(
                         text = Res.string.profile,
                         iconVector = Icons.Outlined.AccountCircle,
-                        screen = NavigationScreen.ProProfile,
+                        screen = ProProfileNavigationScreen.Main,
                     ),
                 )
             )

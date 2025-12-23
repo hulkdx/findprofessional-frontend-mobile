@@ -31,7 +31,7 @@ class HomeDetailViewModel(
     }
 
     fun onShowMoreReviewClick() {
-        navigator.navigate(ReviewNavigationScreen.Review(professional))
+        navigator.navigate(ReviewNavigationScreen.Main(professional))
     }
 
     fun availabilityMonthMinusOne() {

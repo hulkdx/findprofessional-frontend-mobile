@@ -2,12 +2,12 @@ package com.hulkdx.findprofessional.feature.pro.profile.edit
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import com.hulkdx.findprofessional.core.navigation.Navigator
 import com.hulkdx.findprofessional.core.utils.PriceUtils.toPriceNumber
 import com.hulkdx.findprofessional.core.utils.StringOrRes
 import com.hulkdx.findprofessional.feature.authentication.model.user.ProUser
 import com.hulkdx.findprofessional.feature.pro.auth.GetProUserUseCase
+import com.hulkdx.findprofessional.feature.pro.profile.ProProfileNavigationScreen
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
@@ -38,7 +38,7 @@ class EditProProfileViewModel(
                 _error.value = error
                 return@launch
             }
-            navigator.navigate(NavigationScreen.ProProfile)
+            navigator.navigate(ProProfileNavigationScreen.Main)
         }
     }
 

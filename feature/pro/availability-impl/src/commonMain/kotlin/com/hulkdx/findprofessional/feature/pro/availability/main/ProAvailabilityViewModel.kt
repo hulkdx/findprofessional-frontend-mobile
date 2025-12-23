@@ -7,6 +7,7 @@ import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import com.hulkdx.findprofessional.core.navigation.Navigator
 import com.hulkdx.findprofessional.core.utils.StringOrRes
 import com.hulkdx.findprofessional.core.utils.generalError
+import com.hulkdx.findprofessional.feature.pro.availability.ProAvailabilityNavigationScreen
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted.Companion.WhileSubscribed
 import kotlinx.coroutines.flow.asStateFlow
@@ -29,7 +30,7 @@ class ProAvailabilityViewModel(
     val error = _error.asStateFlow()
 
     fun onDateClicked(date: LocalDate) {
-        navigator.navigate(NavigationScreen.ProAvailabilityDetail(date))
+        navigator.navigate(ProAvailabilityNavigationScreen.Detail(date))
     }
 
     fun setError(error: StringOrRes?) = _error.update { error }

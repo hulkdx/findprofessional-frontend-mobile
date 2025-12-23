@@ -8,7 +8,9 @@ kotlin {
         commonMain.dependencies {
             implementation(projects.core)
             api(projects.feature.authApi)
+            implementation(projects.feature.developerApi)
             implementation(projects.feature.homeApi)
+            implementation(projects.feature.pro.scheduleApi)
 
             implementation(libs.ktor.core)
             implementation(libs.lifecycle.viewmodel.compose)

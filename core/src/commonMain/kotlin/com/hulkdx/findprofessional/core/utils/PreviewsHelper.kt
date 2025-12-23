@@ -21,7 +21,7 @@ fun getNavigator(): Navigator {
             override fun navigate(screen: NavigationScreen) {}
             override fun navigate(screen: NavigationScreen, popTo: NavigationScreen, inclusive: Boolean) {}
             override fun goBack() {}
-            override fun getCurrentScreen() = NavigationScreen.Login
+            override fun getCurrentScreen() = object: NavigationScreen() {}
             override fun goBack(screen: KClass<out NavigationScreen>) {}
         }
         // @formatter:on

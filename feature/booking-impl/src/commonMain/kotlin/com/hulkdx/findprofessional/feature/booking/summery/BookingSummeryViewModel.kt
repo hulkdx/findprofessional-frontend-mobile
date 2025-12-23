@@ -4,9 +4,6 @@ package com.hulkdx.findprofessional.feature.booking.summery
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.hulkdx.findprofessional.feature.pro.model.Professional
-import com.hulkdx.findprofessional.feature.pro.model.ProfessionalAvailability
-import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import com.hulkdx.findprofessional.core.navigation.Navigator
 import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.bookingFailed
@@ -22,8 +19,10 @@ import com.hulkdx.findprofessional.feature.booking.summery.usecase.BookingSummer
 import com.hulkdx.findprofessional.feature.booking.summery.usecase.CheckBookingStatusUseCase
 import com.hulkdx.findprofessional.feature.booking.summery.usecase.CreateBookingUseCase
 import com.hulkdx.findprofessional.feature.home.HomeNavigationScreen
-import com.hulkdx.findprofessional.feature.pro.model.response.GetBookingStatusResponse
+import com.hulkdx.findprofessional.feature.pro.model.Professional
+import com.hulkdx.findprofessional.feature.pro.model.ProfessionalAvailability
 import com.hulkdx.findprofessional.feature.pro.model.response.GetBookingStatusResponse.Status.FAILED
+import com.hulkdx.findprofessional.feature.profile.ProfileNavigationScreen
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -127,7 +126,7 @@ class BookingSummeryViewModel(
     }
 
     fun onEditSkypeIdClicked() {
-        navigator.navigate(NavigationScreen.ProfileEdit)
+        navigator.navigate(ProfileNavigationScreen.Edit)
     }
 
     fun setCheckoutStatus(checkoutStatus: CheckoutStatus) =

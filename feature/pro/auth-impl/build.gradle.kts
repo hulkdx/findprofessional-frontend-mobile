@@ -10,6 +10,7 @@ kotlin {
             implementation(projects.feature.proApi)
             implementation(projects.feature.homeApi)
             api(projects.feature.pro.authApi)
+            api(projects.feature.pro.scheduleApi)
 
             implementation(libs.ktor.core)
             implementation(libs.lifecycle.viewmodel.compose)

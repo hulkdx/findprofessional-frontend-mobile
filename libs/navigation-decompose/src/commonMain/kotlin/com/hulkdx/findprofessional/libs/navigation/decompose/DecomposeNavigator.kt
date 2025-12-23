@@ -7,9 +7,10 @@ import com.arkivanov.decompose.router.stack.navigate
 import com.arkivanov.decompose.router.stack.pop
 import com.arkivanov.decompose.router.stack.popWhile
 import com.arkivanov.decompose.router.stack.pushToFront
-import com.hulkdx.findprofessional.core.platform.closeApp
 import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import com.hulkdx.findprofessional.core.navigation.Navigator
+import com.hulkdx.findprofessional.core.platform.closeApp
+import com.hulkdx.findprofessional.feature.authentication.AuthNavigationScreen
 import kotlin.reflect.KClass
 
 
@@ -17,7 +18,7 @@ class DecomposeNavigator(
     private val navController: StackNavigation<NavigationScreen>,
 ) : Navigator {
 
-    private var _currentScreen: NavigationScreen = NavigationScreen.Splash
+    private var _currentScreen: NavigationScreen = AuthNavigationScreen.Splash
 
     override fun navigate(screen: NavigationScreen) {
         navController.pushToFront(screen)
@@ -60,4 +61,3 @@ class DecomposeNavigator(
         }
     }
 }
-
