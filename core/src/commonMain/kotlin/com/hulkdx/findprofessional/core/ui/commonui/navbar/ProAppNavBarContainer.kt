@@ -1,19 +1,15 @@
 package com.hulkdx.findprofessional.core.ui.commonui.navbar
 
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AccessTime
-import androidx.compose.material.icons.filled.Event
-import androidx.compose.material.icons.outlined.AccountCircle
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
-import com.hulkdx.findprofessional.core.navigation.NavigationScreen
-import com.hulkdx.findprofessional.core.resources.Res
-import com.hulkdx.findprofessional.core.resources.availability
-import com.hulkdx.findprofessional.core.resources.profile
-import com.hulkdx.findprofessional.core.resources.schedule
 import com.hulkdx.findprofessional.core.utils.getNavigator
 import org.jetbrains.compose.resources.stringResource
+import org.koin.compose.koinInject
+
+data class ProAppNavBars(
+    val items: List<NavBarsItem>,
+)
 
 @Composable
 fun ProAppNavBarContainer(
@@ -23,33 +19,21 @@ fun ProAppNavBarContainer(
     onErrorDismissed: () -> Unit,
     content: @Composable () -> Unit,
 ) {
+    val navBars = koinInject<ProAppNavBars>()
     val navigator = getNavigator()
     val currentScreen = navigator.getCurrentScreen()
 
-    val items = listOf(
+    val items = navBars.items.map {
         NavData.create(
-            text = stringResource(Res.string.schedule),
-            icon = rememberVectorPainter(Icons.Filled.Event),
-            screen = NavigationScreen.ProSchedule,
+            text = stringResource(it.text),
+            icon = rememberVectorPainter(requireNotNull(it.iconVector)),
+            screen = it.screen,
             currentScreen,
             navigator,
-        ),
-        NavData.create(
-            text = stringResource(Res.string.availability),
-            icon = rememberVectorPainter(Icons.Filled.AccessTime),
-            screen = NavigationScreen.ProAvailability,
-            currentScreen,
-            navigator,
-        ),
-        NavData.create(
-            text = stringResource(Res.string.profile),
-            icon = rememberVectorPainter(Icons.Outlined.AccountCircle),
-            screen = NavigationScreen.ProProfile,
-            currentScreen,
-            navigator,
-        ),
+        )
+    }
+
+    AppNavBarContainerInternal(
+        modifier, hasStatusBarPadding, error, items, onErrorDismissed, content
     )
-
-    AppNavBarContainerInternal(modifier, hasStatusBarPadding, error, items, onErrorDismissed, content)
 }
-
