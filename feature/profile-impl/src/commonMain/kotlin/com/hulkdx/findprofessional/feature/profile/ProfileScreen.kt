@@ -20,14 +20,17 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.becomeCoach
+import com.hulkdx.findprofessional.core.resources.contactSupport
 import com.hulkdx.findprofessional.core.resources.editProfile
 import com.hulkdx.findprofessional.core.resources.logout
 import com.hulkdx.findprofessional.core.resources.profile
+import com.hulkdx.findprofessional.core.resources.reportProblem
 import com.hulkdx.findprofessional.core.ui.commonui.navbar.AppNavBarContainer
 import com.hulkdx.findprofessional.core.ui.commonui.navbar.AppNavigationBarDimens
 import com.hulkdx.findprofessional.core.ui.theme.AppTheme
@@ -60,6 +63,8 @@ fun ProfileScreen(
     error: String?,
     onErrorDismissed: () -> Unit,
 ) {
+    val uriHandler = LocalUriHandler.current
+
     AppNavBarContainer(
         modifier = Modifier.testTag("ProfileScreen"),
         error = error,
@@ -74,6 +79,16 @@ fun ProfileScreen(
             item { ProfileItem(Res.string.editProfile, onEditProfileClicked) }
             item { ProfileItem(Res.string.becomeCoach, onBecomeCoachClicked) }
             item { ProfileItem(Res.string.logout, onLogoutClicked) }
+            item {
+                ProfileItem(Res.string.contactSupport, {
+                    uriHandler.openUri("mailto:findprofessionalhelp@gmail.com?subject=Find%20Professional%20Support")
+                })
+            }
+            item {
+                ProfileItem(Res.string.reportProblem, {
+                    uriHandler.openUri("https://docs.google.com/forms/d/e/1FAIpQLSeqJqZ51P7g-qhwKAWSQNHLs6k0G6IQ6nTGBlP5Kt6_d_0vzA/viewform?usp=publish-editor")
+                })
+            }
         }
     }
 }
