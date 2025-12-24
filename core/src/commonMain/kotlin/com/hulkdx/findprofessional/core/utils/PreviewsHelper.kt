@@ -1,6 +1,7 @@
 package com.hulkdx.findprofessional.core.utils
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.platform.LocalInspectionMode
 import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import com.hulkdx.findprofessional.core.navigation.Navigator
@@ -30,19 +31,23 @@ fun getNavigator(): Navigator {
     }
 }
 
+val LocalDebugAppNavBars = staticCompositionLocalOf { AppNavBars(emptyList()) }
+
 @Composable
 fun getAppNavBars(): AppNavBars {
     return if (isDebug() && LocalInspectionMode.current) {
-        AppNavBars(listOf())
+        LocalDebugAppNavBars.current
     } else {
         koinInject()
     }
 }
 
+val LocalDebugProAppNavBars = staticCompositionLocalOf { ProAppNavBars(emptyList()) }
+
 @Composable
 fun getProAppNavBars(): ProAppNavBars {
     return if (isDebug() && LocalInspectionMode.current) {
-        ProAppNavBars(listOf())
+        LocalDebugProAppNavBars.current
     } else {
         koinInject()
     }

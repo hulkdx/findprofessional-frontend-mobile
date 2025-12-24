@@ -28,46 +28,46 @@ import org.koin.dsl.module
 val navigationModule: Module
     get() = module {
         single {
-            AppNavBars(
-                listOf(
-                    NavBarsItem(
-                        text = Res.string.explorer,
-                        icon = Res.drawable.ic_nav_explorer,
-                        screen = HomeNavigationScreen.Home(),
-                    ),
-                    NavBarsItem(
-                        text = Res.string.bookings,
-                        icon = Res.drawable.ic_nav_bookings,
-                        screen = ProfileNavigationScreen.Main,
-                    ),
-                    NavBarsItem(
-                        text = Res.string.profile,
-                        icon = Res.drawable.ic_nav_profile,
-                        screen = ProfileNavigationScreen.Main,
-                    ),
-                )
-            )
+            AppNavBars(getAppNavBarsList())
         }
 
         single {
-            ProAppNavBars(
-                listOf(
-                    NavBarsItem(
-                        text = Res.string.schedule,
-                        iconVector = Icons.Filled.Event,
-                        screen = ProScheduleNavigationScreen,
-                    ),
-                    NavBarsItem(
-                        text = Res.string.availability,
-                        iconVector = Icons.Filled.AccessTime,
-                        screen = ProAvailabilityNavigationScreen.Main,
-                    ),
-                    NavBarsItem(
-                        text = Res.string.profile,
-                        iconVector = Icons.Outlined.AccountCircle,
-                        screen = ProProfileNavigationScreen.Main,
-                    ),
-                )
-            )
+            ProAppNavBars(getProNavBarsList())
         }
     }
+
+fun getProNavBarsList(): List<NavBarsItem> = listOf(
+    NavBarsItem(
+        text = Res.string.schedule,
+        iconVector = Icons.Filled.Event,
+        screen = ProScheduleNavigationScreen,
+    ),
+    NavBarsItem(
+        text = Res.string.availability,
+        iconVector = Icons.Filled.AccessTime,
+        screen = ProAvailabilityNavigationScreen.Main,
+    ),
+    NavBarsItem(
+        text = Res.string.profile,
+        iconVector = Icons.Outlined.AccountCircle,
+        screen = ProProfileNavigationScreen.Main,
+    ),
+)
+
+fun getAppNavBarsList(): List<NavBarsItem> = listOf(
+    NavBarsItem(
+        text = Res.string.explorer,
+        icon = Res.drawable.ic_nav_explorer,
+        screen = HomeNavigationScreen.Home(),
+    ),
+    NavBarsItem(
+        text = Res.string.bookings,
+        icon = Res.drawable.ic_nav_bookings,
+        screen = ProfileNavigationScreen.Main,
+    ),
+    NavBarsItem(
+        text = Res.string.profile,
+        icon = Res.drawable.ic_nav_profile,
+        screen = ProfileNavigationScreen.Main,
+    ),
+)
