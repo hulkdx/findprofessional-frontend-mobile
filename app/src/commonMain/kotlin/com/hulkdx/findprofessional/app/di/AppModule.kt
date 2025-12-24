@@ -10,6 +10,7 @@ import com.hulkdx.findprofessional.feature.authentication.signup.signUpModule
 import com.hulkdx.findprofessional.feature.authentication.splash.splashModule
 import com.hulkdx.findprofessional.feature.booking.bookModule
 import com.hulkdx.findprofessional.feature.home.homeModule
+import com.hulkdx.findprofessional.feature.mybookings.myBookingsModule
 import com.hulkdx.findprofessional.feature.pro.auth.signup.signUpProModule
 import com.hulkdx.findprofessional.feature.pro.availability.proAvailabilityModule
 import com.hulkdx.findprofessional.feature.pro.profile.proProfileModule
@@ -35,6 +36,7 @@ val appModule: List<Module>
         reviewModule,
         profileModule,
         bookModule,
+        myBookingsModule,
 
         signUpProModule,
         proScheduleModule,

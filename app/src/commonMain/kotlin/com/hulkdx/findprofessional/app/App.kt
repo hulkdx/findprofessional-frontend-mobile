@@ -15,6 +15,8 @@ import com.hulkdx.findprofessional.feature.developer.DeveloperScreen
 import com.hulkdx.findprofessional.feature.home.HomeNavigationScreen
 import com.hulkdx.findprofessional.feature.home.detail.HomeDetailScreen
 import com.hulkdx.findprofessional.feature.home.main.view.HomeScreen
+import com.hulkdx.findprofessional.feature.mybookings.MyBookingsNavigationScreen
+import com.hulkdx.findprofessional.feature.mybookings.MyBookingsScreen
 import com.hulkdx.findprofessional.feature.pro.auth.ProAuthNavigationScreen
 import com.hulkdx.findprofessional.feature.pro.auth.signup.view.SignUpProScreen
 import com.hulkdx.findprofessional.feature.pro.availability.ProAvailabilityNavigationScreen
@@ -55,6 +57,7 @@ private fun RenderScreen(screen: NavigationScreen) {
         is ProfileNavigationScreen.Edit -> ProfileEditScreen()
         is BookingNavigationScreen.Time -> BookingTimeScreen(screen.professional)
         is BookingNavigationScreen.Summery -> BookingSummeryScreen(screen.professional, screen.times)
+        is MyBookingsNavigationScreen.Main -> MyBookingsScreen()
 
         is ProAuthNavigationScreen.SignUp -> SignUpProScreen(screen.uiState)
         is ProScheduleNavigationScreen -> ProScheduleScreen()

@@ -46,6 +46,7 @@ kotlin {
             api(projects.feature.bookingImpl)
             implementation(projects.feature.profileImpl)
             implementation(projects.feature.reviewImpl)
+            implementation(projects.feature.mybookingsImpl)
             implementation(projects.feature.pro.authImpl)
             implementation(projects.feature.pro.scheduleImpl)
             implementation(projects.feature.pro.availabilityImpl)
