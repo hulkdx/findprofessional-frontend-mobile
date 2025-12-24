@@ -22,8 +22,11 @@
     <string name="bookings">Bookings</string>
     <string name="profile">Profile</string>
 
+    <string name="editProfile">Edit Profile</string>
     <string name="logout">Logout</string>
     <string name="becomeCoach">Become a coach</string>
+    <string name="contactSupport">Contact support</string>
+    <string name="reportProblem">Report a problem</string>
 
     <string name="rating">Rating</string>
     <string name="availability">Availability</string>
@@ -63,7 +66,6 @@
     <string name="applyToOnly">Apply to %1$s only</string>
 
     <string name="schedule">Schedule</string>
-    <string name="editProfile">Edit Profile</string>
 
     <string name="save">Save</string>
 
