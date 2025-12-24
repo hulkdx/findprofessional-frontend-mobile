@@ -6,5 +6,5 @@ import kotlinx.serialization.Serializable
 
 object ProAuthNavigationScreen {
     @Serializable
-    data class SignUp(val uiState: SignUpProRequest = SignUpProRequest()) : NavigationScreen()
+    data class SignUp(val uiState: SignUpProRequest = SignUpProRequest()) : NavigationScreen
 }

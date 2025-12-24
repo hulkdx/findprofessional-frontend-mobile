@@ -1,6 +1,6 @@
 package com.hulkdx.findprofessional.core.navigation
 
-import kotlinx.serialization.Serializable
+import kotlinx.serialization.Polymorphic
 
-@Serializable
-abstract class NavigationScreen
+@Polymorphic
+interface NavigationScreen

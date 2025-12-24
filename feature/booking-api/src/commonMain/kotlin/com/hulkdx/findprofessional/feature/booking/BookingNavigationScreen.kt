@@ -7,11 +7,11 @@ import kotlinx.serialization.Serializable
 
 object BookingNavigationScreen {
     @Serializable
-    data class Time(val professional: Professional) : NavigationScreen()
+    data class Time(val professional: Professional) : NavigationScreen
 
     @Serializable
     data class Summery(
         val professional: Professional,
         val times: List<ProfessionalAvailability>
-    ) : NavigationScreen()
+    ) : NavigationScreen
 }

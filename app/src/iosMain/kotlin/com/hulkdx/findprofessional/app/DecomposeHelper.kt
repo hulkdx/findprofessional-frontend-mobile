@@ -7,6 +7,7 @@ import com.arkivanov.essenty.lifecycle.destroy
 import com.arkivanov.essenty.lifecycle.pause
 import com.arkivanov.essenty.lifecycle.resume
 import com.arkivanov.essenty.lifecycle.stop
+import com.hulkdx.findprofessional.app.navigation.navigationScreenSerializer
 import com.hulkdx.findprofessional.libs.navigation.decompose.RootComponent
 
 
@@ -18,6 +19,7 @@ fun getRoot(): RootComponent {
             lifecycle = LifecycleRegistry(),
             backHandler = BackDispatcher(),
         ),
+        serializer = navigationScreenSerializer,
     )
 
     return root

@@ -16,6 +16,7 @@ import com.arkivanov.essenty.lifecycle.destroy
 import com.arkivanov.essenty.lifecycle.resume
 import com.hulkdx.findprofessional.app.App
 import com.hulkdx.findprofessional.app.di.appModule
+import com.hulkdx.findprofessional.app.navigation.navigationScreenSerializer
 import com.hulkdx.findprofessional.app.test.utils.deleteDataStoreFile
 import com.hulkdx.findprofessional.app.test.utils.get
 import com.hulkdx.findprofessional.app.test.utils.inMemoryApi
@@ -56,7 +57,11 @@ fun runAppUiTest(
 }
 
 fun ComposeUiTest.setAppContent(lifecycle: LifecycleRegistry) {
-    val root = RootComponent(get(), DefaultComponentContext(lifecycle = lifecycle))
+    val root = RootComponent(
+        get(),
+        DefaultComponentContext(lifecycle = lifecycle),
+        navigationScreenSerializer,
+    )
     setContent {
         provideViewModelStoreForIOS {
             App(root)

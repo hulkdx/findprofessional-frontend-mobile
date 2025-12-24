@@ -1,12 +1,9 @@
-package com.hulkdx.findprofessional.feature.profile
+package com.hulkdx.findprofessional.feature.mybookings
 
 import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import kotlinx.serialization.Serializable
 
-object ProfileNavigationScreen {
+object MyBookingsNavigationScreen {
     @Serializable
     data object Main : NavigationScreen
-
-    @Serializable
-    data object Edit : NavigationScreen
 }
