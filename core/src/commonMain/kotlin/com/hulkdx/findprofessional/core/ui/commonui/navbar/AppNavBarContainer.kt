@@ -1,5 +1,6 @@
 package com.hulkdx.findprofessional.core.ui.commonui.navbar
 
+import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -30,7 +31,7 @@ fun AppNavBarContainer(
     error: String?,
     onErrorDismissed: () -> Unit,
     errorDurationMillis: Long? = CUSnackBarDurationDefault,
-    content: @Composable () -> Unit,
+    content: @Composable BoxScope.() -> Unit,
 ) {
     val navBars = getAppNavBars()
     val navigator = getNavigator()

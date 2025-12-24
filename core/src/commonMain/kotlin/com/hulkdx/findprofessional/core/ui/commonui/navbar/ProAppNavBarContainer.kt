@@ -1,5 +1,6 @@
 package com.hulkdx.findprofessional.core.ui.commonui.navbar
 
+import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -18,7 +19,7 @@ fun ProAppNavBarContainer(
     hasStatusBarPadding: Boolean = true,
     error: String?,
     onErrorDismissed: () -> Unit,
-    content: @Composable () -> Unit,
+    content: @Composable BoxScope.() -> Unit,
 ) {
     val navBars = getProAppNavBars()
     val navigator = getNavigator()
@@ -36,6 +37,11 @@ fun ProAppNavBarContainer(
     }
 
     AppNavBarContainerInternal(
-        modifier, hasStatusBarPadding, error, items, onErrorDismissed, content
+        modifier,
+        hasStatusBarPadding,
+        error,
+        items,
+        onErrorDismissed,
+        content,
     )
 }

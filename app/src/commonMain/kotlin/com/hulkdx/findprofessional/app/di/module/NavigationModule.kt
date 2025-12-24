@@ -17,6 +17,7 @@ import com.hulkdx.findprofessional.core.ui.commonui.navbar.AppNavBars
 import com.hulkdx.findprofessional.core.ui.commonui.navbar.NavBarsItem
 import com.hulkdx.findprofessional.core.ui.commonui.navbar.ProAppNavBars
 import com.hulkdx.findprofessional.feature.home.HomeNavigationScreen
+import com.hulkdx.findprofessional.feature.mybookings.MyBookingsNavigationScreen
 import com.hulkdx.findprofessional.feature.pro.availability.ProAvailabilityNavigationScreen
 import com.hulkdx.findprofessional.feature.pro.profile.ProProfileNavigationScreen
 import com.hulkdx.findprofessional.feature.pro.schedule.ProScheduleNavigationScreen
@@ -63,7 +64,7 @@ fun getAppNavBarsList(): List<NavBarsItem> = listOf(
     NavBarsItem(
         text = Res.string.bookings,
         icon = Res.drawable.ic_nav_bookings,
-        screen = ProfileNavigationScreen.Main,
+        screen = MyBookingsNavigationScreen.Main,
     ),
     NavBarsItem(
         text = Res.string.profile,
