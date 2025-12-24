@@ -7,6 +7,7 @@ import com.arkivanov.decompose.router.stack.childStack
 import com.arkivanov.decompose.router.stack.pop
 import com.arkivanov.essenty.backhandler.BackHandler
 import com.hulkdx.findprofessional.core.navigation.NavigationScreen
+import com.hulkdx.findprofessional.feature.authentication.AuthNavigationScreen
 
 class RootComponent(
     private val navigation: StackNavigation<NavigationScreen>,
@@ -15,7 +16,7 @@ class RootComponent(
     val stack = childStack(
         source = navigation,
         serializer = NavigationScreen.serializer(),
-        initialConfiguration = NavigationScreen.Splash,
+        initialConfiguration = AuthNavigationScreen.Splash,
         handleBackButton = true,
         childFactory = { screen, ctx -> screen to ctx.viewModelStoreOwner() },
     )

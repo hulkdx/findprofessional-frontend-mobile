@@ -2,9 +2,9 @@ package com.hulkdx.findprofessional.feature.authentication.signup
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import com.hulkdx.findprofessional.core.navigation.Navigator
 import com.hulkdx.findprofessional.core.utils.StringOrRes
+import com.hulkdx.findprofessional.feature.authentication.AuthNavigationScreen
 import com.hulkdx.findprofessional.feature.authentication.signup.model.RegisterRequest
 import com.hulkdx.findprofessional.feature.home.HomeNavigationScreen
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -33,7 +33,7 @@ class SignUpViewModel(
         if (err == null) {
             navigator.navigate(
                 HomeNavigationScreen.Home(),
-                popTo = NavigationScreen.Login,
+                popTo = AuthNavigationScreen.Login,
                 inclusive = true
             )
         } else {

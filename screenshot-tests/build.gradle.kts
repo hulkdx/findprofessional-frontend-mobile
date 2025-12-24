@@ -13,7 +13,6 @@ kotlin {
 
             implementation(projects.feature.authImpl)
             implementation(projects.feature.homeImpl)
-            implementation(projects.feature.developer)
             implementation(projects.feature.bookingImpl)
             implementation(projects.feature.profileImpl)
             implementation(projects.feature.reviewImpl)
@@ -21,6 +20,7 @@ kotlin {
             implementation(projects.feature.pro.scheduleImpl)
             implementation(projects.feature.pro.profileImpl)
             implementation(projects.feature.pro.availabilityImpl)
+            implementation(projects.app)
 
             implementation(libs.kotlinx.datetime)
             implementation(libs.ktor.core)

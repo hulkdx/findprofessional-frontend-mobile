@@ -1,9 +1,8 @@
 package com.hulkdx.findprofessional.tools.screenshot.tests
 
-import com.hulkdx.findprofessional.core.features.pro.model.request.SignUpProRequest
+import com.hulkdx.findprofessional.feature.authentication.login.LoginScreen
 import com.hulkdx.findprofessional.feature.authentication.model.user.ProUser
 import com.hulkdx.findprofessional.feature.authentication.model.user.User
-import com.hulkdx.findprofessional.feature.authentication.login.LoginScreen
 import com.hulkdx.findprofessional.feature.authentication.signup.SignUpScreen
 import com.hulkdx.findprofessional.feature.authentication.splash.Splash
 import com.hulkdx.findprofessional.feature.booking.summery.BookingSummeryScreen
@@ -18,6 +17,7 @@ import com.hulkdx.findprofessional.feature.pro.availability.detail.ProAvailabili
 import com.hulkdx.findprofessional.feature.pro.availability.detail.ProAvailabilityDetailViewModel
 import com.hulkdx.findprofessional.feature.pro.availability.detail.TimeSlot
 import com.hulkdx.findprofessional.feature.pro.availability.main.ProAvailabilityScreen
+import com.hulkdx.findprofessional.feature.pro.model.request.SignUpProRequest
 import com.hulkdx.findprofessional.feature.pro.profile.ProProfileScreen
 import com.hulkdx.findprofessional.feature.pro.profile.edit.EditProProfileScreen
 import com.hulkdx.findprofessional.feature.profile.ProfileScreen
