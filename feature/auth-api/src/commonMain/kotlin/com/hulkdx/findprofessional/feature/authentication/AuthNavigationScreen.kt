@@ -5,11 +5,11 @@ import kotlinx.serialization.Serializable
 
 object AuthNavigationScreen {
     @Serializable
-    data object Splash : NavigationScreen()
+    data object Splash : NavigationScreen
 
     @Serializable
-    data object Login : NavigationScreen()
+    data object Login : NavigationScreen
 
     @Serializable
-    data object SignUp : NavigationScreen()
+    data object SignUp : NavigationScreen
 }

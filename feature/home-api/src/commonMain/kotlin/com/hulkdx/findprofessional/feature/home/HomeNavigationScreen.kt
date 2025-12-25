@@ -7,8 +7,8 @@ import kotlinx.serialization.Serializable
 
 object HomeNavigationScreen {
     @Serializable
-    data class Home(val message: StringOrRes? = null) : NavigationScreen()
+    data class Home(val message: StringOrRes? = null) : NavigationScreen
 
     @Serializable
-    data class HomeDetail(val professional: Professional) : NavigationScreen()
+    data class HomeDetail(val professional: Professional) : NavigationScreen
 }

@@ -5,8 +5,8 @@ import kotlinx.serialization.Serializable
 
 object ProfileNavigationScreen {
     @Serializable
-    data object Main : NavigationScreen()
+    data object Main : NavigationScreen
 
     @Serializable
-    data object Edit : NavigationScreen()
+    data object Edit : NavigationScreen
 }

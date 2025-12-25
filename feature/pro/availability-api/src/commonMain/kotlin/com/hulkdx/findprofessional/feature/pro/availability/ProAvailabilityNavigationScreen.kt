@@ -6,8 +6,8 @@ import kotlinx.serialization.Serializable
 
 object ProAvailabilityNavigationScreen {
     @Serializable
-    data object Main : NavigationScreen()
+    data object Main : NavigationScreen
 
     @Serializable
-    data class Detail(val date: LocalDate) : NavigationScreen()
+    data class Detail(val date: LocalDate) : NavigationScreen
 }

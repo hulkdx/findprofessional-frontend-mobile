@@ -4,4 +4,4 @@ import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import kotlinx.serialization.Serializable
 
 @Serializable
-data object DeveloperNavigationScreen : NavigationScreen()
+data object DeveloperNavigationScreen : NavigationScreen
