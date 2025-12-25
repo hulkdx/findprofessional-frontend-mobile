@@ -36,6 +36,8 @@ import com.hulkdx.findprofessional.core.ui.commonui.navbar.AppNavigationBarDimen
 import com.hulkdx.findprofessional.core.ui.theme.AppTheme
 import com.hulkdx.findprofessional.core.ui.theme.body1
 import com.hulkdx.findprofessional.core.ui.theme.h1Medium
+import com.hulkdx.findprofessional.core.utils.CONTACT_SUPPORT_URL
+import com.hulkdx.findprofessional.core.utils.REPORT_PROBLEM_URL
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
@@ -80,14 +82,10 @@ fun ProfileScreen(
             item { ProfileItem(Res.string.becomeCoach, onBecomeCoachClicked) }
             item { ProfileItem(Res.string.logout, onLogoutClicked) }
             item {
-                ProfileItem(Res.string.contactSupport, {
-                    uriHandler.openUri("mailto:findprofessionalhelp@gmail.com?subject=Find%20Professional%20Support")
-                })
+                ProfileItem(Res.string.contactSupport) { uriHandler.openUri(CONTACT_SUPPORT_URL) }
             }
             item {
-                ProfileItem(Res.string.reportProblem, {
-                    uriHandler.openUri("https://docs.google.com/forms/d/e/1FAIpQLSeqJqZ51P7g-qhwKAWSQNHLs6k0G6IQ6nTGBlP5Kt6_d_0vzA/viewform?usp=publish-editor")
-                })
+                ProfileItem(Res.string.reportProblem) { uriHandler.openUri(REPORT_PROBLEM_URL) }
             }
         }
     }
@@ -98,9 +96,9 @@ private fun Header() {
     Text(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(top = 70.dp, bottom = 32.dp),
+            .padding(vertical = 32.dp, horizontal = 16.dp),
         style = h1Medium,
-        textAlign = TextAlign.Center,
+        textAlign = TextAlign.Start,
         text = stringResource(Res.string.profile),
     )
 }
