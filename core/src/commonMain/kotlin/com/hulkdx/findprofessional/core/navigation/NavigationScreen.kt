@@ -5,4 +5,4 @@ import kotlinx.serialization.Serializable
 
 @Serializable(with = NavigationScreenSerializer::class)
 @Polymorphic
-abstract class NavigationScreen
+interface NavigationScreen

@@ -6,5 +6,5 @@ import kotlinx.serialization.Serializable
 
 object ReviewNavigationScreen {
     @Serializable
-    data class Main(val professional: Professional) : NavigationScreen()
+    data class Main(val professional: Professional) : NavigationScreen
 }

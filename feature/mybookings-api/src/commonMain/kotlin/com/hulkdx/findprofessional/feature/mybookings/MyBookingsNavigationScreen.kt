@@ -5,5 +5,5 @@ import kotlinx.serialization.Serializable
 
 object MyBookingsNavigationScreen {
     @Serializable
-    data object Main : NavigationScreen()
+    data object Main : NavigationScreen
 }
