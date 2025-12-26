@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.feature.pro.model.response
+package com.hulkdx.findprofessional.feature.mybookings.model
 
 import kotlinx.serialization.Serializable
 
