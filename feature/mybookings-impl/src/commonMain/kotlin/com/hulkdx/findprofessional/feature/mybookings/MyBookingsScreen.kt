@@ -123,7 +123,10 @@ fun MyBookingsScreenContent(
             .padding(bottom = AppNavigationBarDimens.Height.dp)
     ) {
         stickyHeader(key = "stickyHeader") {
-            Column(Modifier.background(MaterialTheme.colorScheme.onPrimary)) {
+            Column(
+                modifier = Modifier.background(MaterialTheme.colorScheme.onPrimary)
+                    .padding(bottom = 16.dp)
+            ) {
                 Header()
                 SegmentHeader(onSegmentSelected)
             }
@@ -244,6 +247,7 @@ private fun BookingCard(
     Column(
         modifier = Modifier
             .fillMaxWidth()
+            .padding(horizontal = 16.dp, vertical = 4.dp)
             .background(MaterialTheme.colorScheme.surfaceVariant, RoundedCornerShape(16.dp))
             .border(
                 width = 1.dp,
@@ -382,7 +386,7 @@ private fun BookingCardButtons(
             }
         }
     }
-    Spacer(modifier = Modifier.height(2.dp))
+    Spacer(modifier = Modifier.height(4.dp))
     Row(
         horizontalArrangement = Arrangement.spacedBy(10.dp),
         modifier = Modifier.fillMaxWidth(),
