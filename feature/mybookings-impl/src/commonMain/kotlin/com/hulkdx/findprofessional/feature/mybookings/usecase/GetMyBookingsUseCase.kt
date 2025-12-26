@@ -1,12 +1,12 @@
 package com.hulkdx.findprofessional.feature.mybookings.usecase
 
-import com.hulkdx.findprofessional.feature.mybookings.model.MyBookingsRequest
-import com.hulkdx.findprofessional.feature.mybookings.model.MyBookingsResponse
+import com.hulkdx.findprofessional.feature.mybookings.api.MyBookingApi
 
 
 class GetMyBookingsUseCase(
+    private val api: MyBookingApi,
 ) {
-    suspend fun execute(request: MyBookingsRequest): MyBookingsResponse {
-        TODO()
+    suspend fun execute() = runCatching {
+        api.getMyBookingsList()
     }
 }
