@@ -18,4 +18,7 @@ class MyBookingsViewModel : ViewModel() {
 
     fun onClickJoinSession() {
     }
+
+    fun onClickCopyBookingId() {
+    }
 }

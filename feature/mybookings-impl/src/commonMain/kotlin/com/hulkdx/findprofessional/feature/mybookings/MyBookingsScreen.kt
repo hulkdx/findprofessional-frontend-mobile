@@ -21,6 +21,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.outlined.HelpOutline
+import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -44,7 +45,9 @@ import androidx.compose.ui.unit.dp
 import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.bookingPast
 import com.hulkdx.findprofessional.core.resources.bookingUpcoming
+import com.hulkdx.findprofessional.core.resources.copyBookingId
 import com.hulkdx.findprofessional.core.resources.help
+import com.hulkdx.findprofessional.core.resources.joinSession
 import com.hulkdx.findprofessional.core.resources.myBookingsTitle
 import com.hulkdx.findprofessional.core.resources.reportProblem
 import com.hulkdx.findprofessional.core.ui.commonui.navbar.AppNavBarContainer
@@ -77,6 +80,7 @@ fun MyBookingsScreen(
         onClickJoinSession = viewModel::onClickJoinSession,
         error = null,
         onErrorDismissed = viewModel::onErrorDismissed,
+        onClickCopyBookingId = viewModel::onClickCopyBookingId,
     )
 }
 
@@ -87,6 +91,7 @@ fun MyBookingsScreen(
     onClickCancel: () -> Unit,
     onSegmentSelected: (MyBookingSegment) -> Unit,
     onClickJoinSession: () -> Unit,
+    onClickCopyBookingId: () -> Unit,
     error: String?,
     onErrorDismissed: () -> Unit,
 ) {
@@ -101,6 +106,7 @@ fun MyBookingsScreen(
             onClickReportProblem = onClickReportProblem,
             onClickCancel = onClickCancel,
             onClickJoinSession = onClickJoinSession,
+            onClickCopyBookingId = onClickCopyBookingId,
         )
     }
 }
@@ -112,6 +118,7 @@ fun MyBookingsScreenContent(
     onClickCancel: () -> Unit,
     onClickJoinSession: () -> Unit,
     onSegmentSelected: (MyBookingSegment) -> Unit,
+    onClickCopyBookingId: () -> Unit,
 ) {
     LazyColumn(
         modifier = Modifier
@@ -134,6 +141,7 @@ fun MyBookingsScreenContent(
                 onClickReportProblem = onClickReportProblem,
                 onClickCancel = onClickCancel,
                 onClickJoinSession = onClickJoinSession,
+                onClickCopyBookingId = onClickCopyBookingId,
             )
         }
     }
@@ -257,6 +265,7 @@ private fun BookingCard(
     onClickReportProblem: () -> Unit,
     onClickCancel: () -> Unit,
     onClickJoinSession: () -> Unit,
+    onClickCopyBookingId: () -> Unit,
 ) {
     Column(
         modifier = Modifier
@@ -271,7 +280,13 @@ private fun BookingCard(
     ) {
         BookingCardTopRow(booking)
         Spacer(modifier = Modifier.height(10.dp))
-        BookingCardButtons(booking, onClickReportProblem, onClickCancel, onClickJoinSession)
+        BookingCardButtons(
+            booking,
+            onClickReportProblem,
+            onClickCancel,
+            onClickJoinSession,
+            onClickCopyBookingId,
+        )
     }
 }
 
@@ -376,17 +391,17 @@ private fun ColumnScope.BookingCardButtons(
     onClickReportProblem: () -> Unit,
     onClickCancel: () -> Unit,
     onClickJoinSession: () -> Unit,
+    onClickCopyBookingId: () -> Unit,
 ) {
     if (booking.status == BookingStatus.Confirmed) {
         Row(
             horizontalArrangement = Arrangement.spacedBy(10.dp),
             modifier = Modifier.fillMaxWidth(),
         ) {
-            OutlinedActionButton(
-                text = stringResource(Res.string.reportProblem),
+            PrimaryActionButton(
+                text = stringResource(Res.string.joinSession),
                 onClick = onClickJoinSession,
                 modifier = Modifier.weight(1f),
-                color = MaterialTheme.colorScheme.outline,
             )
             OutlinedActionButton(
                 text = stringResource(Res.string.help),
@@ -398,15 +413,23 @@ private fun ColumnScope.BookingCardButtons(
         }
     }
     Spacer(modifier = Modifier.height(2.dp))
-    OutlinedActionButton(
-        modifier = Modifier
-            .fillMaxWidth(0.5f)
-            .padding(start = 5.dp)
-            .align(Alignment.End),
-        text = stringResource(Res.string.reportProblem),
-        onClick = onClickReportProblem,
-        color = MaterialTheme.colorScheme.secondary,
-    )
+    Row(
+        horizontalArrangement = Arrangement.spacedBy(10.dp),
+        modifier = Modifier.fillMaxWidth(),
+    ) {
+        OutlinedActionButton(
+            text = stringResource(Res.string.copyBookingId),
+            onClick = onClickCopyBookingId,
+            modifier = Modifier.weight(1f),
+            color = MaterialTheme.colorScheme.outline,
+        )
+        OutlinedActionButton(
+            modifier = Modifier.weight(1f),
+            text = stringResource(Res.string.reportProblem),
+            onClick = onClickReportProblem,
+            color = MaterialTheme.colorScheme.secondary,
+        )
+    }
 }
 
 @Composable
@@ -433,6 +456,27 @@ private fun OutlinedActionButton(
     }
 }
 
+@Composable
+private fun PrimaryActionButton(
+    text: String,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    Button(
+        onClick = onClick,
+        modifier = modifier.height(36.dp),
+        shape = RoundedCornerShape(10.dp),
+        contentPadding = PaddingValues(horizontal = 8.dp),
+    ) {
+        Text(
+            text = text,
+            style = body2,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+        )
+    }
+}
+
 @Preview
 @Composable
 private fun MyBookingsScreenPreview() {
@@ -447,7 +491,7 @@ private fun MyBookingsScreenPreview() {
                         "Sarah Adams",
                         BookingStatus.Confirmed,
                         "Fitness coaching",
-                        "09:00 • 45 min",
+                        "09:00 EET • 45 min",
                     ),
                     BookingUiState.Item(
                         id = "2",
@@ -466,6 +510,7 @@ private fun MyBookingsScreenPreview() {
             onClickCancel = {},
             onClickReportProblem = {},
             onClickJoinSession = {},
+            onClickCopyBookingId = {},
         )
     }
 }

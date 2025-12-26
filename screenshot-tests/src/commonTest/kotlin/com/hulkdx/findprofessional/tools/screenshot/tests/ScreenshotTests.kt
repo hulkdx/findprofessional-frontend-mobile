@@ -185,7 +185,7 @@ class ScreenshotTests {
                             fullName = "Sarah Adams",
                             status = BookingStatus.Confirmed,
                             type = "Fitness coaching",
-                            startTime = "09:00 • 45 min",
+                            startTime = "09:00 EET • 45 min",
                         ),
                         BookingUiState.Item(
                             id = "2",
@@ -194,11 +194,11 @@ class ScreenshotTests {
                             fullName = "Danica Lee",
                             status = BookingStatus.Canceled,
                             type = "Life coaching",
-                            startTime = "13:00 • 45 min",
+                            startTime = "13:00 EET • 45 min",
                         ),
                     )
                 ),
-                {}, {}, {}, {}, null, {},
+                {}, {}, {}, {}, {}, null, {},
             )
         }
     }

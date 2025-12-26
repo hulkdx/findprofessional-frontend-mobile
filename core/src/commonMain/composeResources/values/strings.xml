@@ -80,5 +80,6 @@
     <string name="cancel">Cancel</string>
     <string name="help">Help</string>
     <string name="joinSession">Join session</string>
+    <string name="copyBookingId">Copy Booking ID</string>
 
 </resources>
