@@ -7,9 +7,9 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -45,6 +45,7 @@ import androidx.compose.ui.unit.dp
 import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.bookingPast
 import com.hulkdx.findprofessional.core.resources.bookingUpcoming
+import com.hulkdx.findprofessional.core.resources.cancel
 import com.hulkdx.findprofessional.core.resources.copyBookingId
 import com.hulkdx.findprofessional.core.resources.help
 import com.hulkdx.findprofessional.core.resources.joinSession
@@ -386,30 +387,26 @@ private fun BookingStatusChip(status: BookingStatus) {
 }
 
 @Composable
-private fun ColumnScope.BookingCardButtons(
+private fun BookingCardButtons(
     booking: BookingUiState.Item,
     onClickReportProblem: () -> Unit,
     onClickCancel: () -> Unit,
     onClickJoinSession: () -> Unit,
     onClickCopyBookingId: () -> Unit,
 ) {
-    if (booking.status == BookingStatus.Confirmed) {
+    if (booking.canJoinSession || booking.canCancel) {
         Row(
             horizontalArrangement = Arrangement.spacedBy(10.dp),
             modifier = Modifier.fillMaxWidth(),
         ) {
-            PrimaryActionButton(
-                text = stringResource(Res.string.joinSession),
-                onClick = onClickJoinSession,
-                modifier = Modifier.weight(1f),
-            )
-            OutlinedActionButton(
-                text = stringResource(Res.string.help),
-                onClick = onClickCancel,
-                modifier = Modifier.weight(1f),
-                color = MaterialTheme.colorScheme.secondary,
-            )
-
+            if (booking.canJoinSession) {
+                JoinSession(onClickJoinSession)
+            } else {
+                Spacer(Modifier.weight(1f))
+            }
+            if (booking.canCancel) {
+                Cancel(onClickCancel)
+            }
         }
     }
     Spacer(modifier = Modifier.height(2.dp))
@@ -417,19 +414,48 @@ private fun ColumnScope.BookingCardButtons(
         horizontalArrangement = Arrangement.spacedBy(10.dp),
         modifier = Modifier.fillMaxWidth(),
     ) {
-        OutlinedActionButton(
-            text = stringResource(Res.string.copyBookingId),
-            onClick = onClickCopyBookingId,
-            modifier = Modifier.weight(1f),
-            color = MaterialTheme.colorScheme.outline,
-        )
-        OutlinedActionButton(
-            modifier = Modifier.weight(1f),
-            text = stringResource(Res.string.reportProblem),
-            onClick = onClickReportProblem,
-            color = MaterialTheme.colorScheme.secondary,
-        )
+        CopyBookingId(onClickCopyBookingId)
+        ReportProblem(onClickReportProblem)
     }
+}
+
+@Composable
+private fun RowScope.JoinSession(onClickJoinSession: () -> Unit) {
+    PrimaryActionButton(
+        text = stringResource(Res.string.joinSession),
+        onClick = onClickJoinSession,
+        modifier = Modifier.weight(1f),
+    )
+}
+
+@Composable
+private fun RowScope.Cancel(onClickCancel: () -> Unit) {
+    OutlinedActionButton(
+        text = stringResource(Res.string.cancel),
+        onClick = onClickCancel,
+        modifier = Modifier.weight(1f),
+        color = MaterialTheme.colorScheme.secondary,
+    )
+}
+
+@Composable
+private fun RowScope.CopyBookingId(onClickCopyBookingId: () -> Unit) {
+    OutlinedActionButton(
+        text = stringResource(Res.string.copyBookingId),
+        onClick = onClickCopyBookingId,
+        modifier = Modifier.weight(1f),
+        color = MaterialTheme.colorScheme.outline,
+    )
+}
+
+@Composable
+private fun RowScope.ReportProblem(onClickReportProblem: () -> Unit) {
+    OutlinedActionButton(
+        modifier = Modifier.weight(1f),
+        text = stringResource(Res.string.reportProblem),
+        onClick = onClickReportProblem,
+        color = MaterialTheme.colorScheme.secondary,
+    )
 }
 
 @Composable
@@ -492,6 +518,8 @@ private fun MyBookingsScreenPreview() {
                         BookingStatus.Confirmed,
                         "Fitness coaching",
                         "09:00 EET • 45 min",
+                        canJoinSession = true,
+                        canCancel = true
                     ),
                     BookingUiState.Item(
                         id = "2",
@@ -501,6 +529,30 @@ private fun MyBookingsScreenPreview() {
                         BookingStatus.Canceled,
                         "Life coaching",
                         "13:00 • 45 min",
+                        canJoinSession = false,
+                        canCancel = false,
+                    ),
+                    BookingUiState.Item(
+                        id = "1",
+                        "Mon",
+                        "16",
+                        "Sarah Adams",
+                        BookingStatus.Confirmed,
+                        "Fitness coaching",
+                        "09:00 EET • 45 min",
+                        canJoinSession = true,
+                        canCancel = false,
+                    ),
+                    BookingUiState.Item(
+                        id = "1",
+                        "Mon",
+                        "16",
+                        "Sarah Adams",
+                        BookingStatus.Confirmed,
+                        "Fitness coaching",
+                        "09:00 EET • 45 min",
+                        canJoinSession = false,
+                        canCancel = true
                     ),
                 )
             ),

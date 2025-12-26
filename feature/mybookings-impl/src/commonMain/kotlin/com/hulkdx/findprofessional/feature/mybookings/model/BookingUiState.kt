@@ -11,6 +11,8 @@ data class BookingUiState(
         val status: BookingStatus,
         val type: String,
         val startTime: String,
+        val canJoinSession: Boolean = true,
+        val canCancel: Boolean = true,
     )
 }
 
