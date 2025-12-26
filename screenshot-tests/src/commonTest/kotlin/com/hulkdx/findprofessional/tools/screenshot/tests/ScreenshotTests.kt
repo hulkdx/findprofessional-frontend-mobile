@@ -11,6 +11,9 @@ import com.hulkdx.findprofessional.feature.booking.time.BookingTimeScreen
 import com.hulkdx.findprofessional.feature.home.detail.HomeDetailScreen
 import com.hulkdx.findprofessional.feature.home.detail.availability.AvailabilityData
 import com.hulkdx.findprofessional.feature.home.main.view.HomeScreen
+import com.hulkdx.findprofessional.feature.mybookings.MyBookingsScreen
+import com.hulkdx.findprofessional.feature.mybookings.model.BookingStatus
+import com.hulkdx.findprofessional.feature.mybookings.model.BookingUiState
 import com.hulkdx.findprofessional.feature.pro.auth.signup.view.SignUpProScreenStep1
 import com.hulkdx.findprofessional.feature.pro.auth.signup.view.SignUpProScreenStep2
 import com.hulkdx.findprofessional.feature.pro.availability.detail.ProAvailabilityDetailScreen
@@ -165,6 +168,37 @@ class ScreenshotTests {
                         formattedTotalPrices = "100 €",
                     )
                 ),
+            )
+        }
+    }
+
+    @Test
+    fun myBookingsScreen() {
+        screenShotTests(className, "myBookingsScreen") {
+            MyBookingsScreen(
+                uiStatus = BookingUiState(
+                    items = listOf(
+                        BookingUiState.Item(
+                            id = "1",
+                            dayLabel = "Mon",
+                            dayNumber = "16",
+                            fullName = "Sarah Adams",
+                            status = BookingStatus.Confirmed,
+                            type = "Fitness coaching",
+                            startTime = "09:00 • 45 min",
+                        ),
+                        BookingUiState.Item(
+                            id = "2",
+                            dayLabel = "Tue",
+                            dayNumber = "17",
+                            fullName = "Danica Lee",
+                            status = BookingStatus.Canceled,
+                            type = "Life coaching",
+                            startTime = "13:00 • 45 min",
+                        ),
+                    )
+                ),
+                {}, {}, {}, {}, null, {},
             )
         }
     }
