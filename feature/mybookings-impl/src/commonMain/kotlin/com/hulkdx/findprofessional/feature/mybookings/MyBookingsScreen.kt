@@ -7,6 +7,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -73,6 +74,7 @@ fun MyBookingsScreen(
         onSegmentSelected = viewModel::onSegmentSelected,
         onClickCancel = viewModel::onClickCancel,
         onClickReportProblem = viewModel::onClickReportProblem,
+        onClickJoinSession = viewModel::onClickJoinSession,
         error = null,
         onErrorDismissed = viewModel::onErrorDismissed,
     )
@@ -84,6 +86,7 @@ fun MyBookingsScreen(
     onClickReportProblem: () -> Unit,
     onClickCancel: () -> Unit,
     onSegmentSelected: (MyBookingSegment) -> Unit,
+    onClickJoinSession: () -> Unit,
     error: String?,
     onErrorDismissed: () -> Unit,
 ) {
@@ -97,6 +100,7 @@ fun MyBookingsScreen(
             onSegmentSelected = onSegmentSelected,
             onClickReportProblem = onClickReportProblem,
             onClickCancel = onClickCancel,
+            onClickJoinSession = onClickJoinSession,
         )
     }
 }
@@ -106,6 +110,7 @@ fun MyBookingsScreenContent(
     uiStatus: BookingUiState,
     onClickReportProblem: () -> Unit,
     onClickCancel: () -> Unit,
+    onClickJoinSession: () -> Unit,
     onSegmentSelected: (MyBookingSegment) -> Unit,
 ) {
     LazyColumn(
@@ -128,6 +133,7 @@ fun MyBookingsScreenContent(
                 booking = it,
                 onClickReportProblem = onClickReportProblem,
                 onClickCancel = onClickCancel,
+                onClickJoinSession = onClickJoinSession,
             )
         }
     }
@@ -250,6 +256,7 @@ private fun BookingCard(
     booking: BookingUiState.Item,
     onClickReportProblem: () -> Unit,
     onClickCancel: () -> Unit,
+    onClickJoinSession: () -> Unit,
 ) {
     Column(
         modifier = Modifier
@@ -264,7 +271,7 @@ private fun BookingCard(
     ) {
         BookingCardTopRow(booking)
         Spacer(modifier = Modifier.height(10.dp))
-        BookingCardButtons(booking, onClickReportProblem, onClickCancel)
+        BookingCardButtons(booking, onClickReportProblem, onClickCancel, onClickJoinSession)
     }
 }
 
@@ -282,7 +289,7 @@ private fun BookingCardTopRow(booking: BookingUiState.Item) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 BookingName(booking)
                 Spacer(modifier = Modifier.weight(1f))
-                BookingStatus(booking.status)
+                BookingStatusChip(booking.status)
             }
             Spacer(modifier = Modifier.height(4.dp))
             Text(
@@ -337,7 +344,7 @@ private fun BookingName(booking: BookingUiState.Item) {
 }
 
 @Composable
-private fun BookingStatus(status: BookingStatus) {
+private fun BookingStatusChip(status: BookingStatus) {
     val (background, foreground) = when (status) {
         BookingStatus.Confirmed -> Pair(
             MaterialTheme.colorScheme.primary.copy(alpha = 0.12f),
@@ -364,32 +371,42 @@ private fun BookingStatus(status: BookingStatus) {
 }
 
 @Composable
-private fun BookingCardButtons(
+private fun ColumnScope.BookingCardButtons(
     booking: BookingUiState.Item,
     onClickReportProblem: () -> Unit,
     onClickCancel: () -> Unit,
+    onClickJoinSession: () -> Unit,
 ) {
-    Row(
-        horizontalArrangement = Arrangement.spacedBy(10.dp),
-        modifier = Modifier.fillMaxWidth(),
-    ) {
-        OutlinedActionButton(
-            text = stringResource(Res.string.reportProblem),
-            onClick = onClickReportProblem,
-            modifier = Modifier.weight(1f),
-            color = MaterialTheme.colorScheme.outline,
-        )
-        if (booking.status == BookingStatus.Confirmed) {
+    if (booking.status == BookingStatus.Confirmed) {
+        Row(
+            horizontalArrangement = Arrangement.spacedBy(10.dp),
+            modifier = Modifier.fillMaxWidth(),
+        ) {
+            OutlinedActionButton(
+                text = stringResource(Res.string.reportProblem),
+                onClick = onClickJoinSession,
+                modifier = Modifier.weight(1f),
+                color = MaterialTheme.colorScheme.outline,
+            )
             OutlinedActionButton(
                 text = stringResource(Res.string.help),
                 onClick = onClickCancel,
                 modifier = Modifier.weight(1f),
                 color = MaterialTheme.colorScheme.secondary,
             )
-        } else {
-            Spacer(modifier = Modifier.weight(1f))
+
         }
     }
+    Spacer(modifier = Modifier.height(2.dp))
+    OutlinedActionButton(
+        modifier = Modifier
+            .fillMaxWidth(0.5f)
+            .padding(start = 5.dp)
+            .align(Alignment.End),
+        text = stringResource(Res.string.reportProblem),
+        onClick = onClickReportProblem,
+        color = MaterialTheme.colorScheme.secondary,
+    )
 }
 
 @Composable
@@ -448,6 +465,7 @@ private fun MyBookingsScreenPreview() {
             onSegmentSelected = {},
             onClickCancel = {},
             onClickReportProblem = {},
+            onClickJoinSession = {},
         )
     }
 }

@@ -15,4 +15,7 @@ class MyBookingsViewModel : ViewModel() {
 
     fun onErrorDismissed() {
     }
+
+    fun onClickJoinSession() {
+    }
 }
