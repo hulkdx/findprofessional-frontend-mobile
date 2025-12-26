@@ -11,7 +11,6 @@ data class BookingSummeryUiState(
 ) {
     data class SummeryDetails(
         val times: List<Time> = listOf(),
-        val userSkypeId: String? = null,
         val amountInCents: Long = 0,
         val currency: String = "",
         val formattedTotalPrices: String = "",

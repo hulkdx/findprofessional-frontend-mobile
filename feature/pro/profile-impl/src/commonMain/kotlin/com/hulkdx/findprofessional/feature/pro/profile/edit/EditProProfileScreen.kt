@@ -20,7 +20,6 @@ import com.hulkdx.findprofessional.core.resources.firstName
 import com.hulkdx.findprofessional.core.resources.lastName
 import com.hulkdx.findprofessional.core.resources.price
 import com.hulkdx.findprofessional.core.resources.save
-import com.hulkdx.findprofessional.core.resources.skypeId
 import com.hulkdx.findprofessional.core.ui.commonui.CUFilledButton
 import com.hulkdx.findprofessional.core.ui.commonui.CUTextField
 import com.hulkdx.findprofessional.core.ui.commonui.navbar.AppNavigationBarDimens
@@ -44,7 +43,6 @@ fun EditProProfileScreen(viewModel: EditProProfileViewModel = koinViewModel()) {
         onErrorDismissed = { viewModel.setError(null) },
         onFirstNameChange = viewModel::setFirstName,
         onLastNameChange = viewModel::setLastName,
-        onSkypeIdChange = viewModel::setSkypeId,
         onEmailChange = viewModel::setEmail,
         onCoachTypeChange = viewModel::setCoachType,
         onAboutMeChange = viewModel::setAboutMe,
@@ -59,7 +57,6 @@ fun EditProProfileScreen(
     error: String?,
     onFirstNameChange: (String) -> Unit,
     onLastNameChange: (String) -> Unit,
-    onSkypeIdChange: (String) -> Unit,
     onEmailChange: (String) -> Unit,
     onCoachTypeChange: (String) -> Unit,
     onAboutMeChange: (String) -> Unit,
@@ -76,7 +73,6 @@ fun EditProProfileScreen(
             uiState = uiState,
             onFirstNameChange = onFirstNameChange,
             onLastNameChange = onLastNameChange,
-            onSkypeIdChange = onSkypeIdChange,
             onEmailChange = onEmailChange,
             onCoachTypeChange = onCoachTypeChange,
             onAboutMeChange = onAboutMeChange,
@@ -91,7 +87,6 @@ private fun EditProProfileScreenContent(
     uiState: ProUser,
     onFirstNameChange: (String) -> Unit,
     onLastNameChange: (String) -> Unit,
-    onSkypeIdChange: (String) -> Unit,
     onEmailChange: (String) -> Unit,
     onCoachTypeChange: (String) -> Unit,
     onAboutMeChange: (String) -> Unit,
@@ -120,13 +115,6 @@ private fun EditProProfileScreenContent(
                 hint = stringResource(Res.string.lastName),
                 value = uiState.lastName,
                 onValueChanged = onLastNameChange,
-            )
-        }
-        item {
-            EditProProfileItem(
-                hint = stringResource(Res.string.skypeId),
-                value = uiState.skypeId ?: "",
-                onValueChanged = onSkypeIdChange,
             )
         }
 //        TODO: add email

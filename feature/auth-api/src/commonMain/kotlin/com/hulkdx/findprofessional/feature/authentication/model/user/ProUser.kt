@@ -14,7 +14,6 @@ data class ProUser(
     val priceCurrency: String? = "",
     val profileImageUrl: String? = "",
     val description: String? = null,
-    val skypeId: String? = null,
 ) : UserType() {
 
     val fullName: String

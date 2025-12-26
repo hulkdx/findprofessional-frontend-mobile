@@ -13,18 +13,17 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
-import com.hulkdx.findprofessional.feature.authentication.model.user.User
 import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.firstName
 import com.hulkdx.findprofessional.core.resources.lastName
 import com.hulkdx.findprofessional.core.resources.save
-import com.hulkdx.findprofessional.core.resources.skypeId
 import com.hulkdx.findprofessional.core.ui.commonui.CUFilledButton
 import com.hulkdx.findprofessional.core.ui.commonui.CUTextField
 import com.hulkdx.findprofessional.core.ui.commonui.navbar.AppNavBarContainer
 import com.hulkdx.findprofessional.core.ui.commonui.navbar.AppNavigationBarDimens
 import com.hulkdx.findprofessional.core.utils.koinViewModel
 import com.hulkdx.findprofessional.core.utils.singleClick
+import com.hulkdx.findprofessional.feature.authentication.model.user.User
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
@@ -38,7 +37,6 @@ fun ProfileEditScreen(viewModel: ProfileEditViewModel = koinViewModel()) {
         onErrorDismissed = { viewModel.setError(null) },
         onFirstNameChange = viewModel::setFirstName,
         onLastNameChange = viewModel::setLastName,
-        onSkypeIdChange = viewModel::setSkypeId,
         onSaveButtonClicked = viewModel::onSaveButtonClicked
     )
 }
@@ -50,7 +48,6 @@ fun ProfileEditScreen(
     onErrorDismissed: () -> Unit,
     onFirstNameChange: (String) -> Unit,
     onLastNameChange: (String) -> Unit,
-    onSkypeIdChange: (String) -> Unit,
     onSaveButtonClicked: () -> Unit,
 ) {
     AppNavBarContainer(
@@ -78,13 +75,6 @@ fun ProfileEditScreen(
                     hint = stringResource(Res.string.lastName),
                     value = uiState.lastName,
                     onValueChanged = onLastNameChange,
-                )
-            }
-            item {
-                Item(
-                    hint = stringResource(Res.string.skypeId),
-                    value = uiState.skypeId ?: "",
-                    onValueChanged = onSkypeIdChange,
                 )
             }
 

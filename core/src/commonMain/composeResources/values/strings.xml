@@ -41,12 +41,10 @@
     <string name="yourRequest">Your request</string>
     <string name="dateAndTime">Date and Time</string>
     <string name="connection">Connection</string>
-    <string name="yourSkypeId">Your Skype ID</string>
     <string name="total">Total</string>
     <string name="checkout">Checkout</string>
     <string name="stripePaymentCountdownMessage">Complete payment within %1$s mins</string>
 
-    <string name="skypeId">Skype ID</string>
     <string name="coachType">Coach Type</string>
     <string name="aboutMe">About Me</string>
     <string name="headerForNames">Please ensure that the details you provide match those on your government-issued ID.</string>
@@ -73,7 +71,6 @@
 
     <string name="bookingFailed">Booking failed</string>
     <string name="paymentsUnderReview">Payment received. We're reviewing it, it might take some time, you can check it in your profile if the payments is successful</string>
-    <string name="skypeIdNotFound">User doesn't have Skype ID, please provie some</string>
     <string name="myBookingsTitle">My bookings</string>
     <string name="bookingUpcoming">Upcoming</string>
     <string name="bookingPast">Past</string>

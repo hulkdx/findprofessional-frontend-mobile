@@ -11,7 +11,6 @@ data class SignUpProRequest(
     val password: String = "",
     val firstName: String = "",
     val lastName: String = "",
-    val skypeId: String = "",
     val aboutMe: String = "",
     val coachType: String = "",
     @Transient val priceString: String = "",

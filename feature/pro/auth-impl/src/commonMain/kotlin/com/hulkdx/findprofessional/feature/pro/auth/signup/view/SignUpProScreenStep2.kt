@@ -25,7 +25,6 @@ import com.hulkdx.findprofessional.core.resources.currency
 import com.hulkdx.findprofessional.core.resources.price
 import com.hulkdx.findprofessional.core.resources.priceHeader
 import com.hulkdx.findprofessional.core.resources.signUp
-import com.hulkdx.findprofessional.core.resources.skypeId
 import com.hulkdx.findprofessional.core.ui.commonui.CUEmailTextField
 import com.hulkdx.findprofessional.core.ui.commonui.CUFilledButton
 import com.hulkdx.findprofessional.core.ui.commonui.CUPasswordTextField
@@ -40,7 +39,6 @@ fun SignUpProScreenStep2(
     uiState: SignUpProRequest,
     onEmailChanged: (String) -> Unit,
     onPasswordChanged: (String) -> Unit,
-    onSkypeIdChanged: (String) -> Unit,
     onCoachTypeChanged: (String) -> Unit,
     onRegisterClicked: () -> Unit,
     onAboutMeChanged: (String) -> Unit,
@@ -58,7 +56,6 @@ fun SignUpProScreenStep2(
 
         { Email(uiState.email, onEmailChanged) },
         { Password(uiState.password, onPasswordChanged) },
-        { SkypeID(uiState.skypeId, onSkypeIdChanged) },
         { CoachType(uiState.coachType, onCoachTypeChanged) },
         { AboutMe(uiState.aboutMe, onAboutMeChanged) },
         { PriceHeader() },
@@ -92,24 +89,6 @@ private fun Password(
 ) {
     CUPasswordTextField(
         modifier = Modifier.padding(top = 8.dp),
-        value = value,
-        onValueChanged = onValueChanged,
-        keyboardOptions = KeyboardOptions.Default.copy(
-            imeAction = ImeAction.Next,
-        ),
-    )
-}
-
-@Composable
-private fun SkypeID(
-    value: String,
-    onValueChanged: (String) -> (Unit),
-) {
-    CUTextField(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(top = 8.dp),
-        hint = stringResource(Res.string.skypeId),
         value = value,
         onValueChanged = onValueChanged,
         keyboardOptions = KeyboardOptions.Default.copy(

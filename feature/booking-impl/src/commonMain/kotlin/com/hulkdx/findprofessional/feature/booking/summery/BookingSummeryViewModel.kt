@@ -8,12 +8,10 @@ import com.hulkdx.findprofessional.core.navigation.Navigator
 import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.bookingFailed
 import com.hulkdx.findprofessional.core.resources.paymentsUnderReview
-import com.hulkdx.findprofessional.core.resources.skypeIdNotFound
 import com.hulkdx.findprofessional.core.utils.StringOrRes
 import com.hulkdx.findprofessional.core.utils.generalError
 import com.hulkdx.findprofessional.core.utils.toStringOrRes
 import com.hulkdx.findprofessional.feature.booking.summery.BookingSummeryUiState.CheckoutStatus
-import com.hulkdx.findprofessional.feature.booking.summery.exception.SkypeIdNotFound
 import com.hulkdx.findprofessional.feature.booking.summery.stripe.PaymentSheetResult
 import com.hulkdx.findprofessional.feature.booking.summery.usecase.BookingSummeryUseCase
 import com.hulkdx.findprofessional.feature.booking.summery.usecase.CheckBookingStatusUseCase
@@ -22,7 +20,6 @@ import com.hulkdx.findprofessional.feature.home.HomeNavigationScreen
 import com.hulkdx.findprofessional.feature.pro.model.Professional
 import com.hulkdx.findprofessional.feature.pro.model.ProfessionalAvailability
 import com.hulkdx.findprofessional.feature.pro.model.response.GetBookingStatusResponse.Status.FAILED
-import com.hulkdx.findprofessional.feature.profile.ProfileNavigationScreen
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -63,10 +60,7 @@ class BookingSummeryViewModel(
             )
                 .onFailure { throwable ->
                     setLoading(false)
-                    when (throwable) {
-                        is SkypeIdNotFound -> setError(Res.string.skypeIdNotFound.toStringOrRes())
-                        else -> setError(throwable.generalError())
-                    }
+                    setError(throwable.generalError())
                 }
                 .onSuccess {
                     bookingId = it.id
@@ -123,10 +117,6 @@ class BookingSummeryViewModel(
             popTo = HomeNavigationScreen.Home(),
             inclusive = true
         )
-    }
-
-    fun onEditSkypeIdClicked() {
-        navigator.navigate(ProfileNavigationScreen.Edit)
     }
 
     fun setCheckoutStatus(checkoutStatus: CheckoutStatus) =
