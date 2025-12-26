@@ -19,12 +19,8 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.outlined.HelpOutline
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
@@ -47,7 +43,6 @@ import com.hulkdx.findprofessional.core.resources.bookingPast
 import com.hulkdx.findprofessional.core.resources.bookingUpcoming
 import com.hulkdx.findprofessional.core.resources.cancel
 import com.hulkdx.findprofessional.core.resources.copyBookingId
-import com.hulkdx.findprofessional.core.resources.help
 import com.hulkdx.findprofessional.core.resources.joinSession
 import com.hulkdx.findprofessional.core.resources.myBookingsTitle
 import com.hulkdx.findprofessional.core.resources.reportProblem
@@ -161,28 +156,6 @@ private fun Header() {
             textAlign = TextAlign.Start,
             text = stringResource(Res.string.myBookingsTitle),
         )
-        Spacer(modifier = Modifier.weight(1f))
-        HelpHeader()
-    }
-}
-
-@Composable
-private fun HelpHeader() {
-    var showHelpDialog by remember { mutableStateOf(false) }
-    IconButton(
-        modifier = Modifier,
-        onClick = { showHelpDialog = true },
-    ) {
-        Icon(
-            imageVector = Icons.AutoMirrored.Outlined.HelpOutline,
-            contentDescription = stringResource(Res.string.help),
-        )
-    }
-    if (showHelpDialog) {
-        BookingHelpDialog(onDismiss = {
-            @Suppress("AssignedValueIsNeverRead")
-            showHelpDialog = false
-        })
     }
 }
 
