@@ -73,7 +73,6 @@
 
     <string name="bookingFailed">Booking failed</string>
     <string name="paymentsUnderReview">Payment received. We're reviewing it, it might take some time, you can check it in your profile if the payments is successful</string>
-    <string name="skypeIdNotFound">User doesn't have Skype ID, please provie some</string>
     <string name="myBookingsTitle">My bookings</string>
     <string name="bookingUpcoming">Upcoming</string>
     <string name="bookingPast">Past</string>
