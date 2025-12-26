@@ -118,7 +118,7 @@ class ScreenshotTests {
         screenShotTests(className, "editProfileScreen") {
             ProfileEditScreen(
                 User(),
-                null, {}, {}, {}, {}, {},
+                null, {}, {}, {}, {},
             )
         }
     }
@@ -148,11 +148,9 @@ class ScreenshotTests {
                 error = "",
                 onCheckoutClicked = {},
                 onErrorDismissed = {},
-                onEditSkypeIdClicked = {},
                 onStripeResult = {},
                 uiState = BookingSummeryUiState(
                     BookingSummeryUiState.SummeryDetails(
-                        userSkypeId = "test@gmail.com",
                         times = listOf(
                             BookingSummeryUiState.SummeryDetails.Time(
                                 duration = "16:30 - 17:00",

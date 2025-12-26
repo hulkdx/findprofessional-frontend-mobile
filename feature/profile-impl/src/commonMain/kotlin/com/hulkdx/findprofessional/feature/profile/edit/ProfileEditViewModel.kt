@@ -2,15 +2,10 @@ package com.hulkdx.findprofessional.feature.profile.edit
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.hulkdx.findprofessional.feature.authentication.model.user.ProUser
-import com.hulkdx.findprofessional.feature.authentication.model.user.User
-import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import com.hulkdx.findprofessional.core.navigation.Navigator
-import com.hulkdx.findprofessional.core.utils.PriceUtils.toPriceNumber
 import com.hulkdx.findprofessional.core.utils.StringOrRes
-import com.hulkdx.findprofessional.feature.authentication.login.api.LoginApi
 import com.hulkdx.findprofessional.feature.authentication.login.usecase.GetUserUseCase
-import com.hulkdx.findprofessional.feature.authentication.login.usecase.LogoutUseCase
+import com.hulkdx.findprofessional.feature.authentication.model.user.User
 import com.hulkdx.findprofessional.feature.profile.edit.usecase.UpdateProfileUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -48,6 +43,7 @@ class ProfileEditViewModel(
 
     fun setFirstName(value: String) = _uiState.update { it.copy(firstName = value) }
     fun setLastName(value: String) = _uiState.update { it.copy(lastName = value) }
-    fun setSkypeId(value: String) = _uiState.update { it.copy(skypeId = value) }
-    fun setError(error: StringOrRes?) { _error.value = error }
+    fun setError(error: StringOrRes?) {
+        _error.value = error
+    }
 }
