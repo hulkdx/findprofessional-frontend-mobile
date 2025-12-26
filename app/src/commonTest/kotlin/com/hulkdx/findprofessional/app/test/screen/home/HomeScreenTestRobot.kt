@@ -45,6 +45,11 @@ class HomeScreenDsl(
             .performClick()
     }
 
+    fun pressBookings() {
+        rule.onNodeWithText("Bookings")
+            .performClick()
+    }
+
     fun verify(block: HomeScreenVerify.() -> Unit) = HomeScreenVerify(rule).apply(block)
 }
 
@@ -57,5 +62,9 @@ class HomeScreenVerify(
 
     fun profileScreenShown() {
         rule.assertNodeIsDisplayed("ProfileScreen")
+    }
+
+    fun myBookingsScreenShown() {
+        rule.assertNodeIsDisplayed("MyBookingsScreen")
     }
 }

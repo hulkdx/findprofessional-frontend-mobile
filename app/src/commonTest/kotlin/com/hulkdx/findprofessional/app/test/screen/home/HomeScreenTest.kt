@@ -25,4 +25,13 @@ class HomeScreenTest {
             profileScreenShown()
         }
     }
+
+    @Test
+    fun navigateToBookings() = runAppUiTest {
+        launchHomeScreen(this) {
+            pressBookings()
+        }.verify {
+            myBookingsScreenShown()
+        }
+    }
 }

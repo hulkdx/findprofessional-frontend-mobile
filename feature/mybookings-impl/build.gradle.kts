@@ -8,6 +8,7 @@ kotlin {
         commonMain.dependencies {
             implementation(projects.core)
             api(projects.feature.mybookingsApi)
+            implementation(projects.feature.authApi)
 
             implementation(libs.lifecycle.viewmodel.compose)
             implementation(compose.materialIconsExtended)

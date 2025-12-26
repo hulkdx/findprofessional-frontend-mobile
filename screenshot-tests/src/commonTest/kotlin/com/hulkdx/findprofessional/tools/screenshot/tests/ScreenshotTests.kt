@@ -11,6 +11,9 @@ import com.hulkdx.findprofessional.feature.booking.time.BookingTimeScreen
 import com.hulkdx.findprofessional.feature.home.detail.HomeDetailScreen
 import com.hulkdx.findprofessional.feature.home.detail.availability.AvailabilityData
 import com.hulkdx.findprofessional.feature.home.main.view.HomeScreen
+import com.hulkdx.findprofessional.feature.mybookings.MyBookingsScreen
+import com.hulkdx.findprofessional.feature.mybookings.model.BookingStatus
+import com.hulkdx.findprofessional.feature.mybookings.model.BookingUiState
 import com.hulkdx.findprofessional.feature.pro.auth.signup.view.SignUpProScreenStep1
 import com.hulkdx.findprofessional.feature.pro.auth.signup.view.SignUpProScreenStep2
 import com.hulkdx.findprofessional.feature.pro.availability.detail.ProAvailabilityDetailScreen
@@ -165,6 +168,41 @@ class ScreenshotTests {
                         formattedTotalPrices = "100 €",
                     )
                 ),
+            )
+        }
+    }
+
+    @Test
+    fun myBookingsScreen() {
+        screenShotTests(className, "myBookingsScreen") {
+            MyBookingsScreen(
+                uiStatus = BookingUiState(
+                    items = listOf(
+                        BookingUiState.Item(
+                            id = "1",
+                            "Mon",
+                            "16",
+                            "Sarah Adams",
+                            BookingStatus.Confirmed,
+                            "Fitness coaching",
+                            "09:00 EET • 45 min",
+                            canJoinSession = true,
+                            canCancel = true
+                        ),
+                        BookingUiState.Item(
+                            id = "2",
+                            "Mon",
+                            "17",
+                            "Sarah Adams",
+                            BookingStatus.Canceled,
+                            "Life coaching",
+                            "13:00 • 45 min",
+                            canJoinSession = false,
+                            canCancel = false,
+                        ),
+                    )
+                ),
+                {}, {}, {}, {}, {}, null, {},
             )
         }
     }

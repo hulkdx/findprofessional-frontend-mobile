@@ -77,29 +77,9 @@
     <string name="myBookingsTitle">My bookings</string>
     <string name="bookingUpcoming">Upcoming</string>
     <string name="bookingPast">Past</string>
-    <string name="bookingToday">Today</string>
-    <string name="bookingLater">Later</string>
-    <string name="bookingReportProblem">Report a problem</string>
-    <string name="bookingCancel">Cancel</string>
-    <string name="bookingIdLabel">Booking ID: %1$s</string>
-    <string name="bookingConfirmed">CONFIRMED</string>
-    <string name="bookingCanceled">CANCELED</string>
-    <string name="bookingHelp">Help</string>
-    <string name="bookingCopyId">Copy booking id</string>
-    <string name="bookingLifeCoaching">Life coaching</string>
-    <string name="bookingBusinessCoaching">Business coaching</string>
-    <string name="bookingFitnessCoaching">Fitness coaching</string>
-    <string name="bookingDuration30">30 min</string>
-    <string name="bookingDuration60">60 min</string>
-    <string name="bookingDuration45">45 min</string>
-    <string name="bookingSkype">Skype</string>
-    <string name="bookingTimeToday">18:00 - 18:30</string>
-    <string name="bookingTimeLaterOne">12:00 - 13:00</string>
-    <string name="bookingTimeLaterTwo">09:00</string>
-    <string name="bookingNameSarahAdams">Sarah Adams</string>
-    <string name="bookingNameMichaelSmith">Michael Smith</string>
-    <string name="bookingNameLauraThompson">Laura Thompson</string>
-    <string name="bookingServiceDuration">%1$s \u2022 %2$s</string>
-    <string name="bookingChannelTime">%1$s \u2022 %2$s</string>
+    <string name="cancel">Cancel</string>
+    <string name="help">Help</string>
+    <string name="joinSession">Join session</string>
+    <string name="copyBookingId">Copy Booking ID</string>
 
 </resources>

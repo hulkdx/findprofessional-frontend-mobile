@@ -6,6 +6,7 @@ import com.hulkdx.findprofessional.feature.authentication.AuthNavigationScreen
 import com.hulkdx.findprofessional.feature.booking.BookingNavigationScreen
 import com.hulkdx.findprofessional.feature.developer.DeveloperNavigationScreen
 import com.hulkdx.findprofessional.feature.home.HomeNavigationScreen
+import com.hulkdx.findprofessional.feature.mybookings.MyBookingsNavigationScreen
 import com.hulkdx.findprofessional.feature.pro.auth.ProAuthNavigationScreen
 import com.hulkdx.findprofessional.feature.pro.availability.ProAvailabilityNavigationScreen
 import com.hulkdx.findprofessional.feature.pro.profile.ProProfileNavigationScreen
@@ -38,6 +39,7 @@ fun setupNavigationScreenPolymorphicSerializable() {
             subclass(ProAvailabilityNavigationScreen.Detail::class)
             subclass(ProProfileNavigationScreen.Main::class)
             subclass(ProProfileNavigationScreen.Edit::class)
+            subclass(MyBookingsNavigationScreen.Main::class)
         }
     }
 
