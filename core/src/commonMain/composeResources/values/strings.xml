@@ -77,12 +77,7 @@
     <string name="myBookingsTitle">My bookings</string>
     <string name="bookingUpcoming">Upcoming</string>
     <string name="bookingPast">Past</string>
-    <string name="bookingReportProblem">Report a problem</string>
-    <string name="bookingCancel">Cancel</string>
-    <string name="bookingIdLabel">Booking ID: %1$s</string>
-    <string name="bookingConfirmed">CONFIRMED</string>
-    <string name="bookingCanceled">CANCELED</string>
-    <string name="bookingHelp">Help</string>
-    <string name="bookingCopyId">Copy booking id</string>
+    <string name="cancel">Cancel</string>
+    <string name="help">Help</string>
 
 </resources>
