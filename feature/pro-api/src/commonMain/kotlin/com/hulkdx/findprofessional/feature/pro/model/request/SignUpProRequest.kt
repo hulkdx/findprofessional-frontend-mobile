@@ -13,6 +13,8 @@ data class SignUpProRequest(
     val lastName: String = "",
     val aboutMe: String = "",
     val coachType: String = "",
+    val sessionLink: String = "",
+    val sessionPlatforms: String = "",
     @Transient val priceString: String = "",
     val priceCurrency: String = "",
     @Transient val webcamConsentChecked: Boolean = false,

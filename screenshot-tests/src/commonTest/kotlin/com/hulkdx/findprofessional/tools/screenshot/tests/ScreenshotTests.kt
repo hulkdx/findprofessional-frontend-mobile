@@ -220,7 +220,7 @@ class ScreenshotTests {
         screenShotTests(className, "SignUpProScreenStep2") {
             SignUpProScreenStep2(
                 uiState = SignUpProRequest(),
-                {}, {}, {}, {}, {}, {}, {}, {}, {}, "", {},
+                {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, "", {}
             )
         }
     }
@@ -248,7 +248,7 @@ class ScreenshotTests {
                     description = "Hi, I'm a life coach",
                     priceNumber = 500,
                 ),
-                "", {}, {}, {}, {}, {}, {}, {}, {}
+                "", {}, {}, {}, {}, {}, {}, {}, {}, {}, {}
             )
         }
     }

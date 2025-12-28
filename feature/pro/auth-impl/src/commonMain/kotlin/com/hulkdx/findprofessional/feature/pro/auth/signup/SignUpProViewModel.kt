@@ -47,6 +47,8 @@ class SignUpProViewModel(
     fun setLastName(lastName: String) = _uiState.update { it.copy(lastName = lastName) }
     fun setAboutMe(value: String) = _uiState.update { it.copy(aboutMe = value) }
     fun setCoachType(value: String) = _uiState.update { it.copy(coachType = value) }
+    fun setSessionLink(value: String) = _uiState.update { it.copy(sessionLink = value) }
+    fun setSessionPlatforms(value: String) = _uiState.update { it.copy(sessionPlatforms = value) }
     fun setPrice(value: String) = _uiState.update { it.copy(priceString = value) }
     fun setCurrency(value: String) = _uiState.update { it.copy(priceCurrency = value) }
     fun setWebcamConsent(value: Boolean) = _uiState.update { it.copy(webcamConsentChecked = value) }
