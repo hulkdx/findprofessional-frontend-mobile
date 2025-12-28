@@ -8,6 +8,7 @@ import com.hulkdx.findprofessional.feature.authentication.login.LoginScreen
 import com.hulkdx.findprofessional.feature.authentication.signup.SignUpScreen
 import com.hulkdx.findprofessional.feature.authentication.splash.SplashScreen
 import com.hulkdx.findprofessional.feature.booking.BookingNavigationScreen
+import com.hulkdx.findprofessional.feature.booking.confirmation.BookingConfirmationScreen
 import com.hulkdx.findprofessional.feature.booking.summery.BookingSummeryScreen
 import com.hulkdx.findprofessional.feature.booking.time.BookingTimeScreen
 import com.hulkdx.findprofessional.feature.developer.DeveloperNavigationScreen
@@ -50,13 +51,14 @@ private fun RenderScreen(screen: NavigationScreen) {
         is AuthNavigationScreen.Splash -> SplashScreen()
         is AuthNavigationScreen.Login -> LoginScreen()
         is AuthNavigationScreen.SignUp -> SignUpScreen()
-        is HomeNavigationScreen.Home -> HomeScreen(screen.message)
+        is HomeNavigationScreen.Home -> HomeScreen()
         is HomeNavigationScreen.HomeDetail -> HomeDetailScreen(screen.professional)
         is ReviewNavigationScreen.Main -> ReviewScreen(screen.professional)
         is ProfileNavigationScreen.Main -> ProfileScreen()
         is ProfileNavigationScreen.Edit -> ProfileEditScreen()
         is BookingNavigationScreen.Time -> BookingTimeScreen(screen.professional)
         is BookingNavigationScreen.Summery -> BookingSummeryScreen(screen.professional, screen.times)
+        is BookingNavigationScreen.Confirmation -> BookingConfirmationScreen()
         is MyBookingsNavigationScreen.Main -> MyBookingsScreen()
 
         is ProAuthNavigationScreen.SignUp -> SignUpProScreen(screen.uiState)

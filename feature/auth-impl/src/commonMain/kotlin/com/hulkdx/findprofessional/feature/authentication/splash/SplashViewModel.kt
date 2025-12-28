@@ -23,7 +23,7 @@ class SplashViewModel(
     private fun onLoaded() = viewModelScope.launch {
         val user = getUserUseCase.execute()
         val dest = when (user) {
-            is User -> HomeNavigationScreen.Home()
+            is User -> HomeNavigationScreen.Home
             is ProUser -> ProScheduleNavigationScreen
             null -> AuthNavigationScreen.Login
         }

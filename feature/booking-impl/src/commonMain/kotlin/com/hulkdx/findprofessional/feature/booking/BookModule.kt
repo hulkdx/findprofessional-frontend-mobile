@@ -7,6 +7,7 @@ import com.hulkdx.findprofessional.feature.booking.summery.usecase.CheckBookingS
 import com.hulkdx.findprofessional.feature.booking.summery.usecase.CreateBookingUseCase
 import com.hulkdx.findprofessional.feature.booking.time.BookingTimeUseCase
 import com.hulkdx.findprofessional.feature.booking.time.BookingTimeViewModel
+import com.hulkdx.findprofessional.feature.booking.confirmation.BookingConfirmationViewModel
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.factoryOf
 import org.koin.core.module.dsl.viewModelOf
@@ -22,4 +23,6 @@ val bookModule: Module
 
         viewModelOf(::BookingTimeViewModel)
         factoryOf(::BookingTimeUseCase)
+
+        viewModelOf(::BookingConfirmationViewModel)
     }

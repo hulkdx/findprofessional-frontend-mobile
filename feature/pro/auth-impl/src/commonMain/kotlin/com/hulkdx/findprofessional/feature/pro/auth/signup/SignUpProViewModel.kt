@@ -37,7 +37,7 @@ class SignUpProViewModel(
             setError(err)
             return@launch
         }
-        navigator.navigate(ProScheduleNavigationScreen, HomeNavigationScreen.Home(), true)
+        navigator.navigate(ProScheduleNavigationScreen, HomeNavigationScreen.Home, true)
     }
 
     fun setError(error: StringOrRes?) = _error.update { error }

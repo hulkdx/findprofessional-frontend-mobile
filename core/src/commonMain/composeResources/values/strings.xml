@@ -72,7 +72,9 @@
     <string name="invalidTime">Please select a valid time</string>
 
     <string name="bookingFailed">Booking failed</string>
-    <string name="paymentsUnderReview">Payment received. We're reviewing it, it might take some time, you can check it in your profile if the payments is successful</string>
+    <string name="paymentsUnderReview">Your payment is processing. We'll confirm the session soon. You can check the status in bookings screen</string>
+    <string name="paymentReceived">Payment received</string>
+    <string name="close">Close</string>
     <string name="myBookingsTitle">My bookings</string>
     <string name="bookingUpcoming">Upcoming</string>
     <string name="bookingPast">Past</string>
