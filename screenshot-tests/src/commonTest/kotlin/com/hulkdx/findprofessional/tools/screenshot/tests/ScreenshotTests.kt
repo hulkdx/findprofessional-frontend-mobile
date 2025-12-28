@@ -8,6 +8,7 @@ import com.hulkdx.findprofessional.feature.authentication.splash.Splash
 import com.hulkdx.findprofessional.feature.booking.summery.BookingSummeryScreen
 import com.hulkdx.findprofessional.feature.booking.summery.BookingSummeryUiState
 import com.hulkdx.findprofessional.feature.booking.time.BookingTimeScreen
+import com.hulkdx.findprofessional.feature.booking.confirmation.BookingConfirmationScreen
 import com.hulkdx.findprofessional.feature.home.detail.HomeDetailScreen
 import com.hulkdx.findprofessional.feature.home.detail.availability.AvailabilityData
 import com.hulkdx.findprofessional.feature.home.main.view.HomeScreen
@@ -166,6 +167,15 @@ class ScreenshotTests {
                         formattedTotalPrices = "100 €",
                     )
                 ),
+            )
+        }
+    }
+
+    @Test
+    fun bookingConfirmationScreen() {
+        screenShotTests(className, "bookingConfirmationScreen") {
+            BookingConfirmationScreen(
+                onCloseClicked = {},
             )
         }
     }

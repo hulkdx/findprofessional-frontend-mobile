@@ -7,10 +7,10 @@ import androidx.lifecycle.viewModelScope
 import com.hulkdx.findprofessional.core.navigation.Navigator
 import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.bookingFailed
-import com.hulkdx.findprofessional.core.resources.paymentsUnderReview
 import com.hulkdx.findprofessional.core.utils.StringOrRes
 import com.hulkdx.findprofessional.core.utils.generalError
 import com.hulkdx.findprofessional.core.utils.toStringOrRes
+import com.hulkdx.findprofessional.feature.booking.BookingNavigationScreen
 import com.hulkdx.findprofessional.feature.booking.summery.BookingSummeryUiState.CheckoutStatus
 import com.hulkdx.findprofessional.feature.booking.summery.stripe.PaymentSheetResult
 import com.hulkdx.findprofessional.feature.booking.summery.usecase.BookingSummeryUseCase
@@ -113,9 +113,9 @@ class BookingSummeryViewModel(
 
     private fun showBookingSuccess() {
         navigator.navigate(
-            screen = HomeNavigationScreen.Home(Res.string.paymentsUnderReview.toStringOrRes()),
-            popTo = HomeNavigationScreen.Home(),
-            inclusive = true
+            screen = BookingNavigationScreen.Confirmation,
+            popTo = HomeNavigationScreen.Home,
+            inclusive = true,
         )
     }
 

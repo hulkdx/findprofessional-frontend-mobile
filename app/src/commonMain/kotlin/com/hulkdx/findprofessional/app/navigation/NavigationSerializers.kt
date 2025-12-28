@@ -33,6 +33,7 @@ fun setupNavigationScreenPolymorphicSerializable() {
             subclass(ProfileNavigationScreen.Edit::class)
             subclass(BookingNavigationScreen.Time::class)
             subclass(BookingNavigationScreen.Summery::class)
+            subclass(BookingNavigationScreen.Confirmation::class)
             subclass(ProAuthNavigationScreen.SignUp::class)
             subclass(ProScheduleNavigationScreen::class)
             subclass(ProAvailabilityNavigationScreen.Main::class)

@@ -21,7 +21,7 @@ class LogoutUseCaseImpl(
         userStorage.remove()
         navigator.navigate(
             AuthNavigationScreen.Login,
-            HomeNavigationScreen.Home(),
+            HomeNavigationScreen.Home,
             inclusive = true
         )
     }

@@ -40,7 +40,7 @@ class LoginViewModel(
 
         val screen = when (userData?.user) {
             is ProUser -> ProScheduleNavigationScreen
-            is User -> HomeNavigationScreen.Home()
+            is User -> HomeNavigationScreen.Home
             null -> return@launch
         }
         navigator.navigate(screen, popTo = AuthNavigationScreen.Login, inclusive = true)

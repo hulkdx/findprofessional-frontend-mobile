@@ -14,4 +14,7 @@ object BookingNavigationScreen {
         val professional: Professional,
         val times: List<ProfessionalAvailability>
     ) : NavigationScreen
+
+    @Serializable
+    data object Confirmation : NavigationScreen
 }

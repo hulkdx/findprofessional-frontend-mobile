@@ -59,7 +59,7 @@ fun getAppNavBarsList(): List<NavBarsItem> = listOf(
     NavBarsItem(
         text = Res.string.explorer,
         icon = Res.drawable.ic_nav_explorer,
-        screen = HomeNavigationScreen.Home(),
+        screen = HomeNavigationScreen.Home,
     ),
     NavBarsItem(
         text = Res.string.bookings,
