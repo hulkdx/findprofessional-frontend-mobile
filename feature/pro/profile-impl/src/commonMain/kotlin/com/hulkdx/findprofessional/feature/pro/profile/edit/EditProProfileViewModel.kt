@@ -47,6 +47,8 @@ class EditProProfileViewModel(
     fun setEmail(value: String) = _uiState.update { it.copy(email = value) }
     fun setCoachType(value: String) = _uiState.update { it.copy(coachType = value) }
     fun setAboutMe(value: String) = _uiState.update { it.copy(description = value) }
+    fun setSessionLink(value: String) = _uiState.update { it.copy(sessionLink = value) }
+    fun setSessionPlatforms(value: String) = _uiState.update { it.copy(sessionPlatforms = value) }
     fun setPrice(value: String) = _uiState.update { it.copy(priceNumber = toPriceNumber(value)) }
     fun setError(error: StringOrRes?) {
         _error.value = error

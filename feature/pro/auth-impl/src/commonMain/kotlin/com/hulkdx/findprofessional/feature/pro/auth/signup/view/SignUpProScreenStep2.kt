@@ -24,6 +24,8 @@ import com.hulkdx.findprofessional.core.resources.consentWebcam
 import com.hulkdx.findprofessional.core.resources.currency
 import com.hulkdx.findprofessional.core.resources.price
 import com.hulkdx.findprofessional.core.resources.priceHeader
+import com.hulkdx.findprofessional.core.resources.sessionLink
+import com.hulkdx.findprofessional.core.resources.sessionPlatforms
 import com.hulkdx.findprofessional.core.resources.signUp
 import com.hulkdx.findprofessional.core.ui.commonui.CUEmailTextField
 import com.hulkdx.findprofessional.core.ui.commonui.CUFilledButton
@@ -42,6 +44,8 @@ fun SignUpProScreenStep2(
     onCoachTypeChanged: (String) -> Unit,
     onRegisterClicked: () -> Unit,
     onAboutMeChanged: (String) -> Unit,
+    onSessionLinkChanged: (String) -> Unit,
+    onSessionPlatformsChanged: (String) -> Unit,
     onPriceChanged: (String) -> Unit,
     onCurrencyChanged: (String) -> Unit,
     onWebcamConsentCheckedChange: ((Boolean) -> Unit)?,
@@ -58,6 +62,8 @@ fun SignUpProScreenStep2(
         { Password(uiState.password, onPasswordChanged) },
         { CoachType(uiState.coachType, onCoachTypeChanged) },
         { AboutMe(uiState.aboutMe, onAboutMeChanged) },
+        { SessionLink(uiState.sessionLink, onSessionLinkChanged) },
+        { SessionPlatforms(uiState.sessionPlatforms, onSessionPlatformsChanged) },
         { PriceHeader() },
         { Price(uiState.priceString, onPriceChanged, uiState.priceCurrency, onCurrencyChanged) },
         { WebcamConsent(uiState.webcamConsentChecked, onWebcamConsentCheckedChange) },
@@ -132,6 +138,42 @@ private fun AboutMe(
     )
 }
 
+@Composable
+private fun SessionLink(
+    value: String,
+    onValueChanged: (String) -> (Unit),
+) {
+    CUTextField(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 8.dp),
+        hint = stringResource(Res.string.sessionLink),
+        value = value,
+        onValueChanged = onValueChanged,
+        keyboardOptions = KeyboardOptions.Default.copy(
+            imeAction = ImeAction.Next,
+            keyboardType = KeyboardType.Uri,
+        ),
+    )
+}
+
+@Composable
+private fun SessionPlatforms(
+    value: String,
+    onValueChanged: (String) -> (Unit),
+) {
+    CUTextField(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 8.dp),
+        hint = stringResource(Res.string.sessionPlatforms),
+        value = value,
+        onValueChanged = onValueChanged,
+        keyboardOptions = KeyboardOptions.Default.copy(
+            imeAction = ImeAction.Next,
+        ),
+    )
+}
 
 @Composable
 fun PriceHeader() {

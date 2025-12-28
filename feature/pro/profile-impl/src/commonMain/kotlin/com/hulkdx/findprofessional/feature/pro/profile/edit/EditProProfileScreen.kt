@@ -20,6 +20,8 @@ import com.hulkdx.findprofessional.core.resources.firstName
 import com.hulkdx.findprofessional.core.resources.lastName
 import com.hulkdx.findprofessional.core.resources.price
 import com.hulkdx.findprofessional.core.resources.save
+import com.hulkdx.findprofessional.core.resources.sessionLink
+import com.hulkdx.findprofessional.core.resources.sessionPlatforms
 import com.hulkdx.findprofessional.core.ui.commonui.CUFilledButton
 import com.hulkdx.findprofessional.core.ui.commonui.CUTextField
 import com.hulkdx.findprofessional.core.ui.commonui.navbar.AppNavigationBarDimens
@@ -46,6 +48,8 @@ fun EditProProfileScreen(viewModel: EditProProfileViewModel = koinViewModel()) {
         onEmailChange = viewModel::setEmail,
         onCoachTypeChange = viewModel::setCoachType,
         onAboutMeChange = viewModel::setAboutMe,
+        onSessionLinkChange = viewModel::setSessionLink,
+        onSessionPlatformsChange = viewModel::setSessionPlatforms,
         onPriceChange = viewModel::setPrice,
         onSaveButtonClicked = viewModel::onSaveButtonClicked
     )
@@ -60,6 +64,8 @@ fun EditProProfileScreen(
     onEmailChange: (String) -> Unit,
     onCoachTypeChange: (String) -> Unit,
     onAboutMeChange: (String) -> Unit,
+    onSessionLinkChange: (String) -> Unit,
+    onSessionPlatformsChange: (String) -> Unit,
     onPriceChange: (String) -> Unit,
     onErrorDismissed: () -> Unit,
     onSaveButtonClicked: () -> Unit,
@@ -76,6 +82,8 @@ fun EditProProfileScreen(
             onEmailChange = onEmailChange,
             onCoachTypeChange = onCoachTypeChange,
             onAboutMeChange = onAboutMeChange,
+            onSessionLinkChange = onSessionLinkChange,
+            onSessionPlatformsChange = onSessionPlatformsChange,
             onPriceChange = onPriceChange,
             onSaveButtonClicked = onSaveButtonClicked,
         )
@@ -90,6 +98,8 @@ private fun EditProProfileScreenContent(
     onEmailChange: (String) -> Unit,
     onCoachTypeChange: (String) -> Unit,
     onAboutMeChange: (String) -> Unit,
+    onSessionLinkChange: (String) -> Unit,
+    onSessionPlatformsChange: (String) -> Unit,
     onPriceChange: (String) -> Unit,
     onSaveButtonClicked: () -> Unit,
 ) {
@@ -138,6 +148,20 @@ private fun EditProProfileScreenContent(
                 value = uiState.description ?: "",
                 onValueChanged = onAboutMeChange,
                 singleLine = false,
+            )
+        }
+        item {
+            EditProProfileItem(
+                hint = stringResource(Res.string.sessionLink),
+                value = uiState.sessionLink ?: "",
+                onValueChanged = onSessionLinkChange,
+            )
+        }
+        item {
+            EditProProfileItem(
+                hint = stringResource(Res.string.sessionPlatforms),
+                value = uiState.sessionPlatforms ?: "",
+                onValueChanged = onSessionPlatformsChange,
             )
         }
         item {

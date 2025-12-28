@@ -228,9 +228,15 @@ internal class InMemoryApiImpl : InMemoryApi {
                         "uiTestRefreshToken",
                     ),
                     ProUser(
-                        request.email,
-                        request.firstName,
-                        request.lastName,
+                        email = request.email,
+                        firstName = request.firstName,
+                        lastName = request.lastName,
+                        coachType = request.coachType,
+                        description = request.aboutMe,
+                        priceCurrency = request.priceCurrency,
+                        priceNumber = request.price,
+                        sessionLink = request.sessionLink,
+                        sessionPlatforms = request.sessionPlatforms,
                     ),
                 )
             )
