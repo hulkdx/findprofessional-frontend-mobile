@@ -44,7 +44,6 @@ class EditProProfileViewModel(
 
     fun setFirstName(value: String) = _uiState.update { it.copy(firstName = value) }
     fun setLastName(value: String) = _uiState.update { it.copy(lastName = value) }
-    fun setSkypeId(value: String) = _uiState.update { it.copy(skypeId = value) }
     fun setEmail(value: String) = _uiState.update { it.copy(email = value) }
     fun setCoachType(value: String) = _uiState.update { it.copy(coachType = value) }
     fun setAboutMe(value: String) = _uiState.update { it.copy(description = value) }

@@ -45,7 +45,6 @@ class SignUpProViewModel(
     fun setEmail(email: String) = _uiState.update { it.copy(email = email) }
     fun setFirstName(firstName: String) = _uiState.update { it.copy(firstName = firstName) }
     fun setLastName(lastName: String) = _uiState.update { it.copy(lastName = lastName) }
-    fun setSkypeId(value: String) = _uiState.update { it.copy(skypeId = value) }
     fun setAboutMe(value: String) = _uiState.update { it.copy(aboutMe = value) }
     fun setCoachType(value: String) = _uiState.update { it.copy(coachType = value) }
     fun setPrice(value: String) = _uiState.update { it.copy(priceString = value) }
