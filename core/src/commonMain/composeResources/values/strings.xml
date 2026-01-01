@@ -47,8 +47,8 @@
 
     <string name="coachType">Coach Type</string>
     <string name="aboutMe">About Me</string>
-    <string name="sessionLink">Session Link</string>
-    <string name="sessionPlatforms">Session Platforms</string>
+    <string name="sessionLink">Session Link (e.g. https://www. https://meet.google.com/abc-defg-hij)</string>
+    <string name="sessionPlatforms">Session Platform (e.g. Google Meet)</string>
     <string name="headerForNames">Please ensure that the details you provide match those on your government-issued ID.</string>
     <string name="priceHeader">Add your own price per 30 minutes</string>
     <string name="price">Price</string>
