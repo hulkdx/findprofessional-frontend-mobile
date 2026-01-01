@@ -25,16 +25,18 @@ import com.hulkdx.findprofessional.core.resources.currency
 import com.hulkdx.findprofessional.core.resources.price
 import com.hulkdx.findprofessional.core.resources.priceHeader
 import com.hulkdx.findprofessional.core.resources.sessionLink
-import com.hulkdx.findprofessional.core.resources.sessionPlatforms
+import com.hulkdx.findprofessional.core.resources.sessionPlatform
 import com.hulkdx.findprofessional.core.resources.signUp
 import com.hulkdx.findprofessional.core.ui.commonui.CUEmailTextField
 import com.hulkdx.findprofessional.core.ui.commonui.CUFilledButton
 import com.hulkdx.findprofessional.core.ui.commonui.CUPasswordTextField
 import com.hulkdx.findprofessional.core.ui.commonui.CUTextField
+import com.hulkdx.findprofessional.core.ui.theme.AppTheme
 import com.hulkdx.findprofessional.core.ui.theme.body3Medium
 import com.hulkdx.findprofessional.core.utils.singleClick
 import com.hulkdx.findprofessional.feature.pro.model.request.SignUpProRequest
 import org.jetbrains.compose.resources.stringResource
+import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
 fun SignUpProScreenStep2(
@@ -62,7 +64,7 @@ fun SignUpProScreenStep2(
         { Password(uiState.password, onPasswordChanged) },
         { CoachType(uiState.coachType, onCoachTypeChanged) },
         { AboutMe(uiState.aboutMe, onAboutMeChanged) },
-        { SessionPlatforms(uiState.sessionPlatforms, onSessionPlatformsChanged) },
+        { SessionPlatforms(uiState.sessionPlatform, onSessionPlatformsChanged) },
         { SessionLink(uiState.sessionLink, onSessionLinkChanged) },
         { PriceHeader() },
         { Price(uiState.priceString, onPriceChanged, uiState.priceCurrency, onCurrencyChanged) },
@@ -166,7 +168,7 @@ private fun SessionPlatforms(
         modifier = Modifier
             .fillMaxWidth()
             .padding(top = 8.dp),
-        hint = stringResource(Res.string.sessionPlatforms),
+        hint = stringResource(Res.string.sessionPlatform),
         value = value,
         onValueChanged = onValueChanged,
         keyboardOptions = KeyboardOptions.Default.copy(
@@ -272,4 +274,17 @@ private fun RegisterButton(
         text = stringResource(Res.string.signUp),
         onClick = singleClick(onClick),
     )
+}
+
+@Preview
+@Composable
+private fun PreviewSignUpProScreenStep2() {
+    AppTheme {
+        SignUpProScreenStep2(
+            uiState = SignUpProRequest(
+                email = "test@test.com",
+            ),
+            {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, null, {},
+        )
+    }
 }

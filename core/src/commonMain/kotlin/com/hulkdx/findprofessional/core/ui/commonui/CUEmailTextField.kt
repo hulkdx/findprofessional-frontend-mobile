@@ -15,12 +15,14 @@ fun CUEmailTextField(
     value: String,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     keyboardActions: KeyboardActions = KeyboardActions.Default,
+    enabled: Boolean = true,
     onValueChanged: (String) -> (Unit),
 ) {
     CUTextField(
         modifier = modifier.fillMaxWidth(),
         hint = stringResource(Res.string.email),
         value = value,
+        enabled = enabled,
         onValueChanged = onValueChanged,
         keyboardOptions = keyboardOptions,
         keyboardActions = keyboardActions,

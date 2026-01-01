@@ -21,7 +21,7 @@ import com.hulkdx.findprofessional.core.resources.lastName
 import com.hulkdx.findprofessional.core.resources.price
 import com.hulkdx.findprofessional.core.resources.save
 import com.hulkdx.findprofessional.core.resources.sessionLink
-import com.hulkdx.findprofessional.core.resources.sessionPlatforms
+import com.hulkdx.findprofessional.core.resources.sessionPlatform
 import com.hulkdx.findprofessional.core.ui.commonui.CUFilledButton
 import com.hulkdx.findprofessional.core.ui.commonui.CUTextField
 import com.hulkdx.findprofessional.core.ui.commonui.navbar.AppNavigationBarDimens
@@ -159,7 +159,7 @@ private fun EditProProfileScreenContent(
         }
         item {
             EditProProfileItem(
-                hint = stringResource(Res.string.sessionPlatforms),
+                hint = stringResource(Res.string.sessionPlatform),
                 value = uiState.sessionPlatforms ?: "",
                 onValueChanged = onSessionPlatformsChange,
             )

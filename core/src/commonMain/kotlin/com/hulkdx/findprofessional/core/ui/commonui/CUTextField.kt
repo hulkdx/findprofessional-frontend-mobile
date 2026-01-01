@@ -50,7 +50,7 @@ fun CUTextField(
 fun CUTextField(
     modifier: Modifier = Modifier,
     visualTransformation: VisualTransformation = VisualTransformation.None,
-    placeholder:  @Composable (() -> Unit)? = null,
+    placeholder: @Composable (() -> Unit)? = null,
     label: @Composable (() -> Unit)? = null,
     value: String,
     onValueChanged: (String) -> (Unit),
@@ -73,6 +73,8 @@ fun CUTextField(
             focusedIndicatorColor = Color.Transparent,
             unfocusedIndicatorColor = Color.Transparent,
             disabledIndicatorColor = Color.Transparent,
+            disabledContainerColor = Color.White,
+            disabledTextColor = TextFieldDefaults.colors().focusedTextColor,
         ),
         visualTransformation = visualTransformation,
         keyboardOptions = keyboardOptions,
@@ -120,6 +122,21 @@ private fun CUTextFieldLongTextPreview() {
             value = "",
             onValueChanged = {},
             singleLine = false,
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun CUTextFieldDisabledPreview() {
+    AppTheme {
+        CUTextField(
+            modifier = Modifier,
+            hint = "",
+            visualTransformation = VisualTransformation.None,
+            value = "Value",
+            onValueChanged = {},
+            enabled = false,
         )
     }
 }

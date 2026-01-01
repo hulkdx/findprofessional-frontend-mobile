@@ -1,18 +1,18 @@
 package com.hulkdx.findprofessional.feature.developer
 
-import com.hulkdx.findprofessional.feature.pro.api.ProfessionalApi
-import com.hulkdx.findprofessional.feature.pro.model.Professional
-import com.hulkdx.findprofessional.feature.pro.model.ProfessionalAvailability
-import com.hulkdx.findprofessional.feature.pro.model.ProfessionalReview
+import com.hulkdx.findprofessional.feature.authentication.login.api.LoginApi
+import com.hulkdx.findprofessional.feature.authentication.login.model.LoginRequest
 import com.hulkdx.findprofessional.feature.authentication.model.user.ProUser
 import com.hulkdx.findprofessional.feature.authentication.model.user.Token
 import com.hulkdx.findprofessional.feature.authentication.model.user.User
 import com.hulkdx.findprofessional.feature.authentication.model.user.UserData
 import com.hulkdx.findprofessional.feature.authentication.model.user.UserType
-import com.hulkdx.findprofessional.feature.authentication.login.api.LoginApi
-import com.hulkdx.findprofessional.feature.authentication.login.model.LoginRequest
 import com.hulkdx.findprofessional.feature.authentication.signup.SignUpApi
 import com.hulkdx.findprofessional.feature.authentication.signup.model.RegisterRequest
+import com.hulkdx.findprofessional.feature.pro.api.ProfessionalApi
+import com.hulkdx.findprofessional.feature.pro.model.Professional
+import com.hulkdx.findprofessional.feature.pro.model.ProfessionalAvailability
+import com.hulkdx.findprofessional.feature.pro.model.ProfessionalReview
 import com.hulkdx.findprofessional.feature.pro.model.request.CreateBookingRequest
 import com.hulkdx.findprofessional.feature.pro.model.request.SignUpProRequest
 import com.hulkdx.findprofessional.feature.pro.model.request.UpdateAvailabilityRequest
@@ -236,7 +236,7 @@ internal class InMemoryApiImpl : InMemoryApi {
                         priceCurrency = request.priceCurrency,
                         priceNumber = request.price,
                         sessionLink = request.sessionLink,
-                        sessionPlatforms = request.sessionPlatforms,
+                        sessionPlatforms = request.sessionPlatform,
                     ),
                 )
             )
