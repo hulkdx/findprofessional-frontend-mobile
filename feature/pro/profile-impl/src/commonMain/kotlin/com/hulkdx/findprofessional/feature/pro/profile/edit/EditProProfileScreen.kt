@@ -160,7 +160,7 @@ private fun EditProProfileScreenContent(
         item {
             EditProProfileItem(
                 hint = stringResource(Res.string.sessionPlatform),
-                value = uiState.sessionPlatforms ?: "",
+                value = uiState.sessionPlatform ?: "",
                 onValueChanged = onSessionPlatformsChange,
             )
         }

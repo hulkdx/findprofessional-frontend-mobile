@@ -32,7 +32,7 @@ private object ApiUrl : KoinComponent {
         if (!isDebug) return ""
         return when (path) {
             "auth/login",
-            "auth/signup",
+            "auth/register",
             "auth/refresh-token",
             "auth/user",
             "auth/refresh",
@@ -44,4 +44,3 @@ private object ApiUrl : KoinComponent {
         }
     }
 }
-

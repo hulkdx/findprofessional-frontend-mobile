@@ -80,13 +80,13 @@ fun ProfileScreen(
             item { Header() }
             item { ProfileItem(Res.string.editProfile, onEditProfileClicked) }
             item { ProfileItem(Res.string.becomeCoach, onBecomeCoachClicked) }
-            item { ProfileItem(Res.string.logout, onLogoutClicked) }
             item {
                 ProfileItem(Res.string.contactSupport) { uriHandler.openUri(CONTACT_SUPPORT_URL) }
             }
             item {
                 ProfileItem(Res.string.reportProblem) { uriHandler.openUri(REPORT_PROBLEM_URL) }
             }
+            item { ProfileItem(Res.string.logout, onLogoutClicked) }
         }
     }
 }

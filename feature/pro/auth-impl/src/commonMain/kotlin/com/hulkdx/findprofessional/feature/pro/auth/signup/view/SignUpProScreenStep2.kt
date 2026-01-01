@@ -87,6 +87,7 @@ private fun Email(
         keyboardOptions = KeyboardOptions.Default.copy(
             imeAction = ImeAction.Next,
         ),
+        enabled = false,
     )
 }
 
