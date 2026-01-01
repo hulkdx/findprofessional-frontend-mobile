@@ -15,7 +15,7 @@ object DeveloperAuthPrefill {
     const val ABOUT_ME =
         "Helps you build confidence, clarity, and healthier habits. Great for navigating big life changes and staying accountable."
     const val SESSION_LINK = "Google Meet"
-    const val SESSION_PLATFORMS = "https://www. https://meet.google.com/abc-defg-hij"
+    const val SESSION_PLATFORMS = "https://meet.google.com/abc-defg-hij"
     const val PRICE = "20"
     const val CURRENCY = "EUR"
     const val WEBCAM_CONSENT = true
