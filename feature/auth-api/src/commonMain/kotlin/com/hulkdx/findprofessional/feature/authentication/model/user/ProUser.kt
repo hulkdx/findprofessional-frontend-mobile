@@ -15,7 +15,7 @@ data class ProUser(
     val profileImageUrl: String? = "",
     val description: String? = null,
     val sessionLink: String? = null,
-    val sessionPlatforms: String? = null,
+    val sessionPlatform: String? = null,
 ) : UserType() {
 
     val fullName: String

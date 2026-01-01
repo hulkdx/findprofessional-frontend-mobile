@@ -236,7 +236,7 @@ internal class InMemoryApiImpl : InMemoryApi {
                         priceCurrency = request.priceCurrency,
                         priceNumber = request.price,
                         sessionLink = request.sessionLink,
-                        sessionPlatforms = request.sessionPlatform,
+                        sessionPlatform = request.sessionPlatform,
                     ),
                 )
             )
