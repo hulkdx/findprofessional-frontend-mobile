@@ -5,10 +5,10 @@ import com.hulkdx.findprofessional.feature.authentication.model.user.ProUser
 import com.hulkdx.findprofessional.feature.authentication.model.user.User
 import com.hulkdx.findprofessional.feature.authentication.signup.SignUpScreen
 import com.hulkdx.findprofessional.feature.authentication.splash.Splash
+import com.hulkdx.findprofessional.feature.booking.confirmation.BookingConfirmationScreen
 import com.hulkdx.findprofessional.feature.booking.summery.BookingSummeryScreen
 import com.hulkdx.findprofessional.feature.booking.summery.BookingSummeryUiState
 import com.hulkdx.findprofessional.feature.booking.time.BookingTimeScreen
-import com.hulkdx.findprofessional.feature.booking.confirmation.BookingConfirmationScreen
 import com.hulkdx.findprofessional.feature.home.detail.HomeDetailScreen
 import com.hulkdx.findprofessional.feature.home.detail.availability.AvailabilityData
 import com.hulkdx.findprofessional.feature.home.main.view.HomeScreen
@@ -47,7 +47,6 @@ class ScreenshotTests {
             LoginScreen(
                 email = "",
                 password = "",
-                showDeveloper = false,
                 "", {}, {}, {}, {}, {}, {}, {}
             )
         }

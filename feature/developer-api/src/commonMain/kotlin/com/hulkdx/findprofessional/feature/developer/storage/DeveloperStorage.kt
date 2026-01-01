@@ -11,6 +11,7 @@ interface DeveloperStorage {
 
     enum class Key {
         MockData,
+        AuthPrefill,
         ;
 
         override fun toString(): String {
