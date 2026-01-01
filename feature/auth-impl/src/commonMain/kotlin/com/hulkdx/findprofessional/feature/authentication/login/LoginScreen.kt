@@ -21,6 +21,7 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
@@ -41,8 +42,11 @@ import com.hulkdx.findprofessional.core.ui.commonui.CUSnackBar
 import com.hulkdx.findprofessional.core.ui.commonui.CUTextButton
 import com.hulkdx.findprofessional.core.ui.theme.AppTheme
 import com.hulkdx.findprofessional.core.utils.singleClick
+import com.hulkdx.findprofessional.feature.developer.DeveloperAuthPrefill
+import com.hulkdx.findprofessional.feature.developer.storage.DeveloperStorage
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
+import org.koin.compose.getKoin
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
@@ -54,6 +58,19 @@ fun LoginScreen(
     val error by viewModel.error.collectAsState()
 
     val showDeveloper = isDebug()
+    val developerStorage = runCatching { getKoin().get<DeveloperStorage>() }.getOrNull()
+    val shouldPrefillAuth = developerStorage
+        ?.getAsFlowBoolean(DeveloperStorage.Key.AuthPrefill)
+        ?.collectAsState(false)
+        ?.value
+        ?: false
+
+    LaunchedEffect(shouldPrefillAuth) {
+        if (shouldPrefillAuth) {
+            viewModel.setEmail(DeveloperAuthPrefill.Email)
+            viewModel.setPassword(DeveloperAuthPrefill.Password)
+        }
+    }
 
     LoginScreen(
         email = email,

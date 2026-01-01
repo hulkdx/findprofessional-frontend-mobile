@@ -13,6 +13,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
@@ -21,10 +22,13 @@ import com.hulkdx.findprofessional.core.navigation.Navigator
 import com.hulkdx.findprofessional.core.ui.commonui.BACK_BUTTON_HEIGHT
 import com.hulkdx.findprofessional.core.ui.commonui.CUBackButton
 import com.hulkdx.findprofessional.core.ui.commonui.CUSnackBar
+import com.hulkdx.findprofessional.feature.developer.DeveloperAuthPrefill
+import com.hulkdx.findprofessional.feature.developer.storage.DeveloperStorage
 import com.hulkdx.findprofessional.feature.pro.auth.ProAuthNavigationScreen
 import com.hulkdx.findprofessional.feature.pro.auth.signup.SignUpProViewModel
 import com.hulkdx.findprofessional.feature.pro.model.request.SignUpProRequest
 import org.koin.compose.koinInject
+import org.koin.compose.getKoin
 import org.koin.compose.viewmodel.koinViewModel
 import org.koin.core.parameter.parametersOf
 
@@ -35,6 +39,19 @@ fun SignUpProScreen(
 ) {
     val uiState by viewModel.uiState.collectAsState()
     val error by viewModel.error.collectAsState()
+    val developerStorage = runCatching { getKoin().get<DeveloperStorage>() }.getOrNull()
+    val shouldPrefillAuth = developerStorage
+        ?.getAsFlowBoolean(DeveloperStorage.Key.AuthPrefill)
+        ?.collectAsState(false)
+        ?.value
+        ?: false
+
+    LaunchedEffect(shouldPrefillAuth) {
+        if (shouldPrefillAuth) {
+            viewModel.setEmail(DeveloperAuthPrefill.Email)
+            viewModel.setPassword(DeveloperAuthPrefill.Password)
+        }
+    }
 
     SignUpProScreen(
         uiState = uiState,

@@ -7,6 +7,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(projects.core)
+            implementation(projects.feature.developerApi)
             implementation(projects.feature.proApi)
             implementation(projects.feature.homeApi)
             api(projects.feature.pro.authApi)

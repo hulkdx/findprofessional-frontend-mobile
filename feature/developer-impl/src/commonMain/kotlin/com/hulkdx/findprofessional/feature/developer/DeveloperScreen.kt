@@ -17,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import com.hulkdx.findprofessional.core.ui.theme.AppTheme
 import com.hulkdx.findprofessional.feature.developer.storage.DeveloperStorage
+import com.hulkdx.findprofessional.feature.developer.storage.DeveloperStorage.Key.AuthPrefill
 import com.hulkdx.findprofessional.feature.developer.storage.DeveloperStorage.Key.MockData
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.ui.tooling.preview.Preview
@@ -29,10 +30,14 @@ fun DeveloperScreen() {
 
     val useMockDataFlow = storage.getAsFlowBoolean(MockData).collectAsState(false)
     val useMockData = useMockDataFlow.value ?: false
+    val useAuthPrefillFlow = storage.getAsFlowBoolean(AuthPrefill).collectAsState(false)
+    val useAuthPrefill = useAuthPrefillFlow.value ?: false
 
     DeveloperScreen(
         mockData = useMockData,
-        onMockDataChanged = { scope.launch { storage.setAsBoolean(MockData, !useMockData) } },
+        onMockDataChanged = { value -> scope.launch { storage.setAsBoolean(MockData, value) } },
+        authPrefill = useAuthPrefill,
+        onAuthPrefillChanged = { value -> scope.launch { storage.setAsBoolean(AuthPrefill, value) } },
     )
 }
 
@@ -40,6 +45,8 @@ fun DeveloperScreen() {
 fun DeveloperScreen(
     mockData: Boolean,
     onMockDataChanged: ((Boolean) -> Unit),
+    authPrefill: Boolean,
+    onAuthPrefillChanged: ((Boolean) -> Unit),
 ) {
     Column(
         modifier = Modifier
@@ -58,6 +65,16 @@ fun DeveloperScreen(
             )
             Text(text = "Use Mock Data")
         }
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Checkbox(
+                checked = authPrefill,
+                onCheckedChange = onAuthPrefillChanged
+            )
+            Text(text = "Prefill Auth Data")
+        }
     }
 }
 
@@ -68,6 +85,8 @@ private fun HomeScreenPreview() {
         DeveloperScreen(
             mockData = true,
             onMockDataChanged = {},
+            authPrefill = true,
+            onAuthPrefillChanged = {},
         )
     }
 }
