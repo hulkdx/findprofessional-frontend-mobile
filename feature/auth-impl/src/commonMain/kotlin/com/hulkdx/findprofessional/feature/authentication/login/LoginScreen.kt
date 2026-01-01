@@ -41,6 +41,7 @@ import com.hulkdx.findprofessional.core.ui.commonui.CUSnackBar
 import com.hulkdx.findprofessional.core.ui.commonui.CUTextButton
 import com.hulkdx.findprofessional.core.ui.theme.AppTheme
 import com.hulkdx.findprofessional.core.utils.singleClick
+import com.hulkdx.findprofessional.feature.developer.ShowPrefillOnDebug
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.viewmodel.koinViewModel
@@ -53,7 +54,10 @@ fun LoginScreen(
     val password by viewModel.password.collectAsState()
     val error by viewModel.error.collectAsState()
 
-    val showDeveloper = isDebug()
+    ShowPrefillOnDebug {
+        viewModel.setEmail(EMAIL)
+        viewModel.setPassword(PASSWORD)
+    }
 
     LoginScreen(
         email = email,
@@ -65,7 +69,6 @@ fun LoginScreen(
         onForgotPasswordClicked = viewModel::onForgotPasswordClicked,
         error = error?.localized(),
         onErrorDismissed = { viewModel.setError(null) },
-        showDeveloper = showDeveloper,
         onDevClicked = viewModel::onDevClicked,
     )
 }
@@ -74,7 +77,6 @@ fun LoginScreen(
 fun LoginScreen(
     email: String,
     password: String,
-    showDeveloper: Boolean,
     error: String?,
     onEmailChanged: (String) -> Unit,
     onPasswordChanged: (String) -> Unit,
@@ -155,7 +157,7 @@ fun LoginScreen(
             onDismiss = onErrorDismissed
         )
 
-        if (showDeveloper) {
+        if (isDebug()) {
             DeveloperButton(
                 modifier = Modifier.align(Alignment.TopEnd),
                 onClick = onDevClicked,
@@ -226,7 +228,6 @@ private fun LoginScreenPreview() {
             onErrorDismissed = {},
             onForgotPasswordClicked = {},
             onDevClicked = {},
-            showDeveloper = true,
         )
     }
 }

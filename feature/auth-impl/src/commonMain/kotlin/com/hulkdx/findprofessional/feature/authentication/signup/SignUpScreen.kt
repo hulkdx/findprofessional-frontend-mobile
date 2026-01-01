@@ -36,6 +36,7 @@ import com.hulkdx.findprofessional.core.ui.commonui.CUPasswordTextField
 import com.hulkdx.findprofessional.core.ui.commonui.CUSnackBar
 import com.hulkdx.findprofessional.core.ui.commonui.CUTextField
 import com.hulkdx.findprofessional.core.ui.theme.AppTheme
+import com.hulkdx.findprofessional.feature.developer.ShowPrefillOnDebug
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.viewmodel.koinViewModel
@@ -46,6 +47,13 @@ fun SignUpScreen(
 ) {
     val data by viewModel.uiState.collectAsState()
     val error by viewModel.error.collectAsState()
+
+    ShowPrefillOnDebug {
+        viewModel.setEmail(EMAIL)
+        viewModel.setPassword(PASSWORD)
+        viewModel.setFirstName(FIRSTNAME)
+        viewModel.setLastName(LASTNAME)
+    }
 
     SignUpScreen(
         firstName = data.firstName,

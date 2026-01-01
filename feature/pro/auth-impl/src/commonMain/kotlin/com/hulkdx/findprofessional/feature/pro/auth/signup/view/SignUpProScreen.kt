@@ -21,6 +21,7 @@ import com.hulkdx.findprofessional.core.navigation.Navigator
 import com.hulkdx.findprofessional.core.ui.commonui.BACK_BUTTON_HEIGHT
 import com.hulkdx.findprofessional.core.ui.commonui.CUBackButton
 import com.hulkdx.findprofessional.core.ui.commonui.CUSnackBar
+import com.hulkdx.findprofessional.feature.developer.ShowPrefillOnDebug
 import com.hulkdx.findprofessional.feature.pro.auth.ProAuthNavigationScreen
 import com.hulkdx.findprofessional.feature.pro.auth.signup.SignUpProViewModel
 import com.hulkdx.findprofessional.feature.pro.model.request.SignUpProRequest
@@ -35,6 +36,20 @@ fun SignUpProScreen(
 ) {
     val uiState by viewModel.uiState.collectAsState()
     val error by viewModel.error.collectAsState()
+
+    ShowPrefillOnDebug {
+        viewModel.setPassword(PASSWORD)
+        viewModel.setFirstName(FIRSTNAME)
+        viewModel.setLastName(LASTNAME)
+        viewModel.setCoachType(COACH_TYPE)
+        viewModel.setAboutMe(ABOUT_ME)
+        viewModel.setSessionLink(SESSION_LINK)
+        viewModel.setSessionPlatforms(SESSION_PLATFORMS)
+        viewModel.setPrice(PRICE)
+        viewModel.setCurrency(CURRENCY)
+        viewModel.setWebcamConsent(WEBCAM_CONSENT)
+        viewModel.setIdConsent(ID_CONSENT)
+    }
 
     SignUpProScreen(
         uiState = uiState,
