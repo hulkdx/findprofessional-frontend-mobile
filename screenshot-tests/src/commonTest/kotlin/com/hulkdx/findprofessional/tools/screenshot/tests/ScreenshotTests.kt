@@ -208,7 +208,15 @@ class ScreenshotTests {
                         ),
                     )
                 ),
-                {}, {}, {}, {}, {}, null, {},
+                isRefreshing = false,
+                onClickReportProblem = {},
+                onClickCancel = {},
+                onSegmentSelected = {},
+                onClickJoinSession = {},
+                onClickCopyBookingId = {},
+                onRefresh = {},
+                error = null,
+                onErrorDismissed = {},
             )
         }
     }

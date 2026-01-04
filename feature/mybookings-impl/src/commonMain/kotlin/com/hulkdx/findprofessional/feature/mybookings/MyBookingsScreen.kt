@@ -24,6 +24,7 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
+import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -70,12 +71,15 @@ fun MyBookingsScreen(
     viewModel: MyBookingsViewModel = koinViewModel(),
 ) {
     val state by viewModel.uiState.collectAsState()
+
     MyBookingsScreen(
         uiStatus = state,
         onSegmentSelected = viewModel::onSegmentSelected,
         onClickCancel = viewModel::onClickCancel,
         onClickReportProblem = viewModel::onClickReportProblem,
         onClickJoinSession = viewModel::onClickJoinSession,
+        isRefreshing = state.isLoading,
+        onRefresh = viewModel::onRefresh,
         error = null,
         onErrorDismissed = viewModel::onErrorDismissed,
         onClickCopyBookingId = viewModel::onClickCopyBookingId,
@@ -85,11 +89,13 @@ fun MyBookingsScreen(
 @Composable
 fun MyBookingsScreen(
     uiStatus: BookingUiState,
+    isRefreshing: Boolean,
     onClickReportProblem: () -> Unit,
     onClickCancel: () -> Unit,
     onSegmentSelected: (MyBookingSegment) -> Unit,
     onClickJoinSession: () -> Unit,
     onClickCopyBookingId: () -> Unit,
+    onRefresh: () -> Unit,
     error: String?,
     onErrorDismissed: () -> Unit,
 ) {
@@ -98,14 +104,19 @@ fun MyBookingsScreen(
         error = error,
         onErrorDismissed = onErrorDismissed,
     ) {
-        MyBookingsScreenContent(
-            uiStatus = uiStatus,
-            onSegmentSelected = onSegmentSelected,
-            onClickReportProblem = onClickReportProblem,
-            onClickCancel = onClickCancel,
-            onClickJoinSession = onClickJoinSession,
-            onClickCopyBookingId = onClickCopyBookingId,
-        )
+        PullToRefreshBox(
+            isRefreshing = isRefreshing,
+            onRefresh = onRefresh,
+        ) {
+            MyBookingsScreenContent(
+                uiStatus = uiStatus,
+                onSegmentSelected = onSegmentSelected,
+                onClickReportProblem = onClickReportProblem,
+                onClickCancel = onClickCancel,
+                onClickJoinSession = onClickJoinSession,
+                onClickCopyBookingId = onClickCopyBookingId,
+            )
+        }
     }
 }
 
@@ -335,7 +346,7 @@ private fun BookingName(booking: BookingUiState.Item) {
 @Composable
 private fun BookingStatusChip(status: BookingStatus) {
     val (background, foreground) = when (status) {
-        BookingStatus.Confirmed -> Pair(
+        BookingStatus.Completed, BookingStatus.Confirmed -> Pair(
             MaterialTheme.colorScheme.primary.copy(alpha = 0.12f),
             MaterialTheme.colorScheme.primary,
         )
@@ -526,6 +537,7 @@ private fun MyBookingsScreenPreview() {
                     ),
                 )
             ),
+            isRefreshing = false,
             error = null,
             onErrorDismissed = {},
             onSegmentSelected = {},
@@ -533,6 +545,7 @@ private fun MyBookingsScreenPreview() {
             onClickReportProblem = {},
             onClickJoinSession = {},
             onClickCopyBookingId = {},
+            onRefresh = {},
         )
     }
 }
