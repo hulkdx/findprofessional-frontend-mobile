@@ -15,21 +15,29 @@
 ## CI
 
 ### Android
-A push to `main` branch will release it to [Google Play](https://play.google.com/store/apps/details?id=com.hulkdx.findprofessional)
+
+A push to `main` branch will release it
+to [Google Play](https://play.google.com/store/apps/details?id=com.hulkdx.findprofessional)
 
 ## iOS
+
 Under development
 
 ## Troubleshooting
 
 ### Running in Xcode - Java mismatch
+
 If you want to run the code in xcode and java version mismatches, run the following line:
+
 ```sh
 echo JAVA_HOME=\'/Applications/Android Studio.app/Contents/jbr/Contents/Home\' > ios/.env
 ```
 
 ## TODO
 
-- Implement stripe for iOS 
-- Consider using nav-3 when it is stable in CMM (alternatively you can use [nav-2](https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-navigation-routing.html))
-- (if needed) Use [this](https://arkivanov.github.io/Decompose/tips-tricks/composable-viewmodel/#composable-functions-with-viewmodels-with-savedstatehandle) guide if you need SavedStateHandle in ViewModel of Decompose.
+- Use collectAsStateWithLifecycle
+- Consider using nav-3 when it is stable in CMM (alternatively you can
+  use [nav-2](https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-navigation-routing.html))
+- (if needed)
+  Use [this](https://arkivanov.github.io/Decompose/tips-tricks/composable-viewmodel/#composable-functions-with-viewmodels-with-savedstatehandle)
+  guide if you need SavedStateHandle in ViewModel of Decompose.

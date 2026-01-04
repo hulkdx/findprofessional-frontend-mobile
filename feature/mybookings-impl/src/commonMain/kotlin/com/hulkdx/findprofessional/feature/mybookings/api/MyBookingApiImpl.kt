@@ -13,9 +13,18 @@ class MyBookingApiImpl(
     private val client: HttpClient,
     private val userStorage: UserStorage,
 ) : MyBookingApi {
-    override suspend fun getMyBookingsList(): MyBookingsResponse {
+    override suspend fun getUserBookings(): MyBookingsResponse {
         return client.get {
-            apiUrl("TODO")
+            apiUrl("professional/bookings/user")
+            auth(userStorage)
+            contentType(ContentType.Application.Json)
+        }
+            .body()
+    }
+
+    override suspend fun getProBookings(): MyBookingsResponse {
+        return client.get {
+            apiUrl("professional/bookings/pro")
             auth(userStorage)
             contentType(ContentType.Application.Json)
         }

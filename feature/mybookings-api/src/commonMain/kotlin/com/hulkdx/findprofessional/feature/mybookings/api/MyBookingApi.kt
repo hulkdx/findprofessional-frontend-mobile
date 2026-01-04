@@ -1,5 +1,6 @@
 package com.hulkdx.findprofessional.feature.mybookings.api
 
 interface MyBookingApi {
-    suspend fun getMyBookingsList(): MyBookingsResponse
+    suspend fun getUserBookings(): MyBookingsResponse
+    suspend fun getProBookings(): MyBookingsResponse
 }

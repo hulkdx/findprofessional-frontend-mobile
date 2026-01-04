@@ -7,6 +7,6 @@ class GetMyBookingsUseCase(
     private val api: MyBookingApi,
 ) {
     suspend fun execute() = runCatching {
-        api.getMyBookingsList()
+        api.getUserBookings()
     }
 }

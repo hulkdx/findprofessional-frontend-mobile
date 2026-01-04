@@ -26,6 +26,7 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -68,8 +69,9 @@ import org.koin.compose.viewmodel.koinViewModel
 fun MyBookingsScreen(
     viewModel: MyBookingsViewModel = koinViewModel(),
 ) {
+    val state by viewModel.uiState.collectAsState()
     MyBookingsScreen(
-        uiStatus = BookingUiState(listOf()),
+        uiStatus = state,
         onSegmentSelected = viewModel::onSegmentSelected,
         onClickCancel = viewModel::onClickCancel,
         onClickReportProblem = viewModel::onClickReportProblem,
@@ -286,12 +288,6 @@ private fun BookingCardTopRow(booking: BookingUiState.Item) {
             }
             Spacer(modifier = Modifier.height(4.dp))
             Text(
-                text = booking.type,
-                style = body3Medium,
-                color = MaterialTheme.colorScheme.errorContainer,
-            )
-            Spacer(modifier = Modifier.height(2.dp))
-            Text(
                 text = booking.startTime,
                 style = body3,
                 color = MaterialTheme.colorScheme.errorContainer,
@@ -486,6 +482,7 @@ private fun MyBookingsScreenPreview() {
     AppTheme {
         MyBookingsScreen(
             uiStatus = BookingUiState(
+                isLoading = false,
                 items = listOf(
                     BookingUiState.Item(
                         id = "1",
@@ -493,7 +490,6 @@ private fun MyBookingsScreenPreview() {
                         "16",
                         "Sarah Adams",
                         BookingStatus.Confirmed,
-                        "Fitness coaching",
                         "09:00 EET • 45 min",
                         canJoinSession = true,
                         canCancel = true
@@ -503,8 +499,7 @@ private fun MyBookingsScreenPreview() {
                         "Mon",
                         "17",
                         "Sarah Adams",
-                        BookingStatus.Canceled,
-                        "Life coaching",
+                        BookingStatus.Failed,
                         "13:00 • 45 min",
                         canJoinSession = false,
                         canCancel = false,
@@ -515,7 +510,6 @@ private fun MyBookingsScreenPreview() {
                         "16",
                         "Sarah Adams",
                         BookingStatus.Confirmed,
-                        "Fitness coaching",
                         "09:00 EET • 45 min",
                         canJoinSession = true,
                         canCancel = false,
@@ -526,7 +520,6 @@ private fun MyBookingsScreenPreview() {
                         "16",
                         "Sarah Adams",
                         BookingStatus.Confirmed,
-                        "Fitness coaching",
                         "09:00 EET • 45 min",
                         canJoinSession = false,
                         canCancel = true

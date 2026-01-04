@@ -184,6 +184,7 @@ class ScreenshotTests {
         screenShotTests(className, "myBookingsScreen") {
             MyBookingsScreen(
                 uiStatus = BookingUiState(
+                    isLoading = false,
                     items = listOf(
                         BookingUiState.Item(
                             id = "1",
@@ -191,7 +192,6 @@ class ScreenshotTests {
                             "16",
                             "Sarah Adams",
                             BookingStatus.Confirmed,
-                            "Fitness coaching",
                             "09:00 EET • 45 min",
                             canJoinSession = true,
                             canCancel = true
@@ -201,8 +201,7 @@ class ScreenshotTests {
                             "Mon",
                             "17",
                             "Sarah Adams",
-                            BookingStatus.Canceled,
-                            "Life coaching",
+                            BookingStatus.Failed,
                             "13:00 • 45 min",
                             canJoinSession = false,
                             canCancel = false,
