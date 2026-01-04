@@ -22,7 +22,6 @@ jobs:
         with:
           distribution: ${{ env.JAVA_DIST }}
           java-version: ${{ env.JAVA_VERSION }}
-          cache: 'gradle'
 
       - uses: actions/cache@v4
         with:
@@ -75,7 +74,6 @@ jobs:
         with:
           distribution: ${{ env.JAVA_DIST }}
           java-version: ${{ env.JAVA_VERSION }}
-          cache: 'gradle'
 
       - uses: actions/cache@v4
         with:
@@ -106,9 +104,14 @@ jobs:
           emulator-options: -no-snapshot -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -camera-front none
           script: |
             touch adb-log.txt
-            adb logcat '*:D' >> adb-log.txt &
+            adb logcat -c || true
+            adb logcat '*:W' >> adb-log.txt &
             LOGCAT_PID=$!
+
             adb emu screenrecord start --time-limit 1800 video.webm || true
+            
+            trap "adb emu screenrecord stop >/dev/null 2>&1 || true; kill $LOGCAT_PID >/dev/null 2>&1 || true" EXIT
+            
             sleep 5
             ./gradlew connectedAndroidTest
 
@@ -136,6 +139,12 @@ jobs:
           name: ${{ matrix.name }}-adb_video
           path: video.webm
 
+      - name: Cleanup (avoid disk-full in post steps)
+        if: always()
+        run: |
+          rm -rf **/build || true
+          rm -f video.webm adb-log.txt || true
+
 
   ios-tests:
     name: IOS unit and integration tests
@@ -152,8 +161,6 @@ jobs:
         with:
           distribution: ${{ env.JAVA_DIST }}
           java-version: ${{ env.JAVA_VERSION }}
-          cache: 'gradle'
-        continue-on-error: true
 
       - uses: actions/cache@v4
         with:

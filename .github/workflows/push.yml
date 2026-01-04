@@ -2,7 +2,7 @@ name: Deploy to Google Play
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
 
 env:
   JAVA_VERSION: 21
@@ -22,7 +22,6 @@ jobs:
         with:
           distribution: ${{ env.JAVA_DIST }}
           java-version: ${{ env.JAVA_VERSION }}
-          cache: 'gradle'
 
       - name: Version bump setup
         run: echo "RELEASE_VERSION=$(git rev-list --count origin/main)" >> $GITHUB_ENV
