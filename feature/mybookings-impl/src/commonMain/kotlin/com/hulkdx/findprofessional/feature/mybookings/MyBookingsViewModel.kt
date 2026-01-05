@@ -4,11 +4,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hulkdx.findprofessional.core.utils.StringOrRes
 import com.hulkdx.findprofessional.core.utils.generalError
-import com.hulkdx.findprofessional.feature.mybookings.api.Booking
 import com.hulkdx.findprofessional.feature.mybookings.model.BookingUiState
 import com.hulkdx.findprofessional.feature.mybookings.model.BookingUiState.Item
 import com.hulkdx.findprofessional.feature.mybookings.model.MyBookingSegment
 import com.hulkdx.findprofessional.feature.mybookings.usecase.GetMyBookingsUseCase
+import com.hulkdx.findprofessional.feature.pro.model.Booking
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow

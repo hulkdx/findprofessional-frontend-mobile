@@ -1,10 +1,10 @@
 package com.hulkdx.findprofessional.feature.mybookings
 
 import com.hulkdx.findprofessional.core.utils.shortDayOfWeeks
-import com.hulkdx.findprofessional.feature.mybookings.api.Booking
 import com.hulkdx.findprofessional.feature.mybookings.model.BookingStatus
 import com.hulkdx.findprofessional.feature.mybookings.model.BookingUiState
 import com.hulkdx.findprofessional.feature.mybookings.model.MyBookingSegment
+import com.hulkdx.findprofessional.feature.pro.model.Booking
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
 import kotlin.time.Instant

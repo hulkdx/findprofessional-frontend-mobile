@@ -12,6 +12,7 @@ import com.hulkdx.findprofessional.feature.pro.model.request.SignUpProRequest
 import com.hulkdx.findprofessional.feature.pro.model.request.UpdateAvailabilityRequest
 import com.hulkdx.findprofessional.feature.pro.model.response.CreateBookingResponse
 import com.hulkdx.findprofessional.feature.pro.model.response.GetBookingStatusResponse
+import com.hulkdx.findprofessional.feature.mybookings.api.MyBookingsResponse
 
 open class StubProfessionalApi : ProfessionalApi {
     override suspend fun findAll(): List<Professional> {
@@ -47,5 +48,13 @@ open class StubProfessionalApi : ProfessionalApi {
 
     override suspend fun getBookingStatus(id: Long): GetBookingStatusResponse {
         return GetBookingStatusResponse(status = GetBookingStatusResponse.Status.PENDING)
+    }
+
+    override suspend fun getUserBookings(): MyBookingsResponse {
+        return emptyList()
+    }
+
+    override suspend fun getProBookings(): MyBookingsResponse {
+        return emptyList()
     }
 }

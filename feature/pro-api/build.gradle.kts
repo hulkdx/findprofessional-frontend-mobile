@@ -8,6 +8,7 @@ kotlin {
         commonMain.dependencies {
             api(projects.core)
             api(projects.feature.authApi)
+            api(projects.feature.mybookingsApi)
         }
         commonTest.dependencies {
             implementation(kotlin("test"))
