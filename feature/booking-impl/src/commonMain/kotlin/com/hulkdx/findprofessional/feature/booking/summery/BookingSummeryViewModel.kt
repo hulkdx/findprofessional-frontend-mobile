@@ -17,9 +17,9 @@ import com.hulkdx.findprofessional.feature.booking.summery.usecase.BookingSummer
 import com.hulkdx.findprofessional.feature.booking.summery.usecase.CheckBookingStatusUseCase
 import com.hulkdx.findprofessional.feature.booking.summery.usecase.CreateBookingUseCase
 import com.hulkdx.findprofessional.feature.home.HomeNavigationScreen
+import com.hulkdx.findprofessional.feature.pro.model.Booking.Status.FAILED
 import com.hulkdx.findprofessional.feature.pro.model.Professional
 import com.hulkdx.findprofessional.feature.pro.model.ProfessionalAvailability
-import com.hulkdx.findprofessional.feature.pro.model.response.GetBookingStatusResponse.Status.FAILED
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

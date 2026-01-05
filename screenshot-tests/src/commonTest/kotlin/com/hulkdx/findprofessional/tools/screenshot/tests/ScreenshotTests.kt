@@ -13,7 +13,6 @@ import com.hulkdx.findprofessional.feature.home.detail.HomeDetailScreen
 import com.hulkdx.findprofessional.feature.home.detail.availability.AvailabilityData
 import com.hulkdx.findprofessional.feature.home.main.view.HomeScreen
 import com.hulkdx.findprofessional.feature.mybookings.MyBookingsScreen
-import com.hulkdx.findprofessional.feature.mybookings.model.BookingStatus
 import com.hulkdx.findprofessional.feature.mybookings.model.BookingUiState
 import com.hulkdx.findprofessional.feature.pro.auth.signup.view.SignUpProScreenStep1
 import com.hulkdx.findprofessional.feature.pro.auth.signup.view.SignUpProScreenStep2
@@ -21,6 +20,8 @@ import com.hulkdx.findprofessional.feature.pro.availability.detail.ProAvailabili
 import com.hulkdx.findprofessional.feature.pro.availability.detail.ProAvailabilityDetailViewModel
 import com.hulkdx.findprofessional.feature.pro.availability.detail.TimeSlot
 import com.hulkdx.findprofessional.feature.pro.availability.main.ProAvailabilityScreen
+import com.hulkdx.findprofessional.feature.pro.model.Booking.Status.CONFIRMED
+import com.hulkdx.findprofessional.feature.pro.model.Booking.Status.FAILED
 import com.hulkdx.findprofessional.feature.pro.model.request.SignUpProRequest
 import com.hulkdx.findprofessional.feature.pro.profile.ProProfileScreen
 import com.hulkdx.findprofessional.feature.pro.profile.edit.EditProProfileScreen
@@ -191,7 +192,7 @@ class ScreenshotTests {
                             "Mon",
                             "16",
                             "Sarah Adams",
-                            BookingStatus.Confirmed,
+                            CONFIRMED,
                             "09:00 EET • 45 min",
                             canJoinSession = true,
                             canCancel = true
@@ -201,7 +202,7 @@ class ScreenshotTests {
                             "Mon",
                             "17",
                             "Sarah Adams",
-                            BookingStatus.Failed,
+                            FAILED,
                             "13:00 • 45 min",
                             canJoinSession = false,
                             canCancel = false,

@@ -1,12 +1,13 @@
 package com.hulkdx.findprofessional.feature.pro.model
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlin.time.Instant
 
 @Serializable
 data class Booking(
     val id: Long,
-    val status: String,
+    val status: Status,
     val scheduledStartAt: Instant,
     val scheduledEndAt: Instant,
     val totalAmountCents: Long,
@@ -30,4 +31,20 @@ data class Booking(
         val sessionPlatform: String? = null,
         val sessionLink: String? = null,
     )
+
+    @Serializable
+    enum class Status {
+        @SerialName("pending")
+        PENDING,
+
+        @SerialName("confirmed")
+        CONFIRMED,
+
+        @SerialName("failed")
+        FAILED,
+
+        @SerialName("completed")
+        COMPLETED,
+        ;
+    }
 }

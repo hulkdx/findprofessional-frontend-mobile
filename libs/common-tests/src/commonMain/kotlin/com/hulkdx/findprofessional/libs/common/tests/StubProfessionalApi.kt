@@ -1,18 +1,18 @@
 package com.hulkdx.findprofessional.libs.common.tests
 
-import com.hulkdx.findprofessional.feature.pro.api.ProfessionalApi
-import com.hulkdx.findprofessional.feature.pro.model.Professional
-import com.hulkdx.findprofessional.feature.pro.model.ProfessionalAvailability
 import com.hulkdx.findprofessional.feature.authentication.model.user.ProUser
 import com.hulkdx.findprofessional.feature.authentication.model.user.Token
 import com.hulkdx.findprofessional.feature.authentication.model.user.User
 import com.hulkdx.findprofessional.feature.authentication.model.user.UserData
+import com.hulkdx.findprofessional.feature.pro.api.ProfessionalApi
+import com.hulkdx.findprofessional.feature.pro.model.Booking
+import com.hulkdx.findprofessional.feature.pro.model.Professional
+import com.hulkdx.findprofessional.feature.pro.model.ProfessionalAvailability
 import com.hulkdx.findprofessional.feature.pro.model.request.CreateBookingRequest
 import com.hulkdx.findprofessional.feature.pro.model.request.SignUpProRequest
 import com.hulkdx.findprofessional.feature.pro.model.request.UpdateAvailabilityRequest
 import com.hulkdx.findprofessional.feature.pro.model.response.CreateBookingResponse
 import com.hulkdx.findprofessional.feature.pro.model.response.GetBookingStatusResponse
-import com.hulkdx.findprofessional.feature.mybookings.api.MyBookingsResponse
 
 open class StubProfessionalApi : ProfessionalApi {
     override suspend fun findAll(): List<Professional> {
@@ -47,14 +47,14 @@ open class StubProfessionalApi : ProfessionalApi {
     }
 
     override suspend fun getBookingStatus(id: Long): GetBookingStatusResponse {
-        return GetBookingStatusResponse(status = GetBookingStatusResponse.Status.PENDING)
+        return GetBookingStatusResponse(status = Booking.Status.PENDING)
     }
 
-    override suspend fun getUserBookings(): MyBookingsResponse {
+    override suspend fun getUserBookings(): List<Booking> {
         return emptyList()
     }
 
-    override suspend fun getProBookings(): MyBookingsResponse {
+    override suspend fun getProBookings(): List<Booking> {
         return emptyList()
     }
 }

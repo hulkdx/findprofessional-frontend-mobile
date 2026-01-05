@@ -1,10 +1,10 @@
 package com.hulkdx.findprofessional.feature.mybookings
 
 import com.hulkdx.findprofessional.core.utils.shortDayOfWeeks
-import com.hulkdx.findprofessional.feature.mybookings.model.BookingStatus
 import com.hulkdx.findprofessional.feature.mybookings.model.BookingUiState
 import com.hulkdx.findprofessional.feature.mybookings.model.MyBookingSegment
 import com.hulkdx.findprofessional.feature.pro.model.Booking
+import com.hulkdx.findprofessional.feature.pro.model.Booking.Status.CONFIRMED
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
 import kotlin.time.Instant
@@ -33,17 +33,16 @@ fun Booking.toUiState(
     now: Instant,
 ): BookingUiState.Item {
     val startTime = scheduledStartAt.toLocalDateTime(timeZone)
-    val bookingStatus = BookingStatus.valueOfOrUnknown(status)
 
-    val canJoin = bookingStatus == BookingStatus.Confirmed && (scheduledEndAt < now)
-    val canCancel = bookingStatus in listOf(BookingStatus.Confirmed, BookingStatus.Completed)
+    val canJoin = (status == CONFIRMED) && (now <= scheduledEndAt)
+    val canCancel = (status == CONFIRMED)
 
     return BookingUiState.Item(
         id = id.toString(),
         dayLabel = startTime.date.shortDayOfWeeks(),
         dayNumber = startTime.date.day.toString(),
         fullName = "${professional.firstName} ${professional.lastName}",
-        status = bookingStatus,
+        status = status,
         startTime = "${startTime.time} $timeZone",
         canJoinSession = canJoin,
         canCancel = canCancel,

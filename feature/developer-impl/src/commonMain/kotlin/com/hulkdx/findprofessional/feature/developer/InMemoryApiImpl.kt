@@ -279,7 +279,7 @@ internal class InMemoryApiImpl : InMemoryApi {
         }
 
         override suspend fun getBookingStatus(id: Long): GetBookingStatusResponse {
-            return GetBookingStatusResponse(status = GetBookingStatusResponse.Status.PENDING)
+            return GetBookingStatusResponse(status = Booking.Status.PENDING)
         }
 
         override suspend fun getUserBookings(): List<Booking> {

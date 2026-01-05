@@ -58,9 +58,12 @@ import com.hulkdx.findprofessional.core.ui.theme.body3
 import com.hulkdx.findprofessional.core.ui.theme.body3Medium
 import com.hulkdx.findprofessional.core.ui.theme.h1Medium
 import com.hulkdx.findprofessional.core.ui.theme.h3Medium
-import com.hulkdx.findprofessional.feature.mybookings.model.BookingStatus
 import com.hulkdx.findprofessional.feature.mybookings.model.BookingUiState
 import com.hulkdx.findprofessional.feature.mybookings.model.MyBookingSegment
+import com.hulkdx.findprofessional.feature.pro.model.Booking
+import com.hulkdx.findprofessional.feature.pro.model.Booking.Status.COMPLETED
+import com.hulkdx.findprofessional.feature.pro.model.Booking.Status.CONFIRMED
+import com.hulkdx.findprofessional.feature.pro.model.Booking.Status.FAILED
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
@@ -344,9 +347,9 @@ private fun BookingName(booking: BookingUiState.Item) {
 }
 
 @Composable
-private fun BookingStatusChip(status: BookingStatus) {
+private fun BookingStatusChip(status: Booking.Status) {
     val (background, foreground) = when (status) {
-        BookingStatus.Completed, BookingStatus.Confirmed -> Pair(
+        COMPLETED, CONFIRMED -> Pair(
             MaterialTheme.colorScheme.primary.copy(alpha = 0.12f),
             MaterialTheme.colorScheme.primary,
         )
@@ -500,7 +503,7 @@ private fun MyBookingsScreenPreview() {
                         "Mon",
                         "16",
                         "Sarah Adams",
-                        BookingStatus.Confirmed,
+                        CONFIRMED,
                         "09:00 EET • 45 min",
                         canJoinSession = true,
                         canCancel = true
@@ -510,7 +513,7 @@ private fun MyBookingsScreenPreview() {
                         "Mon",
                         "17",
                         "Sarah Adams",
-                        BookingStatus.Failed,
+                        FAILED,
                         "13:00 • 45 min",
                         canJoinSession = false,
                         canCancel = false,
@@ -520,7 +523,7 @@ private fun MyBookingsScreenPreview() {
                         "Mon",
                         "16",
                         "Sarah Adams",
-                        BookingStatus.Confirmed,
+                        CONFIRMED,
                         "09:00 EET • 45 min",
                         canJoinSession = true,
                         canCancel = false,
@@ -530,7 +533,7 @@ private fun MyBookingsScreenPreview() {
                         "Mon",
                         "16",
                         "Sarah Adams",
-                        BookingStatus.Confirmed,
+                        CONFIRMED,
                         "09:00 EET • 45 min",
                         canJoinSession = false,
                         canCancel = true

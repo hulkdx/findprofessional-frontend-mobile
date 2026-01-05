@@ -1,6 +1,7 @@
 package com.hulkdx.findprofessional.feature.mybookings.model
 
 import com.hulkdx.findprofessional.core.utils.StringOrRes
+import com.hulkdx.findprofessional.feature.pro.model.Booking.Status
 
 data class BookingUiState(
     val isLoading: Boolean = true,
@@ -13,25 +14,9 @@ data class BookingUiState(
         val dayLabel: String,
         val dayNumber: String,
         val fullName: String,
-        val status: BookingStatus,
+        val status: Status,
         val startTime: String,
         val canJoinSession: Boolean = true,
         val canCancel: Boolean = true,
     )
-}
-
-// TODO: remove and replace with other status
-enum class BookingStatus {
-    Pending,
-    Confirmed,
-    Completed,
-    Failed,
-    Unknown,
-    ;
-
-    companion object {
-        fun valueOfOrUnknown(value: String): BookingStatus {
-            return entries.firstOrNull { it.name.lowercase() == value } ?: Unknown
-        }
-    }
 }
