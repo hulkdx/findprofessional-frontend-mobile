@@ -9,9 +9,6 @@ import platform.Foundation.NSUserDomainMask
 
 class PlatformSpecificIOS : PlatformSpecific {
 
-//    @OptIn(ExperimentalNativeApi::class)
-//    override fun isDebug() = Platform.isDebugBinary
-
     override fun localhostUrl() = "localhost"
 
     override fun appDirectoryPath(): String {

@@ -4,6 +4,9 @@ plugins {
 }
 
 kotlin {
+    androidLibrary {
+        namespace = "com.hulkdx.findprofessional.feature.home.api"
+    }
     sourceSets {
         commonMain.dependencies {
             implementation(projects.core)
@@ -12,6 +15,3 @@ kotlin {
     }
 }
 
-android {
-    namespace = "com.hulkdx.findprofessional.feature.home.api"
-}

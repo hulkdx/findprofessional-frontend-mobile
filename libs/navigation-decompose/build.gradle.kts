@@ -4,6 +4,9 @@ plugins {
 }
 
 kotlin {
+    androidLibrary {
+        namespace = "com.hulkdx.findprofessional.libs.navigation.decompose"
+    }
     sourceSets {
         androidMain.dependencies {
             implementation(libs.androidx.activity.compose)
@@ -21,6 +24,3 @@ kotlin {
     }
 }
 
-android {
-    namespace = "com.hulkdx.findprofessional.libs.navigation.decompose"
-}

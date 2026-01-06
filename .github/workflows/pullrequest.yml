@@ -182,7 +182,7 @@ jobs:
             ${{ runner.os }}-konan-
 
       - name: Run IOS instrumentation tests
-        run: ./gradlew iosSimulatorArm64Test -x :screenshot-tests:iosSimulatorArm64Test
+        run: ./gradlew iosSimulatorArm64Test
 
       - name: Upload IOS test reports
         if: failure()

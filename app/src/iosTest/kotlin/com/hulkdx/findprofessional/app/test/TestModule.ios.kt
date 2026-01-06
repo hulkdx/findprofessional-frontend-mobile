@@ -13,8 +13,6 @@ actual fun testPlatformSpecific(): PlatformSpecific {
 
 private class TestPlatformSpecificIOS : PlatformSpecific {
 
-    override fun isDebug() = com.hulkdx.findprofessional.core.platform.isDebug()
-
     override fun localhostUrl() = "localhost"
 
     override fun appDirectoryPath(): String {

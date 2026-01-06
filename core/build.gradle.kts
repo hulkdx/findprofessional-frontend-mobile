@@ -4,6 +4,13 @@ plugins {
 }
 
 kotlin {
+    androidLibrary {
+        namespace = "com.hulkdx.findprofessional.core"
+
+        androidResources {
+            enable = true
+        }
+    }
     sourceSets {
         commonMain.dependencies {
             implementation(compose.materialIconsExtended)
@@ -25,10 +32,6 @@ kotlin {
             implementation(kotlin("test-annotations-common"))
         }
     }
-}
-
-android {
-    namespace = "com.hulkdx.findprofessional.core"
 }
 
 compose.resources {
