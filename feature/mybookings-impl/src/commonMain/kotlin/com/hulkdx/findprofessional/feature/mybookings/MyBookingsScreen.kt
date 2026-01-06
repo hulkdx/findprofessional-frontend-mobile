@@ -24,8 +24,10 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
+import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -56,9 +58,12 @@ import com.hulkdx.findprofessional.core.ui.theme.body3
 import com.hulkdx.findprofessional.core.ui.theme.body3Medium
 import com.hulkdx.findprofessional.core.ui.theme.h1Medium
 import com.hulkdx.findprofessional.core.ui.theme.h3Medium
-import com.hulkdx.findprofessional.feature.mybookings.model.BookingStatus
 import com.hulkdx.findprofessional.feature.mybookings.model.BookingUiState
 import com.hulkdx.findprofessional.feature.mybookings.model.MyBookingSegment
+import com.hulkdx.findprofessional.feature.pro.model.Booking
+import com.hulkdx.findprofessional.feature.pro.model.Booking.Status.COMPLETED
+import com.hulkdx.findprofessional.feature.pro.model.Booking.Status.CONFIRMED
+import com.hulkdx.findprofessional.feature.pro.model.Booking.Status.FAILED
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
@@ -68,12 +73,16 @@ import org.koin.compose.viewmodel.koinViewModel
 fun MyBookingsScreen(
     viewModel: MyBookingsViewModel = koinViewModel(),
 ) {
+    val state by viewModel.uiState.collectAsState()
+
     MyBookingsScreen(
-        uiStatus = BookingUiState(listOf()),
+        uiStatus = state,
         onSegmentSelected = viewModel::onSegmentSelected,
         onClickCancel = viewModel::onClickCancel,
         onClickReportProblem = viewModel::onClickReportProblem,
         onClickJoinSession = viewModel::onClickJoinSession,
+        isRefreshing = state.isLoading,
+        onRefresh = viewModel::onRefresh,
         error = null,
         onErrorDismissed = viewModel::onErrorDismissed,
         onClickCopyBookingId = viewModel::onClickCopyBookingId,
@@ -83,11 +92,13 @@ fun MyBookingsScreen(
 @Composable
 fun MyBookingsScreen(
     uiStatus: BookingUiState,
+    isRefreshing: Boolean,
     onClickReportProblem: () -> Unit,
     onClickCancel: () -> Unit,
     onSegmentSelected: (MyBookingSegment) -> Unit,
     onClickJoinSession: () -> Unit,
     onClickCopyBookingId: () -> Unit,
+    onRefresh: () -> Unit,
     error: String?,
     onErrorDismissed: () -> Unit,
 ) {
@@ -96,14 +107,19 @@ fun MyBookingsScreen(
         error = error,
         onErrorDismissed = onErrorDismissed,
     ) {
-        MyBookingsScreenContent(
-            uiStatus = uiStatus,
-            onSegmentSelected = onSegmentSelected,
-            onClickReportProblem = onClickReportProblem,
-            onClickCancel = onClickCancel,
-            onClickJoinSession = onClickJoinSession,
-            onClickCopyBookingId = onClickCopyBookingId,
-        )
+        PullToRefreshBox(
+            isRefreshing = isRefreshing,
+            onRefresh = onRefresh,
+        ) {
+            MyBookingsScreenContent(
+                uiStatus = uiStatus,
+                onSegmentSelected = onSegmentSelected,
+                onClickReportProblem = onClickReportProblem,
+                onClickCancel = onClickCancel,
+                onClickJoinSession = onClickJoinSession,
+                onClickCopyBookingId = onClickCopyBookingId,
+            )
+        }
     }
 }
 
@@ -286,12 +302,6 @@ private fun BookingCardTopRow(booking: BookingUiState.Item) {
             }
             Spacer(modifier = Modifier.height(4.dp))
             Text(
-                text = booking.type,
-                style = body3Medium,
-                color = MaterialTheme.colorScheme.errorContainer,
-            )
-            Spacer(modifier = Modifier.height(2.dp))
-            Text(
                 text = booking.startTime,
                 style = body3,
                 color = MaterialTheme.colorScheme.errorContainer,
@@ -337,9 +347,9 @@ private fun BookingName(booking: BookingUiState.Item) {
 }
 
 @Composable
-private fun BookingStatusChip(status: BookingStatus) {
+private fun BookingStatusChip(status: Booking.Status) {
     val (background, foreground) = when (status) {
-        BookingStatus.Confirmed -> Pair(
+        COMPLETED, CONFIRMED -> Pair(
             MaterialTheme.colorScheme.primary.copy(alpha = 0.12f),
             MaterialTheme.colorScheme.primary,
         )
@@ -486,14 +496,14 @@ private fun MyBookingsScreenPreview() {
     AppTheme {
         MyBookingsScreen(
             uiStatus = BookingUiState(
+                isLoading = false,
                 items = listOf(
                     BookingUiState.Item(
                         id = "1",
                         "Mon",
                         "16",
                         "Sarah Adams",
-                        BookingStatus.Confirmed,
-                        "Fitness coaching",
+                        CONFIRMED,
                         "09:00 EET • 45 min",
                         canJoinSession = true,
                         canCancel = true
@@ -503,8 +513,7 @@ private fun MyBookingsScreenPreview() {
                         "Mon",
                         "17",
                         "Sarah Adams",
-                        BookingStatus.Canceled,
-                        "Life coaching",
+                        FAILED,
                         "13:00 • 45 min",
                         canJoinSession = false,
                         canCancel = false,
@@ -514,8 +523,7 @@ private fun MyBookingsScreenPreview() {
                         "Mon",
                         "16",
                         "Sarah Adams",
-                        BookingStatus.Confirmed,
-                        "Fitness coaching",
+                        CONFIRMED,
                         "09:00 EET • 45 min",
                         canJoinSession = true,
                         canCancel = false,
@@ -525,14 +533,14 @@ private fun MyBookingsScreenPreview() {
                         "Mon",
                         "16",
                         "Sarah Adams",
-                        BookingStatus.Confirmed,
-                        "Fitness coaching",
+                        CONFIRMED,
                         "09:00 EET • 45 min",
                         canJoinSession = false,
                         canCancel = true
                     ),
                 )
             ),
+            isRefreshing = false,
             error = null,
             onErrorDismissed = {},
             onSegmentSelected = {},
@@ -540,6 +548,7 @@ private fun MyBookingsScreenPreview() {
             onClickReportProblem = {},
             onClickJoinSession = {},
             onClickCopyBookingId = {},
+            onRefresh = {},
         )
     }
 }

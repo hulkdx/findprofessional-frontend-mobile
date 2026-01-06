@@ -9,6 +9,7 @@ kotlin {
             implementation(projects.core)
             api(projects.feature.mybookingsApi)
             implementation(projects.feature.authApi)
+            implementation(projects.feature.proApi)
 
             implementation(libs.lifecycle.viewmodel.compose)
             implementation(compose.materialIconsExtended)

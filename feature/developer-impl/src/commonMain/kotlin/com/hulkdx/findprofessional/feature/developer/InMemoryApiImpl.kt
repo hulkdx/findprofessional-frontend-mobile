@@ -10,6 +10,7 @@ import com.hulkdx.findprofessional.feature.authentication.model.user.UserType
 import com.hulkdx.findprofessional.feature.authentication.signup.SignUpApi
 import com.hulkdx.findprofessional.feature.authentication.signup.model.RegisterRequest
 import com.hulkdx.findprofessional.feature.pro.api.ProfessionalApi
+import com.hulkdx.findprofessional.feature.pro.model.Booking
 import com.hulkdx.findprofessional.feature.pro.model.Professional
 import com.hulkdx.findprofessional.feature.pro.model.ProfessionalAvailability
 import com.hulkdx.findprofessional.feature.pro.model.ProfessionalReview
@@ -278,7 +279,15 @@ internal class InMemoryApiImpl : InMemoryApi {
         }
 
         override suspend fun getBookingStatus(id: Long): GetBookingStatusResponse {
-            return GetBookingStatusResponse(status = GetBookingStatusResponse.Status.PENDING)
+            return GetBookingStatusResponse(status = Booking.Status.PENDING)
+        }
+
+        override suspend fun getUserBookings(): List<Booking> {
+            return emptyList()
+        }
+
+        override suspend fun getProBookings(): List<Booking> {
+            return emptyList()
         }
     }
 
