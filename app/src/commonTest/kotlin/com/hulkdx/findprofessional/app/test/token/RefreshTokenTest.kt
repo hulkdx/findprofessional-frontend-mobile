@@ -9,14 +9,14 @@ import com.hulkdx.findprofessional.app.test.screen.login.launchLoginScreen
 import com.hulkdx.findprofessional.app.test.utils.Rule
 import com.hulkdx.findprofessional.app.test.utils.assertNodeIsDisplayed
 import com.hulkdx.findprofessional.app.test.utils.get
-import com.hulkdx.findprofessional.feature.authentication.model.user.Token
-import com.hulkdx.findprofessional.feature.authentication.model.user.UserData
-import com.hulkdx.findprofessional.feature.authentication.storage.UserStorage
-import com.hulkdx.findprofessional.feature.authentication.storage.getAccessToken
 import com.hulkdx.findprofessional.feature.authentication.login.api.LoginApi
 import com.hulkdx.findprofessional.feature.authentication.login.api.RefreshTokenApi
 import com.hulkdx.findprofessional.feature.authentication.login.api.TokenInterceptor
 import com.hulkdx.findprofessional.feature.authentication.login.model.LoginRequest
+import com.hulkdx.findprofessional.feature.authentication.model.user.Token
+import com.hulkdx.findprofessional.feature.authentication.model.user.UserData
+import com.hulkdx.findprofessional.feature.authentication.storage.UserStorage
+import com.hulkdx.findprofessional.feature.authentication.storage.getAccessToken
 import com.hulkdx.findprofessional.libs.common.tests.newUser
 import io.ktor.client.HttpClient
 import io.ktor.client.HttpClientConfig
@@ -148,7 +148,7 @@ class RefreshTokenTest {
         client.get("")
     }
 
-    private fun getHttpClientConfig() = AppApiProvider.getConfig(get())
+    private fun getHttpClientConfig() = AppApiProvider.getConfig()
 
     // endregion
     // region mock classes

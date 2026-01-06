@@ -7,13 +7,12 @@ import io.ktor.client.plugins.HttpSend
 import io.ktor.client.plugins.plugin
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.factoryOf
-import org.koin.dsl.bind
 import org.koin.dsl.module
 import org.koin.mp.KoinPlatformTools
 
 val apiModule: Module
     get() = module {
-        single { AppApiProvider.httpClient(get()) }
+        single { AppApiProvider.httpClient() }
 
         factoryOf(::TokenInterceptor)
     }
