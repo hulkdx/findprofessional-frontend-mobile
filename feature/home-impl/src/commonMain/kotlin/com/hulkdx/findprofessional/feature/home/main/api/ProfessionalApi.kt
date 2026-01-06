@@ -1,13 +1,14 @@
 package com.hulkdx.findprofessional.feature.home.main.api
 
-import com.hulkdx.findprofessional.feature.pro.api.ProfessionalApi
-import com.hulkdx.findprofessional.feature.pro.model.Professional
-import com.hulkdx.findprofessional.feature.pro.model.ProfessionalAvailability
+import com.hulkdx.findprofessional.core.network.apiUrl
 import com.hulkdx.findprofessional.feature.authentication.model.user.ProUser
 import com.hulkdx.findprofessional.feature.authentication.model.user.UserData
-import com.hulkdx.findprofessional.core.network.apiUrl
 import com.hulkdx.findprofessional.feature.authentication.storage.UserStorage
 import com.hulkdx.findprofessional.feature.authentication.storage.auth
+import com.hulkdx.findprofessional.feature.pro.api.ProfessionalApi
+import com.hulkdx.findprofessional.feature.pro.model.Booking
+import com.hulkdx.findprofessional.feature.pro.model.Professional
+import com.hulkdx.findprofessional.feature.pro.model.ProfessionalAvailability
 import com.hulkdx.findprofessional.feature.pro.model.request.CreateBookingRequest
 import com.hulkdx.findprofessional.feature.pro.model.request.SignUpProRequest
 import com.hulkdx.findprofessional.feature.pro.model.request.UpdateAvailabilityRequest
@@ -87,5 +88,23 @@ class ProfessionalApiImpl(
             apiUrl("professional/booking/$id/status")
             contentType(ContentType.Application.Json)
         }.body()
+    }
+
+    override suspend fun getUserBookings(): List<Booking> {
+        return client.get {
+            apiUrl("professional/bookings/user")
+            auth(userStorage)
+            contentType(ContentType.Application.Json)
+        }
+            .body()
+    }
+
+    override suspend fun getProBookings(): List<Booking> {
+        return client.get {
+            apiUrl("professional/bookings/pro")
+            auth(userStorage)
+            contentType(ContentType.Application.Json)
+        }
+            .body()
     }
 }

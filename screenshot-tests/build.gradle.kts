@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.paparazzi)
+    alias(libs.plugins.compose.compiler)
 }
 
 kotlin {
@@ -46,6 +47,12 @@ kotlin {
 android {
     namespace = "com.hulkdx.findprofessional.tools.screenshot.tests"
     compileSdk = 36
+    defaultConfig {
+        minSdk = 30
+    }
+    buildFeatures {
+        compose = true
+    }
 }
 
 // Disable release build type

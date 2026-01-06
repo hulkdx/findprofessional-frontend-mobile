@@ -35,6 +35,7 @@ echo JAVA_HOME=\'/Applications/Android Studio.app/Contents/jbr/Contents/Home\' >
 
 ## TODO
 
+- Use collectAsStateWithLifecycle
 - Compose Preview is not working at the moment it
   requires [AGP 9.0.0-alpha13](https://developer.android.com/kotlin/multiplatform/plugin#android-kmp_6)
 - Implement stripe for iOS

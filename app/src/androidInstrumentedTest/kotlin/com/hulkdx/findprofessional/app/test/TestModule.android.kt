@@ -10,8 +10,6 @@ actual fun testPlatformSpecific(): PlatformSpecific {
 private class TestPlatformSpecificAndroid : PlatformSpecific {
     private val context = InstrumentationRegistry.getInstrumentation().targetContext
 
-    override fun isDebug() = com.hulkdx.findprofessional.core.platform.isDebug()
-
     override fun localhostUrl() = "10.0.2.2"
 
     override fun appDirectoryPath(): String {
