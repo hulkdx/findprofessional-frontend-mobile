@@ -63,7 +63,6 @@
     <string name="addNewTime">Add New Time</string>
     <string name="apply_">Apply</string>
     <string name="applyToAll">Apply to all %1$ss</string>
-    <string name="applyToOnly">Apply to %1$s only</string>
 
     <string name="schedule">Schedule</string>
 
@@ -82,5 +81,8 @@
     <string name="help">Help</string>
     <string name="joinSession">Join session</string>
     <string name="copyBookingId">Copy Booking ID</string>
+    <string name="noCoachSessionLink">Coach hasn’t added a session link yet, report a problem</string>
+    <string name="cannotOpenUrl">Cannot open url %1$s</string>
+    <string name="cancellationNotSupported">Cancellation is not available yet in the MVP. If you want to cancel, tap ‘Report a problem’ and include your booking ID.</string>
 
 </resources>

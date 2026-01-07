@@ -7,6 +7,7 @@ import com.hulkdx.findprofessional.feature.pro.model.Booking
 import com.hulkdx.findprofessional.feature.pro.model.Booking.Status.CONFIRMED
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
+import kotlin.time.Duration.Companion.minutes
 import kotlin.time.Instant
 
 fun List<Booking>.toUiState(
@@ -34,8 +35,15 @@ fun Booking.toUiState(
 ): BookingUiState.Item {
     val startTime = scheduledStartAt.toLocalDateTime(timeZone)
 
-    val canJoin = (status == CONFIRMED) && (now <= scheduledEndAt)
-    val canCancel = (status == CONFIRMED)
+    val earlyJoin = 30.minutes
+    val joinGrace = 30.minutes
+
+    val canJoin = status == CONFIRMED &&
+            now >= (scheduledStartAt - earlyJoin) &&
+            now <= (scheduledEndAt + joinGrace)
+
+    val canCancel = status == CONFIRMED &&
+            now < scheduledStartAt
 
     return BookingUiState.Item(
         id = id.toString(),
@@ -46,5 +54,6 @@ fun Booking.toUiState(
         startTime = "${startTime.time} $timeZone",
         canJoinSession = canJoin,
         canCancel = canCancel,
+        session = session,
     )
 }
