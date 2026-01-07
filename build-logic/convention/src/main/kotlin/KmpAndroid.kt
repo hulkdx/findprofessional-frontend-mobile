@@ -1,11 +1,14 @@
 import com.android.build.api.dsl.CommonExtension
 import org.gradle.api.JavaVersion
 
+const val COMPILE_SDK = 36
+const val MIN_SDK = 30
+
 fun android(ext: CommonExtension<*, *, *, *, *, *>) = with(ext) {
-    compileSdk = 36
+    compileSdk = COMPILE_SDK
 
     defaultConfig {
-        minSdk = 30
+        minSdk = MIN_SDK
     }
 
     compileOptions {

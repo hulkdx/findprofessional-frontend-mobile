@@ -36,8 +36,13 @@ echo JAVA_HOME=\'/Applications/Android Studio.app/Contents/jbr/Contents/Home\' >
 ## TODO
 
 - Use collectAsStateWithLifecycle
+- Compose Preview is not working at the moment it
+  requires [AGP 9.0.0-alpha13](https://developer.android.com/kotlin/multiplatform/plugin#android-kmp_6)
+- Implement stripe for iOS
 - Consider using nav-3 when it is stable in CMM (alternatively you can
   use [nav-2](https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-navigation-routing.html))
 - (if needed)
   Use [this](https://arkivanov.github.io/Decompose/tips-tricks/composable-viewmodel/#composable-functions-with-viewmodels-with-savedstatehandle)
   guide if you need SavedStateHandle in ViewModel of Decompose.
+- IsDebug() function uses reflection but thats the only option, unless I would like to
+  use [BuildKonfig](https://github.com/yshrsmz/BuildKonfig)

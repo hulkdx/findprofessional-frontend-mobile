@@ -10,6 +10,8 @@ plugins {
 }
 
 kotlin {
+    jvmToolchain(21)
+
     sourceSets.all {
         // TODO: remove when https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.time/-instant/ is not experimental
         languageSettings.optIn("kotlin.time.ExperimentalTime")

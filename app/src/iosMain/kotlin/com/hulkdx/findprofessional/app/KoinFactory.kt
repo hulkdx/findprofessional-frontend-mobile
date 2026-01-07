@@ -2,7 +2,6 @@ package com.hulkdx.findprofessional.app
 
 import com.hulkdx.findprofessional.app.di.initKoin
 import com.hulkdx.findprofessional.core.platform.PlatformSpecific
-import com.hulkdx.findprofessional.core.platform.PlatformSpecificIOS
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.factoryOf
 import org.koin.dsl.bind

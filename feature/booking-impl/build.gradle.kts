@@ -4,6 +4,9 @@ plugins {
 }
 
 kotlin {
+    androidLibrary {
+        namespace = "com.hulkdx.findprofessional.feature.booking"
+    }
     sourceSets {
         androidMain.dependencies {
             implementation(libs.stripe.android)
@@ -30,6 +33,3 @@ kotlin {
     }
 }
 
-android {
-    namespace = "com.hulkdx.findprofessional.feature.booking"
-}

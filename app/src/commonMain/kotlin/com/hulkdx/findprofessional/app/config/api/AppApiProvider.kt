@@ -1,9 +1,8 @@
 package com.hulkdx.findprofessional.app.config.api
 
-import com.hulkdx.findprofessional.core.platform.PlatformSpecific
+import com.hulkdx.findprofessional.core.platform.isDebug
 import io.ktor.client.HttpClient
 import io.ktor.client.HttpClientConfig
-import io.ktor.client.plugins.DefaultRequest
 import io.ktor.client.plugins.HttpTimeout
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.logging.LogLevel
@@ -13,25 +12,25 @@ import io.ktor.serialization.kotlinx.json.json
 
 object AppApiProvider {
 
-    fun httpClient(ps: PlatformSpecific): HttpClient {
-        return HttpClient(getConfig(ps))
+    fun httpClient(): HttpClient {
+        return HttpClient(getConfig())
     }
 
-    fun getConfig(ps: PlatformSpecific): HttpClientConfig<*>.() -> Unit = {
+    fun getConfig(): HttpClientConfig<*>.() -> Unit = {
         install(ContentNegotiation) {
             json()
         }
 
         install(HttpTimeout) {
             socketTimeoutMillis = 10_000
-            requestTimeoutMillis =  10_000
+            requestTimeoutMillis = 10_000
             connectTimeoutMillis = 10_000
         }
 
         // throws exception when request is not successful:
         expectSuccess = true
 
-        if (ps.isDebug()) {
+        if (isDebug()) {
             debugClientConfig()
         }
     }

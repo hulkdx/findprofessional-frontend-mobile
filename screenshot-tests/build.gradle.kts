@@ -1,10 +1,14 @@
 plugins {
-    alias(libs.plugins.hulkdx.kmp.library)
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.paparazzi)
+    alias(libs.plugins.compose.compiler)
 }
 
 kotlin {
+    androidTarget()
+
     sourceSets {
         commonMain.dependencies {
             // same dependencies as :app
@@ -42,6 +46,13 @@ kotlin {
 
 android {
     namespace = "com.hulkdx.findprofessional.tools.screenshot.tests"
+    compileSdk = 36
+    defaultConfig {
+        minSdk = 30
+    }
+    buildFeatures {
+        compose = true
+    }
 }
 
 // Disable release build type

@@ -1,4 +1,4 @@
-package com.hulkdx.findprofessional.app.test
+package com.hulkdx.findprofessional.app
 
 import com.hulkdx.findprofessional.core.platform.PlatformSpecific
 import kotlinx.cinterop.ExperimentalForeignApi
@@ -7,11 +7,7 @@ import platform.Foundation.NSFileManager
 import platform.Foundation.NSURL
 import platform.Foundation.NSUserDomainMask
 
-actual fun testPlatformSpecific(): PlatformSpecific {
-    return TestPlatformSpecificIOS()
-}
-
-private class TestPlatformSpecificIOS : PlatformSpecific {
+class PlatformSpecificIOS : PlatformSpecific {
 
     override fun localhostUrl() = "localhost"
 
