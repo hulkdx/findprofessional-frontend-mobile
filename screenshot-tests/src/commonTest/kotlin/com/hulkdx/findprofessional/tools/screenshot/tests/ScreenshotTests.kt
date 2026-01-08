@@ -20,6 +20,7 @@ import com.hulkdx.findprofessional.feature.pro.availability.detail.ProAvailabili
 import com.hulkdx.findprofessional.feature.pro.availability.detail.ProAvailabilityDetailViewModel
 import com.hulkdx.findprofessional.feature.pro.availability.detail.TimeSlot
 import com.hulkdx.findprofessional.feature.pro.availability.main.ProAvailabilityScreen
+import com.hulkdx.findprofessional.feature.pro.model.Booking
 import com.hulkdx.findprofessional.feature.pro.model.Booking.Status.CONFIRMED
 import com.hulkdx.findprofessional.feature.pro.model.Booking.Status.FAILED
 import com.hulkdx.findprofessional.feature.pro.model.request.SignUpProRequest
@@ -194,8 +195,7 @@ class ScreenshotTests {
                             "Sarah Adams",
                             CONFIRMED,
                             "09:00 EET • 45 min",
-                            canJoinSession = true,
-                            canCancel = true
+                            session = Booking.SessionInfo(),
                         ),
                         BookingUiState.Item(
                             id = "2",
@@ -206,6 +206,7 @@ class ScreenshotTests {
                             "13:00 • 45 min",
                             canJoinSession = false,
                             canCancel = false,
+                            session = Booking.SessionInfo(),
                         ),
                     )
                 ),

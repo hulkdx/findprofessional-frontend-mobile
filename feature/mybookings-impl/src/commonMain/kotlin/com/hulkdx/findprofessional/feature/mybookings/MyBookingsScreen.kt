@@ -31,11 +31,14 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalClipboard
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
@@ -44,6 +47,7 @@ import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.bookingPast
 import com.hulkdx.findprofessional.core.resources.bookingUpcoming
 import com.hulkdx.findprofessional.core.resources.cancel
+import com.hulkdx.findprofessional.core.resources.cannotOpenUrl
 import com.hulkdx.findprofessional.core.resources.copyBookingId
 import com.hulkdx.findprofessional.core.resources.joinSession
 import com.hulkdx.findprofessional.core.resources.myBookingsTitle
@@ -58,13 +62,17 @@ import com.hulkdx.findprofessional.core.ui.theme.body3
 import com.hulkdx.findprofessional.core.ui.theme.body3Medium
 import com.hulkdx.findprofessional.core.ui.theme.h1Medium
 import com.hulkdx.findprofessional.core.ui.theme.h3Medium
+import com.hulkdx.findprofessional.core.utils.clipboard.createClipEntry
+import com.hulkdx.findprofessional.core.utils.toStringOrRes
 import com.hulkdx.findprofessional.feature.mybookings.model.BookingUiState
 import com.hulkdx.findprofessional.feature.mybookings.model.MyBookingSegment
 import com.hulkdx.findprofessional.feature.pro.model.Booking
 import com.hulkdx.findprofessional.feature.pro.model.Booking.Status.COMPLETED
 import com.hulkdx.findprofessional.feature.pro.model.Booking.Status.CONFIRMED
 import com.hulkdx.findprofessional.feature.pro.model.Booking.Status.FAILED
+import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.StringResource
+import org.jetbrains.compose.resources.getString
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.viewmodel.koinViewModel
@@ -74,6 +82,30 @@ fun MyBookingsScreen(
     viewModel: MyBookingsViewModel = koinViewModel(),
 ) {
     val state by viewModel.uiState.collectAsState()
+    val clipboard = LocalClipboard.current
+    val scope = rememberCoroutineScope()
+    val uriHandler = LocalUriHandler.current
+
+    val navigation = state.navigation
+    LaunchedEffect(navigation) {
+        when (navigation) {
+            is BookingUiState.Navigation.OpenUrl -> {
+                runCatching {
+                    uriHandler.openUri(navigation.url)
+                }.onFailure {
+                    viewModel.setError(
+                        getString(Res.string.cannotOpenUrl, navigation.url)
+                            .toStringOrRes()
+                    )
+                }
+            }
+
+            null -> {
+                // no-op
+            }
+        }
+        viewModel.onNavigated()
+    }
 
     MyBookingsScreen(
         uiStatus = state,
@@ -83,9 +115,13 @@ fun MyBookingsScreen(
         onClickJoinSession = viewModel::onClickJoinSession,
         isRefreshing = state.isLoading,
         onRefresh = viewModel::onRefresh,
-        error = null,
+        error = state.error?.localized(),
         onErrorDismissed = viewModel::onErrorDismissed,
-        onClickCopyBookingId = viewModel::onClickCopyBookingId,
+        onClickCopyBookingId = {
+            scope.launch {
+                clipboard.setClipEntry(createClipEntry(it.id))
+            }
+        }
     )
 }
 
@@ -96,8 +132,8 @@ fun MyBookingsScreen(
     onClickReportProblem: () -> Unit,
     onClickCancel: () -> Unit,
     onSegmentSelected: (MyBookingSegment) -> Unit,
-    onClickJoinSession: () -> Unit,
-    onClickCopyBookingId: () -> Unit,
+    onClickJoinSession: (BookingUiState.Item) -> Unit,
+    onClickCopyBookingId: (BookingUiState.Item) -> Unit,
     onRefresh: () -> Unit,
     error: String?,
     onErrorDismissed: () -> Unit,
@@ -128,9 +164,9 @@ fun MyBookingsScreenContent(
     uiStatus: BookingUiState,
     onClickReportProblem: () -> Unit,
     onClickCancel: () -> Unit,
-    onClickJoinSession: () -> Unit,
+    onClickJoinSession: (BookingUiState.Item) -> Unit,
     onSegmentSelected: (MyBookingSegment) -> Unit,
-    onClickCopyBookingId: () -> Unit,
+    onClickCopyBookingId: (BookingUiState.Item) -> Unit,
 ) {
     LazyColumn(
         modifier = Modifier
@@ -257,8 +293,8 @@ private fun BookingCard(
     booking: BookingUiState.Item,
     onClickReportProblem: () -> Unit,
     onClickCancel: () -> Unit,
-    onClickJoinSession: () -> Unit,
-    onClickCopyBookingId: () -> Unit,
+    onClickJoinSession: (BookingUiState.Item) -> Unit,
+    onClickCopyBookingId: (BookingUiState.Item) -> Unit,
 ) {
     Column(
         modifier = Modifier
@@ -378,8 +414,8 @@ private fun BookingCardButtons(
     booking: BookingUiState.Item,
     onClickReportProblem: () -> Unit,
     onClickCancel: () -> Unit,
-    onClickJoinSession: () -> Unit,
-    onClickCopyBookingId: () -> Unit,
+    onClickJoinSession: (BookingUiState.Item) -> Unit,
+    onClickCopyBookingId: (BookingUiState.Item) -> Unit,
 ) {
     if (booking.canJoinSession || booking.canCancel) {
         Row(
@@ -387,7 +423,7 @@ private fun BookingCardButtons(
             modifier = Modifier.fillMaxWidth(),
         ) {
             if (booking.canJoinSession) {
-                JoinSession(onClickJoinSession)
+                JoinSession(onClickJoinSession = { onClickJoinSession(booking) })
             } else {
                 Spacer(Modifier.weight(1f))
             }
@@ -401,7 +437,7 @@ private fun BookingCardButtons(
         horizontalArrangement = Arrangement.spacedBy(10.dp),
         modifier = Modifier.fillMaxWidth(),
     ) {
-        CopyBookingId(onClickCopyBookingId)
+        CopyBookingId(onClickCopyBookingId = { onClickCopyBookingId(booking) })
         ReportProblem(onClickReportProblem)
     }
 }
@@ -505,8 +541,7 @@ private fun MyBookingsScreenPreview() {
                         "Sarah Adams",
                         CONFIRMED,
                         "09:00 EET • 45 min",
-                        canJoinSession = true,
-                        canCancel = true
+                        session = Booking.SessionInfo()
                     ),
                     BookingUiState.Item(
                         id = "2",
@@ -517,6 +552,7 @@ private fun MyBookingsScreenPreview() {
                         "13:00 • 45 min",
                         canJoinSession = false,
                         canCancel = false,
+                        session = Booking.SessionInfo(),
                     ),
                     BookingUiState.Item(
                         id = "1",
@@ -525,8 +561,8 @@ private fun MyBookingsScreenPreview() {
                         "Sarah Adams",
                         CONFIRMED,
                         "09:00 EET • 45 min",
-                        canJoinSession = true,
                         canCancel = false,
+                        session = Booking.SessionInfo(),
                     ),
                     BookingUiState.Item(
                         id = "1",
@@ -536,7 +572,7 @@ private fun MyBookingsScreenPreview() {
                         CONFIRMED,
                         "09:00 EET • 45 min",
                         canJoinSession = false,
-                        canCancel = true
+                        session = Booking.SessionInfo(),
                     ),
                 )
             ),

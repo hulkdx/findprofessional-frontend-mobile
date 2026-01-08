@@ -1,6 +1,7 @@
 package com.hulkdx.findprofessional.feature.mybookings.model
 
 import com.hulkdx.findprofessional.core.utils.StringOrRes
+import com.hulkdx.findprofessional.feature.pro.model.Booking
 import com.hulkdx.findprofessional.feature.pro.model.Booking.Status
 
 data class BookingUiState(
@@ -8,6 +9,7 @@ data class BookingUiState(
     val error: StringOrRes? = null,
     val segment: MyBookingSegment = MyBookingSegment.Upcoming,
     val items: List<Item> = listOf(),
+    val navigation: Navigation? = null,
 ) {
     data class Item(
         val id: String,
@@ -18,5 +20,10 @@ data class BookingUiState(
         val startTime: String,
         val canJoinSession: Boolean = true,
         val canCancel: Boolean = true,
+        val session: Booking.SessionInfo,
     )
+
+    sealed interface Navigation {
+        data class OpenUrl(val url: String) : Navigation
+    }
 }
