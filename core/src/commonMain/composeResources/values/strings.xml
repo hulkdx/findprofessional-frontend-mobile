@@ -84,5 +84,6 @@
     <string name="noCoachSessionLink">Coach hasn’t added a session link yet, report a problem</string>
     <string name="cannotOpenUrl">Cannot open url %1$s</string>
     <string name="cancellationNotSupported">Cancellation is not available yet in the MVP. If you want to cancel, tap ‘Report a problem’ and include your booking ID.</string>
+    <string name="bookingIdEquals">Booking ID = %1$s</string>
 
 </resources>

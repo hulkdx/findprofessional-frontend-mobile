@@ -28,7 +28,6 @@ fun List<Booking>.toUiState(
     }.map { it.toUiState(timeZone, now) }
 }
 
-
 fun Booking.toUiState(
     timeZone: TimeZone,
     now: Instant,
