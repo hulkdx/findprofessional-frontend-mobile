@@ -26,6 +26,9 @@ import com.hulkdx.findprofessional.feature.pro.model.Booking.Status.FAILED
 import com.hulkdx.findprofessional.feature.pro.model.request.SignUpProRequest
 import com.hulkdx.findprofessional.feature.pro.profile.ProProfileScreen
 import com.hulkdx.findprofessional.feature.pro.profile.edit.EditProProfileScreen
+import com.hulkdx.findprofessional.feature.pro.schedule.model.ScheduleUiState
+import com.hulkdx.findprofessional.feature.pro.schedule.model.Segment
+import com.hulkdx.findprofessional.feature.pro.schedule.ui.ProScheduleScreen
 import com.hulkdx.findprofessional.feature.profile.ProfileScreen
 import com.hulkdx.findprofessional.feature.profile.edit.ProfileEditScreen
 import com.hulkdx.findprofessional.feature.review.ReviewScreen
@@ -185,7 +188,7 @@ class ScreenshotTests {
     fun myBookingsScreen() {
         screenShotTests(className, "myBookingsScreen") {
             MyBookingsScreen(
-                uiStatus = BookingUiState(
+                uiState = BookingUiState(
                     isLoading = false,
                     items = listOf(
                         BookingUiState.Item(
@@ -301,6 +304,40 @@ class ScreenshotTests {
                     ),
                 ),
                 null, {}, { _, _ -> }, { _, _ -> }, {}, {}, {}, {}
+            )
+        }
+    }
+
+    @Test
+    fun proSchedule() {
+        screenShotTests(className, "proSchedule") {
+            ProScheduleScreen(
+                uiState = ScheduleUiState(
+                    items = listOf(
+                        ScheduleUiState.Item(
+                            id = "1",
+                            "Mon",
+                            "16",
+                            "Sarah Adams",
+                            CONFIRMED,
+                            "09:00 EET • 45 min",
+                            session = Booking.SessionInfo(),
+                            canJoin = true,
+                        ),
+                        ScheduleUiState.Item(
+                            id = "2",
+                            "Mon",
+                            "17",
+                            "Sarah Adams",
+                            FAILED,
+                            "13:00 • 45 min",
+                            session = Booking.SessionInfo(),
+                            canJoin = false,
+                        ),
+                    ),
+                    segment = Segment.Upcoming,
+                ),
+                {}, {}, {}, null, {},
             )
         }
     }

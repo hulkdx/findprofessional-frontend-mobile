@@ -108,7 +108,7 @@ fun MyBookingsScreen(
     }
 
     MyBookingsScreen(
-        uiStatus = state,
+        uiState = state,
         onSegmentSelected = viewModel::onSegmentSelected,
         onClickCancel = viewModel::onClickCancel,
         onClickReportProblem = viewModel::onClickReportProblem,
@@ -127,7 +127,7 @@ fun MyBookingsScreen(
 
 @Composable
 fun MyBookingsScreen(
-    uiStatus: BookingUiState,
+    uiState: BookingUiState,
     isRefreshing: Boolean,
     onClickReportProblem: () -> Unit,
     onClickCancel: () -> Unit,
@@ -148,7 +148,7 @@ fun MyBookingsScreen(
             onRefresh = onRefresh,
         ) {
             MyBookingsScreenContent(
-                uiStatus = uiStatus,
+                uiState = uiState,
                 onSegmentSelected = onSegmentSelected,
                 onClickReportProblem = onClickReportProblem,
                 onClickCancel = onClickCancel,
@@ -161,7 +161,7 @@ fun MyBookingsScreen(
 
 @Composable
 fun MyBookingsScreenContent(
-    uiStatus: BookingUiState,
+    uiState: BookingUiState,
     onClickReportProblem: () -> Unit,
     onClickCancel: () -> Unit,
     onClickJoinSession: (BookingUiState.Item) -> Unit,
@@ -184,7 +184,7 @@ fun MyBookingsScreenContent(
             }
         }
         items(
-            items = uiStatus.items,
+            items = uiState.items,
             key = { it.id },
         ) {
             BookingCard(
@@ -531,7 +531,7 @@ private fun PrimaryActionButton(
 private fun MyBookingsScreenPreview() {
     AppTheme {
         MyBookingsScreen(
-            uiStatus = BookingUiState(
+            uiState = BookingUiState(
                 isLoading = false,
                 items = listOf(
                     BookingUiState.Item(

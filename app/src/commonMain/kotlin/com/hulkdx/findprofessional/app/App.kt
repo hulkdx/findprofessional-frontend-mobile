@@ -27,7 +27,7 @@ import com.hulkdx.findprofessional.feature.pro.profile.ProProfileNavigationScree
 import com.hulkdx.findprofessional.feature.pro.profile.ProProfileScreen
 import com.hulkdx.findprofessional.feature.pro.profile.edit.EditProProfileScreen
 import com.hulkdx.findprofessional.feature.pro.schedule.ProScheduleNavigationScreen
-import com.hulkdx.findprofessional.feature.pro.schedule.ProScheduleScreen
+import com.hulkdx.findprofessional.feature.pro.schedule.ui.ProScheduleScreen
 import com.hulkdx.findprofessional.feature.profile.ProfileNavigationScreen
 import com.hulkdx.findprofessional.feature.profile.ProfileScreen
 import com.hulkdx.findprofessional.feature.profile.edit.ProfileEditScreen
