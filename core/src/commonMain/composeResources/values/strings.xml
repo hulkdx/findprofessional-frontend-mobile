@@ -83,7 +83,8 @@
     <string name="copyBookingId">Copy Booking ID</string>
     <string name="noCoachSessionLink">Coach hasn’t added a session link yet, report a problem</string>
     <string name="cannotOpenUrl">Cannot open url %1$s</string>
-    <string name="cancellationNotSupported">Cancellation is not available yet in the MVP. If you want to cancel, tap ‘Report a problem’ and include your booking ID.</string>
+    <string name="cancellationNotSupportedTitle">Cancellation isn’t automatic yet</string>
+    <string name="cancellationNotSupported">To cancel, you need to submit a request. We’ll confirm by email. Include booking ID.</string>
     <string name="bookingIdEquals">Booking ID = %1$s</string>
 
 </resources>

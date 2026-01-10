@@ -64,6 +64,7 @@ import com.hulkdx.findprofessional.core.ui.theme.h1Medium
 import com.hulkdx.findprofessional.core.ui.theme.h3Medium
 import com.hulkdx.findprofessional.core.utils.clipboard.createClipEntry
 import com.hulkdx.findprofessional.core.utils.toStringOrRes
+import com.hulkdx.findprofessional.feature.mybookings.dialog.CancellationDialog
 import com.hulkdx.findprofessional.feature.mybookings.model.BookingUiState
 import com.hulkdx.findprofessional.feature.mybookings.model.MyBookingSegment
 import com.hulkdx.findprofessional.feature.pro.model.Booking
@@ -107,10 +108,24 @@ fun MyBookingsScreen(
         viewModel.onNavigated()
     }
 
+    // Note: temporary, delete it once cancellation logic is done
+    var showCancellationDialog by remember { mutableStateOf(false) }
+    var cancellationBookingId by remember { mutableStateOf("") }
+    if (showCancellationDialog) {
+        CancellationDialog(
+            bookingId = cancellationBookingId,
+            onDismiss = { showCancellationDialog = false },
+            onClickReportProblem = viewModel::onClickReportProblem,
+        )
+    }
+
     MyBookingsScreen(
         uiState = state,
         onSegmentSelected = viewModel::onSegmentSelected,
-        onClickCancel = viewModel::onClickCancel,
+        onClickCancel = {
+            showCancellationDialog = true
+            cancellationBookingId = it.id
+        },
         onClickReportProblem = viewModel::onClickReportProblem,
         onClickJoinSession = viewModel::onClickJoinSession,
         isRefreshing = state.isLoading,
@@ -130,7 +145,7 @@ fun MyBookingsScreen(
     uiState: BookingUiState,
     isRefreshing: Boolean,
     onClickReportProblem: () -> Unit,
-    onClickCancel: () -> Unit,
+    onClickCancel: (BookingUiState.Item) -> Unit,
     onSegmentSelected: (MyBookingSegment) -> Unit,
     onClickJoinSession: (BookingUiState.Item) -> Unit,
     onClickCopyBookingId: (BookingUiState.Item) -> Unit,
@@ -163,7 +178,7 @@ fun MyBookingsScreen(
 fun MyBookingsScreenContent(
     uiState: BookingUiState,
     onClickReportProblem: () -> Unit,
-    onClickCancel: () -> Unit,
+    onClickCancel: (BookingUiState.Item) -> Unit,
     onClickJoinSession: (BookingUiState.Item) -> Unit,
     onSegmentSelected: (MyBookingSegment) -> Unit,
     onClickCopyBookingId: (BookingUiState.Item) -> Unit,
@@ -292,7 +307,7 @@ private fun SegmentedItem(
 private fun BookingCard(
     booking: BookingUiState.Item,
     onClickReportProblem: () -> Unit,
-    onClickCancel: () -> Unit,
+    onClickCancel: (BookingUiState.Item) -> Unit,
     onClickJoinSession: (BookingUiState.Item) -> Unit,
     onClickCopyBookingId: (BookingUiState.Item) -> Unit,
 ) {
@@ -413,7 +428,7 @@ private fun BookingStatusChip(status: Booking.Status) {
 private fun BookingCardButtons(
     booking: BookingUiState.Item,
     onClickReportProblem: () -> Unit,
-    onClickCancel: () -> Unit,
+    onClickCancel: (BookingUiState.Item) -> Unit,
     onClickJoinSession: (BookingUiState.Item) -> Unit,
     onClickCopyBookingId: (BookingUiState.Item) -> Unit,
 ) {
@@ -428,7 +443,7 @@ private fun BookingCardButtons(
                 Spacer(Modifier.weight(1f))
             }
             if (booking.canCancel) {
-                Cancel(onClickCancel)
+                Cancel(onClickCancel = { onClickCancel(booking) })
             }
         }
     }

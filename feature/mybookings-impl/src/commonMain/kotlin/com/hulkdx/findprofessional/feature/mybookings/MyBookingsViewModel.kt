@@ -3,7 +3,6 @@ package com.hulkdx.findprofessional.feature.mybookings
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hulkdx.findprofessional.core.resources.Res
-import com.hulkdx.findprofessional.core.resources.cancellationNotSupported
 import com.hulkdx.findprofessional.core.resources.noCoachSessionLink
 import com.hulkdx.findprofessional.core.utils.ClockProvider
 import com.hulkdx.findprofessional.core.utils.REPORT_PROBLEM_URL
@@ -80,7 +79,6 @@ class MyBookingsViewModel(
     }
 
     fun onClickCancel() {
-        setError(Res.string.cancellationNotSupported.toStringOrRes())
     }
 
     fun onClickReportProblem() {
