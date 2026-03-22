@@ -1,46 +1,17 @@
 package com.hulkdx.findprofessional.core.network
 
-import com.hulkdx.findprofessional.core.platform.PlatformSpecific
 import com.hulkdx.findprofessional.core.platform.isDebug
 import io.ktor.client.request.HttpRequestBuilder
 import io.ktor.client.request.url
-import org.koin.core.component.KoinComponent
-import org.koin.mp.KoinPlatformTools
+
+private val impl: ApiUrl = if (isDebug()) DebugApiUrl else ProdApiUrl
 
 fun HttpRequestBuilder.apiUrl(urlString: String) {
-    url(urlString = ApiUrl.of(urlString))
+    url(urlString = impl.of(urlString))
 }
 
-private object ApiUrl : KoinComponent {
+const val PROD_BASE_URL = "https://api.findprofessionalapp.com"
 
-    private val isDebug = isDebug()
-
-    private val baseUrl by lazy {
-        if (isDebug) {
-            val ps = KoinPlatformTools.defaultContext().get().get<PlatformSpecific>()
-            "http://${ps.localhostUrl()}"
-        } else {
-            "http://api.sabajafarzadeh.com:3000"
-        }
-    }
-
-    fun of(path: String): String {
-        return "$baseUrl${getPort(path)}/$path"
-    }
-
-    private fun getPort(path: String): String {
-        if (!isDebug) return ""
-        return when (path) {
-            "auth/login",
-            "auth/register",
-            "auth/refresh-token",
-            "auth/user",
-            "auth/refresh",
-                -> ":8080"
-
-            "payments/start" -> ":8082"
-
-            else -> ":8081"
-        }
-    }
+interface ApiUrl {
+    fun of(path: String): String
 }

@@ -19,6 +19,7 @@ import com.hulkdx.findprofessional.core.ui.theme.AppTheme
 import com.hulkdx.findprofessional.feature.developer.storage.DeveloperStorage
 import com.hulkdx.findprofessional.feature.developer.storage.DeveloperStorage.Key.AuthPrefill
 import com.hulkdx.findprofessional.feature.developer.storage.DeveloperStorage.Key.MockData
+import com.hulkdx.findprofessional.feature.developer.storage.DeveloperStorage.Key.UseProductionBaseUrl
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.koinInject
@@ -32,12 +33,23 @@ fun DeveloperScreen() {
     val useMockData = useMockDataFlow.value ?: false
     val useAuthPrefillFlow = storage.getAsFlowBoolean(AuthPrefill).collectAsState(false)
     val useAuthPrefill = useAuthPrefillFlow.value ?: false
+    val useProductionBaseUrlFlow =
+        storage.getAsFlowBoolean(UseProductionBaseUrl).collectAsState(false)
+    val useProductionBaseUrl = useProductionBaseUrlFlow.value ?: false
 
     DeveloperScreen(
         mockData = useMockData,
-        onMockDataChanged = { value -> scope.launch { storage.setAsBoolean(MockData, value) } },
+        onMockDataChanged = {
+            scope.launch { storage.setAsBoolean(MockData, it) }
+        },
         authPrefill = useAuthPrefill,
-        onAuthPrefillChanged = { value -> scope.launch { storage.setAsBoolean(AuthPrefill, value) } },
+        onAuthPrefillChanged = {
+            scope.launch { storage.setAsBoolean(AuthPrefill, it) }
+        },
+        productionBaseUrl = useProductionBaseUrl,
+        onProductionBaseUrlChanged = { value ->
+            scope.launch { storage.setAsBoolean(UseProductionBaseUrl, value) }
+        },
     )
 }
 
@@ -47,6 +59,8 @@ fun DeveloperScreen(
     onMockDataChanged: ((Boolean) -> Unit),
     authPrefill: Boolean,
     onAuthPrefillChanged: ((Boolean) -> Unit),
+    productionBaseUrl: Boolean,
+    onProductionBaseUrlChanged: ((Boolean) -> Unit),
 ) {
     Column(
         modifier = Modifier
@@ -75,6 +89,16 @@ fun DeveloperScreen(
             )
             Text(text = "Prefill Auth Data")
         }
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Checkbox(
+                checked = productionBaseUrl,
+                onCheckedChange = onProductionBaseUrlChanged
+            )
+            Text(text = "Use Production API URL")
+        }
     }
 }
 
@@ -87,6 +111,8 @@ private fun HomeScreenPreview() {
             onMockDataChanged = {},
             authPrefill = true,
             onAuthPrefillChanged = {},
+            productionBaseUrl = false,
+            onProductionBaseUrlChanged = {},
         )
     }
 }
