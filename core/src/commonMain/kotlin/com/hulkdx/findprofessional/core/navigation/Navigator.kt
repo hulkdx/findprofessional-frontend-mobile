@@ -5,6 +5,7 @@ import kotlin.reflect.KClass
 interface Navigator {
     fun navigate(screen: NavigationScreen)
     fun navigate(screen: NavigationScreen, popTo: NavigationScreen, inclusive: Boolean)
+    fun navigateAndClearStack(screen: NavigationScreen)
     fun goBack()
     fun goBack(screen: KClass<out NavigationScreen>)
     fun getCurrentScreen(): NavigationScreen

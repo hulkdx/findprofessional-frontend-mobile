@@ -14,6 +14,7 @@ class StubNavigator : Navigator {
     ) {
     }
 
+    override fun navigateAndClearStack(screen: NavigationScreen) {}
     override fun goBack() {}
     override fun goBack(screen: KClass<out NavigationScreen>) {}
 

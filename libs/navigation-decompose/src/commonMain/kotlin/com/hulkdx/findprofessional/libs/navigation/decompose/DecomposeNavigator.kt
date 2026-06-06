@@ -7,6 +7,7 @@ import com.arkivanov.decompose.router.stack.navigate
 import com.arkivanov.decompose.router.stack.pop
 import com.arkivanov.decompose.router.stack.popWhile
 import com.arkivanov.decompose.router.stack.pushToFront
+import com.arkivanov.decompose.router.stack.replaceAll
 import com.hulkdx.findprofessional.core.navigation.NavigationScreen
 import com.hulkdx.findprofessional.core.navigation.Navigator
 import com.hulkdx.findprofessional.core.platform.closeApp
@@ -37,6 +38,10 @@ class DecomposeNavigator(
             }
             newStack - screen + screen
         }
+    }
+
+    override fun navigateAndClearStack(screen: NavigationScreen) {
+        navController.replaceAll(screen)
     }
 
     override fun goBack() {
