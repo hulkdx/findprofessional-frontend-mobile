@@ -8,4 +8,6 @@ object ProProfileNavigationScreen {
     data object Main : NavigationScreen
     @Serializable
     data object Edit : NavigationScreen
+    @Serializable
+    data object PayoutSetup : NavigationScreen
 }

@@ -23,6 +23,7 @@
     <string name="profile">Profile</string>
 
     <string name="editProfile">Edit Profile</string>
+    <string name="payoutSetup">Payout Setup</string>
     <string name="logout">Logout</string>
     <string name="becomeCoach">Become a coach</string>
     <string name="contactSupport">Contact support</string>

@@ -40,6 +40,9 @@ class ProProfileDsl(
         rule.onNodeWithText("Edit Profile").performClick()
     }
 
+    fun pressPayoutSetup() {
+        rule.onNodeWithText("Payout Setup").performClick()
+    }
 }
 
 class ProProfileVerify(
@@ -48,5 +51,9 @@ class ProProfileVerify(
 
     fun editProProfileShown() {
         rule.assertNodeIsDisplayed("EditProProfileScreen")
+    }
+
+    fun payoutSetupShown() {
+        rule.assertNodeIsDisplayed("PayoutSetupScreen")
     }
 }

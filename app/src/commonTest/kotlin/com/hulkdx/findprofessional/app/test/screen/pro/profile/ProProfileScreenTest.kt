@@ -15,4 +15,13 @@ class ProProfileScreenTest {
             editProProfileShown()
         }
     }
+
+    @Test
+    fun performPayoutSetup() = runAppUiTest {
+        launchProProfileScreen(this) {
+            pressPayoutSetup()
+        }.verify {
+            payoutSetupShown()
+        }
+    }
 }

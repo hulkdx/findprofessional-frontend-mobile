@@ -26,14 +26,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
-import com.hulkdx.findprofessional.core.resources.Res
-import com.hulkdx.findprofessional.core.resources.editProfile
-import com.hulkdx.findprofessional.core.resources.logout
 import com.hulkdx.findprofessional.core.ui.commonui.CUAsyncImage
 import com.hulkdx.findprofessional.core.ui.commonui.navbar.ProAppNavBarContainer
 import com.hulkdx.findprofessional.core.ui.theme.body1Medium
 import com.hulkdx.findprofessional.core.ui.theme.body2
-import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
@@ -44,8 +40,7 @@ fun ProProfileScreen(viewModel: ProProfileViewModel = koinViewModel()) {
     ProProfileScreen(
         name = uiState.name,
         profileImageUrl = uiState.profileImageUrl,
-        onEditProfileClicked = viewModel::onEditProfileClicked,
-        onLogoutClicked = viewModel::onLogoutClicked,
+        items = proProfileScreenItems(viewModel),
         error = error?.localized(),
         onErrorDismissed = { viewModel.setError(null) },
     )
@@ -55,8 +50,7 @@ fun ProProfileScreen(viewModel: ProProfileViewModel = koinViewModel()) {
 fun ProProfileScreen(
     name: String,
     profileImageUrl: String,
-    onEditProfileClicked: () -> Unit,
-    onLogoutClicked: () -> Unit,
+    items: List<ProProfileScreenItem> = proProfileScreenItems(),
     error: String?,
     onErrorDismissed: () -> Unit,
 ) {
@@ -65,7 +59,7 @@ fun ProProfileScreen(
         error = error,
         onErrorDismissed = onErrorDismissed,
     ) {
-        ProProfileScreenContent(name, profileImageUrl, onEditProfileClicked, onLogoutClicked)
+        ProProfileScreenContent(name, profileImageUrl, items)
     }
 }
 
@@ -73,8 +67,7 @@ fun ProProfileScreen(
 private fun ProProfileScreenContent(
     name: String,
     profileImageUrl: String,
-    onEditProfileClicked: () -> Unit = {},
-    onLogoutClicked: () -> Unit = {},
+    items: List<ProProfileScreenItem>,
 ) {
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -82,8 +75,13 @@ private fun ProProfileScreenContent(
     ) {
         ProProfileImage(profileImageUrl)
         ProProfileName(name)
-        ProProfileItem(stringResource(Res.string.editProfile), onEditProfileClicked)
-        ProProfileItem(stringResource(Res.string.logout), onLogoutClicked)
+
+        items.forEach {
+            ProProfileItem(
+                text = it.title,
+                onClick = it.onClick,
+            )
+        }
     }
 }
 
