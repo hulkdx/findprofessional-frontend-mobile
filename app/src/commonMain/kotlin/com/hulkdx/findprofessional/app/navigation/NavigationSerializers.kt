@@ -40,6 +40,7 @@ fun setupNavigationScreenPolymorphicSerializable() {
             subclass(ProAvailabilityNavigationScreen.Detail::class)
             subclass(ProProfileNavigationScreen.Main::class)
             subclass(ProProfileNavigationScreen.Edit::class)
+            subclass(ProProfileNavigationScreen.PayoutSetup::class)
             subclass(MyBookingsNavigationScreen.Main::class)
         }
     }

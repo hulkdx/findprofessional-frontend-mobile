@@ -250,9 +250,10 @@ class ScreenshotTests {
     fun proProfileScreen() {
         screenShotTests(className, "proProfileScreen") {
             ProProfileScreen(
-                "Mosh Asphalt",
-                "",
-                {}, {}, "", {},
+                name = "Mosh Asphalt",
+                profileImageUrl = "",
+                error = "",
+                onErrorDismissed = {},
             )
         }
     }

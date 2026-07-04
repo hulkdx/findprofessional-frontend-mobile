@@ -23,6 +23,7 @@ import com.hulkdx.findprofessional.feature.pro.auth.signup.view.SignUpProScreen
 import com.hulkdx.findprofessional.feature.pro.availability.ProAvailabilityNavigationScreen
 import com.hulkdx.findprofessional.feature.pro.availability.detail.ProAvailabilityDetailScreen
 import com.hulkdx.findprofessional.feature.pro.availability.main.ProAvailabilityScreen
+import com.hulkdx.findprofessional.feature.pro.profile.PayoutSetupScreen
 import com.hulkdx.findprofessional.feature.pro.profile.ProProfileNavigationScreen
 import com.hulkdx.findprofessional.feature.pro.profile.ProProfileScreen
 import com.hulkdx.findprofessional.feature.pro.profile.edit.EditProProfileScreen
@@ -67,6 +68,7 @@ private fun RenderScreen(screen: NavigationScreen) {
         is ProAvailabilityNavigationScreen.Detail -> ProAvailabilityDetailScreen(screen.date)
         is ProProfileNavigationScreen.Main -> ProProfileScreen()
         is ProProfileNavigationScreen.Edit -> EditProProfileScreen()
+        is ProProfileNavigationScreen.PayoutSetup -> PayoutSetupScreen()
     }
     // @formatter:on
 }

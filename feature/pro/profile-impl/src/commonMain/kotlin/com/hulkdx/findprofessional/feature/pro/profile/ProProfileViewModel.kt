@@ -37,6 +37,10 @@ class ProProfileViewModel(
         navigator.navigate(ProProfileNavigationScreen.Edit)
     }
 
+    fun onPayoutSetupClicked() {
+        navigator.navigate(ProProfileNavigationScreen.PayoutSetup)
+    }
+
     fun onLogoutClicked() {
         viewModelScope.launch {
             logoutUseCase.logout()
