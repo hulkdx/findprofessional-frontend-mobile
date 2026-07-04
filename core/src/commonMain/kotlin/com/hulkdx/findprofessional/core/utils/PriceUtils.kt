@@ -1,20 +1,17 @@
 package com.hulkdx.findprofessional.core.utils
 
+import kotlin.math.abs
+
 object PriceUtils {
     fun toPriceString(priceNumber: Long): String {
-        // Convert to a float value
-        val priceFloat = priceNumber.toFloat() / 100
-
-        // Check if it's a whole number
-        return if (priceFloat % 1 == 0f) {
-            // Return only the integer part if there's no fractional part
-            priceFloat.toInt().toString()
+        val sign = if (priceNumber < 0) "-" else ""
+        val absValue = abs(priceNumber)
+        val whole = absValue / 100
+        val cents = absValue % 100
+        return if (cents == 0L) {
+            "$sign$whole"
         } else {
-            // Otherwise, round and format with two decimal places
-            val roundedPrice = (priceFloat * 100).toInt() / 100.0
-            val integerPart = roundedPrice.toInt()
-            val decimalPart = ((roundedPrice - integerPart) * 100).toInt()
-            "$integerPart.${decimalPart.toString().padStart(2, '0')}"
+            "$sign$whole.${cents.toString().padStart(2, '0')}"
         }
     }
 
