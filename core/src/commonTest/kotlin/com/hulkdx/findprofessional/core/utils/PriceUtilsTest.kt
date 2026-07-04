@@ -30,7 +30,9 @@ class PriceUtilsTest {
     fun testToPriceString() {
         val testData = listOf(
             0L to "0",
+            1L to "0.01",
             5000L to "50",
+            5001L to "50.01",
             10000L to "100",
             20000L to "200",
             5025L to "50.25",
