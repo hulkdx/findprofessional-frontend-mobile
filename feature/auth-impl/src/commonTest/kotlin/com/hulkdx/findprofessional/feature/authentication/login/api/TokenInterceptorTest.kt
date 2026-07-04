@@ -2,9 +2,9 @@
 
 package com.hulkdx.findprofessional.feature.authentication.login.api
 
+import com.hulkdx.findprofessional.feature.authentication.login.usecase.LogoutUseCase
 import com.hulkdx.findprofessional.feature.authentication.model.user.Token
 import com.hulkdx.findprofessional.feature.authentication.model.user.UserData
-import com.hulkdx.findprofessional.feature.authentication.login.usecase.LogoutUseCase
 import com.hulkdx.findprofessional.libs.common.tests.StubUserStorage
 import com.hulkdx.findprofessional.libs.common.tests.newUserData
 import io.ktor.client.HttpClient
@@ -23,6 +23,8 @@ import io.ktor.http.headersOf
 import io.ktor.util.date.GMTDate
 import io.ktor.utils.io.InternalAPI
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.joinAll
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.test.runTest
 import kotlin.coroutines.coroutineContext
 import kotlin.test.AfterTest
@@ -66,10 +68,10 @@ class TokenInterceptorTest {
     fun `intercept unauthorized when userStorage is not empty then should store and refresh token and retry call`() =
         runTest {
             // Arrange
-            userStorage.value = newUserData()
+            userStorage.value = newUserData(accessToken = "oldAccessToken")
             val sender = SenderMock().apply {
                 response(
-                    request = { header(HttpHeaders.Authorization, "not empty") },
+                    request = { header(HttpHeaders.Authorization, "Bearer oldAccessToken") },
                     responseStatusCode = HttpStatusCode.Unauthorized,
                 )
             }
@@ -139,7 +141,7 @@ class TokenInterceptorTest {
         }
         refreshTokenApi.response = Token(newAccessToken, "irrelevant")
 
-        userStorage.value = newUserData()
+        userStorage.value = newUserData(accessToken = oldAccessToken)
         val sender = SenderMock().apply {
             response(
                 request = req,
@@ -153,14 +155,48 @@ class TokenInterceptorTest {
         assertEquals("Bearer $newAccessToken", responseHeader)
     }
 
+    @Test
+    fun `concurrent unauthorized requests with the same stale token should refresh only once`() =
+        runTest {
+            // Arrange
+            val oldAccessToken = "oldAccessToken"
+            // All in-flight requests carry the SAME (now-expired) access token.
+            val req: HttpRequestBuilder.() -> Unit = {
+                header(HttpHeaders.Authorization, "Bearer $oldAccessToken")
+            }
+            userStorage.value =
+                newUserData(accessToken = oldAccessToken, refreshToken = "oldRefresh")
+            refreshTokenApi.response = Token("newAccessToken", "newRefreshToken")
+
+            // Act — fire N requests that all get 401 "simultaneously".
+            val jobs = List(5) {
+                launch {
+                    val sender = SenderMock().apply {
+                        response(
+                            request = req,
+                            responseStatusCode = HttpStatusCode.Unauthorized,
+                        )
+                    }
+                    sut.intercept(sender, request(req))
+                }
+            }
+            jobs.joinAll()
+
+            // Assert — the refresh endpoint must be hit exactly once; the other four
+            // requests should reuse the token the first one obtained.
+            assertEquals(1, refreshTokenApi.refreshTokenCallCount)
+        }
+
     // region mock classes
 
     private class RefreshTokenApiMock : RefreshTokenApi {
         var isRefreshTokenCalled = false
+        var refreshTokenCallCount = 0
         var response = Token("access", "refresh")
 
         override suspend fun refreshToken(refreshToken: String, accessToken: String): Token {
             isRefreshTokenCalled = true
+            refreshTokenCallCount += 1
             return response
         }
     }
