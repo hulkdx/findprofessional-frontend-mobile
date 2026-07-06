@@ -17,13 +17,13 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.firstName
 import com.hulkdx.findprofessional.core.resources.lastName
@@ -45,8 +45,8 @@ import org.koin.compose.viewmodel.koinViewModel
 fun SignUpScreen(
     viewModel: SignUpViewModel = koinViewModel(),
 ) {
-    val data by viewModel.uiState.collectAsState()
-    val error by viewModel.error.collectAsState()
+    val data by viewModel.uiState.collectAsStateWithLifecycle()
+    val error by viewModel.error.collectAsStateWithLifecycle()
 
     ShowPrefillOnDebug {
         viewModel.setEmail(EMAIL)

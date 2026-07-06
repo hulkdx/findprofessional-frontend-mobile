@@ -13,11 +13,11 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.hulkdx.findprofessional.core.ui.commonui.CUSearchField
 import com.hulkdx.findprofessional.core.ui.commonui.navbar.AppNavBarContainer
 import com.hulkdx.findprofessional.core.ui.commonui.navbar.AppNavigationBarDimens
@@ -31,8 +31,8 @@ import org.koin.compose.viewmodel.koinViewModel
 fun HomeScreen(
     viewModel: HomeViewModel = koinViewModel(),
 ) {
-    val professionals by viewModel.professionals.collectAsState()
-    val error by viewModel.error.collectAsState()
+    val professionals by viewModel.professionals.collectAsStateWithLifecycle()
+    val error by viewModel.error.collectAsStateWithLifecycle()
 
     HomeScreen(
         professionals = professionals,

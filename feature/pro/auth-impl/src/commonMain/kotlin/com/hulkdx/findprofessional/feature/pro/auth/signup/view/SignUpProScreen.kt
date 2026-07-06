@@ -11,12 +11,12 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyItemScope
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.hulkdx.findprofessional.core.navigation.Navigator
 import com.hulkdx.findprofessional.core.ui.commonui.BACK_BUTTON_HEIGHT
 import com.hulkdx.findprofessional.core.ui.commonui.CUBackButton
@@ -34,8 +34,8 @@ fun SignUpProScreen(
     initialUiState: SignUpProRequest,
     viewModel: SignUpProViewModel = koinViewModel { parametersOf(initialUiState) },
 ) {
-    val uiState by viewModel.uiState.collectAsState()
-    val error by viewModel.error.collectAsState()
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    val error by viewModel.error.collectAsStateWithLifecycle()
 
     ShowPrefillOnDebug {
         viewModel.setPassword(PASSWORD)

@@ -21,7 +21,6 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -29,6 +28,7 @@ import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.bookingIdEquals
 import com.hulkdx.findprofessional.core.resources.cannotOpenUrl
@@ -54,7 +54,7 @@ import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun ProScheduleScreen(viewModel: ProScheduleViewModel = koinViewModel()) {
-    val uiState by viewModel.state.collectAsState()
+    val uiState by viewModel.state.collectAsStateWithLifecycle()
     val uriHandler = LocalUriHandler.current
 
     val navigation = uiState.navigation
