@@ -22,7 +22,6 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterVertically
@@ -32,7 +31,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.style.TextAlign.Companion.Center
 import androidx.compose.ui.unit.dp
-import com.hulkdx.findprofessional.feature.pro.model.Professional
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.continue1
 import com.hulkdx.findprofessional.core.resources.ic_calendar_left
@@ -50,6 +49,7 @@ import com.hulkdx.findprofessional.feature.booking.time.BookingTimeUiState.Booki
 import com.hulkdx.findprofessional.feature.booking.time.BookingTimeUiState.BookingTime.Type.Available
 import com.hulkdx.findprofessional.feature.booking.time.BookingTimeUiState.BookingTime.Type.Selected
 import com.hulkdx.findprofessional.feature.booking.time.BookingTimeUiState.BookingTime.Type.UnAvailable
+import com.hulkdx.findprofessional.feature.pro.model.Professional
 import kotlinx.datetime.LocalDate
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
@@ -63,8 +63,8 @@ fun BookingTimeScreen(
     professional: Professional,
     viewModel: BookingTimeViewModel = koinViewModel { parametersOf(professional) },
 ) {
-    val error by viewModel.error.collectAsState()
-    val uiState by viewModel.uiState.collectAsState()
+    val error by viewModel.error.collectAsStateWithLifecycle()
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
     BookingTimeScreen(
         uiState = uiState ?: return,

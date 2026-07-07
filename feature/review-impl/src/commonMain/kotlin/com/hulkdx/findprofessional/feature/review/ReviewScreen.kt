@@ -16,7 +16,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterVertically
@@ -25,9 +24,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.hulkdx.findprofessional.feature.pro.model.Professional
-import com.hulkdx.findprofessional.feature.pro.model.ProfessionalReview
-import com.hulkdx.findprofessional.feature.authentication.model.user.User
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.ic_star2
 import com.hulkdx.findprofessional.core.resources.reviews
@@ -40,6 +37,9 @@ import com.hulkdx.findprofessional.core.ui.theme.body1
 import com.hulkdx.findprofessional.core.ui.theme.body1Medium
 import com.hulkdx.findprofessional.core.ui.theme.body3
 import com.hulkdx.findprofessional.core.ui.theme.h1Medium
+import com.hulkdx.findprofessional.feature.authentication.model.user.User
+import com.hulkdx.findprofessional.feature.pro.model.Professional
+import com.hulkdx.findprofessional.feature.pro.model.ProfessionalReview
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
@@ -52,8 +52,8 @@ fun ReviewScreen(
     professional: Professional,
     viewModel: ReviewViewModel = koinViewModel { parametersOf(professional) },
 ) {
-    val error by viewModel.error.collectAsState()
-    val reviews by viewModel.reviews.collectAsState()
+    val error by viewModel.error.collectAsStateWithLifecycle()
+    val reviews by viewModel.reviews.collectAsStateWithLifecycle()
 
     ReviewScreen(
         reviewSize = professional.reviewSize,

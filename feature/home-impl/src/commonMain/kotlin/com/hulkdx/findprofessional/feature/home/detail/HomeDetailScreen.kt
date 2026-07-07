@@ -19,16 +19,13 @@ import androidx.compose.material3.ButtonDefaults.buttonColors
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
-import com.hulkdx.findprofessional.feature.pro.model.Professional
-import com.hulkdx.findprofessional.feature.pro.model.ProfessionalReview
-import com.hulkdx.findprofessional.feature.authentication.model.user.User
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.hulkdx.findprofessional.core.resources.Res
 import com.hulkdx.findprofessional.core.resources.bookNow
 import com.hulkdx.findprofessional.core.ui.commonui.CUBackButton
@@ -37,6 +34,7 @@ import com.hulkdx.findprofessional.core.ui.commonui.icons.CUChatButton
 import com.hulkdx.findprofessional.core.ui.commonui.icons.CULikeButton
 import com.hulkdx.findprofessional.core.ui.theme.AppTheme
 import com.hulkdx.findprofessional.core.ui.theme.body2SemiBold
+import com.hulkdx.findprofessional.feature.authentication.model.user.User
 import com.hulkdx.findprofessional.feature.home.detail.availability.Availability
 import com.hulkdx.findprofessional.feature.home.detail.availability.AvailabilityData
 import com.hulkdx.findprofessional.feature.home.detail.review.Review
@@ -44,6 +42,8 @@ import com.hulkdx.findprofessional.feature.home.detail.utils.HomeScreenDimens.BO
 import com.hulkdx.findprofessional.feature.home.detail.utils.HomeScreenDimens.OUTER_HORIZONTAL_PADDING
 import com.hulkdx.findprofessional.feature.home.main.view.Description
 import com.hulkdx.findprofessional.feature.home.main.view.TopRow
+import com.hulkdx.findprofessional.feature.pro.model.Professional
+import com.hulkdx.findprofessional.feature.pro.model.ProfessionalReview
 import kotlinx.datetime.LocalDate
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
@@ -56,7 +56,7 @@ fun HomeDetailScreen(
     professional: Professional,
     viewModel: HomeDetailViewModel = koinViewModel { parametersOf(professional) },
 ) {
-    val availability by viewModel.availability.collectAsState()
+    val availability by viewModel.availability.collectAsStateWithLifecycle()
 
     HomeDetailScreen(
         professional,

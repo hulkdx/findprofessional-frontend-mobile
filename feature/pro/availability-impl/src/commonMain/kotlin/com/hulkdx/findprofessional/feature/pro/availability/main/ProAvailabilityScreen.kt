@@ -2,10 +2,10 @@ package com.hulkdx.findprofessional.feature.pro.availability.main
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.hulkdx.findprofessional.core.ui.commonui.navbar.ProAppNavBarContainer
 import com.hulkdx.findprofessional.core.utils.ClockProvider
 import com.hulkdx.findprofessional.core.utils.now
@@ -16,8 +16,8 @@ import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun ProAvailabilityScreen(viewModel: ProAvailabilityViewModel = koinViewModel()) {
-    val availabilities by viewModel.availabilities.collectAsState()
-    val error by viewModel.error.collectAsState()
+    val availabilities by viewModel.availabilities.collectAsStateWithLifecycle()
+    val error by viewModel.error.collectAsStateWithLifecycle()
     val clockProvider = koinInject<ClockProvider>()
 
     ProAvailabilityScreen(

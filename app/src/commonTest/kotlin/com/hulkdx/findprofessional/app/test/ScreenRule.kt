@@ -7,8 +7,11 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.test.ComposeUiTest
 import androidx.compose.ui.test.ExperimentalTestApi
 import androidx.compose.ui.test.runComposeUiTest
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModelStore
 import androidx.lifecycle.ViewModelStoreOwner
+import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.viewmodel.compose.LocalViewModelStoreOwner
 import com.arkivanov.decompose.DefaultComponentContext
 import com.arkivanov.essenty.lifecycle.LifecycleRegistry
@@ -25,6 +28,7 @@ import org.koin.core.context.loadKoinModules
 import org.koin.core.context.startKoin
 import kotlin.coroutines.CoroutineContext
 import kotlin.coroutines.EmptyCoroutineContext
+import androidx.lifecycle.LifecycleRegistry as AndroidxLifecycleRegistry
 
 
 fun runAppUiTest(
@@ -58,19 +62,28 @@ fun runAppUiTest(
 fun ComposeUiTest.setAppContent(lifecycle: LifecycleRegistry) {
     val root = RootComponent(get(), DefaultComponentContext(lifecycle = lifecycle))
     setContent {
-        provideViewModelStoreForIOS {
+        provideLocalsForIOS {
             App(root)
         }
     }
 }
 
 @Composable
-private fun provideViewModelStoreForIOS(content: @Composable () -> Unit) {
+private fun provideLocalsForIOS(content: @Composable () -> Unit) {
     if (isIOS()) {
-        val a = object : ViewModelStoreOwner {
+        val viewModelStoreOwner = object : ViewModelStoreOwner {
             override val viewModelStore = ViewModelStore()
         }
-        CompositionLocalProvider(LocalViewModelStoreOwner provides a, content)
+        val lifecycleOwner = object : LifecycleOwner {
+            override val lifecycle = AndroidxLifecycleRegistry.createUnsafe(this).apply {
+                currentState = Lifecycle.State.RESUMED
+            }
+        }
+        CompositionLocalProvider(
+            LocalViewModelStoreOwner provides viewModelStoreOwner,
+            LocalLifecycleOwner provides lifecycleOwner,
+            content = content,
+        )
     } else {
         content()
     }

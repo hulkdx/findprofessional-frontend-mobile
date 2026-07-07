@@ -10,11 +10,11 @@ import androidx.compose.material3.Checkbox
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.hulkdx.findprofessional.core.ui.theme.AppTheme
 import com.hulkdx.findprofessional.feature.developer.storage.DeveloperStorage
 import com.hulkdx.findprofessional.feature.developer.storage.DeveloperStorage.Key.AuthPrefill
@@ -29,12 +29,12 @@ fun DeveloperScreen() {
     val storage = koinInject<DeveloperStorage>()
     val scope = rememberCoroutineScope()
 
-    val useMockDataFlow = storage.getAsFlowBoolean(MockData).collectAsState(false)
+    val useMockDataFlow = storage.getAsFlowBoolean(MockData).collectAsStateWithLifecycle(false)
     val useMockData = useMockDataFlow.value ?: false
-    val useAuthPrefillFlow = storage.getAsFlowBoolean(AuthPrefill).collectAsState(false)
+    val useAuthPrefillFlow = storage.getAsFlowBoolean(AuthPrefill).collectAsStateWithLifecycle(false)
     val useAuthPrefill = useAuthPrefillFlow.value ?: false
     val useProductionBaseUrlFlow =
-        storage.getAsFlowBoolean(UseProductionBaseUrl).collectAsState(false)
+        storage.getAsFlowBoolean(UseProductionBaseUrl).collectAsStateWithLifecycle(false)
     val useProductionBaseUrl = useProductionBaseUrlFlow.value ?: false
 
     DeveloperScreen(
