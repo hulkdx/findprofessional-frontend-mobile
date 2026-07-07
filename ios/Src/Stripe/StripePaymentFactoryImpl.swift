@@ -5,18 +5,18 @@ import StripePaymentSheet
 
 
 class StripePaymentFactoryImpl: StripePaymentFactoryIos {
-    func onCreate(networkResult: CoreCreateBookingResponse, onResult: @escaping (shared.PaymentSheetResult) -> Void) -> UIView {
+    func onCreate(networkResult: Pro_apiCreateBookingResponse, onResult: @escaping (shared.PaymentSheetResult) -> Void) -> UIView {
         return StripePaymentSheetView(networkResult: networkResult, onResult: onResult)
     }
 }
 
 private final class StripePaymentSheetView: UIView {
-    private let networkResult: CoreCreateBookingResponse
+    private let networkResult: Pro_apiCreateBookingResponse
     private let onResult: (shared.PaymentSheetResult) -> Void
     private var paymentSheet: PaymentSheet?
     private var hasPresented = false
 
-    init(networkResult: CoreCreateBookingResponse, onResult: @escaping (shared.PaymentSheetResult) -> Void) {
+    init(networkResult: Pro_apiCreateBookingResponse, onResult: @escaping (shared.PaymentSheetResult) -> Void) {
         self.networkResult = networkResult
         self.onResult = onResult
         super.init(frame: .zero)
